@@ -17,6 +17,20 @@ export default class Navigation extends React.Component
 	};
 	render()
 	{	//	console.debug( "Navigation.render()", this.context.Theme.Foreground);
+
+
+				//		<a
+				//	target="_new"
+				//	style={_nav_link_padding}
+				//	title="Sean Gephardt on Instagram"
+				//	href="https://www.instagram.com/villainsean/">
+				//	<div>
+				//		<img src={ImageList[4]} alt="Sean Gephardt on Instagram"/>
+				//	</div>
+				//	<div>Instagram</div>
+				//</a>
+
+
 		let _font_style = {
 			fontFamily: this.context.Theme.FontFamily,
 			fill: this.context.Theme.ForeGround
@@ -72,16 +86,7 @@ export default class Navigation extends React.Component
 					</div>
 					<div>LinkedIn</div>
 				</a>
-				<a
-					target="_new"
-					style={_nav_link_padding}
-					title="Sean Gephardt on Instagram"
-					href="https://www.instagram.com/villainsean/">
-					<div>
-						<img src={ImageList[4]} alt="Sean Gephardt on Instagram"/>
-					</div>
-					<div>Instagram</div>
-				</a>
+
 
 			</nav>
 		);

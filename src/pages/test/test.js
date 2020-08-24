@@ -6,8 +6,8 @@ export default class TestPage extends React.Component
 {
     static contextType = ThemeContext;
 	static defaultProps = {
-		Title: "React Testing Playground",
-		LinkTitle: "Playground",
+		Title: "Testing",
+		LinkTitle: "Test",
 		Href: "/test"
 	};
 constructor( props )
@@ -21,13 +21,13 @@ constructor( props )
 	};
 	render()
 	{	
-		let _style = {
-			backgroundColor: this.context.Theme.Background,
-			color: this.context.Theme.Background
-		};
+		//let _style = {
+		//	backgroundColor: this.context.Theme.Background,
+		//	color: this.context.Theme.Background
+		//};
 		return (
 			<div className="page-main">
-				<div className="testing-div" style={_style}>Testing</div>
+				<div className="testing-div" >Testing</div>
 			</div> 
 		);
 	};

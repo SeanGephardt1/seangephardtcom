@@ -1,13 +1,18 @@
 import React from 'react';
 import { ThemeContext } from '../../js/theme-context.js';
 
+import './home.css';
+import SVG from '../../art/svgs.js';
+
+
 export default class About extends React.Component
 {
     static contextType = ThemeContext;
 	static defaultProps = {
 		Title: "About...",
 		LinkTitle: "About",
-		Href: "/about"
+        Href: "/about",
+		Icon: SVG.AppNavButtons.About
 	};
     constructor( props )
     {

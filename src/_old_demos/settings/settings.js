@@ -1,4 +1,4 @@
-import React from 'react';
+import React from './react';
 import { ThemeContext } from '../../js/theme-context.js';
 import { Themes } from '../../js/themes.js';
 import { Layouts } from '../../js/layouts.js';
