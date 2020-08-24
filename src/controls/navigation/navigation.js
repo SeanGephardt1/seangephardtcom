@@ -53,16 +53,7 @@ export default class Navigation extends React.Component
 						</NavLink>
 					)
 				}
-				<a
-					target="_new"
-					style={_nav_link_padding}
-					title="Sean Gephardt on Instagram"
-					href="https://www.instagram.com/villainsean/">
-					<div>
-						<img src={ImageList[4]} alt="Sean Gephardt on Instagram"/>
-					</div>
-					<div>Instagram</div>
-				</a>
+
 				<a
 					target="_new"
 					style={_nav_link_padding}
@@ -80,6 +71,16 @@ export default class Navigation extends React.Component
 						<img src={ImageList[5]} alt="Sean Gephardt on LinkedIn" />
 					</div>
 					<div>LinkedIn</div>
+				</a>
+				<a
+					target="_new"
+					style={_nav_link_padding}
+					title="Sean Gephardt on Instagram"
+					href="https://www.instagram.com/villainsean/">
+					<div>
+						<img src={ImageList[4]} alt="Sean Gephardt on Instagram"/>
+					</div>
+					<div>Instagram</div>
 				</a>
 
 			</nav>

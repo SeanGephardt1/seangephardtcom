@@ -27,15 +27,15 @@ export default class Music extends React.Component
 	{	//	console.debug( "AboutExtension.render()", this.Title );	
 		//	add voy - https://villainsofyesterday.bandcamp.com/
 
-		let _border_style = {
-			boxShadow: "0px 0px 20px 0px " + this.context.Theme.Background,
-		};
+		//let _border_style = {
+		//	boxShadow: "0px 0px 20px 0px " + this.context.Theme.Background,
+		//};
 
 		return (
 			<div className="page-main">
 
 				{/* BEGIN The Drive Through */}
-				<div className="page-block" style={_border_style}>
+				<div className="page-block">
 
 					<div className="tdt-svg-logo-panel">
 						<a href="http://thedrivethrough.com" className="tdt-link">
