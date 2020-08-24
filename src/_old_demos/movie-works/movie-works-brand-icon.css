@@ -1,0 +1,30 @@
+﻿.mw-brand-icon-default
+{
+	/*border: solid 1px red;*/
+	fill: rgba(182, 255, 0, 0.95);
+	height:32px;
+	width:32px;
+	transition: all 400ms ease-in-out;
+	cursor:pointer;
+}
+.mw-brand-icon-default:hover
+{
+	fill: rgba(182, 255, 0, 0.4);
+	transform:rotate(360deg);
+}
+
+.mwbi-small
+{
+	height:32px;
+	width:32px;
+}
+.mwbi-medium
+{
+	height:96px;
+	width:96px;
+}
+.mwbi-large
+{
+	height:128px;
+	width:128px;
+}

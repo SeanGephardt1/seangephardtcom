@@ -1,0 +1,52 @@
+﻿h1.this-demo
+{
+	text-align:center;
+	margin-bottom:10px;
+	display:block;
+}
+
+.audio-tweaks-box
+{
+	border: solid 1px rgba(0,0,0,0.1);
+	border-radius:4px;
+	background-color:rgba(0,0,0,0.02);
+	display:block;
+	margin-bottom:10px;
+	text-align:center;
+	padding:20px;
+}
+.audio-tweaks-box > div:first-child
+{
+	/*border: solid 1px red;*/
+	padding-bottom:10px;
+	font-size:18px;
+	font-weight:700;
+}
+
+
+.audio-player-panel
+{
+	/*border: solid 1px green;*/
+	padding:20px;
+	justify-content:center;
+	text-align:center;
+	margin-bottom:10px;
+}
+.audio-player-element
+{
+	box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
+	border: solid 1px  rgba(0,0,0,0.5);
+	border-radius:50px;
+	/*flex: 0 0 50%;
+	min-width:280px;
+	display:inline-flex;*/
+}
+
+.canvas-visual
+{
+	background-color:rgba(255,255,255,1);
+	border: solid 1px rgba(0,0,0,0.4);
+	border-radius:4px;
+	width:320px;
+	height:240px;
+}

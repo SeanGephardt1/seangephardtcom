@@ -1,0 +1,54 @@
+{
+    "name": "sean-gephardt-com-2020",
+    "version": "0.2.1",
+    "private": true,
+    "description": "Sean Gephardt's Interactive User Experience Portfolio showcasing HTML, JavaScript, CSS. Built using ReactJS.",
+    "author": "seangephardt@live.com",
+    "contributors": [],
+    "keywords": [
+        "design engineering",
+        "prototyping",
+        "user interface design",
+        "user expreince design",
+        "html",
+        "javascript",
+        "css",
+        "react"
+    ],
+    "homepage": "http://seangephardt.com",
+    "license": "Copyright",
+    "main": "index.js",
+    "esnext": "index-esnext.js",
+    "engines": {
+        "node": ">= 6.0.0",
+        "npm": ">= 3.0.0"
+    },
+    "engineStrict": true,
+    "dependencies": {
+        "react": "^16.13.1",
+        "react-dom": "^16.13.1",
+        "react-router-dom": "^5.2.0",
+        "react-scripts": "3.4.1"
+    },
+    "scripts": {
+        "start": "set PORT=3113 && set BROWSER=C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe && react-scripts start",
+        "build": "react-scripts build",
+        "test": "react-scripts test",
+        "eject": "react-scripts eject"
+    },
+    "eslintConfig": {
+        "extends": "react-app"
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    }
+}

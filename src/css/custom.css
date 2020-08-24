@@ -1,0 +1,42 @@
+﻿:root {
+	--default-black: rgba(0,0,0,1);
+	--default-black-01: rgba(0,0,0,0.1);
+	--default-black-02: rgba(0,0,0,0.2);
+	--default-black-03: rgba(0,0,0,0.3);
+	--default-black-04: rgba(0,0,0,0.4);
+	--default-black-05: rgba(0,0,0,0.5);
+	--default-black-06: rgba(0,0,0,0.6);
+	--default-black-07: rgba(0,0,0,0.7);
+	--default-black-08: rgba(0,0,0,0.8);
+	--default-black-09: rgba(0,0,0,0.9);
+
+	--default-white: rgba(255,255,255,1);
+	--default-white-01: rgba(255,255,255,0.1);
+	--default-white-02: rgba(255,255,255,0.2);
+	--default-white-03: rgba(255,255,255,0.3);
+	--default-white-04: rgba(255,255,255,0.4);
+	--default-white-05: rgba(255,255,255,0.5);
+	--default-white-06: rgba(255,255,255,0.6);
+	--default-white-07: rgba(255,255,255,0.7);
+	--default-white-08: rgba(255,255,255,0.8);
+	--default-white-09: rgba(255,255,255,0.9);
+
+	--debug-color: rgba(255,0,0,1);
+
+/*	--lapis: rgba(39, 93, 173, 1);
+	--focus-lapis: rgba(30, 84, 164, 1);
+	--hover-lapis: rgba(61, 125, 205, 1);
+	--visited-lapis: rgba(15, 69, 149, 1);
+	--fave-hover-lapis: rgba(77, 141, 221, 1);
+	--snow: rgba(252, 247, 248, 1);
+	--hover-snow: rgba(220, 215, 216, 1);
+	--selected-snow: rgba(236, 231, 232, 1);
+	--light-grey: rgba(206, 211, 220, 1);
+	--laurel-green: rgba(182, 196, 162, 1);
+	--whole-vanilla: rgba(212, 205, 171, 0.4);
+	--whole-vanilla-solid: rgba(255, 246, 203,1);
+	--dark-vanilla: rgba(200, 193, 159, 1);
+	--gsd-bin-hover-green: rgba(0,160,0,0.6);
+	--preview-orange: rgba(255, 192, 0,1);
+	--dark-red: rgba(96,0,0,1);*/
+}

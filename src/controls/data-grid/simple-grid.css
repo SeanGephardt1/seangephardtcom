@@ -1,0 +1,76 @@
+﻿.simple-grid-root
+{
+	/*border: solid 1px red;*/
+	width:100%;
+}
+.simple-grid-table
+{
+	/*border: solid 1px red;*/
+	width:100%;
+}
+
+.simple-grid-table > thead > tr > td, .simple-grid-table > tbody > tr > td
+{
+	/*border: solid 1px red;*/
+	padding:4px;
+	min-height:24px;
+}
+
+.simple-grid-table > tbody > tr:hover
+{
+	cursor:pointer;
+	background-color: #F3F2F1;
+}
+ 
+.simple-grid-table > tbody > tr > td
+{
+	border-top: solid 1px rgba(232, 232, 232,1);
+}
+.simple-grid-table > tbody > tr > td:first-child
+{
+	/*border: solid 1px purple;*/
+	width:24px;
+	padding-left:60px;
+	padding-right:10px;
+}
+.simple-grid-table > tbody > tr > td:first-child > svg
+{
+	/*border: solid 1px red;*/
+	height:18px;
+	width:18px;
+}
+
+.simple-grid-table > tbody > tr > td:nth-child(2):hover
+{
+	color:#0078D4;
+	text-decoration:underline;
+}
+
+@media screen and (max-width: 600px)
+{
+	.simple-grid-table > thead > tr > td:nth-child(4), .simple-grid-table > tbody > tr > td:nth-child(4)
+	{
+		/*border: solid 1px red;*/
+		display:none;
+	}
+
+	.simple-grid-table > tbody > tr > td:first-child
+	{
+		/*border: solid 1px purple;*/
+		padding-left:40px;
+	}
+}
+@media screen and (max-width: 440px)
+{
+	.simple-grid-table > thead > tr > td:nth-child(3), .simple-grid-table > tbody > tr > td:nth-child(3)
+	{
+		/*border: solid 1px red;*/
+		display:none;
+	}
+
+	.simple-grid-table > tbody > tr > td:first-child
+	{
+		/*border: solid 1px purple;*/
+		padding-left:30px;
+	}
+}

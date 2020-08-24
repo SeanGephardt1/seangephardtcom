@@ -1,0 +1,158 @@
+﻿/* This CSS is for layout only, styles are contained in the themes, */
+.app-layout-artistic > *
+{
+	min-width: 320px;
+}
+.app-layout-artistic
+{
+	border: solid 0px blue;
+	height:calc(100%);
+	width:calc(100%);
+	min-width:100%;
+	min-height:100%;
+    display: flex;
+    flex-direction: column;  
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: stretch; 
+}
+
+.app-layout-artistic > header
+{
+	order: 0;
+	flex: 0 0 auto;
+	display:block;
+	text-align: center;
+	border-style: solid;
+	border-top-width:0px;
+	border-left-width:0px;
+	border-right-width:0px;
+	border-bottom-width:1px;
+	border-color:var(--default-black-03);
+	padding:10px;
+	font-size:24px;
+
+	text-shadow: 0px 1px 4px var(--default-black-04);
+}
+.app-layout-artistic > nav
+{
+/*	border: solid 1px var(--default-black);*/
+	order: 1;
+    display:flex;
+    flex-direction:row;
+	flex-wrap:wrap;
+	justify-content:center;
+	padding:12px;
+	padding-bottom:10px;
+	background:linear-gradient(180deg, var(--default-black-02) 0px, transparent 10px);
+}
+.app-layout-artistic > nav > a
+{
+    flex: 0 1 auto;
+	display:flex;
+    border: solid 1px var(--default-black-02);
+    border-radius: 4px;
+    box-shadow: 0px 0px 10px 4px var(--default-black-01);
+    text-decoration:none;
+	padding:6px;
+	padding-left:14px;
+	padding-right:14px;
+	margin-right:4px;
+	margin-bottom:4px;
+
+}
+.app-layout-artistic > nav > a:hover
+{
+    transition: all 250ms ease-in-out;
+    background-color: var(--default-black-04);
+    border: solid 1px var(--default-black-01);
+    box-shadow: 0px 0px 10px var(--default-black-01);
+    color: var(--default-white);
+    text-decoration:none;
+}
+.app-layout-artistic > nav > a.thisLinkSelected
+{
+/*	border: solid 1px red;
+	outline: solid 2px green;*/
+	background-color: var(--default-black-04);
+	color: var(--default-white);
+}
+/*.app-layout-artistic > nav > a > *
+{
+	border: solid 1px red;
+}
+*/
+.app-layout-artistic > nav > a > div:first-child
+{
+	flex: 0 0 24px;
+	height:24px;
+	width:24px;
+	margin-right:6px;
+}
+.app-layout-artistic > nav > a > div:last-child
+{
+	flex: 1 1 auto;
+}
+.app-layout-artistic > nav > a > div:first-child > img
+{
+	height:100%;
+	width:100%;
+}
+.app-layout-artistic > nav > a > div:first-child > svg
+{
+	height:100%;
+	width:100%;
+}
+
+
+
+.app-layout-artistic > main
+{
+/*	border: solid 2px red;*/
+	order:2;
+	flex: 1 1 auto;
+	overflow:auto;
+	padding:30px;
+
+	background-image:linear-gradient(180deg, var(--default-black-02) 0px, transparent 10px, transparent calc(100% - 10px), var(--default-black-02) 100%);
+	border-style: solid;
+	border-top-width:1px;
+	border-left-width:0px;
+	border-right-width:0px;
+	border-bottom-width:1px;
+	border-color:var(--default-black-01);
+
+	background-color:var(--default-white);
+	color: var(--default-black);
+}
+
+.app-layout-artistic > aside
+{
+	order:3;
+	display:none;
+	opacity:1;
+	position:absolute;
+	top:0px;
+	right:0px;
+	bottom:0px;
+	box-shadow: -10px 0px 30px 0px var(--default-black-01);
+	border-style:solid;
+	border-color:var(--default-black-01);
+	border-left-width: 1px;
+	border-top-width:0px;
+	border-right-width:0px;
+	border-bottom-width:0px;
+	padding:20px;
+}
+
+.app-layout-artistic > footer
+{
+	order: 4;
+	padding: 10px;
+	padding-top: 4px;
+	padding-bottom: 4px;
+	text-align: center;
+	font-size: 14px;
+	text-shadow: 0px 1px 4px var(--default-black-04);
+	text-align:center;
+}

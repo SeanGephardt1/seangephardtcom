@@ -1,0 +1,21 @@
+﻿.cbx-default
+{
+	border:solid 1px rgba(160,160,160,1);
+	height:16px;
+	width:16px;
+	display:inline-block;
+	margin-right:4px;
+	cursor:pointer;
+}
+.cbx-default > svg
+{
+	/*border: solid 1px red;*/
+	height:16px;
+	width:16px;
+	vertical-align:top;
+}
+
+.cbx-default:hover
+{
+	border:solid 1px rgba(64,64,64,1);
+}

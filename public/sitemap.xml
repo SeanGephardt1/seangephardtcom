@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:ssp="http://www.bing.com/schemas/sitemap-ssp/0.2">
+	<url>
+		<loc>http://seangephardt.com/index.html</loc>
+		<lastmod>2020-02-01</lastmod>
+		<priority>1</priority>
+	</url>
+	<url>
+		<loc>http://seangephardt.com/portfolio/</loc>
+		<lastmod>2020-02-01</lastmod>
+		<priority>1</priority>
+	</url>
+	<url>
+		<loc>http://seangephardt.com/resume/</loc>
+		<lastmod>2020-02-01</lastmod>
+		<priority>1</priority>
+	</url>
+	<url>
+		<loc>http://seangephardt.com/music/</loc>
+		<lastmod>2020-02-01</lastmod>
+		<priority>1</priority>
+	</url>
+</urlset>

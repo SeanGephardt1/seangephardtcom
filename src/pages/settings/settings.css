@@ -1,0 +1,31 @@
+﻿.settings-header
+{
+	border-bottom-style: solid;
+	border-bottom-width:1px;
+	border-bottom-color: var(--default-black);
+	margin-bottom:20px;	
+}
+.setting-row-header
+{
+/*	border: solid 1px red;*/
+	margin-bottom:5px;
+	font-size:16px;
+	border-bottom-style: solid;
+	border-bottom-width:1px;
+	border-bottom-color: var(--default-black-04);
+}
+.settings-row
+{
+	display:flex;
+	flex-direction:row;
+	flex-wrap:wrap;
+	justify-content:flex-start;
+	padding-top:10px;
+	margin-bottom:20px;
+}
+
+.setting-btn
+{
+	margin-right:10px;
+	margin-bottom:10px;
+}

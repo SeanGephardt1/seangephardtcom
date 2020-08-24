@@ -1,0 +1,93 @@
+﻿.tabs-container
+{
+	/*border: solid 1px red;*/
+	height:calc(100%);
+	width:calc(100%);
+	min-width:800px;
+	background-color: rgba(255,255,255,1);
+	color:rgba(0,0,0,1);
+	font-family: 'az_Regular';
+	font-size:13px;
+	text-align:left;
+	vertical-align:top;
+	display:flex;
+	flex-flow:column;
+	flex: 0 1 auto;
+}
+
+/* tab header label buttons */
+.tab-label-header
+{
+	/*border: solid 1px red;*/
+	order:0;
+	border-bottom: solid 1px rgba(128,128,128,0.2);
+	display:flex;
+	flex:0 0 40px;
+	padding-left:10px;
+	/*height:48px;*/
+}
+
+.tab-label-button
+{
+	/*border: solid 1px red;*/
+	padding:10px;
+	display:block;
+	min-width: 60px;
+	width:auto;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.tab-label
+{
+	border-bottom: solid 2px  rgba(1, 92, 218, 0.00);
+	color: #015cda;
+	cursor:pointer;
+	padding-top:10px;
+	padding-bottom:10px;
+	font-family: 'az_Regular';
+	flex: 0 0 auto;
+}
+.tab-label:hover
+{
+	color: rgba(0,0,0,1);
+	border-bottom: solid 2px  rgba(0,0,0,1);
+}
+.tab-label-selected
+{
+	border-bottom: solid 2px  rgba(0,0,0,1);
+	color:rgba(0,0,0,1);
+	cursor:pointer;
+	padding-top:10px;
+	padding-bottom:10px;
+	flex: 0 0 auto;
+}
+
+/* tabs panels & collection */
+.tabs-panel-collection
+{
+	/*border: solid 1px green;*/
+	display:inline-flex;
+	flex:1 1 auto;
+	height:auto;
+	width:calc(100%);
+	overflow:auto;
+	order:1;
+}
+.tab-panel
+{
+	/*border: solid 1px blue;*/
+	height:calc(100%);
+	width:calc(100%);
+	overflow:auto;
+	/*padding:20px;*/
+}
+
+.tabs-container-footer
+{
+	/*border: solid 1px red;*/
+	flex:0 0 48px;
+	order:2;
+	border-top: solid 1px rgba(128,128,128,0.2);
+	padding:20px;
+}

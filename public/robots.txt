@@ -1,0 +1,9 @@
+# seangephardt.com
+# 12:07 PM 3/18/2017
+User-Agent: *
+
+Disallow: /_scrap/
+Disallow: /css/
+Disallow: /js/
+Disallow: /script/
+Disallow: /static/
