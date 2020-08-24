@@ -6,7 +6,7 @@ import Home from './home/home.js';
 import Portfolio from './portfolio/portfolio.js';
 import Resume from './resume/resume.js';
 import Music from './music/music.js';
-import TestPage from './test/test.js';
+//	import TestPage from './test/test.js';
 
 const _pages = [
 	Home,

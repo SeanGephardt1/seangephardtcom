@@ -28,7 +28,7 @@
       "sourceMap": false
     },
     "babel": {
-      "sourceMap": false
+      "sourceMap": true
     },
     "coffeescript": {
       "bare": false,
