@@ -2,10 +2,16 @@ import React from 'react';
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { ThemeContext } from './js/theme-context.js';
 import { Themes } from './js/themes.js';
+import { Layouts } from './js/layouts.js';
 import './css/css.js';
 
 /* CONTROLS */
-//import LayoutPanel from './controls/layout-panel/layout-panel.js';
+import LayoutPanel from './controls/layout-panel/layout-panel.js';
+import PortfolioHeader from './controls/header/header.js';
+import Navigation from './controls/navigation/navigation.js';
+import MainContent from './controls/main-content/main-content.js'
+import ContextAside from './controls/context-aside/context-aside.js'
+import SiteFooter from './controls/footer/footer.js';
 
 /* PAGES */
 import { PagesList } from './pages/pages.js';
@@ -17,12 +23,19 @@ export default class App extends React.Component
     {   //  console.debug( "App.ctor()" );
         super( props );
 
+        //  this.context = App.contextType;
+
         this.Pages = PagesList;
+
         this.Themes = Themes;
         this.DefaultTheme = this.Themes[0];
 
+        this.Layouts = Layouts;
+        this.DefaultLayout = this.Layouts[0];
+
         this.state = {
             ThemeChanged: false,
+            LayoutChanged: false
         };
 
         //this.context.Theme = this.DefaultTheme;
@@ -123,7 +136,10 @@ export default class App extends React.Component
 			<ThemeContext.Provider value={this.context}>
                 <BrowserRouter>
 
-
+                    <LayoutPanel>
+                        <PortfolioHeader>Sean Gephardt</PortfolioHeader>
+                        <Navigation />
+                        <MainContent>
                             <Switch>
                                 {
                                     this.Pages.map( ( item, index ) =>
@@ -132,7 +148,10 @@ export default class App extends React.Component
                                     ) )
                                 }
                             </Switch>
-
+						</MainContent>
+						<ContextAside>Context Aside</ContextAside>
+                        <SiteFooter>Copyright &copy;&reg; 2020 Sean Gephardt. All rights reserved.</SiteFooter>
+                    </LayoutPanel>
 
                 </BrowserRouter>
 			</ThemeContext.Provider>

@@ -25,6 +25,7 @@ body
 	color: var(--default-black);
 	overflow:hidden;
 	vertical-align:top;
+
 }
 
 header, nav, main, aside, footer

@@ -5,6 +5,7 @@
 */
 .react-app-root
 {
+	border: solid 1px red;
 	height:calc(100%);
 	width:calc(100%);
 	min-width:100%;
@@ -16,6 +17,9 @@
     align-content: stretch; 
 }
 
+
+
+
 /* page layout styles */
 .page-main
 {
@@ -25,7 +29,6 @@
 	align-items:center;
 	padding:10px;
 	padding-top:20px;
-/*	height:calc(100vh);*/
 }
 .page-main-no-padding
 {
