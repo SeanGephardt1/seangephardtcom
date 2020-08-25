@@ -24,6 +24,7 @@ body
 	font-size: large;
 	overflow:auto;
 	vertical-align:top;
+	letter-spacing:-0.4px;
 }
 
 :focus {

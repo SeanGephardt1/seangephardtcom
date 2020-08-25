@@ -127,6 +127,7 @@ export default class App extends React.Component
                 <BrowserRouter>
 
                     <SiteNav />
+
                     <main>
                         <Switch>
                         {
@@ -134,10 +135,11 @@ export default class App extends React.Component
                             (
                                 <Route key={index} exact={true} path={item.defaultProps.Href} component={item}/>
                             ) )
-                            }
+                        }
 
                         </Switch>
                     </main>
+
                     <SiteFooter>&copy; 2020 Sean Gephardt. All rights reserved.</SiteFooter>
 
                 </BrowserRouter>
