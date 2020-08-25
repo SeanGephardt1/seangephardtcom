@@ -138,7 +138,7 @@ export default class App extends React.Component
 
                         </Switch>
                     </main>
-                    <SiteFooter>Sean Gephardt</SiteFooter>
+                    <SiteFooter>&copy; 2020 Sean Gephardt. All rights reserved.</SiteFooter>
 
                 </BrowserRouter>
 			</ThemeContext.Provider>

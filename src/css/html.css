@@ -22,7 +22,7 @@ body
 	font-family: 'Calibri Light', 'Segoe UI', system-ui;
 	font-weight: normal;
 	font-size: large;
-	overflow:hidden;
+	overflow:auto;
 	vertical-align:top;
 }
 

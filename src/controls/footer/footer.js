@@ -26,25 +26,7 @@ export default class SiteFooter extends React.Component
 		//};
 
 		return (
-			<footer>
-				{this.props.children}
-				<a
-					target="_new"
-					title="Sean Gephardt on GitHub"
-					href="https://github.com/SeanGephardt1">
-					<div>{SVG.Brands.GitHub}</div>
-					<div>GitHub</div>
-				</a>
-				<a
-					target="_new"
-					title="Sean Gephardt on LinkedIn"
-					href="https://www.linkedin.com/in/seangephardt/">
-					<div>
-						<img src={ImageList[5]} alt="Sean Gephardt on LinkedIn" />
-					</div>
-					<div>LinkedIn</div>
-				</a>
-			</footer>
+			<footer>{this.props.children}</footer>
 		);
 	};
 };

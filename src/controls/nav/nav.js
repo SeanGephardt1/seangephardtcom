@@ -16,7 +16,6 @@ export default class SiteNav extends React.Component
 	render()
 	{	//	console.debug( "Navigation.render()", this.context.Theme.Foreground );
 		return (
-			<div>
 			<nav>
 				{
 					PagesList.map( (item, index) =>
@@ -32,7 +31,6 @@ export default class SiteNav extends React.Component
 					)
 				}
 				</nav>
-			</div>
 		);
 	};
 };
