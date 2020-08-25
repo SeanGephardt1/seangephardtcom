@@ -2,12 +2,13 @@ import React from 'react';
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { ThemeContext } from './js/theme-context.js';
 import { Themes } from './js/themes.js';
+
+import SiteNav from './controls/nav/nav.js';
+import SiteFooter from './controls/footer/footer.js';
+
 import './css/css.js';
 
-/* CONTROLS */
-//import LayoutPanel from './controls/layout-panel/layout-panel.js';
 
-import Navigation from './controls/navigation.js';
 
 /* PAGES */
 import { PagesList } from './pages/pages.js';
@@ -119,12 +120,13 @@ export default class App extends React.Component
         | {this.context.CurrentLayout} | {this.context.Theme.Name}
         						<Route exact={true} path={'/'} component={DemosList[0]} />
         */
-        this.UpdateContext();
+        //  this.UpdateContext();
 
         return (
 			<ThemeContext.Provider value={this.context}>
                 <BrowserRouter>
-                    <Navigation />
+
+                    <SiteNav />
                     <main>
                         <Switch>
                         {
@@ -134,9 +136,10 @@ export default class App extends React.Component
                             ) )
                             }
 
-
                         </Switch>
                     </main>
+                    <SiteFooter>Sean Gephardt</SiteFooter>
+
                 </BrowserRouter>
 			</ThemeContext.Provider>
         );

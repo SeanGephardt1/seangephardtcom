@@ -1,6 +1,8 @@
 ﻿import React from 'react';
 import { ThemeContext } from '../../js/theme-context.js';
-import { ImageList } from '../art/imgs.js';
+import { ImageList } from '../../art/imgs.js';
+import SVG from '../../art/svgs.js';
+import './footer.css';
 
 export default class SiteFooter extends React.Component
 {
@@ -26,7 +28,6 @@ export default class SiteFooter extends React.Component
 		return (
 			<footer>
 				{this.props.children}
-
 				<a
 					target="_new"
 					title="Sean Gephardt on GitHub"

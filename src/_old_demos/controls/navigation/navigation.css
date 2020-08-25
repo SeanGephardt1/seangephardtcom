@@ -1,13 +1,13 @@
 ﻿nav
 {
-	border: solid 1px red;
+	border: solid 10px red;
 	padding:20px;
 	display:flex;
 	flex-direction:row;
 	flex: 1 1 auto;
 }
 
-/*a
+a.nav
 {
 	border: solid 1px red;
 	flex: 1 1 auto;
@@ -19,7 +19,7 @@
 	padding:10px;
 	padding-left: 20px;
 	padding-right:20px;
-}*/
+}
 
 
 /*
