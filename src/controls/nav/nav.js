@@ -3,6 +3,9 @@ import { NavLink } from 'react-router-dom';
 import { ThemeContext } from '../../js/theme-context.js';
 import { PagesList } from '../../pages/pages.js';
 
+import { ImageList } from '../../art/imgs.js';
+import SVG from '../../art/svgs.js';
+
 import './nav.css';
 
 export default class SiteNav extends React.Component
@@ -30,7 +33,27 @@ export default class SiteNav extends React.Component
 						</NavLink>
 					)
 				}
-				</nav>
+
+				<a
+					target="_new"
+					className="nav"
+					title="Sean Gephardt on GitHub"
+					href="https://github.com/SeanGephardt1">
+					<span>{SVG.Brands.GitHub}</span>
+					<span>GitHub</span>
+				</a>
+				<a
+					target="_new"
+					className="nav"
+					title="Sean Gephardt on LinkedIn"
+					href="https://www.linkedin.com/in/seangephardt/">
+					<span>
+						<img src={ImageList[5]} alt="Sean Gephardt on LinkedIn" />
+					</span>
+					<span>LinkedIn</span>
+				</a>
+
+			</nav>
 		);
 	};
 };

@@ -14,8 +14,8 @@ export default class Home extends React.Component
 {
     static contextType = ThemeContext;
 	static defaultProps = {
-		Title: "About Sean Gephardt",
-		LinkTitle: "About",
+		Title: "Sean Gephardt, UX Technologist",
+		LinkTitle: "Sean Gephardt",
 		Href: "/",
 		Icon: SVG.AppNavButtons.About
 	};

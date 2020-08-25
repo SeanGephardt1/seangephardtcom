@@ -15,38 +15,55 @@ nav
 
 a.nav, a.nav:active, a.nav:link
 {
-	border: solid 1px var(--default-black-01);
-	border-radius:0px;
-	color: var(--lapis);
+/*	border: solid 1px var(--default-black-01);*/
+	background-color:transparent;
+	color: var(--default-black-04);
 	text-decoration: none;
 	vertical-align:top;
 	font-weight:500;
 	font-family: 'Calibri Light';
+	text-align:left;
 	padding:10px;
 	padding-left: 20px;
 	padding-right:20px;
 	margin:4px;
-	transition: all 300ms ease-in-out;
 }
 a.nav:hover
 {
 	color: var(--default-black-08);
-	border-radius:0px;
-	border: solid 1px var(--default-black-08);
+	background-color: rgba(0, 0, 0, 0.1);
 }
 a.nav:visited
 {
 	color: var(--default-black-04);
 }
-
 a.nav:nth-child(1)
 {
-	flex: 0 1 auto;
+	flex: 1 1 auto;
 }
-
 a.nav.nav-selected
 {
-	border: solid 1px var(--default-black-08);
+/*	border: solid 1px var(--default-black);*/
+	background-color: rgba(0, 0, 0, 0.1);
 	font-weight:900;
-	flex: 1 1 auto;
+	color: var(--default-black);
+}
+
+a.nav > span:first-child
+{
+/*	border: solid 1px red;*/
+	display:inline-block;
+	height:24px;
+	width:24px;
+	margin-right:6px;
+}
+a.nav > span:first-child > svg
+{
+	height:24px;
+	width:24px;
+}
+a.nav > span:first-child > img
+{
+	height:24px;
+	width:24px;
 }
