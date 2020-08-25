@@ -4,17 +4,17 @@ import './portfolio.css';
 
 import SVG from '../../art/svgs.js';
 
-import AzureHome1 from './azure-resp-home-1.png';
-import AzureHome2 from './azure-resp-home-2.png';
-import AzureHome3 from './azure-resp-home-3.png';
-import AzureHome4 from './azure-resp-home-4.png';
-import AzureHome5 from './azure-resp-home-5.png';
-import AzureCreate1 from './azure-create-1.png';
-import AzureCreate2 from './azure-create-2.png';
-//import AzureCreate3 from './azure-create-3.png';
-import AzureCreate4 from './azure-create-4.png';
-import AzureCreate5 from './azure-create-5.png';
-import AzureCreate9 from './azure-create-9.png';
+//import AzureHome1 from './azure-resp-home-1.png';
+//import AzureHome2 from './azure-resp-home-2.png';
+//import AzureHome3 from './azure-resp-home-3.png';
+//import AzureHome4 from './azure-resp-home-4.png';
+//import AzureHome5 from './azure-resp-home-5.png';
+//import AzureCreate1 from './azure-create-1.png';
+//import AzureCreate2 from './azure-create-2.png';
+////import AzureCreate3 from './azure-create-3.png';
+//import AzureCreate4 from './azure-create-4.png';
+//import AzureCreate5 from './azure-create-5.png';
+//import AzureCreate9 from './azure-create-9.png';
 
 
 export default class Portfolio extends React.Component
@@ -34,7 +34,7 @@ export default class Portfolio extends React.Component
 		this.LinkTitle = ( this.props.LinkTitle || Portfolio.defaultProps.LinkTitle );
 		this.Href = ( this.props.Href || Portfolio.defaultProps.Href );
 
-		this.CurrentPortfolioPicture = AzureHome5;
+		//	this.CurrentPortfolioPicture = AzureHome5;
 		this.CurrentPortfolioPictureAltText = "testing";
 
 		this.state = {

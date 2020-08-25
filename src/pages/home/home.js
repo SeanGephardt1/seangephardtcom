@@ -9,7 +9,7 @@ export default class Home extends React.Component
     static contextType = ThemeContext;
 	static defaultProps = {
 		Title: "Sean Gephardt, UX Technologist",
-		LinkTitle: "About",
+		LinkTitle: "Sean Gephardt",
 		Href: "/",
 		Icon: SVG.AppNavButtons.About
 	};
@@ -33,7 +33,7 @@ export default class Home extends React.Component
 		//	//color: this.context.Theme.Foreground
 		//};
         return (
-			<div className="page-main">Home</div>
+			<div className="page-main">Sean Gephardt</div>
         );
     }
 };

@@ -7,6 +7,8 @@ import './css/css.js';
 /* CONTROLS */
 //import LayoutPanel from './controls/layout-panel/layout-panel.js';
 
+import Navigation from './controls/navigation.js';
+
 /* PAGES */
 import { PagesList } from './pages/pages.js';
 
@@ -122,18 +124,19 @@ export default class App extends React.Component
         return (
 			<ThemeContext.Provider value={this.context}>
                 <BrowserRouter>
+                    <Navigation />
+                    <main>
+                        <Switch>
+                        {
+                            this.Pages.map( ( item, index ) =>
+                            (
+                                <Route key={index} exact={true} path={item.defaultProps.Href} component={item}/>
+                            ) )
+                            }
 
 
-                            <Switch>
-                                {
-                                    this.Pages.map( ( item, index ) =>
-                                    (
-                                        <Route key={index} exact={true} path={item.defaultProps.Href} component={item}/>
-                                    ) )
-                                }
-                            </Switch>
-
-
+                        </Switch>
+                    </main>
                 </BrowserRouter>
 			</ThemeContext.Provider>
         );

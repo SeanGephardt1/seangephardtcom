@@ -1,0 +1,50 @@
+﻿nav
+{
+	border: solid 1px red;
+	padding:20px;
+	display:flex;
+	flex-direction:row;
+	flex: 1 1 auto;
+}
+
+/*a
+{
+	border: solid 1px red;
+	flex: 1 1 auto;
+	color: var(--lapis);
+	text-decoration: none;
+	vertical-align:top;
+	font-weight:900;
+	font-family: 'Calibri Light';
+	padding:10px;
+	padding-left: 20px;
+	padding-right:20px;
+}*/
+
+
+/*
+a.nav, a.nav:active, a.nav:link
+{
+	border: solid 1px red;
+	flex: 1 1 auto;
+	color: var(--lapis);
+	text-decoration: none;
+	vertical-align:top;
+	font-weight:900;
+	font-family: 'Calibri Light';
+	padding:10px;
+	padding-left: 20px;
+	padding-right:20px;
+}
+a.nav:hover
+{
+	color: var(--hover-lapis);
+}
+a.nav:visited{
+	color: var(--visited-lapis);
+}
+
+a.nav nav-selected
+{
+	font-weight:700;
+}*/
