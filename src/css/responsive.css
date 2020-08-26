@@ -9,3 +9,24 @@
 		flex-direction:column;
 	}
 }
+
+
+
+@media (max-width: 680px)
+{
+	.home-layout
+	{
+		flex-direction:column;
+	}
+	.home-layout-left
+	{
+		order:1;
+		flex: 1 1 auto;
+	}
+	.home-layout-right
+	{
+		order:0;
+		flex: 1 1 auto;
+	}
+
+}

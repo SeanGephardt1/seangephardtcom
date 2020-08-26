@@ -1,16 +1,13 @@
 import React from 'react';
-import { ThemeContext } from '../../js/theme-context.js';
+//	import { ThemeContext } from '../../js/theme-context.js';
 import SVG from '../../art/svgs.js';
 import LorumContextPanel from '../../controls/lorum-ipsum.js';
-
-import SeanG from './sean.jpg';
-import SeanGuitar from './sean-guitar-lucky.jpg';
 
 import './home.css';
 
 export default class Home extends React.Component
 {
-    static contextType = ThemeContext;
+    //	static contextType = ThemeContext;
 	static defaultProps = {
 		Title: "Sean Gephardt",
 		LinkTitle: "Sean Gephardt",
@@ -32,18 +29,19 @@ export default class Home extends React.Component
     };
     render()
     {	//  console.debug( "Home.render", this.context.theme);
-        let _style = {
-			//backgroundColor: this.context.Theme.Background,
-			//color: this.context.Theme.Foreground
-		};
         return (
 			<div className="home-layout">
 				<div className="home-layout-left">
 					<LorumContextPanel />
-					<img src={SeanG} className="sean-guitar-pic" title="Sean Gephardt" alt="Sean Gephardt"/>
 				</div>
 				<div className="home-layout-right">
-					<img src={SeanGuitar} className="sean-guitar-pic" title="Sean Gephardt playing guitar" alt="Sean Gephardt playing guitar" />
+					<div>Recent Projects</div>
+					<div>
+						<ul>
+							<li>Responsive design for http://portal.azure.com</li>
+							<li>Contribution to Microsoft Fluent Design System</li>
+						</ul>
+					</div>
 				</div>
 			</div>
         );

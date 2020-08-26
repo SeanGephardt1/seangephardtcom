@@ -1,6 +1,22 @@
 ﻿.home-layout
 {
-	margin:10px;
-	padding:10px;
+	border: solid 1px black;
+	max-width:1024px;
+	overflow:auto;
+	display:flex;
+	flex-direction:row;
+}
+
+.home-layout-left
+{
 	border: solid 1px red;
+	order:0;
+	flex: 1 1 800px;
+}
+
+.home-layout-right
+{
+	border: solid 1px red;
+	order:1;
+	flex: 0 0 auto;
 }
