@@ -1,14 +1,12 @@
 import React from 'react';
 import { ThemeContext } from '../../js/theme-context.js';
-
-import './home.css';
 import SVG from '../../art/svgs.js';
+import LorumContextPanel from '../../controls/lorum-ipsum.js';
 
 import SeanG from './sean.jpg';
 import SeanGuitar from './sean-guitar-lucky.jpg';
-//	import SeanGuitar2 from './sean-guitar-2.jpg';
 
-import SeattleStarBucks from './seattle.jpg';
+import './home.css';
 
 export default class Home extends React.Component
 {
@@ -39,17 +37,13 @@ export default class Home extends React.Component
 			//color: this.context.Theme.Foreground
 		};
         return (
-			<div className="page-main" style={_style}>
-				<div className="page-block">
-					<div className="page-block-col-left">
-						<img src={SeanG} className="sean-guitar-pic" title="Sean Gephardt" alt="Sean Gephardt"/>
-					</div>
-					<div className="page-block-col-left">
-						<img src={SeattleStarBucks} className="sean-guitar-pic" title="First Avenue South, Seattle" alt="First Avenue South, Seattle"/>
-					</div>
-					<div className="page-block-col-left">
-						<img src={SeanGuitar} className="sean-guitar-pic" title="Sean Gephardt playing guitar" alt="Sean Gephardt playing guitar" />
-					</div>
+			<div className="home-layout">
+				<div className="home-layout-left">
+					<LorumContextPanel />
+					<img src={SeanG} className="sean-guitar-pic" title="Sean Gephardt" alt="Sean Gephardt"/>
+				</div>
+				<div className="home-layout-right">
+					<img src={SeanGuitar} className="sean-guitar-pic" title="Sean Gephardt playing guitar" alt="Sean Gephardt playing guitar" />
 				</div>
 			</div>
         );

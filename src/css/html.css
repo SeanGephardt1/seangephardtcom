@@ -20,7 +20,7 @@ body
 	color: var(--default-black);
 	font-family: system-ui, 'Segoe UI', 'Arial';
 	font-weight:normal;
-	font-size: 100%;
+	font-size: 1.8vh;
 	letter-spacing:-0.4px;
 	overflow:auto;
 	vertical-align:top;

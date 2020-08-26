@@ -1,7 +1,7 @@
 ﻿import React from 'react';
 import './lorum-ipsum.css';
 
-export class LorumContextPanel extends React.Component
+export default class LorumContextPanel extends React.Component
 {
 	constructor( props )
 	{
@@ -10,19 +10,8 @@ export class LorumContextPanel extends React.Component
 	};
 	render()
 	{	
-		let _panel_style;
-
-		if ( this.props.contextPanelStyle === true )
-		{
-			_panel_style = "content-lorum-ipsum-context-panel";
-		}
-		else if ( this.props.contextPanelStyle === undefined || this.props.contextPanelStyle === false )
-		{
-			_panel_style = "content-lorum-ipsum-panel";
-		}
-
 		return (
-			<div className={_panel_style}>
+			<div className="content-lorum-ipsum-panel">
 				<h1>Header level 1</h1>
 				<h2>Header Level 2</h2>
 				<h3>Header Level 3</h3>

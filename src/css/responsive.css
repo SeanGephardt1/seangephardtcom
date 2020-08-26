@@ -2,11 +2,10 @@
 	RESPONSIVE MEDIA QUERY CLASSES AND SELECTORS
 */
 
-
 @media (max-width: 400px)
 {
-	body
+	nav
 	{
-		font-size:80%;
+		flex-direction:column;
 	}
 }
