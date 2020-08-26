@@ -1,25 +1,25 @@
 ﻿:root {
-	--default-black: rgba(0,0,0,1);
-	--default-black-01: rgba(0,0,0,0.1);
-	--default-black-02: rgba(0,0,0,0.2);
-	--default-black-03: rgba(0,0,0,0.3);
-	--default-black-04: rgba(0,0,0,0.4);
-	--default-black-05: rgba(0,0,0,0.5);
-	--default-black-06: rgba(0,0,0,0.6);
-	--default-black-07: rgba(0,0,0,0.7);
-	--default-black-08: rgba(0,0,0,0.8);
-	--default-black-09: rgba(0,0,0,0.9);
+	--black: rgba(0,0,0,1);
+	--black-01: rgba(0,0,0,0.1);
+	--black-02: rgba(0,0,0,0.2);
+	--black-03: rgba(0,0,0,0.3);
+	--black-04: rgba(0,0,0,0.4);
+	--black-05: rgba(0,0,0,0.5);
+	--black-06: rgba(0,0,0,0.6);
+	--black-07: rgba(0,0,0,0.7);
+	--black-08: rgba(0,0,0,0.8);
+	--black-09: rgba(0,0,0,0.9);
 
-	--default-white: rgba(255,255,255,1);
-	--default-white-01: rgba(255,255,255,0.1);
-	--default-white-02: rgba(255,255,255,0.2);
-	--default-white-03: rgba(255,255,255,0.3);
-	--default-white-04: rgba(255,255,255,0.4);
-	--default-white-05: rgba(255,255,255,0.5);
-	--default-white-06: rgba(255,255,255,0.6);
-	--default-white-07: rgba(255,255,255,0.7);
-	--default-white-08: rgba(255,255,255,0.8);
-	--default-white-09: rgba(255,255,255,0.9);
+	--white: rgba(255,255,255,1);
+	--white-01: rgba(255,255,255,0.1);
+	--white-02: rgba(255,255,255,0.2);
+	--white-03: rgba(255,255,255,0.3);
+	--white-04: rgba(255,255,255,0.4);
+	--white-05: rgba(255,255,255,0.5);
+	--white-06: rgba(255,255,255,0.6);
+	--white-07: rgba(255,255,255,0.7);
+	--white-08: rgba(255,255,255,0.8);
+	--white-09: rgba(255,255,255,0.9);
 
 	--debug-color: rgba(255,0,0,1);
 
@@ -28,15 +28,20 @@
 	--hover-lapis: rgba(61, 125, 205, 1);
 	--visited-lapis: rgba(15, 69, 149, 1);
 	--fave-hover-lapis: rgba(77, 141, 221, 1);
-/*	--snow: rgba(252, 247, 248, 1);
-	--hover-snow: rgba(220, 215, 216, 1);
-	--selected-snow: rgba(236, 231, 232, 1);
-	--light-grey: rgba(206, 211, 220, 1);
-	--laurel-green: rgba(182, 196, 162, 1);
-	--whole-vanilla: rgba(212, 205, 171, 0.4);
-	--whole-vanilla-solid: rgba(255, 246, 203,1);
-	--dark-vanilla: rgba(200, 193, 159, 1);
-	--gsd-bin-hover-green: rgba(0,160,0,0.6);
-	--preview-orange: rgba(255, 192, 0,1);
-	--dark-red: rgba(96,0,0,1);*/
+
+	--indi-default: rgba(75, 78, 109, 1);
+	--indi-09: rgba(75, 78, 109, 0.9);
+	--indi-08: rgba(75, 78, 109, 0.8);
+	--indi-07: rgba(75, 78, 109, 0.7);
+	--indi-06: rgba(75, 78, 109, 0.6);
+	--indi-05: rgba(75, 78, 109, 0.5);
+	--indi-04: rgba(75, 78, 109, 0.4);
+	--indi-03: rgba(75, 78, 109, 0.3);
+	--indi-02: rgba(75, 78, 109, 0.2);
+	--indi-01: rgba(75, 78, 109, 0.1);
+
+	--nav-color-1:  rgba(197, 34, 51, 1);
+	--nav-color-2: rgba(249, 231, 132, 1);
+	--nav-color-3:  rgba(68, 207, 108, 0.89);
+	--nav-color-4:  rgba(39, 93, 173, 1);
 }

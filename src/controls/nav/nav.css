@@ -1,69 +1,43 @@
 ﻿/* NAVIGATION CSSS */
-
 nav
 {
-/*	border: solid 1px red;*/
-	border-bottom: solid 1px var(--default-black-01);
-	box-shadow: 0px 0px 10px 0px var(--default-black-01);
-	padding:6px;
 	display:flex;
 	flex-direction:row;
 	flex: 1 1 auto;
 	flex-wrap:wrap;
 }
 
-
 a.nav, a.nav:active, a.nav:link
 {
-/*	border: solid 1px var(--default-black-01);*/
+	flex: 0 0 auto;
 	background-color:transparent;
-	color: var(--default-black-04);
-	text-decoration: none;
-	vertical-align:top;
+	color: var(--black);
 	font-weight:500;
-	font-family: 'Calibri Light';
-	text-align:left;
+	font-size:larger;
+	text-align:center;
+	text-decoration: none;
 	padding:10px;
 	padding-left: 20px;
 	padding-right:20px;
-	margin:4px;
-}
-a.nav:hover
-{
-	color: var(--default-black-08);
-	background-color: rgba(0, 0, 0, 0.1);
-}
-a.nav:visited
-{
-	color: var(--default-black-04);
-}
-a.nav:nth-child(1)
-{
-	flex: 1 1 auto;
+	vertical-align:top;
+	transition: all 300ms ease-in-out;
 }
 a.nav.nav-selected
 {
-/*	border: solid 1px var(--default-black);*/
-	background-color: rgba(0, 0, 0, 0.1);
-	font-weight:900;
-	color: var(--default-black);
+	flex: 1 1 auto;
 }
 
-a.nav > span:first-child
+a.nav:nth-child(1).nav-selected, a.nav:nth-child(1):hover
 {
-/*	border: solid 1px red;*/
-	display:inline-block;
-	height:24px;
-	width:24px;
-	margin-right:6px;
+	background-color:var(--nav-color-1);
+	color:var(--white);
 }
-a.nav > span:first-child > svg
+a.nav:nth-child(2).nav-selected, a.nav:nth-child(2):hover
 {
-	height:24px;
-	width:24px;
+	background-color:var(--nav-color-2);
 }
-a.nav > span:first-child > img
+a.nav:nth-child(3).nav-selected, a.nav:nth-child(3):hover
 {
-	height:24px;
-	width:24px;
+	background-color:var(--nav-color-4);
+	color:var(--white);
 }

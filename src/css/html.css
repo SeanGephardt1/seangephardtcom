@@ -18,12 +18,12 @@ body
 {
 	background-color: var(--default-white);
 	color: var(--default-black);
-	font-family: 'Calibri Light', 'Segoe UI', system-ui;
-	font-weight: normal;
-	font-size: large;
+	font-family: system-ui, 'Segoe UI', 'Arial';
+	font-weight:normal;
+	font-size: 100%;
+	letter-spacing:-0.4px;
 	overflow:auto;
 	vertical-align:top;
-	letter-spacing:-0.4px;
 }
 
 :focus {

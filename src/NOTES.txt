@@ -1,0 +1,63 @@
+				<a
+					target="_new"
+					className="nav"
+					title="Sean Gephardt on GitHub"
+					href="https://github.com/SeanGephardt1">
+					<span>{SVG.Brands.GitHub}</span>
+				</a>
+				<a
+					target="_new"
+					className="nav"
+					title="Sean Gephardt on LinkedIn"
+					href="https://www.linkedin.com/in/seangephardt/">
+					<span>
+						<img src={ImageList[5]} alt="Sean Gephardt on LinkedIn" />
+					</span>
+				</a>
+				<a
+					target="_new"
+					className="nav"
+					title="Sean Gephardt on LinkedIn"
+					href="https://www.linkedin.com/in/seangephardt/">
+					<span>
+						<img src={ImageList[4]} alt="Sean Gephardt on Instagram" />
+					</span>
+				</a>
+
+
+/*a.nav > span:first-child
+{
+	display:inline-block;
+	height:24px;
+	width:24px;
+}
+a.nav > span:first-child > svg
+{
+	height:24px;
+	width:24px;
+}
+a.nav > span:first-child > img
+{
+	height:24px;
+	width:24px;
+}*/
+
+
+//import { ImageList } from '../../art/imgs.js';
+//import SVG from '../../art/svgs.js';
+
+
+	--ua-red: rgba(255,0,0, 0.1);
+	--ua-red-hover: rgba(255,0, 0, 0.4);
+	--ua-red-sel: rgba(255, 0, 0, 0.7);
+	--ua-red-sel-hover: rgba(255, 0, 0,1);
+
+	--or-yellow: rgba(249, 194, 46, 0.1);
+	--or-yellow-hover: rgba(249, 194, 46, 0.4);
+	--or-yellow-sel: rgba(249, 194, 46, 0.7);
+	--or-yellow-sel-hover: rgba(249, 194, 46, 1);
+
+	--max-blue: rgba(0, 0, 128, 0.1);
+	--max-blue-hover: rgba(0, 0, 255, 0.4);
+	--max-blue-sel: rgba(0, 0, 255, 0.7);
+	--max-blue-sel-hover: rgba(0, 0, 255, 1);

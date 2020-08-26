@@ -1,10 +1,7 @@
 ﻿footer
 {
 	border-top: solid 1px var(--default-black-01);
-	box-shadow: 0px 0px 10px 0px var(--default-black-01);
-	margin-top:20px;
-	padding:10px;
-	padding-top:14px;
+	padding:20px;
 	text-align:center;
 	font-size:14px;
 }

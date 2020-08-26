@@ -1,6 +1,16 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\src",
+    "\\src\\controls",
+    "\\src\\controls\\footer",
+    "\\src\\css",
+    "\\src\\pages",
+    "\\src\\pages\\home",
+    "\\src\\pages\\portfolio",
+    "\\src\\pages\\resume",
+    "\\src\\___old_demos\\controls\\navigation"
   ],
+  "SelectedNode": "\\src\\pages\\home\\home.js",
   "PreviewInSolutionExplorer": false
 }
