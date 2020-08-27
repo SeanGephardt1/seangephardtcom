@@ -27,4 +27,11 @@
 		flex: 1 1 auto;
 	}
 
+	.pf-block-overlay
+	{
+	/*	border: solid 1px var(--black-01);*/
+		background-color: var(--black-07);
+		color: var(--white);
+	}
+
 }

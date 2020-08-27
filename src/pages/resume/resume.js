@@ -1,6 +1,7 @@
 ﻿import React from 'react';
 import './resume.css';
 import SVG from '../../art/svgs.js';
+import LinkedInIcon from '../../art/img/linkedin.png';
 
 export default class Resume extends React.Component
 {
@@ -152,6 +153,21 @@ export default class Resume extends React.Component
 							<li>WebGL & D3.js</li>
 						</ul>
 					</div>
+
+					<div className="skills-section">
+						<div className="skills-header">Related Links</div>
+						<div className="skills-related-link-block">
+							<a className="skills-related-link" href="https://www.linkedin.com/in/seangephardt/" title="Sean Gephardt, LinkedIn">
+								<img src={LinkedInIcon} />
+								<span>LinkedIn</span>
+							</a>
+							<a className="skills-related-link" href="https://github.com/SeanGephardt1" title="Sean Gephardt, Gitub">
+								{SVG.Brands.GitHub}
+								<span>GitHub</span>
+							</a>
+						</div>
+					</div>
+
 
 
 				</div>
