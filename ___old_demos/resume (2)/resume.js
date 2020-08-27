@@ -1,9 +1,11 @@
 ﻿import React from 'react';
+import { ThemeContext } from '../../js/theme-context.js';
 import './resume.css';
 import SVG from '../../art/svgs.js';
 
 export default class Resume extends React.Component
 {
+	static contextType = ThemeContext;
 	static defaultProps = {
 		Title: "Resume for Sean Gephardt",
 		LinkTitle: "Resume",

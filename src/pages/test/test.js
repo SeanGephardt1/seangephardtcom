@@ -1,10 +1,8 @@
 ﻿import React from 'react';
 import './test.css';
-import { ThemeContext } from '../../js/theme-context.js';
 
 export default class TestPage extends React.Component
 {
-    static contextType = ThemeContext;
 	static defaultProps = {
 		Title: "Testing",
 		LinkTitle: "Test",

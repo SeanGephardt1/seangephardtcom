@@ -14,7 +14,7 @@
 {
 	border: solid 1px var(--black-01);
 	order:0;
-	flex: 1 1 700px;
+	flex: 1 1 800px;
 	padding-left:20px;
 	padding-right:20px;
 }
@@ -26,9 +26,6 @@
 	flex: 1 1 300px;
 	padding-left:20px;
 }
-
-/* left column - design */
-
 
 
 /* right column */

@@ -1,5 +1,4 @@
 ﻿import React from 'react';
-import { ThemeContext } from '../../js/theme-context.js';
 import './portfolio.css';
 
 import SVG from '../../art/svgs.js';
@@ -19,7 +18,6 @@ import AzureCreate9 from './azure-create-9.png';
 
 export default class Portfolio extends React.Component
 {
-    static contextType = ThemeContext;
 	static defaultProps = {
 		Title: "Interaction Design Portfolio for Sean Gephardt",
 		LinkTitle: "Portfolio",

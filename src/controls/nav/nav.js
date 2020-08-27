@@ -1,12 +1,10 @@
 ﻿import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { ThemeContext } from '../../js/theme-context.js';
 import { PagesList } from '../../pages/pages.js';
 import './nav.css';
 
 export default class SiteNav extends React.Component
 {
-	static contextType = ThemeContext;
 	constructor(props)
 	{
 		super( props );
