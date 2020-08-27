@@ -5,7 +5,7 @@
 
 # production
 /build
-/.vs/slnx.sqlite
+/.vs
 
 # User-specific files
 *.rsuser
