@@ -62,7 +62,7 @@
 }
 .skills-header
 {
-	font-size: 90%;
+	font-size: 100%;
 	font-weight:500;
 	margin-bottom:10px;
 	color: var(--res-skills-header);
