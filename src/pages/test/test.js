@@ -1,5 +1,6 @@
 ﻿import React from 'react';
 import './test.css';
+import GuitarsSvg from './guitars-svg.js';
 
 export default class TestPage extends React.Component
 {
@@ -19,13 +20,9 @@ constructor( props )
 	};
 	render()
 	{	
-		//let _style = {
-		//	backgroundColor: this.context.Theme.Background,
-		//	color: this.context.Theme.Background
-		//};
 		return (
-			<div className="page-main">
-				<div className="testing-div" >Testing</div>
+			<div className="test-layout">
+				<GuitarsSvg icon={GuitarsSvg.Fender.TelecasterDeluxe1972} name="1972 Fender Telecaster Deluxe"/>
 			</div> 
 		);
 	};

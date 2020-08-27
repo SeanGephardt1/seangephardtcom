@@ -28,7 +28,7 @@
         "react": "^16.13.1",
         "react-dom": "^16.13.1",
         "react-router-dom": "^5.2.0",
-        "react-scripts": "3.4.1"
+        "react-scripts": "^3.4.3"
     },
     "scripts": {
         "start": "set PORT=3113 && set BROWSER=C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe && react-scripts start",

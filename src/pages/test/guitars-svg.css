@@ -1,0 +1,47 @@
+﻿/* tele svg */
+.cls-1, .cls-2, .cls-3, .cls-4, .cls-5, .cls-6
+{
+fill: none;
+}
+
+.cls-1
+{
+stroke: var(--black-01);
+stroke-width: 1px;
+}
+
+.cls-1, .cls-3, .cls-4, .cls-5, .cls-6
+{
+stroke-miterlimit: 3.86;
+}
+
+.cls-2, .cls-3
+{
+stroke: #ff0000;
+}
+
+.cls-2
+{
+stroke-linecap: round;
+stroke-linejoin: round;
+}
+
+.cls-2, .cls-3, .cls-4, .cls-5, .cls-6
+{
+stroke-width: 0.25px;
+}
+
+.cls-4, .cls-5
+{
+stroke: #231f20;
+}
+
+.cls-5
+{
+stroke-dasharray: 8 4;
+}
+
+.cls-6
+{
+stroke: red;
+}

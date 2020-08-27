@@ -2,15 +2,10 @@
   "ExpandedNodes": [
     "",
     "\\src",
-    "\\src\\controls",
     "\\src\\controls\\footer",
-    "\\src\\css",
-    "\\src\\pages",
-    "\\src\\pages\\home",
-    "\\src\\pages\\portfolio",
-    "\\src\\pages\\resume",
-    "\\src\\___old_demos\\controls\\navigation"
+    "\\src\\controls\\nav",
+    "\\src\\pages"
   ],
-  "SelectedNode": "\\src\\pages\\home\\home.js",
+  "SelectedNode": "\\src\\pages\\resume",
   "PreviewInSolutionExplorer": false
 }
