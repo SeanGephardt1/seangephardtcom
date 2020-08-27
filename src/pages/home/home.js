@@ -28,51 +28,65 @@ export default class Home extends React.Component
         return (
 			<div className="home-layout">
 
-				<div className="home-layout-left">
+				<div className="home-layout-head">
 
-					<div className="home-design-block">
-						<div>1</div>
-						<div>2</div>
-						<div>3</div>
-						<div>4</div>
-						<div>5</div>
-						<div>6</div>
+					<div className="home-layout-left">
+						<div className="home-blurb-header">UX Prototyping</div>
+						<div>My passion is using technology to design and develop fantastic user experiences. My passion is using technology to design and develop fantastic user experiences. My passion is using technology to design and develop fantastic user experiences. My passion is using technology to design and develop fantastic user experiences. My passion is using technology to design and develop fantastic user experiences. My passion is using technology to design and develop fantastic user experiences.</div>
+
+					</div>
+
+					<div className="home-layout-right">
+
+						<div className="home-section">
+							<div className="home-section-header">Recent Projects</div>
+							<ul className="home-ul-list">
+								<li>UX interaction protoyping for <a href="http://portal.azure.com" target="_new" title="Microsoft Azure">Microsoft Azure</a></li>
+								<li>Azure IoT theming contribution to <a href="https://www.microsoft.com/design/fluent/#/web" target="_new" title="Microsoft Fluent Design System">Microsoft Fluent Design System</a></li>
+							</ul>
+						</div>
+
+						<div className="home-section">
+							<div className="home-section-header">Interactive Demos</div>
+							<ul className="home-ul-list">
+								<li>
+									<a href="/azure/" target="_new" title="Microsoft Azure">Microsoft Azure</a>
+								</li>
+								<li>
+									<a href="/movieworks/" target="_new" title="MovieWorks Demo">MovieWorks Demo</a>
+								</li>
+								<li>
+									<a href="/guitars/" target="_new" title="GuitarSeller">GuitarSeller Demo</a>
+								</li>
+								<li>
+									<a href="/webgl-demo/" target="_new" title="Web GL Demo">Web GL</a>
+								</li>
+								<li>
+									<a href="/last-fm/" target="_new" title="Last.FM Demo">Last.FM Demo</a>
+								</li>
+							</ul>
+						</div>
+
 					</div>
 
 				</div>
 
-				<div className="home-layout-right">
 
-					<div className="home-section">
-						<div className="home-section-header">Recent Projects</div>
-						<ul className="home-ul-list">
-							<li>UX interaction protoyping for <a href="http://portal.azure.com" target="_new" title="Microsoft Azure">Microsoft Azure</a></li>
-							<li>Azure IoT theming contribution to <a href="https://www.microsoft.com/design/fluent/#/web" target="_new" title="Microsoft Fluent Design System">Microsoft Fluent Design System</a></li>
-						</ul>
+				<div className="home-layout-body">
+					<div className="pf-block">
+						<a className="pf-block-overlay">Portfolio Example 1</a>
 					</div>
 
-					<div className="home-section">
-						<div className="home-section-header">Interactive Demos</div>
-						<ul className="home-ul-list">
-							<li>
-								<a href="/azure/" target="_new" title="Microsoft Azure">Microsoft Azure</a>
-							</li>
-							<li>
-								<a href="/movieworks/" target="_new" title="MovieWorks Demo">MovieWorks Demo</a>
-							</li>
-							<li>
-								<a href="/guitars/" target="_new" title="GuitarSeller">GuitarSeller Demo</a>
-							</li>
-							<li>
-								<a href="/webgl-demo/" target="_new" title="Web GL Demo">Web GL</a>
-							</li>
-							<li>
-								<a href="/last-fm/" target="_new" title="Last.FM Demo">Last.FM Demo</a>
-							</li>
-						</ul>
+					<div className="pf-block">
+						<a className="pf-block-overlay">Portfolio Example 1</a>
+					</div>
+
+					<div className="pf-block">
+						<a className="pf-block-overlay">Portfolio Example 1</a>
 					</div>
 
 				</div>
+
 			</div>
         );
     }

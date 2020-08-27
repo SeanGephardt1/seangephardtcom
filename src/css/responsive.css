@@ -13,18 +13,17 @@
 
 @media (max-width: 680px)
 {
-	.home-layout
+	.home-layout-head
 	{
 		flex-direction:column;
 	}
 	.home-layout-left
 	{
-		order:1;
 		flex: 1 1 auto;
+		padding-bottom:20px;
 	}
 	.home-layout-right
 	{
-		order:0;
 		flex: 1 1 auto;
 	}
 

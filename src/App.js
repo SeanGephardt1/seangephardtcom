@@ -92,7 +92,6 @@ export default class App extends React.Component
         						<Route exact={true} path={'/'} component={DemosList[0]} />
         */
 
-
         return (
                 <BrowserRouter>
 

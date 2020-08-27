@@ -33,9 +33,10 @@
 }
 .cv-header
 {
-	font-size: 120%;
-	font-weight:bold;
+	font-size: 30px;
+	font-weight:500;
 	color: var(--res-skills-header);
+	padding-bottom:10px;
 }
 .cv-sub-header
 {

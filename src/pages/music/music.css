@@ -8,6 +8,14 @@
 	margin:24px;
 }
 
+.band-name
+{
+	color: var(--nav-color-3);
+	font-size: 30px;
+	padding-bottom:10px;
+	font-weight:500;
+}
+
 .music-text-block
 {
 	margin-bottom:20px;

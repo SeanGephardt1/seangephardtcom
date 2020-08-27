@@ -28,7 +28,7 @@ export default class Music extends React.Component
 
 				{/* BEGIN The Drive Through */}
 
-
+					<div className="band-name">The Drive Through</div>
 					<div className="music-text-block">Music has been my passion since I was young, and my current project, "The Drive Through" has recorded a few songs available via bandcamp.com. Take a few minutes and give them a listen, we really hope that you'll enjoy our brand of 'Americana Pop Rock'! You can find us via <a href="https://www.facebook.com/TheDriveThroughBand/" title="The Drive Through on FaceBook">FaceBook</a> and <a href="https://www.instagram.com/thedrivethroughband/" title="The Drive Through on Instagram">Instgram</a>, as well as <a href="https://thedrivethrough.bandcamp.com/" title="The Drive Through on BandCamp">BandCamp</a> and <a href="http://thedrivethrough.com/" title="http://thedrivethrough.com/">our own web site</a>.</div>
 
 					<div className="music-logo-block">
@@ -85,6 +85,8 @@ export default class Music extends React.Component
 				{/* END The Drive Through */}
 
 				{/* BEGIN Villains Of Yesterday */}
+
+				<div className="band-name">Villains Of Yesterday</div>
 
 					<div className="music-text-block">Villains Of Yesterday began in a dark studio in Seattle's Georgetown district in January of 2010. The band played about 100 gigs up and down the West Coast including the infamous Viper Room in Los Angeles. During the life of the group, we had the pleasure of sharing the stage with several amazing artists, including but not limited to REO Speedwagon, Michael Schenker Group, My Sister's Machine, Blackboard Jungle and Seattle Grunge Alumni Shawn Smith. The songwriting core of "VOY" made in the transition in 2018 to change the group name to "The Drive Through".</div>
 
