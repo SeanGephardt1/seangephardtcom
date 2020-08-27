@@ -1,1 +1,82 @@
-﻿
+﻿.resume-layout
+{
+	max-width:1024px;
+	overflow:auto;
+	display:flex;
+	flex-direction:row;
+	flex-wrap:wrap;
+	margin-top:24px;
+}
+
+.resume-left
+{
+	order:0;
+/*	border: solid 1px red;*/
+	flex: 1 1 700px;
+	padding-left:20px;
+	padding-right:20px;
+}
+.resume-right
+{
+	order:1;
+/*	border: solid 1px red;*/
+	flex: 1 1 300px;
+	padding-left:20px;
+	padding-right:20px;
+}
+/* left column */
+.cv-section
+{
+/*	border: solid 1px red;*/
+	margin-bottom:20px;
+}
+.cv-header
+{
+	font-size: 120%;
+	font-weight:bold;
+	color: var(--res-skills-header);
+}
+.cv-sub-header
+{
+	font-size: 85%;
+	font-weight:500;
+	color: var(--res-skills-header);
+}
+.cv-section > ul
+{
+	margin-top:10px;
+	margin-left:20px;
+	padding-right:10px;
+}
+.cv-section > ul
+{
+	font-size:90%;
+	line-height:130%;
+	list-style-type:square;
+}
+
+/* right column */
+.skills-section
+{
+	margin-bottom:20px;
+}
+.skills-header
+{
+	font-size: 90%;
+	font-weight:500;
+	margin-bottom:10px;
+	color: var(--res-skills-header);
+}
+ul.resume-ul-list
+{
+	margin-left:0px;
+	padding-right:10px;
+}
+ul.resume-ul-list > li
+{
+	font-size:85%;
+	margin-left:20px;
+	margin-bottom:6px;
+	list-style-type:square;
+	color: var(--black-06);
+}

@@ -5,6 +5,7 @@
 	overflow:auto;
 	display:flex;
 	flex-direction:row;
+	margin-top:30px;
 }
 
 .home-layout-left

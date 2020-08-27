@@ -1,7 +1,8 @@
 ﻿footer
 {
-	border-top: solid 1px var(--default-black-01);
-	padding:20px;
+	border-top: solid 1px var(--black-01);
+	padding:30px;
 	text-align:center;
 	font-size:14px;
+	margin-top:20px;
 }

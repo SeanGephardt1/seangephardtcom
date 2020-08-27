@@ -1,22 +1,32 @@
-﻿
-.tdt-svg-logo-panel
+﻿.music-layout
 {
-	/*border: solid 1px black;*/
-	border-radius:18px;
-	box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.4);
-	text-align:center;
-	width:100%;
-	margin-bottom:20px;
-/*	transition: transform ease-in-out 200ms;*/
+/*	border: solid 1px black;*/
+	max-width:1024px;
+	overflow:auto;
+	display:flex;
+	flex-direction:column;
+	margin:24px;
 }
 
-a.tdt-link, a.tdt-link:hover
+.music-text-block
 {
-	text-decoration:none;
+	margin-bottom:20px;
 }
+.music-block-list
+{
+	width:100%;
+	border-bottom: solid 1px var(--black-01);
+	padding-bottom:30px;
+	display:flex;
+	flex-direction:row;
+	flex-wrap:wrap;
+	justify-content:center;
+	margin-bottom:40px;
+}
+
+/* TDT */
 svg.tdt-svg-logo
 {
-	/*border: solid 1px black;*/
 	height:100%;
 	width:100%;
 }
@@ -52,22 +62,20 @@ svg.voy-svg-logo > g > text > tspan
 }
 
 
-.music-block-list
-{
-	/*border: solid 1px red;*/
-	justify-content:center;
-	width:100%;
-	display:flex;
-	flex-direction:row;
-	flex-wrap:wrap;
-	padding:20px;
-}
+
 .bc-frame
 {
-	border: solid 1px rgba(0, 0, 0, 0.2);
-	border-radius:14px;
-	box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.4);
+	border: solid 0px transparent;
+	box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
 	width: 280px;
-	height: 390px;
+	height: 120px;
+	margin: 10px;	
+}
+.bc-frame-2
+{
+	border: solid 0px transparent;
+	box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
+	width: 280px;
+	height: 280px;
 	margin: 10px;	
 }

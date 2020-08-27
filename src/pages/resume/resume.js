@@ -1,6 +1,6 @@
 ﻿import React from 'react';
 import { ThemeContext } from '../../js/theme-context.js';
-//import './resume.css';
+import './resume.css';
 import SVG from '../../art/svgs.js';
 
 export default class Resume extends React.Component
@@ -25,26 +25,13 @@ export default class Resume extends React.Component
 	render()
 	{	//	console.debug("ResumeExtension.render()", this.Title);	
 		return (
-			<div className="page-main">
-				<div className="page-block">
-					<div>
-						<h1>Skills</h1>
-						<ul>
-						<li>10+ years of professional software development experience in enterprise level projects</li>
-						<li>10+ years experience using design tools such as Adobe Photoshop, Illustrator, XD & Figma</li>
-						<li>Concise and succinct verbal and written communications style</li>
-						<li>Dedication to fostering great cross-team & cross-function working relationships</li>
-						<li>Expertise in web browser technologies such as XHTML/HTML5, CSS, JavaScript</li>
-						<li>Deep working knowledge of Microsoft development technologies, including C#, ASP.NET, Visual Studio and Microsoft Azure</li>
-						</ul>
-					</div>
-				</div>
+			<div className="resume-layout">
 
-				<div className="page-block">
-					<h1>Experience</h1>
-					<div className="marg-top-10">
-						<h3>Microsoft Corporation</h3>
-						<h4>Senior Design Engineer (November 2017 - December 2019)</h4>
+				<div className="resume-left">
+
+					<div className="cv-section">
+						<div className="cv-header">Microsoft Corporation</div>
+						<div className="cv-sub-header">Senior Designer Engineer (Nov. 2017 - Dec. 2019)</div>
 						<ul>
 							<li>Development of both a NodeJS/ReactJS based & a KnockOut.JS based HTML/JavaScript/CSS prototyping frameworks to facilitate online, remote & in-person customer UX research on features and functionality for the Microsoft Azure Management Portal.</li>
 							<li>Daily collaboration between program managers, engineers, designers and researchers to support weekly, monthly and quarterly cadences for online & in person customer research studies & surveys</li>
@@ -55,9 +42,9 @@ export default class Resume extends React.Component
 						</ul>
 					</div>
 
-					<div className="marg-top-10">
-						<h3>Allovus Design Group</h3>
-						<h4>Design Engineer (June 2013 - April 2015 & November 2016 – November 2017)</h4>
+					<div className="cv-section">
+						<div className="cv-header">Allovus Design Group</div>
+						<div className="cv-sub-header">Design Engineer (June 2013 - April 2015 & Nov. 2016 – Nov. 2017)</div>
 						<ul>
 							<li>Development of interactive prototypes for usability studies, user research and executive presentations for the Microsoft “Azure” & “Windows Server” Product Groups. Utilizing a proprietary development framework based on modern web technologies including HTML5/XML, CSS3, and JavaScript & JSON libraries such as jQuery & KnockOut.js</li>
 							<li>Coordination with user design research leads and graphic designers on short term project, resulting in quantitative & qualitative usability research data.</li>
@@ -66,9 +53,9 @@ export default class Resume extends React.Component
 						</ul>
 					</div>
 
-					<div className="marg-top-10">
-						<h3>WaferWire LLC</h3>
-						<h4>Senior Technical Program Manager (April 2015 - November 2016)</h4>
+					<div className="cv-section">
+						<div className="cv-header">WaferWire LLC</div>
+						<div className="cv-sub-header">Senior Technical Program Manager (April 2015 - Nov. 2016)</div>
 						<ul>
 							<li>Driving significant improvements in SEO (search engine optimization) for Microsoft’s public facing developer and IT documentation websites, including https://msdn.microsoft.com/ , https://technet.microsoft.com/ and https://docs.microsoft.com/</li>
 							<li>Providing technical guidance and support regarding for multiple content publishing tools for the MSDN & TechNet site management team and partners.</li>
@@ -79,9 +66,9 @@ export default class Resume extends React.Component
 						</ul>
 					</div>
 
-					<div className="marg-top-10">
-						<h3>Digital KPI Consulting</h3>
-						<h4>Software Development & Business Intelligence Analysis (August 2012 – June 2013) for Microsoft USCMO</h4>
+					<div className="cv-section">
+						<div className="cv-header">Digital KPI Consulting</div>
+						<div className="cv-sub-header">Business Intelligence Development (Aug 2012 – June 2013) for Microsoft USCMO</div>
 						<ul>
 							<li>Development & extension of Selenium Web Testing framework & qUnit JavaScript Testing Framework for business intelligence file verification for microsoftstore.com & related websites.</li>
 							<li>Development of custom JavaScript/jQuery files related to related business intelligence for microsoftstore.com, generationapp.com, msdn.microsoft.com & technet.microsoft.com</li>
@@ -91,9 +78,9 @@ export default class Resume extends React.Component
 						</ul>
 					</div>
 
-					<div className="marg-top-10">
-						<h3>VMC Consulting</h3>
-						<h4>Senior Technical Program Manager (February 2012-August 2012) for Microsoft Corporation</h4>
+					<div className="cv-section">
+						<div className="cv-header">VMC Consulting</div>
+						<div className="cv-sub-header">Senior Technical Program Manager (Feb 2012 - Aug 2012) for Microsoft Corporation</div>
 						<ul>
 							<li>Refined the software development workflow utilizing Microsoft Visual Studio Team Foundation System, using a hybrid of SCRUM & AGILE methodologies.</li>
 							<li>Reduced total cost of ownership (“TCO”) for hosting an intranet HTML5/jQuery BI reporting application</li>
@@ -103,9 +90,10 @@ export default class Resume extends React.Component
 						</ul>
 					</div>
 
-					<div  className="marg-top-10">
-						<h3>Microsoft Corporation</h3>
-						<h4>Program Manager II (May 2007 – December 2011)</h4>
+					<div className="cv-section">
+						<div className="cv-header">Microsoft Corporation</div>
+						<div className="cv-sub-header">Senior Program Manager (May 2007 – Dec 2011)</div>
+						<div className="cv-sub-header">Software Development Engineer (Jan 2000 – May 2007)</div>
 						<ul>
 							<li>Development of a search engine optimization (SEO) strategy and process used by key content publishing teams to improve the discovery of technical content & application content for the Microsoft developer audience that led to a 30%+ improvement in search referral traffic and 85% coverage within search engine indices..</li>
 							<li>Driving and supporting a real time RSS aggregation & discovery system, which supports collection of over 20,000 syndication feeds, and it exposed on over 100+ Microsoft websites.</li>
@@ -114,9 +102,6 @@ export default class Resume extends React.Component
 							<li>Management of an international subsidiary development on-boarding program, including defining the stakeholder, partner and vendor engagement agreements, and overseeing the development & testing procedures and release management processes for 5 international subsidiaries</li>
 							<li>Acted as a key technical liaison for user interface features & search engine optimization features for related partnership collaboration efforts & cross organizational communication.</li>
 							<li>Providing deep architectural guidance, project reporting & timeline scheduling, technical support and training for organizational engineering, content & site management teams.</li>
-						</ul>
-						<h4>Software Development Engineer 3 (January 2000 – May 2007)</h4>
-						<ul>
 							<li>Migration & redesign of the Microsoft Industry Solution Websites.</li>
 							<li>Development of search metadata filtering user experience for Visual Studio. NET 2002 & 2003 products</li>
 							<li>Developing federated search web services for the Visual Studio 2005 in-product content index experience</li>
@@ -127,6 +112,53 @@ export default class Resume extends React.Component
 					</div>
 
 				</div>
+
+				{ /* RIGHT COLUMN */}
+				<div className="resume-right">
+
+					<div className="skills-section">
+						<div className="skills-header">Professional skills</div>
+						<ul className="resume-ul-list">
+							<li>Concise and succinct verbal and written communications style</li>
+							<li>Fostering great cross-team and cross-function working relationships</li>
+							<li>Expertise in web browser technologies ie. HTML5, CSS and JavaScript</li>
+							<li>10+ years of building, supporting and shipping enterprise level projects</li>
+							<li>10+ years using design tools such as Adobe Creative Cloud</li>
+						</ul>
+					</div>
+
+					<div className="skills-section">
+						<div className="skills-header">Design Tools</div>
+						<ul className="resume-ul-list">
+							<li>Adobe Create Cloud, Photoshop, Illustrator and XD</li>
+							<li>Figma</li>
+							<li>Hypertext markup language (HTML)</li>
+							<li>Cascading Style Sheets (CSS)</li>
+						</ul>
+					</div>
+
+					<div className="skills-section">
+						<div className="skills-header">Developer tools</div>
+						<ul className="resume-ul-list">
+							<li>Microsoft Visual Studio & Visual Studio Code</li>
+							<li>Microsoft Azure</li>
+							<li>Microsoft C# and ASP.NET</li>
+							<li>JavaScript, TypeScript and React</li>
+						</ul>
+					</div>
+
+					<div className="skills-section">
+						<div className="skills-header">Currently learning</div>
+						<ul className="resume-ul-list">
+							<li>3D design using Unity</li>
+							<li>WebGL & D3.js</li>
+						</ul>
+					</div>
+
+
+				</div>
+
+
 			</div>
 		);
 	};

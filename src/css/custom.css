@@ -41,7 +41,12 @@
 	--indi-01: rgba(75, 78, 109, 0.1);
 
 	--nav-color-1:  rgba(197, 34, 51, 1);
-	--nav-color-2: rgba(249, 231, 132, 1);
-	--nav-color-3:  rgba(68, 207, 108, 0.89);
+	--nav-color-2:  rgba(255, 255, 128, 1);
+	--nav-color-3:  rgba(0,96,0,1);
 	--nav-color-4:  rgba(39, 93, 173, 1);
+
+	--orange: rgba(255, 128, 0, 1);
+	--res-skills-header: rgba(197, 34, 51, 1);
+
+
 }
