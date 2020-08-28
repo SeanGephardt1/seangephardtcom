@@ -2,8 +2,8 @@ import React from 'react';
 import SVG from '../../art/svgs.js';
 import './home.css';
 import BtnImage1 from './ms-azure-button-image-1.png';
-import BtnImage2 from './ms-azure-button-image-1.png';
-import BtnImage3 from './ms-azure-button-image-1.png';
+import BtnImage2 from './ms-azure-button-image-2.png';
+import BtnImage3 from './ms-azure-button-image-3.png';
 
 import LinkedInIcon from '../../art/img/linkedin.png';
 import InstaGramLogo from '../../art/img/instagram.png';
@@ -48,11 +48,7 @@ export default class Home extends React.Component
 							</div>
 
 							<div className="pf-block" style={{ backgroundImage: `url(${BtnImage2})` }} >
-								<a className="pf-block-overlay" href="/azure1/" title="Microsodt Azure">Portfolio Example 1</a>
-							</div>
-
-							<div className="pf-block" style={{ backgroundImage: `url(${BtnImage3})` }} >
-								<a className="pf-block-overlay" href="/azure1/" title="Microsodt Azure">Portfolio Example 1</a>
+								<a className="pf-block-overlay" href="/azure1/" title="Microsodt Azure Create Wizard design pattern">Create Wizard design pattern</a>
 							</div>
 
 							<div className="pf-block" style={{ backgroundImage: `url(${BtnImage3})` }} >
