@@ -17,12 +17,6 @@
 	flex-direction:row;
 }
 
-.home-layout-body
-{
-/*	border: solid 1px var(--black-01);*/
-	padding:20px;
-}
-
 /* left column - design */
 .home-layout-left
 {
@@ -36,6 +30,10 @@
 	color: var(--nav-color-4);
 	font-size: 30px;
 	padding-bottom:10px;
+}
+.home-blurb
+{
+	margin-bottom:20px;
 }
 
 /* right column */
@@ -117,20 +115,34 @@ a.home-related-link:hover > span
 	letter-spacing:2px;
 }
 
+/* large button styles */
+.home-layout-body
+{
+/*	border: solid 1px red;*/
+	padding:0px;
+	margin-top:30px;
+	width:100%;
+	display:flex;
+	flex-direction:column;
+}
+
 .pf-block
 {
-/*	border: solid 1px var(--black-01);*/
-	height: 200px;
-	margin-bottom:30px;
+	border: solid 1px var(--black-05);
+	flex: 1 1 auto;
+	margin-bottom:20px;
 	cursor:pointer;
 	background-position:0px 0px;
 	background-repeat:no-repeat;
-	background-size:1024px auto;
+	background-position-y:-40px;
+	background-size:100% 100%;
 }
 .pf-block-overlay
 {
 /*	border: solid 1px var(--black-01);*/
 	display:inline-block;
+	min-width:280px;
+	min-height:280px;
 	height:100%;
 	width:100%;
 	text-align:center;
@@ -138,7 +150,7 @@ a.home-related-link:hover > span
 	cursor:pointer;
 	padding:20px;
 	text-decoration:none;
-	background-color: var(--black-01);
+	background-color: var(--black-04);
 	color: transparent;
 	transition: all 200ms ease-in-out;
 	box-shadow: 0px 0px 0px 0px var(--black-01);
