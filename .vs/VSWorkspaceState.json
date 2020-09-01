@@ -2,10 +2,10 @@
   "ExpandedNodes": [
     "",
     "\\src",
-    "\\src\\controls\\footer",
-    "\\src\\controls\\nav",
-    "\\src\\pages"
+    "\\src\\art\\img",
+    "\\src\\art\\svg",
+    "\\src\\pages",
+    "\\src\\pages\\resume"
   ],
-  "SelectedNode": "\\src\\pages\\resume",
   "PreviewInSolutionExplorer": false
 }

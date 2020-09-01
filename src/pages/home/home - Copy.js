@@ -11,7 +11,7 @@ import InstaGramLogo from '../../art/img/instagram.png';
 export default class Home extends React.Component
 {
 	static defaultProps = {
-		Title: "Sean Gephardt, UX Design Prototypes",
+		Title: "Sean Gephardt",
 		LinkTitle: "Sean Gephardt",
 		Href: "/",
 		Icon: SVG.AppNavButtons.About
