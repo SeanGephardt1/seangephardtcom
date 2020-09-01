@@ -31,12 +31,49 @@ export default class Home extends React.Component
     {
         return (
 			<div className="home-layout">
-				Design
 
 				<div className="design-panel">
-					<svg>
+
+					<svg xmlns="http://www.w3.org/2000/svg"
+						viewBox="0 0 1000 500"
+						className="design-svg"
+						imageRendering="optimizeQuality"
+						shapeRendering="geometricPrecision">
+
+						<rect stroke="transparent" x="0" y="0" width="1000px" height="500px" rx="0"></rect>
+
+						<text className="ani-design-text-1" textLength="auto" x="0" y="0" textAnchor="middle" dx="500" dy="140" fontSize="128px" letterSpacing="-10">
+							<tspan>D</tspan>
+							<tspan dx="-2">e</tspan>
+							<tspan dx="2">s</tspan>
+							<tspan dx="-2">i</tspan>
+							<tspan dx="-2">g</tspan>
+							<tspan dx="-5">n</tspan>
+						</text>
+
+
+						<text className="ani-design-text-2" textLength="auto" x="0" y="0" textAnchor="middle" dx="-120" dy="300" fontSize="200px" letterSpacing="-10">
+							<tspan>U</tspan>
+							<tspan dx="-6">X</tspan>
+						</text>
+
+						<text  className="ani-design-text-3" textLength="auto" x="0" y="0" textAnchor="middle" dx="500" dy="620" fontSize="128px" letterSpacing="-10">
+							<tspan>P</tspan>
+							<tspan dx="-6">r</tspan>
+							<tspan dx="-2">o</tspan>
+							<tspan>t</tspan>
+							<tspan>o</tspan>
+							<tspan>t</tspan>
+							<tspan dx="8">y</tspan>
+							<tspan>p</tspan>
+							<tspan dx="-1">i</tspan>
+							<tspan dx="-4">n</tspan>
+							<tspan>g</tspan>
+						</text>
 
 					</svg>
+
+
 				</div>
 
 

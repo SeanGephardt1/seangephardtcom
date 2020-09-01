@@ -34,4 +34,9 @@
 		color: var(--white);
 	}
 
+	.ani-design-text-1, .ani-design-text-2, ani-design-text-3
+	{
+		opacity: 1;
+		animation-name:none;
+	}
 }

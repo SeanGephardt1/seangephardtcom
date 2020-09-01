@@ -1,6 +1,6 @@
 ﻿.home-layout
 {
-	border: solid 1px var(--debug);
+/*	border: solid 1px var(--black-02);*/
 	min-width:320px;
 	max-width:1024px;
 	overflow:auto;
@@ -12,5 +12,94 @@
 
 .design-panel
 {
-	border: solid 1px var(--debug);
+	flex: 1 1 100%;
+	height:100%;
+	width:100%;
+}
+
+.design-svg
+{
+	fill:transparent;
+	font-family:'Josefina', system-ui;
+	height:100%;
+	width:100%;
+}
+
+/* animation classes */
+.ani-design-text-1
+{
+	fill:var(--black);
+	opacity: 0;
+	animation-name:AniDesignText1;
+	animation-delay:0ms;
+	animation-direction:normal;
+	animation-duration:500ms;
+	animation-fill-mode:forwards;
+	animation-iteration-count:1;
+	animation-play-state:running;
+	animation-timing-function:ease-in-out;
+}
+@keyframes AniDesignText1
+{
+  0%  {
+	  transform: translate(0px,-100px);
+	  opacity: 0;
+  }
+  100% 
+  {
+	  transform: translate(0,0);
+	  opacity: 1;
+  }
+}
+
+.ani-design-text-2
+{
+	fill:var(--black);
+	opacity: 0;
+	animation-name:AniDesignText2;
+	animation-delay:500ms;
+	animation-direction:normal;
+	animation-duration:500ms;
+	animation-fill-mode:forwards;
+	animation-iteration-count:1;
+	animation-play-state:running;
+	animation-timing-function:ease-in-out;
+}
+@keyframes AniDesignText2
+{
+  0%   {
+	  transform: translate(-120,0);
+	  opacity: 0;
+  }
+  100% 
+  {
+	  transform: translate(620px,0px);
+	  opacity: 1;
+  }
+}
+
+.ani-design-text-3
+{
+	fill:var(--black);
+	opacity: 0;
+	animation-name:AniDesignText3;
+	animation-delay:1000ms;
+	animation-direction:normal;
+	animation-duration:500ms;
+	animation-fill-mode:forwards;
+	animation-iteration-count:1;
+	animation-play-state:running;
+	animation-timing-function:ease-in-out;
+}
+@keyframes AniDesignText3
+{
+  0%   {
+	  transform: translate(0,0);
+	  opacity: 0;
+  }
+  100% 
+  {
+	  transform: translate(0,-240px);
+	  opacity: 1;
+  }
 }
