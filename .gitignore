@@ -5,8 +5,8 @@
 
 # production
 /build
-/.vs/
-/___old_demos/
+.vs/
+___old_demos/
 
 
 # Node.js Tools for Visual Studio
