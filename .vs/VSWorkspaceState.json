@@ -1,11 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\src",
-    "\\src\\art\\img",
-    "\\src\\art\\svg",
     "\\src\\pages",
-    "\\src\\pages\\resume"
+    "\\src\\pages\\home"
   ],
+  "SelectedNode": "\\compilerconfig.json",
   "PreviewInSolutionExplorer": false
 }
