@@ -45,16 +45,16 @@ export default class Home extends React.Component
 						{ /* SECONDARY */}
 						{ /* Interaction */ }
 						<text className="ani-design-secondary-text-1" textLength="auto" x="0" y="0" textAnchor="start" dx="10" dy="490" fontSize="48px" letterSpacing="-2" >
-							<tspan>interaction</tspan>
+							<tspan>live interaction</tspan>
 						</text>
 
 						<text className="ani-design-secondary-text-2" textLength="auto" x="0" y="0" textAnchor="middle" dx="500" dy="490" fontSize="48px" letterSpacing="-2" >
-							<tspan>user experience</tspan>
+							<tspan>customer experience</tspan>
 						</text>
 
 
-						<text className="ani-design-secondary-text-3" textLength="auto" x="0" y="0" textAnchor="start" dx="850" dy="490" fontSize="48px" letterSpacing="-2" >
-							<tspan>research</tspan>
+						<text className="ani-design-secondary-text-3" textLength="auto" x="0" y="0" textAnchor="start" dx="770" dy="490" fontSize="48px" letterSpacing="-2" >
+							<tspan>user research</tspan>
 						</text>
 
 
