@@ -10,7 +10,6 @@
 	}
 }
 
-
 @media (max-width: 680px)
 {
 	.home-layout-head
@@ -34,9 +33,9 @@
 		color: var(--white);
 	}
 
-	.ani-design-text-1, .ani-design-text-2, ani-design-text-3
+	.design-panel
 	{
-		opacity: 1;
-		animation-name:none;
+		padding-left:20px;
+		padding-right:20px;
 	}
 }

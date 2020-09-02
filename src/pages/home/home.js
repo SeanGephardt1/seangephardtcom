@@ -10,7 +10,7 @@ import './home.css';
 export default class Home extends React.Component
 {
 	static defaultProps = {
-		Title: "Sean Gephardt, UX Prototype Design",
+		Title: "Sean Gephardt, UX Design Prototyping",
 		LinkTitle: "Sean Gephardt",
 		Href: "/",
 		Icon: SVG.AppNavButtons.About
@@ -42,7 +42,32 @@ export default class Home extends React.Component
 
 						<rect stroke="transparent" x="0" y="0" width="1000px" height="500px" rx="0"></rect>
 
-						<text className="ani-design-text-1" textLength="auto" x="0" y="0" textAnchor="middle" dx="500" dy="140" fontSize="128px" letterSpacing="-10">
+						{ /* SECONDARY */}
+						{ /* Interaction */ }
+						<text className="ani-design-secondary-text-1" textLength="auto" x="0" y="0" textAnchor="start" dx="10" dy="490" fontSize="48px" letterSpacing="-2" >
+							<tspan>interaction</tspan>
+						</text>
+
+						<text className="ani-design-secondary-text-2" textLength="auto" x="0" y="0" textAnchor="middle" dx="500" dy="490" fontSize="48px" letterSpacing="-2" >
+							<tspan>user experience</tspan>
+						</text>
+
+
+						<text className="ani-design-secondary-text-3" textLength="auto" x="0" y="0" textAnchor="start" dx="850" dy="490" fontSize="48px" letterSpacing="-2" >
+							<tspan>research</tspan>
+						</text>
+
+
+
+						{ /* MAIN */}
+						{ /* UX */ }
+						<text className="ani-design-text-1" textLength="auto" x="0" y="0" textAnchor="middle" dx="500" dy="216" fontSize="200px" letterSpacing="-10" >
+							<tspan>U</tspan>
+							<tspan dx="-6">X</tspan>
+						</text>
+
+						{ /* Design */ }
+						<text className="ani-design-text-2" textLength="auto" x="0" y="0" textAnchor="middle" dx="500" dy="300" fontSize="128px" letterSpacing="-6" >
 							<tspan>D</tspan>
 							<tspan dx="-2">e</tspan>
 							<tspan dx="2">s</tspan>
@@ -51,13 +76,8 @@ export default class Home extends React.Component
 							<tspan dx="-5">n</tspan>
 						</text>
 
-
-						<text className="ani-design-text-2" textLength="auto" x="0" y="0" textAnchor="middle" dx="-120" dy="300" fontSize="200px" letterSpacing="-10">
-							<tspan>U</tspan>
-							<tspan dx="-6">X</tspan>
-						</text>
-
-						<text  className="ani-design-text-3" textLength="auto" x="0" y="0" textAnchor="middle" dx="500" dy="620" fontSize="128px" letterSpacing="-10">
+						{ /* Prototyping */}
+						<text  className="ani-design-text-3" textLength="auto" x="0" y="0" textAnchor="middle" dx="500" dy="380" fontSize="128px" letterSpacing="-6" >
 							<tspan>P</tspan>
 							<tspan dx="-6">r</tspan>
 							<tspan dx="-2">o</tspan>
