@@ -10,11 +10,14 @@
 	margin-top: 24px;
 }
 
+/* SVG AREA */
 .design-panel
 {
+/*	border: solid 1px red;*/
 	flex: 1 1 100%;
 	height: 100%;
 	width: 100%;
+	margin-bottom:30px;
 }
 
 .design-svg
@@ -31,7 +34,7 @@
 	fill: var(--black);
 	opacity: 0;
 	animation-name: AniDesignText1;
-	animation-delay: 500ms;
+	animation-delay: 400ms;
 	animation-direction: normal;
 	animation-duration: 500ms;
 	animation-fill-mode: forwards;
@@ -44,27 +47,13 @@
 {
 	fill: var(--nav-color-4);
 }
-@keyframes AniDesignText1
-{
-	0%
-	{
-		transform: translate(0px,-100px);
-		opacity: 0;
-	}
-
-	100%
-	{
-		transform: translate(0,0);
-		opacity: 1;
-	}
-}
 
 .ani-design-text-2
 {
 	fill: var(--black);
 	opacity: 0;
 	animation-name: AniDesignText2;
-	animation-delay: 750ms;
+	animation-delay: 600ms;
 	animation-direction: normal;
 	animation-duration: 500ms;
 	animation-fill-mode: forwards;
@@ -77,29 +66,15 @@
 {
 	fill: var(--nav-color-1);
 }
-@keyframes AniDesignText2
-{
-	0%
-	{
-		transform: translate(-520px,0);
-		opacity: 0;
-	}
-
-	100%
-	{
-		transform: translate(0px,0px);
-		opacity: 1;
-	}
-}
 
 .ani-design-text-3
 {
 	fill: var(--black);
 	opacity: 0;
 	animation-name: AniDesignText3;
-	animation-delay: 1000ms;
+	animation-delay: 800ms;
 	animation-direction: normal;
-	animation-duration: 500ms;
+	animation-duration: 800ms;
 	animation-fill-mode: forwards;
 	animation-iteration-count: 1;
 	animation-play-state: running;
@@ -110,20 +85,6 @@
 {
 	fill: var(--nav-color-3);
 }
-@keyframes AniDesignText3
-{
-	0%
-	{
-		transform: translate(0,500px);
-		opacity: 0;
-	}
-
-	100%
-	{
-		transform: translate(0,0px);
-		opacity: 1;
-	}
-}
 
 .ani-design-secondary-text-1,
 .ani-design-secondary-text-2,
@@ -131,7 +92,7 @@
 {
 	fill: var(--debug);
 	opacity:0;
-	animation-name: none;
+	animation-name: AniSvgText3;
 	animation-direction: normal;
 	animation-fill-mode: forwards;
 	animation-iteration-count:1;
@@ -142,36 +103,131 @@
 .ani-design-secondary-text-1
 {
 	fill: var(--nav-color-4);
-	animation-name: AniSvgText3;
-	animation-delay: 1500ms;
+	animation-delay: 800ms;
 	animation-duration: 500ms;
 }
 .ani-design-secondary-text-2
 {
 	fill: var(--nav-color-1);
-	animation-name: AniSvgText3;
-	animation-delay: 2000ms;
+	animation-delay: 1000ms;
 	animation-duration: 500ms;
 }
 .ani-design-secondary-text-3
 {
 	fill: var(--nav-color-3);
-	animation-name: AniSvgText3;
-	animation-delay: 2500ms;
+	animation-delay: 1200ms;
 	animation-duration: 500ms;
 }
 
-@keyframes AniSvgText3
-{
-	0%
-	{
-		transform: translate(0,100px);
-		opacity: 0;
-	}
 
-	100%
-	{
-		transform: translate(0,0px);
-		opacity: 1;
-	}
+/* OLD PORTFOLIO CSS */
+.portfolio-panel
+{
+	opacity:0;
+	animation-name: AniPageFadeIn1;
+	animation-delay: 1000ms;
+	animation-duration: 500ms;
+	animation-direction: normal;
+	animation-fill-mode: forwards;
+	animation-iteration-count:1;
+	animation-play-state: running;
+	animation-timing-function: ease-in-out;
+}
+
+.portfolio-block
+{
+/*	border: solid 1px red;*/
+	margin-bottom:30px;
+	padding-left:10px;
+	padding-right:10px;
+}
+.portfolio-block > h2
+{
+	font-size: 20px;
+	margin-bottom:10px;
+}
+.portfolio-block > a
+{
+	display:inline-block;
+	text-decoration:none;
+	margin-bottom:10px;
+	color: var(--nav-color-4);
+}
+
+.portfolio-text
+{
+	margin-bottom:16px;
+	font-size:16px;
+}
+.portfolio-text > ul
+{
+	margin-left:20px;
+	margin-top:10px;
+	list-style-type:square;
+}
+.portfolio-text > ul > li
+{
+}
+
+/* block specific styles */
+.image-list
+{
+	/*border: solid 1px rgba(255,0,0,1);*/
+	margin-top:30px;
+	width:100%;
+	text-align:center;
+}
+.image-list > img
+{
+	/*border: solid 1px red;*/
+	display:inline-block;
+	width: calc(150px);
+	margin: 10px;
+	box-shadow: 0px 4px 6px 	var(--black-02);
+	transition: all ease-in-out 300ms;
+	cursor:pointer;
+}
+.image-list > img:hover
+{
+
+	transform:scale(1.4,1.4);
+	box-shadow: 0px 0px 10px 	var(--nav-color-4);
+}
+
+/* modal overlay */
+.portfolio-modal-overlay
+{
+	/*border: solid 1px red;*/
+	position:fixed;
+	top: 0px;
+	left:0px;
+	right:0px;
+	bottom:0px;
+	background-color: var(--black-08);
+	cursor:pointer;
+	z-index:1;
+	text-align:center;
+	vertical-align:top;
+	display:flex;
+	flex-direction:column;
+	padding:5%;
+}
+.portfolio-modal-image
+{
+	/*border: solid 1px red;*/
+	flex: 1 1 100%;
+	max-width:90%;
+	max-height:90%;
+	height: auto;
+	width: auto;
+	box-shadow: 0px 0px 20px rgba(0,0,0,1);
+}
+.portfolio-modal-text
+{
+	/*border: solid 1px red;*/
+	color: rgba(255,255,255,1);
+	font-size: 1.8vh;
+	font-weight:500;
+	padding:20px;
+	text-shadow: 0px 0px 4px rgba(0,0,0,1);
 }

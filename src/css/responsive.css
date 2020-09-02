@@ -28,7 +28,6 @@
 
 	.pf-block-overlay
 	{
-	/*	border: solid 1px var(--black-01);*/
 		background-color: var(--black-07);
 		color: var(--white);
 	}
@@ -37,5 +36,15 @@
 	{
 		padding-left:20px;
 		padding-right:20px;
+	}
+	.portfolio-panel
+	{
+		padding-left:20px;
+		padding-right:20px;
+	}
+	.portfolio-block
+	{
+		padding-left:6px;
+		padding-right:6px;
 	}
 }

@@ -7,6 +7,15 @@
 	flex-direction:row;
 	flex-wrap:wrap;
 	margin-top:24px;
+	opacity:0;
+	animation-name: AniPageFadeIn1;
+	animation-delay: 300ms;
+	animation-duration: 300ms;
+	animation-direction: normal;
+	animation-fill-mode: forwards;
+	animation-iteration-count:1;
+	animation-play-state: running;
+	animation-timing-function: ease-in-out;
 }
 
 .resume-left

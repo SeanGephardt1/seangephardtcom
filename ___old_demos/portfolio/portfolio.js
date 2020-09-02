@@ -1,5 +1,8 @@
 ﻿import React from 'react';
 import './portfolio.css';
+
+import SVG from '../../art/svgs.js';
+
 import AzureHome1 from './azure-resp-home-1.png';
 import AzureHome2 from './azure-resp-home-2.png';
 import AzureHome3 from './azure-resp-home-3.png';
@@ -13,20 +16,21 @@ import AzureCreate5 from './azure-create-5.png';
 import AzureCreate9 from './azure-create-9.png';
 
 
-export class PortfolioExtension extends React.Component
+export default class Portfolio extends React.Component
 {
 	static defaultProps = {
 		Title: "Interaction Design Portfolio for Sean Gephardt",
 		LinkTitle: "Portfolio",
-		Href: "/portfolio/"
+		Href: "/portfolio/",
+		Icon: SVG.AppNavButtons.Portfolio
 	};
 	constructor( props )
 	{
 		super( props );
 
-		this.Title = ( this.props.Title || PortfolioExtension.defaultProps.Title );
-		this.LinkTitle = ( this.props.LinkTitle || PortfolioExtension.defaultProps.LinkTitle );
-		this.Href = ( this.props.Href || PortfolioExtension.defaultProps.Href );
+		this.Title = ( this.props.Title || Portfolio.defaultProps.Title );
+		this.LinkTitle = ( this.props.LinkTitle || Portfolio.defaultProps.LinkTitle );
+		this.Href = ( this.props.Href || Portfolio.defaultProps.Href );
 
 		this.CurrentPortfolioPicture = AzureHome5;
 		this.CurrentPortfolioPictureAltText = "testing";
@@ -35,6 +39,7 @@ export class PortfolioExtension extends React.Component
 			displayOverlayPicture: "none"
 		}
 
+		document.title = this.Title;
 		return;
 	};
 	OnClick_DisplayModalPicture(img, altText, se )
@@ -125,7 +130,6 @@ export class PortfolioExtension extends React.Component
 					</div>
 				</div>
 				
-
 			</div>
 		);
 	};

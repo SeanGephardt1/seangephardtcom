@@ -1,71 +1,69 @@
-﻿@keyframes MwLogoSpinner
+﻿@keyframes AniPageFadeIn1
 {
+	0%
+	{
+		opacity: 0;
+	}
 	100%
 	{
-		transform:rotate(360deg);
+		opacity: 1;
 	}
 }
 
-@keyframes OpenMwSearchBoxOpen
+@keyframes AniDesignText1
 {
+	0%
+	{
+		transform: translate(0px,-100px);
+		opacity: 0;
+	}
+
 	100%
 	{
-		flex: 1 1 100%;
-		width:100%;
-		visibility:visible;
+		transform: translate(0,0);
+		opacity: 1;
 	}
 }
-@keyframes CloseMwSearchBoxOpen
+@keyframes AniDesignText2
 {
+	0%
+	{
+		transform: translate(-520px,0);
+		opacity: 0;
+	}
+
 	100%
 	{
-		flex: 0 0 0px;
-		width:0px;
-		visibility:hidden;
+		transform: translate(0px,0px);
+		opacity: 1;
+	}
+}
+@keyframes AniDesignText3
+{
+	0%
+	{
+		transform: translate(0,500px);
+		opacity: 0;
+	}
+
+	100%
+	{
+		transform: translate(0,0px);
+		opacity: 1;
 	}
 }
 
-@keyframes OpenMainMenuAsidePanel
+@keyframes AniSvgText3
 {
-	100%
+	0%
 	{
-		left:0px;
-		width:300px;
-		box-shadow: 0px 0px 30px 30px var(--default-black-02);
+		transform: translate(0,100px);
+		opacity: 0;
 	}
-}
-@keyframes CloseMainMenuAsidePanel
-{
-	100%
-	{
-		left:-300px;
-		width:0px;
-	}
-}
 
-@keyframes OpenAsideContextPanel
-{
 	100%
 	{
-		right:0px;
-		width:400px;
-		box-shadow: 0px 0px 30px 30px var(	--default-black-02);
-	}
-}
-@keyframes CloseAsideContextPanel
-{
-	100%
-	{
-		right:-400px;
-		width:0px;
-	}
-}
-
-
-@keyframes HeroCarouselButtonHover
-{
-	100%
-	{
-		opacity:1;
+		transform: translate(0,0px);
+		opacity: 1;
 	}
 }

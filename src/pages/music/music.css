@@ -6,6 +6,15 @@
 	display:flex;
 	flex-direction:column;
 	margin:24px;
+	opacity:0;
+	animation-name: AniPageFadeIn1;
+	animation-delay: 300ms;
+	animation-duration: 300ms;
+	animation-direction: normal;
+	animation-fill-mode: forwards;
+	animation-iteration-count:1;
+	animation-play-state: running;
+	animation-timing-function: ease-in-out;
 }
 
 .band-name
@@ -68,8 +77,6 @@ svg.voy-svg-logo > g > text > tspan
 {
 
 }
-
-
 
 .bc-frame
 {
