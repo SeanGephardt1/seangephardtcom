@@ -7,3 +7,5 @@ Disallow: /css/
 Disallow: /js/
 Disallow: /script/
 Disallow: /static/
+Disallow: /azure/
+
