@@ -1,15 +1,15 @@
 {
-	"short_name": "Sean Gephardt, Portfolio & Resume",
-	"name": "Sean Gephardt, UX / UI Portfolio & Resume",
+	"short_name": "Sean Gephardt, UX Design Prototyping",
+	"name": "Sean Gephardt, UX Design Prototyping",
 	"icons": [
 		{
-			"src": "favicon.ico",
-			"sizes": "64x64 32x32 24x24 16x16",
-			"type": "image/x-icon"
+			"src": "favicon.svg",
+			"sizes": "512x512 256x256 64x64 32x32 24x24 16x16",
+			"type": "image/x-icon image/svg+xml"
 		}
 	],
 	"start_url": ".",
 	"display": "standalone",
-	"theme_color": "#000000",
-	"background_color": "#ffffff"
+	"theme_color": "#0000FF",
+	"background_color": "#000099"
 }
