@@ -7,7 +7,7 @@ import Home from './home/home.js';
 import Resume from './resume/resume.js';
 import Music from './music/music.js';
 //	import TestPage from './test/test.js';
-//import { MovieStoreExtension } from './movie-works/movie-works.js';
+//	import { MovieStoreExtension } from './movie-works/movie-works.js';
 //import { GuitarStoreExtension } from './guitar-store/guitar-store.js';
 
 const _pages = [
@@ -16,7 +16,7 @@ const _pages = [
 	Resume,
 	Music,
 	//	TestPage
-	//MovieStoreExtension,
+	//	MovieStoreExtension,
 	//GuitarStoreExtension
 ];
 
