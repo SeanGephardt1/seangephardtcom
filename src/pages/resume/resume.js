@@ -127,7 +127,7 @@ export default class Resume extends React.Component
 					</div>
 
 					<div className="skills-section">
-						<div className="skills-header">Design Tools</div>
+						<div className="skills-header">Design tools</div>
 						<ul className="resume-ul-list">
 							<li>Adobe Create Cloud, Photoshop, Illustrator and XD</li>
 							<li>Figma</li>
