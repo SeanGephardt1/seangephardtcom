@@ -1,6 +1,6 @@
 ﻿.resume-layout
 {
-	min-width:320px;
+	min-width:280px;
 	max-width:1024px;
 	overflow:auto;
 	display:flex;
@@ -20,24 +20,25 @@
 
 .resume-left
 {
-	order:0;
 /*	border: solid 1px red;*/
-	flex: 1 1 700px;
+	order:0;
+	flex: 1 1 70%;
 	padding-left:20px;
 	padding-right:20px;
+	min-width:200px;
 }
 .resume-right
 {
-	order:1;
 /*	border: solid 1px red;*/
-	flex: 1 1 300px;
+	order:1;
+	flex: 1 1 30%;
 	padding-left:20px;
 	padding-right:20px;
 }
+
 /* left column */
 .cv-section
 {
-/*	border: solid 1px red;*/
 	margin-bottom:20px;
 }
 .cv-header
@@ -59,10 +60,9 @@
 	margin-left:20px;
 	padding-right:10px;
 }
-.cv-section > ul
+.cv-section > ul > li
 {
-	font-size:100%;
-	line-height:130%;
+	font-size:90%;
 	list-style-type:square;
 }
 

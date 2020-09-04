@@ -210,14 +210,34 @@
 	vertical-align:top;
 	display:flex;
 	flex-direction:column;
-	padding:5%;
+	padding:10px;
 }
 .portfolio-modal-image
 {
 	/*border: solid 1px red;*/
 	flex: 1 1 100%;
-	max-width:90%;
-	max-height:90%;
+	max-width:95%;
+	max-height:95%;
+	height: auto;
+	width: auto;
+	box-shadow: 0px 0px 20px rgba(0,0,0,1);
+}
+.portfolio-modal-image-tall
+{
+	/*border: solid 1px red;*/
+	flex: 1 1 100%;
+	max-width:95%;
+	max-height:95%;
+	height: 95%;
+	width: auto;
+	box-shadow: 0px 0px 20px rgba(0,0,0,1);
+}
+.portfolio-modal-image-wide
+{
+	/*border: solid 1px red;*/
+	flex: 1 1 100%;
+	max-width:99%;
+	max-height:99%;
 	height: auto;
 	width: auto;
 	box-shadow: 0px 0px 20px rgba(0,0,0,1);
@@ -228,6 +248,6 @@
 	color: rgba(255,255,255,1);
 	font-size: 1.8vh;
 	font-weight:500;
-	padding:20px;
+	padding:10px;
 	text-shadow: 0px 0px 4px rgba(0,0,0,1);
 }

@@ -8,13 +8,16 @@ import Resume from './resume/resume.js';
 import Music from './music/music.js';
 //	import TestPage from './test/test.js';
 //	import { MovieStoreExtension } from './movie-works/movie-works.js';
-//import { GuitarStoreExtension } from './guitar-store/guitar-store.js';
+//	import { GuitarStoreExtension } from './guitar-store/guitar-store.js';
+//	import UnityDemo from './unity/unity.js';
+
 
 const _pages = [
 	Home,
 	//	Portfolio,
 	Resume,
 	Music,
+	//	UnityDemo
 	//	TestPage
 	//	MovieStoreExtension,
 	//GuitarStoreExtension
