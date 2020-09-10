@@ -9,7 +9,6 @@ import Music from './music/music.js';
 //	import TestPage from './test/test.js';
 //	import { MovieStoreExtension } from './movie-works/movie-works.js';
 //	import { GuitarStoreExtension } from './guitar-store/guitar-store.js';
-//	import UnityDemo from './unity/unity.js';
 
 
 const _pages = [
@@ -17,7 +16,6 @@ const _pages = [
 	//	Portfolio,
 	Resume,
 	Music,
-	//	UnityDemo
 	//	TestPage
 	//	MovieStoreExtension,
 	//GuitarStoreExtension
