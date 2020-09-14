@@ -1,6 +1,7 @@
 ﻿import React from 'react';
 import './music.css';
 import SVG from '../../art/svgs.js';
+import VoyLogo from './voy.png';
 
 export default class Music extends React.Component
 {
@@ -34,6 +35,7 @@ export default class Music extends React.Component
 					<div className="music-logo-block">
 
 						<svg xmlns="http://www.w3.org/2000/svg" className="tdt-svg-logo" viewBox="0 0 1000 500" imageRendering="optimizeQuality" shapeRendering="geometricPrecision">
+
 							<rect className="tdt-svg-green-bg" x="0" y="0"  width="1000px" height="500px" rx="20"></rect>
 							<rect fill="rgba(255,255,255,0)" x="20" y="20"  width="960px" height="460px" rx="2" strokeWidth="14px" stroke="rgba(255,255,255,1)"></rect>
 
@@ -65,18 +67,17 @@ export default class Music extends React.Component
 					</div>
 
 
-
 					<div className="music-block-list">
 
-					<iframe className="bc-frame" title="Alone by The Drive Through" src="https://bandcamp.com/EmbeddedPlayer/track=509448573/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/" seamless>
+					<iframe className="bc-frame" title="Alone by The Drive Through" src="https://bandcamp.com/EmbeddedPlayer/track=509448573/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/" seamless loading="lazy">
 						<a href="http://thedrivethrough.bandcamp.com/track/alone">Alone by The Drive Through</a>
 					</iframe>
 
-					<iframe className="bc-frame" title="Alone by The Drive Through" src="https://bandcamp.com/EmbeddedPlayer/track=4278936184/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/" seamless>
+					<iframe className="bc-frame" title="Alone by The Drive Through" src="https://bandcamp.com/EmbeddedPlayer/track=4278936184/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/" seamless loading="lazy">
 						<a href="http://thedrivethrough.bandcamp.com/track/its-hard" title="It&#39;s Hard by The Drive Through" >It&#39;s Hard by The Drive Through</a>
 					</iframe>
 
-					<iframe className="bc-frame" title="Alone by The Drive Through" src="https://bandcamp.com/EmbeddedPlayer/track=3084652086/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/" seamless>
+					<iframe className="bc-frame" title="Alone by The Drive Through" src="https://bandcamp.com/EmbeddedPlayer/track=3084652086/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/" seamless loading="lazy">
 						<a href="http://thedrivethrough.bandcamp.com/track/temporary" title="Temporary by The Drive Through" >Temporary by The Drive Through</a>
 					</iframe>
 
@@ -86,73 +87,17 @@ export default class Music extends React.Component
 
 				{/* BEGIN Villains Of Yesterday */}
 
-				<div className="band-name">Villains Of Yesterday</div>
+				<div className="band-name voy">Villains Of Yesterday</div>
 
 					<div className="music-text-block">Villains Of Yesterday began in a dark studio in Seattle's Georgetown district in January of 2010. The band played about 100 gigs up and down the West Coast including the infamous Viper Room in Los Angeles. During the life of the group, we had the pleasure of sharing the stage with several amazing artists, including but not limited to REO Speedwagon, Michael Schenker Group, My Sister's Machine, Blackboard Jungle and Seattle Grunge Alumni Shawn Smith. The songwriting core of "VOY" made in the transition in 2018 to change the group name to "The Drive Through".</div>
 
-					<div className="music-logo-block">
-
-						<svg xmlns="http://www.w3.org/2000/svg" className="voy-svg-logo"
-							viewBox="0 0 1000 400" imageRendering="optimizeQuality" shapeRendering="geometricPrecision">
-
-							<filter xmlns="http://www.w3.org/2000/svg" id="dropshadow" height="110%">
-							  <feGaussianBlur in="SourceAlpha" stdDeviation="2"/> 
-							  <feOffset dx="6" dy="10" result="offsetblur"/>
-							  <feComponentTransfer>
-								<feFuncA type="linear" slope="0.2"/>
-							  </feComponentTransfer>
-							  <feMerge> 
-								<feMergeNode/>
-								<feMergeNode in="SourceGraphic"/> 
-							  </feMerge>
-							</filter>
-
-							<rect className="voy-bg" x="0" y="0" width="1000px" height="400px" rx="4"></rect>
-
-							<g transform="translate(100,170)" filter="url(#dropshadow)">
-								<text fontSize="96px">
-									<tspan x="70">V</tspan>
-									<tspan x="150">I</tspan>
-									<tspan x="200">L</tspan>
-									<tspan x="280">L</tspan>
-									<tspan x="360">A</tspan>
-									<tspan x="450">I</tspan>
-									<tspan x="510">N</tspan>
-									<tspan x="600">S</tspan>
-								</text>
-							</g>
-
-							<g transform="translate(400,240)" filter="url(#dropshadow)">
-								<text fontSize="60px">
-									<tspan x="0">O</tspan>
-									<tspan x="60">F</tspan>
-								</text>
-							</g>
-
-							<g transform="translate(30,330)" filter="url(#dropshadow)">
-								<text fontSize="96px">
-									<tspan x="70">Y</tspan>
-									<tspan x="150">E</tspan>
-									<tspan x="240">S</tspan>
-									<tspan x="320">T</tspan>
-									<tspan x="400">E</tspan>
-									<tspan x="490">R</tspan>
-									<tspan x="580">D</tspan>
-									<tspan x="680">A</tspan>
-									<tspan x="770">Y</tspan>
-								</text>
-							</g>
-						</svg>
-
-					</div>
-
 					<div className="music-block-list">
 
-						<iframe className="bc-frame-2" title="One by Villains Of Yesterday" src="https://bandcamp.com/EmbeddedPlayer/album=747801681/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/transparent=true/" seamless><a href="http://villainsofyesterday.bandcamp.com/album/one">One by Villains Of Yesterday</a></iframe>
+						<iframe className="bc-frame-2" title="One by Villains Of Yesterday" src="https://bandcamp.com/EmbeddedPlayer/album=747801681/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/transparent=true/" seamless loading="lazy"><a href="http://villainsofyesterday.bandcamp.com/album/one">One by Villains Of Yesterday</a></iframe>
 
-						<iframe className="bc-frame-2" title="Zero In The Sun by Villains Of Yesterday" src="https://bandcamp.com/EmbeddedPlayer/album=1112045216/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/transparent=true/" seamless><a href="http://villainsofyesterday.bandcamp.com/album/zero-in-the-sun">Zero In The Sun by Villains Of Yesterday</a></iframe>
+						<iframe className="bc-frame-2" title="Zero In The Sun by Villains Of Yesterday" src="https://bandcamp.com/EmbeddedPlayer/album=1112045216/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/transparent=true/" seamless loading="lazy"><a href="http://villainsofyesterday.bandcamp.com/album/zero-in-the-sun">Zero In The Sun by Villains Of Yesterday</a></iframe>
 
-						<iframe  className="bc-frame-2" title="Dead Reckoning by Villains Of Yesterday" src="https://bandcamp.com/EmbeddedPlayer/album=2392563153/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/transparent=true/" seamless><a href="http://villainsofyesterday.bandcamp.com/album/dead-reckoning">Dead Reckoning by Villains Of Yesterday</a></iframe>
+						<iframe  className="bc-frame-2" title="Dead Reckoning by Villains Of Yesterday" src="https://bandcamp.com/EmbeddedPlayer/album=2392563153/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/transparent=true/" seamless loading="lazy"><a href="http://villainsofyesterday.bandcamp.com/album/dead-reckoning">Dead Reckoning by Villains Of Yesterday</a></iframe>
 
 					</div>
 				{/* END Villains Of Yesterday */}

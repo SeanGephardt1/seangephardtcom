@@ -149,7 +149,9 @@ export default class Home extends React.Component
 						<img
 							className={this.CurrentOverlayStyle}
 							src={this.CurrentPortfolioPicture}
-							alt={this.CurrentPortfolioPictureAltText} />
+							alt={this.CurrentPortfolioPictureAltText}
+							loading="lazy"
+						/>
 						<div
 							className="portfolio-modal-text"
 							title={this.CurrentPortfolioPictureAltText}>{this.CurrentPortfolioPictureAltText}</div>

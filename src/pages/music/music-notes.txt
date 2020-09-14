@@ -1,22 +1,161 @@
-<iframe style="border: 0; width: 100%; height: 120px;" src="https://bandcamp.com/EmbeddedPlayer/track=509448573/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/" seamless><a href="http://thedrivethrough.bandcamp.com/track/alone">Alone by The Drive Through</a></iframe>			
-			
-			
-<div className="music-block-list marg-top-10 ">
-		<iframe className="bc-frame" title="Alone by The Drive Through" src="https://bandcamp.com/EmbeddedPlayer/track=509448573/size=large/bgcol=333333/linkcol=2ebd35/tracklist=false/transparent=true/" seamless>
-			<a href="http://thedrivethrough.bandcamp.com/track/alone" title="Alone by The Drive Through" >Alone by The Drive Through</a>
-		</iframe>
-		<iframe className="bc-frame" title="It&#39;s Hard by The Drive Through" src="https://bandcamp.com/EmbeddedPlayer/track=4278936184/size=large/bgcol=333333/linkcol=2ebd35/tracklist=false/transparent=true/" seamless >
-			<a href="http://thedrivethrough.bandcamp.com/track/its-hard" title="It&#39;s Hard by The Drive Through" >It&#39;s Hard by The Drive Through</a>
-		</iframe>
-		<iframe className="bc-frame" title="Temporary by The Drive Through" src="https://bandcamp.com/EmbeddedPlayer/track=3084652086/size=large/bgcol=333333/linkcol=2ebd35/tracklist=false/transparent=true/" seamless>
-			<a href="http://thedrivethrough.bandcamp.com/track/temporary" title="Temporary by The Drive Through" >Temporary by The Drive Through</a>
-		</iframe>
-	</div>
+					<iframe className="bc-frame" title="Alone by The Drive Through" src="https://bandcamp.com/EmbeddedPlayer/track=509448573/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/" seamless loading="lazy">
+						<a href="http://thedrivethrough.bandcamp.com/track/alone">Alone by The Drive Through</a>
+					</iframe>
+
+					<iframe className="bc-frame" title="Alone by The Drive Through" src="https://bandcamp.com/EmbeddedPlayer/track=4278936184/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/" seamless loading="lazy">
+						<a href="http://thedrivethrough.bandcamp.com/track/its-hard" title="It&#39;s Hard by The Drive Through" >It&#39;s Hard by The Drive Through</a>
+					</iframe>
+
+					<iframe className="bc-frame" title="Alone by The Drive Through" src="https://bandcamp.com/EmbeddedPlayer/track=3084652086/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/" seamless loading="lazy">
+						<a href="http://thedrivethrough.bandcamp.com/track/temporary" title="Temporary by The Drive Through" >Temporary by The Drive Through</a>
+					</iframe>
 
 
 
-<iframe className="bc-frame" title="One by Villains Of Yesterday" src="https://bandcamp.com/EmbeddedPlayer/album=747801681/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/transparent=true/" seamless><a href="http://villainsofyesterday.bandcamp.com/album/one">One by Villains Of Yesterday</a></iframe>
+						<iframe className="bc-frame-2" title="One by Villains Of Yesterday" src="https://bandcamp.com/EmbeddedPlayer/album=747801681/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/transparent=true/" seamless loading="lazy"><a href="http://villainsofyesterday.bandcamp.com/album/one">One by Villains Of Yesterday</a></iframe>
 
-<iframe className="bc-frame" title="Zero In The Sun by Villains Of Yesterday" src="https://bandcamp.com/EmbeddedPlayer/album=1112045216/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/transparent=true/" seamless><a href="http://villainsofyesterday.bandcamp.com/album/zero-in-the-sun">Zero In The Sun by Villains Of Yesterday</a></iframe>
+						<iframe className="bc-frame-2" title="Zero In The Sun by Villains Of Yesterday" src="https://bandcamp.com/EmbeddedPlayer/album=1112045216/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/transparent=true/" seamless loading="lazy"><a href="http://villainsofyesterday.bandcamp.com/album/zero-in-the-sun">Zero In The Sun by Villains Of Yesterday</a></iframe>
 
-<iframe  className="bc-frame" title="Dead Reckoning by Villains Of Yesterday" src="https://bandcamp.com/EmbeddedPlayer/album=2392563153/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/transparent=true/" seamless><a href="http://villainsofyesterday.bandcamp.com/album/dead-reckoning">Dead Reckoning by Villains Of Yesterday</a></iframe>
+						<iframe  className="bc-frame-2" title="Dead Reckoning by Villains Of Yesterday" src="https://bandcamp.com/EmbeddedPlayer/album=2392563153/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/transparent=true/" seamless><a href="http://villainsofyesterday.bandcamp.com/album/dead-reckoning" loading="lazy">Dead Reckoning by Villains Of Yesterday</a></iframe>
+
+
+
+					<svg xmlns="http://www.w3.org/2000/svg" className="tdt-svg-logo" viewBox="0 0 1000 500" imageRendering="optimizeQuality" shapeRendering="geometricPrecision">
+
+							<rect className="tdt-svg-green-bg" x="0" y="0"  width="1000px" height="500px" rx="20"></rect>
+							<rect fill="rgba(255,255,255,0)" x="20" y="20"  width="960px" height="460px" rx="2" strokeWidth="14px" stroke="rgba(255,255,255,1)"></rect>
+
+							<text fontSize="128px" y="220">
+								<tspan x="64">T</tspan>
+								<tspan x="128">h</tspan>
+								<tspan x="190">e</tspan>
+							</text>
+
+							<text fontSize="280px" y="260">
+								<tspan x="236">D</tspan>
+								<tspan x="390">r</tspan>
+								<tspan x="484">i</tspan>
+								<tspan x="536">v</tspan>
+								<tspan x="654">e</tspan>
+							</text>
+
+							<text fontSize="280px" y="408">
+								<tspan x="60">T</tspan>
+								<tspan x="200">h</tspan>
+								<tspan x="324">r</tspan>
+								<tspan x="414">o</tspan>
+								<tspan x="530">u</tspan>
+								<tspan x="662">g</tspan>
+								<tspan x="776">h</tspan>
+							</text>
+						</svg>
+
+
+					<div className="music-logo-block">
+
+						<svg xmlns="http://www.w3.org/2000/svg" className="voy-svg-logo"
+							viewBox="0 0 1000 400" imageRendering="optimizeQuality" shapeRendering="geometricPrecision">
+
+							<filter xmlns="http://www.w3.org/2000/svg" id="dropshadow" height="110%">
+							  <feGaussianBlur in="SourceAlpha" stdDeviation="2"/> 
+							  <feOffset dx="6" dy="10" result="offsetblur"/>
+							  <feComponentTransfer>
+								<feFuncA type="linear" slope="0.8"/>
+							  </feComponentTransfer>
+							  <feMerge> 
+								<feMergeNode/>
+								<feMergeNode in="SourceGraphic"/> 
+							  </feMerge>
+							</filter>
+
+							<rect className="voy-bg" x="0" y="0" width="1000px" height="400px" rx="4"></rect>
+
+							<g transform="translate(100,170)" filter="url(#dropshadow)">
+								<text fontSize="96px">
+									<tspan x="70">V</tspan>
+									<tspan x="150">I</tspan>
+									<tspan x="200">L</tspan>
+									<tspan x="280">L</tspan>
+									<tspan x="360">A</tspan>
+									<tspan x="450">I</tspan>
+									<tspan x="510">N</tspan>
+									<tspan x="600">S</tspan>
+								</text>
+							</g>
+
+							<g transform="translate(400,240)" filter="url(#dropshadow)">
+								<text fontSize="60px">
+									<tspan x="0">O</tspan>
+									<tspan x="60">F</tspan>
+								</text>
+							</g>
+
+							<g transform="translate(30,330)" filter="url(#dropshadow)">
+								<text fontSize="96px">
+									<tspan x="70">Y</tspan>
+									<tspan x="150">E</tspan>
+									<tspan x="240">S</tspan>
+									<tspan x="320">T</tspan>
+									<tspan x="400">E</tspan>
+									<tspan x="490">R</tspan>
+									<tspan x="580">D</tspan>
+									<tspan x="680">A</tspan>
+									<tspan x="770">Y</tspan>
+								</text>
+							</g>
+						</svg>
+
+					</div>
+
+
+
+						<svg xmlns="http://www.w3.org/2000/svg" className="voy-svg-logo" viewBox="0 0 1000 300" imageRendering="optimizeQuality" shapeRendering="geometricPrecision">
+
+							<rect className="voy-bg" x="0" y="0" width="1000px" height="300px" rx="4"></rect>
+
+							<text fontSize="96px" y="120" x="200">
+								<tspan dx="0">V</tspan>
+								<tspan dx="0">I</tspan>
+								<tspan dx="0">L</tspan>
+								<tspan dx="0">L</tspan>
+								<tspan dx="0">A</tspan>
+								<tspan dx="0">I</tspan>
+								<tspan dx="0">N</tspan>
+								<tspan dx="0">S</tspan>
+							</text>
+
+							<text fontSize="60px" y="180" x="420">
+								<tspan dx="0">O</tspan>
+								<tspan dx="0">F</tspan>
+							</text>
+
+							<text fontSize="96px" y="260" x="120">
+								<tspan dx="0">Y</tspan>
+								<tspan dx="0">E</tspan>
+								<tspan dx="0">S</tspan>
+								<tspan dx="0">T</tspan>
+								<tspan dx="0">E</tspan>
+								<tspan dx="0">R</tspan>
+								<tspan dx="0">D</tspan>
+								<tspan dx="0">A</tspan>
+								<tspan dx="0">Y</tspan>
+							</text>
+
+						</svg>
+
+
+/* VOY */
+/*svg.voy-svg-logo
+{
+	height:100%;
+	width:100%;
+}
+svg.voy-svg-logo > text
+{
+	fill:rgba(255, 255, 255,1);
+	font-family: "Abite";
+}
+.voy-bg
+{
+	fill: rgba(128,0,0,1);
+}*/
