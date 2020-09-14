@@ -17,13 +17,13 @@
 	src: local('Hit The Road Regular'), url('./fonts/HITROAD.woff') format('woff');
 }
 
-@font-face
+/*@font-face
 {
 	font-family: 'Abite';
 	font-style: normal;
 	font-weight: normal;
 	src: local('Abite'), url('./fonts/ABITE.woff') format('woff');
-}
+}*/
 
 @font-face
 {

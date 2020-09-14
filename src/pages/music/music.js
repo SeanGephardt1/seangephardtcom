@@ -1,7 +1,6 @@
 ﻿import React from 'react';
 import './music.css';
 import SVG from '../../art/svgs.js';
-import VoyLogo from './voy.png';
 
 export default class Music extends React.Component
 {
