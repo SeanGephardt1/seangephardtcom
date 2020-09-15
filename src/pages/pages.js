@@ -9,6 +9,8 @@ import Music from './music/music.js';
 //	import TestPage from './test/test.js';
 //	import { MovieStoreExtension } from './movie-works/movie-works.js';
 //	import { GuitarStoreExtension } from './guitar-store/guitar-store.js';
+import AnimationsDemoExtension from './anim-demo/anim-demo.js';
+
 
 
 const _pages = [
@@ -18,7 +20,8 @@ const _pages = [
 	Music,
 	//	TestPage
 	//	MovieStoreExtension,
-	//GuitarStoreExtension
+	//	GuitarStoreExtension
+	AnimationsDemoExtension
 ];
 
 export {

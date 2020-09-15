@@ -44,12 +44,12 @@ a.nav:nth-child(3).nav-selected, a.nav:nth-child(3):hover
 }
 a.nav:nth-child(4).nav-selected, a.nav:nth-child(4):hover
 {
-	background-color:var(--orange);
+	background-color:var(--nav-color-2);
 	color:var(--black);
 }
 
 a.nav.nav-selected, a.nav:hover
 {
-	background-color:var(--orange);
+	background-color:var(--black-02);
 	color:var(--black);
 }

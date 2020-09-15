@@ -1,0 +1,62 @@
+﻿.anim-demo-layout
+{
+/*	border: solid 1px var(--black-02);*/
+	max-width:1024px;
+	overflow:auto;
+	display:flex;
+	flex: 1 1 auto;
+	flex-direction:column;
+	margin:24px;
+	opacity:0;
+
+	animation-name: AniPageFadeIn1;
+	animation-delay: 300ms;
+	animation-direction: normal;
+	animation-duration: 300ms;
+	animation-fill-mode: forwards;
+	animation-iteration-count: 1;
+	animation-play-state: running;
+	animation-timing-function: ease-in-out;
+	transition: all 500ms ease-in-out;
+}
+.anim-demo-header
+{
+	color: var(--black-08);
+	font-size: 30px;
+	margin-bottom:20px;
+	font-weight:500;
+}
+.anim-demo-sub-header
+{
+	color: var(--black-08);
+	font-size: 18px;
+	padding-bottom:10px;
+	font-weight:500;
+}
+.anim-demo-desc
+{
+	font-size: 14px;
+	margin-bottom:10px;
+}
+
+.anim-demo-block-panel
+{
+	border: solid 1px var(--black-02);
+	margin-bottom:30px;
+	min-height:240px;
+	min-width:280px;
+	display:flex;
+	flex: 1 1 auto;
+	flex-direction:row;
+	flex-wrap:wrap;
+}
+
+.ani-demo-card-1
+{
+/*	border: solid 1px red;*/
+	flex: 1 1 auto;
+	text-align:center;
+	align-items:center;
+	justify-content:center;
+	justify-items:center;
+}
