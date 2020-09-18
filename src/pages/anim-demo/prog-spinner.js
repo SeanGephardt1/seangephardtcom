@@ -1,5 +1,5 @@
 ﻿import React from 'react';
-import './progress-spinner.css';
+import './prog-spinner.css';
 
 export default class ProgressSpinnerControl extends React.Component
 {

@@ -22,8 +22,8 @@
 .spin
 {
 /*	BORDER RADIUS TO AVOID LOOKING LIKE DIV BLOCKS */
-/*	border: solid 1px red;*/
-	border-radius:50%;
+/*	border: solid 1px red;
+*/	border-radius:50%;
 
 	opacity:0;
 	display:inline-flex;
@@ -48,12 +48,12 @@
 
 /* in order */
 @keyframes RotateProgressCircle {
-    0% {
+/*    0% {
 		transform: rotate(0deg);
     }
     100% {
 		transform: rotate(360deg);
-    }
+    }*/
 }
 @keyframes FadeInProgressCircle
 {
