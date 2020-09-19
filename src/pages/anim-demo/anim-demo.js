@@ -4,7 +4,6 @@ import './anim-demo.css';
 import ProgressSpinnerControl from './prog-spinner.js';
 import ProgressBarControl from './prog-bar.js';
 
-
 export default class AnimationsDemoExtension extends React.Component
 {
 	static defaultProps = {
@@ -155,24 +154,13 @@ export default class AnimationsDemoExtension extends React.Component
 
 					</div>
 
-					{ /* PLACEHOLDERS */}
 
-					<div className="ani-demo-card-1">
+					{ /* PLACEHOLDERS 
+						<div className="ani-demo-card-1">
 						<div className="ani-card-ctrl-block">control</div>
 						<div className="ani-card-text-block">This is an example of what is called an "indefinite" progress indicator, meaning that ti it is displayed for an indefinite amount of time. it can be hidden at any time.</div>
-					</div>
-
-					<div className="ani-demo-card-1">
-						<div className="ani-card-ctrl-block">control</div>
-						<div className="ani-card-text-block">This is an example of what is called an "indefinite" progress indicator, meaning that ti it is displayed for an indefinite amount of time. it can be hidden at any time.</div>
-					</div>
-
-					<div className="ani-demo-card-1">
-						<div className="ani-card-ctrl-block">control</div>
-						<div className="ani-card-text-block">This is an example of what is called an "indefinite" progress indicator, meaning that ti it is displayed for an indefinite amount of time. it can be hidden at any time.</div>
-					</div>
-
-
+						</div>
+					 */}
 
 
 					{ /* END */}
