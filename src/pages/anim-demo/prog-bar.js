@@ -21,13 +21,39 @@ export default class ProgressBarControl extends React.Component
 		return;
 	};
 	render()
-	{	//	console.debug( "ProgressBarControl.render()", this.props.size, this.Color );	
-		const progClassName = "inner-bar " + this.Color;
-		console.debug( "ProgressBarControl.render()", progClassName );	
+	{
+		let progBar_Percentage, progBar_Speed;
+
+		let progBar_Ani = "inner-bar-ani " + this.Color;
+		let progBar_NonAni = "inner-bar-non-ani " + this.Color;
+
+		if ( this.props.percentage !== undefined )
+		{
+			progBar_Percentage = this.props.percentage + "%";
+		}
+
+		if ( this.props.speed === undefined )
+		{
+			progBar_Speed = "1000ms, 250ms";
+		}
+		else
+		{
+			progBar_Speed = this.props.speed + "ms,250ms";
+
+		}
+
+		//	console.debug( this.props.speed, progBar_Speed );
 
 		return (
 			<div className="prog-bar">
-				<div className={ progClassName}></div>
+				{
+					this.props.percentage > 0 &&
+					<div className={progBar_NonAni} style={{'width': progBar_Percentage }}></div>		
+				}
+				{
+					this.props.percentage === undefined &&
+					<div className={progBar_Ani} style={{'animationDuration': progBar_Speed }}></div>
+				}
 			</div>
 		);
 	};

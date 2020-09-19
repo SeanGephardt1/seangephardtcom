@@ -6,7 +6,7 @@
 	width: 100%;
 }
 
-.inner-bar
+.inner-bar-ani
 {
 /*	border: solid 1px var(--black);*/
 	width:0;
@@ -19,6 +19,13 @@
 	animation-name: AniProgBarFill, AniProgBarHide;
 	animation-play-state:running, running;
 	animation-timing-function:linear, linear;
+}
+
+.inner-bar-non-ani
+{
+/*	border: solid 1px var(--black);*/
+	width:0;
+	height:100%;
 }
 
 .pb-red
