@@ -71,12 +71,12 @@ export default class AnimationsDemoExtension extends React.Component
 		{
 			this._prog_bar_value = 0;
 			this._prog_bar_btn_clicked = true;
-			this._prog_bar_interval_handler = window.setInterval( this.ProgBarDemo_StartInterval, 30, this );
+			this._prog_bar_interval_handler = window.setInterval( this.ProgBarDemo_StartInterval, 20, this );
 		}
 		else if ( this._prog_bar_btn_clicked === false && this._prog_bar_value !== 0)
 		{
 			this._prog_bar_btn_clicked = true;
-			this._prog_bar_interval_handler = window.setInterval( this.ProgBarDemo_StartInterval, 30, this );
+			this._prog_bar_interval_handler = window.setInterval( this.ProgBarDemo_StartInterval, 20, this );
 		}
 		else if ( this._prog_bar_btn_clicked === true )
 		{
@@ -107,14 +107,16 @@ export default class AnimationsDemoExtension extends React.Component
 
 				<div className="anim-demo-block-panel">
 
-					<div className="ani-demo-card-1">
-						<div className="ani-card-ctrl-block">control</div>
-						<div className="ani-card-text-block">This is an example of what is called an "indefinite" progress indicator, meaning that ti it is displayed for an indefinite amount of time. it can be hidden at any time.</div>
-					</div>
+					{ /* "FINISHED CONTROLS" */}
 
 					<div className="ani-demo-card-1">
 						<div className="ani-card-ctrl-block">
 							<ProgressSpinnerControl size={ProgressSpinnerControl.defaultProps.Sizes.ExtraLarge} />
+							<div className="margin-bottom-10"></div>
+							<ProgressBarControl
+								color={ProgressBarControl.defaultProps.Colors.Green}
+								loop={true} />
+
 						</div>
 							<div className="ani-card-text-block">This is an example of what is called an "indefinite" progress indicator, meaning that ti it is displayed for an indefinite amount of time. it can be hidden at any time. </div>
 					</div>
@@ -130,14 +132,15 @@ export default class AnimationsDemoExtension extends React.Component
 							<ProgressBarControl color={ProgressBarControl.defaultProps.Colors.Yellow} speed={ 1500 } />
 							<div className="margin-bottom-10"></div>
 
-							<ProgressBarControl
-								color={ProgressBarControl.defaultProps.Colors.Green}
-								percentage={this._prog_bar_value} />
+							<ProgressBarControl color={ProgressBarControl.defaultProps.Colors.Green} speed={ 2000 } />
+							<div className="margin-bottom-10"></div>
+
+							<ProgressBarControl color={ProgressBarControl.defaultProps.Colors.Blue} speed={ 2500 } />
 							<div className="margin-bottom-10"></div>
 
 							<ProgressBarControl
-								color={ProgressBarControl.defaultProps.Colors.Blue}
-								percentage={this._prog_bar_value } />
+								color={ProgressBarControl.defaultProps.Colors.Purple}
+								percentage={this._prog_bar_value} />
 
 						</div>
 
@@ -152,6 +155,27 @@ export default class AnimationsDemoExtension extends React.Component
 
 					</div>
 
+					{ /* PLACEHOLDERS */}
+
+					<div className="ani-demo-card-1">
+						<div className="ani-card-ctrl-block">control</div>
+						<div className="ani-card-text-block">This is an example of what is called an "indefinite" progress indicator, meaning that ti it is displayed for an indefinite amount of time. it can be hidden at any time.</div>
+					</div>
+
+					<div className="ani-demo-card-1">
+						<div className="ani-card-ctrl-block">control</div>
+						<div className="ani-card-text-block">This is an example of what is called an "indefinite" progress indicator, meaning that ti it is displayed for an indefinite amount of time. it can be hidden at any time.</div>
+					</div>
+
+					<div className="ani-demo-card-1">
+						<div className="ani-card-ctrl-block">control</div>
+						<div className="ani-card-text-block">This is an example of what is called an "indefinite" progress indicator, meaning that ti it is displayed for an indefinite amount of time. it can be hidden at any time.</div>
+					</div>
+
+
+
+
+					{ /* END */}
 				</div>
 
 			</div>
