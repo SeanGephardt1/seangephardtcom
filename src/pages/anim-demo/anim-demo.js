@@ -117,7 +117,7 @@ export default class AnimationsDemoExtension extends React.Component
 								loop={true} />
 
 						</div>
-							<div className="ani-card-text-block">This is an example of what is called an "indefinite" progress indicator, meaning that ti it is displayed for an indefinite amount of time. it can be hidden at any time. </div>
+							<div className="ani-card-text-block">This is an example of an "indefinite" progress indicator, meaning that it is displayed for an indefinite amount of time and can be hidden at any time.</div>
 					</div>
 
 					<div className="ani-demo-card-1">
