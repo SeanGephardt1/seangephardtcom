@@ -42,7 +42,7 @@ export default class AnimationsDemoExtension extends React.Component
 		this.state = {
 			ProgBarButtonRunning: false,
 			ProgPieButtonRunning: false,
-			ProgPieSpeed: 500
+			ProgPieSpeed: 300
 		};
 
 		document.title = this.Title;

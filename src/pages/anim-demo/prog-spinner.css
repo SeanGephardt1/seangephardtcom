@@ -22,15 +22,16 @@
 .spin
 {
 /*	BORDER RADIUS TO AVOID LOOKING LIKE DIV BLOCKS */
-/*	border: solid 1px red;*/
-	border-radius:50%;
+/*	border: solid 1px red;
+	padding:0px;
+*/	border-radius:50%;
 
 	opacity:0;
 	display:inline-flex;
 	flex: 1 1 auto;
 	
 	transform: rotate(0);
-	animation-delay: 0ms, 2000ms;
+	animation-delay: 0ms, 1000ms;
 	animation-direction:normal, normal;
 	animation-duration:1000ms, 300ms;
 	animation-fill-mode:both, forwards;
@@ -41,6 +42,7 @@
 }
 .spin > svg
 {
+/*	border: solid 1px red;*/
 	border-radius:50%;
 	height:100%;
 	width:100%;

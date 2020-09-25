@@ -1,4 +1,7 @@
-﻿.prog-pie-ctrl
+﻿/*		
+	https://bennettfeely.com/clippy/
+*/
+.prog-pie-ctrl
 {
 /*	border: solid 1px var(--black);*/
 	background-color: transparent;
@@ -23,28 +26,22 @@
 	z-index:1;
 }
 
-/*		
-	https://bennettfeely.com/clippy/
-
-	clip-path: polygon(53% 53%, 50% 100%, 55% 100%);
-	clip-path: polygon(0 53%, 100% 50%, 100% 100%, 0% 100%);
-	clip-path: polygon(0% 50%, 100% 50%, 100% 100%, 0% 100%);
-*/
 .prog-pie-inner-circle
 {
 	position:absolute;
 	z-index:3;
 	height:160px;
 	width: 160px;
-	background-color: rgba(255,0,0,0.3);
+	background-color: rgba(0, 128, 128, 0.5);
 	border-style: solid;
 	border-width:10px;
-	border-radius:50%;
+/*	border-radius:50%;*/
 
-/*	clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+/*	
+	clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
 */
-/*
-	animation-delay: 300ms;
+
+/*	animation-delay: 300ms;
 	animation-direction:normal;
 	animation-duration:1000ms;
 	animation-fill-mode:forwards;
@@ -102,7 +99,6 @@
 {
     0% {
 		transform: rotate(0deg);
-
     }
     100% {
 		transform: rotate(360deg);
