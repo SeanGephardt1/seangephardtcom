@@ -166,11 +166,18 @@ export default class AnimationsDemoExtension extends React.Component
 					{ /* DEFINITE PROGRESS PIE */ }
 					<div className="ani-demo-card-1">
 						<div className="ani-card-ctrl-block">
-							<ProgressPieControl color={ProgressPieControl.defaultProps.Colors.Blue} />
-							</div>
-							<div className="ani-card-text-block">This is an example of progress indicator that display a numeric value as it changes, and is displayed or hidden for a specific length of time.</div>
+							<ProgressPieControl
+								color={ProgressPieControl.defaultProps.Colors.Red}
+								value={ this._prog_bar_value } />
 						</div>
-
+						<div className="ani-card-text-block">This is an example of progress indicator that display a numeric value as it changes, and is displayed or hidden for a specific length of time.
+							<div className="prog-bar-controls">
+								<button className="prog-bar-btn" onClick={this.OnClick_TestProgressBar.bind( this )}>{this._prog_bar_tbn_text}</button>
+								<span className="prog-bar-value">{this._prog_bar_value}</span>
+							</div>							
+						
+							</div>
+					</div>
 
 
 					{ /* END */}

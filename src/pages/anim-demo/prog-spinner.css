@@ -22,8 +22,8 @@
 .spin
 {
 /*	BORDER RADIUS TO AVOID LOOKING LIKE DIV BLOCKS */
-/*	border: solid 1px red;
-*/	border-radius:50%;
+/*	border: solid 1px red;*/
+	border-radius:50%;
 
 	opacity:0;
 	display:inline-flex;

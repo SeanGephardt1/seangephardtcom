@@ -1,113 +1,105 @@
-﻿.prog-bar
+﻿.prog-pie-ctrl
 {
-/*	border: solid 1px red;*/
-	min-height:0px;
-	height:6px;
+/*	border: solid 1px var(--black);*/
+	background-color: transparent;
+	display:flex;
+	height:100%;
 	width: 100%;
+	padding:10px;
+	text-align:center;
+	justify-content:center;
+	justify-items:center;
+	align-content:center;
+	align-items:center;
+}
+
+.prog-pie-outer-circle
+{
+	height:160px;
+	width: 160px;
+	border-radius:50%;
+	border: solid 10px var(--black-01);
+	background-color:transparent;
+	z-index:1;
+}
+
+/*		//	clip-path: circle(50% at 50% 50%);
+		//	clip-path: polygon(53% 53%, 50% 100%, 55% 100%);
+		//	clip-path: polygon(0 53%, 100% 50%, 100% 100%, 0% 100%);
+		//	clip-path: polygon(0% 50%, 100% 50%, 100% 100%, 0% 100%);
+*/
+.prog-pie-inner-circle
+{
+	position:absolute;
+	height:160px;
+	width: 160px;
+	border-style: solid;
+	border-width:10px;
+	border-radius:50%;
+	clip-path: polygon(0% 50%, 100% 50%, 100% 100%, 0% 100%);
+	z-index:3;
+
+	animation-delay: 300ms;
+	animation-direction:normal;
+	animation-duration:1000ms;
+	animation-fill-mode:forwards;
+	animation-iteration-count:infinite;
+	animation-name:ProgPie_Rotate;
+	animation-play-state:running;
+	animation-timing-function:linear;	
+}
+
+.prog-pie-value
+{
+	position:absolute;
+	width:100px;
+	border: solid 0px var(--black-04);
+	border-radius:4px;
+	padding:10px;
+	font-size:150%;
+	z-index:3;
 	text-align:center;
 }
 
-.inner-bar-ani
+.pp-red
 {
-/*	border: solid 1px var(--black-01);*/
-	width:0;
-	height:100%;
-
-	animation-delay: 500ms, 1750ms;
-	animation-direction:normal, normal;
-	animation-duration: 1000ms, 250ms;
-	animation-fill-mode: forwards, forwards;
-	animation-iteration-count:1, 1;
-	animation-name: AniProgBar_Fill, AniProgBar_Hide;
-	animation-play-state:running, running;
-	animation-timing-function:linear, linear;
+	border-color: var(--nav-color-1);
+	color:var(--nav-color-1);
 }
-
-.inner-bar-non-ani
+.pp-orange
 {
-/*	border: solid 1px var(--black-01);*/
-	width:0;
-	height:100%;
+	border-color: var(--orange);
+	color: var(--orange);
 }
-
-.inner-bar-indef-ani
+.pp-yellow
 {
-/*	border: solid 1px var(--black-01);*/
-	border-radius: 10px;
-	width:100%;
-	height: calc(100%);
-	opacity:0;
-
-	background-color:#EFF6FC;
-	background-image: linear-gradient(90deg, #0078D4 0,  #0078D4 50%, #0078D4 100%);
-	background-repeat:no-repeat;
-	background-size: 50px auto;
-	background-position-x: 0;
-
-	animation-name: AniProgBar_Indef_Fill, AniPageFadeIn1;
-	animation-direction:normal;
-	animation-fill-mode:forwards;
-	animation-play-state:running;
-	animation-timing-function:linear;
-	animation-delay: 0ms, 2000ms;
-	animation-duration:1000ms, 300ms;
-	animation-iteration-count:infinite, 1;
+	border-color: var(--nav-color-2);
+	color: var(--nav-color-2);
 }
-
-.pb-red
+.pp-green
 {
-	background-color: var(--nav-color-1);
+	border-color: var(--nav-color-3);
+	color:var(--nav-color-3);
 }
-.pb-orange
+.pp-blue
 {
-	background-color: var(--orange);
+	border-color: var(--lapis);
+	color: var(--lapis);
 }
-.pb-yellow
+.pp-purple
 {
-	background-color: var(--nav-color-2);
-}
-.pb-green
-{
-	background-color: var(--nav-color-3);
-}
-.pb-blue
-{
-	background-color: var(--lapis);
-}
-.pb-purple
-{
-	background-color: var(--purple);
+	border-color: var(--purple);
+	color: var(--purple);
 }
 
 
-@keyframes AniProgBar_Fill
+@keyframes ProgPie_Rotate
 {
-	0%
-	{
-		width: 0%;
-	}
-	100%
-	{
-		width: 100%;
-	}
-}
-@keyframes AniProgBar_Hide
-{
-/*	100%
-	{
-		height: 0px;
-	}*/
-}
+    0% {
+		transform: rotate(0deg);
 
-@keyframes AniProgBar_Indef_Fill
-{
-	0% { 
-		background-position-x: 0;
-	}
-	50% { 
-		background-position-x: 100%;
-	}
-	100% { 
-		background-position-x: 0;
-	}
+    }
+    100% {
+		transform: rotate(360deg);
+    }
 }

@@ -6,60 +6,36 @@ export default class ProgressPieControl extends React.Component
 	static defaultProps = {
 		Colors:
 		{
-			Red: "pb-red",
-			Orange: "pb-orange",
-			Yellow: "pb-yellow",
-			Green: "pb-green",
-			Blue: "pb-blue",
-			Purple: "pb-purple"
+			Red: "pp-red",
+			Orange: "pp-orange",
+			Yellow: "pp-yellow",
+			Green: "pp-green",
+			Blue: "pp-blue",
+			Purple: "pp-purple"
 		}
 	};
 	constructor( props )
 	{	
 		super( props );
-		this.Color = ( this.props.color || ProgressPieControl.defaultProps.Colors.Purple );
+		this.Color = ( this.props.color || ProgressPieControl.defaultProps.Colors.Red );
+		this.Value = ( this.props.value || 0 );
 		return;
 	};
 	render()
 	{
-		let progBar_Percentage, progBar_Speed;
+		//	console.debug( "this.props", this.props);
 
-		let progBar_Ani = "inner-bar-ani " + this.Color;
-		let progBar_NonAni = "inner-bar-non-ani " + this.Color;
-		let progBar_IndefAni = "inner-bar-indef-ani";	// + this.Color;
+		const _outer_class_name = "prog-pie-outer-circle";
+		const _inner_class_name = "prog-pie-inner-circle " + this.Color;
 
-
-		if ( this.props.percentage !== undefined )
-		{
-			progBar_Percentage = this.props.percentage + "%";
-		}
-
-		if ( this.props.speed === undefined )
-		{
-			progBar_Speed = "1000ms, 250ms";
-		}
-		else
-		{
-			progBar_Speed = this.props.speed + "ms,250ms";
-
-		}
-
-		//	console.debug( this.props);
+		const _value_class_name = "prog-pie-value " + this.Color;
+		const _value_string = this.props.value + "%";
 
 		return (
-			<div className="prog-bar">
-				{
-					this.props.loop === true &&
-					<div className={progBar_IndefAni} ></div>		
-				}
-				{
-					this.props.loop === undefined && this.props.percentage > 0 &&
-					<div className={progBar_NonAni} style={{'width': progBar_Percentage }}></div>		
-				}
-				{
-					this.props.loop === undefined && this.props.percentage === undefined &&
-					<div className={progBar_Ani} style={{'animationDuration': progBar_Speed }}></div>
-				}
+			<div className="prog-pie-ctrl">
+				<div className={_outer_class_name}></div>
+				<div className={_inner_class_name}></div>
+				<div className={_value_class_name}>{ _value_string }</div>
 			</div>
 		);
 	};
