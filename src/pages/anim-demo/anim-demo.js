@@ -3,6 +3,8 @@ import SVG from '../../art/svgs.js';
 import './anim-demo.css';
 import ProgressSpinnerControl from './prog-spinner.js';
 import ProgressBarControl from './prog-bar.js';
+import ProgressPieControl from './prog-pie.js';
+
 
 export default class AnimationsDemoExtension extends React.Component
 {
@@ -108,18 +110,16 @@ export default class AnimationsDemoExtension extends React.Component
 
 					{ /* "FINISHED CONTROLS" */}
 
+					{ /* INDEFINITE PROGRESS SPINNER */ }
 					<div className="ani-demo-card-1">
 						<div className="ani-card-ctrl-block">
 							<ProgressSpinnerControl size={ProgressSpinnerControl.defaultProps.Sizes.ExtraLarge} />
 							<div className="margin-bottom-10"></div>
-							<ProgressBarControl
-								color={ProgressBarControl.defaultProps.Colors.Green}
-								loop={true} />
-
 						</div>
 							<div className="ani-card-text-block">This is an example of an "indefinite" progress indicator, meaning that it is displayed for an indefinite amount of time and can be hidden at any time.</div>
 					</div>
 
+					{ /* DEFINITE PROGRESS BAR */ }
 					<div className="ani-demo-card-1">
 						<div className="ani-card-ctrl-block">
 							<ProgressBarControl color={ProgressBarControl.defaultProps.Colors.Red} speed={ 500 } />
@@ -134,7 +134,9 @@ export default class AnimationsDemoExtension extends React.Component
 							<ProgressBarControl color={ProgressBarControl.defaultProps.Colors.Green} speed={ 2000 } />
 							<div className="margin-bottom-10"></div>
 
-							<ProgressBarControl color={ProgressBarControl.defaultProps.Colors.Blue} speed={ 2500 } />
+							<ProgressBarControl
+								color={ProgressBarControl.defaultProps.Colors.Green}
+								loop={true} />
 							<div className="margin-bottom-10"></div>
 
 							<ProgressBarControl
@@ -144,7 +146,7 @@ export default class AnimationsDemoExtension extends React.Component
 						</div>
 
 						<div className="ani-card-text-block">
-							<div>This progress indicator can be used with a specific increment value.</div>
+							<div>This progress indicator can be in two scenarios, with a specific increment value or with out.</div>
 							<div className="prog-bar-controls">
 								<button className="prog-bar-btn" onClick={this.OnClick_TestProgressBar.bind( this )}>{this._prog_bar_tbn_text}</button>
 								<span className="prog-bar-value">{this._prog_bar_value}</span>
@@ -154,13 +156,21 @@ export default class AnimationsDemoExtension extends React.Component
 
 					</div>
 
-
 					{ /* PLACEHOLDERS 
 						<div className="ani-demo-card-1">
 						<div className="ani-card-ctrl-block">control</div>
 						<div className="ani-card-text-block">This is an example of what is called an "indefinite" progress indicator, meaning that ti it is displayed for an indefinite amount of time. it can be hidden at any time.</div>
 						</div>
 					 */}
+
+					{ /* DEFINITE PROGRESS PIE */ }
+					<div className="ani-demo-card-1">
+						<div className="ani-card-ctrl-block">
+							<ProgressPieControl color={ProgressPieControl.defaultProps.Colors.Blue} />
+							</div>
+							<div className="ani-card-text-block">This is an example of progress indicator that display a numeric value as it changes, and is displayed or hidden for a specific length of time.</div>
+						</div>
+
 
 
 					{ /* END */}
