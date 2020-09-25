@@ -27,20 +27,28 @@ export default class AnimationsDemoExtension extends React.Component
 		this._pause_text = "Pause";
 		this._stop_text = "Stop";
 
+		// progress bar
 		this._prog_bar_btn_clicked = false;
 		this._prog_bar_tbn_text = this._start_text;
 		this._prog_bar_value = 0;
 		this._prog_bar_interval_handler = undefined;
 
+		// progress pie
+		this._prog_pie_btn_clicked = false;
+		this._prog_pie_btn_text = this._start_text;
+		this._prog_pie_value = 0;
+		this._prog_pie_interval_handler = undefined;
+
 		this.state = {
-			ProgBarButtonRunning: false
+			ProgBarButtonRunning: false,
+			ProgPieButtonRunning: false,
+			ProgPieSpeed: 500
 		};
 
 		document.title = this.Title;
 
 		return;
 	};
-
 
 	ProgBarDemo_StartInterval( scopeObj )
 	{	//	console.debug( "ProgBarDemo_StartInterval", scopeObj._prog_bar_value );
@@ -94,6 +102,73 @@ export default class AnimationsDemoExtension extends React.Component
 
 		return;
 	};
+
+
+	OnChange_ChangeProgPieSpeed( ev )
+	{	//	console.debug( "OnChange_ChangeProgPieSpeed", ev.target.value );
+		this._prog_pie_btn_clicked = false;
+		this._prog_pie_btn_text  = this._start_text;
+
+		window.clearInterval( this._prog_pie_interval_handler );
+		this._prog_pie_interval_handler = undefined;
+
+		this.setState( {
+			ProgPieSpeed: ev.target.value,
+			ProgPieButtonRunning: false
+		} );
+		return;
+	}
+	ProgPie_StartInterval( scopeObj )
+	{	//	console.debug( "ProgPieDemo_StartInterval", scopeObj._prog_bar_value );
+		if ( scopeObj._prog_pie_value < 100 )
+		{
+			scopeObj._prog_pie_value++;
+			scopeObj._prog_pie_btn_text  = scopeObj._pause_text;
+		}
+		else if ( scopeObj._prog_pie_value === 100)
+		{
+			scopeObj._prog_pie_btn_text  = scopeObj._start_text;
+			scopeObj._prog_pie_btn_clicked = false;
+
+			window.clearInterval( scopeObj._prog_pie_interval_handler );
+			scopeObj._prog_pie_interval_handler = undefined;
+		}
+
+		scopeObj.setState({
+			ProgPieButtonRunning: !scopeObj.state.ProgPieButtonRunning
+		});
+		//	console.debug( "scopeObj.state", scopeObj.state );
+		return;
+	};
+	OnClick_TestProgressPie( ev )
+	{	//	console.debug( "OnClick_TestProgressPie", this._prog_pie_btn_clicked );
+		if ( this._prog_pie_btn_clicked === false && ( this._prog_pie_value === 0 || this._prog_pie_value === 100) )
+		{
+			this._prog_pie_value = 0;
+			this._prog_pie_btn_clicked = true;
+			this._prog_pie_interval_handler = window.setInterval( this.ProgPie_StartInterval, this.state.ProgPieSpeed, this );
+		}
+		else if ( this._prog_pie_btn_clicked === false && this._prog_pie_value !== 0)
+		{
+			this._prog_pie_btn_clicked = true;
+			this._prog_pie_interval_handler = window.setInterval( this.ProgPie_StartInterval, this.state.ProgPieSpeed, this );
+		}
+		else if ( this._prog_pie_btn_clicked === true )
+		{
+			this._prog_pie_btn_clicked = false;
+			this._prog_pie_btn_text  = this._start_text;
+
+			window.clearInterval( this._prog_pie_interval_handler );
+			this._prog_pie_interval_handler = undefined;
+
+			this.setState({
+				ProgPieButtonRunning: !this.state.ProgPieButtonRunning
+			});
+		}
+
+		return;
+	};
+
     render()
 	{
 		//	console.debug( "render", this.state.ProgBarStatus );
@@ -168,15 +243,24 @@ export default class AnimationsDemoExtension extends React.Component
 						<div className="ani-card-ctrl-block">
 							<ProgressPieControl
 								color={ProgressPieControl.defaultProps.Colors.Red}
-								value={ this._prog_bar_value } />
+								value={ this._prog_pie_value } />
 						</div>
 						<div className="ani-card-text-block">This is an example of progress indicator that display a numeric value as it changes, and is displayed or hidden for a specific length of time.
-							<div className="prog-bar-controls">
-								<button className="prog-bar-btn" onClick={this.OnClick_TestProgressBar.bind( this )}>{this._prog_bar_tbn_text}</button>
-								<span className="prog-bar-value">{this._prog_bar_value}</span>
-							</div>							
-						
+							<div className="prog-bar-controls-2">
+								<label htmlFor="prog_pie_speed">Speed (between 100ms and 2500ms)</label>
+								<input type="range"
+									id="prog_pie_speed" name="prog_pie_speed"
+									className="input-range-demo"
+									min="100" max="2500" step="100" value={this.state.ProgPieSpeed}
+									onChange={ this.OnChange_ChangeProgPieSpeed.bind(this) }/>
 							</div>
+							<div className="prog-bar-controls">
+								<button className="prog-bar-btn" onClick={this.OnClick_TestProgressPie.bind( this )}>{this._prog_pie_btn_text}</button>
+							</div>							
+							<div className="prog-bar-controls">
+								<span className="prog-bar-value">speed: {this.state.ProgPieSpeed}, count: {this._prog_pie_value}</span>
+							</div>
+						</div>
 					</div>
 
 

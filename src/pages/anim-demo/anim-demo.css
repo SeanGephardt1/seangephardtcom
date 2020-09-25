@@ -87,12 +87,20 @@
 	margin-top:10%;
 }
 
-.prog-bar-controls
+.prog-bar-controls-2
 {
 /*	border: solid 1px red;
 */	vertical-align:top;
 	display:flex;
 	flex-direction:row;
+	margin-top:10px;
+}
+.prog-bar-controls-2
+{
+/*	border: solid 1px red;
+*/	vertical-align:top;
+	display:flex;
+	flex-direction:column;
 	margin-top:10px;
 }
 .prog-bar-btn
@@ -107,4 +115,10 @@
 	flex: 1 0 50%;
 	text-align:center;
 	vertical-align:middle;
+}
+.input-range-demo
+{
+	width:100%;
+	padding-top:20px;
+	padding-bottom:20px;
 }
