@@ -88,37 +88,54 @@ export default class ProgressPieControl extends React.Component
 	{
 		console.debug( "ComputeClipPath", val );
 
-		let _temp_values = [];
-
 		if ( val === 0 || val === 1 )
 		{
-			_temp_values = [...this._starting_polygon_values];
+			this.CurrentPolygonValues = [...this._starting_polygon_values];
 		}
 		else if ( val === 100 )
 		{
-			_temp_values = [...this._ending_polygon_values];
+			this.CurrentPolygonValues = [...this._ending_polygon_values];
 		}
 		else
 		{
-			_temp_values = [...this.CurrentPolygonValues];
+			let _temp_values = [...this.CurrentPolygonValues];
+			//let _temp_values = [];
 
-			for ( let i = 0; i < _temp_values.length; i++ )
+			for ( let i = 0; i < this.CurrentPolygonValues.length; i++ )
 			{
-				let _temp = this.CleanPolyValues( _temp_values[i] );
-				console.debug( i, val, _temp[0], _temp[1]);
+				let _temp1 = this.CleanPolyValues( this.CurrentPolygonValues[i] );
+				console.debug( "_temp1", i, val, _temp1[0], _temp1[1]);
 
-				//let _val_one = 50 + this._percentage;
-				//let _val_two = ( _temp[1] - 0.5 ) + this._percentage;
+				let _one, _two;
 
-				//let _val_string = _val_one + " " + _val_two;
-				//console.debug( i, val, _val_one, _val_two, _val_string );
+				if ( i < 7 )
+				{
+					_one = parseInt( _temp1[0] ) + i;
+					_two = parseInt( _temp1[1] ) + i;
+				}
+				else if ( i > 7)
+				{
+					_one = 50;
+					_two = 100;
+				}
 
-				//	_temp_values[i] = _val_string;
+
+				if ( _one < 0 ) { _one = 0; }
+				if ( _one > 99 ) { _one = 100; }
+				if ( _two < 0 ) { _two = 0; }
+				if ( _two > 99 ) { _two = 100; }
+
+				console.debug( "_one,_two", i, val, _temp1[0], _temp1[1], _one,_two);
+
+				_temp_values[i] = _one + this._percentage + " " + _two + this._percentage;
+				console.debug( i, _temp_values[i] );
+				console.debug();
 			}
-		}
 
-		console.debug( val, "_temp", _temp_values, this.CurrentPolygonValues );
-		this.CurrentPolygonValues = _temp_values;
+			console.debug( val, "_temp", _temp_values,this.CurrentPolygonValues );
+			this.CurrentPolygonValues = [..._temp_values];
+			console.debug( val, "_temp", _temp_values,this.CurrentPolygonValues );
+		}
 		return; 
 	}
 	render()

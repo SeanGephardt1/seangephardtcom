@@ -42,7 +42,8 @@ export default class AnimationsDemoExtension extends React.Component
 		this.state = {
 			ProgBarButtonRunning: false,
 			ProgPieButtonRunning: false,
-			ProgPieSpeed: 0
+			ProgPieSpeed: 0,
+			ProgPieStep: 0
 		};
 
 		document.title = this.Title;
@@ -104,6 +105,14 @@ export default class AnimationsDemoExtension extends React.Component
 	};
 
 
+	// ProgPie
+	OnChange_StepProgPie( ev )
+	{	//	console.debug( "OnChange_StepProgPie", ev.target.value );
+		this.setState( {
+			ProgPieStep: ev.target.value,
+		} );
+		return;
+	}
 	OnChange_ChangeProgPieSpeed( ev )
 	{	//	
 		console.debug( "OnChange_ChangeProgPieSpeed", ev.target.value );
@@ -244,14 +253,29 @@ export default class AnimationsDemoExtension extends React.Component
 						</div>
 					 */}
 
-					{ /* DEFINITE PROGRESS PIE */ }
+					{ /* DEFINITE PROGRESS PIE
+					 * 
+					 * 
+					 * 							<ProgressPieControl
+								color={ProgressPieControl.defaultProps.Colors.Red}
+								value={ this._prog_pie_value } />
+					 * 
+					 * */ }
 					<div className="ani-demo-card-1">
 						<div className="ani-card-ctrl-block">
 							<ProgressPieControl
 								color={ProgressPieControl.defaultProps.Colors.Red}
-								value={ this._prog_pie_value } />
+								value={ this.state.ProgPieStep } />
 						</div>
 						<div className="ani-card-text-block">This is an example of progress indicator that display a numeric value as it changes, and is displayed or hidden for a specific length of time.
+							<div className="prog-bar-controls-2">
+								<label htmlFor="prog_pie_step">Step test: {this.state.ProgPieStep}</label>
+								<input type="range"
+									id="prog_pie_step" name="prog_pie_step"
+									className="input-range-demo"
+									min="0" max="100" step="1" value={this.state.ProgPieStep}
+									onChange={ this.OnChange_StepProgPie.bind(this) }/>
+							</div>
 							<div className="prog-bar-controls-2">
 								<label htmlFor="prog_pie_speed">Speed (between 50ms and 1000ms)</label>
 								<input type="range"
