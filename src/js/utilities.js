@@ -819,6 +819,27 @@ class _Utilities
 		//	console.debug( "_f", _f );
 		return _rv;
 	};
+
+	// TO BE TESTED
+	static CleanPolyValues( strValue )
+	{
+		let _rv = strValue.split( " " );
+		for ( let c = 0; c < _rv.length; c++ )
+		{
+			_rv[c] = _rv[c].replace( "%", "" );
+			if ( _rv[c] < 0 )
+			{
+				_rv[c] = 0;
+			}
+
+			if ( _rv[c] > 99 )
+			{
+				_rv[c] = 100;
+			}
+		}
+		return _rv;
+	};
+
 }
 
 export
