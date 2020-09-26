@@ -20,31 +20,31 @@ export default class ProgressPieControl extends React.Component
 		this.Color = ( this.props.color || ProgressPieControl.defaultProps.Colors.Red );
 		this.Value = ( this.props.value || 0 );
 
-
 		this._percentage = "%";
+
 		this._default_polygon_values = [
-			"50% 3%",		// 1
-			"100% 17%",	// 2
-			"90% 40%",		// 3
-			"95% 70%",		// 4
-			"80% 95%",		// 5 
-			"50% 99%",		// 6
-			"27% 87%",		// 7 
-			"1% 74%",		// 8 
-			"5% 46%",		// 9
-			"4% 7%"			// 10
+			"50% 40%",		// 1
+			"60% 40%",		// 2
+			"60% 50%",		// 3
+			"60% 55%",		// 4
+			"60% 60%",		// 5 
+			"50% 60%",		// 6
+			"40% 60%",		// 7 
+			"40% 56%",		// 8 
+			"40% 50%",		// 9
+			"40% 40%"		// 10
 		];
 		this._starting_polygon_values = [
-			"50% 50%",		// 1
-			"100% 17%",	// 2
-			"90% 40%",		// 3
-			"95% 70%",		// 4
-			"80% 95%",		// 5 
-			"50% 99%",		// 6
-			"27% 87%",		// 7 
-			"1% 74%",		// 8 
-			"5% 46%",		// 9
-			"4% 7%"			// 10
+			"50% 40%",		// 1
+			"60% 40%",		// 2
+			"60% 50%",		// 3
+			"60% 55%",		// 4
+			"60% 60%",		// 5 
+			"50% 60%",		// 6
+			"40% 60%",		// 7 
+			"40% 56%",		// 8 
+			"40% 50%",		// 9
+			"40% 40%"		// 10
 		];
 		this._ending_polygon_values = [
 			"50% 0%",		// 1
@@ -84,48 +84,52 @@ export default class ProgressPieControl extends React.Component
 		}
 		return _rv;
 	};
-	ComputeClipPath( v )
+	ComputeClipPath( val )
 	{
-		console.debug( "ComputeClipPath", v, this.CurrentPolygonValues.length, this.CurrentPolygonValues.length );
+		console.debug( "ComputeClipPath", val );
 
-		if ( v === 0 || v === 1 )
-		{
-			this.CurrentPolygonValues = this._starting_polygon_values;
-		}
-		else if ( v === 100 )
-		{
-			this.CurrentPolygonValues = this._ending_polygon_values;
-		}
+		let _temp_values = [];
 
-			for ( let i = 0; i < this.CurrentPolygonValues.length; i++ )
+		if ( val === 0 || val === 1 )
+		{
+			_temp_values = [...this._starting_polygon_values];
+		}
+		else if ( val === 100 )
+		{
+			_temp_values = [...this._ending_polygon_values];
+		}
+		else
+		{
+			_temp_values = [...this.CurrentPolygonValues];
+
+			for ( let i = 0; i < _temp_values.length; i++ )
 			{
-				let _val_one;
-				let _val_two;
+				let _temp = this.CleanPolyValues( _temp_values[i] );
+				console.debug( i, val, _temp[0], _temp[1]);
 
-				if ( i === 0 )
-				{
-					let _temp = this.CleanPolyValues( this.CurrentPolygonValues[i] );
-					//	console.debug( i, v, _temp );
+				//let _val_one = 50 + this._percentage;
+				//let _val_two = ( _temp[1] - 0.5 ) + this._percentage;
 
-					_val_one = 50 + this._percentage;
-					_val_two = ( _temp[1] - 0.5 ) + this._percentage;
+				//let _val_string = _val_one + " " + _val_two;
+				//console.debug( i, val, _val_one, _val_two, _val_string );
 
-					let _val_string = _val_one + " " + _val_two;
-					//	console.debug( i,v, _val_one, _val_two, _val_string );
-
-					this.CurrentPolygonValues[i] = _val_string;
-				}
+				//	_temp_values[i] = _val_string;
 			}
+		}
 
+		console.debug( val, "_temp", _temp_values, this.CurrentPolygonValues );
+		this.CurrentPolygonValues = _temp_values;
 		return; 
 	}
 	render()
 	{
-		console.debug( this.props.value );
+		//	console.debug( "ProgressPieControl", this.props.value );
 		const _outer_class_name = "prog-pie-outer-circle";
 		const _inner_class_name = "prog-pie-inner-circle " + this.Color;
-		const _value_class_name = "prog-pie-value " + this.Color;
-		const _value_string = this.props.value + "%";
+
+		//const _value_class_name = "prog-pie-value " + this.Color;
+		//const _value_string = this.props.value + "%";
+		//	<div className={_value_class_name}>{ _value_string }</div>
 
 		this.ComputeClipPath( this.props.value );
 		//	console.debug(this.props.value, "this.CurrentPolygonValues", this.CurrentPolygonValues );
@@ -137,7 +141,7 @@ export default class ProgressPieControl extends React.Component
 			<div className="prog-pie-ctrl">
 				<div className={_outer_class_name}></div>
 				<div className={_inner_class_name} style={_clip_path}></div>
-				<div className={_value_class_name}>{ _value_string }</div>
+
 			</div>
 		);
 	};
