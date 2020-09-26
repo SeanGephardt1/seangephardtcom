@@ -99,35 +99,36 @@ export default class ProgressPieControl extends React.Component
 		else
 		{
 			let _temp_values = [...this.CurrentPolygonValues];
-			//let _temp_values = [];
 
-			for ( let i = 0; i < this.CurrentPolygonValues.length; i++ )
+			console.debug( val, "_temp", _temp_values, this.CurrentPolygonValues );
+
+
+			for ( let i = 0; i < _temp_values.length; i++ )
 			{
-				let _temp1 = this.CleanPolyValues( this.CurrentPolygonValues[i] );
+				let _temp1 = this.CleanPolyValues( _temp_values[i] );
 				console.debug( "_temp1", i, val, _temp1[0], _temp1[1]);
 
-				let _one, _two;
+				let _left, _top;
 
-				if ( i < 7 )
+				if ( i < 8 )
 				{
-					_one = parseInt( _temp1[0] ) + i;
-					_two = parseInt( _temp1[1] ) + i;
+					_left = parseInt( _temp1[0] ) - 1;
+					_top = parseInt( _temp1[1] ) - 1;
 				}
 				else if ( i > 7)
 				{
-					_one = 50;
-					_two = 100;
+					_left = 50;
+					_top = 100;
 				}
 
+				if ( _left < 0 ) { _left = 0; }
+				if ( _left > 99 ) { _left = 100; }
+				if ( _top < 0 ) { _top = 0; }
+				if ( _top > 99 ) { _top = 100; }
 
-				if ( _one < 0 ) { _one = 0; }
-				if ( _one > 99 ) { _one = 100; }
-				if ( _two < 0 ) { _two = 0; }
-				if ( _two > 99 ) { _two = 100; }
+				console.debug( "_one,_two", i, val, _temp1[0], _temp1[1], _left,_top);
 
-				console.debug( "_one,_two", i, val, _temp1[0], _temp1[1], _one,_two);
-
-				_temp_values[i] = _one + this._percentage + " " + _two + this._percentage;
+				_temp_values[i] = _left + this._percentage + " " + _top + this._percentage;
 				console.debug( i, _temp_values[i] );
 				console.debug();
 			}
@@ -144,8 +145,8 @@ export default class ProgressPieControl extends React.Component
 		const _outer_class_name = "prog-pie-outer-circle";
 		const _inner_class_name = "prog-pie-inner-circle " + this.Color;
 
-		//const _value_class_name = "prog-pie-value " + this.Color;
-		//const _value_string = this.props.value + "%";
+		const _value_class_name = "prog-pie-value " + this.Color;
+		const _value_string = this.props.value + "%";
 		//	<div className={_value_class_name}>{ _value_string }</div>
 
 		this.ComputeClipPath( this.props.value );
@@ -158,7 +159,7 @@ export default class ProgressPieControl extends React.Component
 			<div className="prog-pie-ctrl">
 				<div className={_outer_class_name}></div>
 				<div className={_inner_class_name} style={_clip_path}></div>
-
+				<div className={_value_class_name}>{ _value_string }</div>
 			</div>
 		);
 	};

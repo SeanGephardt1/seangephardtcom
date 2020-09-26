@@ -273,7 +273,7 @@ export default class AnimationsDemoExtension extends React.Component
 								<input type="range"
 									id="prog_pie_step" name="prog_pie_step"
 									className="input-range-demo"
-									min="0" max="100" step="1" value={this.state.ProgPieStep}
+									min="0" max="20" step="1" value={this.state.ProgPieStep}
 									onChange={ this.OnChange_StepProgPie.bind(this) }/>
 							</div>
 							<div className="prog-bar-controls-2">
