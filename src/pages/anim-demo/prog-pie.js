@@ -35,28 +35,28 @@ export default class ProgressPieControl extends React.Component
 			"40% 40%"		// 10
 		];
 		this._starting_polygon_values = [
-			"50% 40%",		// 1
-			"60% 40%",		// 2
-			"60% 50%",		// 3
-			"60% 55%",		// 4
-			"60% 60%",		// 5 
-			"50% 60%",		// 6
-			"40% 60%",		// 7 
-			"40% 56%",		// 8 
-			"40% 50%",		// 9
-			"40% 40%"		// 10
+			"50% 50%",		// 0
+			"50% 50%",		// 1
+			"50% 50%",		// 2
+			"50% 50%",		// 3
+			"50% 50%",		// 4 
+			"50% 50%",		// 5
+			"50% 50%",		// 6 
+			"50% 50%",		// 7 
+			"50% 50%",		// 8
+			"50% 50%"		// 9
 		];
 		this._ending_polygon_values = [
-			"50% 0%",		// 1
-			"100% 0%",		// 2
-			"100% 50%",		// 3
-			"100% 75%",		// 4
-			"100% 100%",		// 5 
-			"50% 100%",		// 6
-			"0% 100%",		// 7 
-			"0% 100%",		// 8 
-			"0% 100%",		// 9
-			"0% 0%"			// 10
+			"50% 0%",			// 0
+			"100% 0%",			// 1
+			"100% 50%",		// 2
+			"100% 75%",		// 3
+			"100% 100%",		// 4 
+			"50% 100%",		// 5
+			"0% 100%",			// 6 
+			"0% 100%",			// 7 
+			"50% 50%",			// 8
+			"50% 50%"			// 9
 		];		
 
 		this.CurrentPolygonValues = this._starting_polygon_values;
@@ -90,7 +90,7 @@ export default class ProgressPieControl extends React.Component
 
 		if ( val === 0 || val === 1 )
 		{
-			this.CurrentPolygonValues = [...this._starting_polygon_values];
+			this.CurrentPolygonValues = [...this._default_polygon_values];
 		}
 		else if ( val === 100 )
 		{
@@ -101,7 +101,6 @@ export default class ProgressPieControl extends React.Component
 			let _temp_values = [...this.CurrentPolygonValues];
 
 			console.debug( val, "_temp", _temp_values, this.CurrentPolygonValues );
-
 
 			for ( let i = 0; i < _temp_values.length; i++ )
 			{
@@ -115,7 +114,12 @@ export default class ProgressPieControl extends React.Component
 					_left = parseInt( _temp1[0] ) - 1;
 					_top = parseInt( _temp1[1] ) - 1;
 				}
-				else if ( i > 7)
+				else if ( i === 8)
+				{
+					_left = parseInt( _temp1[0] );
+					_top = parseInt( _temp1[1] );
+				}
+				else if ( i > 8)
 				{
 					_left = 50;
 					_top = 100;
@@ -129,7 +133,7 @@ export default class ProgressPieControl extends React.Component
 				console.debug( "_one,_two", i, val, _temp1[0], _temp1[1], _left,_top);
 
 				_temp_values[i] = _left + this._percentage + " " + _top + this._percentage;
-				console.debug( i, _temp_values[i] );
+				//	console.debug( i, _temp_values[i] );
 				console.debug();
 			}
 
