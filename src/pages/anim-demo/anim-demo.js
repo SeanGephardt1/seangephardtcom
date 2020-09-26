@@ -42,7 +42,7 @@ export default class AnimationsDemoExtension extends React.Component
 		this.state = {
 			ProgBarButtonRunning: false,
 			ProgPieButtonRunning: false,
-			ProgPieSpeed: 300
+			ProgPieSpeed: 0
 		};
 
 		document.title = this.Title;
@@ -105,9 +105,10 @@ export default class AnimationsDemoExtension extends React.Component
 
 
 	OnChange_ChangeProgPieSpeed( ev )
-	{	//	console.debug( "OnChange_ChangeProgPieSpeed", ev.target.value );
+	{	//	
+		console.debug( "OnChange_ChangeProgPieSpeed", ev.target.value );
 		this._prog_pie_btn_clicked = false;
-		this._prog_pie_btn_text  = this._start_text;
+		this._prog_pie_btn_text = this._start_text;
 
 		window.clearInterval( this._prog_pie_interval_handler );
 		this._prog_pie_interval_handler = undefined;
@@ -119,14 +120,22 @@ export default class AnimationsDemoExtension extends React.Component
 		return;
 	}
 	ProgPie_StartInterval( scopeObj )
-	{	//	console.debug( "ProgPieDemo_StartInterval", scopeObj._prog_bar_value );
-		if ( scopeObj._prog_pie_value < 100 )
+	{	//	
+		//	console.debug( "ProgPieDemo_StartInterval", scopeObj._prog_pie_value);
+
+		if ( scopeObj._prog_pie_value === 0 )
+		{
+			scopeObj._prog_pie_value++;
+			scopeObj._prog_pie_btn_text  = scopeObj._pause_text;
+		}
+		else if ( scopeObj._prog_pie_value < 100 )
 		{
 			scopeObj._prog_pie_value++;
 			scopeObj._prog_pie_btn_text  = scopeObj._pause_text;
 		}
 		else if ( scopeObj._prog_pie_value === 100)
 		{
+			//scopeObj._prog_pie_value = 0;
 			scopeObj._prog_pie_btn_text  = scopeObj._start_text;
 			scopeObj._prog_pie_btn_clicked = false;
 
@@ -141,7 +150,8 @@ export default class AnimationsDemoExtension extends React.Component
 		return;
 	};
 	OnClick_TestProgressPie( ev )
-	{	//	console.debug( "OnClick_TestProgressPie", this._prog_pie_btn_clicked );
+	{	//	
+		//	console.debug( "OnClick_TestProgressPie", this._prog_pie_btn_clicked );
 		if ( this._prog_pie_btn_clicked === false && ( this._prog_pie_value === 0 || this._prog_pie_value === 100) )
 		{
 			this._prog_pie_value = 0;
@@ -171,7 +181,7 @@ export default class AnimationsDemoExtension extends React.Component
 
     render()
 	{
-		//	console.debug( "render", this.state.ProgBarStatus );
+		console.debug( "render", this._prog_pie_value);
 
         return (
 			<div className="anim-demo-layout">
@@ -251,7 +261,7 @@ export default class AnimationsDemoExtension extends React.Component
 								<input type="range"
 									id="prog_pie_speed" name="prog_pie_speed"
 									className="input-range-demo"
-									min="100" max="2500" step="100" value={this.state.ProgPieSpeed}
+									min="0" max="2500" step="100" value={this.state.ProgPieSpeed}
 									onChange={ this.OnChange_ChangeProgPieSpeed.bind(this) }/>
 							</div>
 							<div className="prog-bar-controls">
