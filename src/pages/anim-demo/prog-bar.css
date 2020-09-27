@@ -30,30 +30,6 @@
 	height:100%;
 }
 
-.inner-bar-indef-ani
-{
-/*	border: solid 1px var(--black-01);*/
-	border-radius: 10px;
-	width:100%;
-	height: calc(100%);
-	opacity:0;
-
-	background-color:#EFF6FC;
-	background-image: linear-gradient(90deg, #0078D4 0,  #0078D4 50%, #0078D4 100%);
-	background-repeat:no-repeat;
-	background-size: 50px auto;
-	background-position-x: 0;
-
-	animation-name: AniProgBar_Indef_Fill, AniPageFadeIn1;
-	animation-direction:normal;
-	animation-fill-mode:forwards;
-	animation-play-state:running;
-	animation-timing-function:linear;
-	animation-delay: 0ms, 2000ms;
-	animation-duration:1000ms, 300ms;
-	animation-iteration-count:infinite, 1;
-}
-
 .pb-red
 {
 	background-color: var(--nav-color-1);
@@ -97,17 +73,4 @@
 	{
 		height: 0px;
 	}*/
-}
-
-@keyframes AniProgBar_Indef_Fill
-{
-	0% { 
-		background-position-x: 0;
-	}
-	50% { 
-		background-position-x: 100%;
-	}
-	100% { 
-		background-position-x: 0;
-	}
 }

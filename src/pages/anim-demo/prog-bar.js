@@ -26,8 +26,6 @@ export default class ProgressBarControl extends React.Component
 
 		let progBar_Ani = "inner-bar-ani " + this.Color;
 		let progBar_NonAni = "inner-bar-non-ani " + this.Color;
-		let progBar_IndefAni = "inner-bar-indef-ani";	// + this.Color;
-
 
 		if ( this.props.percentage !== undefined )
 		{
@@ -41,7 +39,6 @@ export default class ProgressBarControl extends React.Component
 		else
 		{
 			progBar_Speed = this.props.speed + "ms,250ms";
-
 		}
 
 		//	console.debug( this.props);
@@ -49,15 +46,11 @@ export default class ProgressBarControl extends React.Component
 		return (
 			<div className="prog-bar">
 				{
-					this.props.loop === true &&
-					<div className={progBar_IndefAni} ></div>		
-				}
-				{
-					this.props.loop === undefined && this.props.percentage > 0 &&
+					this.props.percentage > 0 &&
 					<div className={progBar_NonAni} style={{'width': progBar_Percentage }}></div>		
 				}
 				{
-					this.props.loop === undefined && this.props.percentage === undefined &&
+					this.props.percentage === undefined &&
 					<div className={progBar_Ani} style={{'animationDuration': progBar_Speed }}></div>
 				}
 			</div>

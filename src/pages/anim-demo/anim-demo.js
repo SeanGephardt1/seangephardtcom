@@ -1,7 +1,7 @@
 import React from 'react';
 import SVG from '../../art/svgs.js';
 import './anim-demo.css';
-import ProgressSpinnerControl from './prog-spinner.js';
+import ProgressInfiniteControl from './prog-infinite.js';
 import ProgressBarControl from './prog-bar.js';
 import ProgressPieControl from './prog-pie.js';
 
@@ -14,10 +14,10 @@ export default class AnimationsDemoExtension extends React.Component
 		Href: "/demos/",
 		Icon: SVG.AppNavButtons.About
 	};
-    constructor( props )
+	constructor( props )
 	{
 		// GENERIC
-        super( props );
+		super( props );
 		this.Title = ( this.props.Title || AnimationsDemoExtension.defaultProps.Title );
 		this.LinkTitle = ( this.props.LinkTitle || AnimationsDemoExtension.defaultProps.LinkTitle );
 		this.Href = ( this.props.Href || AnimationsDemoExtension.defaultProps.Href );
@@ -43,7 +43,9 @@ export default class AnimationsDemoExtension extends React.Component
 			ProgBarButtonRunning: false,
 			ProgPieButtonRunning: false,
 			ProgPieSpeed: 100,
-			ProgPieStep: 33
+			ProgPieStep: 33,
+			ProgInfiniteColor: ProgressInfiniteControl.defaultProps.Colors.Red,
+			ProgInfiniteSize: ProgressInfiniteControl.defaultProps.Sizes.ExtraLarge
 		};
 
 		document.title = this.Title;
@@ -52,6 +54,17 @@ export default class AnimationsDemoExtension extends React.Component
 	};
 
 	// ProgInfinite
+	OnChange_ProgInfinite_Colors( ev )
+	{	//	console.debug( "OnChange_ProgInfinite_Colors", ev.target.value, ProgressInfiniteControl.defaultProps.Colors[ev.target.value] );
+		this.setState( { ProgInfiniteColor:  ev.target.value } );
+		return;
+	}
+	OnChange_ProgInfinite_Sizes( ev )
+	{	//	console.debug( "OnChange_ProgInfinite_Sizes", ev.target.value );
+		this.setState( { ProgInfiniteSize: ev.target.value } );
+		return;
+	}
+
 	ProgBarDemo_StartInterval( scopeObj )
 	{	//	console.debug( "ProgBarDemo_StartInterval", scopeObj._prog_bar_value );
 		if ( scopeObj._prog_bar_value < 100)
@@ -188,7 +201,8 @@ export default class AnimationsDemoExtension extends React.Component
 
     render()
 	{
-		//	console.debug( "render", this._prog_pie_value);
+		//	console.debug( "render", this.state.ProgInfiniteColor );
+
         return (
 			<div className="anim-demo-layout">
 
@@ -199,16 +213,51 @@ export default class AnimationsDemoExtension extends React.Component
 
 					{ /* "FINISHED CONTROLS" */}
 
-					{ /* INDEFINITE PROGRESS SPINNER */ }
+					{ /* INFINTE PROGRESS INDICATORS */ }
 					<div className="ani-demo-card-1">
 						<div className="ani-card-ctrl-block">
-							<ProgressSpinnerControl size={ProgressSpinnerControl.defaultProps.Sizes.ExtraLarge} />
+							<ProgressInfiniteControl
+								size={this.state.ProgInfiniteSize}
+								color={this.state.ProgInfiniteColor}
+								style={ProgressInfiniteControl.defaultProps.Styles.Circle}
+							/>
+
 							<div className="margin-bottom-10"></div>
-							<ProgressBarControl
-								color={ProgressBarControl.defaultProps.Colors.Purple}
-								loop={true} />
+
+							<ProgressInfiniteControl
+								size={this.state.ProgInfiniteSize}
+								color={this.state.ProgInfiniteColor}
+								style={ProgressInfiniteControl.defaultProps.Styles.Bar} />
+
 						</div>
-							<div className="ani-card-text-block">An example of an "indefinite" progress indicators, meaning that it is displayed for an indefinite amount of time and can be dsiplayed or hidden at any time.</div>
+						<div className="ani-card-text-block">
+							<div>An example of an "indefinite" progress indicators, meaning that it is displayed for an indefinite amount of time and can be dsiplayed or hidden at any time.</div>
+							<div className="margin-bottom-5"></div>
+							<div className="prog-bar-controls">
+								<select
+									className="prog-infinites"
+									value={this.state.ProgInfiniteColor}
+									onChange={this.OnChange_ProgInfinite_Colors.bind( this )}>
+									{
+										Object.entries( ProgressInfiniteControl.defaultProps.Colors ).map( ( item, index ) => (
+											<option key={index} value={item[1]}>{ item[0] }</option>
+										))
+									}
+								</select>
+
+								<div className="margin-bottom-5"></div>
+								<select
+									className="prog-infinites"
+									value={this.state.ProgInfiniteSize}
+									onChange={this.OnChange_ProgInfinite_Sizes.bind( this )}>
+									{
+										Object.entries( ProgressInfiniteControl.defaultProps.Sizes ).map( ( item, index ) => (
+											<option key={index} value={item[1]}>{ item[0] }</option>
+										))
+									}
+								</select>
+							</div>
+						</div>
 					</div>
 
 					{ /* DEFINITE PROGRESS BAR */ }
@@ -230,7 +279,6 @@ export default class AnimationsDemoExtension extends React.Component
 							<ProgressBarControl
 								color={ProgressBarControl.defaultProps.Colors.Blue}
 								percentage={this._prog_bar_value} />
-							<div className="margin-bottom-10"></div>		
 						</div>
 
 						<div className="ani-card-text-block">
@@ -274,14 +322,13 @@ export default class AnimationsDemoExtension extends React.Component
 					</div>
 
 					{ /* DEFINITE PROGRESS PIE 2 */ }
-
 					<div className="ani-demo-card-1">
 						<div className="ani-card-ctrl-block">
 							<ProgressPieControl
 								color={ProgressPieControl.defaultProps.Colors.Purple}
 								value={ this._prog_pie_value } />
 						</div>
-						<div className="ani-card-text-block">Another example of a progress indicator that allows for setting the interval time, to get a feel of stepping through the progression values.
+						<div className="ani-card-text-block">Another example of a progress indicator that allows for setting the interval time, to get a feeling for how animation speeds can affect the progression values.
 							<div className="prog-bar-controls-2">
 								<label htmlFor="prog_pie_speed">Speed (0ms - 1000ms): {this.state.ProgPieSpeed}ms</label>
 								<input type="range"
