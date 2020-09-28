@@ -1,0 +1,83 @@
+﻿.test2-layout
+{
+/*	border: solid 1px var(--black-01);*/
+	max-width:1024px;
+	width:100%;
+	overflow:auto;
+	display:flex;
+	flex-direction:column;
+	margin:24px;
+	text-align:center;
+	opacity:0;
+	animation-name: AniPageFadeIn1;
+	animation-delay: 300ms;
+	animation-duration: 300ms;
+	animation-direction: normal;
+	animation-fill-mode: forwards;
+	animation-iteration-count:1;
+	animation-play-state: running;
+	animation-timing-function: ease-in-out;
+}
+
+.bg-flow-panel
+{
+/*	border: solid 1px var(--black);*/
+	overflow:hidden;
+	width:100%;
+	min-height:50%;
+	max-height:100%;
+	height:512px;
+	display: flex;
+	justify-content:center;
+}
+
+.bg-flow-element
+{
+/*	border: solid 1px red;*/
+	width:100%;
+	height:100%;
+	background-color: var(--debug);
+
+	display: flex;
+	justify-content:center;
+	align-items:center;
+
+/*	animation-name: Ani_BG_Flow;
+	animation-direction:normal;
+	animation-fill-mode:forwards;
+	animation-play-state:running;
+	animation-delay: 0ms;
+	animation-duration:2000ms;
+	animation-iteration-count:infinite;
+	animation-timing-function: cubic-bezier(0.25,0.1,0.25,1);	*/
+}
+
+.fluent-test
+{
+	border-style: solid;
+	border-width:4px;
+	border-color:transparent;
+	border-radius:10px;
+	padding:20px;
+	padding-top:10px;
+	padding-bottom:10px;
+	color:var(--white-06);
+	cursor:pointer;
+	transition: all 300ms ease-in-out;
+}
+.fluent-test:hover
+{
+	border-color: var(--white-08);
+	color:var(--white);
+}
+
+
+/*@keyframes Ani_BG_Flow
+{
+    0% {
+		transform: rotate(0deg);
+    }
+    100% {
+		transform: rotate(360deg);
+    }
+}*/

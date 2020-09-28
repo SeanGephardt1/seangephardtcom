@@ -6,7 +6,7 @@ import Home from './home/home.js';
 //	import Portfolio from './portfolio/portfolio.js';
 import Resume from './resume/resume.js';
 import Music from './music/music.js';
-//	import TestPage from './test/test.js';
+import TestPage2 from './test2/test2.js';
 //	import { MovieStoreExtension } from './movie-works/movie-works.js';
 //	import { GuitarStoreExtension } from './guitar-store/guitar-store.js';
 import AnimationsDemoExtension from './anim-demo/anim-demo.js';
@@ -15,13 +15,10 @@ import AnimationsDemoExtension from './anim-demo/anim-demo.js';
 
 const _pages = [
 	Home,
-	//	Portfolio,
 	Resume,
+	AnimationsDemoExtension,
 	Music,
-	//	TestPage
-	//	MovieStoreExtension,
-	//	GuitarStoreExtension
-	AnimationsDemoExtension
+	TestPage2
 ];
 
 export {
