@@ -58,15 +58,15 @@ export default class TestPage extends React.Component
 	{	
 		//	console.debug( "render", this.state.X1, this.state.X2);
 
-		const _one = `linear-gradient(${this.state.deg1}, var(--black) 0px, transparent ${this.state.X1}px, var(--black) 100%)`;
-		const _two = `linear-gradient(${this.state.deg2}, var(--black) 0px, transparent ${this.state.X2}px, var(--black) 100%)`;
-		const _new_bg = { "backgroundImage": _one + "," + _two };
+		//const _one = `linear-gradient(${this.state.deg1}, var(--black) 0px, transparent ${this.state.X1}px, var(--black) 100%)`;
+		//const _two = `linear-gradient(${this.state.deg2}, var(--black) 0px, transparent ${this.state.X2}px, var(--black) 100%)`;
+		//const _new_bg = { "backgroundImage": _one + "," + _two };
 		////console.debug( "_new_bg", _new_bg );
 
 
 		//	background: radial-gradient(circle at 100%, #333, #333 50%, #eee 75%, #333 75%);
-		//	const _one = `radial-gradient(circle at 50%, transparent, #333 ${this.state.X1}px, #eee ${this.state.X2}px, #333 ${this.state.X1}px)`;
-		//	const _new_bg = { "backgroundImage": _one };
+		const _one = `radial-gradient(circle at 50%, transparent, #333 ${this.state.X1}px, #eee ${this.state.X2}px, #333 ${this.state.X1-this.state.X2}px)`;
+		const _new_bg = { "backgroundImage": _one };
 
 		return (
 			<div className="test2-layout">
