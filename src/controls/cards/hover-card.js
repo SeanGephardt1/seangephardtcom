@@ -27,12 +27,12 @@ export default class HoverCard extends React.Component
 
 		this.Color = ( this.props.color || HoverCard.defaultProps.Colors.Red );
 		this.Placement = ( this.props.placement || HoverCard.defaultProps.Placements.Right );
-
+		this.IsDisplayed = ( this.props.displayed || false );
 		return;
 	};
 	render()
 	{
-		console.debug( "HoverCard.render()", this.props.placement );
+		console.debug( "HoverCard.render()", this.props.displayed );
 
 		return (
 			<div className="pi-panel">{ this.props.children}</div>

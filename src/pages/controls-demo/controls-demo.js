@@ -68,11 +68,13 @@ export default class ControlsDemo extends React.Component
 	OnClick_ToggleHoverCard( ev )
 	{
 		console.debug( "OnClick_ToggleHoverCard" );
+		this.setState( { hoverCardDisplayed: true } );
 		return;
 	};
 	OnMouseEnter_ToggleHoverCard( ev )
 	{
 		console.debug( "OnClick_ToggleHoverCard" );
+		this.setState( { hoverCardDisplayed: true } );
 		return;
 	};
 
@@ -243,9 +245,11 @@ export default class ControlsDemo extends React.Component
 					{ /* INFINTE PROGRESS INDICATORS */ }
 					<div className="ani-demo-card-1">
 						<div className="ani-card-ctrl-block">
-							<div className="hc-test-button" onClick={this.OnClick_ToggleHoverCard.bind( this )}>Hover Here!</div>
-							<div className="hc-test-button" onMouseEnter={ this.OnMouseEnter_ToggleHoverCard.bind(this)}>Click Here!</div>
-							<HoverCard placement={this.state.hoverCardPlacementSelected} displayed={this.state.hoverCardDisplayed}>Hello HoverCard!</HoverCard>
+							<div className="hc-test-button" onClick={this.OnClick_ToggleHoverCard.bind( this )}>Click Here!</div>
+							<div className="hc-test-button" onMouseEnter={ this.OnMouseEnter_ToggleHoverCard.bind(this)}>Hover Here!</div>
+							<HoverCard
+								placement={this.state.hoverCardPlacementSelected}
+								displayed={this.state.hoverCardDisplayed}>Hello HoverCard!</HoverCard>
 						</div>
 						<div className="ani-card-text-block">
 							<div>Interact with the buttons above to see an exmample of the HoverCard in action.</div>
