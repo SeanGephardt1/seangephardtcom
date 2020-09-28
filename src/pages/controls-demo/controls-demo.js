@@ -1,12 +1,13 @@
-import React from 'react';
+import React from './react';
 import SVG from '../../art/svgs.js';
-import './anim-demo.css';
-import ProgressInfiniteControl from './prog-infinite.js';
-import ProgressBarControl from './prog-bar.js';
-import ProgressPieControl from './prog-pie.js';
+import './controls-demo.css';
 
+// controls
+import ProgressInfiniteControl from '/../controls/prog-indicators/prog-infinite.js';
+import ProgressBarControl from '/../controls/prog-indicators/prog-bar.js';
+import ProgressPieControl from '/../controls/prog-indicators/prog-pie.js';
 
-export default class AnimationsDemoExtension extends React.Component
+export default class ControlsDemo extends React.Component
 {
 	static defaultProps = {
 		Title: "Demos",
@@ -18,9 +19,9 @@ export default class AnimationsDemoExtension extends React.Component
 	{
 		// GENERIC
 		super( props );
-		this.Title = ( this.props.Title || AnimationsDemoExtension.defaultProps.Title );
-		this.LinkTitle = ( this.props.LinkTitle || AnimationsDemoExtension.defaultProps.LinkTitle );
-		this.Href = ( this.props.Href || AnimationsDemoExtension.defaultProps.Href );
+		this.Title = ( this.props.Title || ControlsDemo.defaultProps.Title );
+		this.LinkTitle = ( this.props.LinkTitle || ControlsDemo.defaultProps.LinkTitle );
+		this.Href = ( this.props.Href || ControlsDemo.defaultProps.Href );
 
 		// PROG BAR DEMO OBJECTS 
 		this._start_text = "Start";
@@ -118,7 +119,6 @@ export default class AnimationsDemoExtension extends React.Component
 		return;
 	};
 
-
 	// ProgPie
 	OnChange_StepProgPie( ev )
 	{	//	console.debug( "OnChange_StepProgPie", ev.target.value );
@@ -206,6 +206,41 @@ export default class AnimationsDemoExtension extends React.Component
         return (
 			<div className="anim-demo-layout">
 
+				{ /* CONTROL CARD TEMPLATE 
+						<div className="ani-demo-card-1">
+						<div className="ani-card-ctrl-block">control</div>
+						<div className="ani-card-text-block">This is an example of what is called an "indefinite" progress indicator, meaning that ti it is displayed for an indefinite amount of time. it can be hidden at any time.</div>
+						</div>
+				 */}
+
+				{ /* Popup cards  */ }
+				<div className="anim-demo-header">Popup cards</div>
+				<div className="anim-demo-desc">Customers sometimes need a littel extra information or instruction regarding elements of the user interface that may not be completely intuitive or require additional description. Utilizing customized popup cards in this scenario allow for additional information, specific data entry points or notifications.</div>
+
+				<div className="anim-demo-block-panel">
+
+					{ /* INFINTE PROGRESS INDICATORS */ }
+					<div className="ani-demo-card-1">
+						<div className="ani-card-ctrl-block">
+							<ProgressInfiniteControl
+								size={this.state.ProgInfiniteSize}
+								color={this.state.ProgInfiniteColor}
+								style={ProgressInfiniteControl.defaultProps.Styles.Circle}
+							/>
+
+						</div>
+						<div className="ani-card-text-block">
+							<div>An example of an "indefinite" progress indicators, meaning that it is displayed for an indefinite amount of time and can be dsiplayed or hidden at any time.</div>
+							<div className="margin-bottom-5"></div>
+							<div className="prog-bar-controls">Controls</div>
+						</div>
+					</div>
+
+					{ /* END */}
+				</div>
+
+
+				{ /* Progress Indicators - COMPLETED */ }
 				<div className="anim-demo-header">Progress Indicators</div>
 				<div className="anim-demo-desc">Customers will need to know that something could take longer than expected and that it will eventually be displayed. Progress indicators allow for these types of scenarios and help set customer expectations that the app is 'doing work'. Utilizing animation in this scenario provide a key visual indicator to the user that something is happening.</div>
 
