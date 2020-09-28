@@ -1,11 +1,14 @@
-import React from './react';
+import React from 'react';
 import SVG from '../../art/svgs.js';
 import './controls-demo.css';
 
 // controls
-import ProgressInfiniteControl from '/../controls/prog-indicators/prog-infinite.js';
-import ProgressBarControl from '/../controls/prog-indicators/prog-bar.js';
-import ProgressPieControl from '/../controls/prog-indicators/prog-pie.js';
+import ProgressInfiniteControl from '../../controls/progress-controls/prog-infinite.js';
+import ProgressBarControl from '../../controls/progress-controls/prog-bar.js';
+import ProgressPieControl from '../../controls/progress-controls/prog-pie.js';
+
+import HoverCard from '../../controls/cards/hover-card.js';
+
 
 export default class ControlsDemo extends React.Component
 {
@@ -46,11 +49,30 @@ export default class ControlsDemo extends React.Component
 			ProgPieSpeed: 100,
 			ProgPieStep: 33,
 			ProgInfiniteColor: ProgressInfiniteControl.defaultProps.Colors.Red,
-			ProgInfiniteSize: ProgressInfiniteControl.defaultProps.Sizes.ExtraLarge
+			ProgInfiniteSize: ProgressInfiniteControl.defaultProps.Sizes.ExtraLarge,
+			hoverCardPlacementSelected: HoverCard.defaultProps.Placements.Top,
+			hoverCardDisplayed: false
 		};
 
 		document.title = this.Title;
 
+		return;
+	};
+
+	// HoverCard
+	OnChange_HoverCardPlacement( ev )
+	{	//	console.debug( "OnChange_HoverCardPlacement", ev.target.value );
+		this.setState( { hoverCardPlacementSelected: ev.target.value } );
+		return;
+	};
+	OnClick_ToggleHoverCard( ev )
+	{
+		console.debug( "OnClick_ToggleHoverCard" );
+		return;
+	};
+	OnMouseEnter_ToggleHoverCard( ev )
+	{
+		console.debug( "OnClick_ToggleHoverCard" );
 		return;
 	};
 
@@ -201,8 +223,7 @@ export default class ControlsDemo extends React.Component
 
     render()
 	{
-		//	console.debug( "render", this.state.ProgInfiniteColor );
-
+		//	console.debug( "render", this.state.hoverCardPlacementSelected );
         return (
 			<div className="anim-demo-layout">
 
@@ -222,17 +243,32 @@ export default class ControlsDemo extends React.Component
 					{ /* INFINTE PROGRESS INDICATORS */ }
 					<div className="ani-demo-card-1">
 						<div className="ani-card-ctrl-block">
-							<ProgressInfiniteControl
-								size={this.state.ProgInfiniteSize}
-								color={this.state.ProgInfiniteColor}
-								style={ProgressInfiniteControl.defaultProps.Styles.Circle}
-							/>
-
+							<div className="hc-test-button" onClick={this.OnClick_ToggleHoverCard.bind( this )}>Hover Here!</div>
+							<div className="hc-test-button" onMouseEnter={ this.OnMouseEnter_ToggleHoverCard.bind(this)}>Click Here!</div>
+							<HoverCard placement={this.state.hoverCardPlacementSelected} displayed={this.state.hoverCardDisplayed}>Hello HoverCard!</HoverCard>
 						</div>
 						<div className="ani-card-text-block">
-							<div>An example of an "indefinite" progress indicators, meaning that it is displayed for an indefinite amount of time and can be dsiplayed or hidden at any time.</div>
+							<div>Interact with the buttons above to see an exmample of the HoverCard in action.</div>
 							<div className="margin-bottom-5"></div>
-							<div className="prog-bar-controls">Controls</div>
+							<div className="prog-bar-controls">
+								<div>Select placement</div>
+								<div className="hover-card-controls">
+									{
+										Object.entries( HoverCard.defaultProps.Placements ).map( ( item, index ) => (
+											<label key={index} htmlFor={item[0]} className="hover-card-selection" >
+											<input type="radio"
+												name="hover-card-placements"
+												id={item[0]}
+												value={item[1]}
+												checked={this.state.hoverCardPlacementSelected === item[1]}
+												onChange={this.OnChange_HoverCardPlacement.bind( this )}/>
+											<span>{item[0]}</span>
+										</label>
+									))
+									}
+									<div>{ this.state.hoverCardPlacement}</div>
+								</div>
+							</div>
 						</div>
 					</div>
 

@@ -3,7 +3,7 @@ import { Utilities as Utils } from "./../../js/utilities.js";
 import SvgIcon from "./../../components/svg-icons/svg-icon.js";
 import './popup-card.css';
 
-class PopupCardComponent extends React.Component
+export default class PopupCardComponent extends React.Component
 {	
 	constructor( props )
 	{

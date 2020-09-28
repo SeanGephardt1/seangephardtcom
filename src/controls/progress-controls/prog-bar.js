@@ -1,4 +1,4 @@
-﻿import React from './react';
+﻿import React from 'react';
 import './prog-bar.css';
 
 export default class ProgressBarControl extends React.Component
