@@ -6,7 +6,6 @@ export default class HoverCard extends React.Component
 {
 	static defaultProps = {
 		StateKey: Object.freeze( "HoverCardDisplayed" ),
-
 		Colors:
 		{
 			Red: "pi-red",
@@ -75,7 +74,7 @@ export default class HoverCard extends React.Component
 		}
 
 		_classnames = _classnames + " " + _fade_classname;
-		//	console.debug( "_classnames ", _classnames );
+		console.debug( "_classnames ", _classnames );
 		return _classnames;
 	};
 	render()

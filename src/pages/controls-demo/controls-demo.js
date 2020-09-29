@@ -53,13 +53,10 @@ export default class ControlsDemo extends React.Component
 			ProgPieStep: 33,
 			ProgInfiniteColor: ProgressInfiniteControl.defaultProps.Colors.Red,
 			ProgInfiniteSize: ProgressInfiniteControl.defaultProps.Sizes.ExtraLarge,
-			hoverCardPlacementSelected: HoverCard.defaultProps.Placements.Top,
+			hoverCardPlacementSelected: HoverCard.defaultProps.Placements.Bottom,
 		};
 
 		document.title = this.Title;
-
-		this.HoverCardStateDisplayed = false;
-
 		return;
 	};
 
@@ -72,9 +69,6 @@ export default class ControlsDemo extends React.Component
 	OnClick_ToggleHoverCard( ev )
 	{//	
 		//	console.debug( "OnClick_ToggleHoverCard", StateStore.States[HoverCard.defaultProps.StateKey] );
-
-		//this.HoverCardStateDisplayed = !this.HoverCardStateDisplayed;
-
 		if ( StateStore.States[HoverCard.defaultProps.StateKey] === undefined ||
 			StateStore.States[HoverCard.defaultProps.StateKey] === false )
 		{
@@ -84,9 +78,7 @@ export default class ControlsDemo extends React.Component
 		{
 			StateStore.AddState( HoverCard.defaultProps.StateKey, false );	
 		}
-
 		//	console.debug( "OnClick_ToggleHoverCard", StateStore.States[HoverCard.defaultProps.StateKey] );
-
 		this.setState( { changed: !this.state.changed } );
 		return;
 	};
@@ -244,6 +236,10 @@ export default class ControlsDemo extends React.Component
 
     render()
 	{	//	console.debug( "ControlsDemo.render()", StateStore.States[HoverCard.defaultProps.StateKey] );
+		//	<div className="hc-test-button" onMouseEnter={this.OnMouseEnter_ToggleHoverCard.bind( this )}>Hover Here!</div>
+
+		StateStore.States[HoverCard.defaultProps.StateKey] = true;
+
         return (
 			<div className="anim-demo-layout">
 
@@ -252,10 +248,6 @@ export default class ControlsDemo extends React.Component
 						<div className="ani-card-ctrl-block">control</div>
 						<div className="ani-card-text-block">This is an example of what is called an "indefinite" progress indicator, meaning that ti it is displayed for an indefinite amount of time. it can be hidden at any time.</div>
 						</div>
-
-
-							<div className="hc-test-button" onMouseEnter={this.OnMouseEnter_ToggleHoverCard.bind( this )}>Hover Here!</div>
-
 				 */}
 
 				{ /* Popup cards  */ }

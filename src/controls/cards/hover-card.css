@@ -8,6 +8,7 @@
 	justify-content:center;
 	flex-direction:column;
 	display: none;
+	z-index:100;
 }
 
 .hc-displayed
@@ -41,23 +42,34 @@
 	animation-duration: 200ms;
 }
 
-
 /* direction arrow placement */
 .hc-placement-chevron
 {
-	border: solid 1px var(--black-02);
-	height: 16px;
+	border-style: solid;
+	border-width:1px;
+	border-color:var(--debug);
+	width:auto;
+	height: 12px;
+	padding:0px;
+	z-index:102;
+	text-align:center;
+	display:flex;
+	justify-content:center;
 }
 .hc-pointer
 {
-	height:100%;
-	width:100%;
+	border: solid 1px red;
+	flex:0 0 24px;
+	height:24px;
+	width:24px;
+	background-color:var(--white);
+	transform: rotate(45deg);
 }
 
 /* content */
 .hc-content-panel
 {
-	border: solid 1px var(--black-04);
+	border: solid 1px var(--black-02);
 	border-radius: 4px;
 	background-color: var(--white);
 	box-shadow: 0px 0px 40px 0px var(--black-04);
@@ -123,6 +135,90 @@
 	text-overflow:ellipsis;
 	white-space:normal; 
 	overflow:auto;
+	order:1;
+}
+
+
+/* direction layout */
+.hc-place-top
+{
+	border: solid 1px blue;
+	flex-direction:column;
+}
+.hc-place-top .hc-placement-chevron
+{
+	border: solid 1px blue;
+	order:0;
+}
+.hc-place-top .hc-content-panel
+{
+	border: solid 1px blue;
+	order:1;
+}
+
+
+.hc-place-left
+{
+	border: solid 1px green;
+	flex-direction:row;
+}
+.hc-place-left .hc-placement-chevron
+{
+	border: solid 1px green;
+	width:12px;
+	height: auto;
+	order:0;
+}
+.hc-place-left .hc-placement-chevron .hc-pointer
+{
+	margin-left:12px;
+	margin-top:8px;
+}
+.hc-place-left .hc-content-panel
+{
+	border: solid 1px green;
+	order:1;
+}
+
+.hc-place-right
+{
+	flex-direction:row;
+}
+.hc-place-right .hc-placement-chevron
+{
+	border: solid 1px green;
+	width:12px;
+	height: auto;
+	order:1;
+}
+.hc-place-right .hc-placement-chevron .hc-pointer
+{
+	margin-left:-12px;
+	margin-top:8px;
+}
+.hc-place-right .hc-content-panel
+{
+	border: solid 1px green;
+	order:0;
+}
+
+.hc-place-bottom
+{
+	flex-direction:column;
+}
+.hc-place-bottom .hc-placement-chevron
+{
+	border: solid 1px green;
+	order:1;
+}
+.hc-place-bottom .hc-placement-chevron .hc-pointer
+{
+	margin-top:-12px;
+}
+.hc-place-bottom .hc-content-panel
+{
+	border: solid 1px green;
+	order:0;
 }
 
 
