@@ -27,15 +27,16 @@ export default class HoverCard extends React.Component
 
 		this.Color = ( this.props.color || HoverCard.defaultProps.Colors.Red );
 		this.Placement = ( this.props.placement || HoverCard.defaultProps.Placements.Right );
-		this.IsDisplayed = ( this.props.displayed || false );
 
 		this.state = {
-			displayed: true
+			displayed: false
 		};
 		return;
 	};
 	OnClick_CloseHoverCard( ev )
 	{
+		console.debug( "OnClick_CloseHoverCard", this.state.displayed, this.props.displayed );
+
 		this.setState( {
 			displayed: false
 		} );
@@ -43,8 +44,7 @@ export default class HoverCard extends React.Component
 	};
 	render()
 	{
-		//	console.debug( "HoverCard.render()", this.props.displayed );
-		//	{ this.props.children}
+		console.debug( this.state.displayed, this.props.displayed );
 
 		let _placement_direction_classname = "hc-main-panel " + this.props.placement;
 
@@ -71,7 +71,7 @@ export default class HoverCard extends React.Component
 							<div className="hc-header-title">{this.props.title}</div>						
 						}
 
-						<div className="hc-close-button">
+						<div className="hc-close-button" onClick={this.OnClick_CloseHoverCard.bind(this) }>
 							<svg viewBox="0 0 24 24" width="100%" height="100%">
 								<circle x="0" y="0" cx="12" cy="12" r="12" strokeWidth="0" stroke="transparent"/>
 								<line x1="6" y1="6" x2="18" y2="18" stroke="white" strokeWidth="3" />

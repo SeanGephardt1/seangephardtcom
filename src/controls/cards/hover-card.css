@@ -24,6 +24,7 @@
 {
 	display:flex;
 	opacity:0;
+	height:auto;
 
 /*	transform: scale(0.8,0.8) translate(0,-10px);*/
 	animation-name: HoverCard_Display;
@@ -32,8 +33,8 @@
 	animation-play-state:running;
 	animation-timing-function:linear;
 	animation-iteration-count:1;
-	animation-delay: 300ms;
-	animation-duration: 300ms;
+	animation-delay: 0ms;
+	animation-duration: 200ms;
 }
 
 /* direction arrow placement */
@@ -98,12 +99,12 @@
 	margin:0;
 	height:100%;
 	width:100%;
-	fill:  rgba(0,128,0,0.2);
+	fill:  rgba(64,128,192,0.2);
 	transition: all 200ms ease-in-out;
 }
 .hc-close-button > svg:hover
 {
-	fill:  rgba(0,128,0,1);
+	fill:  rgba(64,128,192,1);
 	transform:rotate(-90deg);
 }
 
