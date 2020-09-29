@@ -69,6 +69,18 @@ export default class ControlsDemo extends React.Component
 	};
 	OnClick_ToggleHoverCard( ev )
 	{//	
+		console.debug( "OnClick_ToggleHoverCard", ev.target );
+
+		let _element = ev.target;
+		console.debug( "_element", _element );
+
+		let _el_client_height = ev.target.clientHeight;
+		let _el_client_width= ev.target.clientWidth;
+		//	ev.target.offset*
+		//	ev.clientX
+		//	ev.pageX
+		//	ev.screenX
+
 		//	console.debug( "OnClick_ToggleHoverCard", StateStore.States[HoverCard.defaultProps.StateKey] );
 		if ( StateStore.States[HoverCard.defaultProps.StateKey] === undefined ||
 			StateStore.States[HoverCard.defaultProps.StateKey] === false )
@@ -80,7 +92,10 @@ export default class ControlsDemo extends React.Component
 			StateStore.AddState( HoverCard.defaultProps.StateKey, false );	
 		}
 		//	console.debug( "OnClick_ToggleHoverCard", StateStore.States[HoverCard.defaultProps.StateKey] );
-		this.setState( { changed: !this.state.changed } );
+		this.setState( {
+			changed: !this.state.changed,
+			hoverCardParent: "TESTING"
+		} );
 		return;
 	};
 	OnMouseEnter_ToggleHoverCard( ev )

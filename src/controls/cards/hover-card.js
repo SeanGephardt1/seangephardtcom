@@ -42,6 +42,15 @@ export default class HoverCard extends React.Component
 		this.setState( { changed: false } );
 		return;
 	};
+	HandleLocation()
+	{	//	.getBoundingClientRect() 
+		console.debug( "HandleLocation", this.props.parent );
+		if ( this.props.parent === undefined )
+		{
+			return;
+		}
+		return;
+	};
 	HandleFadeInOutState()
 	{	//	console.debug( "HandleFadeInOutState" );
 		//console.debug( "HoverCard.defaultProps.StateKey",StateStore.States[HoverCard.defaultProps.StateKey] );
@@ -74,12 +83,13 @@ export default class HoverCard extends React.Component
 		}
 
 		_classnames = _classnames + " " + _fade_classname;
-		console.debug( "_classnames ", _classnames );
+		//	console.debug( "_classnames ", _classnames );
 		return _classnames;
 	};
 	render()
-	{	//	
-		console.debug( "HoverCard.render()", this.props.parent );
+	{	//		console.debug( "HoverCard.render()", this.props.parent );
+
+		this.HandleLocation();
 		return (
 			<div className={this.HandleFadeInOutState()}>
 
