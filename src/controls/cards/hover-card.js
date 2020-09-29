@@ -78,7 +78,8 @@ export default class HoverCard extends React.Component
 		return _classnames;
 	};
 	render()
-	{	//	console.debug( "HoverCard.render()", this.state.changed );
+	{	//	
+		console.debug( "HoverCard.render()", this.props.parent );
 		return (
 			<div className={this.HandleFadeInOutState()}>
 

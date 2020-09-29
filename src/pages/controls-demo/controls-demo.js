@@ -53,7 +53,8 @@ export default class ControlsDemo extends React.Component
 			ProgPieStep: 33,
 			ProgInfiniteColor: ProgressInfiniteControl.defaultProps.Colors.Red,
 			ProgInfiniteSize: ProgressInfiniteControl.defaultProps.Sizes.ExtraLarge,
-			hoverCardPlacementSelected: HoverCard.defaultProps.Placements.Bottom,
+			hoverCardPlacementSelected: HoverCard.defaultProps.Placements.Top,
+			hoverCardParent: undefined
 		};
 
 		document.title = this.Title;
@@ -238,7 +239,7 @@ export default class ControlsDemo extends React.Component
 	{	//	console.debug( "ControlsDemo.render()", StateStore.States[HoverCard.defaultProps.StateKey] );
 		//	<div className="hc-test-button" onMouseEnter={this.OnMouseEnter_ToggleHoverCard.bind( this )}>Hover Here!</div>
 
-		StateStore.States[HoverCard.defaultProps.StateKey] = true;
+		//	StateStore.States[HoverCard.defaultProps.StateKey] = true;
 
         return (
 			<div className="anim-demo-layout">
@@ -263,7 +264,8 @@ export default class ControlsDemo extends React.Component
 							<div className="hc-test-button" onClick={this.OnClick_ToggleHoverCard.bind( this )}>Click Here!</div>
 
 							<HoverCard
-									stateKey={StateStore.States[HoverCard.defaultProps.StateKey] }
+								stateKey={StateStore.States[HoverCard.defaultProps.StateKey]}
+								parent={this.state.hoverCardParent}
 									title="How to use a hover card, in just about every scenario known to man on this planet. Love Sean Gephardt and all his crazy rocker freinds from Mars."
 									placement={this.state.hoverCardPlacementSelected}><button>Click me</button><LorumContent />
 								</HoverCard>

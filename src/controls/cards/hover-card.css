@@ -8,6 +8,7 @@
 	justify-content:center;
 	flex-direction:column;
 	display: none;
+	flex: 1 1 auto;
 	z-index:100;
 }
 
@@ -39,7 +40,7 @@
 	animation-timing-function:linear;
 	animation-iteration-count:1;
 	animation-delay: 0ms;
-	animation-duration: 200ms;
+	animation-duration: 500ms;
 }
 
 /* direction arrow placement */
@@ -242,5 +243,7 @@
 	100%
 	{
 		opacity: 0;
+		visibility:hidden;
 	}
 }
+
