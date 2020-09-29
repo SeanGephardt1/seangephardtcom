@@ -1,9 +1,12 @@
 ﻿import React from 'react';
+import StateStore from '../../js/state-store.js';
 import './hover-card.css';
 
 export default class HoverCard extends React.Component
 {
 	static defaultProps = {
+		StateKey: Object.freeze( "HoverCardDisplayed" ),
+
 		Colors:
 		{
 			Red: "pi-red",
@@ -29,30 +32,35 @@ export default class HoverCard extends React.Component
 		this.Placement = ( this.props.placement || HoverCard.defaultProps.Placements.Right );
 
 		this.state = {
-			displayed: false
+			changed: false
 		};
 		return;
 	};
 	OnClick_CloseHoverCard( ev )
 	{
-		console.debug( "OnClick_CloseHoverCard", this.state.displayed, this.props.displayed );
-
-		this.setState( {
-			displayed: false
-		} );
+		//	console.debug( "OnClick_CloseHoverCard", this.state.changed, StateStore.States[HoverCard.defaultProps.StateKey] );
+		StateStore.AddState( HoverCard.defaultProps.StateKey, undefined );
+		this.setState( { changed: !this.state.changed } );
 		return;
 	};
 	render()
 	{
-		console.debug( this.state.displayed, this.props.displayed );
+		//	console.debug( this.state.displayed );
+		console.debug( "HoverCard.render()", this.state.changed, StateStore.States[HoverCard.defaultProps.StateKey] );
 
-		let _placement_direction_classname = "hc-main-panel " + this.props.placement;
-
-		if ( this.props.displayed === true )
-		{
-			_placement_direction_classname = _placement_direction_classname + " hc-displayed";
-		}
+		let _placement_direction_classname;// = "hc-main-panel " + this.props.placement + " hc-displayed";
 		//	console.debug( _placement_direction_classname );
+
+		if ( StateStore.States[HoverCard.defaultProps.StateKey] === true )
+		{
+			_placement_direction_classname = "hc-main-panel " + this.props.placement + " hc-displayed";
+		}
+		else if ( StateStore.States[HoverCard.defaultProps.StateKey] === false ||
+			StateStore.States[HoverCard.defaultProps.StateKey] === undefined )
+		{
+			_placement_direction_classname = "hc-main-panel " + this.props.placement + " hc-hidden";
+		}
+		console.debug( "_placement_direction_classname", _placement_direction_classname );
 
 		return (
 			<div className={_placement_direction_classname}>
@@ -68,7 +76,7 @@ export default class HoverCard extends React.Component
 					<div className="hc-header">
 						{
 							this.props.title !== undefined &&
-							<div className="hc-header-title">{this.props.title}</div>						
+							<div className="hc-header-title" title={ this.props.title }>{this.props.title}</div>						
 						}
 
 						<div className="hc-close-button" onClick={this.OnClick_CloseHoverCard.bind(this) }>

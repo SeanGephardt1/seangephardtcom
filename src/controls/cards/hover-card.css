@@ -36,6 +36,18 @@
 	animation-delay: 0ms;
 	animation-duration: 200ms;
 }
+.hc-hidden
+{
+	animation-name: HoverCard_Hide;
+	animation-fill-mode:forwards;
+	animation-direction:normal;
+	animation-play-state:running;
+	animation-timing-function:linear;
+	animation-iteration-count:1;
+	animation-delay: 0ms;
+	animation-duration: 200ms;
+}
+
 
 /* direction arrow placement */
 .hc-placement-chevron

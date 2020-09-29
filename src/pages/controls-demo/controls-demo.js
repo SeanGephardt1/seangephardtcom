@@ -1,4 +1,5 @@
 import React from 'react';
+import StateStore from '../../js/state-store.js';
 import SVG from '../../art/svgs.js';
 import './controls-demo.css';
 
@@ -45,6 +46,7 @@ export default class ControlsDemo extends React.Component
 		this._prog_pie_interval_handler = undefined;
 
 		this.state = {
+			changed: false,
 			ProgBarButtonRunning: false,
 			ProgPieButtonRunning: false,
 			ProgPieSpeed: 100,
@@ -52,10 +54,11 @@ export default class ControlsDemo extends React.Component
 			ProgInfiniteColor: ProgressInfiniteControl.defaultProps.Colors.Red,
 			ProgInfiniteSize: ProgressInfiniteControl.defaultProps.Sizes.ExtraLarge,
 			hoverCardPlacementSelected: HoverCard.defaultProps.Placements.Top,
-			hoverCardDisplayed: false
 		};
 
 		document.title = this.Title;
+
+		this.HoverCardStateDisplayed = false;
 
 		return;
 	};
@@ -67,14 +70,29 @@ export default class ControlsDemo extends React.Component
 		return;
 	};
 	OnClick_ToggleHoverCard( ev )
-	{
-		console.debug( "OnClick_ToggleHoverCard", this.state.hoverCardDisplayed );
-		this.setState( { hoverCardDisplayed: !this.state.hoverCardDisplayed } );
+	{//	
+		//	console.debug( "OnClick_ToggleHoverCard", StateStore.States[HoverCard.defaultProps.StateKey] );
+
+		//this.HoverCardStateDisplayed = !this.HoverCardStateDisplayed;
+
+		if ( StateStore.States[HoverCard.defaultProps.StateKey] === undefined ||
+			StateStore.States[HoverCard.defaultProps.StateKey] === false )
+		{
+			StateStore.AddState( HoverCard.defaultProps.StateKey, true );	
+		}
+		else if ( StateStore.States[HoverCard.defaultProps.StateKey] === true )
+		{
+			StateStore.AddState( HoverCard.defaultProps.StateKey, false );	
+		}
+
+		//	console.debug( "OnClick_ToggleHoverCard", StateStore.States[HoverCard.defaultProps.StateKey] );
+
+		this.setState( { changed: !this.state.changed } );
 		return;
 	};
 	OnMouseEnter_ToggleHoverCard( ev )
 	{
-		console.debug( "OnClick_ToggleHoverCard" );
+		//	console.debug( "OnMouseEnter_ToggleHoverCard" );
 		//	this.setState( { hoverCardDisplayed: true } );
 		return;
 	};
@@ -225,8 +243,7 @@ export default class ControlsDemo extends React.Component
 	};
 
     render()
-	{
-		//	console.debug( "render", this.state.hoverCardPlacementSelected );
+	{	//	console.debug( "ControlsDemo.render()", StateStore.States[HoverCard.defaultProps.StateKey] );
         return (
 			<div className="anim-demo-layout">
 
@@ -251,12 +268,15 @@ export default class ControlsDemo extends React.Component
 
 							<div className="hc-test-button" onMouseEnter={this.OnMouseEnter_ToggleHoverCard.bind( this )}>Hover Here!</div>
 
-							<HoverCard
-								title="How to use a hover card, in just about every scenario known to man on this planet. Love Sean Gephardt and all his crazy rocker freinds from Mars."
-								placement={this.state.hoverCardPlacementSelected}
-								displayed={this.state.hoverCardDisplayed}>
-								<button>Click me</button><LorumContent />
-							</HoverCard>
+							{
+								StateStore.States[HoverCard.defaultProps.StateKey] !== undefined &&
+								StateStore.States[HoverCard.defaultProps.StateKey] === true &&
+								<HoverCard
+									stateKey={this.HoverCardStateKey }
+									title="How to use a hover card, in just about every scenario known to man on this planet. Love Sean Gephardt and all his crazy rocker freinds from Mars."
+									placement={this.state.hoverCardPlacementSelected}><button>Click me</button><LorumContent />
+								</HoverCard>
+							}
 
 						</div>
 
