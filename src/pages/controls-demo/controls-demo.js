@@ -252,6 +252,10 @@ export default class ControlsDemo extends React.Component
 						<div className="ani-card-ctrl-block">control</div>
 						<div className="ani-card-text-block">This is an example of what is called an "indefinite" progress indicator, meaning that ti it is displayed for an indefinite amount of time. it can be hidden at any time.</div>
 						</div>
+
+
+							<div className="hc-test-button" onMouseEnter={this.OnMouseEnter_ToggleHoverCard.bind( this )}>Hover Here!</div>
+
 				 */}
 
 				{ /* Popup cards  */ }
@@ -260,23 +264,17 @@ export default class ControlsDemo extends React.Component
 
 				<div className="anim-demo-block-panel">
 
-					{ /* INFINTE PROGRESS INDICATORS */ }
+					{ /* HoverCard */ }
 					<div className="ani-demo-card-1">
 						<div className="ani-card-ctrl-block">
 
 							<div className="hc-test-button" onClick={this.OnClick_ToggleHoverCard.bind( this )}>Click Here!</div>
 
-							<div className="hc-test-button" onMouseEnter={this.OnMouseEnter_ToggleHoverCard.bind( this )}>Hover Here!</div>
-
-							{
-								StateStore.States[HoverCard.defaultProps.StateKey] !== undefined &&
-								StateStore.States[HoverCard.defaultProps.StateKey] === true &&
-								<HoverCard
-									stateKey={this.HoverCardStateKey }
+							<HoverCard
+									stateKey={StateStore.States[HoverCard.defaultProps.StateKey] }
 									title="How to use a hover card, in just about every scenario known to man on this planet. Love Sean Gephardt and all his crazy rocker freinds from Mars."
 									placement={this.state.hoverCardPlacementSelected}><button>Click me</button><LorumContent />
 								</HoverCard>
-							}
 
 						</div>
 

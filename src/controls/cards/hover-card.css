@@ -2,31 +2,20 @@
 {
 /*	border: solid 1px var(--debug);*/
 	position:absolute;
-	left:10%;
 	height:auto;
 	width:auto;
 	vertical-align:top;
 	justify-content:center;
-	display: none;
 	flex-direction:column;
-
-/*	animation-name: HoverCard_Hide;
-	animation-fill-mode:forwards;
-	animation-direction:normal;
-	animation-play-state:paused;
-	animation-timing-function:linear;
-	animation-iteration-count:1;
-	animation-delay: 300ms;
-	animation-duration: 300ms;*/
+	display: none;
 }
 
 .hc-displayed
 {
+	left:10%;
 	display:flex;
 	opacity:0;
-	height:auto;
 
-/*	transform: scale(0.8,0.8) translate(0,-10px);*/
 	animation-name: HoverCard_Display;
 	animation-fill-mode:forwards;
 	animation-direction:normal;
@@ -38,6 +27,10 @@
 }
 .hc-hidden
 {
+	left:10%;
+	display: flex;
+	opacity:1;
+
 	animation-name: HoverCard_Hide;
 	animation-fill-mode:forwards;
 	animation-direction:normal;

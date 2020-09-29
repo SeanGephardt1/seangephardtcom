@@ -32,38 +32,56 @@ export default class HoverCard extends React.Component
 		this.Placement = ( this.props.placement || HoverCard.defaultProps.Placements.Right );
 
 		this.state = {
-			changed: false
+			changed: null
 		};
 		return;
 	};
 	OnClick_CloseHoverCard( ev )
 	{
 		//	console.debug( "OnClick_CloseHoverCard", this.state.changed, StateStore.States[HoverCard.defaultProps.StateKey] );
-		StateStore.AddState( HoverCard.defaultProps.StateKey, undefined );
-		this.setState( { changed: !this.state.changed } );
+		StateStore.AddState( HoverCard.defaultProps.StateKey, false );
+		this.setState( { changed: false } );
 		return;
 	};
+	HandleFadeInOutState()
+	{	//	console.debug( "HandleFadeInOutState" );
+		//console.debug( "HoverCard.defaultProps.StateKey",StateStore.States[HoverCard.defaultProps.StateKey] );
+		//console.debug( "this.state.changed", this.state.changed );
+
+		let _classnames = "hc-main-panel " + this.props.placement;
+		let _fade_classname;
+
+		// STATES SET FROM EXTERNAL
+		if ( StateStore.States[HoverCard.defaultProps.StateKey] === undefined && this.state.changed === null )
+		{
+			_fade_classname = "";
+		}
+		else if ( StateStore.States[HoverCard.defaultProps.StateKey] === true && this.state.changed === null)
+		{
+			_fade_classname = "hc-displayed";
+		}
+		else if ( StateStore.States[HoverCard.defaultProps.StateKey] === false && this.state.changed === null )
+		{
+			_fade_classname = "hc-hidden";
+		}
+		//	SET FROM INTERNAL
+		else if ( StateStore.States[HoverCard.defaultProps.StateKey] === false && this.state.changed === false )
+		{
+			_fade_classname = "hc-hidden";
+		}
+		else if ( StateStore.States[HoverCard.defaultProps.StateKey] === true && this.state.changed === false )
+		{
+			_fade_classname = "hc-displayed";
+		}
+
+		_classnames = _classnames + " " + _fade_classname;
+		//	console.debug( "_classnames ", _classnames );
+		return _classnames;
+	};
 	render()
-	{
-		//	console.debug( this.state.displayed );
-		console.debug( "HoverCard.render()", this.state.changed, StateStore.States[HoverCard.defaultProps.StateKey] );
-
-		let _placement_direction_classname;// = "hc-main-panel " + this.props.placement + " hc-displayed";
-		//	console.debug( _placement_direction_classname );
-
-		if ( StateStore.States[HoverCard.defaultProps.StateKey] === true )
-		{
-			_placement_direction_classname = "hc-main-panel " + this.props.placement + " hc-displayed";
-		}
-		else if ( StateStore.States[HoverCard.defaultProps.StateKey] === false ||
-			StateStore.States[HoverCard.defaultProps.StateKey] === undefined )
-		{
-			_placement_direction_classname = "hc-main-panel " + this.props.placement + " hc-hidden";
-		}
-		console.debug( "_placement_direction_classname", _placement_direction_classname );
-
+	{	//	console.debug( "HoverCard.render()", this.state.changed );
 		return (
-			<div className={_placement_direction_classname}>
+			<div className={this.HandleFadeInOutState()}>
 
 				{ /* PLACEMENT POINTER */ }
 				<div className="hc-placement-chevron">
@@ -95,7 +113,6 @@ export default class HoverCard extends React.Component
 					}
 
 				</div>
-
 
 			</div>
 		);
