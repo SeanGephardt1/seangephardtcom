@@ -8,6 +8,7 @@ import ProgressBarControl from '../../controls/progress-controls/prog-bar.js';
 import ProgressPieControl from '../../controls/progress-controls/prog-pie.js';
 
 import HoverCard from '../../controls/cards/hover-card.js';
+import LorumContent from '../../controls/content/lorum-ipsum.js';
 
 
 export default class ControlsDemo extends React.Component
@@ -67,14 +68,14 @@ export default class ControlsDemo extends React.Component
 	};
 	OnClick_ToggleHoverCard( ev )
 	{
-		console.debug( "OnClick_ToggleHoverCard" );
-		this.setState( { hoverCardDisplayed: true } );
+		console.debug( "OnClick_ToggleHoverCard", this.state.hoverCardDisplayed );
+		this.setState( { hoverCardDisplayed: !this.state.hoverCardDisplayed } );
 		return;
 	};
 	OnMouseEnter_ToggleHoverCard( ev )
 	{
 		console.debug( "OnClick_ToggleHoverCard" );
-		this.setState( { hoverCardDisplayed: true } );
+		//	this.setState( { hoverCardDisplayed: true } );
 		return;
 	};
 
@@ -245,12 +246,20 @@ export default class ControlsDemo extends React.Component
 					{ /* INFINTE PROGRESS INDICATORS */ }
 					<div className="ani-demo-card-1">
 						<div className="ani-card-ctrl-block">
+
 							<div className="hc-test-button" onClick={this.OnClick_ToggleHoverCard.bind( this )}>Click Here!</div>
-							<div className="hc-test-button" onMouseEnter={ this.OnMouseEnter_ToggleHoverCard.bind(this)}>Hover Here!</div>
+
+							<div className="hc-test-button" onMouseEnter={this.OnMouseEnter_ToggleHoverCard.bind( this )}>Hover Here!</div>
+
 							<HoverCard
+								title="How to use a hover card, in just about every scenario known to man on this planet. Love Sean Gephardt and all his crazy rocker freinds from Mars."
 								placement={this.state.hoverCardPlacementSelected}
-								displayed={this.state.hoverCardDisplayed}>Hello HoverCard!</HoverCard>
+								displayed={this.state.hoverCardDisplayed}>
+								<button>Click me</button><LorumContent />
+							</HoverCard>
+
 						</div>
+
 						<div className="ani-card-text-block">
 							<div>Interact with the buttons above to see an exmample of the HoverCard in action.</div>
 							<div className="margin-bottom-5"></div>

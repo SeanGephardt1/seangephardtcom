@@ -1,152 +1,144 @@
-﻿.pi-panel
+﻿.hc-main-panel
 {
-/*	border: solid 1px var(--black-01);*/
+/*	border: solid 1px var(--debug);*/
+	position:absolute;
+	left:10%;
 	height:auto;
-	width:100%;
-	text-align:center;
+	width:auto;
 	vertical-align:top;
-	display: flex;
 	justify-content:center;
+	display: none;
+	flex-direction:column;
+
+/*	animation-name: HoverCard_Hide;
+	animation-fill-mode:forwards;
+	animation-direction:normal;
+	animation-play-state:paused;
+	animation-timing-function:linear;
+	animation-iteration-count:1;
+	animation-delay: 300ms;
+	animation-duration: 300ms;*/
 }
 
-/* sizes*/
-.pi-size-extra-large
+.hc-displayed
 {
-	height:192px;
-	width:192px;
-}
-.pi-size-large
-{
-	height:128px;
-	width:128px;
-}
-.pi-size-medium
-{
-	height:64px;
-	width:64px;
-}
-.pi-size-small
-{
-	height:32px;
-	width:32px;
+	display:flex;
+	opacity:0;
+
+/*	transform: scale(0.8,0.8) translate(0,-10px);*/
+	animation-name: HoverCard_Display;
+	animation-fill-mode:forwards;
+	animation-direction:normal;
+	animation-play-state:running;
+	animation-timing-function:linear;
+	animation-iteration-count:1;
+	animation-delay: 300ms;
+	animation-duration: 300ms;
 }
 
-/* styles */
-.pi-circle
+/* direction arrow placement */
+.hc-placement-chevron
 {
-/*	border: solid 1px red; */	
-	border-radius:50%; 
-	opacity:0;	
-	transform: rotate(0);
-	animation-delay: 300ms, 1000ms;
-	animation-direction:normal, normal;
-	animation-duration:1000ms, 300ms;
-	animation-fill-mode:both, forwards;
-	animation-iteration-count: infinite, 1;
-	animation-name:RotateProgressCircle, AniPageFadeIn1;
-	animation-play-state:running, running;
-	animation-timing-function:ease-in-out, linear;	
+	border: solid 1px var(--black-02);
+	height: 16px;
 }
-.pi-circle > svg
+.hc-pointer
 {
-/*	border: solid 1px red;*/
-	border-radius:50%;
 	height:100%;
 	width:100%;
 }
 
-.pi-bar
+/* content */
+.hc-content-panel
 {
-/*	border: solid 1px var(--black-04);*/
-/*	border-radius: 10px;*/	
-	background-color:#EFF6FC;
+	border: solid 1px var(--black-04);
+	border-radius: 4px;
+	background-color: var(--white);
+	box-shadow: 0px 0px 40px 0px var(--black-04);
+	min-height:32px;
+	min-width: 150px;
+	font-size: 14px;
+	text-align:left;
+}
+
+.hc-header
+{
+/*	border: solid 1px var(--debug);*/
+	border-bottom: solid 1px var(--black-01);
+	display:flex;
+	flex-direction:row;
+}
+.hc-header-title
+{
+	flex: 1 1 auto;
+	font-weight:bolder;
+	padding:6px;
+	padding-left:10px;
+	padding-right:10px;
+	max-width:470px;
+	max-height:62px;
+	text-overflow:ellipsis;
+	white-space:nowrap; 
+	overflow:hidden;
+}
+
+.hc-close-button
+{
+/*	border: solid 1px var(--debug);*/
+	flex: 1 1 auto;
+	width:30px;
+	height:30px;
+	cursor:pointer;
+	text-align:center;
+	padding:5px;
+}
+.hc-close-button > svg
+{
+	padding:0;
+	margin:0;
+	height:100%;
 	width:100%;
-	height: auto;
-	background-repeat:no-repeat;
-	background-size: 50px auto;
-	background-position-x: 0;
-
-	opacity:0;
-
-	animation-name: AniProgBar_Indef_Fill, AniPageFadeIn1;
-	animation-direction:normal;
-	animation-fill-mode:forwards;
-	animation-play-state:running;
-	animation-timing-function:linear;
-	animation-delay: 0ms, 1000ms;
-	animation-duration:1000ms, 300ms;
-	animation-iteration-count:infinite, 1;
+	fill:  rgba(0,128,0,0.2);
+	transition: all 200ms ease-in-out;
+}
+.hc-close-button > svg:hover
+{
+	fill:  rgba(0,128,0,1);
+	transform:rotate(-90deg);
 }
 
-.pi-size-extra-large.pi-bar
+.hc-children-panel
 {
-	height:7px;
-}
-.pi-size-large.pi-bar
-{
-	height:5px;
-}
-.pi-size-medium.pi-bar
-{
-	height:3px;
-}
-.pi-size-small.pi-bar
-{
-	height: 2px;
-}
-
-/* colors */
-.pi-red
-{
-	background-image: linear-gradient(90deg, var(--nav-color-1) 0, var(--nav-color-1) 100%);
-	stroke: var(--nav-color-1);
-}
-.pi-orange
-{
-	background-image: linear-gradient(90deg, var(--orange) 0,   var(--orange) 100%);
-	stroke: var(--orange);
-}
-.pi-yellow
-{
-	background-image: linear-gradient(90deg, var(--nav-color-2) 0,  var(--nav-color-2) 100%);
-	stroke: var(--nav-color-2);
-}
-.pi-green
-{
-	background-image: linear-gradient(90deg, var(--nav-color-3) 0,  var(--nav-color-3) 100%);
-	stroke: var(--nav-color-3);
-}
-.pi-blue
-{
-	background-image: linear-gradient(90deg, var(--lapis) 0,  var(--lapis) 100%);
-	stroke: var(--lapis);
-}
-.pi-purple
-{
-	background-image: linear-gradient(90deg, var(--purple) 0,  var(--purple) 100%);
-	stroke: var(--purple);
+/*	border: solid 1px var(--debug);*/
+	border-top: solid 1px var(--black-01);
+	padding:20px;
+	max-width:500px;
+	max-height:300px;
+	text-overflow:ellipsis;
+	white-space:normal; 
+	overflow:auto;
 }
 
 
-/* in order */
-@keyframes RotateProgressCircle {
-    0% {
-		transform: rotate(0deg);
-    }
-    100% {
-		transform: rotate(360deg);
-    }
-}
-
-@keyframes AniProgBar_Indef_Fill
+@keyframes HoverCard_Display
 {
-	0% { 
-		background-position-x: 0;
+	0%
+	{
+		opacity: 0;
 	}
-	50% { 
-		background-position-x: 100%;
+	100%
+	{
+		opacity: 1;
 	}
-	100% { 
-		background-position-x: 0;
+}
+@keyframes HoverCard_Hide
+{
+	0%
+	{
+		opacity: 1;
+	}
+	100%
+	{
+		opacity: 0;
 	}
 }
