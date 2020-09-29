@@ -69,13 +69,13 @@ export default class ControlsDemo extends React.Component
 	};
 	OnClick_ToggleHoverCard( ev )
 	{//	
-		console.debug( "OnClick_ToggleHoverCard", ev.target );
+		console.debug( "OnClick_ToggleHoverCard", ev.nativeEvent);
 
-		let _element = ev.target;
-		console.debug( "_element", _element );
+		//let _element = ev.target;
+		//console.debug( "_element", _element );
 
-		let _el_client_height = ev.target.clientHeight;
-		let _el_client_width= ev.target.clientWidth;
+		//let _el_client_height = ev.target.clientHeight;
+		//let _el_client_width= ev.target.clientWidth;
 		//	ev.target.offset*
 		//	ev.clientX
 		//	ev.pageX
