@@ -144,7 +144,6 @@ select.prog-infinites
 	border-color:rgba(0,96,0,0.4);
 	border-radius: 6px;
 	padding:10px;
-	margin-bottom:10px;
 	cursor:pointer;
 	transition: all 250ms ease-in-out;
 }

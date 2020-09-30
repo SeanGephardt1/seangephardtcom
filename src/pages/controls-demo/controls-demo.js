@@ -54,7 +54,6 @@ export default class ControlsDemo extends React.Component
 			ProgInfiniteColor: ProgressInfiniteControl.defaultProps.Colors.Red,
 			ProgInfiniteSize: ProgressInfiniteControl.defaultProps.Sizes.ExtraLarge,
 			hoverCardPlacementSelected: HoverCard.defaultProps.Placements.Top,
-			hoverCardParent: undefined
 		};
 
 		document.title = this.Title;
@@ -68,40 +67,44 @@ export default class ControlsDemo extends React.Component
 		return;
 	};
 	OnClick_ToggleHoverCard( ev )
-	{//	
-		console.debug( "OnClick_ToggleHoverCard", ev.nativeEvent);
+	{	//	console.debug( "OnClick_ToggleHoverCard", ev);
+		//			console.debug( "OnClick_ToggleHoverCard", StateStore.States[HoverCard.defaultProps.StateKey] );
 
-		//let _element = ev.target;
-		//console.debug( "_element", _element );
-
-		//let _el_client_height = ev.target.clientHeight;
-		//let _el_client_width= ev.target.clientWidth;
-		//	ev.target.offset*
-		//	ev.clientX
-		//	ev.pageX
-		//	ev.screenX
-
-		//	console.debug( "OnClick_ToggleHoverCard", StateStore.States[HoverCard.defaultProps.StateKey] );
 		if ( StateStore.States[HoverCard.defaultProps.StateKey] === undefined ||
 			StateStore.States[HoverCard.defaultProps.StateKey] === false )
 		{
-			StateStore.AddState( HoverCard.defaultProps.StateKey, true );	
+			StateStore.AddState( HoverCard.defaultProps.StateKey, true );
+			StateStore.AddState( HoverCard.defaultProps.StateEventKey, ev.nativeEvent );
 		}
 		else if ( StateStore.States[HoverCard.defaultProps.StateKey] === true )
 		{
 			StateStore.AddState( HoverCard.defaultProps.StateKey, false );	
+			StateStore.AddState( HoverCard.defaultProps.StateEventKey, undefined );
 		}
 		//	console.debug( "OnClick_ToggleHoverCard", StateStore.States[HoverCard.defaultProps.StateKey] );
-		this.setState( {
-			changed: !this.state.changed,
-			hoverCardParent: "TESTING"
-		} );
+		this.setState( { changed: !this.state.changed } );
 		return;
 	};
 	OnMouseEnter_ToggleHoverCard( ev )
 	{
 		//	console.debug( "OnMouseEnter_ToggleHoverCard" );
 		//	this.setState( { hoverCardDisplayed: true } );
+		return;
+	};
+	OnMouseLeave_HideHoverCard( ev )
+	{
+		if ( StateStore.States[HoverCard.defaultProps.StateKey] === true )
+		{
+			//console.debug( "checking" );
+			//window.setTimeout( () =>
+			//{
+			//	console.debug( "timeout" );
+			//	StateStore.AddState( HoverCard.defaultProps.StateKey, false );	
+			//	StateStore.AddState( HoverCard.defaultProps.StateEventKey, undefined );
+			//	this.setState( { changed: !this.state.changed } );
+			//	return;
+			//}, 500, this );
+		}
 		return;
 	};
 
@@ -256,8 +259,20 @@ export default class ControlsDemo extends React.Component
 
 		//	StateStore.States[HoverCard.defaultProps.StateKey] = true;
 
+		//<HoverCard
+		//	stateKey={StateStore.States[HoverCard.defaultProps.StateKey]}
+		//	eventParent={this.state.hoverCardParent}
+		//	title="How to use a hover card, in just about every scenario known to man on this planet. Love Sean Gephardt and all his crazy rocker freinds from Mars."
+		//	placement={this.state.hoverCardPlacementSelected}><button>Click me</button><LorumContent />
+		//	</HoverCard>
+
         return (
 			<div className="anim-demo-layout">
+
+				<HoverCard
+					title="How to use a hover card, in just about every scenario known to man on this planet. Love Sean Gephardt and all his crazy rocker freinds from Mars."
+					placement={this.state.hoverCardPlacementSelected}><LorumContent/>
+					</HoverCard>
 
 				{ /* CONTROL CARD TEMPLATE 
 						<div className="ani-demo-card-1">
@@ -275,16 +290,9 @@ export default class ControlsDemo extends React.Component
 					{ /* HoverCard */ }
 					<div className="ani-demo-card-1">
 						<div className="ani-card-ctrl-block">
-
-							<div className="hc-test-button" onClick={this.OnClick_ToggleHoverCard.bind( this )}>Click Here!</div>
-
-							<HoverCard
-								stateKey={StateStore.States[HoverCard.defaultProps.StateKey]}
-								parent={this.state.hoverCardParent}
-									title="How to use a hover card, in just about every scenario known to man on this planet. Love Sean Gephardt and all his crazy rocker freinds from Mars."
-									placement={this.state.hoverCardPlacementSelected}><button>Click me</button><LorumContent />
-								</HoverCard>
-
+							<div className="hc-test-button"
+								onClick={this.OnClick_ToggleHoverCard.bind( this )}
+								onMouseLeave={ this.OnMouseLeave_HideHoverCard.bind(this)}>Click Here!</div>
 						</div>
 
 						<div className="ani-card-text-block">

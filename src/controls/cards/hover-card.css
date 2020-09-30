@@ -3,7 +3,7 @@
 /*	border: solid 1px var(--debug);*/
 	position:absolute;
 	height:auto;
-	width:auto;
+	width:300px;
 	vertical-align:top;
 	justify-content:center;
 	flex-direction:column;
@@ -14,7 +14,7 @@
 
 .hc-displayed
 {
-	left:10%;
+/*	left:10%;*/
 	display:flex;
 	opacity:0;
 
@@ -29,7 +29,7 @@
 }
 .hc-hidden
 {
-	left:10%;
+/*	left:10%;*/
 	display: flex;
 	opacity:1;
 
@@ -40,62 +40,63 @@
 	animation-timing-function:linear;
 	animation-iteration-count:1;
 	animation-delay: 0ms;
-	animation-duration: 500ms;
+	animation-duration: 200ms;
 }
 
 /* direction arrow placement */
 .hc-placement-chevron
 {
-	border-style: solid;
-	border-width:1px;
-	border-color:var(--debug);
+/*	border: solid 1px red;*/
+	background-color:transparent;	
 	width:auto;
 	height: 12px;
 	padding:0px;
-	z-index:102;
 	text-align:center;
 	display:flex;
 	justify-content:center;
+	z-index:102;
 }
 .hc-pointer
 {
-	border: solid 1px red;
+/*	border: solid 1px red;*/
 	flex:0 0 24px;
 	height:24px;
 	width:24px;
-	background-color:var(--white);
-	transform: rotate(45deg);
+	background-color:transparent;	
 }
+.hc-pointer > svg {}
 
 /* content */
 .hc-content-panel
 {
-	border: solid 1px var(--black-02);
+	border: solid 1px var(--black-01);
 	border-radius: 4px;
 	background-color: var(--white);
-	box-shadow: 0px 0px 40px 0px var(--black-04);
+	box-shadow: var(--elevation-01);
 	min-height:32px;
 	min-width: 150px;
 	font-size: 14px;
 	text-align:left;
+	z-index:101;
 }
 
 .hc-header
 {
 /*	border: solid 1px var(--debug);*/
-	border-bottom: solid 1px var(--black-01);
+/*	border-bottom: solid 1px var(--black-01);*/
 	display:flex;
 	flex-direction:row;
 }
 .hc-header-title
 {
-	flex: 1 1 auto;
+/*	border: solid 1px var(--debug);*/
+	flex: 1 1 100%;
 	font-weight:bolder;
 	padding:6px;
 	padding-left:10px;
 	padding-right:10px;
-	max-width:470px;
-	max-height:62px;
+/*	max-width:470px;*/
+	max-height:100px; 	
 	text-overflow:ellipsis;
 	white-space:nowrap; 
 	overflow:hidden;
@@ -104,12 +105,12 @@
 .hc-close-button
 {
 /*	border: solid 1px var(--debug);*/
-	flex: 1 1 auto;
+	flex: 0 0 30px;
 	width:30px;
 	height:30px;
 	cursor:pointer;
 	text-align:center;
-	padding:5px;
+	padding:6px;
 }
 .hc-close-button > svg
 {
@@ -117,19 +118,19 @@
 	margin:0;
 	height:100%;
 	width:100%;
-	fill:  rgba(64,128,192,0.2);
+	fill:  rgba(64,64,64,0.2);
 	transition: all 200ms ease-in-out;
 }
 .hc-close-button > svg:hover
 {
-	fill:  rgba(64,128,192,1);
+	fill:  rgba(64,64,64,1);
 	transform:rotate(-90deg);
 }
 
 .hc-children-panel
 {
 /*	border: solid 1px var(--debug);*/
-	border-top: solid 1px var(--black-01);
+/*	border-top: solid 1px var(--black-01);*/
 	padding:20px;
 	max-width:500px;
 	max-height:300px;
@@ -143,29 +144,29 @@
 /* direction layout */
 .hc-place-top
 {
-	border: solid 1px blue;
-	flex-direction:column;
+/*	border: solid 1px blue;
+*/	flex-direction:column;
 }
 .hc-place-top .hc-placement-chevron
 {
-	border: solid 1px blue;
-	order:0;
+/*	border: solid 1px blue;
+*/	order:0;
 }
 .hc-place-top .hc-content-panel
 {
-	border: solid 1px blue;
-	order:1;
+/*	border: solid 1px blue;
+*/	order:1;
 }
 
 
 .hc-place-left
 {
-	border: solid 1px green;
+/*	border: solid 1px green;*/
 	flex-direction:row;
 }
 .hc-place-left .hc-placement-chevron
 {
-	border: solid 1px green;
+/*	border: solid 1px green;*/
 	width:12px;
 	height: auto;
 	order:0;
@@ -177,7 +178,7 @@
 }
 .hc-place-left .hc-content-panel
 {
-	border: solid 1px green;
+/*	border: solid 1px green;*/
 	order:1;
 }
 
@@ -187,7 +188,7 @@
 }
 .hc-place-right .hc-placement-chevron
 {
-	border: solid 1px green;
+/*	border: solid 1px green;*/
 	width:12px;
 	height: auto;
 	order:1;
@@ -199,7 +200,7 @@
 }
 .hc-place-right .hc-content-panel
 {
-	border: solid 1px green;
+/*	border: solid 1px green;*/
 	order:0;
 }
 
@@ -209,7 +210,7 @@
 }
 .hc-place-bottom .hc-placement-chevron
 {
-	border: solid 1px green;
+/*	border: solid 1px green;*/
 	order:1;
 }
 .hc-place-bottom .hc-placement-chevron .hc-pointer
@@ -218,7 +219,7 @@
 }
 .hc-place-bottom .hc-content-panel
 {
-	border: solid 1px green;
+/*	border: solid 1px green;*/
 	order:0;
 }
 

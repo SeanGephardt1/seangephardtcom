@@ -54,5 +54,8 @@
 	--res-skills-header: rgba(197, 34, 51, 1);
 	--voy: rgba(128,0,0,1);
 
-
+	--elevation-01: 
+		0px 0px 10px 0px var(--black-01),
+		0px 30px 30px 30px var(--black-01),
+		0px -10px 30px 0px var(--black-01);
 }
