@@ -53,8 +53,9 @@ export default class ControlsDemo extends React.Component
 			ProgPieStep: 33,
 			ProgInfiniteColor: ProgressInfiniteControl.defaultProps.Colors.Red,
 			ProgInfiniteSize: ProgressInfiniteControl.defaultProps.Sizes.ExtraLarge,
-			hoverCardPlacementSelected: DialogCard.defaultProps.Placements.Right,
+			hoverCardPlacementSelected: DialogCard.defaultProps.Placements.Top,
 			hoverCardEventType: undefined,
+			hoverCardButtonText: "Click here!"
 		};
 
 		document.title = this.Title;
@@ -68,23 +69,92 @@ export default class ControlsDemo extends React.Component
 		return;
 	};
 	OnClick_ToggleHoverCard( ev )
-	{	//	console.debug( "OnClick_ToggleHoverCard", StateStore.States[DialogCard.defaultProps.StateKey]);
-		if ( StateStore.States[DialogCard.defaultProps.StateKey] === undefined ||
-			StateStore.States[DialogCard.defaultProps.StateKey] === false )
+	{
+		//	console.debug( "OnClick_ToggleHoverCard", ev.nativeEvent.type,  this.state.hoverCardEventType);
+		//	console.debug( StateStore.States[HoverCard.defaultProps.StateEventKey] );
+
+		if ( ev.nativeEvent.type === "click" && this.state.hoverCardEventType === "mouseover" )
 		{
-			StateStore.AddState( DialogCard.defaultProps.StateKey, true );
-			StateStore.AddState( DialogCard.defaultProps.StateEventKey, ev.nativeEvent );
+			this.setState( {
+				changed: !this.state.changed,
+				hoverCardEventType: ev.nativeEvent.type,
+			} );
+			return;
 		}
-		else if ( StateStore.States[DialogCard.defaultProps.StateKey] === true )
+		else if ( this.state.hoverCardEventType === "click" || this.state.hoverCardEventType === undefined )
 		{
-			StateStore.AddState( DialogCard.defaultProps.StateKey, false );
-			StateStore.AddState( DialogCard.defaultProps.StateEventKey, undefined );
+			if ( StateStore.States[DialogCard.defaultProps.StateKey] === undefined ||
+				StateStore.States[DialogCard.defaultProps.StateKey] === false )
+			{
+				StateStore.AddState( DialogCard.defaultProps.StateKey, true );
+				StateStore.AddState( DialogCard.defaultProps.StateEventKey, ev.nativeEvent );
+			}
+			else if ( StateStore.States[DialogCard.defaultProps.StateKey] === true )
+			{
+				StateStore.AddState( DialogCard.defaultProps.StateKey, false );
+				StateStore.AddState( DialogCard.defaultProps.StateEventKey, undefined );
+			}
+			//	console.debug( "OnClick_ToggleHoverCard", StateStore.States[HoverCard.defaultProps.StateKey] );
+			this.setState( {
+				changed: !this.state.changed,
+				hoverCardEventType: DialogCard.defaultProps.StateEventKey,
+			} );
 		}
-		//	console.debug( "OnClick_ToggleHoverCard", StateStore.States[HoverCard.defaultProps.StateKey] );
-		this.setState( {
-			changed: !this.state.changed,
-			hoverCardEventType: DialogCard.defaultProps.StateEventKey,
-		} );
+		return;
+	};
+	OnMouseEnter_DisplayHoverCard( ev )
+	{	//	console.debug( "OnMouseEnter_ToggleHoverCard", ev.nativeEvent.type, this.state.hoverCardEventType  );
+
+		if ( (ev.nativeEvent.type === "mouseover") && ( ev.nativeEvent.type === this.state.hoverCardEventType ) )
+		{
+			this.setState( {
+				changed: !this.state.changed,
+				hoverCardEventType: ev.nativeEvent.type,
+			} );
+			return;
+		}
+		else
+		{
+			if ( StateStore.States[DialogCard.defaultProps.StateKey] === undefined ||
+					StateStore.States[DialogCard.defaultProps.StateKey] === false )
+			{
+				StateStore.AddState( DialogCard.defaultProps.StateKey, true );
+				StateStore.AddState( DialogCard.defaultProps.StateEventKey, ev.nativeEvent );
+			}
+			else if ( StateStore.States[DialogCard.defaultProps.StateKey] === true )
+			{
+				StateStore.AddState( DialogCard.defaultProps.StateKey, false );	
+				StateStore.AddState( DialogCard.defaultProps.StateEventKey, undefined );
+			}
+			//	console.debug( "OnClick_ToggleHoverCard", StateStore.States[HoverCard.defaultProps.StateKey] );
+			this.setState( {
+				changed: !this.state.changed,
+				hoverCardEventType: ev.nativeEvent.type,
+			} );
+		}
+		return;
+	};
+	OnMouseLeave_HideHoverCard( ev )
+	{	//	
+		//	console.debug( "OnMouseLeave_HideHoverCard", ev.nativeEvent.type, this.state.hoverCardEventType );
+		if ( this.state.hoverCardEventType === "mouseover" )
+		{
+			if ( StateStore.States[DialogCard.defaultProps.StateKey] === true )
+			{
+				//	console.debug( "checking" );
+				window.setTimeout( () =>
+				{
+					//	console.debug( "timeout" );
+					StateStore.AddState( DialogCard.defaultProps.StateKey, false );	
+					StateStore.AddState( DialogCard.defaultProps.StateEventKey, undefined );
+					this.setState( {
+						changed: !this.state.changed,
+						hoverCardEventType: "mouseout",
+					} );
+					return;
+				}, 300, this );
+			}
+		}
 		return;
 	};
 
@@ -99,6 +169,29 @@ export default class ControlsDemo extends React.Component
 		this.setState( { ProgInfiniteSize: ev.target.value } );
 		return;
 	}
+
+	ProgBarDemo_StartInterval( scopeObj )
+	{	//	console.debug( "ProgBarDemo_StartInterval", scopeObj._prog_bar_value );
+		if ( scopeObj._prog_bar_value < 100)
+		{
+			scopeObj._prog_bar_value++;
+			scopeObj._prog_bar_tbn_text = scopeObj._pause_text;
+		}
+		else if ( scopeObj._prog_bar_value === 100)
+		{
+			scopeObj._prog_bar_tbn_text = scopeObj._start_text;
+			scopeObj._prog_bar_btn_clicked = false;
+
+			window.clearInterval( scopeObj._prog_bar_interval_handler );
+			scopeObj._prog_bar_interval_handler = undefined;
+		}
+
+		scopeObj.setState({
+			ProgBarButtonRunning: !scopeObj.state.ProgBarButtonRunning
+		});
+		//	console.debug( "scopeObj.state", scopeObj.state );
+		return;
+	};
 	OnClick_TestProgressBar( speed, ev )
 	{
 		//	console.debug( "OnClick_TestProgressBar", this._prog_bar_btn_clicked );
@@ -129,28 +222,6 @@ export default class ControlsDemo extends React.Component
 
 		return;
 	};
-	ProgBarDemo_StartInterval( scopeObj )
-	{	//	console.debug( "ProgBarDemo_StartInterval", scopeObj._prog_bar_value );
-		if ( scopeObj._prog_bar_value < 100)
-		{
-			scopeObj._prog_bar_value++;
-			scopeObj._prog_bar_tbn_text = scopeObj._pause_text;
-		}
-		else if ( scopeObj._prog_bar_value === 100)
-		{
-			scopeObj._prog_bar_tbn_text = scopeObj._start_text;
-			scopeObj._prog_bar_btn_clicked = false;
-
-			window.clearInterval( scopeObj._prog_bar_interval_handler );
-			scopeObj._prog_bar_interval_handler = undefined;
-		}
-
-		scopeObj.setState({
-			ProgBarButtonRunning: !scopeObj.state.ProgBarButtonRunning
-		});
-		//	console.debug( "scopeObj.state", scopeObj.state );
-		return;
-	};
 
 	// ProgPie
 	OnChange_StepProgPie( ev )
@@ -174,6 +245,32 @@ export default class ControlsDemo extends React.Component
 		} );
 		return;
 	}
+	ProgPie_StartInterval( scopeObj )
+	{	
+		//	console.debug( "ProgPieDemo_StartInterval", scopeObj._prog_pie_value);
+		if ( scopeObj._prog_pie_value === 0 )
+		{
+			scopeObj._prog_pie_value++;
+			scopeObj._prog_pie_btn_text = scopeObj._pause_text;
+			scopeObj.setState({ ProgPieButtonRunning: !scopeObj.state.ProgPieButtonRunning });
+		}
+		else if ( scopeObj._prog_pie_value < 100 )
+		{
+			scopeObj._prog_pie_value++;
+			scopeObj._prog_pie_btn_text = scopeObj._pause_text;
+			scopeObj.setState({ ProgPieButtonRunning: !scopeObj.state.ProgPieButtonRunning });	
+		}
+		else if ( scopeObj._prog_pie_value === 100)
+		{
+			scopeObj._prog_pie_value = 0;
+			scopeObj._prog_pie_btn_text  = scopeObj._start_text;
+			scopeObj._prog_pie_btn_clicked = false;
+
+			window.clearInterval( scopeObj._prog_pie_interval_handler );
+			scopeObj._prog_pie_interval_handler = undefined;
+		}
+		return;
+	};
 	OnClick_TestProgressPie( ev )
 	{	
 		//	console.debug( "OnClick_TestProgressPie", this._prog_pie_btn_clicked );
@@ -204,46 +301,31 @@ export default class ControlsDemo extends React.Component
 		}
 		return;
 	};
-	ProgPie_StartInterval( scopeObj )
-	{	
-		//	console.debug( "ProgPieDemo_StartInterval", scopeObj._prog_pie_value);
-		if ( scopeObj._prog_pie_value === 0 )
-		{
-			scopeObj._prog_pie_value++;
-			scopeObj._prog_pie_btn_text = scopeObj._pause_text;
-			scopeObj.setState({ ProgPieButtonRunning: !scopeObj.state.ProgPieButtonRunning });
-		}
-		else if ( scopeObj._prog_pie_value < 100 )
-		{
-			scopeObj._prog_pie_value++;
-			scopeObj._prog_pie_btn_text = scopeObj._pause_text;
-			scopeObj.setState({ ProgPieButtonRunning: !scopeObj.state.ProgPieButtonRunning });	
-		}
-		else if ( scopeObj._prog_pie_value === 100)
-		{
-			scopeObj._prog_pie_value = 0;
-			scopeObj._prog_pie_btn_text  = scopeObj._start_text;
-			scopeObj._prog_pie_btn_clicked = false;
-
-			window.clearInterval( scopeObj._prog_pie_interval_handler );
-			scopeObj._prog_pie_interval_handler = undefined;
-		}
-		return;
-	};
 
     render()
 	{	//	console.debug( "ControlsDemo.render()", StateStore.States[HoverCard.defaultProps.StateKey] );
+		//	<div className="hc-test-button" onMouseEnter={this.OnMouseEnter_ToggleHoverCard.bind( this )}>Hover Here!</div>
 
-		//	console.debug( "StateStore.States[DialogCard.defaultProps.StateKey]", StateStore.States[DialogCard.defaultProps.StateKey] );
-		
-		//	StateStore.States[DialogCard.defaultProps.StateKey] = true;
+		//	StateStore.States[HoverCard.defaultProps.StateKey] = true;
+
+			//<div className="hc-test-button"
+			//onClick={this.OnClick_ToggleHoverCard.bind( this )}
+			//onMouseOver={this.OnMouseEnter_DisplayHoverCard.bind( this )}
+			//onMouseLeave={this.OnMouseLeave_HideHoverCard.bind( this )}>{this.state.hoverCardButtonText}</div>
+
+		//<DialogCard
+		//	stateKey={StateStore.States[HoverCard.defaultProps.StateKey]}
+		//	eventParent={this.state.hoverCardParent}
+		//	title="How to use a hover card, in just about every scenario known to man on this planet. Love Sean Gephardt and all his crazy rocker freinds from Mars."
+		//	placement={this.state.hoverCardPlacementSelected}><button>Click me</button><LorumContent />
+		//	</DialogCard>
 
         return (
 			<div className="anim-demo-layout">
 
 				<DialogCard
 					title="How to use a hover card, in just about every scenario known to man on this planet. Love Sean Gephardt and all his crazy rocker freinds from Mars."
-					placement={this.state.hoverCardPlacementSelected}><LorumContent content={LorumContent.defaultProps.SimpleContent} />
+					placement={this.state.hoverCardPlacementSelected}><LorumContent/>
 					</DialogCard>
 
 				{ /* CONTROL CARD TEMPLATE 
@@ -259,13 +341,6 @@ export default class ControlsDemo extends React.Component
 
 
 				<div className="anim-demo-sub-header">DialogCard</div>
-				<div className="anim-demo-sub-header">DialogCard</div>
-				<div className="anim-demo-sub-header">DialogCard</div>
-				<div className="anim-demo-sub-header">DialogCard</div>
-				<div className="anim-demo-sub-header">DialogCard</div>
-				<div className="anim-demo-sub-header">DialogCard</div>
-				<div className="anim-demo-sub-header">DialogCard</div>
-
 				<div className="anim-demo-block-panel">
 
 					{ /* HoverCard */ }
@@ -273,7 +348,7 @@ export default class ControlsDemo extends React.Component
 						<div className="ani-card-ctrl-block">
 							<div className="hc-test-button"
 								onClick={this.OnClick_ToggleHoverCard.bind( this )}
-								>Click here</div>
+								>{this.state.hoverCardButtonText}</div>
 						</div>
 
 						<div className="ani-card-text-block">
