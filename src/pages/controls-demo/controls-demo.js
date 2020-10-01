@@ -45,6 +45,9 @@ export default class ControlsDemo extends React.Component
 		this._prog_pie_value = 0;
 		this._prog_pie_interval_handler = undefined;
 
+		// dialogcard content selection enum
+		this.DialogCardContentEnum = ["None","Small","Large"];
+
 		this.state = {
 			changed: false,
 			ProgBarButtonRunning: false,
@@ -55,6 +58,9 @@ export default class ControlsDemo extends React.Component
 			ProgInfiniteSize: ProgressInfiniteControl.defaultProps.Sizes.ExtraLarge,
 			hoverCardPlacementSelected: DialogCard.defaultProps.Placements.Right,
 			hoverCardEventType: undefined,
+
+			hoverCardContentSelected: this.DialogCardContentEnum[1],
+			hoverCardContent: LorumContent.defaultProps.SimpleContent
 		};
 
 		document.title = this.Title;
@@ -65,6 +71,28 @@ export default class ControlsDemo extends React.Component
 	OnChange_HoverCardPlacement( ev )
 	{	//	console.debug( "OnChange_HoverCardPlacement", ev.target.value );
 		this.setState( { hoverCardPlacementSelected: ev.target.value } );
+		return;
+	};
+	OnChange_HoverCardContentSelection( ev )
+	{	//	console.debug( "OnChange_HoverCardContentSelection", ev.target.value );
+		let _content = undefined;
+		if ( ev.target.value=== this.DialogCardContentEnum[0] )
+		{
+			_content = undefined;
+		}
+		else if ( ev.target.value === this.DialogCardContentEnum[1] )
+		{
+			_content = LorumContent.defaultProps.SimpleContent;
+		}
+		else if ( ev.target.value === this.DialogCardContentEnum[2] )
+		{
+			_content = LorumContent.defaultProps.ComplexContent;
+		}
+
+		this.setState( {
+			hoverCardContentSelected: ev.target.value,
+			hoverCardContent: _content
+		} );
 		return;
 	};
 	OnClick_ToggleHoverCard( ev )
@@ -232,19 +260,18 @@ export default class ControlsDemo extends React.Component
 	};
 
     render()
-	{	//	console.debug( "ControlsDemo.render()", StateStore.States[HoverCard.defaultProps.StateKey] );
+	{	//	console.debug( "ControlsDemo.render()", this.state.hoverCardContentSelected, this.DialogCardContentEnum);
 
-		//	console.debug( "StateStore.States[DialogCard.defaultProps.StateKey]", StateStore.States[DialogCard.defaultProps.StateKey] );
-		
+		//	console.debug( "StateStore.States[DialogCard.defaultProps.StateKey]", StateStore.States[DialogCard.defaultProps.StateKey] );		
 		//	StateStore.States[DialogCard.defaultProps.StateKey] = true;
 
         return (
 			<div className="anim-demo-layout">
 
 				<DialogCard
-					title="How to use a hover card, in just about every scenario known to man on this planet. Love Sean Gephardt and all his crazy rocker freinds from Mars."
-					placement={this.state.hoverCardPlacementSelected}><LorumContent content={LorumContent.defaultProps.SimpleContent} />
-					</DialogCard>
+					title="How to use a dialog box, and this text should be getting cut off."
+					placement={this.state.hoverCardPlacementSelected}>{this.state.hoverCardContent}
+				</DialogCard>
 
 				{ /* CONTROL CARD TEMPLATE 
 						<div className="ani-demo-card-1">
@@ -254,21 +281,14 @@ export default class ControlsDemo extends React.Component
 				 */}
 
 				{ /* Popup cards  */ }
-				<div className="anim-demo-header">Tooltips, Dialogs and Modals</div>
-				<div className="anim-demo-desc">Customers sometimes need a little extra information or instruction regarding elements of the user interface that may not be completely intuitive or require additional description. Utilizing customized popup cards in this scenario allow for additional information, specific data entry points or notifications.</div>
+				<div className="anim-demo-header">Tooltips, Dialog boxes and Modal dialog boxs</div>
+				<div className="anim-demo-desc">Customers sometimes need a little extra information or instruction regarding elements of the user interface that may not be completely intuitive or require additional description and/or functionality. Utilizing customized tooltips, dialogs and modal dialog in this scenario allow for additional information, specific data entry points or notifications.</div>
 
 
 				<div className="anim-demo-sub-header">DialogCard</div>
-				<div className="anim-demo-sub-header">DialogCard</div>
-				<div className="anim-demo-sub-header">DialogCard</div>
-				<div className="anim-demo-sub-header">DialogCard</div>
-				<div className="anim-demo-sub-header">DialogCard</div>
-				<div className="anim-demo-sub-header">DialogCard</div>
-				<div className="anim-demo-sub-header">DialogCard</div>
-
 				<div className="anim-demo-block-panel">
 
-					{ /* HoverCard */ }
+					{ /* DialogCard  */ }
 					<div className="ani-demo-card-1">
 						<div className="ani-card-ctrl-block">
 							<div className="hc-test-button"
@@ -277,7 +297,7 @@ export default class ControlsDemo extends React.Component
 						</div>
 
 						<div className="ani-card-text-block">
-							<div>Interact with the buttons above to see an exmample of the HoverCard in action.</div>
+							<div>Interact with the buttons above to see variations of how this dialog box can be rendered.</div>
 							<div className="margin-bottom-5"></div>
 							<div className="prog-bar-controls">
 								<div>Select placement</div>
@@ -292,6 +312,23 @@ export default class ControlsDemo extends React.Component
 												checked={this.state.hoverCardPlacementSelected === item[1]}
 												onChange={this.OnChange_HoverCardPlacement.bind( this )}/>
 											<span>{item[0]}</span>
+										</label>
+									))
+									}
+									<div>{ this.state.hoverCardPlacement}</div>
+								</div>
+								<div>Select content</div>
+								<div className="hover-card-controls">
+									{
+										this.DialogCardContentEnum.map( ( item, index ) => (
+											<label key={index} htmlFor={item} className="hover-card-selection" >
+											<input type="radio"
+												name="hover-card-content"
+												id={item}
+												value={item}
+												checked={this.state.hoverCardContentSelected === item}
+												onChange={this.OnChange_HoverCardContentSelection.bind( this )}/>
+											<span>{item}</span>
 										</label>
 									))
 									}

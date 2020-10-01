@@ -10,6 +10,7 @@
 	display: none;
 	flex: 1 1 auto;
 	z-index:100;
+	transition: all 300ms ease-in-out;
 
 	--shadow-top: 0px -6px 20px 6px var(--black-02);
 	--shadow-left: -6px 0px 20px 6px var(--black-02);
@@ -138,10 +139,11 @@
 .hc-children-panel
 {
 /*	border: solid 1px var(--debug);*/
-/*	border-top: solid 1px var(--black-01);*/
+	border-top: solid 1px var(--black-01);
 	padding:20px;
-	max-width:500px;
-	max-height:300px;
+	padding-top:10px;
+	max-width:300px;
+	max-height:250px;
 	text-overflow:ellipsis;
 	white-space:normal; 
 	overflow:auto;

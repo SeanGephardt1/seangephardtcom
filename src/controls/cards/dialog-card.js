@@ -52,18 +52,12 @@ export default class DialogCard extends React.Component
 	HandleLocation()
 	{	
 		//	console.debug( "HandleLocation" );
-		//console.debug( "StateStore.States[HoverCard.defaultProps.StateKey]",
-		//	StateStore.States[HoverCard.defaultProps.StateKey] );
-		//	console.debug("StateStore.States[HoverCard.defaultProps.StateEventKey]", StateStore.States[HoverCard.defaultProps.StateEventKey] );
-		//	console.debug( "1. this.Top, this.Left", this.Top, this.Left );
-
 		if ( StateStore.States[DialogCard.defaultProps.StateEventKey] !== undefined )
 		{
 			let _elem = document.querySelector( ".hc-main-panel" );
 			let _style = getComputedStyle( _elem );
 			let _default_card_width = parseInt( _style.width ); 
 			let _default_card_half_width = ( parseInt( _default_card_width ) / 2 ); 
-
 			let _ev = StateStore.States[DialogCard.defaultProps.StateEventKey];
 			//	console.debug( "_ev", _ev);
 
@@ -77,32 +71,32 @@ export default class DialogCard extends React.Component
 			//	_ev.srcElement.offsetTop,
 			//	_ev.srcElement.scrollTop
 			//);
-			console.debug(
-				_ev.clientX,
-				_ev.layerX,
-				_ev.offsetX,
-				_ev.pageX,
-				_ev.screenX,
-				_ev.x,
-				_ev.srcElement.offsetLeft,
-				_ev.srcElement.scrollLeft
-			);
-
+			//console.debug(
+			//	_ev.clientX,
+			//	_ev.layerX,
+			//	_ev.offsetX,
+			//	_ev.pageX,
+			//	_ev.screenX,
+			//	_ev.x,
+			//	_ev.srcElement.offsetLeft,
+			//	_ev.srcElement.scrollLeft
+			//);
 
 			let _org_box = _ev.srcElement.getBoundingClientRect();
-			console.debug( "_org_box", _org_box);
+			//	console.debug( "_org_box", _org_box);
 
 			let _default_vertical = _ev.srcElement.offsetTop - _org_box.top + "px";
-			//	console.debug( "_default_vertical", _default_vertical );
-			let _default_horizontal = _org_box.left + ( _org_box.width / 2 ) - _default_card_half_width + "px";
-			//	console.debug( "_default_horizontal", _default_horizontal );
+			let _default_horizontal;
 
 			switch ( this.props.placement )
 			{
 				case DialogCard.defaultProps.Placements.Top:
 					{
-						_default_vertical = "calc(100% - " + (_ev.srcElement.offsetTop) + "px)";
+						_default_vertical = "calc(100% - " + ( _ev.srcElement.offsetTop ) + "px)";
+						_default_horizontal = ( _org_box.left + ( _org_box.width / 2 ) - _default_card_half_width ) + "px";
+
 						this.Location = {
+							top: "auto",
 							bottom: _default_vertical,
 							left: _default_horizontal
 						};
@@ -110,37 +104,43 @@ export default class DialogCard extends React.Component
 					}
 				case DialogCard.defaultProps.Placements.Bottom:
 					{
-						_default_vertical = (_ev.srcElement.offsetTop + _org_box.height) + "px";
+						_default_vertical = ( _ev.srcElement.offsetTop + _org_box.height ) + "px";
+						_default_horizontal = ( _org_box.left + ( _org_box.width / 2 ) - _default_card_half_width ) + "px";
+
 						this.Location = {
 							top: _default_vertical,
+							bottom: "auto",
 							left: _default_horizontal
 						};
 						break;
 					}
 				case DialogCard.defaultProps.Placements.Left:
 					{
-						_default_vertical = ( _ev.srcElement.offsetTop ) + "px";
+						_default_vertical = ( _ev.srcElement.offsetTop ) + 10 +  "px";
 						_default_horizontal = ( _ev.srcElement.offsetLeft - _default_card_width ) + "px";
 
 						this.Location = {
 							top: _default_vertical,
+							bottom: "auto",
 							left: _default_horizontal
 						};
 						break;
 					}
 				case DialogCard.defaultProps.Placements.Right:
 					{
-						_default_vertical = ( _ev.srcElement.offsetTop ) + "px";
+						_default_vertical = ( _ev.srcElement.offsetTop ) + 10 + "px";
 						_default_horizontal = ( _org_box.right) + "px";
 
 						this.Location = {
 							top: _default_vertical,
+							bottom: "auto",
 							left: _default_horizontal
 						};
 						break;
 					}
 			}
 		}
+		console.debug( "This.Location", this.Location )
 		return;
 	};
 	HandleFadeInOutState()
@@ -180,7 +180,7 @@ export default class DialogCard extends React.Component
 	};
 	render()
 	{	
-		//	console.debug( "DialogCard.render()", this.Location );
+		//	console.debug( "DialogCard.render()", this.props.children);
 		//	StateStore.States[DialogCard.defaultProps.StateKey],
 		//	StateStore.States[DialogCard.defaultProps.StateEventKey] );
 
