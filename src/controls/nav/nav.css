@@ -29,13 +29,13 @@ a.nav.nav-selected
 
 a.nav:nth-child(1).nav-selected, a.nav:nth-child(1):hover
 {
-	background-color:var(--nav-color-4);
+	background-color:var(--nav-color-1);
 	color:var(--white);
 }
 a.nav:nth-child(2).nav-selected, a.nav:nth-child(2):hover
 {
-	background-color:var(--nav-color-1);
-	color:var(--white);
+	background-color:var(--nav-color-2);
+	color:var(--black);
 }
 a.nav:nth-child(3).nav-selected, a.nav:nth-child(3):hover
 {
@@ -44,8 +44,8 @@ a.nav:nth-child(3).nav-selected, a.nav:nth-child(3):hover
 }
 a.nav:nth-child(4).nav-selected, a.nav:nth-child(4):hover
 {
-	background-color:var(--nav-color-2);
-	color:var(--black);
+	background-color:var(--nav-color-4);
+	color:var(--white);
 }
 
 a.nav.nav-selected, a.nav:hover

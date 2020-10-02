@@ -48,6 +48,25 @@ export default class ControlsDemo extends React.Component
 		// dialogcard content selection enum
 		this.DialogCardContentEnum = ["None","Small","Large"];
 
+		this.TestForm =  ( <div className="test-content-panel">
+			<h1>Header level 1</h1>
+			<h2>Header Level 2</h2>
+			<h3>Header Level 3</h3>
+			<h4>Header Level 4</h4>
+			<h5>Header Level 5</h5>
+			<h6>Header Level 6</h6>
+			<br />
+			<p><strong>Pellentesque habitant morbi tristique</strong> senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. <em>Aenean ultricies mi vitae est.</em> Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, <code>commodo vitae</code>, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. <a href='https://portal.azure.com'>Donec non enim</a> in turpis pulvinar facilisis. Ut felis.</p>
+			<br />
+			<table className='demo-table' cellPadding='0' cellSpacing='0'>
+				<thead>
+					<tr><td>Name&uarr;&darr;</td><td>Name&uarr;&darr;</td><td>Name&uarr;&darr;</td><td>Name&uarr;&darr;</td><td>Name&uarr;&darr;</td></tr></thead>
+				<tbody><tr><td>Value</td><td>Value</td><td>Value</td><td>Value</td><td>Value</td></tr><tr><td>Value</td><td>Value</td><td>Value</td><td>Value</td><td>Value</td></tr><tr><td>Value</td><td>Value</td><td>Value</td><td>Value</td><td>Value</td></tr><tr><td>Value</td><td>Value</td><td>Value</td><td>Value</td><td>Value</td></tr><tr><td>Value</td><td>Value</td><td>Value</td><td>Value</td><td>Value</td></tr></tbody>
+			</table>
+			<br/>
+			<ul><li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li><li>Aliquam tincidunt mauris eu risus.</li><li>Aliquam tincidunt mauris eu risus.</li><ul><li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li><li>Aliquam tincidunt mauris eu risus.</li><li>Aliquam tincidunt mauris eu risus.</li><ul><li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li><li>Aliquam tincidunt mauris eu risus.</li><li>Aliquam tincidunt mauris eu risus.</li></ul></ul></ul>
+		</div> );
+
 		this.state = {
 			changed: false,
 			ProgBarButtonRunning: false,
@@ -56,11 +75,11 @@ export default class ControlsDemo extends React.Component
 			ProgPieStep: 33,
 			ProgInfiniteColor: ProgressInfiniteControl.defaultProps.Colors.Red,
 			ProgInfiniteSize: ProgressInfiniteControl.defaultProps.Sizes.ExtraLarge,
-			hoverCardPlacementSelected: DialogCard.defaultProps.Placements.Right,
+			hoverCardPlacementSelected: DialogCard.defaultProps.Placements.Bottom,
 			hoverCardEventType: undefined,
 
-			hoverCardContentSelected: this.DialogCardContentEnum[1],
-			hoverCardContent: LorumContent.defaultProps.SimpleContent
+			hoverCardContentSelected: this.DialogCardContentEnum[2],
+			hoverCardContent: this.TestForm // LorumContent.defaultProps.SimpleContent
 		};
 
 		document.title = this.Title;
@@ -68,6 +87,11 @@ export default class ControlsDemo extends React.Component
 	};
 
 	// HoverCard
+	OnClick_TextContentAlert( ev )
+	{
+		console.debug( "OnClick_TextContentAlert" );
+		return;
+	};
 	OnChange_HoverCardPlacement( ev )
 	{	//	console.debug( "OnChange_HoverCardPlacement", ev.target.value );
 		this.setState( { hoverCardPlacementSelected: ev.target.value } );
@@ -86,7 +110,7 @@ export default class ControlsDemo extends React.Component
 		}
 		else if ( ev.target.value === this.DialogCardContentEnum[2] )
 		{
-			_content = LorumContent.defaultProps.ComplexContent;
+			_content = this.TestForm;
 		}
 
 		this.setState( {
@@ -284,21 +308,12 @@ export default class ControlsDemo extends React.Component
 				<div className="anim-demo-header">Tooltips, Dialog boxes and Modal dialog boxs</div>
 				<div className="anim-demo-desc">Customers sometimes need a little extra information or instruction regarding elements of the user interface that may not be completely intuitive or require additional description and/or functionality. Utilizing customized tooltips, dialogs and modal dialog in this scenario allow for additional information, specific data entry points or notifications.</div>
 
-
 				<div className="anim-demo-sub-header">DialogCard</div>
 				<div className="anim-demo-block-panel">
 
-					{ /* DialogCard  */ }
 					<div className="ani-demo-card-1">
-						<div className="ani-card-ctrl-block">
-							<div className="hc-test-button"
-								onClick={this.OnClick_ToggleHoverCard.bind( this )}
-								>Click here</div>
-						</div>
 
 						<div className="ani-card-text-block">
-							<div>Interact with the buttons above to see variations of how this dialog box can be rendered.</div>
-							<div className="margin-bottom-5"></div>
 							<div className="prog-bar-controls">
 								<div>Select placement</div>
 								<div className="hover-card-controls">
@@ -332,10 +347,20 @@ export default class ControlsDemo extends React.Component
 										</label>
 									))
 									}
-									<div>{ this.state.hoverCardPlacement}</div>
 								</div>
 							</div>
 						</div>
+					</div>
+					<br/>
+					{ /* DialogCard  */ }
+					<div className="ani-demo-card-1">
+						<div className="ani-card-ctrl-block">
+							<div className="hc-test-button"
+								onClick={this.OnClick_ToggleHoverCard.bind( this )}
+								>Click here</div>
+						</div>
+
+
 					</div>
 
 					{ /* END */}
@@ -348,6 +373,12 @@ export default class ControlsDemo extends React.Component
 
 				<div className="anim-demo-block-panel">
 
+					{ /* PLACEHOLDERS 
+						<div className="ani-demo-card-1">
+						<div className="ani-card-ctrl-block">control</div>
+						<div className="ani-card-text-block">This is an example of what is called an "indefinite" progress indicator, meaning that ti it is displayed for an indefinite amount of time. it can be hidden at any time.</div>
+						</div>
+					 */}
 					{ /* "FINISHED CONTROLS" */}
 
 					{ /* INFINTE PROGRESS INDICATORS */ }
@@ -397,48 +428,6 @@ export default class ControlsDemo extends React.Component
 						</div>
 					</div>
 
-					{ /* DEFINITE PROGRESS BAR */ }
-					<div className="ani-demo-card-1">
-						<div className="ani-card-ctrl-block">
-
-							<ProgressBarControl color={ProgressBarControl.defaultProps.Colors.Red} speed={500} />
-							<div className="margin-bottom-10"></div>
-
-							<ProgressBarControl color={ProgressBarControl.defaultProps.Colors.Orange} speed={ 1500 } />
-							<div className="margin-bottom-10"></div>
-
-							<ProgressBarControl color={ProgressBarControl.defaultProps.Colors.Yellow} speed={ 3000 } />
-							<div className="margin-bottom-10"></div>
-
-							<ProgressBarControl color={ProgressBarControl.defaultProps.Colors.Green} speed={ 4500 } />
-							<div className="margin-bottom-10"></div>
-
-							<ProgressBarControl
-								color={ProgressBarControl.defaultProps.Colors.Blue}
-								percentage={this._prog_bar_value} />
-						</div>
-
-						<div className="ani-card-text-block">
-							<div>This progress bar indicator example can be used with a specific increment value, shown with different timers above. Click the 'Start' button to a pausable demonstration.</div>
-							<br/>
-							<div className="prog-bar-controls">
-								<button className="prog-bar-btn" onClick={this.OnClick_TestProgressBar.bind( this )}>{this._prog_bar_tbn_text}</button>
-								{/*
-								<span className="prog-bar-value">{this._prog_bar_value}</span>
-								 */ }
-							</div>
-	
-						</div>
-
-					</div>
-
-					{ /* PLACEHOLDERS 
-						<div className="ani-demo-card-1">
-						<div className="ani-card-ctrl-block">control</div>
-						<div className="ani-card-text-block">This is an example of what is called an "indefinite" progress indicator, meaning that ti it is displayed for an indefinite amount of time. it can be hidden at any time.</div>
-						</div>
-					 */}
-
 					{ /* DEFINITE PROGRESS PIE 1 */ }
 					<div className="ani-demo-card-1">
 						<div className="ani-card-ctrl-block">
@@ -478,6 +467,41 @@ export default class ControlsDemo extends React.Component
 								<button className="prog-bar-btn" onClick={this.OnClick_TestProgressPie.bind( this )}>{this._prog_pie_btn_text}</button>
 							</div>							
 						</div>
+					</div>
+
+					{ /* DEFINITE PROGRESS BAR */ }
+					<div className="ani-demo-card-1">
+						<div className="ani-card-ctrl-block">
+
+							<ProgressBarControl color={ProgressBarControl.defaultProps.Colors.Red} speed={500} />
+							<div className="margin-bottom-10"></div>
+
+							<ProgressBarControl color={ProgressBarControl.defaultProps.Colors.Orange} speed={ 1500 } />
+							<div className="margin-bottom-10"></div>
+
+							<ProgressBarControl color={ProgressBarControl.defaultProps.Colors.Yellow} speed={ 3000 } />
+							<div className="margin-bottom-10"></div>
+
+							<ProgressBarControl color={ProgressBarControl.defaultProps.Colors.Green} speed={ 4500 } />
+							<div className="margin-bottom-10"></div>
+
+							<ProgressBarControl
+								color={ProgressBarControl.defaultProps.Colors.Blue}
+								percentage={this._prog_bar_value} />
+						</div>
+
+						<div className="ani-card-text-block">
+							<div>This progress bar indicator example can be used with a specific increment value, shown with different timers above. Click the 'Start' button to a pausable demonstration.</div>
+							<br/>
+							<div className="prog-bar-controls">
+								<button className="prog-bar-btn" onClick={this.OnClick_TestProgressBar.bind( this )}>{this._prog_bar_tbn_text}</button>
+								{/*
+								<span className="prog-bar-value">{this._prog_bar_value}</span>
+								 */ }
+							</div>
+	
+						</div>
+
 					</div>
 
 

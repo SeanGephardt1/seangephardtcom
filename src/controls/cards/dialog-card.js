@@ -32,7 +32,13 @@ export default class DialogCard extends React.Component
 		this.Placement = ( this.props.placement || DialogCard.defaultProps.Placements.Bottom );
 
 		// VERTICAL, HORIZONTAL
-		this.Location = {top: "50%", left: 'calc(50% - 150px)'};
+		//	this.Location = { top: "50%", left: 'calc(50% - 150px)' };
+			this.Location = {
+				top: "auto",
+				left: "auto",
+				right: "auto",
+				bottom: "auto"
+			};
 
 		this.state = {
 			changed: null,
@@ -42,7 +48,14 @@ export default class DialogCard extends React.Component
 	};
 	OnClick_CloseHoverCard( ev )
 	{
-		//	console.debug( "OnClick_CloseHoverCard", this.state.changed, StateStore.States[HoverCard.defaultProps.StateKey] );
+		console.debug( "OnClick_CloseHoverCard", ev );
+		//	console.debug( "OnClick_CloseHoverCard", this.state.changed, StateStore.States[DialogCard.defaultProps.StateKey] );
+
+		if ( ev !== undefined)
+		{
+			ev.preventDefault()
+		}
+
 		StateStore.AddState( DialogCard.defaultProps.StateKey, false );
 		StateStore.AddState( DialogCard.defaultProps.StateEventKey, undefined );
 
@@ -53,10 +66,8 @@ export default class DialogCard extends React.Component
 	{	
 		//	console.debug( "HandleLocation" );
 		if ( StateStore.States[DialogCard.defaultProps.StateEventKey] !== undefined )
-		{
-			let _elem = document.querySelector( ".hc-main-panel" );
-			let _style = getComputedStyle( _elem );
-			let _default_card_width = parseInt( _style.width ); 
+		{	// see ".hc-main-panel" in CSS
+			let _default_card_width = parseInt( 300 ); 
 			let _default_card_half_width = ( parseInt( _default_card_width ) / 2 ); 
 			let _ev = StateStore.States[DialogCard.defaultProps.StateEventKey];
 			//	console.debug( "_ev", _ev);
@@ -71,76 +82,79 @@ export default class DialogCard extends React.Component
 			//	_ev.srcElement.offsetTop,
 			//	_ev.srcElement.scrollTop
 			//);
-			//console.debug(
-			//	_ev.clientX,
-			//	_ev.layerX,
-			//	_ev.offsetX,
-			//	_ev.pageX,
-			//	_ev.screenX,
-			//	_ev.x,
-			//	_ev.srcElement.offsetLeft,
-			//	_ev.srcElement.scrollLeft
-			//);
 
 			let _org_box = _ev.srcElement.getBoundingClientRect();
 			//	console.debug( "_org_box", _org_box);
 
-			let _default_vertical = _ev.srcElement.offsetTop - _org_box.top + "px";
-			let _default_horizontal;
+			this.Location = {
+				top: "auto",
+				left: "auto",
+				right: "auto",
+				bottom: "auto"
+			};
 
 			switch ( this.props.placement )
 			{
 				case DialogCard.defaultProps.Placements.Top:
 					{
-						_default_vertical = "calc(100% - " + ( _ev.srcElement.offsetTop ) + "px)";
-						_default_horizontal = ( _org_box.left + ( _org_box.width / 2 ) - _default_card_half_width ) + "px";
+						let _temp_vert =  "calc(100% - " + ( _ev.srcElement.offsetTop ) + "px)";
+						let _temp_horiz = ( _org_box.left + ( _org_box.width / 2 ) - _default_card_half_width ) + "px";
 
-						this.Location = {
-							top: "auto",
-							bottom: _default_vertical,
-							left: _default_horizontal
-						};
+						this.Location.left = _temp_horiz;
+						this.Location.bottom = _temp_vert;
 						break;
 					}
 				case DialogCard.defaultProps.Placements.Bottom:
 					{
-						_default_vertical = ( _ev.srcElement.offsetTop + _org_box.height ) + "px";
-						_default_horizontal = ( _org_box.left + ( _org_box.width / 2 ) - _default_card_half_width ) + "px";
+						//	let _temp_vert = ( _org_box.top + _org_box.height ) + "px";
 
-						this.Location = {
-							top: _default_vertical,
-							bottom: "auto",
-							left: _default_horizontal
-						};
+						let _temp_vert =  ( _ev.srcElement.offsetTop +  _org_box.height) + "px";
+
+						let _temp_horiz = ( _org_box.left + ( _org_box.width / 2 ) - _default_card_half_width ) + "px";
+
+						this.Location.top = _temp_vert;
+						this.Location.left = _temp_horiz;
 						break;
 					}
 				case DialogCard.defaultProps.Placements.Left:
 					{
-						_default_vertical = ( _ev.srcElement.offsetTop ) + 10 +  "px";
-						_default_horizontal = ( _ev.srcElement.offsetLeft - _default_card_width ) + "px";
+						let _default_vertical = "calc(" +  (_ev.srcElement.offsetTop + 10 ) +  "px)";
+						let _default_horizontal = ( _ev.srcElement.offsetLeft - _default_card_width ) + "px";
 
 						this.Location = {
 							top: _default_vertical,
+							left: _default_horizontal,
+							right: "auto",
 							bottom: "auto",
-							left: _default_horizontal
 						};
 						break;
 					}
 				case DialogCard.defaultProps.Placements.Right:
 					{
-						_default_vertical = ( _ev.srcElement.offsetTop ) + 10 + "px";
-						_default_horizontal = ( _org_box.right) + "px";
+						let _default_vertical = "calc(" + ( _ev.srcElement.offsetTop + 10 )+ "px)";
+						let _default_horizontal = ( _org_box.right) + "px";
 
 						this.Location = {
 							top: _default_vertical,
-							bottom: "auto",
-							left: _default_horizontal
+							left: _default_horizontal,
+							right: "auto",
+							bottom: "auto"
+						};
+						break;
+					}
+				default:
+					{
+						this.Location = {
+							top: undefined,
+							left: undefined,
+							right: undefined,
+							bottom: undefined
 						};
 						break;
 					}
 			}
 		}
-		console.debug( "This.Location", this.Location )
+		//	console.debug( "This.Location", this.Location );
 		return;
 	};
 	HandleFadeInOutState()
@@ -177,6 +191,35 @@ export default class DialogCard extends React.Component
 		_classnames = _classnames + " " + _fade_classname;
 		//	console.debug( "_classnames ", _classnames );
 		return _classnames;
+	};
+
+	componentDidMount()
+	{
+		//	console.debug( "componentDidMount" );
+		document.addEventListener( "scroll", function()
+		{	//	console.debug( "scroll" );
+			this.OnClick_CloseHoverCard();
+			return;
+		}.bind( this ) );
+
+		window.addEventListener( "resize", function()
+		{	//	console.debug( "resize" );
+			this.OnClick_CloseHoverCard();
+			return;
+		}.bind( this ) );
+
+		return;
+	};
+	componentDidUpdate()
+	{
+		//	console.debug( "componentDidUpdate" );
+		//document.addEventListener( "click", function()
+		//{
+		//	console.debug( "click" );
+		//	this.OnClick_CloseHoverCard( );
+		//	return;
+		//}.bind( this ), true);
+		return;
 	};
 	render()
 	{	
