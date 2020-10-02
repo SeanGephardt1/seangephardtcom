@@ -10,6 +10,7 @@ nav
 a.nav, a.nav:active, a.nav:link
 {
 	flex: 0 0 auto;
+	border-bottom: solid 1px var(--black-01);
 	background-color:transparent;
 	color: var(--black);
 	font-weight:500;
@@ -25,26 +26,28 @@ a.nav, a.nav:active, a.nav:link
 a.nav.nav-selected
 {
 	flex: 1 1 auto;
+	text-shadow: 1px 1px 2px var(--black);
+	border-bottom: solid 1px transparent;
 }
 
 a.nav:nth-child(1).nav-selected, a.nav:nth-child(1):hover
 {
-	background-color:var(--nav-color-1);
+	background-color:var(--nav-color-4);
 	color:var(--white);
 }
 a.nav:nth-child(2).nav-selected, a.nav:nth-child(2):hover
 {
-	background-color:var(--nav-color-2);
-	color:var(--black);
+	background-color:var(--nav-color-1);
+	color:var(--white);
 }
 a.nav:nth-child(3).nav-selected, a.nav:nth-child(3):hover
 {
-	background-color:var(--nav-color-3);
+	background-color:var(--nav-color-2);
 	color:var(--white);
 }
 a.nav:nth-child(4).nav-selected, a.nav:nth-child(4):hover
 {
-	background-color:var(--nav-color-4);
+	background-color:var(--nav-color-3);
 	color:var(--white);
 }
 

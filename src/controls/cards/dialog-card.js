@@ -48,13 +48,11 @@ export default class DialogCard extends React.Component
 	};
 	OnClick_CloseHoverCard( ev )
 	{
-		console.debug( "OnClick_CloseHoverCard", ev );
+		console.debug( "OnClick_CloseHoverCard", this, ev );
+		//ev.preventDefault();
+		//ev.stopPropagation();
+		//	ev.nativeEvent.stopImmediatePropagation();
 		//	console.debug( "OnClick_CloseHoverCard", this.state.changed, StateStore.States[DialogCard.defaultProps.StateKey] );
-
-		if ( ev !== undefined)
-		{
-			ev.preventDefault()
-		}
 
 		StateStore.AddState( DialogCard.defaultProps.StateKey, false );
 		StateStore.AddState( DialogCard.defaultProps.StateEventKey, undefined );
@@ -193,34 +191,6 @@ export default class DialogCard extends React.Component
 		return _classnames;
 	};
 
-	componentDidMount()
-	{
-		//	console.debug( "componentDidMount" );
-		document.addEventListener( "scroll", function()
-		{	//	console.debug( "scroll" );
-			this.OnClick_CloseHoverCard();
-			return;
-		}.bind( this ) );
-
-		window.addEventListener( "resize", function()
-		{	//	console.debug( "resize" );
-			this.OnClick_CloseHoverCard();
-			return;
-		}.bind( this ) );
-
-		return;
-	};
-	componentDidUpdate()
-	{
-		//	console.debug( "componentDidUpdate" );
-		//document.addEventListener( "click", function()
-		//{
-		//	console.debug( "click" );
-		//	this.OnClick_CloseHoverCard( );
-		//	return;
-		//}.bind( this ), true);
-		return;
-	};
 	render()
 	{	
 		//	console.debug( "DialogCard.render()", this.props.children);

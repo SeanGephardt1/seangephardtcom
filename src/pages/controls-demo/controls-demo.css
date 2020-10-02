@@ -144,16 +144,17 @@ select.prog-infinites
 {
 	border-style: solid;
 	border-width:3px;
-	border-color:rgba(0,96,0,0.4);
+	border-color:rgba(39, 93, 173, 0.5);
 	border-radius: 6px;
+	background-color:transparent;
 	padding:10px;
 	cursor:pointer;
 	transition: all 250ms ease-in-out;
 }
 .hc-test-button:hover
 {
-	border-color:rgba(0,96,0,1);
-	background-color:rgba(0,96,0,0.8);
+	border-color:rgba(39, 93, 173, 1);
+	background-color:rgba(39, 93, 173, 0.6);
 	color:var(--white);
 }
 
