@@ -17,7 +17,7 @@ a.nav, a.nav:active, a.nav:link
 	font-size:larger;
 	text-align:center;
 	text-decoration: none;
-	padding:10px;
+	padding:6px;
 	padding-left: 20px;
 	padding-right:20px;
 	vertical-align:top;
@@ -26,7 +26,6 @@ a.nav, a.nav:active, a.nav:link
 a.nav.nav-selected
 {
 	flex: 1 1 auto;
-	text-shadow: 1px 1px 2px var(--black);
 	border-bottom: solid 1px transparent;
 }
 
@@ -43,7 +42,7 @@ a.nav:nth-child(2).nav-selected, a.nav:nth-child(2):hover
 a.nav:nth-child(3).nav-selected, a.nav:nth-child(3):hover
 {
 	background-color:var(--nav-color-2);
-	color:var(--white);
+	color:var(--black);
 }
 a.nav:nth-child(4).nav-selected, a.nav:nth-child(4):hover
 {

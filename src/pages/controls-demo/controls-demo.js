@@ -79,19 +79,14 @@ export default class ControlsDemo extends React.Component
 			hoverCardEventType: undefined,
 
 			hoverCardContentSelected: this.DialogCardContentEnum[2],
-			hoverCardContent: this.TestForm // LorumContent.defaultProps.SimpleContent
+			hoverCardContent: this.TestForm
 		};
 
 		document.title = this.Title;
 		return;
 	};
 
-	// HoverCard
-	OnClick_TextContentAlert( ev )
-	{
-		console.debug( "OnClick_TextContentAlert" );
-		return;
-	};
+	// DialogCard
 	OnChange_HoverCardPlacement( ev )
 	{	//	console.debug( "OnChange_HoverCardPlacement", ev.target.value );
 		this.setState( { hoverCardPlacementSelected: ev.target.value } );
@@ -304,17 +299,22 @@ export default class ControlsDemo extends React.Component
 						</div>
 				 */}
 
-				{ /* Popup cards  */ }
-				<div className="anim-demo-header">Tooltips, Dialog boxes and Modal dialog boxs</div>
+				{ /*  */ }
+				<div className="anim-demo-header">Dialogs, Modals and Panels</div>
 				<div className="anim-demo-desc">Customers sometimes need a little extra information or instruction regarding elements of the user interface that may not be completely intuitive or require additional description and/or functionality. Utilizing customized tooltips, dialogs and modal dialog in this scenario allow for additional information, specific data entry points or notifications.</div>
 
 				<div className="anim-demo-sub-header">DialogCard</div>
 				<div className="anim-demo-block-panel">
 
+					{ /* DialogCard  */ }
 					<div className="ani-demo-card-1">
-
+						<div className="ani-card-ctrl-block">
+							<div className="hc-test-button"
+								onClick={this.OnClick_ToggleHoverCard.bind( this )}
+								>Click here</div>
+						</div>
 						<div className="ani-card-text-block">
-							<div className="prog-bar-controls">
+							<div className="prog-bar-controls-2">
 								<div>Select placement</div>
 								<div className="hover-card-controls">
 									{
@@ -337,7 +337,8 @@ export default class ControlsDemo extends React.Component
 									{
 										this.DialogCardContentEnum.map( ( item, index ) => (
 											<label key={index} htmlFor={item} className="hover-card-selection" >
-											<input type="radio"
+												<input type="radio"
+													className="hover-card-input-radio"
 												name="hover-card-content"
 												id={item}
 												value={item}
@@ -350,16 +351,6 @@ export default class ControlsDemo extends React.Component
 								</div>
 							</div>
 						</div>
-					</div>
-					<br/>
-					{ /* DialogCard  */ }
-					<div className="ani-demo-card-1">
-						<div className="ani-card-ctrl-block">
-							<div className="hc-test-button"
-								onClick={this.OnClick_ToggleHoverCard.bind( this )}
-								>Click here</div>
-						</div>
-
 
 					</div>
 
@@ -401,7 +392,7 @@ export default class ControlsDemo extends React.Component
 						<div className="ani-card-text-block">
 							<div>An example of an "indefinite" progress indicators, meaning that it is displayed for an indefinite amount of time and can be dsiplayed or hidden at any time.</div>
 							<div className="margin-bottom-5"></div>
-							<div className="prog-bar-controls">
+							<div className="prog-bar-controls-2">
 								<select
 									className="prog-infinites"
 									value={this.state.ProgInfiniteColor}
@@ -462,8 +453,6 @@ export default class ControlsDemo extends React.Component
 									className="input-range-demo"
 									min="0" max="1000" step="50" value={this.state.ProgPieSpeed}
 									onChange={ this.OnChange_ChangeProgPieSpeed.bind(this) }/>
-							</div>
-							<div className="prog-bar-controls">
 								<button className="prog-bar-btn" onClick={this.OnClick_TestProgressPie.bind( this )}>{this._prog_pie_btn_text}</button>
 							</div>							
 						</div>
@@ -493,7 +482,7 @@ export default class ControlsDemo extends React.Component
 						<div className="ani-card-text-block">
 							<div>This progress bar indicator example can be used with a specific increment value, shown with different timers above. Click the 'Start' button to a pausable demonstration.</div>
 							<br/>
-							<div className="prog-bar-controls">
+							<div className="prog-bar-controls-2">
 								<button className="prog-bar-btn" onClick={this.OnClick_TestProgressBar.bind( this )}>{this._prog_bar_tbn_text}</button>
 								{/*
 								<span className="prog-bar-value">{this._prog_bar_value}</span>

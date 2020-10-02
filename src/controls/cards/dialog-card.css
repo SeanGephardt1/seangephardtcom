@@ -79,7 +79,7 @@
 .hc-content-panel
 {
 /*	border: solid 1px var(--black-01);*/
-	border-radius: 4px;
+	border-radius: 5px;
 	background-color: var(--white);
 	min-height:32px;
 	min-width: 150px;
@@ -91,31 +91,27 @@
 .hc-header
 {
 /*	border: solid 1px var(--debug);*/
-/*	border-bottom: solid 1px var(--black-01);*/
 	display:flex;
 	flex-direction:row;
 	vertical-align:top;
 }
 .hc-header-title
 {
-/*	border: solid 1px var(--debug);*/
+/*	border: solid 1px var(--debug);*/	
 	flex: 1 1 100%;
 	font-weight:bolder;
 	vertical-align:top;
-	padding:8px;
-	padding-left:10px;
-	padding-right:10px;
+	padding:0px;
+	padding-top:8px;
+	padding-left:8px;
 	text-overflow:ellipsis;
 	white-space:nowrap; 
 	overflow:hidden;
 }
-
 .hc-close-button
 {
 /*	border: solid 1px var(--debug);*/
 	flex: 0 0 30px;
-	width:30px;
-	height:30px;
 	cursor:pointer;
 	text-align:center;
 	padding:6px;
@@ -131,7 +127,7 @@
 }
 .hc-close-button > svg:hover
 {
-	fill:  rgba(64,64,64,1);
+	fill:  rgba(39, 93, 173, 1);
 	transform:rotate(-90deg);
 }
 

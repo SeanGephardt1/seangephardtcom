@@ -23,7 +23,7 @@
 {
 	color: var(--black-08);
 	font-size: 30px;
-	margin-bottom:20px;
+	margin-bottom:10px;
 	font-weight:500;
 }
 .anim-demo-sub-header
@@ -42,28 +42,30 @@
 .anim-demo-block-panel
 {
 /*	border: solid 1px var(--debug);*/
-	display:inline-flex;
+	display:flex;
 	flex: 1 1 auto;
 	flex-direction:row;
 	flex-wrap:wrap;
 	justify-content:space-evenly;
+	justify-items:center;
 	align-items:flex-start;
 	min-width:280px;
-	padding-top:20px;
-	margin-bottom:30px;
+	margin-bottom:20px;
+	/*	padding-top:20px;*/
 }
 
 .ani-demo-card-1
 {
 /*	border: solid 1px var(--black);*/
 	box-shadow: 0px 0px 20px 0px var(--black-01);
-	width:250px;
-	height:auto;
-	margin-bottom:20px;
 	display:flex;
+	flex: 0 0 250px;
 	flex-direction:column;
 	flex-wrap:nowrap;
-/*	align-content: stretch; */
+	align-content: stretch; 
+	width:250px;
+	height:auto;
+	margin:20px;
 }
 
 .ani-card-ctrl-block
@@ -83,40 +85,18 @@
 	padding:10px;
 }
 
-/* extras */
-.margin-bottom-25
-{
-	margin-top:25%;
-}
-.margin-bottom-10
-{
-	margin-top:10%;
-}
-.margin-bottom-5
-{
-	margin-top:5%;
-}
-
+/* config element styles */
 .prog-bar-controls-2
 {
-/*	border: solid 1px red;
-*/	vertical-align:top;
-	display:flex;
-	flex-direction:row;
-	margin-top:10px;
-}
-.prog-bar-controls-2
-{
-/*	border: solid 1px red;
-*/	vertical-align:top;
+	vertical-align:top;
 	display:flex;
 	flex-direction:column;
-	margin-top:10px;
+	align-items:flex-start;
 }
 .prog-bar-btn
 {
 	padding:6px;
-	flex: 1 0 50%;
+	width:100px;
 	vertical-align:top;
 }
 .prog-bar-value
@@ -142,10 +122,8 @@ select.prog-infinites
 
 .hc-test-button
 {
-	border-style: solid;
-	border-width:3px;
-	border-color:rgba(39, 93, 173, 0.5);
-	border-radius: 6px;
+	border: solid 1px var(--black-02);
+	border-radius: 4px;
 	background-color:transparent;
 	padding:10px;
 	cursor:pointer;
@@ -153,36 +131,51 @@ select.prog-infinites
 }
 .hc-test-button:hover
 {
-	border-color:rgba(39, 93, 173, 1);
-	background-color:rgba(39, 93, 173, 0.6);
+	background-color:rgba(39, 93, 173, 1);
 	color:var(--white);
 }
 
 .hover-card-controls
 {
-/*	border: solid 1px var(--debug);*/
+/*	border: solid 2px var(--debug);*/
+	width:100%;
 	display:flex;
+	justify-items:flex-start;
 	justify-content:space-between;
 }
 label.hover-card-selection
 {
-/*	border: solid 1px var(--debug);*/
+/*	border: solid 1px var(--blue);*/
 	flex: 1 1 auto;
 	padding-top:5px;
 	padding-bottom:5px;
+	vertical-align:top;
 	cursor:pointer;
 }
-label.hover-card-selection > input
+label.hover-card-selection > input[type=radio]
 {
-	vertical-align:top;
-	margin-right:5px;
-	margin-top:2px;
+	height:20px;
+	margin-right:2px;
 }
 label.hover-card-selection > span
 {
-	vertical-align:top;
+	margin-top:2px;
+	display:inline-block;
 }
 
+/* extras */
+.margin-bottom-25
+{
+	margin-top:25%;
+}
+.margin-bottom-10
+{
+	margin-top:10%;
+}
+.margin-bottom-5
+{
+	margin-top:5%;
+}
 
 .test-content-panel
 {
