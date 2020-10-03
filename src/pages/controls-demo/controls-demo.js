@@ -68,16 +68,13 @@ export default class ControlsDemo extends React.Component
 			<br/>
 			<ul><li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li><li>Aliquam tincidunt mauris eu risus.</li><li>Aliquam tincidunt mauris eu risus.</li><ul><li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li><li>Aliquam tincidunt mauris eu risus.</li><li>Aliquam tincidunt mauris eu risus.</li><ul><li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li><li>Aliquam tincidunt mauris eu risus.</li><li>Aliquam tincidunt mauris eu risus.</li></ul></ul></ul>
 		</div> );
-		this.ModalContent = (
-			<div>Foo</div>
-		);
 
 		this.state = {
 			changed: false,
 
 			ProgBarButtonRunning: false,
 			ProgPieButtonRunning: false,
-			ProgPieSpeed: 100,
+			ProgPieSpeed: 50,
 			ProgPieStep: 33,
 			ProgInfiniteColor: ProgressInfiniteControl.defaultProps.Colors.Orange,
 			ProgInfiniteSize: ProgressInfiniteControl.defaultProps.Sizes.Large,
@@ -360,26 +357,20 @@ export default class ControlsDemo extends React.Component
 					{ /* Modal Card */}
 					<div className="ani-demo-card-1">
 						<div className="ani-card-ctrl-block">
-							<div className="hc-test-button"
-								onClick={this.OnClick_DisplayModalOverlay.bind( this )}
-								>Click here</div>
-						</div>
-						<div className="ani-card-text-block">
 							<div className="prog-bar-controls-2">
 								<h3>Modal overlay</h3>
 							</div>
 						</div>
-
+						<div className="ani-card-text-block">
+							<div className="hc-test-button"
+								onClick={this.OnClick_DisplayModalOverlay.bind( this )}
+								>Click here</div>
+						</div>
 					</div>
 
 					{ /* DialogCard  */ }
 					<div className="ani-demo-card-1">
 						<div className="ani-card-ctrl-block">
-							<div className="hc-test-button"
-								onClick={this.OnClick_ToggleHoverCard.bind( this )}
-								>Click here</div>
-						</div>
-						<div className="ani-card-text-block">
 							<div className="prog-bar-controls-2">
 								<h3>Dialog card</h3>
 								<div className="margin-bottom-5"></div>
@@ -417,17 +408,17 @@ export default class ControlsDemo extends React.Component
 								</div>
 							</div>
 						</div>
+						<div className="ani-card-text-block">
+							<div className="hc-test-button"
+								onClick={this.OnClick_ToggleHoverCard.bind( this )}
+							>Click here</div>
+						</div>
 
 					</div>
 
 					{ /* Panel Card */}
 					<div className="ani-demo-card-1">
 						<div className="ani-card-ctrl-block">
-							<div className="hc-test-button"
-								onClick={this.OnClick_DisplayContextPanel.bind( this )}
-								>Click here</div>
-						</div>
-						<div className="ani-card-text-block">
 							<div className="prog-bar-controls-2">
 								<h3>Context panel</h3>
 								<div className="margin-bottom-5"></div>
@@ -444,7 +435,11 @@ export default class ControlsDemo extends React.Component
 								</select>
 							</div>
 						</div>
-
+						<div className="ani-card-text-block">
+							<div className="hc-test-button"
+								onClick={this.OnClick_DisplayContextPanel.bind( this )}
+								>Click here</div>
+						</div>
 					</div>
 
 					{ /* END */}
@@ -546,7 +541,7 @@ export default class ControlsDemo extends React.Component
 									className="input-range-demo"
 									min="0" max="1000" step="50" value={this.state.ProgPieSpeed}
 									onChange={ this.OnChange_ChangeProgPieSpeed.bind(this) }/>
-								<button className="prog-bar-btn" onClick={this.OnClick_TestProgressPie.bind( this )}>{this._prog_pie_btn_text}</button>
+								<button className="hc-test-button" onClick={this.OnClick_TestProgressPie.bind( this )}>{this._prog_pie_btn_text}</button>
 							</div>							
 						</div>
 					</div>
@@ -576,7 +571,7 @@ export default class ControlsDemo extends React.Component
 							<div>This progress bar indicator example can be used with a specific increment value, shown with different timers above. Click the 'Start' button to a pausable demonstration.</div>
 							<br/>
 							<div className="prog-bar-controls-2">
-								<button className="prog-bar-btn" onClick={this.OnClick_TestProgressBar.bind( this )}>{this._prog_bar_tbn_text}</button>
+								<button className="hc-test-button" onClick={this.OnClick_TestProgressBar.bind( this )}>{this._prog_bar_tbn_text}</button>
 								{/*
 								<span className="prog-bar-value">{this._prog_bar_value}</span>
 								 */ }
