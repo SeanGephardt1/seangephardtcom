@@ -1,0 +1,236 @@
+﻿.context-full-panel
+{
+	--default-width: 480px;
+	
+	/*	border: solid 1px red;*/
+	position:fixed;
+	top:0px;
+	left:0px;
+	right:0px;
+	bottom:0px;
+	background-color:var(--black-02);
+	overflow:hidden;
+	display:block;
+	z-index:1000;
+	opacity:1;
+
+	animation-name: Ani_CP_DoPlacement;
+	animation-fill-mode:forwards;
+	animation-direction:normal;
+	animation-play-state:running;
+	animation-timing-function:linear;
+	animation-iteration-count:1;
+	animation-delay: 0ms;
+	animation-duration: 150ms;
+}
+
+.cp-main-panel
+{
+/*	border: solid 1px blue;*/
+	background-color: var(--white);
+	box-shadow: 0px 0px 0px 0px var(--black-03);
+	display:flex;
+	flex-direction:column;
+	position:absolute;
+
+/*	animation-name: Ani_CP_MoveContentPanel;*/
+	animation-fill-mode:forwards;
+	animation-direction:normal;
+	animation-play-state:paused;
+	animation-timing-function:linear;
+	animation-iteration-count:1;
+	animation-delay: 150ms;
+	animation-duration: 250ms;
+}
+
+.cp-left
+{
+	animation-name: Ani_CP_MoveLeftToRight;
+	animation-play-state:running;
+	left:-480px;
+	width:480px;
+	height: 100%;
+	border-right: solid 1px var(--black-02);
+}
+.cp-right
+{
+	animation-name: Ani_CP_MoveRightToLeft;
+	animation-play-state:running;
+	border-left: solid 1px var(--black-02);
+	right:-480px;
+	width:480px;
+	height: 100%;
+}
+.cp-top
+{
+	animation-name: Ani_CP_MoveTopToBottom;
+	animation-play-state:running;
+	width:100%;
+	top:-320px;
+	max-height:320px;
+	border-bottom: solid 1px var(--black-02);
+}
+.cp-bottom
+{
+	animation-name: Ani_CP_MoveBottomToTop;
+	animation-play-state:running;
+	border-top: solid 1px var(--black-02);
+	width:100%;
+	max-height:320px;
+	bottom:-320px;
+}
+
+.cp-header
+{
+/*	border: solid 1px red;*/
+	background-color:var(--white);
+	display:flex;
+	flex: 1 1 auto;
+	flex-direction:row;
+}
+.cp-header-title
+{
+	flex : 1 1 auto;
+	font-size:18px;
+	font-weight:900;
+	padding-top:4px;
+	padding-left:10px;
+	padding-right:4px;
+	padding-bottom:4px;
+
+}
+.cp-header-close-btn
+{
+/*	border: solid 1px red;*/
+	flex : 0 0 24px;
+	height:24px;
+	width:24px;
+	cursor:pointer;
+	text-align:center;
+	padding:4px;
+	margin-top:4px;
+	margin-right:4px;
+	transition:all 300ms linear;
+}
+.cp-header-close-btn:hover, .cp-header-close-btn:focus
+{
+}
+
+.cp-body
+{
+/*	border: solid 2px green;*/
+/*	border-top: solid 1px var(--debug);
+*/	
+	background-color:var(--white);
+	background-image: linear-gradient(180deg, var(--black-01) 0, transparent 10px);
+	flex: 1 1 100%;
+	min-height:100px;
+	padding:10px;
+	overflow:auto;
+}
+.cp-controls-panel
+{
+/*	border: solid 1px var(--black-01);*/
+	text-align:center;
+	padding:10px;
+}
+.cp-controls-panel-row
+{
+	margin-bottom:10px;
+}
+.cp-controls-panel-row > select
+{
+	width: 200px;
+	padding:6px;
+}
+
+.cp-body > div
+{
+/*	border: solid 1px var(--black-01);*/
+	font-size:14px;
+}
+
+@media (max-width: 480px)
+{
+	.cp-left
+	{
+		width:100%;
+	}
+	.cp-right
+	{
+		width:100%;
+	}
+	.cp-top
+	{
+		max-height:100%;
+	}
+	.cp-bottom
+	{
+		max-height:100%;
+	}
+}
+
+@keyframes Ani_CP_DoPlacement
+{
+	0%
+	{
+		opacity: 0;
+	}
+	100%
+	{
+		opacity: 1;
+	}
+}
+
+@keyframes Ani_CP_MoveRightToLeft
+{
+	0%
+	{
+		box-shadow: 0px 0px 0px 0px var(--black-03);
+		right:-480px;
+	}
+	100%
+	{
+		box-shadow: -20px 0px 100px 0px var(--black-03);
+		right:0px;
+	}
+}
+@keyframes Ani_CP_MoveLeftToRight
+{
+	0%
+	{
+		box-shadow: 0px 0px 0px 0px var(--black-03);
+		left:-480px;
+	}
+	100%
+	{
+		box-shadow: 20px 0px 100px 0px var(--black-03);
+		left:0px;
+	}
+}
+@keyframes Ani_CP_MoveTopToBottom
+{
+	0%
+	{
+		box-shadow: 0px 0px 0px 0px var(--black-03);
+		top:-320px;
+	}
+	100%
+	{
+		box-shadow: 0px 20px 100px 0px var(--black-03);
+		top:0px;
+	}
+}
+@keyframes Ani_CP_MoveBottomToTop
+{
+	0%
+	{
+		box-shadow: 0px 0px 0px 0px var(--black-03);
+		bottom:-320px;
+	}
+	100%
+	{
+		box-shadow: 0px -20px 100px 0px var(--black-03);
+		bottom:0px;
+	}
+}

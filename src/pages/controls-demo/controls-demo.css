@@ -131,8 +131,8 @@ select.prog-infinites
 }
 .hc-test-button:hover
 {
-	background-color:rgba(39, 93, 173, 1);
-	color:var(--white);
+	background-color:rgba(248, 216, 0,1);
+	color:var(--black);
 }
 
 .hover-card-controls

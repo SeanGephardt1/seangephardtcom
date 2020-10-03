@@ -48,7 +48,7 @@ export default class DialogCard extends React.Component
 	};
 	OnClick_CloseHoverCard( ev )
 	{
-		console.debug( "OnClick_CloseHoverCard", this, ev );
+		//	console.debug( "OnClick_CloseHoverCard", this, ev );
 		//ev.preventDefault();
 		//ev.stopPropagation();
 		//	ev.nativeEvent.stopImmediatePropagation();

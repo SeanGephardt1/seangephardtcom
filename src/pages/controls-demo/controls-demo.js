@@ -8,9 +8,11 @@ import ProgressInfiniteControl from '../../controls/progress-controls/prog-infin
 import ProgressBarControl from '../../controls/progress-controls/prog-bar.js';
 import ProgressPieControl from '../../controls/progress-controls/prog-pie.js';
 
+import ContextPanel from '../../controls/cards/context-panel.js';
+import ModalOverlay from '../../controls/cards/modal.js';
 import DialogCard from '../../controls/cards/dialog-card.js';
-import LorumContent from '../../controls/content/lorum-ipsum.js';
 
+import LorumContent from '../../controls/content/lorum-ipsum.js';
 
 export default class ControlsDemo extends React.Component
 {
@@ -66,23 +68,60 @@ export default class ControlsDemo extends React.Component
 			<br/>
 			<ul><li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li><li>Aliquam tincidunt mauris eu risus.</li><li>Aliquam tincidunt mauris eu risus.</li><ul><li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li><li>Aliquam tincidunt mauris eu risus.</li><li>Aliquam tincidunt mauris eu risus.</li><ul><li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li><li>Aliquam tincidunt mauris eu risus.</li><li>Aliquam tincidunt mauris eu risus.</li></ul></ul></ul>
 		</div> );
+		this.ModalContent = (
+			<div>Foo</div>
+		);
 
 		this.state = {
 			changed: false,
+
 			ProgBarButtonRunning: false,
 			ProgPieButtonRunning: false,
 			ProgPieSpeed: 100,
 			ProgPieStep: 33,
-			ProgInfiniteColor: ProgressInfiniteControl.defaultProps.Colors.Red,
-			ProgInfiniteSize: ProgressInfiniteControl.defaultProps.Sizes.ExtraLarge,
+			ProgInfiniteColor: ProgressInfiniteControl.defaultProps.Colors.Orange,
+			ProgInfiniteSize: ProgressInfiniteControl.defaultProps.Sizes.Large,
+
 			hoverCardPlacementSelected: DialogCard.defaultProps.Placements.Bottom,
 			hoverCardEventType: undefined,
-
 			hoverCardContentSelected: this.DialogCardContentEnum[2],
-			hoverCardContent: this.TestForm
+			hoverCardContent: this.TestForm,
+
+			modalOverlayDisplayed: false,
+			contextPanelDisplayed: false,
+			contextPanelPlacement: ContextPanel.defaultProps.Placements.Right
 		};
 
 		document.title = this.Title;
+		return;
+	};
+
+	// Modal Overlay
+	OnClick_DisplayModalOverlay( ev )
+	{	//	console.debug( "OnClick_DisplayModalOverlay" );
+		this.setState( { modalOverlayDisplayed: true } );
+		return;
+	};
+	OnClick_HideModalOverlay( ev )
+	{	//	console.debug( "OnClick_HideModalOverlay", this.state.modalOverlayDisplayed );
+		this.setState( { modalOverlayDisplayed: false } );
+		return;
+	};
+
+	// Context Panel
+	OnChange_ContextPanel_Placement( ev )
+	{	//	console.debug( "OnChange_ContextPanel_Placement", ev.target.value );
+		this.setState( { contextPanelPlacement:  ev.target.value } );
+		return;
+	}
+	OnClick_DisplayContextPanel( ev )
+	{	//	console.debug( "OnClick_DisplayContextPanel" );
+		this.setState( { contextPanelDisplayed: true } );
+		return;
+	};
+	OnClick_HideContextPanel( ev )
+	{	//	console.debug( "OnClick_HideContextPanel", this.state.modalOverlayDisplayed );
+		this.setState( { contextPanelDisplayed: false } );
 		return;
 	};
 
@@ -287,6 +326,18 @@ export default class ControlsDemo extends React.Component
         return (
 			<div className="anim-demo-layout">
 
+				{
+					this.state.modalOverlayDisplayed === true &&
+					<ModalOverlay closeEvent={ this.OnClick_HideModalOverlay.bind(this) }></ModalOverlay>
+				}
+
+				{
+					this.state.contextPanelDisplayed === true &&
+					<ContextPanel closeEvent={this.OnClick_HideContextPanel.bind( this )}
+						title="Content panel header text is limited and that's by design" placement={ this.state.contextPanelPlacement}
+					></ContextPanel>
+				}
+
 				<DialogCard
 					title="How to use a dialog box, and this text should be getting cut off."
 					placement={this.state.hoverCardPlacementSelected}>{this.state.hoverCardContent}
@@ -300,11 +351,25 @@ export default class ControlsDemo extends React.Component
 				 */}
 
 				{ /*  */ }
-				<div className="anim-demo-header">Dialogs, Modals and Panels</div>
+				<div className="anim-demo-header">Overlays</div>
 				<div className="anim-demo-desc">Customers sometimes need a little extra information or instruction regarding elements of the user interface that may not be completely intuitive or require additional description and/or functionality. Utilizing customized tooltips, dialogs and modal dialog in this scenario allow for additional information, specific data entry points or notifications.</div>
 
-				<div className="anim-demo-sub-header">DialogCard</div>
 				<div className="anim-demo-block-panel">
+
+					{ /* Modal Card */}
+					<div className="ani-demo-card-1">
+						<div className="ani-card-ctrl-block">
+							<div className="hc-test-button"
+								onClick={this.OnClick_DisplayModalOverlay.bind( this )}
+								>Click here</div>
+						</div>
+						<div className="ani-card-text-block">
+							<div className="prog-bar-controls-2">
+								<h3>Modal overlay</h3>
+							</div>
+						</div>
+
+					</div>
 
 					{ /* DialogCard  */ }
 					<div className="ani-demo-card-1">
@@ -315,11 +380,13 @@ export default class ControlsDemo extends React.Component
 						</div>
 						<div className="ani-card-text-block">
 							<div className="prog-bar-controls-2">
+								<h3>Dialog card</h3>
+								<div className="margin-bottom-5"></div>
 								<div>Select placement</div>
 								<div className="hover-card-controls">
 									{
 										Object.entries( DialogCard.defaultProps.Placements ).map( ( item, index ) => (
-											<label key={index} htmlFor={item[0]} className="hover-card-selection" >
+											<label key={index} htmlFor={item[0]} className="hover-card-selection">
 											<input type="radio"
 												name="hover-card-placements"
 												id={item[0]}
@@ -327,10 +394,8 @@ export default class ControlsDemo extends React.Component
 												checked={this.state.hoverCardPlacementSelected === item[1]}
 												onChange={this.OnChange_HoverCardPlacement.bind( this )}/>
 											<span>{item[0]}</span>
-										</label>
-									))
+										</label>))
 									}
-									<div>{ this.state.hoverCardPlacement}</div>
 								</div>
 								<div>Select content</div>
 								<div className="hover-card-controls">
@@ -349,6 +414,33 @@ export default class ControlsDemo extends React.Component
 									))
 									}
 								</div>
+							</div>
+						</div>
+
+					</div>
+
+					{ /* Panel Card */}
+					<div className="ani-demo-card-1">
+						<div className="ani-card-ctrl-block">
+							<div className="hc-test-button"
+								onClick={this.OnClick_DisplayContextPanel.bind( this )}
+								>Click here</div>
+						</div>
+						<div className="ani-card-text-block">
+							<div className="prog-bar-controls-2">
+								<h3>Context panel</h3>
+								<div className="margin-bottom-5"></div>
+								<div>Select placement</div>
+								<select
+									className="prog-infinites"
+									value={this.state.contextPanelPlacement}
+									onChange={this.OnChange_ContextPanel_Placement.bind( this )}>
+									{
+										Object.entries( ContextPanel.defaultProps.Placements ).map( ( item, index ) => (
+											<option key={index} value={item[1]}>{ item[0] }</option>
+										))
+									}
+								</select>
 							</div>
 						</div>
 

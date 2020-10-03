@@ -7,7 +7,6 @@
 	nav
 	{
 		flex-direction:column;
-		border-bottom: solid 1px var(--black-01);
 	}
 }
 
