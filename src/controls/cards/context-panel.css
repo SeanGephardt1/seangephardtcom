@@ -101,19 +101,30 @@
 }
 .cp-header-close-btn
 {
-/*	border: solid 1px red;*/
 	flex : 0 0 24px;
 	height:24px;
 	width:24px;
 	cursor:pointer;
 	text-align:center;
-	padding:4px;
-	margin-top:4px;
-	margin-right:4px;
-	transition:all 300ms linear;
+	padding:2px;
+	margin-top:2px;
+	margin-right:2px;
+	transition:all 150ms linear;
+}
+.cp-header-close-btn > svg > circle
+{
+	fill: rgba(39, 93, 173, 0.3);
 }
 .cp-header-close-btn:hover, .cp-header-close-btn:focus
 {
+/*	outline: solid 1px var(--black-04);*/
+	transform: rotate(90deg);
+}
+
+.cp-header-close-btn:hover > svg > circle,
+.cp-header-close-btn:focus	 > svg > circle
+{
+	fill: rgba(40, 100, 180, 1);
 }
 
 .cp-body

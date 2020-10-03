@@ -16,8 +16,6 @@ export default class ContextPanel extends React.Component
 	{
 		super( props );
 
-		//	this.PlacementClassNames = ( this.props.placement || ContextPanel.defaultProps.Placements.Right );
-
 		this.Close = this.props.closeEvent.bind( this );
 
 		this.state = {
