@@ -88,6 +88,7 @@ export default class ControlsDemo extends React.Component
 			hoverCardContent: this.TestForm,
 
 			modalOverlayDisplayed: false,
+
 			contextPanelDisplayed: false,
 			contextPanelPlacement: ContextPanel.defaultProps.Placements.Right
 		};
@@ -334,7 +335,7 @@ export default class ControlsDemo extends React.Component
 				{
 					this.state.contextPanelDisplayed === true &&
 					<ContextPanel closeEvent={this.OnClick_HideContextPanel.bind( this )}
-						title="Content panel header text is limited and that's by design" placement={ this.state.contextPanelPlacement}
+						title="Content panel header" placement={ this.state.contextPanelPlacement}
 					></ContextPanel>
 				}
 

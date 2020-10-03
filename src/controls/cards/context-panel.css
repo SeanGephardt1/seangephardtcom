@@ -93,10 +93,10 @@
 	flex : 1 1 auto;
 	font-size:18px;
 	font-weight:900;
-	padding-top:4px;
-	padding-left:10px;
-	padding-right:4px;
-	padding-bottom:4px;
+	padding-top:10px;
+	padding-left:20px;
+	padding-right:6px;
+	padding-bottom:10px;
 
 }
 .cp-header-close-btn
@@ -107,8 +107,8 @@
 	cursor:pointer;
 	text-align:center;
 	padding:2px;
-	margin-top:2px;
-	margin-right:2px;
+	margin-top:10px;
+	margin-right:6px;
 	transition:all 150ms linear;
 }
 .cp-header-close-btn > svg > circle
@@ -136,7 +136,7 @@
 	background-image: linear-gradient(180deg, var(--black-01) 0, transparent 10px);
 	flex: 1 1 100%;
 	min-height:100px;
-	padding:10px;
+	padding:20px;
 	overflow:auto;
 }
 .cp-controls-panel
@@ -147,6 +147,7 @@
 }
 .cp-controls-panel-row
 {
+	text-align:center;
 	margin-bottom:10px;
 }
 .cp-controls-panel-row > select
@@ -159,7 +160,46 @@
 {
 /*	border: solid 1px var(--black-01);*/
 	font-size:14px;
+	text-align:left;
 }
+
+.cp-doi
+{
+/*	border: solid 1px red;*/
+}
+.cp-doi > h1
+{
+	font-size: 24px;
+	margin-bottom: 10px;
+}
+.cp-doi > p
+{
+	font-size: 16px;
+	margin-bottom:10px;
+}
+p.cp-doi-larger
+{
+	font-size: 20px;
+	border-bottom: solid 1px var(--black-01);
+	padding-bottom:10px;
+	border-top: solid 1px var(--black-01);
+	padding-top:10px;
+}
+
+div.doi-sig-panel
+{
+	border-top: solid 1px var(--black-02);
+	display:flex;
+	margin-top:10px;
+	padding-top:10px;
+}
+
+div.doi-sig-panel > div
+{
+	flex: 1 1 25%;
+}
+
+
 
 @media (max-width: 480px)
 {
