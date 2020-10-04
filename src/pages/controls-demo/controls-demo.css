@@ -137,11 +137,12 @@ select.prog-infinites
 
 .hover-card-controls
 {
-/*	border: solid 2px var(--debug);*/
+	border: solid 2px var(--debug);
 	width:100%;
 	display:flex;
 	justify-items:flex-start;
-	justify-content:space-between;
+/*	justify-content:space-evenly;*/
+	font-size:16px;
 }
 label.hover-card-selection
 {
@@ -159,7 +160,6 @@ label.hover-card-selection > input[type=radio]
 }
 label.hover-card-selection > span
 {
-	margin-top:2px;
 	display:inline-block;
 }
 

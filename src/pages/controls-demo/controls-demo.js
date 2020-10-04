@@ -316,8 +316,8 @@ export default class ControlsDemo extends React.Component
 	};
 
     render()
-	{	//	console.debug( "ControlsDemo.render()", this.state.hoverCardContentSelected, this.DialogCardContentEnum);
-
+	{
+		//	console.debug( "ControlsDemo.render()", this.state.hoverCardContentSelected, this.DialogCardContentEnum);
 		//	console.debug( "StateStore.States[DialogCard.defaultProps.StateKey]", StateStore.States[DialogCard.defaultProps.StateKey] );		
 		//	StateStore.States[DialogCard.defaultProps.StateKey] = true;
 
@@ -332,7 +332,7 @@ export default class ControlsDemo extends React.Component
 				{
 					this.state.contextPanelDisplayed === true &&
 					<ContextPanel closeEvent={this.OnClick_HideContextPanel.bind( this )}
-						title="Content panel header" placement={ this.state.contextPanelPlacement}
+						title="Declaration of Independence" placement={ this.state.contextPanelPlacement}
 					></ContextPanel>
 				}
 
@@ -354,68 +354,6 @@ export default class ControlsDemo extends React.Component
 
 				<div className="anim-demo-block-panel">
 
-					{ /* Modal Card */}
-					<div className="ani-demo-card-1">
-						<div className="ani-card-ctrl-block">
-							<div className="prog-bar-controls-2">
-								<h3>Modal overlay</h3>
-							</div>
-						</div>
-						<div className="ani-card-text-block">
-							<div className="hc-test-button"
-								onClick={this.OnClick_DisplayModalOverlay.bind( this )}
-								>Click here</div>
-						</div>
-					</div>
-
-					{ /* DialogCard  */ }
-					<div className="ani-demo-card-1">
-						<div className="ani-card-ctrl-block">
-							<div className="prog-bar-controls-2">
-								<h3>Dialog card</h3>
-								<div className="margin-bottom-5"></div>
-								<div>Select placement</div>
-								<div className="hover-card-controls">
-									{
-										Object.entries( DialogCard.defaultProps.Placements ).map( ( item, index ) => (
-											<label key={index} htmlFor={item[0]} className="hover-card-selection">
-											<input type="radio"
-												name="hover-card-placements"
-												id={item[0]}
-												value={item[1]}
-												checked={this.state.hoverCardPlacementSelected === item[1]}
-												onChange={this.OnChange_HoverCardPlacement.bind( this )}/>
-											<span>{item[0]}</span>
-										</label>))
-									}
-								</div>
-								<div>Select content</div>
-								<div className="hover-card-controls">
-									{
-										this.DialogCardContentEnum.map( ( item, index ) => (
-											<label key={index} htmlFor={item} className="hover-card-selection" >
-												<input type="radio"
-													className="hover-card-input-radio"
-												name="hover-card-content"
-												id={item}
-												value={item}
-												checked={this.state.hoverCardContentSelected === item}
-												onChange={this.OnChange_HoverCardContentSelection.bind( this )}/>
-											<span>{item}</span>
-										</label>
-									))
-									}
-								</div>
-							</div>
-						</div>
-						<div className="ani-card-text-block">
-							<div className="hc-test-button"
-								onClick={this.OnClick_ToggleHoverCard.bind( this )}
-							>Click here</div>
-						</div>
-
-					</div>
-
 					{ /* Panel Card */}
 					<div className="ani-demo-card-1">
 						<div className="ani-card-ctrl-block">
@@ -436,9 +374,68 @@ export default class ControlsDemo extends React.Component
 							</div>
 						</div>
 						<div className="ani-card-text-block">
-							<div className="hc-test-button"
+							<div className="prog-bar-controls-2">
+								<div className="hc-test-button"
 								onClick={this.OnClick_DisplayContextPanel.bind( this )}
 								>Click here</div>
+							</div>
+						</div>
+					</div>
+
+					{ /* DialogCard  */ }
+					<div className="ani-demo-card-1">
+						<div className="ani-card-ctrl-block">
+							<div className="prog-bar-controls-2">
+								<h3>Dialog card</h3>
+								<div className="margin-bottom-5"></div>
+								<div>Select placement</div>
+								<select
+									className="prog-infinites"
+									value={this.state.hoverCardPlacementSelected}
+									onChange={this.OnChange_HoverCardPlacement.bind( this )}>
+									{
+										Object.entries( DialogCard.defaultProps.Placements ).map( ( item, index ) => (
+											<option key={index} value={item[1]}>{ item[0] }</option>
+										))
+									}
+								</select>
+								<div className="margin-bottom-5"></div>
+								<div>Select content</div>
+								<select
+									className="prog-infinites"
+									value={this.state.hoverCardContentSelected}
+									onChange={this.OnChange_HoverCardContentSelection.bind( this )}>
+									{
+										this.DialogCardContentEnum.map( ( item, index ) => (
+											<option key={index} value={item}>{ item }</option>
+										))
+									}
+								</select>
+							</div>
+						</div>
+						<div className="ani-card-text-block">
+							<div className="prog-bar-controls-2">
+							<div className="hc-test-button"
+								onClick={this.OnClick_ToggleHoverCard.bind( this )}
+								>Click here</div>
+							</div>
+						</div>
+
+					</div>
+
+					{ /* Modal Card */}
+					<div className="ani-demo-card-1">
+						<div className="ani-card-ctrl-block">
+							<div className="prog-bar-controls-2">
+								<h3>Modal overlay</h3>
+							</div>
+						</div>
+						<div className="ani-card-text-block">
+							<div className="prog-bar-controls-2">
+							<div className="hc-test-button"
+								onClick={this.OnClick_DisplayModalOverlay.bind( this )}
+								>Click here</div>
+							</div>
 						</div>
 					</div>
 
