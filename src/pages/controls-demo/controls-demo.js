@@ -114,7 +114,7 @@ export default class ControlsDemo extends React.Component
 	}
 	OnClick_DisplayContextPanel( ev )
 	{	//	console.debug( "OnClick_DisplayContextPanel" );
-		this.setState( { contextPanelDisplayed: true } );
+		this.setState( { contextPanelDisplayed: !this.state.contextPanelDisplayed } );
 		return;
 	};
 	OnClick_HideContextPanel( ev )
@@ -329,12 +329,12 @@ export default class ControlsDemo extends React.Component
 					<ModalOverlay closeEvent={ this.OnClick_HideModalOverlay.bind(this) }></ModalOverlay>
 				}
 
-				{
-					this.state.contextPanelDisplayed === true &&
-					<ContextPanel closeEvent={this.OnClick_HideContextPanel.bind( this )}
-						title="Declaration of Independence" placement={ this.state.contextPanelPlacement}
-					></ContextPanel>
-				}
+				<ContextPanel
+					displayed={ this.state.contextPanelDisplayed }
+					closeEvent={this.OnClick_HideContextPanel.bind( this )}
+					title="Declaration of Independence"
+					placement={this.state.contextPanelPlacement}
+				></ContextPanel>
 
 				<DialogCard
 					title="How to use a dialog box, and this text should be getting cut off."

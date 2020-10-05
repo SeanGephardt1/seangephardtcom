@@ -1,85 +1,181 @@
-﻿.context-full-panel
+﻿.cp-main-panel
 {
-	--default-width: 480px;
-	
-	/*	border: solid 1px red;*/
+/*	border: solid 4px var(--debug);*/	
 	position:fixed;
-	top:0px;
-	left:0px;
-	right:0px;
-	bottom:0px;
-	background-color:var(--black-02);
-	overflow:hidden;
-	display:block;
+	background-color: var(--white);
+	border: solid 0px transparent;
+	flex-direction:column;
 	z-index:1000;
-	opacity:1;
-
-	animation-name: Ani_CP_DoPlacement;
+	animation-play-state:paused;
 	animation-fill-mode:forwards;
 	animation-direction:normal;
-	animation-play-state:running;
 	animation-timing-function:linear;
 	animation-iteration-count:1;
 	animation-delay: 0ms;
-	animation-duration: 150ms;
 }
 
-.cp-main-panel
+.cp-right
 {
-/*	border: solid 1px blue;*/
-	background-color: var(--white);
-	box-shadow: 0px 0px 0px 0px var(--black-03);
+	top:0px;
+	left:100%;
+	right:-480px;
+	bottom:0px;
+	display:none;
+}
+.cp-right-open
+{
+	top:0px;
+	left:auto;
+	right:-480px;
+	bottom:0px;
+	width:480px;
 	display:flex;
-	flex-direction:column;
-	position:absolute;
+	border-left:solid 1px var(--black-03);
+	box-shadow: 0px 0px 0px 0px transparent;
 
-/*	animation-name: Ani_CP_MoveContentPanel;*/
-	animation-fill-mode:forwards;
-	animation-direction:normal;
-	animation-play-state:paused;
-	animation-timing-function:linear;
-	animation-iteration-count:1;
-	animation-delay: 150ms;
-	animation-duration: 250ms;
+	animation-name: CP_RightOpen;
+	animation-play-state:running;
+	animation-duration: 200ms;
+}
+.cp-right-closed
+{
+	top:0px;
+	left:calc(100% - 480px);
+	right:0px;
+	width:480px;
+	bottom:0px;
+	border-left:solid 1px var(--black-03);
+	box-shadow: 0px 0px 50px 0px var(--black-03);
+
+	animation-name: CP_RightClosed;
+	animation-play-state:running;
+	animation-duration: 100ms;
 }
 
 .cp-left
 {
-	animation-name: Ani_CP_MoveLeftToRight;
-	animation-play-state:running;
+	top:0px;
+	left:0px;
+	right:auto;
+	bottom:0px;
+	display:none;
+}
+.cp-left-open
+{
+	top:0px;
 	left:-480px;
+	right:auto;
 	width:480px;
-	height: 100%;
-	border-right: solid 1px var(--black-02);
-}
-.cp-right
-{
-	animation-name: Ani_CP_MoveRightToLeft;
+	bottom:0px;
+	display:flex;
+	border-right:solid 1px var(--black-03);
+	box-shadow: 0px 0px 0px 0px transparent;
+
+	animation-name: CP_LeftOpen;
 	animation-play-state:running;
-	border-left: solid 1px var(--black-02);
-	right:-480px;
+	animation-duration: 200ms;
+}
+.cp-left-closed
+{
+	top:0px;
+	left:0px;
+	right:0px;
 	width:480px;
-	height: 100%;
-}
-.cp-top
-{
-	animation-name: Ani_CP_MoveTopToBottom;
+	bottom:0px;
+	border-right:solid 1px var(--black-03);
+	box-shadow: 20px 0px 50px 0px var(--black-03);
+
+	animation-name: CP_LeftClosed;
 	animation-play-state:running;
-	width:100%;
-	top:-320px;
-	max-height:320px;
-	border-bottom: solid 1px var(--black-02);
-}
-.cp-bottom
-{
-	animation-name: Ani_CP_MoveBottomToTop;
-	animation-play-state:running;
-	border-top: solid 1px var(--black-02);
-	width:100%;
-	max-height:320px;
-	bottom:-320px;
+	animation-duration: 100ms;
 }
 
+.cp-top
+{
+	top:-320px;
+	left:0px;
+	right:0px;
+	bottom:calc(100% - 320px);
+	display:none;
+}
+.cp-top-open
+{
+	top:-320px;
+	left:0px;
+	right:0px;
+	bottom:auto;
+	width:100%;
+	height:auto;
+	max-height:320px;
+	display:flex;
+	border-bottom:solid 1px var(--black-03);
+	box-shadow: 0px 0px 0px 0px transparent;
+
+	animation-name: CP_TopOpen;
+	animation-play-state:running;
+	animation-duration: 200ms;
+}
+.cp-top-closed
+{
+	top:0px;
+	left:0px;
+	right:0px;
+	bottom:auto;
+	width:100%;
+	height:auto;
+	max-height:320px;
+	display:flex;
+	border-bottom:solid 1px var(--black-03);
+	box-shadow: 0px 20px 50px 0px var(--black-03);
+
+	animation-name: CP_TopClosed;
+	animation-play-state:running;
+	animation-duration: 100ms;
+}
+
+.cp-bottom
+{
+	top:auto;
+	left:0px;
+	right:0px;
+	bottom: -320px;
+	display:none;
+}
+.cp-bottom-open
+{
+	top:auto;
+	left:0px;
+	right:0px;
+	bottom:-320px;
+	width:100%;
+	height:auto;
+	max-height:320px;
+	display:flex;
+	border-top:solid 1px var(--black-03);
+	box-shadow: 0px 0px 0px 0px var(--black-03);
+
+	animation-name: CP_BottomOpen;
+	animation-play-state:running;
+	animation-duration: 200ms;
+}
+.cp-bottom-closed
+{
+	top:auto;
+	left:0px;
+	right:0px;
+	bottom:0px;
+	width:100%;
+	height:auto;
+	max-height:320px;
+	display:flex;
+	box-shadow: 0px -20px 50px 0px var(--black-03);
+
+	animation-name: CP_BottomClosed;
+	animation-play-state:running;
+	animation-duration: 100ms;
+}
+
+/* context panel children */
 .cp-header
 {
 /*	border: solid 1px red;*/
@@ -129,33 +225,13 @@
 
 .cp-body
 {
-/*	border: solid 2px green;*/
-/*	border-top: solid 1px var(--debug);
-*/	
 	background-color:var(--white);
-	background-image: linear-gradient(180deg, var(--black-01) 0, transparent 10px);
+	background-image: linear-gradient(180deg, var(--black-01) 0px, transparent 10px);
 	flex: 1 1 100%;
 	min-height:100px;
 	padding:20px;
 	overflow:auto;
 }
-.cp-controls-panel
-{
-/*	border: solid 1px var(--black-01);*/
-	text-align:center;
-	padding:10px;
-}
-.cp-controls-panel-row
-{
-	text-align:center;
-	margin-bottom:10px;
-}
-.cp-controls-panel-row > select
-{
-	width: 200px;
-	padding:6px;
-}
-
 .cp-body > div
 {
 /*	border: solid 1px var(--black-01);*/
@@ -163,6 +239,7 @@
 	text-align:left;
 }
 
+/* test content */
 .cp-doi
 {
 /*	border: solid 1px red;*/
@@ -185,7 +262,6 @@ p.cp-doi-larger
 	border-top: solid 1px var(--black-01);
 	padding-top:10px;
 }
-
 div.doi-sig-panel
 {
 	border-top: solid 1px var(--black-02);
@@ -193,86 +269,98 @@ div.doi-sig-panel
 	margin-top:10px;
 	padding-top:10px;
 }
-
 div.doi-sig-panel > div
 {
 	flex: 1 1 25%;
 }
 
-
-
-@media (max-width: 480px)
-{
-	.cp-left
-	{
-		width:100%;
-	}
-	.cp-right
-	{
-		width:100%;
-	}
-	.cp-top
-	{
-		max-height:100%;
-	}
-	.cp-bottom
-	{
-		max-height:100%;
-	}
-}
-
-@keyframes Ani_CP_DoPlacement
+/* animations & responsive */
+@keyframes CP_RightOpen
 {
 	0%
 	{
-		opacity: 0;
-	}
-	100%
-	{
-		opacity: 1;
-	}
-}
-
-@keyframes Ani_CP_MoveRightToLeft
-{
-	0%
-	{
-		box-shadow: 0px 0px 0px 0px var(--black-03);
+		box-shadow: 0px 0px 0px 0px transparent;
+		left:auto;
 		right:-480px;
 	}
 	100%
 	{
-		box-shadow: -20px 0px 100px 0px var(--black-03);
+		box-shadow: 0px 0px 50px 0px var(--black);
+		left:auto;
 		right:0px;
 	}
 }
-@keyframes Ani_CP_MoveLeftToRight
+@keyframes CP_RightClosed
 {
 	0%
 	{
-		box-shadow: 0px 0px 0px 0px var(--black-03);
+		box-shadow: 0px 0px 50px 0px var(--black-03);
+		left:calc(100% - 480px);
+		right:0px;
+	}
+	100%
+	{
+		box-shadow: 0px 0px 0px 0px transparent;
+		left:100%;
+		right:-480px;
+	}
+}
+
+@keyframes CP_LeftOpen
+{
+	0%
+	{
+	box-shadow: 0px 0px 0px 0px transparent;
 		left:-480px;
 	}
 	100%
 	{
-		box-shadow: 20px 0px 100px 0px var(--black-03);
+		box-shadow: 20px 0px 50px 0px var(--black-03);
 		left:0px;
 	}
 }
-@keyframes Ani_CP_MoveTopToBottom
+@keyframes CP_LeftClosed
 {
 	0%
 	{
-		box-shadow: 0px 0px 0px 0px var(--black-03);
+		box-shadow: 20px 0px 100px 0px var(--black-03);
+		left:0px;
+	}
+	100%
+	{
+		box-shadow: 0px 0px 0px 0px transparent;
+		left:-480px;
+	}
+}
+
+@keyframes CP_TopOpen
+{
+	0%
+	{
+		box-shadow: 0px 0px 0px 0px transparent;
 		top:-320px;
 	}
 	100%
 	{
-		box-shadow: 0px 20px 100px 0px var(--black-03);
+		box-shadow: 0px 20px 50px 0px var(--black-03);
 		top:0px;
 	}
 }
-@keyframes Ani_CP_MoveBottomToTop
+@keyframes CP_TopClosed
+{
+	0%
+	{
+		box-shadow: 0px 20px 50px 0px var(--black-03);
+		top:0px;
+	}
+	100%
+	{
+		box-shadow: 0px 0px 0px 0px transparent;
+		top:-320px;
+	}
+}
+
+@keyframes CP_BottomOpen
 {
 	0%
 	{
@@ -281,7 +369,44 @@ div.doi-sig-panel > div
 	}
 	100%
 	{
-		box-shadow: 0px -20px 100px 0px var(--black-03);
+		box-shadow: 0px -20px 50px 0px var(--black-03);
 		bottom:0px;
+	}
+}
+@keyframes CP_BottomClosed
+{
+	0%
+	{
+		box-shadow: 0px -20px 50px 0px var(--black-03);
+		bottom:0px;
+	}
+	100%
+	{
+		box-shadow: 0px 0px 0px 0px var(--black-03);
+		bottom:-320px;
+	}
+}
+
+@media (max-width: 480px)
+{
+	.cp-right-open
+	{
+		width:100%;
+	}
+	.cp-left-open
+	{
+		width:100%;
+	}
+	.cp-right-open
+	{
+		width:100%;
+	}
+	.cp-top-open
+	{
+		max-height:50%;
+	}
+	.cp-bottom-open
+	{
+		max-height:50%;
 	}
 }

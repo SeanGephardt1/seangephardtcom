@@ -24,6 +24,7 @@ body
 	letter-spacing:-0.4px;
 	overflow:auto;
 	vertical-align:top;
+	min-width:320px;
 /*	background-position:top center;
 	background-repeat:no-repeat;
 	background-image: url('../art/svg/sg-72-tele-02.svg');

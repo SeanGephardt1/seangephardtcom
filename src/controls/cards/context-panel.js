@@ -6,70 +6,18 @@ export default class ContextPanel extends React.Component
 	static defaultProps = {
 		Placements:
 		{
-			Top: "cp-main-panel cp-top",
-			Left: "cp-main-panel cp-left",
-			Right: "cp-main-panel cp-right",
-			Bottom: "cp-main-panel cp-bottom"
+			Top: "cp-top",
+			Left: "cp-left",
+			Right: "cp-right",
+			Bottom: "cp-bottom"
 		}
 	};
 	constructor( props )
 	{
 		super( props );
 
-		this.Close = this.props.closeEvent.bind( this );
-
-		this.state = {
-			placementChanged:  ( this.props.placement || ContextPanel.defaultProps.Placements.Right )
-		}
-
-		return;
-	};
-	OnChange_ContextPanel_Placement( ev )
-	{	//	console.debug( "OnChange_ContextPanel_Placement", ev.target.value );
-		this.setState( { placementChanged: ev.target.value } );
-		return;
-	}
-	render()
-	{	//	console.debug( this.state.placementChanged, "||", this.PlacementClassNames);
-		return (
-			<div className="context-full-panel">
-
-				<div className={this.state.placementChanged}>
-
-					{ /*header */}
-					<div className="cp-header">
-						<div className="cp-header-title">{this.props.title }</div>
-						<div className="cp-header-close-btn" tabIndex="0" onClick={this.Close}>
-							<svg viewBox="0 0 24 24" width="100%" height="100%">
-								<circle x="0" y="0" cx="12" cy="12" r="12" strokeWidth="0" stroke="transparent" fill="rgba(0,0,0,0.4)"/>
-								<line x1="6" y1="6" x2="18" y2="18" stroke="white" strokeWidth="3" />
-								<line x1="6" y1="18" x2="18" y2="6" stroke="white" strokeWidth="3" />
-							</svg>	
-						</div>
-					</div>
-
-					{ /* content */}
-					<div className="cp-body">
-
-						<div className="cp-controls-panel">
-
-							<div className="cp-controls-panel-row">Change the placement of this Context panel</div>
-
-							<div className="cp-controls-panel-row">
-								<select
-									value={this.state.placementChanged}
-									onChange={this.OnChange_ContextPanel_Placement.bind( this )}>
-									{
-										Object.entries( ContextPanel.defaultProps.Placements ).map( ( item, index ) => (
-											<option key={index} value={item[1]}>{ item[0] }</option>
-										))
-									}
-								</select>
-							</div>
-
-						</div>
-
-						<div className="cp-doi">
+		this.Content = (
+			<div className="cp-doi">
 							<h1>Declaration of Independence: A Transcription</h1>
 
 							<p><em>Note: The following text is a transcription of the Stone Engraving of the parchment Declaration of Independence (the document on display in <a href="https://museum.archives.gov/founding-documents">the Rotunda at the National Archives Museum</a>.)&nbsp;The spelling and punctuation reflects the original.</em></p>
@@ -185,12 +133,61 @@ export default class ContextPanel extends React.Component
 							</div>
 
 							{ /* END CONTENT*/}
-						</div>
+						</div>			
+		);
 
+		this.Close = this.props.closeEvent.bind( this );
+
+		this.Displayed = null;
+		this.PlacementClassName = undefined;
+
+		return;
+	};
+
+	SetPlacementClassNames()
+	{
+		if ( this.props.displayed === false )
+		{
+			if ( this.Displayed === null || this.Displayed === false)
+			{
+				this.PlacementClassName = "cp-main-panel " + this.props.placement;
+			}
+			else
+			{
+				this.Displayed = this.props.displayed;
+				this.PlacementClassName = "cp-main-panel " + this.props.placement + "-closed";
+			}
+		}
+		else if ( this.props.displayed === true )
+		{
+			this.Displayed = true;
+			this.PlacementClassName = "cp-main-panel " + this.props.placement + "-open";
+		}
+		return;
+	};
+	render()
+	{	
+		//	console.debug( "ContextPanel", this.props.displayed, this.Displayed);
+		this.SetPlacementClassNames();
+
+		return (
+			<div className={ this.PlacementClassName }>
+				{ /*header */}
+				<div className="cp-header">
+						<div className="cp-header-title">{this.props.title }</div>
+						<div className="cp-header-close-btn" tabIndex="0" onClick={this.Close}>
+							<svg viewBox="0 0 24 24" width="100%" height="100%">
+								<circle x="0" y="0" cx="12" cy="12" r="12" strokeWidth="0" stroke="transparent" fill="rgba(0,0,0,0.4)"/>
+								<line x1="6" y1="6" x2="18" y2="18" stroke="white" strokeWidth="3" />
+								<line x1="6" y1="18" x2="18" y2="6" stroke="white" strokeWidth="3" />
+							</svg>	
+						</div>
 					</div>
 
-					{ /* END */}
-				</div>
+				{ /* content */}
+				<div className="cp-body">{ this.Content}</div>
+
+				{ /* END */}
 			</div>
 		);
 	};
