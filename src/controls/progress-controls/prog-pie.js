@@ -12,12 +12,25 @@ export default class ProgressPieControl extends React.Component
 			Green: "pp-green",
 			Blue: "pp-blue",
 			Purple: "pp-purple"
+		},
+		Sizes:
+		{
+			ExtraLarge: "pp-size-extra-large",
+			Large: "pp-size-large",
+			Medium: "pp-size-medium",
+			Small: "pp-size-small"
+		},
+		Styles:
+		{
+			Circle: "pp-circle",
+			Bar: "pp-bar"
 		}
 	};
 	constructor( props )
 	{	
 		super( props );
 		this.Color = ( this.props.color || ProgressPieControl.defaultProps.Colors.Red );
+		this.Size = ( this.props.size || ProgressPieControl.defaultProps.Sizes.ExtraLarge );
 		this.Value = ( this.props.value || 0 );
 
 		this._percentage = "%";
@@ -146,7 +159,6 @@ export default class ProgressPieControl extends React.Component
 		this.state = {}
 		return;
 	};
-
 	ComputeClipPath( val )
 	{	//	console.debug( "ComputeClipPath", val );
 		if ( val > this._data.length )
@@ -161,23 +173,58 @@ export default class ProgressPieControl extends React.Component
 	}
 	render()
 	{
-		//	console.debug( "ProgressPieControl", this.props.value, this._data.length );
-		const _outer_class_name = "prog-pie-outer-circle";
-		const _inner_class_name = "prog-pie-inner-circle " + this.Color;
-		const _value_class_name = "prog-pie-value " + this.Color;
-		const _value_string = this.props.value + "%";
+		///	console.debug( "ProgressPieControl.render()", this.props.size, this.props.color );
 
-		this.ComputeClipPath( this.props.value );
-		//	console.debug(this.props.value, "this.CurrentPolygonValues", this.CurrentPolygonValues );
-		const _clip_path = { "clipPath": "polygon(" + this.CurrentPolygonValues + ")" };
-		//	console.debug("_clip_path", this.props.value, _clip_path);
+		let _value_string;
+		let _outer_class_name;
+		let _inner_class_name;
+		let _value_class_name;
+		let _clip_path;
+		let _bg_scale;
+
+		if (this.props.style === ProgressPieControl.defaultProps.Styles.Bar)
+		{
+			_value_string = this.props.value + this._percentage;
+			_outer_class_name = "prog-pie-outer-bar " + this.props.size;
+			_inner_class_name = "prog-pie-inner-bar " + this.props.color;
+			//_value_class_name = "prog-pie-bar-value " + this.props.color + " "  + this.props.size;
+
+			_bg_scale = {
+				"backgroundSize": this.props.value + "%",
+			};
+		}
+		else if (this.props.style === ProgressPieControl.defaultProps.Styles.Circle)
+		{
+			_value_string = this.props.value + this._percentage;
+			_outer_class_name = "prog-pie-outer-circle " + this.props.size;
+			_inner_class_name = "prog-pie-inner-circle " + this.props.size + " " +  this.props.color;
+			_value_class_name = "prog-pie-circle-value " + this.props.size + " " + this.props.color;
+
+			this.ComputeClipPath( this.props.value );
+			//	console.debug(this.props.value, "this.CurrentPolygonValues", this.CurrentPolygonValues );
+			_clip_path = { "clipPath": "polygon(" + this.CurrentPolygonValues + ")" };
+		}
 
 		return (
-			<div className="prog-pie-ctrl">
-				<div className={_outer_class_name}></div>
-				<div className={_inner_class_name} style={_clip_path}></div>
-				<div className={_value_class_name}>{ _value_string }</div>
-			</div>
-		);
+			<>
+				{
+					this.props.style === ProgressPieControl.defaultProps.Styles.Bar &&
+					<div className="prog-pie-ctrl">
+						<div className={_outer_class_name}>
+							<div className={_inner_class_name} style={_bg_scale}></div>
+						</div>
+					</div>
+				}
+				{
+					this.props.style === ProgressPieControl.defaultProps.Styles.Circle &&
+					<div className="prog-pie-ctrl">
+						<div className={_outer_class_name}></div>
+						<div className={_inner_class_name} style={_clip_path}></div>
+						<div className={_value_class_name}>{_value_string}</div>
+					</div>
+				}
+			</>
+			
+			);
 	};
 };
