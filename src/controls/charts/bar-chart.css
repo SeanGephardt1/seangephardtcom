@@ -1,0 +1,8 @@
+﻿.bar-chart-panel
+{
+	background-color:var(--black-01);
+	padding:20px;
+	display:flex;
+	justify-content:center;
+	align-content:center;
+}

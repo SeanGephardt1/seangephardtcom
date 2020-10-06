@@ -5,12 +5,14 @@ import './controls-demo.css';
 
 // controls
 import ProgressInfiniteControl from '../../controls/progress-controls/prog-infinite.js';
-import ProgressBarControl from '../../controls/progress-controls/prog-bar.js';
+//	import ProgressBarControl from '../../controls/progress-controls/prog-bar.js';
 import ProgressPieControl from '../../controls/progress-controls/prog-pie.js';
 
 import ContextPanel from '../../controls/cards/context-panel.js';
 import ModalOverlay from '../../controls/cards/modal.js';
 import DialogCard from '../../controls/cards/dialog-card.js';
+
+import BarChart from '../../controls/charts/bar-chart.js';
 
 import LorumContent from '../../controls/content/lorum-ipsum.js';
 
@@ -34,12 +36,6 @@ export default class ControlsDemo extends React.Component
 		this._start_text = "Start";
 		this._pause_text = "Pause";
 		this._stop_text = "Stop";
-
-		// progress bar
-		this._prog_bar_btn_clicked = false;
-		this._prog_bar_tbn_text = this._start_text;
-		this._prog_bar_value = 0;
-		this._prog_bar_interval_handler = undefined;
 
 		// progress pie
 		this._prog_pie_btn_clicked = false;
@@ -78,7 +74,7 @@ export default class ControlsDemo extends React.Component
 			ProgBarButtonRunning: false,
 
 			ProgPie1Size: ProgressPieControl.defaultProps.Sizes.ExtraLarge,
-			ProgPie1Color: ProgressPieControl.defaultProps.Colors.Red,
+			ProgPie1Color: ProgressPieControl.defaultProps.Colors.Orange,
 			ProgPie1Step: 33,
 
 			ProgPieButtonRunning: false,
@@ -93,7 +89,9 @@ export default class ControlsDemo extends React.Component
 			modalOverlayDisplayed: false,
 
 			contextPanelDisplayed: false,
-			contextPanelPlacement: ContextPanel.defaultProps.Placements.Right
+			contextPanelPlacement: ContextPanel.defaultProps.Placements.Right,
+
+			verticalBarChartAnimate: false
 		};
 
 		document.title = this.Title;
@@ -189,69 +187,17 @@ export default class ControlsDemo extends React.Component
 		this.setState( { ProgInfiniteSize: ev.target.value } );
 		return;
 	}
-	OnClick_TestProgressBar( speed, ev )
-	{
-		//	console.debug( "OnClick_TestProgressBar", this._prog_bar_btn_clicked );
-
-		if ( this._prog_bar_btn_clicked === false && ( this._prog_bar_value === 0 || this._prog_bar_value === 100) )
-		{
-			this._prog_bar_value = 0;
-			this._prog_bar_btn_clicked = true;
-			this._prog_bar_interval_handler = window.setInterval( this.ProgBarDemo_StartInterval, 20, this );
-		}
-		else if ( this._prog_bar_btn_clicked === false && this._prog_bar_value !== 0)
-		{
-			this._prog_bar_btn_clicked = true;
-			this._prog_bar_interval_handler = window.setInterval( this.ProgBarDemo_StartInterval, 20, this );
-		}
-		else if ( this._prog_bar_btn_clicked === true )
-		{
-			this._prog_bar_btn_clicked = false;
-			this._prog_bar_tbn_text = this._start_text;
-
-			window.clearInterval( this._prog_bar_interval_handler );
-			this._prog_bar_interval_handler = undefined;
-
-			this.setState({
-				ProgBarButtonRunning: !this.state.ProgBarButtonRunning
-			});
-		}
-
-		return;
-	};
-	ProgBarDemo_StartInterval( scopeObj )
-	{	//	console.debug( "ProgBarDemo_StartInterval", scopeObj._prog_bar_value );
-		if ( scopeObj._prog_bar_value < 100)
-		{
-			scopeObj._prog_bar_value++;
-			scopeObj._prog_bar_tbn_text = scopeObj._pause_text;
-		}
-		else if ( scopeObj._prog_bar_value === 100)
-		{
-			scopeObj._prog_bar_tbn_text = scopeObj._start_text;
-			scopeObj._prog_bar_btn_clicked = false;
-
-			window.clearInterval( scopeObj._prog_bar_interval_handler );
-			scopeObj._prog_bar_interval_handler = undefined;
-		}
-
-		scopeObj.setState({
-			ProgBarButtonRunning: !scopeObj.state.ProgBarButtonRunning
-		});
-		//	console.debug( "scopeObj.state", scopeObj.state );
-		return;
-	};
 
 	// ProgPie1
 	OnChange_ProgPie1_Steps( ev )
-	{	//	console.debug( "OnChange_StepProgPie", ev.target.value );
+	{	//	console.debug( "OnChange_ProgPie1_Steps", ev.target.value );
 		this.setState( {
 			ProgPie1Step: ev.target.value,
 		} );
 		return;
 	}
 	OnChange_ProgPie1_Colors( ev )
-	{	//	console.debug( "OnChange_ProgInfinite_Colors", ev.target.value, ProgressInfiniteControl.defaultProps.Colors[ev.target.value] );
+	{	//	console.debug( "OnChange_ProgPie1_Colors", ev.target.value, ProgressInfiniteControl.defaultProps.Colors[ev.target.value] );
 		this.setState( { ProgPie1Color:  ev.target.value } );
 		return;
 	}
@@ -333,11 +279,27 @@ export default class ControlsDemo extends React.Component
 		return;
 	};
 
+
+	// Vertical Bar Chart
+	OnClick_Start_VbarChart( ev )
+	{
+		console.debug( "OnClick_Start_VbarChart" );
+		return;
+	};
+
+
     render()
 	{
 		//	console.debug( "ControlsDemo.render()", this.state.hoverCardContentSelected, this.DialogCardContentEnum);
 		//	console.debug( "StateStore.States[DialogCard.defaultProps.StateKey]", StateStore.States[DialogCard.defaultProps.StateKey] );		
 		//	StateStore.States[DialogCard.defaultProps.StateKey] = true;
+
+		/* CONTROL CARD TEMPLATE 
+			<div className="ani-demo-card-1">
+			<div className="ani-card-ctrl-block">control</div>
+			<div className="ani-card-text-block">This is an example of what is called an "indefinite" progress indicator, meaning that ti it is displayed for an indefinite amount of time. it can be hidden at any time.</div>
+			</div>
+		*/
 
         return (
 			<div className="anim-demo-layout">
@@ -359,14 +321,30 @@ export default class ControlsDemo extends React.Component
 					placement={this.state.hoverCardPlacementSelected}>{this.state.hoverCardContent}
 				</DialogCard>
 
-				{ /* CONTROL CARD TEMPLATE 
-						<div className="ani-demo-card-1">
-						<div className="ani-card-ctrl-block">control</div>
-						<div className="ani-card-text-block">This is an example of what is called an "indefinite" progress indicator, meaning that ti it is displayed for an indefinite amount of time. it can be hidden at any time.</div>
-						</div>
-				 */}
 
-				{ /*  */ }
+				{ /*  CHARTS  */ }
+				<div className="anim-demo-header">Overlays</div>
+				<div className="anim-demo-desc">Customers sometimes need a little extra information or instruction regarding elements of the user interface that may not be completely intuitive or require additional description and/or functionality. Utilizing customized tooltips, dialogs and modal dialog in this scenario allow for additional information, specific data entry points or notifications.</div>
+
+				<div className="anim-demo-block-panel">
+
+					{ /* Vertical Bar Chart - WIP */}
+					<div className="ani-demo-card-1">
+						<div className="ani-card-ctrl-block">
+							<BarChart animate={this.state.verticalBarChartAnimate} />
+						</div>
+						<div className="ani-card-text-block">
+							<div className="prog-bar-controls-2">
+								<div className="hc-test-button"
+								onClick={this.OnClick_Start_VbarChart.bind( this )}
+								>Animate</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+				{ /*  OVERLAYS */ }
 				<div className="anim-demo-header">Overlays</div>
 				<div className="anim-demo-desc">Customers sometimes need a little extra information or instruction regarding elements of the user interface that may not be completely intuitive or require additional description and/or functionality. Utilizing customized tooltips, dialogs and modal dialog in this scenario allow for additional information, specific data entry points or notifications.</div>
 
@@ -483,19 +461,30 @@ export default class ControlsDemo extends React.Component
 								color={this.state.ProgInfiniteColor}
 								style={ProgressInfiniteControl.defaultProps.Styles.Circle}
 							/>
-
 							<div className="margin-bottom-10"></div>
-
 							<ProgressInfiniteControl
 								size={this.state.ProgInfiniteSize}
 								color={this.state.ProgInfiniteColor}
 								style={ProgressInfiniteControl.defaultProps.Styles.Bar} />
-
 						</div>
 						<div className="ani-card-text-block">
 							<div>An example of an "indefinite" progress indicators, meaning that it is displayed for an indefinite amount of time and can be dsiplayed or hidden at any time.</div>
 							<div className="margin-bottom-5"></div>
 							<div className="prog-bar-controls-2">
+
+								<div>Select size</div>
+								<select
+									className="prog-infinites"
+									value={this.state.ProgInfiniteSize}
+									onChange={this.OnChange_ProgInfinite_Sizes.bind( this )}>
+									{
+										Object.entries( ProgressInfiniteControl.defaultProps.Sizes ).map( ( item, index ) => (
+											<option key={index} value={item[1]}>{ item[0] }</option>
+										))
+									}
+								</select>
+	
+								<div className="margin-bottom-5"></div>
 								<div>Select color</div>
 								<select
 									className="prog-infinites"
@@ -508,30 +497,11 @@ export default class ControlsDemo extends React.Component
 									}
 								</select>
 
-								<div className="margin-bottom-5"></div>
-								<div>Select size</div>
-								<select
-									className="prog-infinites"
-									value={this.state.ProgInfiniteSize}
-									onChange={this.OnChange_ProgInfinite_Sizes.bind( this )}>
-									{
-										Object.entries( ProgressInfiniteControl.defaultProps.Sizes ).map( ( item, index ) => (
-											<option key={index} value={item[1]}>{ item[0] }</option>
-										))
-									}
-								</select>
 							</div>
 						</div>
 					</div>
 
-					{ /* DEFINITE PROGRESS PIE 1
-							<ProgressPieControl
-								style={ProgressPieControl.defaultProps.Styles.Circle}
-								color={this.state.ProgPie1Color}
-								size={this.state.ProgPie1Size}
-								value={this.state.ProgPie1Step} />
-							<div className="margin-bottom-10"></div>
-					 * */ }
+					{ /* DEFINITE PROGRESS PIE 1 */ }
 					<div className="ani-demo-card-1">
 						<div className="ani-card-ctrl-block">
 							<ProgressPieControl
@@ -583,24 +553,25 @@ export default class ControlsDemo extends React.Component
 					</div>
 
 					{ /* DEFINITE PROGRESS PIE 2 */ }
-						<div className="ani-demo-card-1">
+					<div className="ani-demo-card-1">
 							<div className="ani-card-ctrl-block">
 								<ProgressPieControl
-									style={ProgressPieControl.defaultProps.Styles.Circle}
-									color={ProgressPieControl.defaultProps.Colors.Purple}
-									size={ProgressPieControl.defaultProps.Sizes.ExtraLarge}
+								style={ProgressPieControl.defaultProps.Styles.Circle}
+								color={ProgressPieControl.defaultProps.Colors.Yellow}
+								size={ProgressPieControl.defaultProps.Sizes.ExtraLarge}
 								value={this._prog_pie_value} />
 
 								<div className="margin-bottom-10"></div>
 
 								<ProgressPieControl
-									style={ProgressPieControl.defaultProps.Styles.Bar}
-									color={ProgressPieControl.defaultProps.Colors.Purple}
-									size={ProgressPieControl.defaultProps.Sizes.ExtraLarge}
+								style={ProgressPieControl.defaultProps.Styles.Bar}
+								color={ProgressPieControl.defaultProps.Colors.Yellow}
+								size={ProgressPieControl.defaultProps.Sizes.ExtraLarge}
 								value={this._prog_pie_value} />
 							</div>
 							<div className="ani-card-text-block">Another example of a progress indicator that allows for setting the interval time, to get a feeling for how animation speeds can affect the progression values.
 								<div className="prog-bar-controls-2">
+									<div className="margin-bottom-5"></div>
 									<label htmlFor="prog_pie_speed">Speed (0ms - 1000ms): {this.state.ProgPieSpeed}ms</label>
 									<input type="range"
 										id="prog_pie_speed" name="prog_pie_speed"
@@ -611,46 +582,6 @@ export default class ControlsDemo extends React.Component
 								</div>							
 							</div>
 						</div> 
-
-
-
-					{ /* DEFINITE PROGRESS BAR 
-					 
-					<div className="ani-demo-card-1">
-						<div className="ani-card-ctrl-block">
-
-							<ProgressBarControl color={ProgressBarControl.defaultProps.Colors.Red} speed={500} />
-							<div className="margin-bottom-10"></div>
-
-							<ProgressBarControl color={ProgressBarControl.defaultProps.Colors.Orange} speed={ 1500 } />
-							<div className="margin-bottom-10"></div>
-
-							<ProgressBarControl color={ProgressBarControl.defaultProps.Colors.Yellow} speed={ 3000 } />
-							<div className="margin-bottom-10"></div>
-
-							<ProgressBarControl color={ProgressBarControl.defaultProps.Colors.Green} speed={ 4500 } />
-							<div className="margin-bottom-10"></div>
-
-							<ProgressBarControl
-								color={ProgressBarControl.defaultProps.Colors.Blue}
-								percentage={this._prog_bar_value} />
-						</div>
-
-						<div className="ani-card-text-block">
-							<div>This progress bar indicator example can be used with a specific increment value, shown with different timers above. Click the 'Start' button to a pausable demonstration.</div>
-							<br/>
-							<div className="prog-bar-controls-2">
-								<button className="hc-test-button" onClick={this.OnClick_TestProgressBar.bind( this )}>{this._prog_bar_tbn_text}</button>
-								
-								<span className="prog-bar-value">{this._prog_bar_value}</span>
-								
-							</div>
-	
-						</div>
-
-					</div>
-					 */ }
-
 
 
 					{ /* END */}

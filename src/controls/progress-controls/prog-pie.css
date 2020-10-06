@@ -2,7 +2,6 @@
 
 .prog-pie-ctrl
 {
-/*	border: solid 1px var(--debug);*/
 	background-color: transparent;
 	display:flex;
 	height:100%;
@@ -97,6 +96,7 @@
 	border-radius:4px;
 	padding:10px;
 	text-align:center;
+	text-shadow: 0px 1px 2px var(--black);
 }
 
 .prog-pie-outer-circle.pp-size-extra-large,
@@ -151,27 +151,33 @@
 	border-color: var(--nav-color-1);
 	color:var(--nav-color-1);
 }
-.prog-pie-inner-circle.pp-orange
+
+.prog-pie-inner-circle.pp-orange,
+.prog-pie-circle-value.pp-orange
 {
 	border-color: var(--orange);
 	color: var(--orange);
 }
-.prog-pie-inner-circle.pp-yellow
+.prog-pie-inner-circle.pp-yellow,
+.prog-pie-circle-value.pp-yellow
 {
 	border-color: var(--nav-color-2);
 	color: var(--nav-color-2);
 }
-.prog-pie-inner-circle.pp-green
+.prog-pie-inner-circle.pp-green,
+.prog-pie-circle-value.pp-green
 {
 	border-color: var(--nav-color-3);
 	color:var(--nav-color-3);
 }
-.prog-pie-inner-circle.pp-blue
+.prog-pie-inner-circle.pp-blue,
+.prog-pie-circle-value.pp-blue
 {
 	border-color: var(--lapis);
 	color: var(--lapis);
 }
-.prog-pie-inner-circle.pp-purple
+.prog-pie-inner-circle.pp-purple,
+.prog-pie-circle-value.pp-purple
 {
 	border-color: var(--purple);
 	color: var(--purple);
