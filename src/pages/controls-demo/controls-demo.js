@@ -64,7 +64,7 @@ export default class ControlsDemo extends React.Component
 			<br/>
 			<ul><li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li><li>Aliquam tincidunt mauris eu risus.</li><li>Aliquam tincidunt mauris eu risus.</li><ul><li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li><li>Aliquam tincidunt mauris eu risus.</li><li>Aliquam tincidunt mauris eu risus.</li><ul><li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li><li>Aliquam tincidunt mauris eu risus.</li><li>Aliquam tincidunt mauris eu risus.</li></ul></ul></ul>
 		</div> );
-
+	
 		this.state = {
 			changed: false,
 
@@ -80,7 +80,6 @@ export default class ControlsDemo extends React.Component
 			ProgPieButtonRunning: false,
 			ProgPieSpeed: 0,
 
-
 			hoverCardPlacementSelected: DialogCard.defaultProps.Placements.Bottom,
 			hoverCardEventType: undefined,
 			hoverCardContentSelected: this.DialogCardContentEnum[2],
@@ -91,7 +90,10 @@ export default class ControlsDemo extends React.Component
 			contextPanelDisplayed: false,
 			contextPanelPlacement: ContextPanel.defaultProps.Placements.Right,
 
-			verticalBarChartAnimate: false
+			verticalBarChartAnimate: false,
+
+			barChartOrientation: BarChart.defaultProps.Orientations.Horizontal,
+			barChartData: BarChart.GenerateBarChartData()
 		};
 
 		document.title = this.Title;
@@ -280,10 +282,21 @@ export default class ControlsDemo extends React.Component
 	};
 
 
-	// Vertical Bar Chart
+	// Bar Chart
+	OnChange_BarChart_Orientations( ev )
+	{
+		//	console.debug( "OnChange_BarChart_Orientations", ev.target.value);
+		this.setState( {
+			barChartOrientation: ev.target.value
+		} )
+		return;
+	};
 	OnClick_Start_VbarChart( ev )
 	{
-		console.debug( "OnClick_Start_VbarChart" );
+		//	console.debug( "OnClick_Start_VbarChart" );
+		this.setState( {
+			barChartData: BarChart.GenerateBarChartData()
+		} )
 		return;
 	};
 
@@ -323,24 +336,40 @@ export default class ControlsDemo extends React.Component
 
 
 				{ /*  CHARTS  */ }
-				<div className="anim-demo-header">Overlays</div>
+				<div className="anim-demo-header">Charts</div>
 				<div className="anim-demo-desc">Customers sometimes need a little extra information or instruction regarding elements of the user interface that may not be completely intuitive or require additional description and/or functionality. Utilizing customized tooltips, dialogs and modal dialog in this scenario allow for additional information, specific data entry points or notifications.</div>
 
 				<div className="anim-demo-block-panel">
 
 					{ /* Vertical Bar Chart - WIP */}
-					<div className="ani-demo-card-1">
+					<div className="ani-demo-card-2">
 						<div className="ani-card-ctrl-block">
-							<BarChart animate={this.state.verticalBarChartAnimate} />
+							<BarChart
+								data={this.state.barChartData}
+								orientation={this.state.barChartOrientation}
+								animate={this.state.verticalBarChartAnimate} />
 						</div>
 						<div className="ani-card-text-block">
 							<div className="prog-bar-controls-2">
+								<div>Select orientation</div>
+								<select
+									className="prog-infinites"
+									value={this.state.barChartOrientation}
+									onChange={this.OnChange_BarChart_Orientations.bind( this )}>
+									{
+										Object.entries( BarChart.defaultProps.Orientations ).map( ( item, index ) => (
+											<option key={index} value={item[1]}>{ item[0] }</option>
+										))
+									}
+								</select>
+								<div className="margin-bottom-5"></div>
 								<div className="hc-test-button"
 								onClick={this.OnClick_Start_VbarChart.bind( this )}
-								>Animate</div>
+								>Randomize data</div>
 							</div>
 						</div>
 					</div>
+
 				</div>
 
 

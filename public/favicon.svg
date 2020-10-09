@@ -1,15 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" height="512px" width="512px" viewBox="0 0 512 512">
-	<rect width="512" height="512" fill="rgba(0,0,0,0)"/>
-	
-	<rect width="512" height="170" y="0" fill="rgba(197, 34, 51,1)"/>
-	<rect width="512" height="170" y="170" fill="rgba(0,96,0,1)"/>
-	<rect width="512" height="170" y="340" fill="rgba(39, 93, 173,1)"/>
+	<defs>
+		<linearGradient id="grad1" x1="10%" x2="90%" gradientTransform="rotate(90)">
+		  <stop offset="0%"  stop-color="rgba(64, 128, 190, 1)"/>
+		  <stop offset="100%" stop-color="rgba(7, 69, 128, 1)"/>
+		</linearGradient>
+		<linearGradient id="grad2" x1="0%" x2="100%" gradientTransform="rotate(90)">
+		  <stop offset="0%"  stop-color="rgba(255,255,255,1)"/>
+		  <stop offset="100%" stop-color="rgba(160,160,160,1)"/>
+		</linearGradient>
+	</defs>
 
-	<text x="256" y="384" dx="0" dy="0" 
-		  text-anchor="middle" font-size="384px" font-weight="900" letter-spacing="-20" textLength="auto" 
-		  fill="rgba(255,255,255,1)" stroke="rgba(0,0,0,1)" stroke-width="10" text-rendering="geometricPrecision">
-		<tspan>SG</tspan>
+	<rect width="512" height="512" fill="url(#grad1)"/>
+	
+	<text x="230" y="480" dx="0" dy="0" 
+		  text-anchor="middle" font-size="600px" font-weight="900" letter-spacing="0" textLength="auto" 
+		  fill="url(#grad2)" stroke="rgba(0,0,0,0)" stroke-width="0" text-rendering="geometricPrecision">
+		<tspan>G</tspan>
 	</text>
 
 </svg>
