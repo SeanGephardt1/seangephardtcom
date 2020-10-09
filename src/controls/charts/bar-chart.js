@@ -77,8 +77,8 @@ export default class BarChart extends React.Component
 				<svg viewBox={ this.ViewBox }  height="100%" width="100%" className="bc-svg-root">
 					<rect id="debug-background" fill="rgba(240,250,255,1)" height={this.Height} width={this.Width}></rect>
 
-					<rect id="percentage-column" fill="rgba(240,250,255,1)" x="0" y="0" height={this.Height} width={this._left_border} fill="rgba(240,240,240,1)"></rect>
-					<rect id="value-row" fill="rgba(240,250,255,1)" x="0" y={(this.Height-this._bottom_border)} height={this._bottom_border} width={this.Width} fill="rgba(240,240,240,1)"></rect>
+					<rect id="percentage-column" x="0" y="0" height={this.Height} width={this._left_border} fill="rgba(250,250,250,1)"></rect>
+					<rect id="value-row" x="0" y="500" height={this._bottom_border} width={this.Width}  fill="rgba(250,250,250,1)"></rect>
 
 
 					{/* Percentage column */
@@ -142,8 +142,6 @@ export default class BarChart extends React.Component
 
 					{
 						this.props.orientation === BarChart.defaultProps.Orientations.Vertical &&
-						this.props.data !== undefined &&
-						this.props.data.length !== 0 &&
 						this.props.data.map( ( item, index ) =>
 						(
 							<rect key={index} x={( this._left_border + index * this._bar_width_or_height )} y={item.value} height={item.height} width={ this._bar_width_or_height } fill="rgba(0,128,255,1)" stroke="rgba(255,255,255,1)" strokeWidth="1" />
@@ -152,8 +150,6 @@ export default class BarChart extends React.Component
 
 					{
 						this.props.orientation === BarChart.defaultProps.Orientations.Horizontal && 
-						this.props.data !== undefined &&
-						this.props.data.length !== 0 &&
 						this.props.data.map( ( item, index ) =>
 						(
 							<rect key={index} x={this._left_border} y={index * this._bar_width_or_height}  height={ this._bar_width_or_height } width={ item.height } fill="rgba(0,128,255,1)" stroke="rgba(255,255,255,1)" strokeWidth="1"/>

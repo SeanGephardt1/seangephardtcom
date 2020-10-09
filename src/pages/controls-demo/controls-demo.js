@@ -93,7 +93,7 @@ export default class ControlsDemo extends React.Component
 			verticalBarChartAnimate: false,
 
 			barChartOrientation: BarChart.defaultProps.Orientations.Horizontal,
-			barChartData: BarChart.GenerateBarChartData()
+			barChartData: BarChart.GenerateBarChartData(4)
 		};
 
 		document.title = this.Title;
