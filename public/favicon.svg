@@ -14,31 +14,22 @@
 		}
 	</style>
 	<defs>
-		<linearGradient id="bg-grad" x1="0%" x2="100%" gradientTransform="rotate(90)">
-		  <stop offset="0%"  stop-color="rgba(80, 128, 222, 1)"/>
-		  <stop offset="100%" stop-color="rgba(0, 64, 144, 1)"/>
-		</linearGradient>
-		<linearGradient id="letter-color" x1="0%" x2="100%" gradientTransform="rotate(90)">
-		  <stop offset="0%"  stop-color="rgba(255,255,255,1)"/>
-		  <stop offset="50%"  stop-color="rgba(255,255,255,1)"/>
-		  <stop offset="100%" stop-color="rgba(128,128,128,1)"/>
-		</linearGradient>
 		<filter id="drop-shadow" x="0" y="0" width="300%" height="300%">
-		  <feOffset result="offOut" in="SourceAlpha" dx="20" dy="20" />
+		  <feOffset result="offOut" in="SourceAlpha" dx="10" dy="10" />
 		  <feGaussianBlur result="blurOut" in="offOut" stdDeviation="10" />
 		  <feBlend in="SourceGraphic" in2="blurOut" mode="normal" />
 		</filter>
 	</defs>
-	<rect width="512" height="512" fill="url(#bg-grad)"/>
+	<rect x="0" y="0" height="512" width="512" fill="rgba(39, 93, 173,1)" stroke-width="10" stroke="rgba(255,0,0,0)"></rect>
 	<text x="250" y="460" dx="0" dy="0" filter="url(#drop-shadow)"
 		  class="icon-svg"
 		  font-family="Josefina"
 		  font-size="600px" 
-		  font-weight="700" 
+		  font-weight="500" 
 		  text-anchor="middle" 
 		  letter-spacing="0" 
 		  textLength="auto" 
-		  fill="url(#letter-color)" 
+		  fill="rgba(255,255,255,1)" 
 		  stroke="rgba(0,0,0,1)" 
 		  stroke-width="1" 
 		  text-rendering="geometricPrecision">

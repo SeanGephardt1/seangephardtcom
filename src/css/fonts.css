@@ -1,14 +1,10 @@
-﻿/* 
-	FONTS
-*/
-@font-face
+﻿@font-face
 {
 	font-family: 'Calibri Light';
 	font-style: normal;
 	font-weight: normal;
 	src: url('./fonts/calibril.woff') format('woff'), local('Calibri Light');
 }
-
 @font-face
 {
 	font-family: 'Hit the Road Regular';
@@ -16,23 +12,6 @@
 	font-weight: normal;
 	src: local('Hit The Road Regular'), url('./fonts/HITROAD.woff') format('woff');
 }
-
-/*@font-face
-{
-	font-family: 'Abite';
-	font-style: normal;
-	font-weight: normal;
-	src: local('Abite'), url('./fonts/ABITE.woff') format('woff');
-}*/
-
-/*@font-face
-{
-	font-family: 'Hendo';
-	font-style: normal;
-	font-weight: normal;
-	src: local('Hendo___'), url('./fonts/HENDD.woff') format('woff');
-}*/
-
 @font-face
 {
 	font-family: 'Josefina';
@@ -40,12 +19,3 @@
 	font-weight: normal;
 	src: local('JosefinSans-Regular'), url('./fonts/JosefinSans-Regular.woff') format('woff');
 }
-
-/*
-@font-face
-{
-	font-family: 'Akka';
-	font-style: normal;
-	font-weight: normal;
-	src: local('akka'), url('./fonts/akka.woff') format('woff');
-}*/

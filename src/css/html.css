@@ -20,7 +20,7 @@ body
 	font-family: 'Josefina', 'Segoe UI', sans-serif, -system-ui;
 	font-weight:normal;
 	font-size: 100%;
-	letter-spacing:normal;
+	letter-spacing:-0.2px;
 	overflow:auto;
 	vertical-align:top;
 }
