@@ -59,9 +59,11 @@ export default class BarChart extends React.Component
 	ComputeLayout()
 	{	//	console.debug( "ComputeLayout", this.props.data.length, this.props.orientation );
 
-		this.Width = ( this.props.data.length * this._bar_width_or_height ) + this._left_border;
 		this.Height = this._box_dimension + this._bottom_border;
+		this.Width = ( this.props.data.length * this._bar_width_or_height ) + this._left_border;
 		this.ViewBox = "0 0 " + this.Width + " " + this.Height;
+
+		console.debug( this.Height, this.Width, this.ViewBox );
  		return;
 	};
 	render()

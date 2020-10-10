@@ -3,7 +3,7 @@ nav
 {
 	display:flex;
 	flex-direction:row;
-	flex: 1 1 auto;
+	flex: 1 1 100%;
 	flex-wrap:wrap;
 }
 
@@ -41,12 +41,12 @@ a.nav:nth-child(2).nav-selected, a.nav:nth-child(2):hover
 }
 a.nav:nth-child(3).nav-selected, a.nav:nth-child(3):hover
 {
-	background-color:var(--nav-color-2);
-	color:var(--black);
+	background-color:var(--nav-color-3);
+	color:var(--white);
 }
 a.nav:nth-child(4).nav-selected, a.nav:nth-child(4):hover
 {
-	background-color:var(--nav-color-3);
+	background-color:var(--nav-color-2);
 	color:var(--white);
 }
 

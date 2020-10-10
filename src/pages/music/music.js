@@ -1,6 +1,6 @@
 ﻿import React from 'react';
 import './music.css';
-import SVG from '../../art/svgs.js';
+//	import SVG from '../../art/svgs.js';
 
 export default class Music extends React.Component
 {
@@ -8,7 +8,7 @@ export default class Music extends React.Component
 		Title: "Music from Sean Gephardt",
 		LinkTitle: "Music",
 		Href: "/music/",
-		Icon: SVG.AppNavButtons.Music
+		//	Icon: SVG.AppNavButtons.Music
 	};
 	constructor( props )
 	{

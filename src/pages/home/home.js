@@ -1,5 +1,5 @@
 import React from 'react';
-import SVG from '../../art/svgs.js';
+//import SVG from '../../art/svgs.js';
 import './home.css';
 
 import AzureHome1 from './azure-resp-home-1.png';
@@ -19,7 +19,7 @@ export default class Home extends React.Component
 		Title: "Sean Gephardt, UX Design Prototyping",
 		LinkTitle: "Sean Gephardt",
 		Href: "/",
-		Icon: SVG.AppNavButtons.About
+		//	Icon: SVG.AppNavButtons.About
 	};
     constructor( props )
     {
@@ -42,7 +42,6 @@ export default class Home extends React.Component
 		this.state = {
 			displayOverlayPicture: "none"
 		}
-
 
 		document.title = this.Title;
 		return;
@@ -86,11 +85,9 @@ export default class Home extends React.Component
 							<tspan>customer experience</tspan>
 						</text>
 
-
 						<text className="ani-design-secondary-text-3" textLength="100%" x="0" y="0" textAnchor="start" dx="770" dy="490" fontSize="48px" letterSpacing="-2" >
 							<tspan>user research</tspan>
 						</text>
-
 
 
 						{ /* MAIN */}

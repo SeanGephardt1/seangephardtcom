@@ -1,6 +1,4 @@
-/*
-	DEFAULT CSS STYLES AS DEFAULTS
-*/
+/* DEFAULT CSS STYLES AS DEFAULTS */
 *
 {
 	box-sizing:border-box;
@@ -12,23 +10,19 @@ html, body
 {
 	width:100%;
 	height:100%;
+	min-width:320px;
     box-sizing: border-box;
 }
 body
 {
 	background-color: var(--default-white);
 	color: var(--default-black);
-	font-family:'Josefina', system-ui, 'Segoe UI', 'Arial';
+	font-family: 'Josefina', 'Segoe UI', sans-serif, -system-ui;
 	font-weight:normal;
-	font-size: 120%;
-	letter-spacing:-0.4px;
+	font-size: 100%;
+	letter-spacing:normal;
 	overflow:auto;
 	vertical-align:top;
-	min-width:320px;
-/*	background-position:top center;
-	background-repeat:no-repeat;
-	background-image: url('../art/svg/sg-72-tele-02.svg');
-	background-size: 100% 100%;*/
 }
 
 :focus {

@@ -43,11 +43,6 @@
 	animation-timing-function: ease-in-out;
 	transition: all 500ms ease-in-out;
 }
-.ani-design-text-1:hover
-{
-	fill: var(--nav-color-4);
-}
-
 .ani-design-text-2
 {
 	fill: var(--black);
@@ -62,11 +57,6 @@
 	animation-timing-function: ease-in-out;
 	transition: fill 500ms ease-in-out;
 }
-.ani-design-text-2:hover
-{
-	fill: var(--nav-color-1);
-}
-
 .ani-design-text-3
 {
 	fill: var(--black);
@@ -80,10 +70,6 @@
 	animation-play-state: running;
 	animation-timing-function: ease-in-out;
 	transition: fill 500ms ease-in-out;
-}
-.ani-design-text-3:hover
-{
-	fill: var(--nav-color-3);
 }
 
 .ani-design-secondary-text-1,
@@ -118,7 +104,6 @@
 	animation-delay: 1200ms;
 	animation-duration: 500ms;
 }
-
 
 /* OLD PORTFOLIO CSS */
 .portfolio-panel
@@ -192,7 +177,7 @@
 {
 
 	transform:scale(1.4,1.4);
-	box-shadow: 0px 0px 10px 	var(--nav-color-4);
+	box-shadow: 0px 0px 20px 	0px var(--black-05);
 }
 
 /* modal overlay */
