@@ -31,10 +31,8 @@
         "react-scripts": "^3.4.3"
     },
     "scripts": {
-        "strat": "set PORT=3113 && set BROWSER=C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe && react-scripts start",
         "start": "set PORT=3113 && set BROWSER=C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe && react-scripts start",
         "build": "react-scripts build",
-        "test": "react-scripts test",
         "eject": "react-scripts eject"
     },
     "eslintConfig": {

@@ -70,7 +70,7 @@ export default class BarChart extends React.Component
 	{		
 		//	V - <rect x="0" y="112" height="400" width="20" rx="0" ry="0" fill="red" stroke="black" strokeWidth="0.2"/>
 		//	H - <rect x={this._left_border} y="10" height={ this._bar_width_or_height } width={ 400 } fill="red" stroke="black" strokeWidth="0.2"/>
-		// V line - 					<line x1="50" y1="0" x2="50" y2={ this._box_dimension} stroke="red" strokeWidth="1"/>
+		// V line - <line x1="50" y1="0" x2="50" y2={ this._box_dimension} stroke="red" strokeWidth="1"/>
 
 		this.ComputeLayout();
 
