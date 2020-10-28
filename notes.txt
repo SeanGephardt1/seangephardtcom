@@ -1,0 +1,4 @@
+﻿npm audit fix -force
+npm update
+
+npm install --save --save-exact react-scripts@4.0.0
