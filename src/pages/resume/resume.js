@@ -32,12 +32,7 @@ export default class Resume extends React.Component
 						<div className="cv-header">Freelance work</div>
 						<div className="cv-sub-header">Ongoing (2010-current)</div>
 						<ul>
-							<li>Development of both a NodeJS/ReactJS based & a KnockOut.JS based HTML/JavaScript/CSS prototyping frameworks to facilitate online, remote & in-person customer UX research on features and functionality for the Microsoft Azure Management Portal.</li>
-							<li>Daily collaboration between program managers, engineers, designers and researchers to support weekly, monthly and quarterly cadences for online & in person customer research studies & surveys</li>
-							<li>Participation in weekly UX/UI prioritization meetings and design reviews of a broad range UX feature designs across 100+ supported internal partner teams</li>
-							<li>Support and maintenance of my team’s instance of Azure DevOps & GIT repositories, to allow for workflow tracking, issue resolution, project collaboration and continuous integration/deployment of prototyping projects.</li>
-							<li>Acting as a key liaison & contributor for cross-organizational collaboration efforts & communications for the Microsoft web-based “Fluent Design System”. https://www.microsoft.com/design/fluent/#/web</li>
-							<li>Provide career guidance and technical mentorship to junior team members, including designers and design engineers.</li>
+							<li>Providing consulting, project management, graphic design and web development services to regional startups and small businesses with a focus on the music entertainment industry.</li>
 						</ul>
 					</div>
 
