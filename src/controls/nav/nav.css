@@ -23,6 +23,10 @@ a.nav, a.nav:active, a.nav:link
 	vertical-align:top;
 	transition: all 300ms ease-in-out;
 }
+a.nav:hover
+{
+	text-decoration:underline;
+}
 a.nav.nav-selected
 {
 	flex: 1 1 auto;
@@ -41,8 +45,8 @@ a.nav:nth-child(2).nav-selected, a.nav:nth-child(2):hover
 }
 a.nav:nth-child(3).nav-selected, a.nav:nth-child(3):hover
 {
-	background-color:var(--nav-color-2);
-	color:var(--black);
+	background-color:var(--nav-color-3);
+	color:var(--white);
 }
 a.nav:nth-child(4).nav-selected, a.nav:nth-child(4):hover
 {

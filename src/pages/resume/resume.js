@@ -126,16 +126,17 @@ export default class Resume extends React.Component
 
 					<div className="skills-section">
 						<div className="skills-header">Related Links</div>
-						<div className="skills-related-link-block">
+
 							<a className="skills-related-link" href="https://www.linkedin.com/in/seangephardt/" title="Sean Gephardt on LinkedIn">
 								<img src={LinkedInIcon}  alt="Sean Gephardt on LinkedIn" />
-								<span>LinkedIn</span>
+								LinkedIn
 							</a>
+
 							<a className="skills-related-link" href="https://github.com/SeanGephardt1" title="Sean Gephardt on Gitub">
 								{SVG.Brands.GitHub}
-								<span>GitHub</span>
+								GitHub
 							</a>
-						</div>
+
 					</div>
 
 					<div className="skills-section">
@@ -177,12 +178,7 @@ export default class Resume extends React.Component
 						</ul>
 					</div>
 
-
-
-
-
 				</div>
-
 
 			</div>
 		);

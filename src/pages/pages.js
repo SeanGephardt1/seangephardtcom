@@ -15,7 +15,7 @@ import ControlsDemo from './controls-demo/controls-demo.js';
 const _pages = [
 	Home,
 	Resume,
-	ControlsDemo,
+	//	ControlsDemo,
 	Music
 ];
 
