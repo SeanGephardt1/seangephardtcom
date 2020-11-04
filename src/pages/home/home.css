@@ -139,6 +139,11 @@
 	margin-bottom:10px;
 	color: var(--nav-color-4);
 }
+.portfolio-block > a:hover
+{
+	text-decoration:underline;
+}
+
 
 .portfolio-text
 {

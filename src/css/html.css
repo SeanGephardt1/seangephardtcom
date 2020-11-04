@@ -25,6 +25,15 @@ body
 	vertical-align:top;
 }
 
+a
+{
+	text-decoration:none;
+}
+a:hover
+{
+	text-decoration:underline;
+}
+
 :focus {
 	outline: dotted 1px var(--focus-lapis);
 }
