@@ -30,7 +30,7 @@ export default class Resume extends React.Component
 
 					<div className="cv-section">
 						<div className="cv-header">Freelance work</div>
-						<div className="cv-sub-header">Ongoing (2010-current)</div>
+						<div className="cv-sub-header">Ongoing</div>
 						<ul>
 							<li>Providing consulting, project management, graphic design and web development services to regional startups and small businesses with a focus on the music entertainment industry.</li>
 						</ul>
@@ -39,7 +39,7 @@ export default class Resume extends React.Component
 
 					<div className="cv-section">
 						<div className="cv-header">Microsoft Corporation</div>
-						<div className="cv-sub-header">Senior Designer Engineer (Nov. 2017 - Dec. 2019)</div>
+						<div className="cv-sub-header">Senior UX Designer Engineer (Nov. 2017 - Dec. 2019)</div>
 						<ul>
 							<li>Development of both a NodeJS/ReactJS based & a KnockOut.JS based HTML/JavaScript/CSS prototyping frameworks to facilitate online, remote & in-person customer UX research on features and functionality for the Microsoft Azure Management Portal.</li>
 							<li>Daily collaboration between program managers, engineers, designers and researchers to support weekly, monthly and quarterly cadences for online & in person customer research studies & surveys</li>
@@ -51,7 +51,7 @@ export default class Resume extends React.Component
 					</div>
 
 					<div className="cv-section">
-						<div className="cv-header">Allovus Design Group</div>
+						<div className="cv-header">Microsoft Corporation via Allovus Design Group</div>
 						<div className="cv-sub-header">Design Engineer (June 2013 - April 2015 & Nov. 2016 – Nov. 2017)</div>
 						<ul>
 							<li>Development of interactive prototypes for usability studies, user research and executive presentations for the Microsoft “Azure” & “Windows Server” Product Groups. Utilizing a proprietary development framework based on modern web technologies including HTML5/XML, CSS3, and JavaScript & JSON libraries such as jQuery & KnockOut.js</li>
@@ -62,7 +62,7 @@ export default class Resume extends React.Component
 					</div>
 
 					<div className="cv-section">
-						<div className="cv-header">WaferWire LLC</div>
+						<div className="cv-header">Microsoft Corporation via WaferWire LLC</div>
 						<div className="cv-sub-header">Senior Technical Program Manager (April 2015 - Nov. 2016)</div>
 						<ul>
 							<li>Driving significant improvements in SEO (search engine optimization) for Microsoft’s public facing developer and IT documentation websites, including https://msdn.microsoft.com/ , https://technet.microsoft.com/ and https://docs.microsoft.com/</li>
@@ -75,7 +75,7 @@ export default class Resume extends React.Component
 					</div>
 
 					<div className="cv-section">
-						<div className="cv-header">Digital KPI Consulting</div>
+						<div className="cv-header">Microsoft Corporation via Digital KPI Consulting</div>
 						<div className="cv-sub-header">Business Intelligence Development (Aug 2012 – June 2013) for Microsoft USCMO</div>
 						<ul>
 							<li>Development & extension of Selenium Web Testing framework & qUnit JavaScript Testing Framework for business intelligence file verification for microsoftstore.com & related websites.</li>
@@ -87,7 +87,7 @@ export default class Resume extends React.Component
 					</div>
 
 					<div className="cv-section">
-						<div className="cv-header">VMC Consulting</div>
+						<div className="cv-header">Microsoft Corporation via VMC Consulting</div>
 						<div className="cv-sub-header">Senior Technical Program Manager (Feb 2012 - Aug 2012) for Microsoft Corporation</div>
 						<ul>
 							<li>Refined the software development workflow utilizing Microsoft Visual Studio Team Foundation System, using a hybrid of SCRUM & AGILE methodologies.</li>
