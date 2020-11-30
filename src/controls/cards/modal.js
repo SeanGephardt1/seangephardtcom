@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import './modal.css';
 import IgGuitarPic from './ig-guitars.jpg';
 

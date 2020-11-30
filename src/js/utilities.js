@@ -1,4 +1,4 @@
-﻿import SvgIcon from './../controls/svg-icons/svg-icon.js';
+import SvgIcon from './../controls/svg-icons/svg-icon.js';
 
 const _SampleDataResources = {
 	ResourceNames:

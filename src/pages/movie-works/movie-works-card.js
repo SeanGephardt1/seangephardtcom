@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import './movie-works-card.css';
 
 export default class MovieStoreCard extends React.Component

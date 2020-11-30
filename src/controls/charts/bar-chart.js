@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import './bar-chart.css';
 
 export default class BarChart extends React.Component
@@ -29,6 +29,7 @@ export default class BarChart extends React.Component
 			// get percentage
 			//	let _perc = (( _temp.value / _top_cap ) * 100).toFixed(1);
 			//	console.debug("%", _top_cap, _temp.value,  _perc);
+
 
 			_temp.percentage = (( _temp.value / _top_cap ) * 100).toFixed(1);
 

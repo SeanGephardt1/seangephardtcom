@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import './preview.css';
 
 export class PreviewControl extends React.Component {

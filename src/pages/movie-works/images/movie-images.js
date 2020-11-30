@@ -1,4 +1,4 @@
-﻿import KingKong1933Image1 from './king-kong-1933-1.jpg';
+import KingKong1933Image1 from './king-kong-1933-1.jpg';
 import KingKong1933Image2 from './king-kong-1933-2.jpg';
 import KingKong1933Image3 from './king-kong-1933-3.jpg';
 

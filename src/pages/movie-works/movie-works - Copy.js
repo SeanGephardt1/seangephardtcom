@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import MovieStoreIcon from './movie-works-brand-icon.js';
 import './movie-works.css';
 import MovieWorksSearchBox from './movie-works-search.js';

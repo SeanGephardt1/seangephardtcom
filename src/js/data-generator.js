@@ -1,4 +1,4 @@
-﻿import { ResourceExtensions } from "../extensions-list.js";
+import { ResourceExtensions } from "../extensions-list.js";
 import SvgIconControl from "./../components/svg-icons/svg-icon.js";
 import CheckBoxControl from "./../components/checkbox/checkbox.js";
 import { MarketPlaceData } from "./../extensions/azure-marketplace/_mp_data.js";

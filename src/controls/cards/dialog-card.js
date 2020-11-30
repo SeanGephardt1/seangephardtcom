@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import StateStore from '../../js/state-store.js';
 import './dialog-card.css';
 

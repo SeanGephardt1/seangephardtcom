@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import './movie-works-search.css';
 
 export default class MovieWorksSearchBox extends React.Component

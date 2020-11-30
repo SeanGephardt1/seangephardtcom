@@ -1,4 +1,4 @@
-﻿/*
+/*
  ALL CSS IMPORTS AT TOP LEVEL
  */
 import './fonts.css';

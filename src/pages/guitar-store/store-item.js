@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { GuitarStoreDemoJSONData } from './guitar-store-json-data.js';
 import { NavLink } from "react-router-dom";
 import './guitar-store.css';

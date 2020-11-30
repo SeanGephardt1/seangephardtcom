@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import './lorum-ipsum.css';
 
 export default class LorumContextPanel extends React.Component

@@ -1,4 +1,4 @@
-﻿import { MovieImagesData } from './images/movie-images.js';
+import { MovieImagesData } from './images/movie-images.js';
 
 const _movie_db = [
 	{

@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import './resume.css';
 import SVG from '../../art/svgs.js';
 import LinkedInIcon from '../../art/img/linkedin.png';

@@ -1,4 +1,4 @@
-﻿const Config =
+const Config =
 {
 	Debug: false,
 	MovieDemo: {},

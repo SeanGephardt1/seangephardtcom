@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import './movie-works-auth.css';
 import MovieStoreIcon from './movie-works-brand-icon.js';
 import { MovieWorksAvatars } from './images/mw-avatar-images.js';

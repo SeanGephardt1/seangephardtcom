@@ -1,4 +1,4 @@
-﻿import { ImageCollections } from './guitar-images.js';
+import { ImageCollections } from './guitar-images.js';
 
 const _guitar_conditions = [
 	"Excellent",

@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import './prog-pie.css';
 
 export default class ProgressPieControl extends React.Component

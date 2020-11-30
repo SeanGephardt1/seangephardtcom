@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import './movie-works-brand-icon.css';
 
 export default class MovieStoreIcon extends React.Component

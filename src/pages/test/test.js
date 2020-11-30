@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import './test.css';
 import GuitarsSvg from './guitars-svg.js';
 

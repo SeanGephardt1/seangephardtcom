@@ -1,4 +1,4 @@
-﻿//	<DataGridControl
+//	<DataGridControl
 //		columns={this.Columns}
 //		data={this.Data}
 //		showFilter={false}
