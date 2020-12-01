@@ -49,7 +49,7 @@ export default class App extends React.Component
                         </Switch>
                     </main>
 
-                    <SiteFooter>&copy; 2020 Sean Gephardt. All rights reserved.</SiteFooter>
+                    <SiteFooter>&copy; 2021 Sean Gephardt. All rights reserved.</SiteFooter>
 
                 </BrowserRouter>
         );

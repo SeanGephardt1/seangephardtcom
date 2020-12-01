@@ -11,12 +11,27 @@
     flex-direction: column;  
     justify-content: flex-start;
 	overflow:auto;
-
+}
+nav
+{
+	display:flex;
+	flex-direction:row;
+	flex: 1 1 100%;
+	flex-wrap:wrap;
 }
 main
 {
-	flex: 2 1 100%;
-	overflow:auto;
 	display:flex;
+	flex: 1 1 100%;
+	overflow:auto;
 	justify-content:center;
+}
+footer
+{
+	flex: 1 1 100%;
+	border-top: solid 1px var(--black-01);
+	padding:10px;
+	text-align:center;
+	font-size:14px;
+	margin-top:20px;
 }

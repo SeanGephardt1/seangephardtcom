@@ -18,8 +18,8 @@ const _pages = [
 	Home,
 	Resume,
 	ControlsDemo,
+	Music,
 	BigDataDemo,
-	Music
 ];
 
 export {

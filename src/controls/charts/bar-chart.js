@@ -12,8 +12,7 @@ export default class BarChart extends React.Component
 	};
 	// GENERATE 4 VALUES PER COLUMN
 	static GenerateBarChartData(numOfValues)
-	{	//	
-		console.debug( "GenerateBarChartData", numOfValues );
+	{	//	console.debug( "GenerateBarChartData", numOfValues );
 		let _rv = [];
 
 		const _top_cap = 512;
@@ -64,7 +63,7 @@ export default class BarChart extends React.Component
 		this.Width = ( this.props.data.length * this._bar_width_or_height ) + this._left_border;
 		this.ViewBox = "0 0 " + this.Width + " " + this.Height;
 
-		console.debug( this.Height, this.Width, this.ViewBox );
+		//console.debug( this.Height, this.Width, this.ViewBox );
  		return;
 	};
 	render()
