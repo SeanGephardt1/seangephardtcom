@@ -6,7 +6,7 @@ import Home from './home/home.js';
 import Resume from './resume/resume.js';
 import Music from './music/music.js';
 import ControlsDemo from './controls-demo/controls-demo.js';
-import BigDataDemo from './big-data/big-data-demo.js';
+//	import BigDataDemo from './big-data/big-data-demo.js';
 
 //	import Portfolio from './portfolio/portfolio.js';
 //	import TestPage2 from './test2/test2.js';
@@ -19,7 +19,7 @@ const _pages = [
 	Resume,
 	ControlsDemo,
 	Music,
-	BigDataDemo,
+	//	BigDataDemo,cls
 ];
 
 export {

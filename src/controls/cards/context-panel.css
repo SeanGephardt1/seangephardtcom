@@ -3,8 +3,9 @@
 /*	border: solid 4px var(--debug);*/	
 	position:fixed;
 	background-color: var(--white);
-	border: solid 0px transparent;
+	display:flex;
 	flex-direction:column;
+	flex-wrap:nowrap;
 	z-index:1000;
 	animation-play-state:paused;
 	animation-fill-mode:forwards;
@@ -178,57 +179,58 @@
 /* context panel children */
 .cp-header
 {
-/*	border: solid 1px red;*/
-	background-color:var(--white);
+/*	border: solid 1px red;
+*/	background-color:var(--white);
 	display:flex;
 	flex: 1 1 auto;
 	flex-direction:row;
 }
 .cp-header-title
 {
+/*	border: solid 1px red;*/
 	flex : 1 1 auto;
 	font-size:18px;
 	font-weight:900;
 	padding-top:10px;
+	padding-bottom:10px;
 	padding-left:20px;
 	padding-right:6px;
-	padding-bottom:10px;
-
 }
 .cp-header-close-btn
 {
-	flex : 0 0 24px;
+/*	border: solid 1px blue;*/
+	flex: 0 1 24px;
 	height:24px;
 	width:24px;
 	cursor:pointer;
-	text-align:center;
-	padding:2px;
 	margin-top:10px;
 	margin-right:6px;
 	transition:all 150ms linear;
-}
-.cp-header-close-btn > svg > circle
-{
-	fill: rgba(39, 93, 173, 0.3);
+	vertical-align:top;
+	padding:1px;
 }
 .cp-header-close-btn:hover, .cp-header-close-btn:focus
 {
-/*	outline: solid 1px var(--black-04);*/
 	transform: rotate(90deg);
 }
-
 .cp-header-close-btn:hover > svg > circle,
-.cp-header-close-btn:focus	 > svg > circle
+.cp-header-close-btn:focus	> svg > circle
 {
 	fill: rgba(40, 100, 180, 1);
 }
 
+.cp-header-close-btn > svg > circle
+{
+	fill: rgba(39, 93, 173, 0.3);
+}
+
+
 .cp-body
 {
-	background-color:var(--white);
+/*	border: solid 1px blue;
+*/	background-color:var(--white);
 	background-image: linear-gradient(180deg, var(--black-01) 0px, transparent 10px);
 	flex: 1 1 100%;
-	min-height:100px;
 	padding:20px;
 	overflow:auto;
 }
