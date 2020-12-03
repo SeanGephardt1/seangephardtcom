@@ -38,6 +38,16 @@
 	font-size: 16px;
 	margin-bottom:10px;
 }
+.demo-listing-ul
+{
+	margin-left:20px;
+}
+.demo-listing-li
+{
+	margin-bottom:10px;
+	list-style-position:outside;
+	list-style-type:square;
+}
 
 .anim-demo-block-panel
 {

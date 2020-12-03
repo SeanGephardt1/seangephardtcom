@@ -1,7 +1,9 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import StateStore from '../../js/state-store.js';
+import { PagesList } from '../../pages/pages.js';
 import SVG from '../../art/svgs.js';
-import './controls-demo.css';
+import './demos.css';
 
 // controls
 import ProgressInfiniteControl from '../../controls/progress-controls/prog-infinite.js';
@@ -16,7 +18,7 @@ import BarChart from '../../controls/charts/bar-chart.js';
 
 import LorumContent from '../../controls/content/lorum-ipsum.js';
 
-export default class ControlsDemo extends React.Component
+export default class DemosPage extends React.Component
 {
 	static defaultProps = {
 		Title: "Demos",
@@ -28,9 +30,9 @@ export default class ControlsDemo extends React.Component
 	{
 		// GENERIC
 		super( props );
-		this.Title = ( this.props.Title || ControlsDemo.defaultProps.Title );
-		this.LinkTitle = ( this.props.LinkTitle || ControlsDemo.defaultProps.LinkTitle );
-		this.Href = ( this.props.Href || ControlsDemo.defaultProps.Href );
+		this.Title = ( this.props.Title || DemosPage.defaultProps.Title );
+		this.LinkTitle = ( this.props.LinkTitle || DemosPage.defaultProps.LinkTitle );
+		this.Href = ( this.props.Href || DemosPage.defaultProps.Href );
 
 		// PROG BAR DEMO OBJECTS 
 		this._start_text = "Start";
@@ -281,7 +283,6 @@ export default class ControlsDemo extends React.Component
 		return;
 	};
 
-
 	// Bar Chart
 	OnChange_BarChart_Orientations( ev )
 	{
@@ -299,7 +300,6 @@ export default class ControlsDemo extends React.Component
 		} )
 		return;
 	};
-
 
     render()
 	{
@@ -333,6 +333,29 @@ export default class ControlsDemo extends React.Component
 					title="How to use a dialog box, and this text should be getting cut off."
 					placement={this.state.hoverCardPlacementSelected}>{this.state.hoverCardContent}
 				</DialogCard>
+
+				{/* OTHER DEMOS */}
+				<div className="anim-demo-header">Work in progress demos</div>
+				<div className="anim-demo-desc">
+					<ul className="demo-listing-ul">
+					{
+							PagesList[2].routes.map( ( item, index ) => (
+							<li className="demo-listing-li">
+							<NavLink
+								key={index}
+								exact={true}
+								to={item.path}
+								title={item.component.defaultProps.Title}
+							>{item.component.defaultProps.LinkTitle}</NavLink>
+							</li>
+						))
+					}
+					</ul>
+				</div>
+
+				{ /*  CONTROLS  */ }
+				<div className="anim-demo-header">Controls</div>
+				<div className="anim-demo-desc">Customers sometimes need a little extra information or instruction regarding elements of the user interface that may not be completely intuitive or require additional description and/or functionality. Utilizing customized tooltips, dialogs and modal dialog in this scenario allow for additional information, specific data entry points or notifications.</div>
 
 
 				{ /*  CHARTS  */ }

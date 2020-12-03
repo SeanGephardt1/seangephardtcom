@@ -13,7 +13,7 @@ import AzureCreate4 from './azure-create-4.png';
 import AzureCreate5 from './azure-create-5.png';
 import AzureCreate9 from './azure-create-9.png';
 
-export default class Home extends React.Component
+export default class AzurePortalDemo extends React.Component
 {
 	static defaultProps = {
 		Title: "Sean Gephardt, UX Design Prototyping",

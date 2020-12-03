@@ -1,8 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\src"
+    "\\src",
+    "\\src\\pages\\home"
   ],
-  "SelectedNode": "\\seangephardtcom2021.sln",
+  "SelectedNode": "\\src\\pages",
   "PreviewInSolutionExplorer": false
 }

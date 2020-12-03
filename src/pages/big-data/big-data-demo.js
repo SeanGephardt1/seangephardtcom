@@ -9,8 +9,8 @@ export default class BigDataDemo extends React.Component
 	static defaultProps = {
 		Title: "Big Data Demo",
 		LinkTitle: "Big Data Demo",
-		Href: "/big-data/",
-		Icon: SVG.AppNavButtons.About
+		Href: "/demos/big-data/",
+		Icon: SVG.AppNavButtons.About,
 	};
 	constructor( props )
 	{

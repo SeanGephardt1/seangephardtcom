@@ -11,21 +11,53 @@ export default class SiteNav extends React.Component
 		return;
 	};
 	render()
-	{	//	console.debug( "Navigation.render()", this.context.Theme.Foreground );
+	{	
 		return (
 			<nav>
 				{
-					PagesList.map( (item, index) =>
+					PagesList.map( ( item, index ) => (
 						<NavLink
 							key={index}
 							exact={true}
-							to={item.defaultProps.Href}
+							to={item.path}
 							className='nav'
 							activeClassName='nav-selected'
-							title={item.defaultProps.Title}>
-							{item.defaultProps.LinkTitle}
-						</NavLink>
-					)
+							title={item.component.defaultProps.Title}
+							isActive={( match, location ) =>
+							{	// TALK ABOUT HACKS
+
+								//console.debug( "\n", item);
+								//console.debug( "match", match );
+								//console.debug( "location", location.pathname );
+
+								let _bool = false;
+								if ( match !== null )
+								{
+									_bool = true;
+								}
+								else if ( match === null )
+								{
+									if ( item.routes !== undefined && item.routes.length > 0 )
+									{
+										for ( let i = 0; i < item.routes.length; i++ )
+										{
+											//	console.debug( i, item.routes[i].path, item.path );
+											if ( location.pathname.indexOf( item.path) !== -1 )
+											{
+												_bool = true;
+											}
+										}
+									}
+									else
+									{
+										_bool = false;
+									}
+								}
+								return _bool;
+							}}
+
+						>{item.component.defaultProps.LinkTitle}</NavLink>
+					))
 				}
 			</nav>
 		);

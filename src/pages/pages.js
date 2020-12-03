@@ -5,21 +5,40 @@
 import Home from './home/home.js';
 import Resume from './resume/resume.js';
 import Music from './music/music.js';
-import ControlsDemo from './controls-demo/controls-demo.js';
-//	import BigDataDemo from './big-data/big-data-demo.js';
-
+import DemosPage from './demos/demos.js';
+import BigDataDemo from './big-data/big-data-demo.js';
 //	import Portfolio from './portfolio/portfolio.js';
 //	import TestPage2 from './test2/test2.js';
-//	import { MovieStoreExtension } from './movie-works/movie-works.js';
+import { MovieStoreExtension } from './movie-works/movie-works.js';
 //	import { GuitarStoreExtension } from './guitar-store/guitar-store.js';
 
-
 const _pages = [
-	Home,
-	Resume,
-	ControlsDemo,
-	Music,
-	//	BigDataDemo,cls
+    {
+        path: Home.defaultProps.Href,
+        component: Home
+    },
+    {
+        path: Resume.defaultProps.Href,
+        component: Resume
+    },
+    {
+        path: DemosPage.defaultProps.Href,
+        component: DemosPage,
+        routes: [
+            {
+                path: BigDataDemo.defaultProps.Href,
+                component: BigDataDemo
+            },
+            {
+                path: MovieStoreExtension.defaultProps.Href,
+                component: MovieStoreExtension
+            },
+        ]
+    },
+    {
+        path: Music.defaultProps.Href,
+        component: Music
+    },
 ];
 
 export {

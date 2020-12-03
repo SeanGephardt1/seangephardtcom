@@ -14,7 +14,7 @@ export class MovieStoreExtension extends React.Component
 		Title: "MovieWorks Demo",
 		LinkTitle: "MovieWorks Demo",
 		LinkIcon: MovieWorksIcon,
-		Href: "/movie-works/"
+		Href: "/demos/movie-works/"
 	};
 	constructor( props )
 	{

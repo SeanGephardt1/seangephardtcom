@@ -15,8 +15,6 @@ export default class App extends React.Component
     {   //  console.debug( "App.ctor()" );
         super( props );
 
-        this.Pages = PagesList;
-
         this.state = {
             stateChanged: false,
         };
@@ -31,7 +29,6 @@ export default class App extends React.Component
         | {this.context.CurrentLayout} | {this.context.Theme.Name}
         						<Route exact={true} path={'/'} component={DemosList[0]} />
         */
-
         return (
                 <BrowserRouter>
 
@@ -40,12 +37,17 @@ export default class App extends React.Component
                     <main>
                         <Switch>
                         {
-                            this.Pages.map( ( item, index ) =>
-                            (
-                                <Route key={index} exact={true} path={item.defaultProps.Href} component={item}/>
+                            PagesList.map( ( item, index ) =>
+                                (
+                                    <Route key={index} exact={true} path={item.path} component={item.component} />
                             ) )
                         }
-
+                        {
+                            PagesList[2].routes.map( ( item, index ) =>
+                                (
+                                    <Route key={index} exact={true} path={item.path} component={item.component} />
+                            ) )
+                        }
                         </Switch>
                     </main>
 
