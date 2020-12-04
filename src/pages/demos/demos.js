@@ -340,9 +340,8 @@ export default class DemosPage extends React.Component
 					<ul className="demo-listing-ul">
 					{
 							PagesList[2].routes.map( ( item, index ) => (
-							<li className="demo-listing-li">
-							<NavLink
-								key={index}
+							<li className="demo-listing-li" key={index}>
+							<NavLink								
 								exact={true}
 								to={item.path}
 								title={item.component.defaultProps.Title}

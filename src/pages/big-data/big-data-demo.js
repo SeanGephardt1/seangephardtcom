@@ -104,6 +104,9 @@ export default class BigDataDemo extends React.Component
 					<div className="bd-menu-item" onClick={ this.OnClick_ZoomOut.bind(this)}>Zoom out</div>
 					<div className="bd-menu-item" onClick={ this.OnClick_ResetZoom.bind(this)}>Reset</div>
 				</div>
+				<div className="bd-menu">
+					Hold the "shift" key to zoom in & out using the mouse
+				</div>
 				<svg className="bg-svg-container" x="0px" y="0px" viewBox={this.ViewBox} onWheel={ this.OnWheel_Zoom.bind(this)}>
 					<rect id="debugRect"
 						fill="rgba(0,0,255,0.01)" 
