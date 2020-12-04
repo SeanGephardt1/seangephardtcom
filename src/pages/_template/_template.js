@@ -3,7 +3,6 @@ import React from 'react';
 import './home.css';
 import SVG from '../../art/svgs.js';
 
-
 export default class About extends React.Component
 {
 	static defaultProps = {

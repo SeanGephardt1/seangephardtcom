@@ -13,7 +13,7 @@ import WatchNextHero from '../../images/hero/watchnext-hero-01.jpg';
 import WereHereHero from '../../images/hero/were-here-hero-01.jpg';
 import WestWorld3Hero from '../../images/hero/westworld-3-hero-01.jpg';
 
-class HeroCarouselPanel extends React.Component
+export default class HeroCarouselPanel extends React.Component
 {
 	constructor( props )
 	{
@@ -104,8 +104,7 @@ class HeroCarouselPanel extends React.Component
 		this.SetIntervalObj = undefined;
 
 		console.debug( "DefaultAnimation", this.HeroData, this.TempHeroData);
-
-		this.Init_Animation();
+		//	this.Init_Animation();
         return;
 	};
 	OnClick_TestStopAnimation( se )
@@ -185,8 +184,4 @@ class HeroCarouselPanel extends React.Component
 			</div>	
 		);
 	};
-};
-export
-{
-	HeroCarouselPanel as HeroCarousel
 };

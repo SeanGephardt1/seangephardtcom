@@ -2,15 +2,15 @@ import PropTypes from 'prop-types';
 import React from 'react';
 //	import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-import './css/fonts.css';
-import './css/application.css';
-import './css/animations.css';
+import './css/mw-fonts.css';
+import './css/mw-application.css';
+import './css/mw-animations.css';
 
 import { LorumContent } from './controls/content/lorum-content.js';
 import { Icons } from './controls/svg-icons/svg-icons.js';
 import { MovieWorksData } from './data/movie-data-json.js';
 import { Carousel } from './controls/carousel/carousel.js';
-import { HeroCarousel } from './controls/carousel/hero-carousel.js';
+import HeroCarousel from './controls/carousel/hero-carousel.js';
 
 export default class MovieWorksApplication extends React.Component
 {
@@ -206,10 +206,10 @@ export default class MovieWorksApplication extends React.Component
 	render()
 	{	//	console.debug( "Application.render()", this.state.SearchPanelOpen );
 		return (
-			<div className="app-root" onClick={this.OnClick_Reset_DynamicElements.bind(this)}>
+			<div className="mw-app-root" onClick={this.OnClick_Reset_DynamicElements.bind(this)}>
 
 				{/* NAV */}
-				<nav>
+				<div className="mw-nav">
 					<div className="mw-branding">
 						<div className="mw-icon-logo" onClick={this.OnClick_Display_MenuAsidePanel.bind(this)}>
 							<Icons icon={Icons.Buttons.Hamburger} />
@@ -271,7 +271,7 @@ export default class MovieWorksApplication extends React.Component
 						onClick={this.OnClick_Display_AsidePanel.bind( this )}>
 						My account
 					</div>
-				</nav>
+				</div>
 
 				{/* CONTEXT PANELS */}
 				{/* MENU CONTEXT PANEL */}
@@ -345,7 +345,7 @@ export default class MovieWorksApplication extends React.Component
 				}
 
 				{/* MAIN CONTENT */}
-				<main>
+				<div className="mw-main">
 					{/* FEATURED HERO CAROUSEL*/}
 					<HeroCarousel data={MovieWorksData} title="Features"/>
 
@@ -375,7 +375,7 @@ export default class MovieWorksApplication extends React.Component
 						</BrowserRouter>
 						*/
 					}
-				</main>
+				</div>
 			</div>
 		);
 	}
