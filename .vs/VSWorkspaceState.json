@@ -2,8 +2,11 @@
   "ExpandedNodes": [
     "",
     "\\src",
-    "\\src\\pages\\home"
+    "\\src\\controls",
+    "\\src\\controls\\nav",
+    "\\src\\pages",
+    "\\src\\pages\\azure-ux"
   ],
-  "SelectedNode": "\\src\\pages",
+  "SelectedNode": "\\seangephardtcom2021.sln",
   "PreviewInSolutionExplorer": false
 }

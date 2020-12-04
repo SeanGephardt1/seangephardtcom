@@ -8,7 +8,7 @@ import MovieStoreCard from './movie-works-card.js';
 
 import { MoviesDatabase } from './movie-data.js';
 
-export class MovieStoreExtension extends React.Component
+export default class MovieStoreExtension extends React.Component
 {
 	static defaultProps = {
 		Title: "MovieWorks Demo",

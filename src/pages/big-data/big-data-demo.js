@@ -1,8 +1,6 @@
 import React from 'react';
 import './big-data-demo.css';
 import SVG from '../../art/svgs.js';
-//	controls
-//	import LorumContent from '../../controls/content/lorum-ipsum.js';
 
 export default class BigDataDemo extends React.Component
 {

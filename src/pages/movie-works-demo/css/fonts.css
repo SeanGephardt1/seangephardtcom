@@ -1,0 +1,42 @@
+﻿@font-face
+{
+	font-family: 'Calibri Light';
+	font-style: normal;
+	font-weight: normal;
+	src: url('./fonts/calibril.woff') format('woff');
+}
+@font-face
+{
+	font-family: 'Gilroy-Regular';
+	font-style: normal;
+	font-weight: normal;
+	src: url('./fonts/Gilroy-Regular.woff') format('woff');
+}
+@font-face
+{
+	font-family: 'Gilroy-Bold';
+	font-style: normal;
+	font-weight: normal;
+	src: url('./fonts/Gilroy-Bold.woff') format('woff');
+}
+@font-face
+{
+	font-family: 'Gilroy-SemiBold';
+	font-style: normal;
+	font-weight: normal;
+	src: url('./fonts/Gilroy-SemiBold.woff') format('woff');
+}
+@font-face
+{
+	font-family: 'Gilroy-Medium';
+	font-style: normal;
+	font-weight: normal;
+	src: url('./fonts/Gilroy-Medium.woff') format('woff');
+}
+@font-face
+{
+	font-family: 'Gilroy-Regular-Italic';
+	font-style: normal;
+	font-weight: normal;
+	src: url('./fonts/Gilroy-RegularItalic.woff') format('woff');
+}

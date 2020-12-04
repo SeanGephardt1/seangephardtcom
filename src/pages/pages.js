@@ -7,10 +7,10 @@ import Resume from './resume/resume.js';
 import Music from './music/music.js';
 import DemosPage from './demos/demos.js';
 import BigDataDemo from './big-data/big-data-demo.js';
-//	import Portfolio from './portfolio/portfolio.js';
+import MovieStoreExtension from './movie-works-demo/movie-works.js';
+import GuitarApp from './guitar-app/guitar-app.js';
+// import GuitarStoreExtension from './guitar-store/guitar-store.js';
 //	import TestPage2 from './test2/test2.js';
-import { MovieStoreExtension } from './movie-works/movie-works.js';
-//	import { GuitarStoreExtension } from './guitar-store/guitar-store.js';
 
 const _pages = [
     {
@@ -33,6 +33,15 @@ const _pages = [
                 path: MovieStoreExtension.defaultProps.Href,
                 component: MovieStoreExtension
             },
+            {
+                path: GuitarApp.defaultProps.Href,
+                component: GuitarApp
+            },
+
+            //{
+            //    path: GuitarStoreExtension.defaultProps.Href,
+            //    component: GuitarStoreExtension
+            //},
         ]
     },
     {

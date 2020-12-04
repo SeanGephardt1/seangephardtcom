@@ -10,7 +10,7 @@ export default class GuitarApp extends React.Component
 	static defaultProps = {
 		Title: "My Guitar App",
 		LinkTitle: "Guitar App",
-		Href: "/guitar-app",
+		Href: "/demos/guitar-app/",
 		Icon: SVG.AppNavButtons.GuitarApp
 	};
     constructor( props )

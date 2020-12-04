@@ -6,13 +6,12 @@ import { GuitarStoreDemoJSONData } from './guitar-store-json-data.js';
 //	import { StoreItemExtension } from './store-item.js';
 import './guitar-store.css';
 
-export class GuitarStoreExtension extends React.Component
+export default class GuitarStoreExtension extends React.Component
 {
-	//	static contextType = AzureThemeContext;
 	static defaultProps = {
 		Title: "Sean's Guitar Store demo",
 		LinkTitle: "Guitar Store demo",
-		Href: "/guitars/", // hack for react router paging
+		Href: "/demos/guitars/", // hack for react router paging
 	};
 	static SortDirection = [
 			{ name: "asc", icon: "\u2191" },
@@ -756,7 +755,7 @@ export class GuitarStoreExtension extends React.Component
 										tabIndex="0"
 										className="gs-paging-button"
 										activeClassName="gs-paging-button-selected"
-										to={`/guitars/${this.CurrentPage - 1}`}>&lt;</NavLink>
+										to={`/demos/guitars/${this.CurrentPage - 1}`}>&lt;</NavLink>
 								}
 								{
 									this.Pages.length > 0 && this.DataSet.length > 0 && 
@@ -766,7 +765,7 @@ export class GuitarStoreExtension extends React.Component
 											tabIndex="0"
 											className="gs-paging-button"
 											activeClassName="gs-paging-button-selected"
-											to={`/guitars/${item}`}>{item}</NavLink>
+											to={`/demos/guitars/${item}`}>{item}</NavLink>
 									) )
 								}
 								{
@@ -825,8 +824,8 @@ export class GuitarStoreExtension extends React.Component
 									to={{
 										pathname: `/guitars/item/${item.key}`,
 										state: {
-											prevPage: `/guitars/${this.CurrentPage}`,
-											page: `/guitars/${this.CurrentPage}` 
+											prevPage: `/demos/guitars/${this.CurrentPage}`,
+											page: `/demos/guitars/${this.CurrentPage}` 
 										},
 									}}
 									>
