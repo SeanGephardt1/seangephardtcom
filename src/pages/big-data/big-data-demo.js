@@ -14,7 +14,6 @@ export default class BigDataDemo extends React.Component
 	};
 	constructor( props )
 	{
-		// GENERIC
 		super( props );
 		this.Title = ( this.props.Title || this.defaultProps.Title );
 		document.title = this.Title;
