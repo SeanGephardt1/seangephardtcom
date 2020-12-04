@@ -1,16 +1,14 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+//	import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import './css/fonts.css';
-import './css/custom.css';
-import './css/html.css';
 import './css/application.css';
 import './css/animations.css';
 
 import { LorumContent } from './controls/content/lorum-content.js';
 import { Icons } from './controls/svg-icons/svg-icons.js';
-import { MovieWorksData } from './js/movie-data-json.js';
+import { MovieWorksData } from './data/movie-data-json.js';
 import { Carousel } from './controls/carousel/carousel.js';
 import { HeroCarousel } from './controls/carousel/hero-carousel.js';
 
@@ -20,16 +18,14 @@ export default class MovieWorksApplication extends React.Component
 		config: PropTypes.object,
 	};
 	static defaultProps = {
-		Application: this,
-		AppName: "MovieWorks 2020 Demo",
-		DefaultExtension: undefined,
-		CurrentContextPanel: undefined
+		Title: "MovieWorks",
+		LinkTitle: "MovieWorks",
+		Href: "/demos/movie-works-demo/",
+		//Icon: SVG.AppNavButtons.Resume
 	};
 	constructor( props )
 	{
 		super( props );
-		//	console.debug( "app.props", props.config );
-		this.Debug = ( this.props.config.Debug );
 
 		// STATES
 		this.state = {
@@ -219,7 +215,7 @@ export default class MovieWorksApplication extends React.Component
 							<Icons icon={Icons.Buttons.Hamburger} />
 						</div>
 						<div className="mw-brand-name">
-							<a href="/movieworks/" className="mw-branding-link">MovieWorks</a>
+							<a href="/demos/movie-works-demo/" className="mw-branding-link">MovieWorks</a>
 						</div>
 					</div>
 
@@ -380,9 +376,6 @@ export default class MovieWorksApplication extends React.Component
 						*/
 					}
 				</main>
-
-				{/* FOOTER */}
-				<footer>&copy;2020 MoviewWorks 2020 &amp; Sean Gephardt, all rights reserved.</footer>
 			</div>
 		);
 	}

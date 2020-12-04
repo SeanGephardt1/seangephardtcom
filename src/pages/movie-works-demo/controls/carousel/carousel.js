@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import './carousel.css';
 
 export default class SimpleCarouselPanel extends React.Component

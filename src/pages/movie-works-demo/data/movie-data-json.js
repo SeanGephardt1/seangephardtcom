@@ -1,4 +1,4 @@
-﻿const _movie_data =
+const _movie_data =
     [
         {
             "id": "1",

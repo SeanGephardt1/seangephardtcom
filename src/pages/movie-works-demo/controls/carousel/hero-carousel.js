@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import './hero-carousel.css';
 import AxiosHero from '../../images/hero/axios-hero-01.jpg';
 import BettyHero from '../../images/hero/betty-hero-01.jpg';

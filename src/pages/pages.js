@@ -7,7 +7,7 @@ import Resume from './resume/resume.js';
 import Music from './music/music.js';
 import DemosPage from './demos/demos.js';
 import BigDataDemo from './big-data/big-data-demo.js';
-import MovieStoreExtension from './movie-works-demo/movie-works.js';
+import MovieStoreExtension from './movie-works-demo/movieworks.js';
 import GuitarApp from './guitar-app/guitar-app.js';
 // import GuitarStoreExtension from './guitar-store/guitar-store.js';
 //	import TestPage2 from './test2/test2.js';
