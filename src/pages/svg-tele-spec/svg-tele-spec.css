@@ -26,6 +26,12 @@
 	text-align:center;
 	padding:10px;
 }
+.bd-page-trademark
+{
+	font-size:13px;
+	text-align:center;
+	margin-bottom:10px;
+}
 .bd-menu
 {
 /*	border: solid 1px red;*/
@@ -54,8 +60,22 @@
 	background-color: var(--black-06);
 	color:var(--white);
 }
+
+/* SVG STYLES */
 svg.bg-svg-container
 {
 	border: solid 1px var(--black-02);
-	cursor:pointer;
+	cursor:grab;
+}
+rect#debugRect
+{
+	fill:rgba(0, 128, 255, 0.1);
+	z-index:0;
+/*	cursor: not-allowed;*/
+}
+g#SvgChildDraggable1 > svg
+{
+	z-index:1;
+	cursor:grabbing;
+	transition:all 150ms ease-in-out;
 }

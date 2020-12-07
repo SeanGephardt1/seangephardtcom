@@ -6,7 +6,7 @@ import Home from './home/home.js';
 import Resume from './resume/resume.js';
 import Music from './music/music.js';
 import DemosPage from './demos/demos.js';
-import BigDataDemo from './big-data/big-data-demo.js';
+import TeleSpecDemo from './svg-tele-spec/svg-tele-spec.js';
 import MovieStoreExtension from './movie-works-demo/movieworks.js';
 import GuitarApp from './guitar-app/guitar-app.js';
 // import GuitarStoreExtension from './guitar-store/guitar-store.js';
@@ -26,8 +26,8 @@ const _pages = [
         component: DemosPage,
         routes: [
             {
-                path: BigDataDemo.defaultProps.Href,
-                component: BigDataDemo
+                path: TeleSpecDemo.defaultProps.Href,
+                component: TeleSpecDemo
             },
             {
                 path: MovieStoreExtension.defaultProps.Href,
