@@ -143,7 +143,9 @@ export default class TeleSpecDemo extends React.Component
 
 	// dragging/panning
 	SVG_OnMouseDown( ev )
-	{	//	console.debug( "SVG_OnMouseDown" );
+	{	//	
+		console.debug( "SVG_OnMouseDown", ev );
+
 		this.setState( {
 			IsDragging: true,
 			dragClassName: "bg-svg-container-grabbing",
@@ -208,7 +210,7 @@ export default class TeleSpecDemo extends React.Component
 				</div>
 				{/*<div className="bd-menu">this.state.transform</div>*/}		
 				<svg id="root-svg"
-					className={ this.state.dragClassName}
+					className={this.state.dragClassName}
 					x="0px" y="0px"
 					viewBox={this.ViewBox}
 					draggable="true"
@@ -217,6 +219,9 @@ export default class TeleSpecDemo extends React.Component
 					onMouseMove={this.SVG_OnMouseMove.bind( this )}
 					onMouseUp={this.SVG_OnMouseUp.bind( this )}
 					onMouseLeave={this.SVG_OnMouseUp.bind( this )}
+					onTouchStart={this.SVG_OnMouseDown.bind( this )}
+					onTouchMove={this.SVG_OnMouseMove.bind( this )}
+					onTouchEnd={ this.SVG_OnMouseUp.bind( this )}
 				>
 
 					{ /* debug rect - remove when done */}
