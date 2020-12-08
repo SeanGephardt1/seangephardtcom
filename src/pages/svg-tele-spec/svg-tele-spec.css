@@ -69,7 +69,7 @@ svg.bg-svg-container
 }
 rect#debugRect
 {
-	fill:rgba(0, 128, 255, 0.1);
+	fill:rgba(0,128,128,0.05);
 	z-index:0;
 /*	cursor: not-allowed;*/
 }
