@@ -187,7 +187,7 @@ export default class TeleSpecDemo extends React.Component
 		//</div>
 
         return (
-			<div className="big-data-demo-layout">
+			<div className="sgcom-page-layout">
 				<div className="bd-page-title">Fender Telecaster Spec SVG Zoom Demo</div>
 				<div className="bd-page-trademark">"Fender" & "Telecaster" are registered trademarks of Fender Musical Instrument Company.</div>
 				<div className="bd-menu">

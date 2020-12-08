@@ -315,7 +315,7 @@ export default class DemosPage extends React.Component
 		*/
 
         return (
-			<div className="anim-demo-layout">
+			<div className="sgcom-page-layout">
 
 				{/* change this */
 					this.state.modalOverlayDisplayed === true &&
