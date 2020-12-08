@@ -8,7 +8,7 @@ export default class TeleSpecDemo extends React.Component
 {
 	static defaultProps = {
 		Title: "SVG Fender Telecaster Spec Demo",
-		LinkTitle: "SVG Guitar Spec Demo",
+		LinkTitle: "SVG Fender Telecaster Spec Demo",
 		Href: "/demos/svg-tele/",
 		//Icon: SVG.AppNavButtons.About,
 	};
@@ -30,6 +30,7 @@ export default class TeleSpecDemo extends React.Component
 			translateValues: [0,0],
 			transform: this._default_matrix + " " + this._default_translate,
 			IsDragging: false,
+			dragClassName: "bg-svg-container",
 			rangeZoom: 5,
 			rangeValue: 1
 		};
@@ -45,6 +46,7 @@ export default class TeleSpecDemo extends React.Component
 			translateValues: [0,0],
 			transform: this._default_matrix + " " + this._default_translate,
 			IsDragging: false,
+			dragClassName: "bg-svg-container",
 			rangeZoom: 5,
 			rangeValue: 1
 		} );
@@ -64,7 +66,7 @@ export default class TeleSpecDemo extends React.Component
 		let _matrix_vals = this.state.matrixValues;
 		let _centerX = parseInt( this.state.viewBoxValues[0] ) / 2;
 		let _centerY = parseInt( this.state.viewBoxValues[1] ) / 2;
-		let _scales = [0.6, 0.7, 0.8, 0.9, 1, 1.5, 3, 4.5, 6, 7.5];
+		let _scales = [0.6, 0.7, 0.8, 0.9, 1, 2, 3, 4, 5, 6];
 		let _new_scale = _scales[scale-1];
 
 		_matrix_vals[0] = _new_scale;
@@ -135,20 +137,26 @@ export default class TeleSpecDemo extends React.Component
 	OnChangeRange_Zoom( ev )
 	{
 		//	console.debug( "OnChangeRange_Zoom" );
-		this.Zoom( ev.target.value );
+		this.Zoom( parseInt(ev.target.value) );
 		return false;
 	}
 
 	// dragging/panning
 	SVG_OnMouseDown( ev )
 	{	//	console.debug( "SVG_OnMouseDown" );
-		this.setState( { IsDragging: true } );
+		this.setState( {
+			IsDragging: true,
+			dragClassName: "bg-svg-container-grabbing",
+		} );
 		ev.preventDefault();
 		return false;
 	};
 	SVG_OnMouseUp( ev )
 	{	//	console.debug( "SVG_OnMouseUp");
-		this.setState( { IsDragging: false } );
+		this.setState( {
+			IsDragging: false,
+			dragClassName: "bg-svg-container",
+		} );
 		ev.preventDefault();
 		return false;
 	};
@@ -181,23 +189,27 @@ export default class TeleSpecDemo extends React.Component
 				<div className="bd-page-title">Fender Telecaster Spec SVG Zoom Demo</div>
 				<div className="bd-page-trademark">"Fender" & "Telecaster" are registered trademarks of Fender Musical Instrument Company.</div>
 				<div className="bd-menu">
-					<div>
-						<label htmlFor="zoom_range">Select a size: { this.state.rangeValue }</label>
-						<input type="range" id="zoom_range" name="zoom_range" min="1" max="10" step="1"
+					<div className="bd-menu-item">
+						<label htmlFor="zoom_range">
+							<span>Select a size:</span>
+							<span>{this.state.rangeValue}</span>
+						</label>
+						<input type="range" id="zoom_range" name="zoom_range"
+							min="1" max="10" step="1"
 							value={this.state.rangeZoom}
 							onChange={this.OnChangeRange_Zoom.bind( this )} />
 					</div>
-					<div className="bd-menu-item" onClick={ this.OnClick_ZoomIn.bind(this)}>Zoom In</div>
-					<div className="bd-menu-item" onClick={ this.OnClick_ZoomOut.bind(this)}>Zoom out</div>
-					<div className="bd-menu-item" onClick={ this.OnClick_ResetZoom.bind(this)}>Reset</div>
+					<div className="bd-menu-button" onClick={ this.OnClick_ZoomIn.bind(this)}>Zoom In</div>
+					<div className="bd-menu-button" onClick={ this.OnClick_ZoomOut.bind(this)}>Zoom out</div>
+					<div className="bd-menu-button" onClick={ this.OnClick_ResetZoom.bind(this)}>Reset</div>
 				</div>
 				<div className="bd-menu">
-					Hold the "shift" key to zoom in & out using the mouse
+					Hold the "shift" key to zoom in & out using the mouse wheel.
 				</div>
-				<div className="bd-menu">
-					{this.state.transform}
-				</div>
-				<svg id="root-svg" className="bg-svg-container" x="0px" y="0px"
+				{/*<div className="bd-menu">this.state.transform</div>*/}		
+				<svg id="root-svg"
+					className={ this.state.dragClassName}
+					x="0px" y="0px"
 					viewBox={this.ViewBox}
 					draggable="true"
 					onWheel={this.OnWheel_Zoom.bind( this )}

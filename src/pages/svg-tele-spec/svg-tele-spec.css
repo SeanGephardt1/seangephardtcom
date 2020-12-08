@@ -25,6 +25,7 @@
 	font-size:20px;
 	text-align:center;
 	padding:10px;
+	padding-bottom:0px;
 }
 .bd-page-trademark
 {
@@ -32,18 +33,45 @@
 	text-align:center;
 	margin-bottom:10px;
 }
+
 .bd-menu
 {
 /*	border: solid 1px red;*/
 	display:flex;
 	flex: 1 1 auto;
+	flex-wrap:wrap;
 	min-height:32px;
 	text-align:center;
 	justify-content:center;
 	align-items:center;
+	margin-top:10px;
 	margin-bottom:10px;
 }
 .bd-menu-item
+{
+/*	border: solid 1px var(--black-02);*/
+	padding:4px;
+	padding-left:10px;
+	padding-right:10px;
+	display:flex;
+	flex-direction:row;
+}
+.bd-menu-item > label 
+{
+	display:flex;
+}
+.bd-menu-item > label > span
+{
+/*	border: solid 1px red;*/
+	padding-left: 10px;
+	padding-right:10px;
+	min-width:50px;
+}
+.bd-menu-item > label > span:last-child
+{
+	font-weight:700;
+}
+.bd-menu-button
 {
 	border: solid 1px var(--black-06);
 	background-color: var(--black-01);
@@ -54,7 +82,11 @@
 	cursor:pointer;
 	transition:all 160ms ease-in-out;
 }
-.bd-menu-item:hover
+.bd-menu-button:last-child
+{
+	margin-left: 10px;
+}
+.bd-menu-button:hover
 {
 	border: solid 1px var(--black);
 	background-color: var(--black-06);
@@ -67,15 +99,23 @@ svg.bg-svg-container
 	border: solid 1px var(--black-02);
 	cursor:grab;
 }
+svg.bg-svg-container-grabbing
+{
+	border: solid 1px var(--black-02);
+	cursor:grabbing;
+}
 rect#debugRect
 {
-	fill:rgba(0,128,128,0.05);
+	fill:rgba(242,242,242,1);
 	z-index:0;
-/*	cursor: not-allowed;*/
 }
-g#SvgChildDraggable1 > svg
+svg.bg-svg-container > g#SvgChildDraggable1
 {
 	z-index:1;
-	cursor:grabbing;
-	transition:all 150ms ease-in-out;
+	transition:all 100ms ease-in-out;
+}
+svg.bg-svg-container-grabbing > g#SvgChildDraggable1
+{
+	z-index:1;
+	transition:none;
 }
