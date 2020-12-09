@@ -7,7 +7,7 @@ import Resume from './resume/resume.js';
 import Music from './music/music.js';
 import DemosPage from './demos/demos.js';
 import TeleSpecDemo from './svg-tele-spec/svg-tele-spec.js';
-import WebGLDemo from './webgl/webgl.js';
+import Html5CanvasDemo from './canvas-demo/canvas-demo.js';
 import MovieStoreExtension from './movie-works-demo/movieworks.js';
 import GuitarApp from './guitar-app/guitar-app.js';
 // import GuitarStoreExtension from './guitar-store/guitar-store.js';
@@ -27,8 +27,8 @@ const _pages = [
         component: DemosPage,
         routes: [
             {
-                path: WebGLDemo.defaultProps.Href,
-                component: WebGLDemo
+                path: Html5CanvasDemo.defaultProps.Href,
+                component: Html5CanvasDemo
             },
             {
                 path: TeleSpecDemo.defaultProps.Href,

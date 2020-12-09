@@ -1,7 +1,7 @@
 import React from 'react';
-import './webgl.css';
+import './canvas-demo.css';
 
-export default class WebGLDemo extends React.Component
+export default class Html5CanvasDemo extends React.Component
 {
 	static defaultProps = {
 		Title: "HTML5 Canvas Demo",
@@ -29,24 +29,29 @@ export default class WebGLDemo extends React.Component
 	};
 	componentDidMount() 
 	{	//	console.debug( "WebGLDemo.componentDidMount()", this.canvas.current );
-		this.ResetCanvas();
+		this.OnClick_ResetCanvas();
 		return;
 	}
-	ResetCanvas()
+	OnClick_ResetCanvas()
 	{
 		//	console.debug( "ResetCanvas", this.Canvas.current );
 		//	console.debug( "ResetCanvas()");
 		let c = this.Canvas.current.getContext( '2d' );
 		c.clearRect( 0, 0, this.state.CanvasSize, this.state.CanvasSize );
 		c.globalAlpha = 1;
-		c.fillStyle = "rgba( 255, 255, 255, 1)";
+
+		const fillGrad = c.createLinearGradient( 0, 0, 0, this.state.CanvasSize );
+		fillGrad.addColorStop("0", "rgba(0,0,128,1)");
+		fillGrad.addColorStop( "1", "rgba(0,0,0,1)" );
+
+		c.fillStyle = fillGrad;
 		c.fillRect( 0, 0, this.state.CanvasSize, this.state.CanvasSize );
 		c.save();
 		return c;
 	};
 	RenderDefaultBoxes()
 	{
-		let c = this.ResetCanvas();
+		let c = this.OnClick_ResetCanvas();
 		c.fillStyle = "rgba( 39, 93, 173, 1)";
 		c.fillRect( 0, 0, this.state.CanvasSize / 2, this.state.CanvasSize / 2 );
 		c.fillStyle = "rgba(197, 34, 51, 1)";
@@ -57,15 +62,14 @@ export default class WebGLDemo extends React.Component
 		c.fillRect( this.state.CanvasSize / 2, this.state.CanvasSize / 2, this.state.CanvasSize / 2, this.state.CanvasSize / 2 );
 		return;
 	};
-	BoxesCanvas()
+	OnClick_CreateScaledRects()
 	{	//	console.debug( "DefaultCanvas" );
-		let c = this.ResetCanvas();
+		let c = this.OnClick_ResetCanvas();
 		this.RenderDefaultBoxes();
 
 		c.fillStyle = "rgba(255,255,255,1)";
-		c.globalAlpha = 0.5;
+		c.globalAlpha = 0.375;
 
-		//	TEST - c.fillRect( 10, 10, this.state.CanvasHeight - 20, this.state.CanvasWidth - 20 );
 		for ( var i = 0; i < 5; i++ )
 		{
 			c.beginPath();
@@ -83,65 +87,78 @@ export default class WebGLDemo extends React.Component
 		c.save();
 		return;
     }
-	RandomBoxSizes(ev)
+	OnClick_CreateRandomArcs(ev)
 	{	//	console.debug( "RandomBoxSizes" );
-		let _random = Math.round( ( Math.random() * 50 ) );
-		let _random_alpha = ( Math.random() * 0.9 );
-
-		console.debug( "_random", _random );
-		//	console.debug( "_random_alpha", _random_alpha );
-
-		let c = this.ResetCanvas();
-		this.RenderDefaultBoxes();
-	
-		//	TEST ARD
-		//c.globalAlpha = 1;
-		//c.beginPath();
+		//	TEST ARC
 		//	c.arc(x,y, radius, startingAngle, endingAngle, counterclockwise);
+		// cap for positive numbers using arc starting angle param is 180
+
+		let _random = Math.round( Math.random() * 360 );
+		if ( _random < 1 )
+		{
+			_random = 33;
+		}	//	console.debug( "_random", _random );
+
+		let c = this.OnClick_ResetCanvas();
+		this.RenderDefaultBoxes();
+
+		c.globalAlpha = 0.4;	
+		c.fillStyle = "rgba(255,255,255,1)";
+		c.strokeStyle = "rgba(255,255,255,1)";
+		c.lineWidth = 10;
+
+		const fillGrad = c.createLinearGradient( 0, 0, 0, this.state.CanvasSize );
+		fillGrad.addColorStop("0.3", "rgba(0,0,0,0)");
+		fillGrad.addColorStop("0.4", "rgba(0,0,0,0.9)");
+		fillGrad.addColorStop("0.5", "rgba(255,255,255,9)");
+		fillGrad.addColorStop("0.6", "rgba(0,0,0,0.9)");
+		fillGrad.addColorStop("0.7", "rgba(0,0,0,0)");
+
+		const strokeGrad = c.createLinearGradient( 0, 0, this.state.CanvasSize, 0 );
+		strokeGrad.addColorStop("0.3", "rgba(0,0,0,0)");
+		strokeGrad.addColorStop("0.4", "rgba(0,0,0,0.9)");
+		strokeGrad.addColorStop("0.5", "rgba(255,255,255,9)");
+		strokeGrad.addColorStop("0.6", "rgba(0,0,0,0.9)");
+		strokeGrad.addColorStop("0.7", "rgba(0,0,0,0)");
+
+		//https://www.w3schools.com/tags/canvas_createradialgradient.asp
+		c.fillStyle = fillGrad;
+		c.strokeStyle = strokeGrad;
+
+		//c.beginPath();
 		//c.arc(
 		//	this.state.CanvasSize / 2, 
 		//	this.state.CanvasSize / 2,
-		//	this.state.CanvasSize / 2 - ( i * _random),
-		//	_random,
-		//	Math.PI,
-		//	_cc_bool
+		//	this.state.CanvasSize / 2 - c.lineWidth,
+		//	0,
+		//	2 * Math.PI 
 		//);
-		//c.fill();
+		////	c.fill();
+		//c.stroke();
 
-		//	TEST RECT- c.fillRect( 10, 10, this.state.CanvasHeight - 20, this.state.CanvasWidth - 20 );
-		c.fillStyle = "rgba(255,255,255,1)";
-		c.globalAlpha = _random_alpha;
 		for ( var i = 0; i < 5; i++ )
 		{
-			let _cc_bool = ( i % 2 === 0 ) ? true : false;
+			let _size = parseFloat(this.state.CanvasSize / 2 - ( i * 30));
 
 			c.beginPath();
-
 			c.arc(
 				this.state.CanvasSize / 2, 
 				this.state.CanvasSize / 2,
-				this.state.CanvasSize / 2 - ( i * _random),
-				( i * _random),
-				Math.PI,
-				_cc_bool
+				_size,
+				0,
+				2 * Math.PI 
 			);
-
-			//c.fillRect(
-			//	(i * _random) + 10,
-			//	(i * _random) + 10,
-			//	this.state.CanvasSize - (_random * 2) * i - 20,
-			//	this.state.CanvasSize - (_random * 2 ) * i - 20);
-
 			c.fill();
+			c.stroke();
 		}
 
 		c.globalAlpha = 1;
 		c.save();
 		return;
 	};
-	RandomCirclesAnimated( ev )
+	OnClick_CreateRandomGradientCircles( ev )
 	{
-		let c = this.ResetCanvas();
+		let c = this.OnClick_ResetCanvas();
 
 		// Create gradients
 		const radgrad = c.createRadialGradient(45, 45, 10, 52, 50, 30);
@@ -182,10 +199,10 @@ export default class WebGLDemo extends React.Component
 				<div className="canvas-demo-header">{this.Title }</div>
 				<div className="canvas-demo-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis at faucibus felis. Nulla faucibus elit vel mollis finibus. Maecenas metus lacus, consectetur quis turpis ac, sollicitudin dapibus ipsum. Maecenas hendrerit turpis a neque scelerisque rhoncus. Pellentesque lobortis arcu sed mauris porttitor, id accumsan est aliquet. Vivamus congue quam neque, ac fermentum orci rhoncus ac. Quisque in metus eros. Nullam luctus ex urna, sed bibendum metus fringilla sed.</div>
 				<div className="canvas-menu">
-					<button className="canvas-menu-btn" onClick={ this.ResetCanvas.bind(this)}>Reset</button>
-					<button className="canvas-menu-btn" onClick={ this.BoxesCanvas.bind(this)}>Colored boxes</button>
-					<button className="canvas-menu-btn" onClick={ this.RandomBoxSizes.bind(this)}>Opaque circle</button>
-					<button className="canvas-menu-btn" onClick={ this.RandomCirclesAnimated.bind(this)}>Random circles</button>
+					<button className="canvas-menu-btn" onClick={ this.OnClick_ResetCanvas.bind(this)}>Reset</button>
+					<button className="canvas-menu-btn" onClick={ this.OnClick_CreateScaledRects.bind(this)}>Create scaled opaque boxes</button>
+					<button className="canvas-menu-btn" onClick={ this.OnClick_CreateRandomArcs.bind(this)}>Create random arcs</button>
+					<button className="canvas-menu-btn" onClick={ this.OnClick_CreateRandomGradientCircles.bind(this)}>Random circles</button>
 				</div>
 				<div className="canvas-panel">
 					<canvas id="glcanvas" className="canvas-2d" ref={this.Canvas}
