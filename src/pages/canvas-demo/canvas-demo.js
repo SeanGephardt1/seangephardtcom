@@ -21,15 +21,25 @@ export default class Html5CanvasDemo extends React.Component
 
 		this.state = {
 			changed: false,
-			CanvasSize: 800
+			CanvasSize: 1000,
+			isAnimating: false,
+			AniBtnText: "Start"
 		};
 
 		this.Canvas = React.createRef();
+		this.AnimationID = undefined;
+		this.AniCounter = 0;
 		return;
 	};
 	componentDidMount() 
 	{	//	console.debug( "WebGLDemo.componentDidMount()", this.canvas.current );
 		this.OnClick_ResetCanvas();
+		return;
+	}
+	componentWillUnmount()
+	{	//console.debug( "AppLoader.componentWillUnmount()", this.AnimationID );
+		window.cancelAnimationFrame( this.AnimationID );
+		this.AnimationID = undefined;
 		return;
 	}
 	OnClick_ResetCanvas()
@@ -146,74 +156,65 @@ export default class Html5CanvasDemo extends React.Component
 		c.save();
 		return;
 	};
-	OnClick_CreateRandomArcs(ev)
+	OnClick_CreateRandomArcs( ev )
 	{	//	console.debug( "RandomBoxSizes" );
-		//	TEST ARC
-		//	c.arc(x,y, radius, startingAngle, endingAngle, counterclockwise);
-		// cap for positive numbers using arc starting angle param is 180
-		//	https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Basic_animations
-
-		let _random = Math.round( Math.random() * 360 );
-		if ( _random < 1 )
+		//	https://blog-en.openalfa.com/how-to-draw-with-the-mouse-in-a-html5-canvas
+		//	https://bearnithi.com/2019/12/12/understanding-canvas-draw-a-line-in-canvas-using-mouse-and-touch-events-in-javascript/
+		//	console.debug( "this.state.isAnimating", this.state.isAnimating );
+		if ( this.state.isAnimating === false )
 		{
-			_random = 33;
-		}	//	console.debug( "_random", _random );
-
-		let c = this.OnClick_ResetCanvas();
-		this.RenderDefaultBoxes();
-
-		c.globalAlpha = 0.4;	
-		c.fillStyle = "rgba(255,255,255,1)";
-		c.strokeStyle = "rgba(255,255,255,1)";
-		c.lineWidth = 10;
-
-		const fillGrad = c.createLinearGradient( 0, 0, 0, this.state.CanvasSize );
-		fillGrad.addColorStop("0.3", "rgba(0,0,0,0)");
-		fillGrad.addColorStop("0.4", "rgba(0,0,0,0.9)");
-		fillGrad.addColorStop("0.5", "rgba(255,255,255,9)");
-		fillGrad.addColorStop("0.6", "rgba(0,0,0,0.9)");
-		fillGrad.addColorStop("0.7", "rgba(0,0,0,0)");
-
-		const strokeGrad = c.createLinearGradient( 0, 0, this.state.CanvasSize, 0 );
-		strokeGrad.addColorStop("0.3", "rgba(0,0,0,0)");
-		strokeGrad.addColorStop("0.4", "rgba(0,0,0,0.9)");
-		strokeGrad.addColorStop("0.5", "rgba(255,255,255,9)");
-		strokeGrad.addColorStop("0.6", "rgba(0,0,0,0.9)");
-		strokeGrad.addColorStop("0.7", "rgba(0,0,0,0)");
-
-		//https://www.w3schools.com/tags/canvas_createradialgradient.asp
-		c.fillStyle = fillGrad;
-		c.strokeStyle = strokeGrad;
-
-		//c.beginPath();
-		//c.arc(
-		//	this.state.CanvasSize / 2, 
-		//	this.state.CanvasSize / 2,
-		//	this.state.CanvasSize / 2 - c.lineWidth,
-		//	0,
-		//	2 * Math.PI 
-		//);
-		////	c.fill();
-		//c.stroke();
-
-		for ( var i = 0; i < 5; i++ )
-		{
-			let _size = parseFloat(this.state.CanvasSize / 2 - ( i * 30));
-
-			c.beginPath();
-			c.arc(
-				this.state.CanvasSize / 2, 
-				this.state.CanvasSize / 2,
-				_size,
-				0,
-				2 * Math.PI 
-			);
-			c.fill();
-			c.stroke();
+			this.StartAnimation();
 		}
+		else if ( this.state.isAnimating === true )
+		{
+			this.StopAnimation();
+		}
+		return;
+	};
+	StartAnimation()
+	{
+		console.debug( "1. StartAnimation", this.AnimationID );
+		let c = this.OnClick_ResetCanvas();
+		this.AnimationID = window.requestAnimationFrame( () => this.RenderFractalAnimation( c ) );
+			this.setState( {
+				isAnimating: true,
+				AniBtnText: "Stop"
+			} );
+		console.debug( "2. StartAnimation", this.AnimationID );
+		return;
+	};
+	StopAnimation()
+	{
+		console.debug( "1. StopAnimation", this.AnimationID );
+		this.AnimationID = window.cancelAnimationFrame( this.AnimationID );
+		this.setState( {
+			isAnimating: false,
+			AniBtnText: "Start"
+		} );
+		console.debug( "2. StopAnimation", this.AnimationID );
+		return;
+	}
+	RenderFractalAnimation( c )
+	{	//	console.debug( "1. RenderFractalAnimation", this.AnimationID, this.AniCounter );
+		if ( this.AniCounter < 500 )
+		{
+			c.globalAlpha = 0.2;
+			c.beginPath();
+			c.lineWidth = 1;
+			c.strokeStyle = "rgba(255,0,0,1)";
+			c.moveTo( this.AniCounter, 0 );
+			c.lineTo( this.AniCounter, this.state.CanvasSize); 
+			c.stroke();
+			c.save();
 
-		c.globalAlpha = 1;
-		c.save();
+			this.AniCounter++;
+			this.AnimationID = window.requestAnimationFrame(() => this.RenderFractalAnimation( c ));
+		}
+		else if ( this.AniCounter === 500 )
+		{
+			this.AniCounter = 0;
+			this.StopAnimation();
+		}
 		return;
 	};
     render()
@@ -225,7 +226,7 @@ export default class Html5CanvasDemo extends React.Component
 				<div className="canvas-menu">
 					<button className="canvas-menu-btn" onClick={ this.OnClick_CreateScaledRects.bind(this)}>Render scaled opaque boxes</button>
 					<button className="canvas-menu-btn" onClick={ this.OnClick_CreateRandomGradientCircles.bind(this)}>Render gradient circles</button>
-					<button className="canvas-menu-btn" onClick={ this.OnClick_CreateRandomArcs.bind(this)}>Render animated</button>
+					<button className="canvas-menu-btn" onClick={this.OnClick_CreateRandomArcs.bind( this )}>{ this.state.AniBtnText}</button>
 					<button className="canvas-menu-btn" onClick={ this.OnClick_ResetCanvas.bind(this)}>Reset</button>
 				</div>
 				<div className="canvas-panel">

@@ -17,6 +17,7 @@
 	margin-bottom:10px;
 	padding:10px;
 	display:flex;
+	flex-direction:row;
 	width:100%;
 	flex: 1 1 100%;
 	justify-content: space-evenly;
@@ -35,10 +36,15 @@
 	height:100%;
 	width:100%;
 	justify-content:center;
-	padding:20px;
+	padding:0px;
 }
 
 .canvas-2d
 {
 	border: solid 1px var(--black);
+	width: 100%;
+	min-width: 260px;
+	max-width: 100%;
+    object-fit: contain;
+/*	height: calc(width - 70vh);*/
 }
