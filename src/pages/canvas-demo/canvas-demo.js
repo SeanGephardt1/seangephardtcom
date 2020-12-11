@@ -29,6 +29,8 @@ export default class Html5CanvasDemo extends React.Component
 		this.Canvas = React.createRef();
 		this.AnimationID = undefined;
 		this.AniCounter = 0;
+		this.AniMax = 500;
+		this.CanvasContext = undefined;
 		return;
 	};
 	componentDidMount() 
@@ -45,7 +47,10 @@ export default class Html5CanvasDemo extends React.Component
 	OnClick_ResetCanvas()
 	{
 		//	console.debug( "ResetCanvas", this.Canvas.current );
-		//	console.debug( "ResetCanvas()");
+		this.AniCounter = 0;
+		this.CanvasContext = undefined;
+		this.StopAnimation();
+
 		let c = this.Canvas.current.getContext( "2d" );
 		c.globalAlpha = 1;
 		c.imageSmoothingQuality = "high";
@@ -173,30 +178,34 @@ export default class Html5CanvasDemo extends React.Component
 	};
 	StartAnimation()
 	{
-		console.debug( "1. StartAnimation", this.AnimationID );
-		let c = this.OnClick_ResetCanvas();
-		this.AnimationID = window.requestAnimationFrame( () => this.RenderFractalAnimation( c ) );
+		console.debug( "1. StartAnimation", this.AnimationID, this.AniCounter, this.CanvasContext );
+
+		if ( this.CanvasContext === undefined )
+		{
+			this.CanvasContext = this.OnClick_ResetCanvas();
+			this.CanvasContext.clearRect( 0, 0, this.state.CanvasSize, this.state.CanvasSize );
+		}
+		this.AnimationID = window.requestAnimationFrame( () => this.RenderFractalAnimation( this.CanvasContext ) );
 			this.setState( {
 				isAnimating: true,
 				AniBtnText: "Stop"
 			} );
-		console.debug( "2. StartAnimation", this.AnimationID );
+		console.debug( "2. StartAnimation", this.AnimationID, this.AniCounter );
 		return;
 	};
 	StopAnimation()
-	{
-		console.debug( "1. StopAnimation", this.AnimationID );
+	{	//	console.debug( "1. StopAnimation", this.AnimationID, this.CanvasContext );
 		this.AnimationID = window.cancelAnimationFrame( this.AnimationID );
 		this.setState( {
 			isAnimating: false,
 			AniBtnText: "Start"
 		} );
-		console.debug( "2. StopAnimation", this.AnimationID );
+		//	console.debug( "2. StopAnimation", this.AnimationID );
 		return;
 	}
 	RenderFractalAnimation( c )
 	{	//	console.debug( "1. RenderFractalAnimation", this.AnimationID, this.AniCounter );
-		if ( this.AniCounter < 500 )
+		if ( this.AniCounter < this.AniMax )
 		{
 			c.globalAlpha = 0.2;
 			c.beginPath();
@@ -210,9 +219,10 @@ export default class Html5CanvasDemo extends React.Component
 			this.AniCounter++;
 			this.AnimationID = window.requestAnimationFrame(() => this.RenderFractalAnimation( c ));
 		}
-		else if ( this.AniCounter === 500 )
+		else if ( this.AniCounter === this.AniMax )
 		{
 			this.AniCounter = 0;
+			this.CanvasContext = undefined;
 			this.StopAnimation();
 		}
 		return;
