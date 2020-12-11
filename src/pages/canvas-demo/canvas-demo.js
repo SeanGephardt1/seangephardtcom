@@ -44,6 +44,7 @@ export default class Html5CanvasDemo extends React.Component
 		this.AnimationID = undefined;
 		return;
 	}
+
 	OnClick_ResetCanvas()
 	{
 		//	console.debug( "ResetCanvas", this.Canvas.current );
@@ -62,12 +63,13 @@ export default class Html5CanvasDemo extends React.Component
 		c.shadowBlur = 0;
 		c.shadowOffsetX = 0;
 		c.shadowOffsetY = 0;
+		c.setTransform(1, 0, 0, 1, 0, 0);
 
 		c.clearRect( 0, 0, this.state.CanvasSize, this.state.CanvasSize );
 
 		const fillGrad = c.createLinearGradient( 0, 0, 0, this.state.CanvasSize );
-		fillGrad.addColorStop("0", "rgba(0,0,255,0.1)");
-		fillGrad.addColorStop( "1", "rgba(0,0,0,0.1)" );
+		fillGrad.addColorStop("0", "rgba(248, 216, 0,0.6)");
+		fillGrad.addColorStop( "1", "rgba(0,0,0,1)" );
 
 		c.fillStyle = fillGrad;
 		c.fillRect( 0, 0, this.state.CanvasSize, this.state.CanvasSize );
@@ -91,6 +93,7 @@ export default class Html5CanvasDemo extends React.Component
 		c.save();
 		return;
 	};
+
 	OnClick_CreateScaledRects()
 	{	//	console.debug( "DefaultCanvas" );
 		let c = this.OnClick_ResetCanvas();
@@ -108,6 +111,7 @@ export default class Html5CanvasDemo extends React.Component
 				_new_i * 40,
 				this.state.CanvasSize - 80 * _new_i,
 				this.state.CanvasSize - 80 * _new_i );
+			c.closePath();
 		}
 
 		c.save();
@@ -154,14 +158,15 @@ export default class Html5CanvasDemo extends React.Component
 
 			c.beginPath();
 			c.arc( _x, _y, _r_size, 0, 2 * Math.PI );
-
 			c.fill();
 			c.stroke();
+			c.closePath();
 		}
 
 		c.save();
 		return;
 	};
+
 	OnClick_RenderAnimationCanvas( ev )
 	{	//	console.debug( "RandomBoxSizes" );
 		//	https://blog-en.openalfa.com/how-to-draw-with-the-mouse-in-a-html5-canvas
@@ -220,52 +225,208 @@ export default class Html5CanvasDemo extends React.Component
 		return;
 	};
 	DrawFractal( c )
-	{
-		console.debug( "DrawFractal()", this.AniCounter );
+	{	//	console.debug( "DrawFractal()", this.AniCounter);
+		//	c.fillRect( 0, 0, this.state.CanvasSize, this.state.CanvasSize );
+		const _x = Math.round( Math.random() * ( this.state.CanvasSize ) );
+		const _y = Math.round( Math.random() * ( this.state.CanvasSize ) );
+		const _size = Math.round( Math.random() * ( this.state.CanvasSize / 5 ) );
+		const _r = Math.round( Math.random() * 256 );
+		const _g = Math.round( Math.random() * 256 );
+		const _b= Math.round( Math.random() * 256 );
+		const _rad = 0;
 
+		let _switch = Math.round(( Math.random() * 6 ));
+		//	console.debug( "_switch", _switch, _x, _y, _r_size );
+		//	_switch = 5;
+
+		switch ( _switch )
+		{
+			case 0: {
+				this.Render_PerfectCircle( c, _x, _y, _size, _rad, _r, _g, _b );
+				break;
+			}
+			case 1: {
+				this.Render_LeftSkewCircle( c, _x, _y, _size, _rad, _r, _g, _b );
+				break;
+			}
+			case 2: {
+				this.Render_RightSkewCircle( c, _x, _y, _size, _rad, _r, _g, _b );
+				break;
+			}
+			case 3: {
+				this.Render_PerfectRect( c, _x, _y, _size,  _r, _g, _b );
+				break;
+			}
+			case 4: {
+				this.Render_LeftSkewRect( c, _x, _y, _size,  _r, _g, _b );
+				break;
+			}
+			case 5: {
+				this.Render_RightSkewRect( c, _x, _y, _size, _r, _g, _b );
+				break;
+			}
+			default: { break; }
+		}
+		return;
+	};
+
+	Render_PerfectCircle( c, x, y, size, rad, r, g, b )
+	{
+		c.globalAlpha = 1;
+		c.lineWidth = 0.5;
+		c.strokeStyle = "rgba(0,0,0,1)";
+		c.fillStyle = "rgba(0,0,0,1)";
+		c.shadowBlur = 20;
+		c.shadowOffsetY = 10;
+		c.setTransform(1, 0, 0, 1, 0, 0);
+		c.beginPath();
+
+		const _grad_x1 = x + ( size / 3 );
+		const _grad_y1 = y - ( size / 3 );
+		const _rg = c.createRadialGradient(
+			_grad_x1, _grad_y1, rad,
+			x, y, size
+		);
+		_rg.addColorStop( 0, "rgba(" + r + "," + g + "," + b + ", 1)" );
+		_rg.addColorStop( 1, "rgba(" + ( r / 2 ) + "," + ( g / 2 ) + "," + ( b / 2 ) + ", 1)" );
+
+		c.fillStyle = _rg;
+		c.arc( x, y, size, 0, 2 * Math.PI );
+		c.stroke();
+		c.fill();
+		c.closePath();
+		c.setTransform(1, 0, 0, 1, 0, 0);
+		c.save();
+		return;
+	};
+	Render_LeftSkewCircle( c, x, y, size, rad, r, g, b )
+	{
+		c.globalAlpha = 1;
+		c.lineWidth = 0.5;
+		c.strokeStyle = "rgba(0,0,0,1)";
+		c.fillStyle = "rgba(0,0,0,1)";
+		c.shadowBlur = 20;
+		c.shadowOffsetY = 10;
+		c.setTransform(1, 0, 0, 1, 0, 0);
+		c.beginPath();
+
+		const _grad_x1 = x + ( size / 3 );
+		const _grad_y1 = y - ( size / 3 );
+		const _rg = c.createRadialGradient(
+			_grad_x1, _grad_y1, rad,
+			x, y, size
+		);
+		_rg.addColorStop( 0, "rgba(" + r + "," + g + "," + b + ", 1)" );
+		_rg.addColorStop( 1, "rgba(" + ( r / 2 ) + "," + ( g / 2 ) + "," + ( b / 2 ) + ", 1)" );
+
+		c.fillStyle = _rg;
+		c.setTransform( 1, 0.3, 0, 1, 0, 0 );
+		c.arc( x, y, size, 0, 2 * Math.PI );
+		c.stroke();
+		c.fill();
+		c.closePath();
+		c.setTransform(1, 0, 0, 1, 0, 0);
+		c.save();
+		return;
+	};
+	Render_RightSkewCircle( c, x, y, size, rad, r, g, b )
+	{
+		c.globalAlpha = 1;
+		c.lineWidth = 0.5;
+		c.strokeStyle = "rgba(0,0,0,1)";
+		c.fillStyle = "rgba(0,0,0,1)";
+		c.shadowBlur = 20;
+		c.shadowOffsetY = 10;
+		c.setTransform(1, 0, 0, 1, 0, 0);
+		c.beginPath();
+
+		const _grad_x1 = x + ( size / 3 );
+		const _grad_y1 = y - ( size / 3 );
+		const _rg = c.createRadialGradient(
+			_grad_x1, _grad_y1, rad,
+			x, y, size
+		);
+		_rg.addColorStop( 0, "rgba(" + r + "," + g + "," + b + ", 1)" );
+		_rg.addColorStop( 1, "rgba(" + ( r / 2 ) + "," + ( g / 2 ) + "," + ( b / 2 ) + ", 1)" );
+
+		c.fillStyle = _rg;
+		c.setTransform( 1, -0.3, 0, 1, 0, 0 );
+		c.arc( x, y, size, 0, 2 * Math.PI );
+		c.stroke();
+		c.fill();
+		c.closePath();
+		c.setTransform(1, 0, 0, 1, 0, 0);
+		c.save();
+		return;
+	};
+
+	Render_PerfectRect( c, x, y, size, r, g, b )
+	{
 		c.globalAlpha = 1;
 		c.lineWidth = 1;
 		c.strokeStyle = "rgba(0,0,0,1)";
 		c.fillStyle = "rgba(0,0,0,1)";
 		c.shadowBlur = 20;
 		c.shadowOffsetY = 10;
-
-		//	c.fillRect( 0, 0, this.state.CanvasSize, this.state.CanvasSize );
 		c.beginPath();
 
-		let _x = Math.round( Math.random() * ( this.state.CanvasSize ) );
-		let _y = Math.round( Math.random() * ( this.state.CanvasSize ) );
-		let _r_size = Math.round( Math.random() * ( this.state.CanvasSize / 5 ) );
+		const _lg = c.createLinearGradient( x, 0, x + (size * 2), 0 );
+		_lg.addColorStop( 0, "rgba(" + r + "," + g + "," + b + ", 1)" );
+		_lg.addColorStop( 1, "rgba(" + (r/2) + "," + (g/2) + "," + (b/2) + ", 1)" );
 
-		let _grad_x1 = _x + ( _r_size / 3 );
-		let _grad_y1 = _y - ( _r_size / 3 );
-
-		let _radius1 = 0;
-
-		const _rg = c.createRadialGradient(
-			_grad_x1, _grad_y1, _radius1,
-			_x, _y, _r_size
-		);
-
-		let _r = Math.round( Math.random() * 256 );
-		let _g = Math.round( Math.random() * 256 );
-		let _b= Math.round( Math.random() * 256 );
-
-		_rg.addColorStop( 0, "rgba(" + _r + "," + _g + "," + _b + ", 1)" );
-		_rg.addColorStop( 1, "rgba(" + (_r/5) + "," + (_g/5) + "," + (_b/5) + ", 1)" );
-
-		c.fillStyle = _rg;
-
-		c.beginPath();
-		c.arc( _x, _y, _r_size, 0, 2 * Math.PI );
-
-		c.fill();
-		c.stroke();
-		
-
+		c.fillStyle = _lg;
+		c.setTransform(1, 0, 0, 1, 0, 0);
+		c.strokeRect( x, y, ( size * 2 ), size );
+		c.fillRect( x, y, ( size * 2 ),  size );
+		c.closePath();
 		c.save();
 		return;
 	};
+	Render_LeftSkewRect( c, x, y, size, r, g, b )
+	{
+		c.globalAlpha = 1;
+		c.lineWidth = 1;
+		c.strokeStyle = "rgba(0,0,0,1)";
+		c.fillStyle = "rgba(0,0,0,1)";
+		c.shadowBlur = 20;
+		c.shadowOffsetY = 10;
+		c.beginPath();
+
+		const _lg = c.createLinearGradient( x, 0, x + (size * 2), 0 );
+		_lg.addColorStop( 0, "rgba(" + r + "," + g + "," + b + ", 1)" );
+		_lg.addColorStop( 1, "rgba(" + (r/2) + "," + (g/2) + "," + (b/2) + ", 1)" );
+
+		c.fillStyle = _lg;
+		c.setTransform( 1, 0, -1, 1, 0, ( y / 2 ) );
+		c.strokeRect( x, y, ( size * 2 ), size );
+		c.fillRect( x, y, ( size * 2 ),  size );
+		c.closePath();
+		c.save();
+		return;
+	};
+	Render_RightSkewRect( c, x, y, size, r, g, b )
+	{
+		c.globalAlpha = 1;
+		c.lineWidth = 1;
+		c.strokeStyle = "rgba(0,0,0,1)";
+		c.fillStyle = "rgba(0,0,0,1)";
+		c.shadowBlur = 20;
+		c.shadowOffsetY = 10;
+		c.beginPath();
+
+		const _lg = c.createLinearGradient( x, 0, x + (size * 2), 0 );
+		_lg.addColorStop( 0, "rgba(" + r + "," + g + "," + b + ", 1)" );
+		_lg.addColorStop( 1, "rgba(" + (r/2) + "," + (g/2) + "," + (b/2) + ", 1)" );
+
+		c.fillStyle = _lg;
+		c.setTransform( 1, -1, 0, 1, 0, ( y / 2 ) );
+		c.strokeRect( x, y, ( size * 2 ), size );
+		c.fillRect( x, y, ( size * 2 ),  size );
+		c.closePath();
+		c.save();
+		return;
+	};
+
     render()
 	{
         return (
