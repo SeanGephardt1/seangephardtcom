@@ -11,7 +11,9 @@
 	}
 	.canvas-menu
 	{
+		border: solid 0px var(--black-01);
 		flex-direction:column;
+		justify-content:flex-start;
 	}
 }
 

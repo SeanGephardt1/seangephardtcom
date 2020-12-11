@@ -29,7 +29,7 @@ export default class Html5CanvasDemo extends React.Component
 		this.Canvas = React.createRef();
 		this.AnimationID = undefined;
 		this.AniCounter = 0;
-		this.AniMax = 500;
+		this.AniMax = 1000;
 		this.CanvasContext = undefined;
 		return;
 	};
@@ -52,7 +52,7 @@ export default class Html5CanvasDemo extends React.Component
 		this.CanvasContext = undefined;
 		this.StopAnimation();
 
-		let c = this.Canvas.current.getContext( "2d" );
+		const c = this.Canvas.current.getContext( "2d" );
 
 		c.globalAlpha = 1;
 		c.imageSmoothingQuality = "high";
@@ -63,12 +63,12 @@ export default class Html5CanvasDemo extends React.Component
 		c.shadowBlur = 0;
 		c.shadowOffsetX = 0;
 		c.shadowOffsetY = 0;
-		c.setTransform(1, 0, 0, 1, 0, 0);
+		c.setTransform( 1, 0, 0, 1, 0, 0 );
 
 		c.clearRect( 0, 0, this.state.CanvasSize, this.state.CanvasSize );
 
 		const fillGrad = c.createLinearGradient( 0, 0, 0, this.state.CanvasSize );
-		fillGrad.addColorStop("0", "rgba(248, 216, 0,0.6)");
+		fillGrad.addColorStop( "0", "rgba(248, 216, 0,0.6)" );
 		fillGrad.addColorStop( "1", "rgba(0,0,0,1)" );
 
 		c.fillStyle = fillGrad;
@@ -81,7 +81,7 @@ export default class Html5CanvasDemo extends React.Component
 	};
 	RenderDefaultBoxes()
 	{
-		let c = this.OnClick_ResetCanvas();
+		const c = this.OnClick_ResetCanvas();
 		c.fillStyle = "rgba( 39, 93, 173, 1)";
 		c.fillRect( 0, 0, this.state.CanvasSize / 2, this.state.CanvasSize / 2 );
 		c.fillStyle = "rgba(197, 34, 51, 1)";
@@ -96,7 +96,7 @@ export default class Html5CanvasDemo extends React.Component
 
 	OnClick_CreateScaledRects()
 	{	//	console.debug( "DefaultCanvas" );
-		let c = this.OnClick_ResetCanvas();
+		const c = this.OnClick_ResetCanvas();
 		this.RenderDefaultBoxes();
 
 		for ( var i = 0; i < 10; i++ )
@@ -104,7 +104,7 @@ export default class Html5CanvasDemo extends React.Component
 			let _new_i = i + 1;
 
 			c.beginPath();
-			c.globalAlpha = 0.2;
+			c.globalAlpha = 0.25;
 			c.fillStyle = "rgba(255,255,255,1)";
 			c.fillRect(
 				_new_i * 40,
@@ -116,7 +116,58 @@ export default class Html5CanvasDemo extends React.Component
 
 		c.save();
 		return;
-    }
+	}
+	OnClick_EVHTribute()
+	{	//	console.debug( "OnClick_EVHTribute" );
+		const c = this.OnClick_ResetCanvas();
+		c.clearRect( 0, 0, this.state.CanvasSize, this.state.CanvasSize );
+
+		const _fill_red = "rgba(255,0,0,1)";
+		const _fill_white = "rgba(255,255,255,1)";
+		const _fill_black = "rgba(0,0,0,1)";
+
+		c.fillStyle = _fill_red;
+		c.fillRect( 0, 0, this.state.CanvasSize, this.state.CanvasSize );
+
+		// Math.random() < 0.5 ? -1 : 1;
+		for ( let i = 0; i < 100; i++ )
+		{
+			let _r = Math.round( Math.random() * 3 );
+			switch ( _r )
+			{
+				case 0: {
+					c.fillStyle = _fill_red;
+					break;
+				}
+				case 1: {
+					c.fillStyle = _fill_white;
+					break;
+				}
+				case 2: {
+					c.fillStyle = _fill_black;
+					break;
+				}
+				default: {
+					c.fillStyle = _fill_black;
+					break;
+				}
+			}
+
+			let x = Math.round( Math.random() * ( this.state.CanvasSize * 2 ) );
+			let y = Math.round( Math.random() * ( this.state.CanvasSize * 2 ) );
+			let w = ( this.state.CanvasSize * 2 );
+			let h = Math.round( Math.random() * 100 );
+			let _rot = Math.round( ( Math.random() * 720 ) );
+
+			c.beginPath();
+			c.rotate( _rot );
+			c.fillRect( -x, -y, w, h );
+			c.closePath();
+		}
+
+		c.save();
+		return;
+	};
 	OnClick_CreateRandomGradientCircles( ev )
 	{
 		//	Note: Gradient coordinates are global
@@ -149,10 +200,10 @@ export default class Html5CanvasDemo extends React.Component
 
 			let _r = Math.round( Math.random() * 256 );
 			let _g = Math.round( Math.random() * 256 );
-			let _b= Math.round( Math.random() * 256 );
+			let _b = Math.round( Math.random() * 256 );
 
 			_rg.addColorStop( 0, "rgba(" + _r + "," + _g + "," + _b + ", 1)" );
-			_rg.addColorStop( 1, "rgba(" + (_r/5) + "," + (_g/5) + "," + (_b/5) + ", 1)" );
+			_rg.addColorStop( 1, "rgba(" + ( _r / 5 ) + "," + ( _g / 5 ) + "," + ( _b / 5 ) + ", 1)" );
 
 			c.fillStyle = _rg;
 
@@ -192,8 +243,8 @@ export default class Html5CanvasDemo extends React.Component
 
 		this.AnimationID = window.requestAnimationFrame( () => this.RenderFractalAnimation( this.CanvasContext ) );
 		this.setState( {
-				isAnimating: true,
-				AniBtnText: "Stop"
+			isAnimating: true,
+			AniBtnText: "Stop"
 		} );
 		//	console.debug( "2. StartAnimation", this.AnimationID, this.AniCounter );
 		return;
@@ -214,7 +265,7 @@ export default class Html5CanvasDemo extends React.Component
 		{
 			this.DrawFractal( c );
 			this.AniCounter++;
-			this.AnimationID = window.requestAnimationFrame(() => this.RenderFractalAnimation( c ));
+			this.AnimationID = window.requestAnimationFrame( () => this.RenderFractalAnimation( c ) );
 		}
 		else if ( this.AniCounter === this.AniMax )
 		{
@@ -232,12 +283,12 @@ export default class Html5CanvasDemo extends React.Component
 		const _size = Math.round( Math.random() * ( this.state.CanvasSize / 5 ) );
 		const _r = Math.round( Math.random() * 256 );
 		const _g = Math.round( Math.random() * 256 );
-		const _b= Math.round( Math.random() * 256 );
+		const _b = Math.round( Math.random() * 256 );
 		const _rad = 0;
 
-		let _switch = Math.round(( Math.random() * 6 ));
+		let _switch = Math.round( ( Math.random() * 6 ) );
 		//	console.debug( "_switch", _switch, _x, _y, _r_size );
-		//	_switch = 5;
+		//	_switch = 6;
 
 		switch ( _switch )
 		{
@@ -254,11 +305,11 @@ export default class Html5CanvasDemo extends React.Component
 				break;
 			}
 			case 3: {
-				this.Render_PerfectRect( c, _x, _y, _size,  _r, _g, _b );
+				this.Render_PerfectRect( c, _x, _y, _size, _r, _g, _b );
 				break;
 			}
 			case 4: {
-				this.Render_LeftSkewRect( c, _x, _y, _size,  _r, _g, _b );
+				this.Render_LeftSkewRect( c, _x, _y, _size, _r, _g, _b );
 				break;
 			}
 			case 5: {
@@ -434,7 +485,8 @@ export default class Html5CanvasDemo extends React.Component
 				<div className="canvas-demo-header">{this.Title }</div>
 				<div className="canvas-demo-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis at faucibus felis. Nulla faucibus elit vel mollis finibus. Maecenas metus lacus, consectetur quis turpis ac, sollicitudin dapibus ipsum. Maecenas hendrerit turpis a neque scelerisque rhoncus. Pellentesque lobortis arcu sed mauris porttitor, id accumsan est aliquet. Vivamus congue quam neque, ac fermentum orci rhoncus ac. Quisque in metus eros. Nullam luctus ex urna, sed bibendum metus fringilla sed.</div>
 				<div className="canvas-menu">
-					<button className="canvas-menu-btn" onClick={ this.OnClick_CreateScaledRects.bind(this)}>Render scaled opaque boxes</button>
+					<button className="canvas-menu-btn" onClick={this.OnClick_CreateScaledRects.bind( this )}>Render scaled opaque boxes</button>
+					<button className="canvas-menu-btn" onClick={this.OnClick_EVHTribute.bind( this )}>EVH Tribute</button>
 					<button className="canvas-menu-btn" onClick={ this.OnClick_CreateRandomGradientCircles.bind(this)}>Render gradient circles</button>
 					<button className="canvas-menu-btn" onClick={ this.OnClick_RenderAnimationCanvas.bind( this )}>{ this.state.AniBtnText}</button>
 					<button className="canvas-menu-btn" onClick={ this.OnClick_ResetCanvas.bind(this)}>Reset</button>
