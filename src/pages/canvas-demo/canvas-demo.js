@@ -52,6 +52,7 @@ export default class Html5CanvasDemo extends React.Component
 		this.StopAnimation();
 
 		let c = this.Canvas.current.getContext( "2d" );
+
 		c.globalAlpha = 1;
 		c.imageSmoothingQuality = "high";
 		c.lineWidth = 1;
@@ -65,8 +66,8 @@ export default class Html5CanvasDemo extends React.Component
 		c.clearRect( 0, 0, this.state.CanvasSize, this.state.CanvasSize );
 
 		const fillGrad = c.createLinearGradient( 0, 0, 0, this.state.CanvasSize );
-		fillGrad.addColorStop("0", "rgba(255,255,255,1)");
-		fillGrad.addColorStop( "1", "rgba(0,0,0,1)" );
+		fillGrad.addColorStop("0", "rgba(0,0,255,0.1)");
+		fillGrad.addColorStop( "1", "rgba(0,0,0,0.1)" );
 
 		c.fillStyle = fillGrad;
 		c.fillRect( 0, 0, this.state.CanvasSize, this.state.CanvasSize );
@@ -118,7 +119,7 @@ export default class Html5CanvasDemo extends React.Component
 		//	i.e., relative to the current coordinate space.
 		//	When applied to a shape, the coordinates are NOT relative to the shape's coordinates.
 		let c = this.OnClick_ResetCanvas();
-		this.RenderDefaultBoxes();
+		//	this.RenderDefaultBoxes();
 
 		c.fillStyle = "rgba(0,0,0,1)";
 		c.shadowBlur = 20;
@@ -161,7 +162,7 @@ export default class Html5CanvasDemo extends React.Component
 		c.save();
 		return;
 	};
-	OnClick_CreateRandomArcs( ev )
+	OnClick_RenderAnimationCanvas( ev )
 	{	//	console.debug( "RandomBoxSizes" );
 		//	https://blog-en.openalfa.com/how-to-draw-with-the-mouse-in-a-html5-canvas
 		//	https://bearnithi.com/2019/12/12/understanding-canvas-draw-a-line-in-canvas-using-mouse-and-touch-events-in-javascript/
@@ -177,20 +178,19 @@ export default class Html5CanvasDemo extends React.Component
 		return;
 	};
 	StartAnimation()
-	{
-		console.debug( "1. StartAnimation", this.AnimationID, this.AniCounter, this.CanvasContext );
-
+	{	//	console.debug( "1. StartAnimation", this.AnimationID, this.AniCounter, this.CanvasContext );
 		if ( this.CanvasContext === undefined )
 		{
 			this.CanvasContext = this.OnClick_ResetCanvas();
 			this.CanvasContext.clearRect( 0, 0, this.state.CanvasSize, this.state.CanvasSize );
 		}
+
 		this.AnimationID = window.requestAnimationFrame( () => this.RenderFractalAnimation( this.CanvasContext ) );
-			this.setState( {
+		this.setState( {
 				isAnimating: true,
 				AniBtnText: "Stop"
-			} );
-		console.debug( "2. StartAnimation", this.AnimationID, this.AniCounter );
+		} );
+		//	console.debug( "2. StartAnimation", this.AnimationID, this.AniCounter );
 		return;
 	};
 	StopAnimation()
@@ -207,15 +207,7 @@ export default class Html5CanvasDemo extends React.Component
 	{	//	console.debug( "1. RenderFractalAnimation", this.AnimationID, this.AniCounter );
 		if ( this.AniCounter < this.AniMax )
 		{
-			c.globalAlpha = 0.2;
-			c.beginPath();
-			c.lineWidth = 1;
-			c.strokeStyle = "rgba(255,0,0,1)";
-			c.moveTo( this.AniCounter, 0 );
-			c.lineTo( this.AniCounter, this.state.CanvasSize); 
-			c.stroke();
-			c.save();
-
+			this.DrawFractal( c );
 			this.AniCounter++;
 			this.AnimationID = window.requestAnimationFrame(() => this.RenderFractalAnimation( c ));
 		}
@@ -227,6 +219,53 @@ export default class Html5CanvasDemo extends React.Component
 		}
 		return;
 	};
+	DrawFractal( c )
+	{
+		console.debug( "DrawFractal()", this.AniCounter );
+
+		c.globalAlpha = 1;
+		c.lineWidth = 1;
+		c.strokeStyle = "rgba(0,0,0,1)";
+		c.fillStyle = "rgba(0,0,0,1)";
+		c.shadowBlur = 20;
+		c.shadowOffsetY = 10;
+
+		//	c.fillRect( 0, 0, this.state.CanvasSize, this.state.CanvasSize );
+		c.beginPath();
+
+		let _x = Math.round( Math.random() * ( this.state.CanvasSize ) );
+		let _y = Math.round( Math.random() * ( this.state.CanvasSize ) );
+		let _r_size = Math.round( Math.random() * ( this.state.CanvasSize / 5 ) );
+
+		let _grad_x1 = _x + ( _r_size / 3 );
+		let _grad_y1 = _y - ( _r_size / 3 );
+
+		let _radius1 = 0;
+
+		const _rg = c.createRadialGradient(
+			_grad_x1, _grad_y1, _radius1,
+			_x, _y, _r_size
+		);
+
+		let _r = Math.round( Math.random() * 256 );
+		let _g = Math.round( Math.random() * 256 );
+		let _b= Math.round( Math.random() * 256 );
+
+		_rg.addColorStop( 0, "rgba(" + _r + "," + _g + "," + _b + ", 1)" );
+		_rg.addColorStop( 1, "rgba(" + (_r/5) + "," + (_g/5) + "," + (_b/5) + ", 1)" );
+
+		c.fillStyle = _rg;
+
+		c.beginPath();
+		c.arc( _x, _y, _r_size, 0, 2 * Math.PI );
+
+		c.fill();
+		c.stroke();
+		
+
+		c.save();
+		return;
+	};
     render()
 	{
         return (
@@ -236,7 +275,7 @@ export default class Html5CanvasDemo extends React.Component
 				<div className="canvas-menu">
 					<button className="canvas-menu-btn" onClick={ this.OnClick_CreateScaledRects.bind(this)}>Render scaled opaque boxes</button>
 					<button className="canvas-menu-btn" onClick={ this.OnClick_CreateRandomGradientCircles.bind(this)}>Render gradient circles</button>
-					<button className="canvas-menu-btn" onClick={this.OnClick_CreateRandomArcs.bind( this )}>{ this.state.AniBtnText}</button>
+					<button className="canvas-menu-btn" onClick={ this.OnClick_RenderAnimationCanvas.bind( this )}>{ this.state.AniBtnText}</button>
 					<button className="canvas-menu-btn" onClick={ this.OnClick_ResetCanvas.bind(this)}>Reset</button>
 				</div>
 				<div className="canvas-panel">
