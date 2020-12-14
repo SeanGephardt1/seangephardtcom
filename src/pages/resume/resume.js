@@ -24,13 +24,13 @@ export default class Resume extends React.Component
 	render()
 	{	//	console.debug("ResumeExtension.render()", this.Title);	
 		return (
-			<div className="resume-layout">
+			<div className="page-layout row resume">
 
+				{/* LEFT COLUMN */}
 				<div className="resume-left">
 
 					<div className="cv-section">
-						<div className="cv-header">Freelance work</div>
-						<div className="cv-sub-header">Ongoing</div>
+						<div className="cv-header">Consulting work</div>
 						<ul>
 							<li>Providing consulting, project management, graphic design and web development services to regional startups and small businesses with a focus on the music entertainment industry.</li>
 						</ul>
@@ -125,23 +125,25 @@ export default class Resume extends React.Component
 				<div className="resume-right">
 
 					<div className="skills-section">
+
 						<div className="skills-header">Related Links</div>
 
+						<div className="skills-related-links">
 							<a className="skills-related-link" href="https://www.linkedin.com/in/seangephardt/" title="Sean Gephardt on LinkedIn">
 								<img src={LinkedInIcon}  alt="Sean Gephardt on LinkedIn" />
-								LinkedIn
+								<span>LinkedIn</span>
 							</a>
 
 							<a className="skills-related-link" href="https://github.com/SeanGephardt1" title="Sean Gephardt on Gitub">
 								{SVG.Brands.GitHub}
-								GitHub
+								<span>GitHub</span>
 							</a>
-
+						</div>
 					</div>
 
 					<div className="skills-section">
 						<div className="skills-header">Professional skills</div>
-						<ul className="resume-ul-list">
+						<ul className="skills-list">
 							<li>Concise and succinct verbal and written communications style</li>
 							<li>Fostering great cross-team and cross-function working relationships</li>
 							<li>Expertise in web browser technologies ie. HTML5, CSS and JavaScript</li>
@@ -152,7 +154,7 @@ export default class Resume extends React.Component
 
 					<div className="skills-section">
 						<div className="skills-header">Design tools</div>
-						<ul className="resume-ul-list">
+						<ul className="skills-list">
 							<li>Adobe Create Cloud, Photoshop, Illustrator and XD</li>
 							<li>Figma</li>
 							<li>Hypertext markup language (HTML)</li>
@@ -162,7 +164,7 @@ export default class Resume extends React.Component
 
 					<div className="skills-section">
 						<div className="skills-header">Developer tools</div>
-						<ul className="resume-ul-list">
+						<ul className="skills-list">
 							<li>Microsoft Visual Studio & Visual Studio Code</li>
 							<li>Microsoft Azure</li>
 							<li>Microsoft C# and ASP.NET</li>
@@ -172,7 +174,7 @@ export default class Resume extends React.Component
 
 					<div className="skills-section">
 						<div className="skills-header">Currently learning</div>
-						<ul className="resume-ul-list">
+						<ul className="skills-list">
 							<li>3D design & animation using Unity</li>
 							<li>WebGL & D3.js</li>
 						</ul>

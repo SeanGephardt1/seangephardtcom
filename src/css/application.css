@@ -1,22 +1,18 @@
-/* 
-	APPLICATION WIDE CSS PROPERTIES 
-	MAINLY USED FOR CONTENT & SPECIFIC SCENARIOS
-	MAY HAVE CONFLICTS WITH LAYOUT & THEME CSS FILES
-*/
-.ra-root
+.react-root
 {
 /*	border: solid 1px red;*/
 	flex: 1 1 100%;
     display: flex;
-    flex-direction: column;  
+    flex-direction: column; 
+	flex-wrap:nowrap;
     justify-content: flex-start;
 	overflow:auto;
 }
 nav
 {
 	display:flex;
-	flex-direction:row;
 	flex: 1 1 100%;
+	flex-direction:row;
 	flex-wrap:wrap;
 }
 main
@@ -26,16 +22,19 @@ main
 	overflow:auto;
 	justify-content:center;
 }
-.sgcom-page-layout
+.page-layout /* most pages */
 {
-/*	border: solid 1px var(--black-01);*/
+/*	border: solid 1px var(--red);*/
+	min-width: 280px;
 	max-width:1024px;
 	overflow:auto;
 	display:flex;
 	flex: 1 1 auto;
-	flex-direction:column;
-	margin:24px;
+	margin:20px;
 	opacity:0;
+
+	flex-direction:column;
+	flex-wrap:nowrap;
 
 	animation-name: AniPageFadeIn1;
 	animation-delay: 300ms;
@@ -45,15 +44,21 @@ main
 	animation-iteration-count: 1;
 	animation-play-state: running;
 	animation-timing-function: ease-in-out;
-	transition: all 500ms ease-in-out;
 }
-
+.column
+{
+	flex-direction:column;
+	flex-wrap:nowrap;
+}
+.row /*resume page */
+{
+	flex-direction:row;
+	flex-wrap:wrap;
+}
 footer
 {
 	flex: 1 1 100%;
 	border-top: solid 1px var(--black-01);
 	padding:10px;
 	text-align:center;
-	font-size:14px;
-	margin-top:20px;
 }

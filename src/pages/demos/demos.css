@@ -1,24 +1,4 @@
-﻿.anim-demo-layout
-{
-/*	border: solid 1px var(--black-02);*/
-	max-width:1024px;
-	overflow:auto;
-	display:flex;
-	flex: 1 1 auto;
-	flex-direction:column;
-	margin:24px;
-	opacity:0;
-
-	animation-name: AniPageFadeIn1;
-	animation-delay: 300ms;
-	animation-direction: normal;
-	animation-duration: 300ms;
-	animation-fill-mode: forwards;
-	animation-iteration-count: 1;
-	animation-play-state: running;
-	animation-timing-function: ease-in-out;
-	transition: all 500ms ease-in-out;
-}
+﻿
 .anim-demo-header
 {
 	color: var(--black-08);
@@ -29,25 +9,44 @@
 .anim-demo-sub-header
 {
 	color: var(--black-08);
-	font-size: 18px;
+	font-size: 20px;
 	padding-bottom:10px;
 	font-weight:500;
+	text-align:center;
 }
 .anim-demo-desc
 {
-	font-size: 16px;
+	font-size: 14px;
 	margin-bottom:10px;
 }
-.demo-listing-ul
+
+.demo-nav
 {
-	margin-left:20px;
+/*	border: solid 1px var(--red);*/
+	display:flex;
+	flex-direction:row;
+	margin-bottom:30px;
+	justify-content:center;
+	align-content:space-around;
 }
-.demo-listing-li
+.demo-nav-item
 {
-	margin-bottom:10px;
-	list-style-position:outside;
-	list-style-type:square;
+	border: solid 1px var(--black-01);
+	background-color: var(--demo-nav-bg);
+	color:var(--black-08);
+	flex: 0 1 auto;
+	padding:10px;
+	text-align:center;
+	cursor:pointer;
+	font-size: 14px;
 }
+.demo-nav-item:hover
+{
+	border: solid 1px var(--black-04);
+	background-color: var(--demo-nav-bg-hover);
+	color:var(--black);
+}
+
 
 .anim-demo-block-panel
 {
@@ -105,7 +104,7 @@
 /*	border: solid 1px red;*/
 	border-top: solid 1px var(--black-01);
 	flex: 1 1 auto;
-	font-size:16px;
+	font-size:14px;
 	padding:10px;
 }
 
@@ -140,24 +139,9 @@ select.prog-infinites
 {
 	width: 100%;
 	z-index:0;
-	padding:6px;
+	padding:4px;
 }
 
-
-.hc-test-button
-{
-	border: solid 1px var(--black-02);
-	border-radius: 4px;
-	background-color:transparent;
-	padding:10px;
-	cursor:pointer;
-	transition: all 250ms ease-in-out;
-}
-.hc-test-button:hover
-{
-	background-color:rgba(248, 216, 0,1);
-	color:var(--black);
-}
 
 .hover-card-controls
 {

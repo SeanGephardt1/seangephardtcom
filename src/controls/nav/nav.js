@@ -55,7 +55,6 @@ export default class SiteNav extends React.Component
 								}
 								return _bool;
 							}}
-
 						>{item.component.defaultProps.LinkTitle}</NavLink>
 					))
 				}

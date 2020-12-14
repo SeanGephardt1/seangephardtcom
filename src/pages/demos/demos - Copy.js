@@ -315,7 +315,7 @@ export default class DemosPage extends React.Component
 		*/
 
         return (
-			<div className="page-layout">
+			<div className="sgcom-page-layout">
 
 				{/* change this */
 					this.state.modalOverlayDisplayed === true &&
@@ -351,11 +351,51 @@ export default class DemosPage extends React.Component
 				</div>
 
 				{ /*  CONTROLS  */ }
-				<div className="anim-demo-sub-header">Controls</div>
+				<div className="anim-demo-header">Controls</div>
 				<div className="anim-demo-desc">Customers sometimes need a little extra information or instruction regarding elements of the user interface that may not be completely intuitive or require additional description and/or functionality. Utilizing customized tooltips, dialogs and modal dialog in this scenario allow for additional information, specific data entry points or notifications.</div>
 
+
+				{ /*  CHARTS  */ }
+				<div className="anim-demo-header">Charts</div>
+				<div className="anim-demo-desc">Customers sometimes need a little extra information or instruction regarding elements of the user interface that may not be completely intuitive or require additional description and/or functionality. Utilizing customized tooltips, dialogs and modal dialog in this scenario allow for additional information, specific data entry points or notifications.</div>
+
+				<div className="anim-demo-block-panel">
+
+					{ /* Vertical Bar Chart - WIP */}
+					<div className="ani-demo-card-2">
+						<div className="ani-card-ctrl-block">
+							<BarChart
+								data={this.state.barChartData}
+								orientation={this.state.barChartOrientation}
+								animate={this.state.verticalBarChartAnimate} />
+						</div>
+						<div className="ani-card-text-block">
+							<div className="prog-bar-controls-2">
+								<div>Select orientation</div>
+								<select
+									className="prog-infinites"
+									value={this.state.barChartOrientation}
+									onChange={this.OnChange_BarChart_Orientations.bind( this )}>
+									{
+										Object.entries( BarChart.defaultProps.Orientations ).map( ( item, index ) => (
+											<option key={index} value={item[1]}>{ item[0] }</option>
+										))
+									}
+								</select>
+								<div className="margin-bottom-5"></div>
+								<div className="hc-test-button"
+								onClick={this.OnClick_Start_VbarChart.bind( this )}
+								>Randomize data</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+
 				{ /*  OVERLAYS */ }
-				<div className="anim-demo-sub-header">Overlays</div>
+				<div className="anim-demo-header">Overlays</div>
+				<div className="anim-demo-desc">Customers sometimes need a little extra information or instruction regarding elements of the user interface that may not be completely intuitive or require additional description and/or functionality. Utilizing customized tooltips, dialogs and modal dialog in this scenario allow for additional information, specific data entry points or notifications.</div>
 
 				<div className="anim-demo-block-panel">
 
@@ -380,7 +420,7 @@ export default class DemosPage extends React.Component
 						</div>
 						<div className="ani-card-text-block">
 							<div className="prog-bar-controls-2">
-								<div className="demo-nav-item"
+								<div className="hc-test-button"
 								onClick={this.OnClick_DisplayContextPanel.bind( this )}
 								>Click here</div>
 							</div>
@@ -420,7 +460,7 @@ export default class DemosPage extends React.Component
 						</div>
 						<div className="ani-card-text-block">
 							<div className="prog-bar-controls-2">
-							<div className="demo-nav-item"
+							<div className="hc-test-button"
 								onClick={this.OnClick_ToggleHoverCard.bind( this )}
 								>Click here</div>
 							</div>
@@ -437,7 +477,7 @@ export default class DemosPage extends React.Component
 						</div>
 						<div className="ani-card-text-block">
 							<div className="prog-bar-controls-2">
-							<div className="demo-nav-item"
+							<div className="hc-test-button"
 								onClick={this.OnClick_DisplayModalOverlay.bind( this )}
 								>Click here</div>
 							</div>
@@ -448,8 +488,9 @@ export default class DemosPage extends React.Component
 				</div>
 
 
-				{ /* PROGRESS INDICATORS */ }
-				<div className="anim-demo-sub-header">Progress Indicators</div>
+				{ /* Progress Indicators - COMPLETED */ }
+				<div className="anim-demo-header">Progress Indicators</div>
+				<div className="anim-demo-desc">Customers will need to know that something could take longer than expected and that it will eventually be displayed. Progress indicators allow for these types of scenarios and help set customer expectations that the app is 'doing work'. Utilizing animation in this scenario provide a key visual indicator to the user that something is happening.</div>
 
 				<div className="anim-demo-block-panel">
 
@@ -586,7 +627,7 @@ export default class DemosPage extends React.Component
 										className="input-range-demo"
 										min="0" max="1000" step="50" value={this.state.ProgPieSpeed}
 										onChange={ this.OnChange_ChangeProgPie2Speed.bind(this) }/>
-									<div className="demo-nav-item" onClick={this.OnClick_TestProgressPie2.bind( this )}>{this._prog_pie_btn_text}</div>
+									<button className="hc-test-button" onClick={this.OnClick_TestProgressPie2.bind( this )}>{this._prog_pie_btn_text}</button>
 								</div>							
 							</div>
 						</div> 

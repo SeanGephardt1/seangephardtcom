@@ -19,7 +19,7 @@ export default class MovieWorksApplication extends React.Component
 	};
 	static defaultProps = {
 		Title: "MovieWorks",
-		LinkTitle: "MovieWorks",
+		LinkTitle: "MovieWorks demo",
 		Href: "/demos/movie-works-demo/",
 		//Icon: SVG.AppNavButtons.Resume
 	};

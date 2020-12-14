@@ -1,23 +1,4 @@
-﻿.music-layout
-{
-/*	border: solid 1px black;*/
-	max-width:1024px;
-	overflow:auto;
-	display:flex;
-	flex-direction:column;
-	margin:24px;
-	opacity:0;
-	animation-name: AniPageFadeIn1;
-	animation-delay: 300ms;
-	animation-duration: 300ms;
-	animation-direction: normal;
-	animation-fill-mode: forwards;
-	animation-iteration-count:1;
-	animation-play-state: running;
-	animation-timing-function: ease-in-out;
-}
-
-.band-name
+﻿.band-name
 {
 	color: var(--nav-color-3);
 	font-size: 30px;

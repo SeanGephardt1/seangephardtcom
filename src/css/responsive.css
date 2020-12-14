@@ -15,44 +15,39 @@
 		flex-direction:column;
 		justify-content:flex-start;
 	}
-}
-
-@media (max-width: 680px)
-{
-	.home-layout-head
+	.demo-nav
 	{
 		flex-direction:column;
 	}
-	.home-layout-left
+}
+@media (max-width: 900px)
+{
+	.resume
 	{
-		flex: 1 1 auto;
-		padding-bottom:20px;
+/*		border: solid 1px red;*/
+		flex-direction:column;
+		flex-wrap:nowrap;
 	}
-	.home-layout-right
+	.resume-left
 	{
-		flex: 1 1 auto;
+		padding-right:0px;
 	}
-
-	.pf-block-overlay
+	.skills-related-links
 	{
-		background-color: var(--black-07);
-		color: var(--white);
+		flex-direction:row;
+		flex-wrap:wrap;
 	}
-
-	.design-panel
+	a.skills-related-link
 	{
-		padding-left:20px;
 		padding-right:20px;
 	}
-	.portfolio-panel
+	a.skills-related-link > span
 	{
-		padding-left:20px;
-		padding-right:20px;
+		padding-top:6px;
 	}
-	.portfolio-block
+	a.skills-related-link:first-child
 	{
-		padding-left:6px;
-		padding-right:6px;
+		 margin-bottom:0px;
+		 margin-right:6px;
 	}
-
 }

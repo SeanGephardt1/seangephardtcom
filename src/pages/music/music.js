@@ -24,7 +24,7 @@ export default class Music extends React.Component
 	render()
 	{	
 		return (
-			<div className="music-layout">
+			<div className="page-layout">
 
 				{/* BEGIN The Drive Through */}
 

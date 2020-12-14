@@ -287,7 +287,7 @@ export default class Html5CanvasDemo extends React.Component
 		const _rad = 0;
 
 		let _switch = Math.round( ( Math.random() * 6 ) );
-		//	console.debug( "_switch", _switch, _x, _y, _r_size );
+		//	cd..console.debug( "_switch", _switch, _x, _y, _r_size );
 		//	_switch = 6;
 
 		switch ( _switch )
@@ -484,12 +484,12 @@ export default class Html5CanvasDemo extends React.Component
 			<div className="sgcom-page-layout">
 				<div className="canvas-demo-header">{this.Title }</div>
 				<div className="canvas-demo-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis at faucibus felis. Nulla faucibus elit vel mollis finibus. Maecenas metus lacus, consectetur quis turpis ac, sollicitudin dapibus ipsum. Maecenas hendrerit turpis a neque scelerisque rhoncus. Pellentesque lobortis arcu sed mauris porttitor, id accumsan est aliquet. Vivamus congue quam neque, ac fermentum orci rhoncus ac. Quisque in metus eros. Nullam luctus ex urna, sed bibendum metus fringilla sed.</div>
-				<div className="canvas-menu">
-					<button className="canvas-menu-btn" onClick={this.OnClick_CreateScaledRects.bind( this )}>Render scaled opaque boxes</button>
-					<button className="canvas-menu-btn" onClick={this.OnClick_EVHTribute.bind( this )}>EVH Tribute</button>
-					<button className="canvas-menu-btn" onClick={ this.OnClick_CreateRandomGradientCircles.bind(this)}>Render gradient circles</button>
-					<button className="canvas-menu-btn" onClick={ this.OnClick_RenderAnimationCanvas.bind( this )}>{ this.state.AniBtnText}</button>
-					<button className="canvas-menu-btn" onClick={ this.OnClick_ResetCanvas.bind(this)}>Reset</button>
+				<div className="demo-nav">
+					<div className="demo-nav-item" onClick={this.OnClick_CreateScaledRects.bind( this )}>Render scaled opaque boxes</div>
+					<div className="demo-nav-item" onClick={this.OnClick_EVHTribute.bind( this )}>EVH Tribute</div>
+					<div className="demo-nav-item" onClick={ this.OnClick_CreateRandomGradientCircles.bind(this)}>Render gradient circles</div>
+					<div className="demo-nav-item" onClick={ this.OnClick_RenderAnimationCanvas.bind( this )}>{ this.state.AniBtnText}</div>
+					<div className="demo-nav-item" onClick={ this.OnClick_ResetCanvas.bind(this)}>Reset</div>
 				</div>
 				<div className="canvas-panel">
 					<canvas id="html-5-canvas" className="canvas-2d" ref={this.Canvas}
