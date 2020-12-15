@@ -481,7 +481,7 @@ export default class Html5CanvasDemo extends React.Component
     render()
 	{
         return (
-			<div className="sgcom-page-layout">
+			<div className="page-layout">
 				<div className="canvas-demo-header">{this.Title }</div>
 				<div className="canvas-demo-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis at faucibus felis. Nulla faucibus elit vel mollis finibus. Maecenas metus lacus, consectetur quis turpis ac, sollicitudin dapibus ipsum. Maecenas hendrerit turpis a neque scelerisque rhoncus. Pellentesque lobortis arcu sed mauris porttitor, id accumsan est aliquet. Vivamus congue quam neque, ac fermentum orci rhoncus ac. Quisque in metus eros. Nullam luctus ex urna, sed bibendum metus fringilla sed.</div>
 				<div className="demo-nav">

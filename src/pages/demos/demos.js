@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import StateStore from '../../js/state-store.js';
 import { PagesList } from '../../pages/pages.js';
-import SVG from '../../art/svgs.js';
+//	import SVG from '../../art/svgs.js';
 import './demos.css';
 
 // controls
@@ -24,7 +24,7 @@ export default class DemosPage extends React.Component
 		Title: "Demos",
 		LinkTitle: "Demos",
 		Href: "/demos/",
-		Icon: SVG.AppNavButtons.About
+		//Icon: SVG.AppNavButtons.About
 	};
 	constructor( props )
 	{

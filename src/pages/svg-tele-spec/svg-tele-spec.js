@@ -2,7 +2,7 @@
 
 import React from 'react';
 import './svg-tele-spec.css';
-import TelecasterSvg from "./tele-svg.js";
+import GuitarSVGs from "./tele-svg.js";
 
 export default class TeleSpecDemo extends React.Component
 {
@@ -32,12 +32,28 @@ export default class TeleSpecDemo extends React.Component
 			IsDragging: false,
 			dragClassName: "bg-svg-container",
 			rangeZoom: 5,
-			rangeValue: 1
+			rangeValue: 1,
+			currentSvg: GuitarSVGs.Guitars[0].name
 		};
+
+		console.debug( "this.currentSvg", this.currentSvg, GuitarSVGs.Guitars[0] );
 
 		this.ViewBox = "0 0 " + this.state.viewBoxValues[0] + " " + this.state.viewBoxValues[1];
 		return;
 	};
+
+	OnChange_SVG_SelectedItem( ev )
+	{	//	
+		console.debug( "OnChange_SVG_SelectedItem", ev.target.value, GuitarSVGs.Guitars );
+
+		//console.debug( "GuitarSVGs.Guitars[ev.target.value]", GuitarSVGs.Guitars[ev.target.value] );
+
+		this.setState( {
+			currentSvg: GuitarSVGs.Guitars[ev.target.value].name
+		} );
+		return;
+	}
+
 	OnClick_ResetZoom( ev )
 	{	
 		this.setState( {
@@ -143,8 +159,7 @@ export default class TeleSpecDemo extends React.Component
 
 	// dragging/panning
 	SVG_OnMouseDown( ev )
-	{	//	
-		console.debug( "SVG_OnMouseDown", ev );
+	{	//	console.debug( "SVG_OnMouseDown", ev );
 
 		this.setState( {
 			IsDragging: true,
@@ -182,32 +197,43 @@ export default class TeleSpecDemo extends React.Component
     render()
 	{
 		//	console.debug( "BigDataDemo.render()", this.state.transformMatrix );
-		//		<div>
-		//	<input type="file" id="myfile" name="myfile" />
-		//</div>
-
         return (
-			<div className="sgcom-page-layout">
-				<div className="bd-page-title">Fender Telecaster Spec SVG Zoom Demo</div>
-				<div className="bd-page-trademark">"Fender" & "Telecaster" are registered trademarks of Fender Musical Instrument Company.</div>
-				<div className="bd-menu">
-					<div className="bd-menu-item">
-						<label htmlFor="zoom_range">
+			<div className="page-layout">
+				<div className="bd-page-title">SVG zoom & pan demo</div>
+
+				<div className="bd-page-description">Hold the "shift" key to zoom in & out using the mouse wheel.</div>
+
+				<div className="input-nav">
+
+					<label htmlFor="svg_list" className="select-svg-list">
+						<span>Select a SVG:</span>
+						<select
+							className=""
+							value={this.state.currentSvg}
+							onChange={this.OnChange_SVG_SelectedItem.bind( this )}>
+							{
+								GuitarSVGs.Guitars.map( ( item, index ) => (
+									<option key={index} value={ index }>{ item.name }</option>
+								))
+							}
+							</select>
+						</label>
+
+						<label htmlFor="zoom_range" className="zoom-range">
 							<span>Select a size:</span>
 							<span>{this.state.rangeValue}</span>
-						</label>
-						<input type="range" id="zoom_range" name="zoom_range"
+							<input type="range" id="zoom_range" name="zoom_range"
 							min="1" max="10" step="1"
 							value={this.state.rangeZoom}
 							onChange={this.OnChangeRange_Zoom.bind( this )} />
-					</div>
-					<div className="bd-menu-button" onClick={ this.OnClick_ZoomIn.bind(this)}>Zoom In</div>
-					<div className="bd-menu-button" onClick={ this.OnClick_ZoomOut.bind(this)}>Zoom out</div>
-					<div className="bd-menu-button" onClick={ this.OnClick_ResetZoom.bind(this)}>Reset</div>
+						</label>
+
+						<div className="demo-nav-item" onClick={ this.OnClick_ZoomIn.bind(this)}>Zoom In</div>
+						<div className="demo-nav-item" onClick={ this.OnClick_ZoomOut.bind(this)}>Zoom out</div>
+						<div className="demo-nav-item" onClick={this.OnClick_ResetZoom.bind( this )}>Reset</div>
+
 				</div>
-				<div className="bd-menu">
-					Hold the "shift" key to zoom in & out using the mouse wheel.
-				</div>
+
 				{/*<div className="bd-menu">this.state.transform</div>*/}		
 				<svg id="root-svg"
 					className={this.state.dragClassName}
@@ -229,9 +255,11 @@ export default class TeleSpecDemo extends React.Component
 					{ /* content */}
 
 					<g id="SvgChildDraggable1" draggable="true" transform={this.state.transform}>
-						<TelecasterSvg />
+						{this.state.currentSvg.svg}
 					</g>
 				</svg>
+
+				<div className="bd-page-trademark">"Fender" & "Telecaster" are registered trademarks of Fender Musical Instrument Company.</div>
 			</div>
         );
     }
