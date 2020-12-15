@@ -1,12 +1,12 @@
 import React from './react';
-//import { Engine, Scene } from '@babylonjs/core'
-import './webgl.css';
+import './_template.css';
 
-export default class WebGLDemo extends React.Component
+export default class PageTemplate extends React.Component
 {
 	static defaultProps = {
 		Title: "WebGL Demos",
 		LinkTitle: "WebGL Demos",
+		// for demos pages, add "/demos/" route/folder path
 		Href: "/demos/webgl/",
 		// Icon: SVG.AppNavButtons.About
 	};
@@ -28,15 +28,9 @@ export default class WebGLDemo extends React.Component
 	};
     render()
 	{
-		console.debug( "WebGL.render()" );
-		//					<canvas ref={reactCanvas} {...rest} />
+		console.debug( "PageTemplate.render()" );
         return (
-			<div className="sgcom-page-layout">
-				<div>WebGL demo</div>
-				<div>
-
-				</div>					
-			</div>
+			<div className="page-layout">Page Template</div>
         );
     }
 };

@@ -1,6 +1,4 @@
-﻿.content-lorum-ipsum-panel
+﻿.content-lorum-ipsum-context-panel
 {
-}
-.content-lorum-ipsum-context-panel
-{
+	border: solid 1px red;
 }
