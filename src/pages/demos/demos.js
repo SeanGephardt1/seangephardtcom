@@ -325,7 +325,7 @@ export default class DemosPage extends React.Component
 				<ContextPanel
 					displayed={ this.state.contextPanelDisplayed }
 					closeEvent={this.OnClick_HideContextPanel.bind( this )}
-					title="Declaration of Independence"
+					title="About a girl by Nirvana"
 					placement={this.state.contextPanelPlacement}
 				></ContextPanel>
 
