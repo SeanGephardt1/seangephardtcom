@@ -2,7 +2,7 @@
 
 import React from 'react';
 import './svg-tele-spec.css';
-import GuitarSVGs from "./tele-svg.js";
+import ArtSVGs from "./svg-zoom-data.js";
 
 export default class TeleSpecDemo extends React.Component
 {
@@ -24,6 +24,7 @@ export default class TeleSpecDemo extends React.Component
 		this._default_matrix = "matrix(1, 0, 0, 1, 0, 0)";
 		this._default_translate = "translate(0,0)";
 
+
 		this.state = {
 			viewBoxValues: [1250, 1000],
 			matrixValues: [1, 0, 0, 1, 0, 0],
@@ -33,23 +34,20 @@ export default class TeleSpecDemo extends React.Component
 			dragClassName: "bg-svg-container",
 			rangeZoom: 5,
 			rangeValue: 1,
-			currentSvg: GuitarSVGs.Guitars[0].name
+			currentSvg: ArtSVGs.Art[0].name
 		};
 
-		console.debug( "this.currentSvg", this.currentSvg, GuitarSVGs.Guitars[0] );
+		this.SVG = ArtSVGs.Art[0].svg;
 
 		this.ViewBox = "0 0 " + this.state.viewBoxValues[0] + " " + this.state.viewBoxValues[1];
 		return;
 	};
 
 	OnChange_SVG_SelectedItem( ev )
-	{	//	
-		console.debug( "OnChange_SVG_SelectedItem", ev.target.value, GuitarSVGs.Guitars );
-
-		//console.debug( "GuitarSVGs.Guitars[ev.target.value]", GuitarSVGs.Guitars[ev.target.value] );
-
+	{	//	console.debug( "OnChange_SVG_SelectedItem", ev.target.value, GuitarSVGs.Guitars[ev.target.value].name);
+		this.SVG = ArtSVGs.Art[ev.target.value].svg;
 		this.setState( {
-			currentSvg: GuitarSVGs.Guitars[ev.target.value].name
+			currentSvg: ArtSVGs.Art[ev.target.value].name
 		} );
 		return;
 	}
@@ -169,12 +167,15 @@ export default class TeleSpecDemo extends React.Component
 		return false;
 	};
 	SVG_OnMouseUp( ev )
-	{	//	console.debug( "SVG_OnMouseUp");
-		this.setState( {
-			IsDragging: false,
-			dragClassName: "bg-svg-container",
-		} );
+	{	//	console.debug( "SVG_OnMouseUp", this.state.IsDragging );
 		ev.preventDefault();
+		if ( this.state.IsDragging === true )
+		{
+			this.setState( {
+				IsDragging: false,
+				dragClassName: "bg-svg-container",
+			} );
+		}
 		return false;
 	};
 	SVG_OnMouseMove( ev )
@@ -196,6 +197,7 @@ export default class TeleSpecDemo extends React.Component
 	};
     render()
 	{
+		//	console.debug( "render.this.currentSvg", this.state.currentSvg );
 		//	console.debug( "BigDataDemo.render()", this.state.transformMatrix );
         return (
 			<div className="page-layout">
@@ -208,18 +210,17 @@ export default class TeleSpecDemo extends React.Component
 					<label htmlFor="svg_list" className="select-svg-list">
 						<span>Select a SVG:</span>
 						<select
-							className=""
-							value={this.state.currentSvg}
+							defaultValue={this.state.currentSvg}
 							onChange={this.OnChange_SVG_SelectedItem.bind( this )}>
 							{
-								GuitarSVGs.Guitars.map( ( item, index ) => (
+								ArtSVGs.Art.map( ( item, index ) => (
 									<option key={index} value={ index }>{ item.name }</option>
 								))
 							}
-							</select>
-						</label>
+						</select>
+					</label>
 
-						<label htmlFor="zoom_range" className="zoom-range">
+					<label htmlFor="zoom_range" className="zoom-range">
 							<span>Select a size:</span>
 							<span>{this.state.rangeValue}</span>
 							<input type="range" id="zoom_range" name="zoom_range"
@@ -228,18 +229,17 @@ export default class TeleSpecDemo extends React.Component
 							onChange={this.OnChangeRange_Zoom.bind( this )} />
 						</label>
 
-						<div className="demo-nav-item" onClick={ this.OnClick_ZoomIn.bind(this)}>Zoom In</div>
-						<div className="demo-nav-item" onClick={ this.OnClick_ZoomOut.bind(this)}>Zoom out</div>
-						<div className="demo-nav-item" onClick={this.OnClick_ResetZoom.bind( this )}>Reset</div>
+					<div className="demo-nav-item" onClick={this.OnClick_ZoomIn.bind( this )}>Zoom In</div>
+					<div className="demo-nav-item" onClick={this.OnClick_ZoomOut.bind( this )}>Zoom out</div>
+					<div className="demo-nav-item" onClick={this.OnClick_ResetZoom.bind( this )}>Reset</div>
 
 				</div>
 
 				{/*<div className="bd-menu">this.state.transform</div>*/}		
 				<svg id="root-svg"
-					className={this.state.dragClassName}
 					x="0px" y="0px"
+					className={this.state.dragClassName}
 					viewBox={this.ViewBox}
-					draggable="true"
 					onWheel={this.OnWheel_Zoom.bind( this )}
 					onMouseDown={this.SVG_OnMouseDown.bind( this )}
 					onMouseMove={this.SVG_OnMouseMove.bind( this )}
@@ -255,7 +255,7 @@ export default class TeleSpecDemo extends React.Component
 					{ /* content */}
 
 					<g id="SvgChildDraggable1" draggable="true" transform={this.state.transform}>
-						{this.state.currentSvg.svg}
+						{this.SVG}
 					</g>
 				</svg>
 

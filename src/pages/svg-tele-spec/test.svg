@@ -1,0 +1,42 @@
+﻿<svg>
+  <defs
+     id="defs60">
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3564">
+      <path
+         d="m 63,43 512.622,0 0,313.129 L 63,356.129 63,43 z"
+         id="path3566" />
+    </clipPath>
+  </defs>
+  <polygon
+     points="315,545 235,375 315,205 395,375 "
+     id="polygon10"
+     style="fill:none;stroke:#ffffff;stroke-width:40"
+     transform="translate(20604.267,11941.592)" />
+  <path
+     d="M -4.4988469e-6,0 161.98028,0 l 0,161.99956 -161.9802844988469,0 0,-161.99956 z"
+     style="fill:#fecf33;fill-opacity:1;fill-rule:evenodd;stroke:none"
+     id="path3894"
+     />
+  <path
+     d="m 80.986185,11.57956 c 38.241195,0 69.433895,31.18307 69.433895,69.41461 0,38.24119 -31.1927,69.42425 -69.433895,69.42425 -38.2315,0 -69.42419,-31.18306 -69.42419,-69.42425 0,-38.23154 31.19269,-69.41461 69.42419,-69.41461"
+     style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none"
+     id="path3898"
+      />
+  <path
+     d="m 114.23278,23.60336 -33.256195,57.39071 -33.2465,-57.39071 66.502695,0 z"
+     style="fill:#fecf33;fill-opacity:1;fill-rule:evenodd;stroke:none"
+     id="path3906"
+     />
+  <path
+     d="m 80.947685,81.07114 -33.2562,57.39071 -33.24649,-57.39071 66.50269,0 z"
+     style="fill:#fecf33;fill-opacity:1;fill-rule:evenodd;stroke:none"
+     id="path3914"
+     />
+  <path
+     d="m 147.50818,81.07114 -33.2465,57.39071 -33.246495,-57.39071 66.492995,0 z"
+     style="fill:#fecf33;fill-opacity:1;fill-rule:evenodd;stroke:none"
+     id="path3922"
+     />
+</svg>

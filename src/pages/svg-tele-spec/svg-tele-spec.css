@@ -22,23 +22,27 @@
 	flex: 1 1 auto;
 	display:flex;
 	flex-direction:row;
-	flex-wrap:nowrap;
+	flex-wrap:wrap;
 	margin-bottom: 10px;
 }
 
 .select-svg-list
 {
-	border: solid 1px red;
+/*	border: solid 1px red;*/
 	display:flex;
-	flex: 1 1 auto;
+	flex: 0 1 auto;
 	text-align:center;
-	justify-content:center;
 	align-items:center;
+	padding-right:20px;
+}
+.select-svg-list > span
+{
+	margin-right:20px;
 }
 
 .zoom-range
 {
-	border: solid 1px red;
+/*	border: solid 1px red;*/
 	display:flex;
 	flex: 1 1 auto;
 	text-align:center;
