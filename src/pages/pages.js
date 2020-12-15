@@ -1,7 +1,4 @@
-/*
-	Pages list, used in asp..js & controls/nav/navigation.js
-*/
-
+/* Pages list, used in app.js & controls/nav/navigation.js*/
 import Home from './home/home.js';
 import Resume from './resume/resume.js';
 import Music from './music/music.js';
@@ -10,12 +7,11 @@ import AzureCaseStudyDemo from './azure-ux/azure-case-study.js';
 import MovieStoreExtension from './movie-works-demo/movieworks.js';
 import TeleSpecDemo from './svg-tele-spec/svg-tele-spec.js';
 import Html5CanvasDemo from './canvas-demo/canvas-demo.js';
-
+//  import TestPage from './test/test.js';
 //  import GuitarApp from './guitar-app/guitar-app.js';
 //  import GuitarStoreExtension from './guitar-store/guitar-store.js';
-//	import TestPage2 from './test2/test2.js';
 
-const _pages = [
+const _p = [
     {
         path: Home.defaultProps.Href,
         component: Home
@@ -58,8 +54,12 @@ const _pages = [
         path: Music.defaultProps.Href,
         component: Music
     },
+    //{
+    //    path: TestPage.defaultProps.Href,
+    //    component: TestPage
+    //}
 ];
 
 export {
-	_pages as PagesList
+	_p as PagesList
 }
