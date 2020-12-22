@@ -1,15 +1,15 @@
 //	https://raw.githubusercontent.com/petercollingridge/code-for-blog/master/svg-interaction/pan_and_zoom/pan_and_zoom.svg
 
 import React from 'react';
-import './svg-tele-spec.css';
+import './svg-zoom.css';
 import ArtSVGs from "./svg-zoom-data.js";
 
-export default class TeleSpecDemo extends React.Component
+export default class SvgZoomDemo extends React.Component
 {
 	static defaultProps = {
-		Title: "SVG Fender Telecaster Spec Demo",
-		LinkTitle: "SVG Fender Telecaster Spec Demo",
-		Href: "/demos/svg-tele/",
+		Title: "SVG zoom & pan demo",
+		LinkTitle: "SVG zoom & pan demo",
+		Href: "/demos/svg-zoom/",
 		//Icon: SVG.AppNavButtons.About,
 	};
 	constructor( props )
@@ -201,9 +201,9 @@ export default class TeleSpecDemo extends React.Component
 		//	console.debug( "BigDataDemo.render()", this.state.transformMatrix );
         return (
 			<div className="page-layout">
-				<div className="bd-page-title">SVG zoom & pan demo</div>
+				<div className="bd-page-title">SVG (Scalable Vector Graphics) zoom & pan demo</div>
 
-				<div className="bd-page-description">Hold the "shift" key to zoom in & out using the mouse wheel.</div>
+				<div className="bd-page-description"><a href="https://en.wikipedia.org/wiki/Scalable_Vector_Graphics" target="new" title="SVG (Scalable Vector Graphics)">SVG (Scalable Vector Graphics)</a> is a great, performant and web browser standards compliant format that allows for creating and using vector based programs such as Adobe Illiustrator.<br/><br/>Select from a variety of SVG illistrations. Hold the "shift" key to zoom in & out using the mouse wheel or using the slider control. Click and hold with a mouse to pan.</div>
 
 				<div className="input-nav">
 
@@ -259,7 +259,7 @@ export default class TeleSpecDemo extends React.Component
 					</g>
 				</svg>
 
-				<div className="bd-page-trademark">"Fender" & "Telecaster" are registered trademarks of Fender Musical Instrument Company.</div>
+				<div className="bd-page-trademark">"Adobe Illustrator", "Fender" & "Telecaster" are registered trademarks of thier respective companies.</div>
 			</div>
         );
     }

@@ -34,13 +34,22 @@
 {
 	margin-top:10px;
 	margin-left:20px;
-	padding-right:10px;
+}
+.cv-section > ul li::before
+{
+	content: "\2022";
+	color: var(--res-skills-header);
+	font-weight: bold;
+	display: inline-block; 
+	width: 20px;
+	margin-left: -20px;
 }
 .cv-section > ul > li
 {
-	font-size:90%;
-	list-style-type:square;
+	list-style-type:none;
+	margin-bottom:6px;
 }
+
 
 /* right column */
 .skills-section
