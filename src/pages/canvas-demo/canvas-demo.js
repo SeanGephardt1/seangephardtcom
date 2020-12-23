@@ -38,8 +38,8 @@ export default class Html5CanvasDemo extends React.Component
 
 		this.AnimationID = undefined;
 		this.AniCounter = 0;
-		this.AniMax = 1000;
-		this.selectedAnimation = this.Render_GradientAnimation;
+		this.AniMax = 100;
+		this.selectedAnimation = this.RenderAnimation_DefaultGradient.bind(this);
 
 		this.state = {
 			changed: false,
@@ -48,13 +48,15 @@ export default class Html5CanvasDemo extends React.Component
 			AniBtnText: "Start",
 			animationSelected: this.AnimationsList[0]
 		};
+
+		this.DefaultGrad_Coords = {};
 		return;
 	};
 	componentDidMount() 
 	{	//	console.debug( "WebGLDemo.componentDidMount()", this.canvas.current );
 		this.CanvasContext = this.Canvas.current.getContext( "2d" );
-		//	this.Render_DefaultGradient( this.CanvasContext );
-		this.Render_EyeStrain( this.CanvasContext );
+		this.Render_DefaultGradient( this.CanvasContext );
+		//	this.Render_EyeStrain( this.CanvasContext );
 		return;
 	}
 	componentWillUnmount()
@@ -67,7 +69,7 @@ export default class Html5CanvasDemo extends React.Component
 	// UTILITY METHODS
 	DefaultCanvasReset( c )
 	{
-		console.debug( "DefaultCanvasReset", c );
+		//	console.debug( "DefaultCanvasReset", c );
 		c.globalAlpha = 1;
 		c.imageSmoothingQuality = "high";
 		c.lineWidth = 1;
@@ -155,7 +157,7 @@ export default class Html5CanvasDemo extends React.Component
 		//	https://blog-en.openalfa.com/how-to-draw-with-the-mouse-in-a-html5-canvas
 		//	https://bearnithi.com/2019/12/12/understanding-canvas-draw-a-line-in-canvas-using-mouse-and-touch-events-in-javascript/
 		//	console.debug( "this.state.isAnimating", this.state.isAnimating );
-		console.debug( "OnClick_RenderAnimationCanvas" );
+		//	console.debug( "OnClick_RenderAnimationCanvas" );
 		if ( this.state.isAnimating === false )
 		{
 			this.StartAnimation();
@@ -172,11 +174,11 @@ export default class Html5CanvasDemo extends React.Component
 
 		if ( this.CanvasContext === undefined )
 		{
-			this.CanvasContext = this.OnClick_ResetCanvas();
+			this.CanvasContext = this.Canvas.current.getContext( "2d" );
 			this.CanvasContext.clearRect( 0, 0, this.state.CanvasSize, this.state.CanvasSize );
 		}
 
-		this.AnimationID = window.requestAnimationFrame( () => this.selectedAnimation );
+		this.AnimationID = window.requestAnimationFrame( () => this.selectedAnimation( this.CanvasContext) );
 
 		this.setState( {
 			isAnimating: true,
@@ -198,64 +200,68 @@ export default class Html5CanvasDemo extends React.Component
 		return;
 	}
 
-	//OnClick_ResetCanvas()
-	//{
-	//	console.debug( "ResetCanvas", this.Canvas.current, this.CanvasContext);
-	//	//this.AniCounter = 0;
-	//	//this.StopAnimation();
-	//	//this.CanvasContext = undefined;
-	//	//	this.Render_DefaultGradient( this.CanvasContext );
-
-	//	//const c = this.Canvas.current.getContext( "2d" );
-	//	//c.globalAlpha = 1;
-	//	//c.imageSmoothingQuality = "high";
-	//	//c.lineWidth = 1;
-	//	//c.fillStyle = "rgba(0,0,0,1)";
-	//	//c.strokeStyle = "rgba(0,0,0,1)";
-	//	//c.shadowColor = "rgba(0,0,0,1)";
-	//	//c.shadowBlur = 0;
-	//	//c.shadowOffsetX = 0;
-	//	//c.shadowOffsetY = 0;
-	//	//c.setTransform( 1, 0, 0, 1, 0, 0 );
-	//	//c.clearRect( 0, 0, this.state.CanvasSize, this.state.CanvasSize );
-
-	//	//let fillGrad = c.createLinearGradient( 0, 0, this.state.CanvasSize, this.state.CanvasSize );
-	//	//this.DefaultGradientColorStops( fillGrad );
-	//	//c.fillStyle = fillGrad;
-	//	//c.fillRect( 0, 0, this.state.CanvasSize, this.state.CanvasSize );
-
-	//	//c.fillStyle = "rgba(255,255,255,1)";
-	//	// c.save();
-	//	return;
-	//};
-
-
 	// RENDERS &  ANIMATIONS
-
 	Render_DefaultGradient( c )
-	{
-		console.debug( "Render_DefaultGradient", c );
+	{	//	console.debug( "Render_DefaultGradient", c );
 		this.DefaultCanvasReset( c );
 
+		this.DefaultGrad_Coords = {
+			x0: this.state.CanvasSize / 2,
+			y0: this.state.CanvasSize / 2,
+			r0: this.state.CanvasSize / 8,
+			x1: this.state.CanvasSize / 2,
+			y1: this.state.CanvasSize / 2,
+			r1: this.state.CanvasSize / 1.5
+		}
+
 		let radialGrad = c.createRadialGradient(
-			this.state.CanvasSize / 2,
-			this.state.CanvasSize / 2,
-			this.state.CanvasSize / 8,
-			this.state.CanvasSize / 2,
-			this.state.CanvasSize / 2,
-			this.state.CanvasSize /1.5
+			this.DefaultGrad_Coords.x0,
+			this.DefaultGrad_Coords.y0,
+			this.DefaultGrad_Coords.r0,
+			this.DefaultGrad_Coords.x1,
+			this.DefaultGrad_Coords.y1,
+			this.DefaultGrad_Coords.r1
 		);
 		this.DefaultGradientColorStops( radialGrad );
+
 		c.fillStyle = radialGrad;
 		c.fillRect( 0, 0, this.state.CanvasSize, this.state.CanvasSize );
-
 		c.fillStyle = "rgba(255,255,255,1)";
 		c.save();
 		return;
 	};
 	RenderAnimation_DefaultGradient( c )
 	{
-		console.debug( "Render_GradientAnimation", c, this.CanvasContext );
+		console.debug( "Render_GradientAnimation", this.AniCounter);
+
+		if ( this.AniCounter < this.AniMax )
+		{
+			this.AniCounter++;
+
+			console.debug( "this.DefaultGrad_Coords", this.DefaultGrad_Coords );
+
+			let radialGrad = c.createRadialGradient(
+				this.state.CanvasSize / 2,
+				this.state.CanvasSize / 2,
+				this.state.CanvasSize / 8 + this.AniCounter,
+				this.state.CanvasSize / 2,
+				this.state.CanvasSize / 2,
+				this.state.CanvasSize /1.5 + this.AniCounter
+			);
+			this.DefaultGradientColorStops( radialGrad );
+
+			c.fillStyle = radialGrad;
+			c.fillRect( 0, 0, this.state.CanvasSize, this.state.CanvasSize );
+			c.fillStyle = "rgba(255,255,255,1)";
+			c.save();
+
+			this.AnimationID = window.requestAnimationFrame( () => this.RenderAnimation_DefaultGradient( c ) );
+		}
+		else if ( this.AniCounter === this.AniMax )
+		{
+			this.AniCounter = 0;
+			this.StopAnimation();
+		}
 		return;
 	};
 
@@ -416,7 +422,7 @@ export default class Html5CanvasDemo extends React.Component
 		c.shadowOffsetY = 10;
 		c.fillRect( 0, 0, this.state.CanvasSize, this.state.CanvasSize );
 
-		for ( var i = 0; i < 100; i++ )
+		for ( var i = 0; i < 200; i++ )
 		{
 			const _x = Math.round( Math.random() * ( this.state.CanvasSize ) );
 			const _y = Math.round( Math.random() * ( this.state.CanvasSize ) );
