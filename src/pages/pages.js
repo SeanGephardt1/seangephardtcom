@@ -6,7 +6,7 @@ import DemosPage from './demos/demos.js';
 import AzureCaseStudyDemo from './azure-ux/azure-case-study.js';
 import SvgZoomDemo from './svg-zoom/svg-zoom.js';
 import Html5CanvasDemo from './canvas-demo/canvas-demo.js';
-import SvgArtPage from './svg-art/svg-art.js';
+import CssArtPage from './css-art/css-art.js';
 
 //  import MovieStoreExtension from './movie-works-demo/movieworks.js';
 //  import TestPage from './test/test.js';
@@ -39,8 +39,8 @@ const _p = [
                 component: Html5CanvasDemo
             },
             {
-                path: SvgArtPage.defaultProps.Href,
-                component: SvgArtPage
+                path: CssArtPage.defaultProps.Href,
+                component: CssArtPage
             },
             //{
             //    path: MovieStoreExtension.defaultProps.Href,
