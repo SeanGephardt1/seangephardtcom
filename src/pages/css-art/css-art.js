@@ -37,7 +37,8 @@ export default class CssArtPage extends React.Component
 
 		this.state = {
 			changed: false,
-			animationRunning: "bubbles"
+			animationRunning: "bubbles",
+			aniText: "Animate"
 		};
 
 		return;
@@ -59,7 +60,7 @@ export default class CssArtPage extends React.Component
 			let _random_width = this.RandomNumberRange( 0, 2048 );
 			let _top = this.RandomNumberRange( 512, 1024 );
 			let _left = this.RandomNumberRange( -256, 256 );
-			let _ani_duration = this.RandomNumberRange( 500, 5000 );
+			let _ani_duration = this.RandomNumberRange( 1000, 5000 );
 
 			let _gr_rdn = Math.round( Math.random() * ( this.Gradients.length - 1 ) );
 			let _bg_gr = this.Gradients[_gr_rdn];
@@ -69,7 +70,7 @@ export default class CssArtPage extends React.Component
 
 			let _s = {
 				height: _random_height + _px,
-				width: _random_width + _px,
+				width: "100%",//_random_width + _px,
 				borderRadius: _random_height * 2 + _px,
 				top: _top,
 				left: _left,
@@ -91,34 +92,51 @@ export default class CssArtPage extends React.Component
 		return _return_array;
 	};
 	OnClick_CreateNewPatterns( ev )
-	{	//	console.debug( "OnClick_CreateNewPatterns" );
-
+	{	//	console.debug( "OnClick_CreateNewPatterns",this.state  );
 		let _temp = "";
-
+		let _text = "";
 		if ( this.state.changed === false )
 		{
 			_temp = "bubbles bubbles-running";
+			_text = "Pause";
 		}
 		else if ( this.state.changed === true )
 		{
 			_temp = "bubbles";
+			_text = "Animate";
 		}
 
 		this.setState( {
 			changed: !this.state.changed,
-			animationRunning: _temp
+			animationRunning: _temp,
+			aniText: _text
 		} );
 		return;
 	}
+	OnClick_NewPatterns( ev )
+	{	//	console.debug( "OnClick_NewPatterns", this.state );
+		this.Bubbles = this.CreateBubbles();
+		this.setState( {
+			changed: false,
+			animationRunning: "bubbles",
+			aniText: "Animate"
+		} );
+		return;
+	};
     render()
 	{
 		//	console.debug( "SvgArtPage.render()", this.state.changed, this.state.animationRunning );
         return (
 			<div className="page-layout">
 				<div className="bd-page-title">CSS animation demo</div>
+				<div className="input-nav">
+					<div className="demo-nav-item" onClick={this.OnClick_NewPatterns.bind( this )}>New pattern</div>
+					<div className="demo-nav-item" onClick={this.OnClick_CreateNewPatterns.bind( this )}>{this.state.aniText}</div>
+
+				</div>
 				<div className="svg-art-main-panel">
 
-					<div className="svg-art-block-panel" title="Click to create a new pattern" onClick={ this.OnClick_CreateNewPatterns.bind(this)}>
+					<div className="svg-art-block-panel" title="Click to create a new pattern">
 						{
 							this.Bubbles.map( ( item, index ) =>
 								(
