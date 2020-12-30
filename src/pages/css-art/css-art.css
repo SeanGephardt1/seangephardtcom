@@ -3,29 +3,34 @@
 	--debug-linear-gradient:  linear-gradient(90deg, rgba(0,0,0,0.5) 0, rgba(255,255,255,0.5) 100%);
 
 	--bg-lg:linear-gradient(-45deg, 
-	rgba(0, 114, 190, 0.6) 0,
-	rgba(141, 0, 163, 0.6) 100%);
+	rgba(0, 128, 190, 0.6) 0,
+	rgba(160, 0, 160, 0.6) 100%);
 
 
-	--bg-lg-01:linear-gradient(-45deg, 
-	rgba(255, 106, 0, 0.6) 0,
-	rgba(255, 216, 0, 0.6) 100%);
+	--bg-lg-01:linear-gradient(0deg, 
+	rgba(255, 106, 0, 1) 0,
+	rgba(255, 216, 0, 1) 100%);
 
-	--bg-lg-02:linear-gradient(-45deg, 
-	rgba(203, 10, 10, 0.6) 0,
-	rgba(2, 172, 0, 0.60) 100%);
+	--bg-lg-02:linear-gradient(0deg, 
+	rgba(203, 10, 10, 1) 0,
+	rgba(255, 148, 0, 1) 100%);
 
-	--bg-lg-03:linear-gradient(-45deg, 
-	rgba(0, 168, 3, 0.6) 0,
-	rgba(135, 0, 156, 0.6) 100%);
+	--bg-lg-03:linear-gradient(0deg, 
+	rgba(0, 168, 3, 1) 0,
+	rgba(255, 216, 0, 1) 100%);
 
-	--bg-lg-04:linear-gradient(-45deg, 
-	rgba(57, 60, 172, 0.6) 0,
-	rgba(67, 229, 251, 0.6) 100%);
+	--bg-lg-04:linear-gradient(0deg, 
+	rgb(15, 0, 207) 0,
+	rgba(67, 229, 251, 1) 100%);
 
-	--bg-lg-05:linear-gradient(-45deg, 
-	rgba(255, 148, 0, 0.6) 0,
-	rgba(217, 0, 153, 0.6) 100%);
+	--bg-lg-05:linear-gradient(0deg, 
+	rgb(180, 0, 0) 0,
+	rgba(217, 0, 153, 1) 100%);
+
+	--bg-lg-EVH:linear-gradient(0deg, 
+	rgba(255, 0, 0, 1) 0,
+	rgba(255, 255,255, 1) 50%,
+	rgba(0, 0, 0, 1) 100%);
 
 }
 
@@ -37,13 +42,12 @@
 .svg-art-block-panel
 {
 	position:relative;
-	border: solid 1px var(--black-01);
+	border: solid 0px var(--black-01);
 	background-color:var(--black-01);
 	background-image:var(--bg-lg);
 	margin-bottom:10px;
 	overflow:hidden;
 	height:1024px;
-	cursor:pointer;
 }
 .svg-art-block-panel:last-child
 {
@@ -55,9 +59,9 @@
 {
 	position:absolute;
 	background-color: var(--black-01);
-	border: solid 1px var(--black-01);
+	border: solid 0px var(--black-01);
 	box-shadow: 0px 0px 10px 0px var(--black-04);
-/*	transform:rotate(45deg) scale(1,1) translate(0,0);*/
+	transform:rotate(45deg) scale(1,1) translate(0px,0px);
 
 	animation-delay:0ms;
 	animation-direction:normal;
@@ -79,35 +83,16 @@
 	50%
 	{
 		transform: rotate(-45deg);
-		background-image: var(	--bg-lg-05);
 	}
 }
 @keyframes AniScale2
 {
 	0%, 100%
 	{
-		transform: rotate(45deg) scale(1,1) translate(0,0);
-	}
-	30%
-	{
-		transform: rotate(45deg) scale(0.5,0.5) translate(100px,0);
-		background-image: var(	--bg-lg-05);
+		transform: rotate(45deg) scale(1,1) translate(0px,0px);
 	}
 	50%
 	{
-		transform: rotate(45deg) scale(2,2) translate(0,100px);
+		transform: rotate(45deg) scale(3,0.4) translate(0px,-512px);	
 	}
-}
-@keyframes AniSomeThing1
-{
-	0%, 100%
-	{
-		transform: rotate(45deg);
-	}
-	50%
-	{
-		transform: rotate(-360deg);
-		background-image: var(	--bg-lg-05);
-	}
-
 }
