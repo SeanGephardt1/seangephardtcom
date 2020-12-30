@@ -24,8 +24,8 @@ main
 }
 .page-layout /* most pages */
 {
-/*	border: solid 1px var(--black-02);*/
-	min-width: 280px;
+/*	border: solid 1px var(--black-02);
+*/	min-width: 280px;
 	max-width:1024px;
 	overflow:auto;
 	display:flex;

@@ -1,0 +1,38 @@
+					<div className="svg-art-block-panel">
+						<svg width="1024" height="1024" viewBox="0 0 1024 1024">
+							<linearGradient id="sg-svg-art-lg-01"
+								gradientUnits="userSpaceOnUse"
+								x1="0" y1="300"    
+								x2="300" y2="300">
+								<stop  offset="0" style={{'stopColor':'#FF0000'}}/>
+								<stop  offset="1" style={{'stopColor':'#0000FF'}}/>
+							</linearGradient>
+
+							<rect className="svg-debug" fill="url(#sg-svg-art-lg-01)" />
+							<rect className="svg-debug-2" fill="url(#sg-svg-art-lg-01)" />
+
+						</svg>
+					</div>
+
+
+					/* styles */
+.svg-debug
+{
+	stroke:var(--black);
+	stroke-width: 0.1px;
+	height:80px;
+	width:300px;
+	rx:40px;
+	ry:40px;
+}
+.svg-debug-2
+{
+	stroke:var(--black);
+	stroke-width: 0.1px;
+	x:100px;
+	y:100px;
+	height:80px;
+	width:300px;
+	rx:40px;
+	ry:40px;
+}

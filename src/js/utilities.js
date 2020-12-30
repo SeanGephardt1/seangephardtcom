@@ -495,6 +495,16 @@ const _debug = console.debug;
 class _Utilities 
 {
 	//constructor() {};
+	static RandomNumberRange( min, max )
+	{
+		//	console.debug( "RandomNumberRange", min, max );
+
+		const _rv = Math.round(Math.random() * ( max - min ) + min);
+		console.debug( "_rv", _rv );
+
+		return _rv; 
+	}
+
 	static NewGuid()
 	{
 		const S4 = function () 

@@ -1,0 +1,82 @@
+﻿:root
+{
+	--debug-linear-gradient:  linear-gradient(90deg, rgba(0,0,0,0.5) 0, rgba(255,255,255,0.5) 100%);
+
+	--bg-lg:linear-gradient(-45deg, 
+	rgba(0, 114, 190, 0.6) 0,
+	rgba(141, 0, 163, 0.6) 100%);
+
+
+	--bg-lg-01:linear-gradient(-45deg, 
+	rgba(255, 106, 0, 0.6) 0,
+	rgba(255, 216, 0, 0.6) 100%);
+
+	--bg-lg-02:linear-gradient(-45deg, 
+	rgba(203, 10, 10, 0.6) 0,
+	rgba(2, 172, 0, 0.60) 100%);
+
+	--bg-lg-03:linear-gradient(-45deg, 
+	rgba(0, 168, 3, 0.6) 0,
+	rgba(135, 0, 156, 0.6) 100%);
+
+	--bg-lg-04:linear-gradient(-45deg, 
+	rgba(57, 60, 172, 0.6) 0,
+	rgba(67, 229, 251, 0.6) 100%);
+
+	--bg-lg-05:linear-gradient(-45deg, 
+	rgba(255, 148, 0, 0.6) 0,
+	rgba(217, 0, 153, 0.6) 100%);
+
+}
+
+.svg-art-main-panel
+{
+/*	border: solid 1px var(--black-01);*/
+}
+
+.svg-art-block-panel
+{
+	position:relative;
+	border: solid 1px var(--black-01);
+	background-color:var(--black-01);
+	background-image:var(--bg-lg);
+	margin-bottom:10px;
+	overflow:hidden;
+	height:1024px;
+	cursor:pointer;
+}
+.svg-art-block-panel:last-child
+{
+	margin-bottom:0px;
+}
+
+.bubbles
+{
+	position:absolute;
+	background-color: var(--black-01);
+	border: solid 0px var(--black-01);
+	transform:rotate(45deg);
+	box-shadow: 0px 10px 10px 0px var(--black-04);
+
+/*	animation-delay:1000ms;
+	animation-direction:normal;
+	animation-fill-mode:both;
+	animation-timing-function:ease-in-out;*/
+/*	animation-name:RedBallAni;*/
+/*	animation-duration:5000ms;*/	
+/*	animation-iteration-count:1;*/
+/*	animation-play-state:paused;	*/
+}
+
+
+@keyframes RedBallAni
+{
+	0%, 100%
+	{
+		transform: rotate(45deg);
+	}
+	50%
+	{
+		transform: rotate(-45deg);
+	}
+}

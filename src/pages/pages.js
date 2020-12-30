@@ -6,6 +6,8 @@ import DemosPage from './demos/demos.js';
 import AzureCaseStudyDemo from './azure-ux/azure-case-study.js';
 import SvgZoomDemo from './svg-zoom/svg-zoom.js';
 import Html5CanvasDemo from './canvas-demo/canvas-demo.js';
+import SvgArtPage from './svg-art/svg-art.js';
+
 //  import MovieStoreExtension from './movie-works-demo/movieworks.js';
 //  import TestPage from './test/test.js';
 //  import GuitarApp from './guitar-app/guitar-app.js';
@@ -28,10 +30,6 @@ const _p = [
                 path: AzureCaseStudyDemo.defaultProps.Href,
                 component: AzureCaseStudyDemo
             },            
-            //{
-            //    path: MovieStoreExtension.defaultProps.Href,
-            //    component: MovieStoreExtension
-            //},
             {
                 path: SvgZoomDemo.defaultProps.Href,
                 component: SvgZoomDemo
@@ -40,6 +38,14 @@ const _p = [
                 path: Html5CanvasDemo.defaultProps.Href,
                 component: Html5CanvasDemo
             },
+            {
+                path: SvgArtPage.defaultProps.Href,
+                component: SvgArtPage
+            },
+            //{
+            //    path: MovieStoreExtension.defaultProps.Href,
+            //    component: MovieStoreExtension
+            //},
             //{
             //    path: GuitarApp.defaultProps.Href,
             //    component: GuitarApp
