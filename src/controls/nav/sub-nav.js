@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { PagesList } from '../../pages/pages.js';
-import './nav.css';
+import './sub-nav.css';
 
 export default class SubNav extends React.Component
 {

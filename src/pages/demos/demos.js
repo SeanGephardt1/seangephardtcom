@@ -22,7 +22,7 @@ import LorumContent from '../../controls/content/lorum-ipsum.js';
 export default class DemosPage extends React.Component
 {
 	static defaultProps = {
-		Title: "Demos",
+		Title: "Demos, examples and prototypes",
 		LinkTitle: "Demos",
 		Href: "/demos/",
 		//Icon: SVG.AppNavButtons.About
@@ -351,7 +351,7 @@ export default class DemosPage extends React.Component
 				</DialogCard>
 
 				{/* OTHER DEMOS */}
-				<div className="anim-demo-header centered">Demos and examples</div>
+				<div className="bd-page-title">Demos and examples</div>
 
 				{ /*  CONTROLS  */ }
 				<div className="anim-demo-sub-header">Controls</div>

@@ -144,20 +144,6 @@ label.hover-card-selection > span
 	display:inline-block;
 }
 
-/* extras */
-.margin-bottom-25
-{
-	margin-top:25%;
-}
-.margin-bottom-10
-{
-	margin-top:10%;
-}
-.margin-bottom-5
-{
-	margin-top:5%;
-}
-
 .test-content-panel
 {
 /*	border: solid 1px var(--black-02);*/
@@ -165,4 +151,31 @@ label.hover-card-selection > span
 .test-content-panel > ul, .test-content-panel > ol
 {
 	margin-left:20px;
+}
+
+/* scoped demo buttons */
+.input-nav
+{
+/*	border: solid 1px red;*/
+	flex: 1 1 auto;
+	display:flex;
+	flex-direction:row;
+	flex-wrap:wrap;
+	margin-bottom: 10px;
+}
+
+.demo-nav-item
+{
+	border: solid 1px transparent;
+	box-shadow:0px 0px 2px 0px var(--black-04);
+	background-color: var(--demo-nav-color-hover);
+	padding:10px;
+	cursor:pointer;
+	transition: all 200ms ease-in-out;
+}
+.demo-nav-item:hover
+{
+	border: solid 1px var(--black-04);
+	box-shadow:0px 0px 10px 0px var(--black-04);
+	background-color: var(--demo-nav-color);
 }

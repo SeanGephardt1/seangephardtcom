@@ -17,8 +17,8 @@ import AzureCreate9 from './azure-create-9.png';
 export default class AzureCaseStudyDemo extends React.Component
 {
 	static defaultProps = {
-		Title: "Microsoft Azure Portal Prototyping case study",
-		LinkTitle: "Microsoft Azure case study",
+		Title: "Microsoft Azure Portal Prototyping",
+		LinkTitle: "Microsoft Azure Prototyping",
 		Href: "/demos/azure-ux/",
 		//	Icon: SVG.AppNavButtons.About
 	};
@@ -66,11 +66,8 @@ export default class AzureCaseStudyDemo extends React.Component
 			<div className="page-layout">
 				<SubNav/>
 
-				{ /* PORTFOLIO AREA */ }
-				<div className="portfolio-panel">
-
-					{ /* overlay panel */ }
-					<div
+				{ /* overlay panel */ }
+				<div
 						className="portfolio-modal-overlay"
 						title="Click anywhere to close"
 						onClick={this.OnClick_HideModalPicture.bind( this )}
@@ -85,24 +82,24 @@ export default class AzureCaseStudyDemo extends React.Component
 							title={this.CurrentPortfolioPictureAltText}>{this.CurrentPortfolioPictureAltText}</div>
 					</div>
 
-					{/* Microsoft Azure Home page - Responsive & accessible layout */}
-					<div className="portfolio-block">
-						<h2>Microsoft Azure Responsive Layout</h2>
+				{/* Microsoft Azure Home page - Responsive & accessible layout */}
+				<div className="portfolio-block">
+
+					<div className="bd-page-title">Microsoft Azure Portal Responsive Layout</div>
+
+					<div className="bd-page-description">
 						<a href="http://seangephardt.com/azure/" target="_new">Interactive Demo</a>
+					</div>
 
-						<div className="portfolio-text">This project focused on improving the experiences for customers of the Microsoft Azure Management portal. The main goals were aimed at improving the expereince on mobile devices and to also comply with web browser based accessibility standards and federal US regulations, with the goal of increasing the NPS ("net promoter score") KPI used to drive the business.
-						</div>
+					<div className="portfolio-text">This project focused on improving the experiences for customers of the Microsoft Azure Management portal. The main goals were aimed at improving the expereince on mobile devices and to also comply with web browser based accessibility standards and federal US regulations, with the goal of increasing the NPS ("net promoter score") KPI used to drive the business.</div>
 
-						<div className="portfolio-text">Because of the complexity of interactions built into the UI of this application, designing for the breadth of mobile devices used by the IT community was our top priority. IT professionals needed to be able to monitor the services they own from any location on any device. Our related priority in this scenario was to make all interactions and page elements comply with accessiblbility standards and regulations.
-						</div>
+					<div className="portfolio-text">Because of the complexity of interactions built into the UI of this application, designing for the breadth of mobile devices used by the IT community was our top priority. IT professionals needed to be able to monitor the services they own from any location on any device. Our related priority in this scenario was to make all interactions and page elements comply with accessiblbility standards and regulations.</div>
 
-						<div className="portfolio-text">To address the existing issues with the page design, we began by changing the behavior of the main navigation component, bringing it up to date by leveraging a modern design & feel by choosing to not display the menu unless a user explicitedly clicks on the "hamburger" icon in the top left. Other  navigation elements in the top header were simplified both by allowing responsive resizing and single click interactions. The decision to allow the page sections to re-flow based on the customer's screen resolution also created a more fluid visual appeal.
-						</div>
+					<div className="portfolio-text">To address the existing issues with the page design, we began by changing the behavior of the main navigation component, bringing it up to date by leveraging a modern design & feel by choosing to not display the menu unless a user explicitedly clicks on the "hamburger" icon in the top left. Other  navigation elements in the top header were simplified both by allowing responsive resizing and single click interactions. The decision to allow the page sections to re-flow based on the customer's screen resolution also created a more fluid visual appeal.</div>
 
-						<div  className="portfolio-text">The "Search" feature was changed to resize to the entire width of the header, with a back button to let customers easily exit out of the mobile search experience. Search results are rendered dynamically based on a combination of customer resources & federated search results, so creating a way for customer to find thier specific resources or documentation was of paramount importance.
-						</div>
+					<div  className="portfolio-text">The "Search" feature was changed to resize to the entire width of the header, with a back button to let customers easily exit out of the mobile search experience. Search results are rendered dynamically based on a combination of customer resources & federated search results, so creating a way for customer to find thier specific resources or documentation was of paramount importance.</div>
 
-						<div className="image-list">
+					<div className="image-list">
 							<img src={AzureHome1} alt="Microsoft Azure mobile home page 1" onClick={this.OnClick_DisplayModalPicture.bind( this, AzureHome1, "Microsoft Azure mobile home page 1", this.overlay_styles[1] )} />
 							<img src={AzureHome2} alt="Microsoft Azure mobile home page 2"  onClick={this.OnClick_DisplayModalPicture.bind(this,AzureHome2, "Microsoft Azure mobile home page 2", this.overlay_styles[1])}/>
 							<img src={AzureHome3} alt="Microsoft Azure mobile home page 3"  onClick={this.OnClick_DisplayModalPicture.bind(this,AzureHome3, "Microsoft Azure mobile home page 3", this.overlay_styles[1])}/>
@@ -114,8 +111,12 @@ export default class AzureCaseStudyDemo extends React.Component
 
 					{/* Microsoft Azure - Create Design Pattern */}				
 					<div className="portfolio-block">
-						<h2>"Create Flow" Design Pattern</h2>
-						<a href="http://seangephardt.com/azure/#home/custom-roles" target="_new">Interactive Demo</a>
+
+						<div className="bd-page-title">Microsoft Azure "Create Flow" Design Pattern</div>
+
+						<div className="bd-page-description">
+							<a href="http://seangephardt.com/azure/#home/custom-roles" target="_new">Interactive Demo</a>
+						</div>
 
 						<div className="portfolio-text">The key focus for the Azure Portal business is allow customers to easily create new resources & services for any of thier business needs, and creating "Software as a Service" (SaaS) resources can be very complex given the nature of logistical & security requirements. The stated goal of this project was to reduce customer abandonment during these experiences and drive an increase in service adoption as well as customer satisfaction. 
 						</div>
@@ -143,8 +144,6 @@ export default class AzureCaseStudyDemo extends React.Component
 					</div>
 				
 				</div>
-
-			</div>
         );
     }
 };

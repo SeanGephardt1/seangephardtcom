@@ -1,0 +1,47 @@
+/* 
+	HATE TO HAVE TO HACK THIS IN THIS WAY
+	REMIND WHY REACT ROUTING IS SO GREAT THAT ROUTING INFLUENCING LAYOUT DECISIONS
+*/
+.demos-nav
+{
+/*	border: solid 1px var(--black-01);*/
+	display:flex;
+	flex: 1 1 auto;
+	flex-direction:row;
+	flex-wrap:nowrap;
+	justify-content:center;
+	align-content:space-evenly;
+	margin-bottom:20px;
+}
+
+a.dn-item, a.dn-item:visited
+{
+	border: solid 1px var(--black-01);
+	color:var(--black-08);
+	padding:6px;
+	padding-left:10px;
+	padding-right:10px;
+	text-align:center;
+	text-overflow:ellipsis;
+	white-space:nowrap; 
+	overflow:hidden;
+	margin-right:6px;
+	transition:all 200ms ease-in-out;
+}
+a.dn-item:last-child
+{
+	margin-right:0px;
+}
+
+
+a.dn-item:hover
+{
+	border: solid 1px var(--black-04);
+	background-color:var(--demo-nav-color-hover);
+	color:var(--black);
+}
+a.dn-item.dn-item-selected
+{
+	background-color:var(--demo-nav-color);
+	color:var(--black);
+}

@@ -5,10 +5,10 @@ import './css-art.css';
 export default class CssArtPage extends React.Component
 {
 	static defaultProps = {
-		Title: "CSS animations",
-		LinkTitle: "CSS animations",
+		Title: "CSS 3 animations",
+		LinkTitle: "CSS 3 animations",
 		// for demos pages, add "/demos/" route/folder path
-		Href: "/demos/css-art/",
+		Href: "/demos/css-demos/",
 		// Icon: SVG.AppNavButtons.About
 	};
 	constructor( props )

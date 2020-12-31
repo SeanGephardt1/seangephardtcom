@@ -31,12 +31,12 @@ const _p = [
                 component: AzureCaseStudyDemo
             },            
             {
-                path: SvgZoomDemo.defaultProps.Href,
-                component: SvgZoomDemo
-            },
-            {
                 path: Html5CanvasDemo.defaultProps.Href,
                 component: Html5CanvasDemo
+            },
+            {
+                path: SvgZoomDemo.defaultProps.Href,
+                component: SvgZoomDemo
             },
             {
                 path: CssArtPage.defaultProps.Href,

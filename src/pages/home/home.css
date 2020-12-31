@@ -5,11 +5,13 @@
 	height: 100%;
 	width: 100%;
 	margin-bottom:20px;
+	background-color:white;
 }
 
 .design-svg
 {
-/*	border: solid 1px red;*/
+	background-color:transparent;
+	border: solid 0px var(--black-01);
 	fill: var(--black);
 	font-family: 'Josefina', system-ui;
 	height: 100%;

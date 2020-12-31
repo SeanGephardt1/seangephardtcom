@@ -8,9 +8,9 @@ import ArtSVGs from "./svg-zoom-data.js";
 export default class SvgZoomDemo extends React.Component
 {
 	static defaultProps = {
-		Title: "SVG zoom & pan demo",
-		LinkTitle: "SVG zoom & pan demo",
-		Href: "/demos/svg-zoom/",
+		Title: "SVG demos",
+		LinkTitle: "SVG demos",
+		Href: "/demos/svg-demos/",
 		//Icon: SVG.AppNavButtons.About,
 	};
 	constructor( props )

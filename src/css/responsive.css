@@ -11,9 +11,14 @@
 		flex-direction:column;
 		justify-content:flex-start;
 	}
-	.main-nav, .demos-nav
+	nav, .demos-nav
 	{
 		flex-direction:column;
+	}
+	a.dn-item
+	{
+		margin-right:0;
+		text-align:center;
 	}
 }
 @media (max-width: 900px)
