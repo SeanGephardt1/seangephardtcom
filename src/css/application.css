@@ -8,20 +8,16 @@
     justify-content: flex-start;
 	overflow:auto;
 }
-nav
+main
 {
+/*	border: solid 1px red;*/
 	display:flex;
 	flex: 1 1 100%;
 	flex-direction:row;
-	flex-wrap:wrap;
-}
-main
-{
-	display:flex;
-	flex: 1 1 100%;
 	overflow:auto;
 	justify-content:center;
 }
+
 .page-layout /* most pages */
 {
 /*	border: solid 1px var(--black-02);
@@ -47,6 +43,7 @@ main
 }
 .column
 {
+	border: solid 1px purple;
 	flex-direction:column;
 	flex-wrap:nowrap;
 }

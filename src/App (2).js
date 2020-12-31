@@ -1,9 +1,13 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import { PagesList } from './pages/pages.js';
+
 import SiteNav from './controls/nav/nav.js';
 import SiteFooter from './controls/footer/footer.js';
+
+import { PagesList } from './pages/pages.js';
+
 import './css/css.js';
+
 
 export default class App extends React.Component
 {
@@ -25,7 +29,7 @@ export default class App extends React.Component
         | {this.context.CurrentLayout} | {this.context.Theme.Name}
         						<Route exact={true} path={'/'} component={DemosList[0]} />
         */
-        //console.debug( "App.render()", window.location.pathname );
+        console.debug( "App.render()", window.location.pathname );
 
 
 		//  let _paths = window.location.pathname.split( "/" );

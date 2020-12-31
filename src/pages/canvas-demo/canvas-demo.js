@@ -4,6 +4,7 @@
 
 
 import React from 'react';
+import SubNav from '../../controls/nav/sub-nav.js';
 import './canvas-demo.css';
 
 export default class Html5CanvasDemo extends React.Component
@@ -751,6 +752,8 @@ export default class Html5CanvasDemo extends React.Component
 
         return (
 			<div className="page-layout">
+				<SubNav />
+
 				<div className="canvas-demo-header">{this.Title }</div>
 				<div className="canvas-demo-desc">The <a href="https://en.wikipedia.org/wiki/Canvas_element" target="_new" title="HTML canvas element">Canvas</a> provides a great way to creating dynamically generated graphics using browser based scripting languages such as JavaScript.</div>
 				<div className="demo-nav">

@@ -42,28 +42,12 @@ const _p = [
                 path: CssArtPage.defaultProps.Href,
                 component: CssArtPage
             },
-            //{
-            //    path: MovieStoreExtension.defaultProps.Href,
-            //    component: MovieStoreExtension
-            //},
-            //{
-            //    path: GuitarApp.defaultProps.Href,
-            //    component: GuitarApp
-            //},
-            //{
-            //    path: GuitarStoreExtension.defaultProps.Href,
-            //    component: GuitarStoreExtension
-            //},
         ]
     },
     {
         path: Music.defaultProps.Href,
         component: Music
     },
-    //{
-    //    path: TestPage.defaultProps.Href,
-    //    component: TestPage
-    //}
 ];
 
 export {

@@ -11,53 +11,53 @@ export default class SiteNav extends React.Component
 		return;
 	};
 	render()
-	{	
+	{
 		return (
 			<nav>
-				{
-					PagesList.map( ( item, index ) => (
-						<NavLink
-							key={index}
-							exact={true}
-							to={item.path}
-							className='nav'
-							activeClassName='nav-selected'
-							title={item.component.defaultProps.Title}
-							isActive={( match, location ) =>
-							{	// TALK ABOUT HACKS
+			{
+				PagesList.map( ( item, index ) => (
+							<NavLink
+								key={index}
+								exact={true}
+								to={item.path}
+								className='nav'
+								activeClassName='nav-selected'
+								title={item.component.defaultProps.Title}
+								isActive={( match, location ) =>
+								{	// TALK ABOUT HACKS
+									//console.debug( "match", match );
+									//console.debug( "location", location.pathname );
 
-								//console.debug( "\n", item);
-								//console.debug( "match", match );
-								//console.debug( "location", location.pathname );
-
-								let _bool = false;
-								if ( match !== null )
-								{
-									_bool = true;
-								}
-								else if ( match === null )
-								{
-									if ( item.routes !== undefined && item.routes.length > 0 )
+									let _bool = false;
+									if ( match !== null )
 									{
-										for ( let i = 0; i < item.routes.length; i++ )
+										//console.debug( "match", match );
+										//console.debug( "location", location.pathname );
+										_bool = true;
+									}
+									else if ( match === null )
+									{
+										if ( item.routes !== undefined && item.routes.length > 0 )
 										{
-											//	console.debug( i, item.routes[i].path, item.path );
-											if ( location.pathname.indexOf( item.path) !== -1 )
+											for ( let i = 0; i < item.routes.length; i++ )
 											{
-												_bool = true;
+												//	console.debug( i, item.routes[i].path, item.path );
+												if ( location.pathname.indexOf( item.path) !== -1 )
+												{
+													_bool = true;
+												}
 											}
 										}
+										else
+										{
+											_bool = false;
+										}
 									}
-									else
-									{
-										_bool = false;
-									}
-								}
-								return _bool;
-							}}
-						>{item.component.defaultProps.LinkTitle}</NavLink>
-					))
-				}
+									return _bool;
+								}}
+							>{item.component.defaultProps.LinkTitle}</NavLink>
+						))
+			}
 			</nav>
 		);
 	};

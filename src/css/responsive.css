@@ -1,10 +1,6 @@
 /*	RESPONSIVE MEDIA QUERY CLASSES AND SELECTORS */
 @media (max-width: 600px)
 {
-	nav
-	{
-		flex-direction:column;
-	}
 	.bd-menu-item
 	{
 		margin-bottom:14px;
@@ -15,7 +11,7 @@
 		flex-direction:column;
 		justify-content:flex-start;
 	}
-	.demo-nav
+	.main-nav, .demos-nav
 	{
 		flex-direction:column;
 	}

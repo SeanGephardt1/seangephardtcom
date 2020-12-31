@@ -1,4 +1,5 @@
 import React from 'react';
+import SubNav from '../../controls/nav/sub-nav.js';
 import './css-art.css';
 
 export default class CssArtPage extends React.Component
@@ -56,7 +57,7 @@ export default class CssArtPage extends React.Component
 		for ( let i = 0; i < 99; i++)
 		{
 			let _random_height = this.RandomNumberRange( 0, 128 );
-			let _random_width = this.RandomNumberRange( 0, 2048 );
+			//	let _random_width = this.RandomNumberRange( 0, 2048 );
 			let _top = this.RandomNumberRange( -512, 1024 );
 			let _left = this.RandomNumberRange( -512, 512 );
 			let _ani_duration = this.RandomNumberRange( 1000, 5000 );
@@ -127,7 +128,7 @@ export default class CssArtPage extends React.Component
 		//	console.debug( "SvgArtPage.render()", this.state.changed, this.state.animationRunning );
         return (
 			<div className="page-layout">
-
+				<SubNav/>
 				<div className="bd-page-title">CSS animation demo</div>
 
 				<div className="input-nav">

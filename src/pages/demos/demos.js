@@ -1,7 +1,8 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+//	import { NavLink } from 'react-router-dom';
 import StateStore from '../../js/state-store.js';
-import { PagesList } from '../../pages/pages.js';
+//	import { PagesList } from '../../pages/pages.js';
+import SubNav from '../../controls/nav/sub-nav.js';
 //	import SVG from '../../art/svgs.js';
 import './demos.css';
 
@@ -312,10 +313,25 @@ export default class DemosPage extends React.Component
 			<div className="ani-card-ctrl-block">control</div>
 			<div className="ani-card-text-block">This is an example of what is called an "indefinite" progress indicator, meaning that ti it is displayed for an indefinite amount of time. it can be hidden at any time.</div>
 			</div>
+				<div className="demo-nav">
+				{
+					PagesList[2].routes.map( ( item, index ) => (
+						<NavLink
+						key={index}	
+						exact={true}
+						className="demo-nav-item"
+						to={item.path}
+						title={item.component.defaultProps.Title}
+					>{item.component.defaultProps.LinkTitle}</NavLink>
+					))
+				}
+				</div>
 		*/
 
-        return (
-			<div className="page-layout">
+		return (
+
+				<div className="page-layout">
+					<SubNav />
 
 				{/* change this */
 					this.state.modalOverlayDisplayed === true &&
@@ -335,20 +351,7 @@ export default class DemosPage extends React.Component
 				</DialogCard>
 
 				{/* OTHER DEMOS */}
-				<div className="anim-demo-header centered">Examples and demos</div>
-				<div className="demo-nav">
-				{
-					PagesList[2].routes.map( ( item, index ) => (
-						<NavLink
-						key={index}	
-						exact={true}
-						className="demo-nav-item"
-						to={item.path}
-						title={item.component.defaultProps.Title}
-					>{item.component.defaultProps.LinkTitle}</NavLink>
-					))
-				}
-				</div>
+				<div className="anim-demo-header centered">Demos and examples</div>
 
 				{ /*  CONTROLS  */ }
 				<div className="anim-demo-sub-header">Controls</div>
@@ -595,7 +598,7 @@ export default class DemosPage extends React.Component
 					{ /* END */}
 				</div>
 
-			</div>
+				</div>
         );
     }
 };

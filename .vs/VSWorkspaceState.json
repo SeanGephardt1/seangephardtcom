@@ -1,8 +1,11 @@
 {
   "ExpandedNodes": [
     "",
-    "\\src"
+    "\\src",
+    "\\src\\pages",
+    "\\src\\pages\\css-art",
+    "\\src\\pages\\svg-zoom"
   ],
-  "SelectedNode": "\\seangephardtcom2021.sln",
+  "SelectedNode": "\\src\\pages\\css-art\\test.txt",
   "PreviewInSolutionExplorer": false
 }

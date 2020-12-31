@@ -1,4 +1,5 @@
 import React from 'react';
+import SubNav from '../../controls/nav/sub-nav.js';
 //import SVG from '../../art/svgs.js';
 import './azure-case-study.css';
 
@@ -62,7 +63,8 @@ export default class AzureCaseStudyDemo extends React.Component
     render()
     {
         return (
-			<div className="home-layout">
+			<div className="page-layout">
+				<SubNav/>
 
 				{ /* PORTFOLIO AREA */ }
 				<div className="portfolio-panel">

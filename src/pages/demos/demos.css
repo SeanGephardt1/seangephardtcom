@@ -20,33 +20,6 @@
 	margin-bottom:10px;
 }
 
-.demo-nav
-{
-/*	border: solid 1px var(--red);*/
-	display:flex;
-	flex-direction:row;
-	margin-bottom:30px;
-	justify-content:center;
-	align-content:space-around;
-}
-.demo-nav-item
-{
-	border: solid 1px var(--black-01);
-	background-color: var(--demo-nav-bg);
-	color:var(--black-08);
-	flex: 0 1 auto;
-	padding:10px;
-	text-align:center;
-	cursor:pointer;
-	font-size: 14px;
-}
-.demo-nav-item:hover
-{
-	border: solid 1px var(--black-04);
-	background-color: var(--demo-nav-bg-hover);
-	color:var(--black);
-}
-
 
 .anim-demo-block-panel
 {
