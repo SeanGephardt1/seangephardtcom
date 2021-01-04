@@ -9,8 +9,8 @@ import './canvas-demo.css';
 export default class Html5CanvasDemo extends React.Component
 {
 	static defaultProps = {
-		Title: "HTML5 Canvas demos",
-		LinkTitle: "HTML5 Canvas demos",
+		Title: "HTML 5 Canvas demos",
+		LinkTitle: "HTML 5 Canvas demos",
 		Href: "/demos/canvas-demos/",
 		// Icon: SVG.AppNavButtons.About
 	};
@@ -38,7 +38,7 @@ export default class Html5CanvasDemo extends React.Component
 
 		this.AnimationID = undefined;
 		this.AniCounter = 0;
-		this.AniMax = 100;
+		this.AniMax = 500;
 		this.selectedAnimation = this.RenderAnimation_DefaultGradient.bind(this);
 
 		this.state = {
@@ -300,6 +300,7 @@ export default class Html5CanvasDemo extends React.Component
 	RenderAnimation_Boxes(c)
 	{
 		console.debug( "Render_GradientAnimation", c, this.CanvasContext );
+		return;
 	};
 
 	Render_EVHTribute( c )

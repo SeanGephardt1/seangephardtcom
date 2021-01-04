@@ -32,7 +32,7 @@
 	display:inline-block;
 	width: calc(150px);
 	margin: 10px;
-	box-shadow: 0px 4px 6px 10px  	var(--black-02);
+	box-shadow: 0px 4px 6px 0px  	var(--black-02);
 	transition: all ease-in-out 300ms;
 	cursor:pointer;
 }

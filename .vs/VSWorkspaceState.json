@@ -3,9 +3,8 @@
     "",
     "\\src",
     "\\src\\pages",
-    "\\src\\pages\\css-art",
-    "\\src\\pages\\svg-zoom"
+    "\\src\\pages\\canvas-demo"
   ],
-  "SelectedNode": "\\src\\pages\\css-art\\test.txt",
+  "SelectedNode": "\\src\\pages\\canvas-demo\\canvas-demo.js",
   "PreviewInSolutionExplorer": false
 }
