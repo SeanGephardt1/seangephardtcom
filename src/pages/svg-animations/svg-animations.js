@@ -1,7 +1,7 @@
 import React from 'react';
 import SubNav from '../../controls/nav/sub-nav.js';
 import './svg-animations.css';
-import SvgAniData from "./svg-animations-data.js";
+//import SvgAniData from "./svg-animations-data.js";
 
 export default class SvgAnimationsDemo extends React.Component
 {

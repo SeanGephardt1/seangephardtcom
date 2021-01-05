@@ -25,7 +25,7 @@ export default class SvgAniData extends React.Component
 					</polygon>
 			</svg>
 		),
-		Menu: (
+		Menu2: (
 			<svg>
 				<polygon points="60,30 90,90 30,90">
 						<animateTransform attributeName="transform"

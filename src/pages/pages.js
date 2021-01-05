@@ -10,8 +10,9 @@ import CssArtPage from './css-art/css-art.js';
 import SvgAnimationsDemo from './svg-animations/svg-animations.js';
 import ButtonAnimations from './button-animations/button-animations.js';
 
-//  import MovieStoreExtension from './movie-works-demo/movieworks.js';
 //  import TestPage from './test/test.js';
+
+//  import MovieStoreExtension from './movie-works-demo/movieworks.js';
 //  import GuitarApp from './guitar-app/guitar-app.js';
 //  import GuitarStoreExtension from './guitar-store/guitar-store.js';
 
@@ -59,6 +60,10 @@ const _p = [
         path: Music.defaultProps.Href,
         component: Music
     },
+    //{
+    //    path: TestPage.defaultProps.Href,
+    //    component: TestPage
+    //},
 ];
 
 export {
