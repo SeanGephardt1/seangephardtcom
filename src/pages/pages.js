@@ -2,7 +2,7 @@
 import Home from './home/home.js';
 import Resume from './resume/resume.js';
 import Music from './music/music.js';
-import DemosPage from './demos/demos.js';
+import PortfolioPage from './portfolio/portfolio.js';
 import AzureCaseStudyDemo from './azure-ux/azure-case-study.js';
 import SvgZoomDemo from './svg-zoom/svg-zoom.js';
 import Html5CanvasDemo from './canvas-demo/canvas-demo.js';
@@ -25,8 +25,8 @@ const _p = [
         component: Resume
     },
     {
-        path: DemosPage.defaultProps.Href,
-        component: DemosPage,
+        path: PortfolioPage.defaultProps.Href,
+        component: PortfolioPage,
         routes: [
             {
                 path: AzureCaseStudyDemo.defaultProps.Href,

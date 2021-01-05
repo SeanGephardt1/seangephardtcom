@@ -8,7 +8,7 @@ export default class CssArtPage extends React.Component
 		Title: "CSS 3 animations",
 		LinkTitle: "CSS 3 animations",
 		// for demos pages, add "/demos/" route/folder path
-		Href: "/demos/css-demos/",
+		Href: "/portfolio/css-demos/",
 		// Icon: SVG.AppNavButtons.About
 	};
 	constructor( props )

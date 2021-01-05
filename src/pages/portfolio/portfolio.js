@@ -4,7 +4,7 @@ import StateStore from '../../js/state-store.js';
 //	import { PagesList } from '../../pages/pages.js';
 import SubNav from '../../controls/nav/sub-nav.js';
 //	import SVG from '../../art/svgs.js';
-import './demos.css';
+import './portfolio.css';
 
 // controls
 import ProgressInfiniteControl from '../../controls/progress-controls/prog-infinite.js';
@@ -19,21 +19,21 @@ import BarChart from '../../controls/charts/bar-chart.js';
 
 import LorumContent from '../../controls/content/lorum-ipsum.js';
 
-export default class DemosPage extends React.Component
+export default class PortfolioPage extends React.Component
 {
 	static defaultProps = {
-		Title: "Demos, examples and prototypes",
-		LinkTitle: "Demos",
-		Href: "/demos/",
+		Title: "Portfolio and prototypes",
+		LinkTitle: "Portfolio",
+		Href: "/portfolio/",
 		//Icon: SVG.AppNavButtons.About
 	};
 	constructor( props )
 	{
 		// GENERIC
 		super( props );
-		this.Title = ( this.props.Title || DemosPage.defaultProps.Title );
-		this.LinkTitle = ( this.props.LinkTitle || DemosPage.defaultProps.LinkTitle );
-		this.Href = ( this.props.Href || DemosPage.defaultProps.Href );
+		this.Title = ( this.props.Title || this.defaultProps.Title );
+		this.LinkTitle = ( this.props.LinkTitle || this.defaultProps.LinkTitle );
+		this.Href = ( this.props.Href || this.defaultProps.Href );
 
 		// PROG BAR DEMO OBJECTS 
 		this._start_text = "Start";

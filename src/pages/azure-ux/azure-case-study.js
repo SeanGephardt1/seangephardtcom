@@ -19,7 +19,7 @@ export default class AzureCaseStudyDemo extends React.Component
 	static defaultProps = {
 		Title: "Microsoft Azure Portal Prototyping",
 		LinkTitle: "Microsoft Azure Prototyping",
-		Href: "/demos/azure-ux/",
+		Href: "/portfolio/azure-ux/",
 		//	Icon: SVG.AppNavButtons.About
 	};
     constructor( props )

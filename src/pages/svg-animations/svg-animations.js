@@ -8,7 +8,7 @@ export default class SvgAnimationsDemo extends React.Component
 	static defaultProps = {
 		Title: "SVG Animations",
 		LinkTitle: "SVG Animations",
-		Href: "/demos/svg-animations/",
+		Href: "/portfolio/svg-animations/",
 		//Icon: SVG.AppNavButtons.About,
 	};
 	constructor( props )

@@ -7,7 +7,7 @@ export default class ButtonAnimations extends React.Component
 	static defaultProps = {
 		Title: "Button Animations",
 		LinkTitle: "Button Animations",
-		Href: "/demos/button-animations/",
+		Href: "/portfolio/button-animations/",
 		//Icon: SVG.AppNavButtons.About,
 	};
 	constructor( props )

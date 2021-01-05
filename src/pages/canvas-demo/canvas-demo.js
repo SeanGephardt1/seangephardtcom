@@ -11,7 +11,7 @@ export default class Html5CanvasDemo extends React.Component
 	static defaultProps = {
 		Title: "HTML 5 Canvas demos",
 		LinkTitle: "HTML 5 Canvas demos",
-		Href: "/demos/canvas-demos/",
+		Href: "/portfolio/canvas-demos/",
 		// Icon: SVG.AppNavButtons.About
 	};
 	constructor( props )
