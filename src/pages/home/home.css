@@ -18,12 +18,33 @@
 	width: 100%;
 }
 
-/* animation classes */
-.ani-design-text-1
+.home-ani-btn
 {
-	fill: var(--black);
-	opacity: 0;
-	animation-name: AniDesignText1;
+	fill: var(--black-04);
+	cursor:pointer;
+	transition: all 200ms ease-in-out;
+}
+.home-ani-btn:nth-child(1)
+{
+	transform: translate(940px,740px) scale(0.2,0.2);
+}
+.home-ani-btn:nth-child(2)
+{
+	transform: translate(936px, 791px) rotate(180deg) scale(0.2,0.2);
+}
+
+.home-ani-btn:hover
+{
+	fill: var(--black-08);
+	stroke: var(--white);
+	stroke-width:10px;
+}
+
+
+g#home-ani-screen-2
+{
+	transform: translate(1000px,0);
+	animation-name: HomeSvgFromLeft;
 	animation-delay: 400ms;
 	animation-direction: normal;
 	animation-duration: 500ms;
@@ -33,64 +54,18 @@
 	animation-timing-function: ease-in-out;
 	transition: all 500ms ease-in-out;
 }
-.ani-design-text-2
+@keyframes HomeSvgFromLeft
 {
-	fill: var(--black);
-	opacity: 0;
-	animation-name: AniDesignText2;
-	animation-delay: 600ms;
-	animation-direction: normal;
-	animation-duration: 500ms;
-	animation-fill-mode: forwards;
-	animation-iteration-count: 1;
-	animation-play-state: running;
-	animation-timing-function: ease-in-out;
-	transition: fill 500ms ease-in-out;
-}
-.ani-design-text-3
-{
-	fill: var(--black);
-	opacity: 0;
-	animation-name: AniDesignText3;
-	animation-delay: 800ms;
-	animation-direction: normal;
-	animation-duration: 800ms;
-	animation-fill-mode: forwards;
-	animation-iteration-count: 1;
-	animation-play-state: running;
-	animation-timing-function: ease-in-out;
-	transition: fill 500ms ease-in-out;
-}
-
-.ani-design-secondary-text-1,
-.ani-design-secondary-text-2,
-.ani-design-secondary-text-3
-{
-	fill: var(--debug);
-	opacity:0;
-	animation-name: AniSvgText3;
-	animation-direction: normal;
-	animation-fill-mode: forwards;
-	animation-iteration-count:1;
-	animation-play-state: running;
-	animation-timing-function: ease-in-out;
-}
-
-.ani-design-secondary-text-1
-{
-	fill: var(--nav-color-4);
-	animation-delay: 800ms;
-	animation-duration: 500ms;
-}
-.ani-design-secondary-text-2
-{
-	fill: var(--nav-color-1);
-	animation-delay: 1000ms;
-	animation-duration: 500ms;
-}
-.ani-design-secondary-text-3
-{
-	fill: var(--nav-color-3);
-	animation-delay: 1200ms;
-	animation-duration: 500ms;
+	0%
+	{
+		transform: translate(1000px,0);
+	}
+	50%
+	{
+		transform: translate(500px,0);
+	}
+	100%
+	{
+		transform: translate(0,0);
+	}
 }

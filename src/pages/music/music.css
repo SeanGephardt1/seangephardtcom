@@ -58,3 +58,19 @@ svg.tdt-svg-logo > text
 	height: 280px;
 	margin: 10px;
 }
+
+.tdt-bk
+{
+	fill:#006000;
+}
+.tdt-sign
+{
+	fill:#006000;
+	stroke:#FFFFFF;
+	stroke-width:10;
+	stroke-miterlimit:10;
+}
+.tdt-text
+{
+	fill:var(--white);
+}

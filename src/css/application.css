@@ -27,13 +27,13 @@ main
 
 .page-layout /* most pages */
 {
-/*	border: solid 1px var(--black-02);
-*/	min-width: 280px;
-	max-width:1024px;
+/*	border: solid 1px var(--black-02);*/
+	min-width: 280px;
+/*	max-width:1024px;*/
 	overflow:auto;
 	display:flex;
 	flex: 1 1 auto;
-	margin:20px;
+/*	margin:20px;*/
 	opacity:0;
 
 	flex-direction:column;
@@ -67,8 +67,18 @@ footer
 	text-align:center;
 }
 
-/* global styles - refactored 12/31/2020 */
-/* extras */
+/* global multi-use styles - refactored 12/31/2020 */
+.header
+{
+	font-weight:100;
+	font-size: 26px;
+	margin-bottom:10px;
+}
+.centered
+{
+	text-align:center;
+}
+
 .margin-bottom-25
 {
 	margin-top:25%;

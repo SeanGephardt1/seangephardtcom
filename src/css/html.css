@@ -44,16 +44,3 @@ a:hover
 	color: rgba(128,128,128,1);
 	font-family: 'Calibri Light';
 }
-
-
-/* global multi-use */
-.header
-{
-	font-weight:100;
-	font-size: 26px;
-	margin-bottom:10px;
-}
-.centered
-{
-	text-align:center;
-}
