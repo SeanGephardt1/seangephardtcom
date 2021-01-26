@@ -7,7 +7,7 @@ export default class HomeSvgData extends React.Component
 		TestAnimation: (
 			<svg>
                 <defs>
-                 <linearGradient id="a3355d83-df3f-4146-8622-23e3e66e765c" dataname="New Gradient Swatch copy 129" x1="609.44" y1="121.48" x2="580.3" y2="302" gradientUnits="userSpaceOnUse">
+                    <linearGradient id="a3355d83-df3f-4146-8622-23e3e66e765c" dataname="New Gradient Swatch copy 129" x1="609.44" y1="121.48" x2="580.3" y2="302" gradientUnits="userSpaceOnUse">
                       <stop offset="0.12" stopColor="#69798e"/>
                       <stop offset="0.13" stopColor="#68778c"/>
                       <stop offset="0.25" stopColor="#595d6d"/>

@@ -5,10 +5,10 @@ import Music from './music/music.js';
 import PortfolioPage from './portfolio/portfolio.js';
 import AzureCaseStudyDemo from './azure-ux/azure-case-study.js';
 import SvgZoomDemo from './svg-zoom/svg-zoom.js';
-//import Html5CanvasDemo from './canvas-demo/canvas-demo.js';
-//import CssArtPage from './css-art/css-art.js';
-//import SvgAnimationsDemo from './svg-animations/svg-animations.js';
-//import ButtonAnimations from './button-animations/button-animations.js';
+import Html5CanvasDemo from './canvas-demo/canvas-demo.js';
+import CssArtPage from './css-art/css-art.js';
+import SvgAnimationsDemo from './svg-animations/svg-animations.js';
+import ButtonAnimations from './button-animations/button-animations.js';
 
 //  import TestPage from './test/test.js';
 
@@ -33,26 +33,26 @@ const _p = [
                 path: AzureCaseStudyDemo.defaultProps.Href,
                 component: AzureCaseStudyDemo
             },            
-            //{
-            //    path: Html5CanvasDemo.defaultProps.Href,
-            //    component: Html5CanvasDemo
-            //},
-            //{
-            //    path: CssArtPage.defaultProps.Href,
-            //    component: CssArtPage
-            //},
+            {
+                path: Html5CanvasDemo.defaultProps.Href,
+                component: Html5CanvasDemo
+            },
+            {
+                path: CssArtPage.defaultProps.Href,
+                component: CssArtPage
+            },
             {
                 path: SvgZoomDemo.defaultProps.Href,
                 component: SvgZoomDemo
             },
-            //{
-            //    path: SvgAnimationsDemo.defaultProps.Href,
-            //    component: SvgAnimationsDemo
-            //},
-            //{
-            //    path: ButtonAnimations.defaultProps.Href,
-            //    component: ButtonAnimations
-            //}, 
+            {
+                path: SvgAnimationsDemo.defaultProps.Href,
+                component: SvgAnimationsDemo
+            },
+            {
+                path: ButtonAnimations.defaultProps.Href,
+                component: ButtonAnimations
+            }, 
 
         ]
     },

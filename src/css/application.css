@@ -34,19 +34,19 @@ main
 	display:flex;
 	flex: 1 1 auto;
 /*	margin:20px;*/
-	opacity:0;
+	opacity:1;
 
 	flex-direction:column;
 	flex-wrap:nowrap;
 
-	animation-name: AniPageFadeIn1;
+/*	animation-name: AniPageFadeIn1;
 	animation-delay: 300ms;
 	animation-direction: normal;
 	animation-duration: 300ms;
 	animation-fill-mode: forwards;
 	animation-iteration-count: 1;
 	animation-play-state: running;
-	animation-timing-function: ease-in-out;
+	animation-timing-function: ease-in-out;*/
 }
 .column
 {
