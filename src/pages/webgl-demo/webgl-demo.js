@@ -150,22 +150,22 @@ export default class WebGLDemo extends React.Component
 	};
 	Init_WebGL_AttributesToVertexShader()
 	{
-		console.debug( "Init_WebGL_AttributesToVertexShader()::Associating attributes to vertex shader" );
+		console.debug( "Init_WebGL_AttributesToVertexShader()::Associating attributes to vertex shader", this.ShaderProgram);
 
 		this._Pmatrix = this.WebGLContext.getUniformLocation( this.ShaderProgram, "Pmatrix" );
 		this._Vmatrix = this.WebGLContext.getUniformLocation( this.ShaderProgram, "Vmatrix" );
 		this._Mmatrix = this.WebGLContext.getUniformLocation( this.ShaderProgram, "Mmatrix" );
 
 		this.WebGLContext.bindBuffer( this.WebGLContext.ARRAY_BUFFER, this.VertexBuffer );
-
 		let _position = this.WebGLContext.getAttribLocation( this.ShaderProgram, "position" );
 		this.WebGLContext.vertexAttribPointer( _position, 3, this.WebGLContext.FLOAT, false, 0, 0 );
 		this.WebGLContext.enableVertexAttribArray( _position );
-		this.WebGLContext.bindBuffer( this.WebGLContext.ARRAY_BUFFER, this.ColorBuffer );
 
+		this.WebGLContext.bindBuffer( this.WebGLContext.ARRAY_BUFFER, this.ColorBuffer );
 		let _color = this.WebGLContext.getAttribLocation( this.ShaderProgram, "color" );
 		this.WebGLContext.vertexAttribPointer( _color, 3, this.WebGLContext.FLOAT, false, 0, 0 );
 		this.WebGLContext.enableVertexAttribArray( _color );
+
 		this.WebGLContext.useProgram( this.ShaderProgram );
 		return;
 	}
@@ -278,20 +278,24 @@ export default class WebGLDemo extends React.Component
 		this.RotateY( this.Motion_Matrix, this.THETA );
 		this.RotateX( this.Motion_Matrix, this.PHI );
 
-        this.Time_Old = time; 
-        this.WebGLContext.enable(this.WebGLContext.DEPTH_TEST);
+		this.Time_Old = time; 
+
 		//	this.WebGLContext.depthFunc(this.WebGLContext.LEQUAL);
 
 		this.WebGLContext.clearColor( 0.5, 0.5, 0.5, 0.9 );
-		this.WebGLContext.clearDepth( 1.0 );
-		this.WebGLContext.viewport( 0.0, 0.0, this.CanvasSize, this.CanvasSize );
-		this.WebGLContext.clear( this.WebGLContext.COLOR_BUFFER_BIT | this.WebGLContext.DEPTH_BUFFER_BIT );
+		this.WebGLContext.enable( this.WebGLContext.DEPTH_TEST );
+		//	this.WebGLContext.clearDepth( 1.0 );
+
+		//	this.WebGLContext.clear( this.WebGLContext.COLOR_BUFFER_BIT | this.WebGLContext.DEPTH_BUFFER_BIT );
+		this.WebGLContext.clear( this.WebGLContext.COLOR_BUFFER_BIT );
 
 		this.WebGLContext.uniformMatrix4fv( this._Pmatrix, false, this.Project_Matrix );
 		this.WebGLContext.uniformMatrix4fv( this._Vmatrix, false, this.View_Matrix );
 		this.WebGLContext.uniformMatrix4fv( this._Mmatrix, false, this.Motion_Matrix );
 
 		this.WebGLContext.bindBuffer( this.WebGLContext.ELEMENT_ARRAY_BUFFER, this.IndexBuffer );
+
+		this.WebGLContext.viewport( 0.0, 0.0, this.CanvasSize, this.CanvasSize );
 		this.WebGLContext.drawElements( this.WebGLContext.TRIANGLES, this.Indices.length, this.WebGLContext.UNSIGNED_SHORT, 0 );
 
 		//	this.AnimationID = window.requestAnimationFrame( this.Animate_Cube( dt, this) );
