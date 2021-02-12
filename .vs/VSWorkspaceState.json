@@ -3,8 +3,8 @@
     "",
     "\\src",
     "\\src\\pages",
-    "\\src\\pages\\canvas-demo"
+    "\\src\\pages\\webgl-demo"
   ],
-  "SelectedNode": "\\seangephardtcom2021.sln",
+  "SelectedNode": "\\src\\pages\\pages.js",
   "PreviewInSolutionExplorer": false
 }

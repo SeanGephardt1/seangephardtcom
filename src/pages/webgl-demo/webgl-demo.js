@@ -1,6 +1,4 @@
-//	Note: Gradient coordinates are global
-//	i.e., relative to the current coordinate space.
-//	When applied to a shape, the coordinates are NOT relative to the shape's coordinates.
+//	https://www.tutorialspoint.com/webgl/webgl_interactive_cube.htm
 
 import React from 'react';
 import SubNav from '../../controls/nav/sub-nav.js';
@@ -9,9 +7,9 @@ import './webgl-demo.css';
 export default class WebGLDemo extends React.Component
 {
 	static defaultProps = {
-		Title: "HTML 5 Canvas demos",
-		LinkTitle: "HTML 5 Canvas demos",
-		Href: "/portfolio/webgl-demo/",
+		Title: "WebGL demo",
+		LinkTitle: "WebGL demo",
+		Href: "/portfolio/webgl-demos/",
 		// Icon: SVG.AppNavButtons.About
 	};
 	constructor( props )
@@ -23,761 +21,341 @@ export default class WebGLDemo extends React.Component
 
 		document.title = this.Title;
 
-		this.AnimationsList = [
-			"Gradients (default)",
-			"Branding Boxes",
-			"EVH 5150 graphics",
-			"Random Circles",
-			"Random shapes",
-			"Eye Strain (warning)",
-			"WebGL example"
-		];
-
 		this.Canvas = React.createRef();
-		this.CanvasContext = undefined;
-
+		this.WebGLContext = undefined;
 		this.AnimationID = undefined;
-		this.AniCounter = 0;
-		this.AniMax = 500;
-		this.selectedAnimation = this.RenderAnimation_DefaultGradient.bind(this);
 
-		this.state = {
-			changed: false,
-			CanvasSize: 1000,
-			isAnimating: false,
-			AniBtnText: "Start",
-			animationSelected: this.AnimationsList[0]
-		};
+		this.Vertices = [
+			-1, -1, -1, 1, -1, -1, 1, 1, -1, -1, 1, -1,
+			-1, -1, 1, 1, -1, 1, 1, 1, 1, -1, 1, 1,
+			-1, -1, -1, -1, 1, -1, -1, 1, 1, -1, -1, 1,
+			1, -1, -1, 1, 1, -1, 1, 1, 1, 1, -1, 1,
+			-1, -1, -1, -1, -1, 1, 1, -1, 1, 1, -1, -1,
+			-1, 1, -1, -1, 1, 1, 1, 1, 1, 1, 1, -1
+        ];
 
-		this.DefaultGrad_Coords = {};
+        this.Colors = [
+			5, 3, 7, 5, 3, 7, 5, 3, 7, 5, 3, 7,
+			1, 1, 3, 1, 1, 3, 1, 1, 3, 1, 1, 3,
+			0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1,
+			1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0,
+			1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0,
+			0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0 
+        ];
+
+        this.Indices = [
+			0, 1, 2, 0, 2, 3, 4, 5, 6, 4, 6, 7,
+			8, 9, 10, 8, 10, 11, 12, 13, 14, 12, 14, 15,
+			16, 17, 18, 16, 18, 19, 20, 21, 22, 20, 22, 23 
+        ];
+
+		this.VertexBuffer = undefined;
+		this.ColorBuffer = undefined;
+		this.IndexBuffer = undefined;
+		this.ShaderProgram = undefined;
+		this._Pmatrix = undefined;	//	this.WebGLContext.getUniformLocation( this.ShaderProgram, "Pmatrix" );
+		this._Vmatrix = undefined;	//	this.WebGLContext.getUniformLocation( this.ShaderProgram, "Vmatrix" );
+		this._Mmatrix = undefined; //	this.WebGLContext.getUniformLocation( this.ShaderProgram, "Mmatrix" );
+
+		this.Project_Matrix = undefined;	//	this.Get_Projection( 40, this.state.CanvasSize / 2, 1, 100 );
+		this.Motion_Matrix = undefined;	//	[1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1];
+		this.View_Matrix = undefined;		//	[1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1];
+
+		this.VertCode = 'attribute vec3 position; '+
+            'uniform mat4 Pmatrix; '+
+            'uniform mat4 Vmatrix; '+
+            'uniform mat4 Mmatrix; '+
+            'attribute vec3 color; '+//the color of the point
+            'varying vec3 vColor; '+
+            'void main(void) { '+//pre-built function
+               'gl_Position = Pmatrix*Vmatrix*Mmatrix*vec4(position, 1.);'+
+               'vColor = color;'+
+            '}';
+
+		this.FragCode = 'precision mediump float;' +
+			'varying vec3 vColor;' +
+			'void main(void) { gl_FragColor = vec4(vColor, 1.);}';
+
+		this.CanvasSize = 1000;
+		this.AMORTIZATION = 0.95;
+        this.Drag = false;
+		this.Old_x = undefined;
+		this.Old_y = undefined;
+		this.dX = 0;
+		this.dY = 0;
+		this.THETA = 0;
+		this.PHI = 0;
+		this.Time_Old = 0;
+
 		return;
 	};
 	componentDidMount() 
-	{	//	console.debug( "WebGLDemo.componentDidMount()", this.canvas.current );
-		this.CanvasContext = this.Canvas.current.getContext( "2d" );
-		this.Render_DefaultGradient( this.CanvasContext );
-		//	this.Render_EyeStrain( this.CanvasContext );
+	{
+		console.clear();
+
+		//	console.debug( "WebGLDemo.componentDidMount()", this.canvas.current );
+		this.WebGLContext = this.Canvas.current.getContext( "experimental-webgl" );
+		this.Init_WebGL_Buffers();
+		this.Init_WebGL_Shaders();
+		this.Init_WebGL_AttributesToVertexShader();
+		this.Init_WebGL_Matrix();
+		//	this.Init_WebGL_EventHandlers();
+
+		this.Animate_Cube( 0 );
+		//	this.AnimationID = window.requestAnimationFrame( this.Animate_Cube );
 		return;
-	}
+	};
 	componentWillUnmount()
 	{	//console.debug( "AppLoader.componentWillUnmount()", this.AnimationID );
-		window.cancelAnimationFrame( this.AnimationID );
+		window.cancelAnimationFrame( this.Animate_Cube );
 		this.AnimationID = undefined;
+		return;
+	};
+
+	// INIT FUNCTIONS
+	Init_WebGL_Buffers()
+	{	console.debug( "WebGLDemo.Init_WebGL_Buffers()" );
+		//	Create and store data into vertex buffer
+		this.VertexBuffer = this.WebGLContext.createBuffer();
+		this.WebGLContext.bindBuffer( this.WebGLContext.ARRAY_BUFFER, this.VertexBuffer );
+		this.WebGLContext.bufferData( this.WebGLContext.ARRAY_BUFFER, new Float32Array( this.Vertices ), this.WebGLContext.STATIC_DRAW );
+
+         // Create and store data into color buffer
+        this.ColorBuffer = this.WebGLContext.createBuffer();
+        this.WebGLContext.bindBuffer(this.WebGLContext.ARRAY_BUFFER, this.ColorBuffer);
+        this.WebGLContext.bufferData(this.WebGLContext.ARRAY_BUFFER, new Float32Array(this.Colors), this.WebGLContext.STATIC_DRAW);
+
+         // Create and store data into index buffer
+		this.IndexBuffer = this.WebGLContext.createBuffer();
+		this.WebGLContext.bindBuffer( this.WebGLContext.ELEMENT_ARRAY_BUFFER, this.IndexBuffer );
+		this.WebGLContext.bufferData( this.WebGLContext.ELEMENT_ARRAY_BUFFER, new Uint16Array( this.Indices ), this.WebGLContext.STATIC_DRAW );
+		return;
+	};
+	Init_WebGL_Shaders()
+	{	console.debug( "WebGLDemo.Init_WebGL_Shaders()");
+		let vertShader = this.WebGLContext.createShader( this.WebGLContext.VERTEX_SHADER );
+		this.WebGLContext.shaderSource( vertShader, this.VertCode );
+		this.WebGLContext.compileShader( vertShader );
+
+		let fragShader = this.WebGLContext.createShader( this.WebGLContext.FRAGMENT_SHADER );
+		this.WebGLContext.shaderSource( fragShader, this.FragCode );
+		this.WebGLContext.compileShader( fragShader );
+
+		this.ShaderProgram = this.WebGLContext.createProgram();
+		this.WebGLContext.attachShader( this.ShaderProgram, vertShader );
+		this.WebGLContext.attachShader( this.ShaderProgram, fragShader );
+		this.WebGLContext.linkProgram( this.ShaderProgram );
+
+		return;
+	};
+	Init_WebGL_AttributesToVertexShader()
+	{
+		console.debug( "Init_WebGL_AttributesToVertexShader()::Associating attributes to vertex shader" );
+
+		this._Pmatrix = this.WebGLContext.getUniformLocation( this.ShaderProgram, "Pmatrix" );
+		this._Vmatrix = this.WebGLContext.getUniformLocation( this.ShaderProgram, "Vmatrix" );
+		this._Mmatrix = this.WebGLContext.getUniformLocation( this.ShaderProgram, "Mmatrix" );
+
+		this.WebGLContext.bindBuffer( this.WebGLContext.ARRAY_BUFFER, this.VertexBuffer );
+
+		let _position = this.WebGLContext.getAttribLocation( this.ShaderProgram, "position" );
+		this.WebGLContext.vertexAttribPointer( _position, 3, this.WebGLContext.FLOAT, false, 0, 0 );
+		this.WebGLContext.enableVertexAttribArray( _position );
+		this.WebGLContext.bindBuffer( this.WebGLContext.ARRAY_BUFFER, this.ColorBuffer );
+
+		let _color = this.WebGLContext.getAttribLocation( this.ShaderProgram, "color" );
+		this.WebGLContext.vertexAttribPointer( _color, 3, this.WebGLContext.FLOAT, false, 0, 0 );
+		this.WebGLContext.enableVertexAttribArray( _color );
+		this.WebGLContext.useProgram( this.ShaderProgram );
+		return;
+	}
+	Init_WebGL_Matrix()
+	{
+		console.debug( "Init_WebGL_Matrix()");
+
+		this.Project_Matrix = this.Get_Projection( 40, this.CanvasSize / 2, 1, 100 );
+		this.Motion_Matrix = [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1];
+		this.View_Matrix = [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1];
+		this.View_Matrix[14] = this.View_Matrix[14] - 6;
+		return;
+	}
+	Init_WebGL_EventHandlers()
+	{
+		console.debug( "Init_WebGL_EventHandlers", this.Canvas );
+		//canvas.addEventListener("mousedown", mouseDown, false);
+  //      canvas.addEventListener("mouseup", mouseUp, false);
+  //      canvas.addEventListener("mouseout", mouseUp, false);
+  //      canvas.addEventListener("mousemove", mouseMove, false);
+
+		//this.Canvas.current.addEventListener( "mousedown", this.OnMouseDown_SelectCube, false );
+		//this.Canvas.current.addEventListener( "mouseup", this.OnMouseUp_ReleaseCube, false );
+		//this.Canvas.current.addEventListener( "mouseout", this.OnMouseUp_ReleaseCube, false );
+		////	this.Canvas.current.addEventListener( "mousemove", this.OnMouseDown_DragCube, false );
 		return;
 	}
 
 	// UTILITY METHODS
-	DefaultCanvasReset( c )
+	Get_Projection( angle, a, zMin, zMax ) 
 	{
-		//	console.debug( "DefaultCanvasReset", c );
-		c.globalAlpha = 1;
-		c.imageSmoothingQuality = "high";
-		c.lineWidth = 1;
-		c.fillStyle = "rgba(0,0,0,1)";
-		c.strokeStyle = "rgba(0,0,0,1)";
-		c.shadowColor = "rgba(0,0,0,1)";
-		c.shadowBlur = 0;
-		c.shadowOffsetX = 0;
-		c.shadowOffsetY = 0;
-		c.setTransform( 1, 0, 0, 1, 0, 0 );
-		c.clearRect( 0, 0, this.state.CanvasSize, this.state.CanvasSize );
-		c.save();
+		let ang = Math.tan( ( angle * .5 ) * Math.PI / 180 );
+		//	angle*.5
+		return [
+			0.5 / ang, 0, 0, 0,
+			0, 0.5 * a / ang, 0, 0,
+			0, 0, -( zMax + zMin ) / ( zMax - zMin ), -1,
+			0, 0, ( -2 * zMax * zMin ) / ( zMax - zMin ), 0 
+		];
+	};
+	RotateX( m, angle ) 
+	{
+		let c = Math.cos( angle );
+		let s = Math.sin( angle );
+		let mv1 = m[1];
+		let mv5 = m[5];
+		let mv9 = m[9];
+
+		m[1] = m[1] * c - m[2] * s;
+		m[5] = m[5] * c - m[6] * s;
+		m[9] = m[9] * c - m[10] * s;
+
+		m[2] = m[2] * c + mv1 * s;
+		m[6] = m[6] * c + mv5 * s;
+		m[10] = m[10] * c + mv9 * s;
 		return;
 	};
-	DefaultGradientColorStops( fillGrad )
-	
+	RotateY( m, angle ) 
 	{
-		fillGrad.addColorStop( "0", "rgba(39, 93, 173, 1)" );
-		fillGrad.addColorStop( "0.3", "rgba(197, 34, 51, 1)" );
-		fillGrad.addColorStop( "0.7", "rgba(248, 216, 0, 1)" );
-		fillGrad.addColorStop( "1", "rgba(0,96,0, 1)" );
+		let c = Math.cos(angle);
+        let s = Math.sin(angle);
+		let mv0 = m[0];
+		let mv4 = m[4];
+		let mv8 = m[8];
+
+		m[0] = c * m[0] + s * m[2];
+		m[4] = c * m[4] + s * m[6];
+		m[8] = c * m[8] + s * m[10];
+
+		m[2] = c * m[2] - s * mv0;
+		m[6] = c * m[6] - s * mv4;
+		m[10] = c * m[10] - s * mv8;
 		return;
-	}
+	};
+
+	Animate_Cube( time )
+	{
+		console.debug( "Animate_Cube", time, this.Time_Old );
+		//	let dt = time - this.Time_Old;
+
+		if ( this.Drag === false) 
+		{
+			this.dX *= this.AMORTIZATION;
+			this.dY *= this.AMORTIZATION;
+			this.THETA += this.dX;
+			this.PHI += this.dY;
+		}
+
+        //	SET MODEL MATRIX TO I4
+		this.Motion_Matrix[0] = 1;
+		this.Motion_Matrix[1] = 0;
+		this.Motion_Matrix[2] = 0;
+		this.Motion_Matrix[3] = 0;
+
+		this.Motion_Matrix[4] = 0;
+		this.Motion_Matrix[5] = 1;
+		this.Motion_Matrix[6] = 0;
+		this.Motion_Matrix[7] = 0;
+
+		this.Motion_Matrix[8] = 0;
+		this.Motion_Matrix[9] = 0;
+		this.Motion_Matrix[10] = 1;
+		this.Motion_Matrix[11] = 0;
+
+		this.Motion_Matrix[12] = 0;
+		this.Motion_Matrix[13] = 0;
+		this.Motion_Matrix[14] = 0;
+        this.Motion_Matrix[15] = 1;
+
+		this.RotateY( this.Motion_Matrix, this.THETA );
+		this.RotateX( this.Motion_Matrix, this.PHI );
+
+        this.Time_Old = time; 
+        this.WebGLContext.enable(this.WebGLContext.DEPTH_TEST);
+		//	this.WebGLContext.depthFunc(this.WebGLContext.LEQUAL);
+
+		this.WebGLContext.clearColor( 0.5, 0.5, 0.5, 0.9 );
+		this.WebGLContext.clearDepth( 1.0 );
+		this.WebGLContext.viewport( 0.0, 0.0, this.CanvasSize, this.CanvasSize );
+		this.WebGLContext.clear( this.WebGLContext.COLOR_BUFFER_BIT | this.WebGLContext.DEPTH_BUFFER_BIT );
+
+		this.WebGLContext.uniformMatrix4fv( this._Pmatrix, false, this.Project_Matrix );
+		this.WebGLContext.uniformMatrix4fv( this._Vmatrix, false, this.View_Matrix );
+		this.WebGLContext.uniformMatrix4fv( this._Mmatrix, false, this.Motion_Matrix );
+
+		this.WebGLContext.bindBuffer( this.WebGLContext.ELEMENT_ARRAY_BUFFER, this.IndexBuffer );
+		this.WebGLContext.drawElements( this.WebGLContext.TRIANGLES, this.Indices.length, this.WebGLContext.UNSIGNED_SHORT, 0 );
+
+		//	this.AnimationID = window.requestAnimationFrame( this.Animate_Cube( dt, this) );
+		return;
+	};
 
 	// EVENT SETUP METHODS
-	OnChange_SelectAnimationFromList( ev )
-	{	//	console.debug( "OnChange_SelectAnimationFromList", ev.target.value );
-		//this.AnimationsList = [
-		//	0	"Gradients (default)",
-		//	1	"Branding Boxes",
-		//	2	"EVH 5150 graphics",
-		//	3	"Random Circles",
-		//	4	"Random shapes",
-		//	5	"Eye Strain",
-		//	6	"WebGL example"
-		//];
-		switch ( parseInt( ev.target.value ) )
+	OnMouseDown_SelectCube( ev )
+	{
+		console.debug( "OnMouseDown_SelectCube1", this.Drag );
+		this.Drag = true;
+		this.Old_x = ev.pageX;
+		this.Old_y = ev.pageY;
+		//this.AnimationID = window.requestAnimationFrame( this.Animate_Cube( 0 ) );
+        ev.preventDefault();
+		return false;
+	};
+	OnMouseUp_ReleaseCube( ev )
+	{	//	console.debug( "OnMouseUp_ReleaseCube1", this.Drag );
+		this.Drag = false;
+		//	console.debug( "OnMouseUp_ReleaseCube2", this.Drag );
+		return;
+	};
+	OnMouseMove_DragCube( ev )
+	{
+		//	console.debug( "OnMouseMove_DragCube", this.Drag );
+		if ( this.Drag === false )
 		{
-			case 0: {
-				this.Render_DefaultGradient( this.CanvasContext );
-				this.selectedAnimation = this.RenderAnimation_DefaultGradient;
-				break;
-			}
-			case 1: {
-				this.Render_Boxes( this.CanvasContext );
-				this.selectedAnimation = this.RenderAnimation_Boxes;
-				break;
-			}
-			case 2: {
-				this.Render_EVHTribute( this.CanvasContext );
-				this.selectedAnimation = this.RenderAnimation_EVHTribute;
-				break;
-			}
-			case 3: {
-				this.Render_RandomCircles( this.CanvasContext );
-				this.selectedAnimation = this.RenderAnimation_RandomCircles;
-				break;
-			}
-			case 4: {
-				this.Render_RandomShapes( this.CanvasContext );
-				this.selectedAnimation = this.RenderAnimation_RandomShapes;
-				break;
-			}
-			case 5: {
-				this.Render_EyeStrain( this.CanvasContext );
-				this.selectedAnimation = this.RenderAnimation_EyeStrain;
-				break;
-			}
-			case 6: {
-				this.Render_WebGL_Sample_1( this.CanvasContext );
-				this.selectedAnimation = this.RenderAnimation_WebGL_Sample_1;
-				break;
-			}
-			default: {
-				this.Render_DefaultGradient( this.CanvasContext );
-				this.selectedAnimation = this.RenderAnimation_DefaultGradient;
-				break;
-			}
+			return false;
 		}
-		return;
-	};
-
-	OnClick_RenderAnimationCanvas( ev )
-	{
-		//	https://blog-en.openalfa.com/how-to-draw-with-the-mouse-in-a-html5-canvas
-		//	https://bearnithi.com/2019/12/12/understanding-canvas-draw-a-line-in-canvas-using-mouse-and-touch-events-in-javascript/
-		//	console.debug( "this.state.isAnimating", this.state.isAnimating );
-		//	console.debug( "OnClick_RenderAnimationCanvas" );
-		if ( this.state.isAnimating === false )
+		else if ( this.Drag === true )
 		{
-			this.StartAnimation();
+			console.debug( "OnMouseMove_DragCube", this.Drag );
+
+			this.dX = ( ev.pageX - this.Old_x ) * 2 * ( Math.PI / ( this.CanvasSize / 2 ) );
+			this.dY = ( ev.pageY - this.Old_y ) * 2 * ( Math.PI / ( this.CanvasSize / 2 ) );
+			this.THETA += this.dX;
+			this.PHI += this.dY;
+			this.Old_x = ev.pageX;
+			this.Old_y = ev.pageY;
 		}
-		else if ( this.state.isAnimating === true )
-		{
-			this.StopAnimation();
-		}
-		return;
-	};
-	StartAnimation()
-	{	//	console.debug( "1. StartAnimation", this.AnimationID, this.AniCounter, this.CanvasContext, this.state.animationSelected );
-		console.debug( "StartAnimation", this.state.animationSelected, this.CanvasContext );
-
-		if ( this.CanvasContext === undefined )
-		{
-			this.CanvasContext = this.Canvas.current.getContext( "2d" );
-			this.CanvasContext.clearRect( 0, 0, this.state.CanvasSize, this.state.CanvasSize );
-		}
-
-		this.AnimationID = window.requestAnimationFrame( () => this.selectedAnimation( this.CanvasContext) );
-
-		this.setState( {
-			isAnimating: true,
-			AniBtnText: "Stop"
-		} );
-
-		//	console.debug( "2. StartAnimation", this.AnimationID, this.AniCounter );
-		return;
-	};
-	StopAnimation()
-	{	//	
-		console.debug( "StopAnimation", this.AnimationID, this.CanvasContext );
-		this.AnimationID = window.cancelAnimationFrame( this.AnimationID );
-		this.setState( {
-			isAnimating: false,
-			AniBtnText: "Start"
-		} );
-		//	console.debug( "2. StopAnimation", this.AnimationID );
-		return;
-	}
-
-	// RENDERS &  ANIMATIONS
-	Render_DefaultGradient( c )
-	{	//	console.debug( "Render_DefaultGradient", c );
-		this.DefaultCanvasReset( c );
-
-		this.DefaultGrad_Coords = {
-			x0: this.state.CanvasSize / 2,
-			y0: this.state.CanvasSize / 2,
-			r0: this.state.CanvasSize / 8,
-			x1: this.state.CanvasSize / 2,
-			y1: this.state.CanvasSize / 2,
-			r1: this.state.CanvasSize / 1.5
-		}
-
-		let radialGrad = c.createRadialGradient(
-			this.DefaultGrad_Coords.x0,
-			this.DefaultGrad_Coords.y0,
-			this.DefaultGrad_Coords.r0,
-			this.DefaultGrad_Coords.x1,
-			this.DefaultGrad_Coords.y1,
-			this.DefaultGrad_Coords.r1
-		);
-		this.DefaultGradientColorStops( radialGrad );
-
-		c.fillStyle = radialGrad;
-		c.fillRect( 0, 0, this.state.CanvasSize, this.state.CanvasSize );
-		c.fillStyle = "rgba(255,255,255,1)";
-		c.save();
-		return;
-	};
-	RenderAnimation_DefaultGradient( c )
-	{
-		console.debug( "Render_GradientAnimation", this.AniCounter);
-
-		if ( this.AniCounter < this.AniMax )
-		{
-			this.AniCounter++;
-
-			console.debug( "this.DefaultGrad_Coords", this.DefaultGrad_Coords );
-
-			let radialGrad = c.createRadialGradient(
-				this.state.CanvasSize / 2,
-				this.state.CanvasSize / 2,
-				this.state.CanvasSize / 8 + this.AniCounter,
-				this.state.CanvasSize / 2,
-				this.state.CanvasSize / 2,
-				this.state.CanvasSize /1.5 + this.AniCounter
-			);
-			this.DefaultGradientColorStops( radialGrad );
-
-			c.fillStyle = radialGrad;
-			c.fillRect( 0, 0, this.state.CanvasSize, this.state.CanvasSize );
-			c.fillStyle = "rgba(255,255,255,1)";
-			c.save();
-
-			this.AnimationID = window.requestAnimationFrame( () => this.RenderAnimation_DefaultGradient( c ) );
-		}
-		else if ( this.AniCounter === this.AniMax )
-		{
-			this.AniCounter = 0;
-			this.StopAnimation();
-		}
-		return;
-	};
-
-	Render_Boxes(c)
-	{
-		console.debug( "Render_Boxes",c );
-		this.DefaultCanvasReset( c );
-
-		c.fillStyle = "rgba( 39, 93, 173, 1)";
-		c.fillRect( 0, 0, this.state.CanvasSize / 2, this.state.CanvasSize / 2 );
-		c.fillStyle = "rgba(197, 34, 51, 1)";
-		c.fillRect( this.state.CanvasSize / 2, 0, this.state.CanvasSize / 2, this.state.CanvasSize / 2 );
-		c.fillStyle = "rgba(248, 216, 0,1)";
-		c.fillRect( 0, this.state.CanvasSize / 2, this.state.CanvasSize / 2, this.state.CanvasSize / 2 );
-		c.fillStyle = "rgba(0,96,0,1)";
-		c.fillRect( this.state.CanvasSize / 2, this.state.CanvasSize / 2, this.state.CanvasSize / 2, this.state.CanvasSize / 2 );
-
-		for ( var i = 0; i < 10; i++ )
-		{
-			let _new_i = i + 1;
-
-			c.beginPath();
-			c.globalAlpha = 0.25;
-			c.fillStyle = "rgba(255,255,255,1)";
-			c.fillRect(
-				_new_i * 40,
-				_new_i * 40,
-				this.state.CanvasSize - 80 * _new_i,
-				this.state.CanvasSize - 80 * _new_i );
-			c.closePath();
-		}
-
-		c.save();
-		return;
-	};
-	RenderAnimation_Boxes(c)
-	{
-		console.debug( "Render_GradientAnimation", c, this.CanvasContext );
-		return;
-	};
-
-	Render_EVHTribute( c )
-	{
-		console.debug( "Render_EVHTribute",c );
-		this.DefaultCanvasReset( c );
-
-		const _fill_red = "rgba(255,0,0,1)";
-		const _fill_white = "rgba(255,255,255,1)";
-		const _fill_black = "rgba(0,0,0,1)";
-
-		c.fillStyle = _fill_red;
-		c.fillRect( 0, 0, this.state.CanvasSize, this.state.CanvasSize );
-
-		// Math.random() < 0.5 ? -1 : 1;
-		for ( let i = 0; i < 100; i++ )
-		{
-			let _r = Math.round( Math.random() * 3 );
-			switch ( _r )
-			{
-				case 0: {
-					c.fillStyle = _fill_red;
-					break;
-				}
-				case 1: {
-					c.fillStyle = _fill_white;
-					break;
-				}
-				case 2: {
-					c.fillStyle = _fill_black;
-					break;
-				}
-				default: {
-					c.fillStyle = _fill_red;
-					break;
-				}
-			}
-
-			let x = Math.round( Math.random() * ( this.state.CanvasSize * 2 ) );
-			let y = Math.round( Math.random() * ( this.state.CanvasSize * 2 ) );
-			let w = ( this.state.CanvasSize * 2 );
-			let h = Math.round( Math.random() * 100 );
-			let _rot = Math.round( ( Math.random() * 720 ) );
-
-			c.beginPath();
-			//	c.globalAlpha = Math.random();
-			c.rotate( _rot );
-			c.fillRect( -x, -y, w, h );
-			c.closePath();
-		}
-
-		c.save();
-		return;
-	}
-	RenderAnimation_EVHTribute(c)
-	{	//	
-		console.debug( "Render_EVHTribute_Animation", c );
-		return;
-	};
-
-	Render_RandomCircles( c )
-	{
-		console.debug( "Render_RandomCircles",c);
-		this.DefaultCanvasReset( c );
-
-		c.fillStyle = "rgba(0,0,0,1)";
-		c.shadowBlur = 20;
-		c.shadowOffsetY = 10;
-
-		c.fillRect( 0, 0, this.state.CanvasSize, this.state.CanvasSize );
-
-		for ( var i = 0; i < 100; i++ )
-		{
-			let _x = Math.round( Math.random() * ( this.state.CanvasSize ) );
-			let _y = Math.round( Math.random() * ( this.state.CanvasSize ) );
-			let _r_size = Math.round( Math.random() * ( this.state.CanvasSize / 5 ) );
-
-			let _grad_x1 = _x + ( _r_size / 3 );
-			let _grad_y1 = _y - ( _r_size / 3 );
-
-			let _radius1 = 0;
-
-			const _rg = c.createRadialGradient(
-				_grad_x1, _grad_y1, _radius1,
-				_x, _y, _r_size
-			);
-
-			let _r = Math.round( Math.random() * 256 );
-			let _g = Math.round( Math.random() * 256 );
-			let _b = Math.round( Math.random() * 256 );
-
-			_rg.addColorStop( 0, "rgba(" + _r + "," + _g + "," + _b + ", 1)" );
-			_rg.addColorStop( 1, "rgba(" + ( _r / 5 ) + "," + ( _g / 5 ) + "," + ( _b / 5 ) + ", 1)" );
-
-			c.fillStyle = _rg;
-
-			c.beginPath();
-			c.arc( _x, _y, _r_size, 0, 2 * Math.PI );
-			c.fill();
-			c.stroke();
-			c.closePath();
-		}
-
-		c.save();
-		return;
-	};
-	RenderAnimation_RandomCircles( c )
-	{	//	
-		console.debug( "RenderAnimation_RandomCircles", c );
-		return;
-	};
-
-	Render_RandomShapes( c )
-	{
-		console.debug( "Render_RandomShapes" );
-		this.DefaultCanvasReset( c );
-
-		c.fillStyle = "rgba(0,0,0,1)";
-		c.shadowBlur = 20;
-		c.shadowOffsetY = 10;
-		c.fillRect( 0, 0, this.state.CanvasSize, this.state.CanvasSize );
-
-		for ( var i = 0; i < 200; i++ )
-		{
-			const _x = Math.round( Math.random() * ( this.state.CanvasSize ) );
-			const _y = Math.round( Math.random() * ( this.state.CanvasSize ) );
-			const _size = Math.round( Math.random() * ( this.state.CanvasSize / 5 ) );
-			const _r = Math.round( Math.random() * 256 );
-			const _g = Math.round( Math.random() * 256 );
-			const _b = Math.round( Math.random() * 256 );
-			const _rad = 0;
-
-			let _switch = Math.round( ( Math.random() * 6 ) );
-			//	cd..console.debug( "_switch", _switch, _x, _y, _r_size );
-			//	_switch = 6;
-
-			switch ( _switch )
-			{
-				case 0: {
-					this.Render_PerfectCircle( c, _x, _y, _size, _rad, _r, _g, _b );
-					break;
-				}
-				case 1: {
-					this.Render_LeftSkewCircle( c, _x, _y, _size, _rad, _r, _g, _b );
-					break;
-				}
-				case 2: {
-					this.Render_RightSkewCircle( c, _x, _y, _size, _rad, _r, _g, _b );
-					break;
-				}
-				case 3: {
-					this.Render_PerfectRect( c, _x, _y, _size, _r, _g, _b );
-					break;
-				}
-				case 4: {
-					this.Render_LeftSkewRect( c, _x, _y, _size, _r, _g, _b );
-					break;
-				}
-				case 5: {
-					this.Render_RightSkewRect( c, _x, _y, _size, _r, _g, _b );
-					break;
-				}
-				default: { break; }
-			}
-		}
-
-		c.save();
-		return;
-	}
-	RenderAnimation_RandomShapes( c )
-	{	//	
-		console.debug( "RenderAnimation_RandomShapes", c );
-		return;
-	};
-
-	Render_EyeStrain( c )
-	{
-		console.debug( "Render_EyeStrain" );
-		this.DefaultCanvasReset( c );
-
-		c.beginPath();
-
-		c.fillStyle = "rgba(255,0,0,1)";
-		c.fillRect( 0, 0, this.state.CanvasSize, this.state.CanvasSize );
-
-		c.fillStyle = "rgba(0,0,255,1)";
-		c.arc( this.state.CanvasSize/2, this.state.CanvasSize/2, this.state.CanvasSize / 4, 0, 2 * Math.PI );
-		c.fill();
-
-		c.closePath();
-		c.save();
-		return;
-	}
-	RenderAnimation_EyeStrain( c )
-	{	//	
-		console.debug( "RenderAnimation_EyeStrain", c );
-		return;
-	};
-
-	Render_WebGL_Sample_1( c )
-	{
-		console.debug( "Render_WebGL_Sample_1" );
-		this.DefaultCanvasReset( c );
-
-		let linGrad = c.createLinearGradient( 0, 0, 0, this.state.CanvasSize );
-		this.DefaultGradientColorStops( linGrad );
-
-		c.fillStyle = linGrad;
-		c.fillRect( 0, 0, this.state.CanvasSize, this.state.CanvasSize );
-
-		c.fillStyle = "rgba(255,255,255,1)";
-		c.save();
-		return;
-	}
-	RenderAnimation_WebGL_Sample_1( c )
-	{	//	
-		console.debug( "RenderAnimation_WebGL_Sample_1", c );
-		return;
-	};
-
-
-	//	ANIMATION - RANDOM SHAPES
-	//	TO BE REUSED
-	RenderFractalAnimation( c )
-	{	//	console.debug( "1. RenderFractalAnimation", this.AnimationID, this.AniCounter );
-		if ( this.AniCounter < this.AniMax )
-		{
-			this.DrawFractal( c );
-			this.AniCounter++;
-			this.AnimationID = window.requestAnimationFrame( () => this.RenderFractalAnimation( c ) );
-		}
-		else if ( this.AniCounter === this.AniMax )
-		{
-			this.AniCounter = 0;
-			this.CanvasContext = undefined;
-			this.StopAnimation();
-		}
-		return;
-	};
-	DrawFractal( c )
-	{	//	console.debug( "DrawFractal()", this.AniCounter);
-		//	c.fillRect( 0, 0, this.state.CanvasSize, this.state.CanvasSize );
-		const _x = Math.round( Math.random() * ( this.state.CanvasSize ) );
-		const _y = Math.round( Math.random() * ( this.state.CanvasSize ) );
-		const _size = Math.round( Math.random() * ( this.state.CanvasSize / 5 ) );
-		const _r = Math.round( Math.random() * 256 );
-		const _g = Math.round( Math.random() * 256 );
-		const _b = Math.round( Math.random() * 256 );
-		const _rad = 0;
-
-		let _switch = Math.round( ( Math.random() * 6 ) );
-		//	cd..console.debug( "_switch", _switch, _x, _y, _r_size );
-		//	_switch = 6;
-
-		switch ( _switch )
-		{
-			case 0: {
-				this.Render_PerfectCircle( c, _x, _y, _size, _rad, _r, _g, _b );
-				break;
-			}
-			case 1: {
-				this.Render_LeftSkewCircle( c, _x, _y, _size, _rad, _r, _g, _b );
-				break;
-			}
-			case 2: {
-				this.Render_RightSkewCircle( c, _x, _y, _size, _rad, _r, _g, _b );
-				break;
-			}
-			case 3: {
-				this.Render_PerfectRect( c, _x, _y, _size, _r, _g, _b );
-				break;
-			}
-			case 4: {
-				this.Render_LeftSkewRect( c, _x, _y, _size, _r, _g, _b );
-				break;
-			}
-			case 5: {
-				this.Render_RightSkewRect( c, _x, _y, _size, _r, _g, _b );
-				break;
-			}
-			default: { break; }
-		}
-		return;
-	};
-
-	Render_PerfectCircle( c, x, y, size, rad, r, g, b )
-	{
-		c.globalAlpha = 1;
-		c.lineWidth = 0.5;
-		c.strokeStyle = "rgba(0,0,0,1)";
-		c.fillStyle = "rgba(0,0,0,1)";
-		c.shadowBlur = 20;
-		c.shadowOffsetY = 10;
-		c.setTransform(1, 0, 0, 1, 0, 0);
-		c.beginPath();
-
-		const _grad_x1 = x + ( size / 3 );
-		const _grad_y1 = y - ( size / 3 );
-		const _rg = c.createRadialGradient(
-			_grad_x1, _grad_y1, rad,
-			x, y, size
-		);
-		_rg.addColorStop( 0, "rgba(" + r + "," + g + "," + b + ", 1)" );
-		_rg.addColorStop( 1, "rgba(" + ( r / 2 ) + "," + ( g / 2 ) + "," + ( b / 2 ) + ", 1)" );
-
-		c.fillStyle = _rg;
-		c.arc( x, y, size, 0, 2 * Math.PI );
-		c.stroke();
-		c.fill();
-		c.closePath();
-		c.setTransform(1, 0, 0, 1, 0, 0);
-		c.save();
-		return;
-	};
-	Render_LeftSkewCircle( c, x, y, size, rad, r, g, b )
-	{
-		c.globalAlpha = 1;
-		c.lineWidth = 0.5;
-		c.strokeStyle = "rgba(0,0,0,1)";
-		c.fillStyle = "rgba(0,0,0,1)";
-		c.shadowBlur = 20;
-		c.shadowOffsetY = 10;
-		c.setTransform(1, 0, 0, 1, 0, 0);
-		c.beginPath();
-
-		const _grad_x1 = x + ( size / 3 );
-		const _grad_y1 = y - ( size / 3 );
-		const _rg = c.createRadialGradient(
-			_grad_x1, _grad_y1, rad,
-			x, y, size
-		);
-		_rg.addColorStop( 0, "rgba(" + r + "," + g + "," + b + ", 1)" );
-		_rg.addColorStop( 1, "rgba(" + ( r / 2 ) + "," + ( g / 2 ) + "," + ( b / 2 ) + ", 1)" );
-
-		c.fillStyle = _rg;
-		c.setTransform( 1, 0.3, 0, 1, 0, 0 );
-		c.arc( x, y, size, 0, 2 * Math.PI );
-		c.stroke();
-		c.fill();
-		c.closePath();
-		c.setTransform(1, 0, 0, 1, 0, 0);
-		c.save();
-		return;
-	};
-	Render_RightSkewCircle( c, x, y, size, rad, r, g, b )
-	{
-		c.globalAlpha = 1;
-		c.lineWidth = 0.5;
-		c.strokeStyle = "rgba(0,0,0,1)";
-		c.fillStyle = "rgba(0,0,0,1)";
-		c.shadowBlur = 20;
-		c.shadowOffsetY = 10;
-		c.setTransform(1, 0, 0, 1, 0, 0);
-		c.beginPath();
-
-		const _grad_x1 = x + ( size / 3 );
-		const _grad_y1 = y - ( size / 3 );
-		const _rg = c.createRadialGradient(
-			_grad_x1, _grad_y1, rad,
-			x, y, size
-		);
-		_rg.addColorStop( 0, "rgba(" + r + "," + g + "," + b + ", 1)" );
-		_rg.addColorStop( 1, "rgba(" + ( r / 2 ) + "," + ( g / 2 ) + "," + ( b / 2 ) + ", 1)" );
-
-		c.fillStyle = _rg;
-		c.setTransform( 1, -0.3, 0, 1, 0, 0 );
-		c.arc( x, y, size, 0, 2 * Math.PI );
-		c.stroke();
-		c.fill();
-		c.closePath();
-		c.setTransform(1, 0, 0, 1, 0, 0);
-		c.save();
-		return;
-	};
-
-	Render_PerfectRect( c, x, y, size, r, g, b )
-	{
-		c.globalAlpha = 1;
-		c.lineWidth = 1;
-		c.strokeStyle = "rgba(0,0,0,1)";
-		c.fillStyle = "rgba(0,0,0,1)";
-		c.shadowBlur = 20;
-		c.shadowOffsetY = 10;
-		c.beginPath();
-
-		const _lg = c.createLinearGradient( x, 0, x + (size * 2), 0 );
-		_lg.addColorStop( 0, "rgba(" + r + "," + g + "," + b + ", 1)" );
-		_lg.addColorStop( 1, "rgba(" + (r/2) + "," + (g/2) + "," + (b/2) + ", 1)" );
-
-		c.fillStyle = _lg;
-		c.setTransform(1, 0, 0, 1, 0, 0);
-		c.strokeRect( x, y, ( size * 2 ), size );
-		c.fillRect( x, y, ( size * 2 ),  size );
-		c.closePath();
-		c.save();
-		return;
-	};
-	Render_LeftSkewRect( c, x, y, size, r, g, b )
-	{
-		c.globalAlpha = 1;
-		c.lineWidth = 1;
-		c.strokeStyle = "rgba(0,0,0,1)";
-		c.fillStyle = "rgba(0,0,0,1)";
-		c.shadowBlur = 20;
-		c.shadowOffsetY = 10;
-		c.beginPath();
-
-		const _lg = c.createLinearGradient( x, 0, x + (size * 2), 0 );
-		_lg.addColorStop( 0, "rgba(" + r + "," + g + "," + b + ", 1)" );
-		_lg.addColorStop( 1, "rgba(" + (r/2) + "," + (g/2) + "," + (b/2) + ", 1)" );
-
-		c.fillStyle = _lg;
-		c.setTransform( 1, 0, -1, 1, 0, ( y / 2 ) );
-		c.strokeRect( x, y, ( size * 2 ), size );
-		c.fillRect( x, y, ( size * 2 ),  size );
-		c.closePath();
-		c.save();
-		return;
-	};
-	Render_RightSkewRect( c, x, y, size, r, g, b )
-	{
-		c.globalAlpha = 1;
-		c.lineWidth = 1;
-		c.strokeStyle = "rgba(0,0,0,1)";
-		c.fillStyle = "rgba(0,0,0,1)";
-		c.shadowBlur = 20;
-		c.shadowOffsetY = 10;
-		c.beginPath();
-
-		const _lg = c.createLinearGradient( x, 0, x + (size * 2), 0 );
-		_lg.addColorStop( 0, "rgba(" + r + "," + g + "," + b + ", 1)" );
-		_lg.addColorStop( 1, "rgba(" + (r/2) + "," + (g/2) + "," + (b/2) + ", 1)" );
-
-		c.fillStyle = _lg;
-		c.setTransform( 1, -1, 0, 1, 0, ( y / 2 ) );
-		c.strokeRect( x, y, ( size * 2 ), size );
-		c.fillRect( x, y, ( size * 2 ),  size );
-		c.closePath();
-		c.save();
+		ev.preventDefault();
 		return;
 	};
 
     render()
 	{
-		//	<div className="demo-nav-item" onClick={this.OnClick_CreateScaledRects.bind( this )}>Render scaled opaque boxes</div>
-		//	<div className="demo-nav-item" onClick={this.OnClick_EVHTribute.bind( this )}>EVH Tribute</div>
-		//	<div className="demo-nav-item" onClick={this.OnClick_CreateRandomGradientCircles.bind( this )}>Render gradient circles</div>
-		//	<div className="demo-nav-item" onClick={this.OnClick_ResetCanvas.bind( this )}>Reset</div>
-
-        return (
+		return (
 			<div className="page-layout">
 				<SubNav />
 
 				<div className="canvas-demo-header">{this.Title}</div>
 
-				<div className="canvas-demo-desc">The <a href="https://en.wikipedia.org/wiki/Canvas_element" target="_new" title="HTML canvas element">Canvas</a> provides a great way to creating dynamically generated graphics using browser based scripting languages such as JavaScript.</div>
-
-				<div className="input-nav">
-					<label htmlFor="svg_list" className="select-svg-list">
-						<span>Select a graphic animation:</span>
-						<select
-							defaultValue={this.state.animationSelected}
-							onChange={this.OnChange_SelectAnimationFromList.bind( this )}>
-							{
-								this.AnimationsList.map( ( item, index ) => (
-									<option key={index} value={ index }>{ item }</option>
-								))
-							}
-						</select>
-					</label>
-
-					<div className="demo-nav-item" onClick={this.OnClick_RenderAnimationCanvas.bind( this )}>{this.state.AniBtnText}</div>
-
-				</div>
 				<div className="canvas-panel">
-					<canvas id="html-5-canvas" className="canvas-2d" ref={this.Canvas}
-						height={this.state.CanvasSize} width={this.state.CanvasSize}></canvas>
+					<canvas id="html-5-canvas"
+						className="canvas-2d"
+						ref={this.Canvas}
+						height={this.CanvasSize}
+						width={this.CanvasSize}
+						onMouseDown={this.OnMouseDown_SelectCube.bind( this )}
+						onMouseUp={this.OnMouseUp_ReleaseCube.bind( this )}
+						onMouseOut={this.OnMouseUp_ReleaseCube.bind( this )}
+						onMouseMove={this.OnMouseMove_DragCube.bind( this )}>
+					</canvas>
 				</div>					
 			</div>
         );
