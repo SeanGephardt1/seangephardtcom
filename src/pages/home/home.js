@@ -1,6 +1,7 @@
 import React from 'react';
 import './home.css';
-import HomeSvgData from './home-svg-data.js';
+//	import HomeSvgData from './home-svg-data.js';
+import CommentsBlock from '../../controls/comments/comments-panel.js'; 
 
 export default class Home extends React.Component
 {
@@ -42,6 +43,9 @@ export default class Home extends React.Component
 	{
 		return (
 			<div className="page-layout">
+				{/* TESTING */}
+				<CommentsBlock />
+
 
 				{ /* SVG AREA 1 */ }
 				<div className="svg-panel" id="svg_panel">
@@ -58,15 +62,23 @@ export default class Home extends React.Component
 								<stop offset="0%" stopColor="rgba(190,64,128,1)" stopOpacity="1" />
 								<stop offset="100%" stopColor="rgba(100, 43, 115, 1)" stopOpacity="1" />
 							</linearGradient>
+							<path id="test-path-1" d="M128,241.6c29.2-98.8,191,23.5,294,19c176.7-7.6,413-87,413-20c0,59-292.9,33.8-349,96.4 c-86,96,237.9,84.7,196.8,109.8C330,662,938.6,469.2,845,658c-110.5,74.5-429.3-109.3-359,65c94.3,233.7-398.1-45.2-294-56.4	C383,646,176,553,434,529C571.2,516.2,103.3,325.2,128,241.6z" />
+
+							<path id="test-path-2" d="M202.9,505.8c-1.3-65.6,19-132.1,62.4-188c100.6-129.6,287.3-153.1,416.9-52.4
+								s153.2,287.3,52.5,416.9s-287.3,153.1-416.9,52.4c-41.1-31.9-71.5-72.4-90.7-117.1"/>
+
+							<path id="Circle_Path_1" d="M849.6,500c0,193.1-156.5,349.6-349.6,349.6S150.4,693.1,150.4,500S306.9,150.4,500,150.4
+								S849.6,306.9,849.6,500z"/>
+
 						</defs>
 						{
 							this.state.debug === false &&
 							<g id="debug">
-								<circle cx="500" cy="500" r="420" fill="url(#grad1)" />
-								<rect width="420" height="420" transform="translate(280,280)" fill="url(#grad2)"/>
+								<rect width="1000" height="1000" transform="translate(0,0)" fill="url(#grad2)"/>
 							</g>
 						}
-						<g id="inner-circle-1">
+						{ /* inner partial circles */ }
+						<g id="inner-circles-1">
 							<path id="circle_480" className="inner-circle ic1" d="M649.3,684.3C608.5,717.3,556.6,737,500,737c-131.2,0-237.5-106.1-237.5-237
 								S368.8,263,500,263s237.5,106.1,237.5,237c0,41.5-10.7,80.5-29.5,114.4"/>
 							<path id="circle_500" className="inner-circle ic2" d="M573.1,736.2c-52.2,16.1-110.1,15.1-164.9-6.8c-126.9-50.7-188.7-194.6-138.1-321.3
@@ -82,6 +94,17 @@ export default class Home extends React.Component
 							<path id="Circle_600"  className="inner-circle ic7" d="M202.9,505.8c-1.3-65.6,19-132.1,62.4-188c100.6-129.6,287.3-153.1,416.9-52.4
 								s153.2,287.3,52.5,416.9s-287.3,153.1-416.9,52.4c-41.1-31.9-71.5-72.4-90.7-117.1"/>
 						</g>
+
+						{ /* Center star */ }
+						<polygon id="Star1" className="inner-circle ic8" points="500,412.6 522.2,479.9 594.2,479.9 536,521.6 558.2,588.9 500,547.3 441.8,588.9 464,521.6 405.8,479.9 477.8,479.9 " />
+
+						{ /* random path animation */ }
+						<circle r="20"  fill="rgba(32, 96, 190, 1)" stroke="black" strokeWidth="0">
+							<animateMotion begin="0s" dur="3s" repeatCount="indefinite" >
+								<mpath xlinkHref="#Circle_Path_1"/>
+							</animateMotion>
+						</circle>
+
 
 					</svg>
 				</div>

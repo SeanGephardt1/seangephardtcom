@@ -6,6 +6,8 @@ import PortfolioPage from './portfolio/portfolio.js';
 import AzureCaseStudyDemo from './azure-ux/azure-case-study.js';
 import SvgZoomDemo from './svg-zoom/svg-zoom.js';
 import Html5CanvasDemo from './canvas-demo/canvas-demo.js';
+import WebGLDemo from './webgl-demo/webgl-demo.js';
+
 import CssArtPage from './css-art/css-art.js';
 import SvgAnimationsDemo from './svg-animations/svg-animations.js';
 import ButtonAnimations from './button-animations/button-animations.js';
@@ -36,6 +38,10 @@ const _p = [
             {
                 path: Html5CanvasDemo.defaultProps.Href,
                 component: Html5CanvasDemo
+            },
+            {
+                path: WebGLDemo.defaultProps.Href,
+                component: WebGLDemo
             },
             {
                 path: CssArtPage.defaultProps.Href,
