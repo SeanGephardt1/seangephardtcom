@@ -1,7 +1,7 @@
 import React from 'react';
 import './resume.css';
-import SVG from '../../art/svgs.js';
-import LinkedInIcon from '../../art/img/linkedin.png';
+import SVG from '../../assets/svgs.js';
+import LinkedInIcon from '../../assets/img/linkedin.png';
 
 export default class Resume extends React.Component
 {
@@ -9,7 +9,7 @@ export default class Resume extends React.Component
 		Title: "Resume for Sean Gephardt",
 		LinkTitle: "Resume",
 		Href: "/resume/",
-		Icon: SVG.AppNavButtons.Resume
+		Icon: "" // SVG.AppNavButtons.Resume
 	};
 	constructor( props )
 	{
@@ -28,6 +28,15 @@ export default class Resume extends React.Component
 
 				{/* LEFT COLUMN */}
 				<div className="resume-left">
+
+					<div className="cv-section">
+						<div className="cv-header">QUIVR.AI</div>
+						<div className="cv-sub-header">Senior Software Engineer (Feb. 2021)</div>
+						<ul>
+							<li>Ownership and development of NodeJS/ReactJS based HTML/JavaScript/CSS web applications.</li>
+							<li>Daily collaboration between program managers, engineers, designers and researchers to support weekly, monthly and quarterly cadences for online & in person customer research studies & surveys</li>
+						</ul>
+					</div>
 
 					<div className="cv-section">
 						<div className="cv-header">Consulting work</div>

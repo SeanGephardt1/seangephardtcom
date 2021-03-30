@@ -17,7 +17,7 @@ export default class WebGLDemo extends React.Component
 		Title: "WebGL demo",
 		LinkTitle: "WebGL demo",
 		Href: "/portfolio/webgl-demos/",
-		// Icon: SVG.AppNavButtons.About
+		Icon: "" // SVG.AppNavButtons.About
 	};
 	constructor( props )
 	{
@@ -26,11 +26,11 @@ export default class WebGLDemo extends React.Component
 		this.LinkTitle = ( this.props.LinkTitle || this.defaultProps.LinkTitle );
 		this.Href = ( this.props.Href || this.defaultProps.Href );
 
-		document.title = this.Title;
-
 		this.Canvas = React.createRef();
 		this.WGL = undefined;
         this.CanvasSize = 1000;
+
+        document.title = this.Title;
 		return;
 	};
 	componentDidMount() 

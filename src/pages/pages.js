@@ -1,7 +1,7 @@
 /* Pages list, used in app.js & controls/nav/navigation.js*/
 import Home from './home/home.js';
 import Resume from './resume/resume.js';
-import Music from './music/music.js';
+//  import Music from './music/music.js';
 import PortfolioPage from './portfolio/portfolio.js';
 import AzureCaseStudyDemo from './azure-ux/azure-case-study.js';
 import SvgZoomDemo from './svg-zoom/svg-zoom.js';
@@ -62,10 +62,10 @@ const _p = [
 
         ]
     },
-    {
-        path: Music.defaultProps.Href,
-        component: Music
-    },
+    //{
+    //    path: Music.defaultProps.Href,
+    //    component: Music
+    //},
     //{
     //    path: TestPage.defaultProps.Href,
     //    component: TestPage

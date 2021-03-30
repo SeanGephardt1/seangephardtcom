@@ -12,7 +12,6 @@
 	padding:20px;
 }
 
-
 /* SVG SPECIFIC */
 .inner-circle
 {
@@ -28,110 +27,72 @@
 	animation-play-state:running;
 	animation-timing-function:linear;
 	transform-origin: 50% 50%;
-/*	
-	stroke:#000000;
-	animation-delay:0ms;
-	animation-duration:3000ms;
-*/
 }
+
 
 .ic1
 {
-	stroke: rgba(198, 66, 110, 1);
+	stroke: rgba(0, 0, 255, 1);
 	animation-delay:0ms;
 	animation-duration:2000ms;
 }
 .ic2
 {
-	stroke: rgba(198, 66, 255, 1);
-	animation-delay:500ms;
-	animation-duration:2500ms;
+	stroke: rgba(0, 0, 192, 1);
+	animation-delay:100ms;
+	animation-duration:2100ms;
 }
 .ic3
 {
-	stroke: rgba(198, 128, 110, 1);
-	animation-delay:1000ms;
-	animation-duration:3000ms;
+	stroke: rgba(0, 0, 160, 1);
+	animation-delay:200ms;
+	animation-duration:2200ms;
 }
 .ic4
 {
-	stroke: rgba(128, 32, 128, 1);
-	animation-delay:1500ms;
-	animation-duration:3500ms;
+	stroke: rgba(0, 0, 128, 1);
+	animation-delay:300ms;
+	animation-duration:2300ms;
 }
 .ic5
 {
-	stroke: rgba(64, 64, 190, 1);
-	animation-delay:2000ms;
-	animation-duration:4000ms;
+	stroke: rgba(0, 0, 96, 1);
+	animation-delay:400ms;
+	animation-duration:2400ms;
 }
 .ic6
 {
-	stroke: rgba(0, 128, 128, 1);
-	animation-delay:2500ms;
-	animation-duration:4500ms;
+	stroke: rgba(0, 0, 64, 1);
+	animation-delay:500ms;
+	animation-duration:2500ms;
 }
 .ic7
 {
-	stroke: rgba(128, 32, 32, 1);
-	animation-delay:3000ms;
-	animation-duration:5000ms;
+	stroke: rgba(0, 0, 32, 1);
+	animation-delay:600ms;
+	animation-duration:2600ms;
 }
 .ic8
 {
-	fill: rgba(0,0,160,1);
-	stroke: rgba(0, 32, 255, 1);
+	fill: rgba(0,0,128,1);
+	stroke: rgba(0, 0, 255, 1);
 	stroke-width:10;
 	stroke-linecap:square;
 	stroke-linejoin:miter;
 	stroke-miterlimit:10;
-	animation-delay:500ms;
-	animation-duration:5000ms;
+
 }
 
 @keyframes Ani_C11
 {
-	0%
+	0%, 100%
 	{
-		transform: rotate(0deg);
+		transform: rotate(0deg) scale(1,1);
 	}
-	100%
+	50%
 	{
-		transform: rotate(360deg);
+		transform: rotate(360deg)  scale(0.1,0.1);
 	}
-}
-
-
-/*	
-	<circle r="20" fill="yellow" stroke="black" strokeWidth="2">
-		<animateMotion begin="0s" dur="12s" repeatCount="indefinite" >
-			<mpath xlinkHref="#Circle_600"/>
-		</animateMotion>
-	</circle>
-
-	<rect width="20" height="20" fill="rgba(32, 96, 190, 1)" stroke="black" strokeWidth="0" transform="translate(-10,-10)">
-		<animateMotion begin="0s" dur="10s" repeatCount="indefinite">
-				<mpath xlinkHref="#test-path-1"/>
-			</animateMotion>
-		</rect>
-	<rect width="500" height="500" className="ic0" />
-	transform="translate(250, 250) rotate(45 250 250)"
-*/
-.ic0
-{
-	fill: rgba(128,0,0,1);
-	stroke-width:0;
-/*	transform: translate(0px, 250px) rotate(0deg);
-	transform-origin: 250px 250px;*/
-/*
-	animation-delay:0ms;
-	animation-duration:5000ms;
-	animation-direction:normal;
-	animation-fill-mode:forwards;
-	animation-iteration-count: infinite;
-	animation-name:Ani_DebugRect;
-	animation-play-state:running;
-	animation-timing-function:linear;*/
 }
 @keyframes Ani_DebugRect
 {

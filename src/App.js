@@ -3,7 +3,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { PagesList } from './pages/pages.js';
 import SiteNav from './controls/nav/nav.js';
 import SiteFooter from './controls/footer/footer.js';
-import './css/css.js';
+import './css/all.css';
 
 export default class App extends React.Component
 {
