@@ -1,5 +1,6 @@
 # production
-/build
+
 /.vs
 /___old_demos
+/build
 /node_modules
