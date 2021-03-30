@@ -2,11 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\src",
-    "\\src\\web-demos",
-    "\\src\\web-demos\\vanilla-js-es6-state-pub-sub-demo",
-    "\\src\\web-demos\\vanilla-js-es6-state-pub-sub-demo\\js",
-    "\\src\\web-demos\\vanilla-js-es6-state-pub-sub-demo\\js\\store"
+    "\\src\\css",
+    "\\src\\js"
   ],
-  "SelectedNode": "\\src\\web-demos\\vanilla-js-es6-state-pub-sub-demo\\js\\store\\index.js",
+  "SelectedNode": "\\src\\css\\css.js",
   "PreviewInSolutionExplorer": false
 }

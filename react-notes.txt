@@ -6,3 +6,5 @@ npm install --save --save-exact react-scripts@4.0.0
 NOTES:
 
 https://docs.npmjs.com/cli/install
+
+https://reactjs.org/
