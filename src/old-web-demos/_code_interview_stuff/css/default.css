@@ -1,0 +1,13 @@
+﻿*
+{
+    box-sizing: border-box;
+	vertical-align:top;
+	line-height:normal;
+}
+body
+{
+    background-color: rgba(0, 0, 0, 1);
+    color: rgba(255, 255, 255, 1);
+    font-family:system-ui;
+    padding: 20px;
+}

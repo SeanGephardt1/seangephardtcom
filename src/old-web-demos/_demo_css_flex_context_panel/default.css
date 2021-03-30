@@ -1,0 +1,34 @@
+﻿html, body
+{
+    width: 100%;
+    height: 100%; 
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+}
+body
+{
+    background: #ffffff;   
+    color: #000000;
+    position:fixed;
+    width:480px;
+    height:100%;
+}
+
+.context-panel
+{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.header
+{
+    border: solid 1px red;
+    flex: 1 1 auto; 
+}
+.content 
+{
+    border: solid 1px red;
+    flex: 1 1 100%; 
+    height:50%; 
+}

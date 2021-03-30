@@ -1,8 +1,12 @@
 {
   "ExpandedNodes": [
     "",
-    "\\src"
+    "\\src",
+    "\\src\\web-demos",
+    "\\src\\web-demos\\vanilla-js-es6-state-pub-sub-demo",
+    "\\src\\web-demos\\vanilla-js-es6-state-pub-sub-demo\\js",
+    "\\src\\web-demos\\vanilla-js-es6-state-pub-sub-demo\\js\\store"
   ],
-  "SelectedNode": "\\seangephardtcom2021.sln",
+  "SelectedNode": "\\src\\web-demos\\vanilla-js-es6-state-pub-sub-demo\\js\\store\\index.js",
   "PreviewInSolutionExplorer": false
 }
