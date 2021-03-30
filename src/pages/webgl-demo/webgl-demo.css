@@ -9,7 +9,6 @@
 .canvas-2d
 {
 	border: solid 1px var(--black);
-	background-color: var(--black-02);
 	width: 100%;
 	min-width: 260px;
 	max-width: 100%;
