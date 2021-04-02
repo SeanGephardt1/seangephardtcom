@@ -1,5 +1,5 @@
 import React from 'react';
-import './button-animations.css';
+import './button-animations.min.css';
 
 export default class ButtonAnimations extends React.Component
 {

@@ -1,5 +1,5 @@
 import React from 'react';
-import './svg-animations.css';
+import './svg-animations.min.css';
 //import SvgAniData from "./svg-animations-data.js";
 
 export default class SvgAnimationsDemo extends React.Component

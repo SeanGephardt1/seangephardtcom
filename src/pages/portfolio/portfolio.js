@@ -1,5 +1,5 @@
 import React from 'react';
-import './portfolio.css';
+import './portfolio.min.css';
 
 export default class PortfolioPage extends React.Component
 {
@@ -25,7 +25,7 @@ export default class PortfolioPage extends React.Component
 		//	console.debug( "Portfolio.render()");
 		return (
 			<div className="page-layout">
-				Portfolio landing page
+				<div className="portfolio-header">Portfolio landing page</div>
 			</div>
         );
     }

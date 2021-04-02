@@ -130,5 +130,89 @@
     "inputFiles": [
       "src/controls/progress-controls/prog-pie.css"
     ]
+  },
+  {
+    "outputFileName": "src/pages/button-animations/button-animations.min.css",
+    "inputFiles": [
+      "src/pages/button-animations/button-animations.css"
+    ]
+  },
+  {
+    "outputFileName": "src/pages/azure-ux/azure-case-study.min.css",
+    "inputFiles": [
+      "src/pages/azure-ux/azure-case-study.css"
+    ]
+  },
+  {
+    "outputFileName": "src/pages/animations-demo/animations-demo.min.css",
+    "inputFiles": [
+      "src/pages/animations-demo/animations-demo.css"
+    ]
+  },
+  {
+    "outputFileName": "src/pages/canvas-demo/canvas-demo.min.css",
+    "inputFiles": [
+      "src/pages/canvas-demo/canvas-demo.css"
+    ]
+  },
+  {
+    "outputFileName": "src/pages/controls-demo/controls-demo.min.css",
+    "inputFiles": [
+      "src/pages/controls-demo/controls-demo.css"
+    ]
+  },
+  {
+    "outputFileName": "src/pages/css-art/css-art.min.css",
+    "inputFiles": [
+      "src/pages/css-art/css-art.css"
+    ]
+  },
+  {
+    "outputFileName": "src/pages/home/home.min.css",
+    "inputFiles": [
+      "src/pages/home/home.css"
+    ]
+  },
+  {
+    "outputFileName": "src/pages/resume/resume.min.css",
+    "inputFiles": [
+      "src/pages/resume/resume.css"
+    ]
+  },
+  {
+    "outputFileName": "src/pages/music/music.min.css",
+    "inputFiles": [
+      "src/pages/music/music.css"
+    ]
+  },
+  {
+    "outputFileName": "src/pages/portfolio/portfolio.min.css",
+    "inputFiles": [
+      "src/pages/portfolio/portfolio.css"
+    ]
+  },
+  {
+    "outputFileName": "src/pages/svg-animations/svg-animations.min.css",
+    "inputFiles": [
+      "src/pages/svg-animations/svg-animations.css"
+    ]
+  },
+  {
+    "outputFileName": "src/pages/svg-zoom/svg-zoom.min.css",
+    "inputFiles": [
+      "src/pages/svg-zoom/svg-zoom.css"
+    ]
+  },
+  {
+    "outputFileName": "src/pages/svg-zoom/svg-zoom-data.min.css",
+    "inputFiles": [
+      "src/pages/svg-zoom/svg-zoom-data.css"
+    ]
+  },
+  {
+    "outputFileName": "src/pages/webgl-demo/webgl-demo.min.css",
+    "inputFiles": [
+      "src/pages/webgl-demo/webgl-demo.css"
+    ]
   }
 ]

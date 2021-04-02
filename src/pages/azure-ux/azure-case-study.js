@@ -1,5 +1,5 @@
 import React from 'react';
-import './azure-case-study.css';
+import './azure-case-study.min.css';
 
 import AzureHome1 from './azure-resp-home-1.png';
 import AzureHome2 from './azure-resp-home-2.png';

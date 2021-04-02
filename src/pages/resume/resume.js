@@ -1,5 +1,5 @@
 import React from 'react';
-import './resume.css';
+import './resume.min.css';
 import SVG from '../../assets/svgs.js';
 import LinkedInIcon from '../../assets/img/linkedin.png';
 

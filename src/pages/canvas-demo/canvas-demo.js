@@ -3,7 +3,7 @@
 //	When applied to a shape, the coordinates are NOT relative to the shape's coordinates.
 
 import React from 'react';
-import './canvas-demo.css';
+import './canvas-demo.min.css';
 
 export default class Html5CanvasDemo extends React.Component
 {

@@ -8,7 +8,7 @@
 
 
 import React from 'react';
-import './webgl-demo.css';
+import './webgl-demo.min.css';
 
 export default class WebGLDemo extends React.Component
 {

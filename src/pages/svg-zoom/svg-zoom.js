@@ -1,7 +1,7 @@
 //	https://raw.githubusercontent.com/petercollingridge/code-for-blog/master/svg-interaction/pan_and_zoom/pan_and_zoom.svg
 
 import React from 'react';
-import './svg-zoom.css';
+import './svg-zoom.min.css';
 import ArtSVGs from "./svg-zoom-data.js";
 
 export default class SvgZoomDemo extends React.Component

@@ -1,5 +1,4 @@
 import React from 'react';
-import './svg-animations-data.css';
 
 export default class SvgAniData extends React.Component
 {

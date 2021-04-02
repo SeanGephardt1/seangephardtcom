@@ -8,7 +8,7 @@ export default class ArtSVGs extends React.Component
 			name: "Abstract 1",
 			svg: (
 				<svg>
-					<radialGradient id="SVGID_1_" cx="499.6667" cy="500.4866" r="562.6" gradientTransform="matrix(1.3834 0 0 1.3834 -191.2596 -192.3948)" gradientUnits="userSpaceOnUse">
+					<radialGradient id="SVGID_1" cx="499.6667" cy="500.4866" r="562.6" gradientTransform="matrix(1.3834 0 0 1.3834 -191.2596 -192.3948)" gradientUnits="userSpaceOnUse">
 						<stop  offset="7.784430e-02" style={{'stopColor':'#2F5B78'}}/>
 						<stop  offset="0.2902" style={{'stopColor':'#2F5775'}}/>
 						<stop  offset="0.491" style={{'stopColor':'#2C4C6B'}}/>

@@ -1,5 +1,5 @@
 import React from 'react';
-import './css-art.css';
+import './css-art.min.css';
 
 export default class CssArtPage extends React.Component
 {

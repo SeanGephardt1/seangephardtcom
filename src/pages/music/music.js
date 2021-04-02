@@ -1,5 +1,5 @@
 import React from 'react';
-import './music.css';
+import './music.min.css';
 //	import SVG from '../../art/svgs.js';
 
 export default class MusicPage extends React.Component
