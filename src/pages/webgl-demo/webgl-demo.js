@@ -8,7 +8,6 @@
 
 
 import React from 'react';
-import SubNav from '../../controls/nav/sub-nav.js';
 import './webgl-demo.css';
 
 export default class WebGLDemo extends React.Component
@@ -151,8 +150,6 @@ export default class WebGLDemo extends React.Component
 	{
 		return (
 			<div className="page-layout">
-				<SubNav />
-
 				<div className="canvas-demo-header">{this.Title}</div>
 
 				<div className="canvas-panel">

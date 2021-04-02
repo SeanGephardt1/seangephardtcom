@@ -1,7 +1,6 @@
 //	https://raw.githubusercontent.com/petercollingridge/code-for-blog/master/svg-interaction/pan_and_zoom/pan_and_zoom.svg
 
 import React from 'react';
-import SubNav from '../../controls/nav/sub-nav.js';
 import './svg-zoom.css';
 import ArtSVGs from "./svg-zoom-data.js";
 
@@ -11,7 +10,7 @@ export default class SvgZoomDemo extends React.Component
 		Title: "SVG demos",
 		LinkTitle: "SVG demos",
 		Href: "/portfolio/svg-demos/",
-		//Icon: SVG.AppNavButtons.About,
+		Icon: ""//SVG.AppNavButtons.About,
 	};
 	constructor( props )
 	{
@@ -202,7 +201,6 @@ export default class SvgZoomDemo extends React.Component
 		//	console.debug( "BigDataDemo.render()", this.state.transformMatrix );
         return (
 			<div className="page-layout">
-				<SubNav />
 				<div className="bd-page-title">SVG (Scalable Vector Graphics) zoom & pan demo</div>
 
 				<div className="bd-page-description"><a href="https://en.wikipedia.org/wiki/Scalable_Vector_Graphics" target="new" title="SVG (Scalable Vector Graphics)">SVG (Scalable Vector Graphics)</a> is a great, performant and web browser standards compliant format that allows for creating and using vector based programs such as Adobe Illiustrator.<br/><br/>Select from a variety of SVG illistrations. Hold the "shift" key to zoom in & out using the mouse wheel or using the slider control. Click and hold with a mouse to pan.</div>

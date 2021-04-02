@@ -1,6 +1,4 @@
 import React from 'react';
-import SubNav from '../../controls/nav/sub-nav.js';
-//import SVG from '../../art/svgs.js';
 import './azure-case-study.css';
 
 import AzureHome1 from './azure-resp-home-1.png';
@@ -20,7 +18,7 @@ export default class AzureCaseStudyDemo extends React.Component
 		Title: "Microsoft Azure Portal Prototyping",
 		LinkTitle: "Microsoft Azure Prototyping",
 		Href: "/portfolio/azure-ux/",
-		//	Icon: SVG.AppNavButtons.About
+		Icon: ""//SVG.AppNavButtons.About
 	};
     constructor( props )
     {
@@ -64,8 +62,6 @@ export default class AzureCaseStudyDemo extends React.Component
     {
         return (
 			<div className="page-layout">
-				<SubNav/>
-
 				{ /* overlay panel */ }
 				<div
 						className="portfolio-modal-overlay"

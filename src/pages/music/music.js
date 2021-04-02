@@ -2,21 +2,21 @@ import React from 'react';
 import './music.css';
 //	import SVG from '../../art/svgs.js';
 
-export default class Music extends React.Component
+export default class MusicPage extends React.Component
 {
 	static defaultProps = {
 		Title: "Music from Sean Gephardt",
 		LinkTitle: "Music",
 		Href: "/music/",
-		//	Icon: SVG.AppNavButtons.Music
+		Icon: ""//SVG.AppNavButtons.Music
 	};
 	constructor( props )
 	{
 		super( props );
 
-		this.Title = ( this.props.Title || Music.defaultProps.Title );
-		this.LinkTitle = ( this.props.LinkTitle || Music.defaultProps.LinkTitle );
-		this.Href = ( this.props.Href || Music.defaultProps.Href );
+		this.Title = ( this.props.Title || this.defaultProps.Title );
+		this.LinkTitle = ( this.props.LinkTitle || this.defaultProps.LinkTitle );
+		this.Href = ( this.props.Href || this.defaultProps.Href );
 		document.title = this.Title;
 
 		return;

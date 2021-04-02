@@ -2,7 +2,6 @@ import React from 'react';
 //	import { NavLink } from 'react-router-dom';
 import StateStore from '../../js/state-store.js';
 //	import { PagesList } from '../../pages/pages.js';
-import SubNav from '../../controls/nav/sub-nav.js';
 //	import SVG from '../../art/svgs.js';
 import './portfolio.css';
 
@@ -331,7 +330,6 @@ export default class PortfolioPage extends React.Component
 		return (
 
 				<div className="page-layout">
-					<SubNav />
 
 				{/* change this */
 					this.state.modalOverlayDisplayed === true &&

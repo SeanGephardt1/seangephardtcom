@@ -3,7 +3,6 @@
 //	When applied to a shape, the coordinates are NOT relative to the shape's coordinates.
 
 import React from 'react';
-import SubNav from '../../controls/nav/sub-nav.js';
 import './canvas-demo.css';
 
 export default class Html5CanvasDemo extends React.Component
@@ -12,7 +11,7 @@ export default class Html5CanvasDemo extends React.Component
 		Title: "HTML 5 Canvas demos",
 		LinkTitle: "HTML 5 Canvas demos",
 		Href: "/portfolio/canvas-demos/",
-		// Icon: SVG.AppNavButtons.About
+		Icon: ""//SVG.AppNavButtons.About
 	};
 	constructor( props )
 	{
@@ -752,7 +751,6 @@ export default class Html5CanvasDemo extends React.Component
 
         return (
 			<div className="page-layout">
-				<SubNav />
 
 				<div className="canvas-demo-header">{this.Title}</div>
 

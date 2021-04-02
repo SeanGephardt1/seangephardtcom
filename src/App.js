@@ -19,25 +19,13 @@ export default class App extends React.Component
     render()
     {
         //  console.debug( "App.render()", this.DefaultLayout, this.context.CurrentLayout );
-        /*
-        <Switch> looks through its children <Route>s
-        and renders the first one that matches the current URL.
-        | {this.context.CurrentLayout} | {this.context.Theme.Name}
-        						<Route exact={true} path={'/'} component={DemosList[0]} />
-        */
-        //console.debug( "App.render()", window.location.pathname );
-
-
-		//  let _paths = window.location.pathname.split( "/" );
-		//  let _demo_paths = PagesList[2].path.split( "/" );
-        //  console.debug( "_paths", _paths );
-		//  console.debug( _paths, _demo_paths );
-		//  console.debug( "_paths[1] === _demo_paths[1]", _paths[1] === _demo_paths[1] );
 
         return (
             <BrowserRouter>
 
-                <SiteNav />
+                <Switch>
+                    <SiteNav />
+                </Switch>
 
                 <main>
                     <Switch>
@@ -56,7 +44,7 @@ export default class App extends React.Component
                     </Switch>
                 </main>
 
-                <SiteFooter>&copy; 2000-2021 Sean Gephardt. All rights reserved.</SiteFooter>
+                <SiteFooter>&copy; 1996-2021 Sean Gephardt. All rights reserved.</SiteFooter>
 
             </BrowserRouter>
         );

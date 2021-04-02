@@ -1,0 +1,44 @@
+[
+  {
+    "outputFileName": "src/css/animations.min.css",
+    "inputFiles": [
+      "src/css/animations.css"
+    ]
+  },
+  {
+    "outputFileName": "src/css/all.min.css",
+    "inputFiles": [
+      "src/css/all.css"
+    ]
+  },
+  {
+    "outputFileName": "src/css/application.min.css",
+    "inputFiles": [
+      "src/css/application.css"
+    ]
+  },
+  {
+    "outputFileName": "src/css/custom.min.css",
+    "inputFiles": [
+      "src/css/custom.css"
+    ]
+  },
+  {
+    "outputFileName": "src/css/fonts.min.css",
+    "inputFiles": [
+      "src/css/fonts.css"
+    ]
+  },
+  {
+    "outputFileName": "src/css/html.min.css",
+    "inputFiles": [
+      "src/css/html.css"
+    ]
+  },
+  {
+    "outputFileName": "src/css/responsive.min.css",
+    "inputFiles": [
+      "src/css/responsive.css"
+    ]
+  }
+]

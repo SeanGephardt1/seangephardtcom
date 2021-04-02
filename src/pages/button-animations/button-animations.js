@@ -1,5 +1,4 @@
 import React from 'react';
-import SubNav from '../../controls/nav/sub-nav.js';
 import './button-animations.css';
 
 export default class ButtonAnimations extends React.Component
@@ -8,7 +7,7 @@ export default class ButtonAnimations extends React.Component
 		Title: "Button Animations",
 		LinkTitle: "Button Animations",
 		Href: "/portfolio/button-animations/",
-		//Icon: SVG.AppNavButtons.About,
+		Icon: ""//SVG.AppNavButtons.About,
 	};
 	constructor( props )
 	{
@@ -25,7 +24,6 @@ export default class ButtonAnimations extends React.Component
 	{
         return (
 			<div className="page-layout">
-				<SubNav />
 				<div className="bd-page-title">SVG animation demos</div>
 
 				<div className="bd-page-description"><a href="https://en.wikipedia.org/wiki/Scalable_Vector_Graphics" target="new" title="SVG (Scalable Vector Graphics)">SVG (Scalable Vector Graphics)</a> are a performant, web browser standards compliant format that allows for using vector graphics in your application.</div>

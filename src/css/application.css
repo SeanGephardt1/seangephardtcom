@@ -8,13 +8,7 @@
     justify-content: flex-start;
 	overflow:auto;
 }
-nav
-{
-	display:flex;
-	flex: 1 1 100%;
-	flex-direction:row;
-	flex-wrap:wrap;
-}
+
 main
 {
 /*	border: solid 1px red;*/
@@ -30,17 +24,16 @@ main
 /*	border: solid 1px var(--black-02);*/
 	min-width: 280px;
 	max-width:1024px;
-	overflow:auto;
 	display:flex;
 	flex: 1 1 auto;
-	margin:20px;
-	opacity:0;
-
 	flex-direction:column;
 	flex-wrap:nowrap;
-
+	overflow:auto;
+	margin:20px;
+	
+	opacity:0;
 	animation-name: AniPageFadeIn1;
-	animation-delay: 300ms;
+	animation-delay: 100ms;
 	animation-direction: normal;
 	animation-duration: 300ms;
 	animation-fill-mode: forwards;

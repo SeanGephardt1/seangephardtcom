@@ -1,5 +1,4 @@
 import React from 'react';
-import SubNav from '../../controls/nav/sub-nav.js';
 import './svg-animations.css';
 //import SvgAniData from "./svg-animations-data.js";
 
@@ -9,7 +8,7 @@ export default class SvgAnimationsDemo extends React.Component
 		Title: "SVG Animations",
 		LinkTitle: "SVG Animations",
 		Href: "/portfolio/svg-animations/",
-		//Icon: SVG.AppNavButtons.About,
+		Icon: ""//SVG.AppNavButtons.About,
 	};
 	constructor( props )
 	{
@@ -32,7 +31,6 @@ export default class SvgAnimationsDemo extends React.Component
 	{
         return (
 			<div className="page-layout">
-				<SubNav />
 				<div className="bd-page-title">SVG animation demos</div>
 
 				<div className="bd-page-description"><a href="https://en.wikipedia.org/wiki/Scalable_Vector_Graphics" target="new" title="SVG (Scalable Vector Graphics)">SVG (Scalable Vector Graphics)</a> are a performant, web browser standards compliant format that allows for using vector graphics in your application.</div>
@@ -79,10 +77,10 @@ export default class SvgAnimationsDemo extends React.Component
 									<feDropShadow dx="0.2" dy="0.4" stdDeviation="0.2" />
 								</filter>
 								<filter id="shadow2">
-									<feDropShadow dx="0" dy="0" stdDeviation="0.5" flood-color="cyan"/>
+									<feDropShadow dx="0" dy="0" stdDeviation="0.5" floodColor="cyan"/>
 								</filter>
 								<filter id="shadow3">
-									<feDropShadow dx="-0.8" dy="-0.8" stdDeviation="0" flood-color="pink" flood-opacity="0.5"/>
+									<feDropShadow dx="-0.8" dy="-0.8" stdDeviation="0" floodColor="pink" floodOpacity="0.5"/>
 								</filter>
 							</defs>
 							<circle cx="5" cy="50%" r="4" style={{'fill':'pink','filter':'url(#shadow)' }}/>

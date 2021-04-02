@@ -11,16 +11,13 @@
 		flex-direction:column;
 		justify-content:flex-start;
 	}
-	nav, .demos-nav
+	.nav-top-level
 	{
 		flex-direction:column;
-	}
-	a.dn-item
-	{
-		margin-right:0;
-		text-align:center;
+		align-items:unset;
 	}
 }
+
 @media (max-width: 900px)
 {
 	.resume

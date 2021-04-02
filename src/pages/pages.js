@@ -14,7 +14,7 @@ import CssArtPage from './css-art/css-art.js';
 import SvgAnimationsDemo from './svg-animations/svg-animations.js';
 import ButtonAnimations from './button-animations/button-animations.js';
 
-//  import Music from './music/music.js';
+//  import MusicPage from './music/music.js';
 //  import TestPage from './test/test.js';
 //  import MovieStoreExtension from './movie-works-demo/movieworks.js';
 //  import GuitarApp from './guitar-app/guitar-app.js';
@@ -60,13 +60,12 @@ const _p = [
             {
                 path: ButtonAnimations.defaultProps.Href,
                 component: ButtonAnimations
-            }, 
-
+            }
         ]
     },
     //{
-    //    path: Music.defaultProps.Href,
-    //    component: Music
+    //    path: MusicPage.defaultProps.Href,
+    //    component: MusicPage
     //},
     //{
     //    path: TestPage.defaultProps.Href,

@@ -1,5 +1,4 @@
 import React from 'react';
-import SubNav from '../../controls/nav/sub-nav.js';
 import './portfolio.css';
 
 export default class PortfolioPage extends React.Component
@@ -8,7 +7,7 @@ export default class PortfolioPage extends React.Component
 		Title: "Portfolio and prototyping",
 		LinkTitle: "Portfolio",
 		Href: "/portfolio/",
-		//Icon: SVG.AppNavButtons.About
+		Icon: "" //SVG.AppNavButtons.About
 	};
 	constructor( props )
 	{
@@ -26,7 +25,7 @@ export default class PortfolioPage extends React.Component
 		//	console.debug( "Portfolio.render()");
 		return (
 			<div className="page-layout">
-				<SubNav />
+				Portfolio landing page
 			</div>
         );
     }

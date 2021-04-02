@@ -1,5 +1,4 @@
 import React from 'react';
-import SubNav from '../../controls/nav/sub-nav.js';
 import './css-art.css';
 
 export default class CssArtPage extends React.Component
@@ -7,9 +6,8 @@ export default class CssArtPage extends React.Component
 	static defaultProps = {
 		Title: "CSS 3 animations",
 		LinkTitle: "CSS 3 animations",
-		// for demos pages, add "/demos/" route/folder path
 		Href: "/portfolio/css-demos/",
-		// Icon: SVG.AppNavButtons.About
+		Icon: ""//SVG.AppNavButtons.About
 	};
 	constructor( props )
 	{
@@ -128,7 +126,6 @@ export default class CssArtPage extends React.Component
 		//	console.debug( "SvgArtPage.render()", this.state.changed, this.state.animationRunning );
         return (
 			<div className="page-layout">
-				<SubNav/>
 				<div className="bd-page-title">CSS animation demo</div>
 
 				<div className="input-nav">
