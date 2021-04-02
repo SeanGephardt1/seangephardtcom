@@ -1,7 +1,7 @@
 import React from 'react';
 import './resume.min.css';
 import SVG from '../../assets/svgs.js';
-import LinkedInIcon from '../../assets/img/linkedin.png';
+import LinkedInIcon from './linkedin.png';
 
 export default class Resume extends React.Component
 {

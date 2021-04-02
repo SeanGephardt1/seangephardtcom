@@ -10,16 +10,11 @@ export default class App extends React.Component
     constructor( props )
     {   //  console.debug( "App.ctor()" );
         super( props );
-
-        this.state = {
-            stateChanged: false
-        };
+        this.state = { stateChanged: false };
         return;
     };
     render()
-    {
-        //  console.debug( "App.render()", this.DefaultLayout, this.context.CurrentLayout );
-
+    {   //  console.debug( "App.render()");
         return (
             <BrowserRouter>
 

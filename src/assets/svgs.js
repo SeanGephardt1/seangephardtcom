@@ -1,5 +1,4 @@
-//	NOTES FOR SVG SYNTAX
-//	SVG attribute syntax may cause errors, needs to be camelCased
+//	NOTES FOR SVG SYNTAX - SVG attribute syntax may cause errors, needs to be camelCased
 import React from 'react';
 import './svgs.min.css';
 
