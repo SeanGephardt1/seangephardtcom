@@ -1,5 +1,5 @@
 import React from 'react';
-import './modal.css';
+import './modal.min.css';
 import IgGuitarPic from './ig-guitars.jpg';
 
 export default class ModalOverlay extends React.Component

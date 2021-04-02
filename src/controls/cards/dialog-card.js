@@ -1,6 +1,6 @@
 import React from 'react';
 import StateStore from '../../js/state-store.js';
-import './dialog-card.css';
+import './dialog-card.min.css';
 
 export default class DialogCard extends React.Component
 {

@@ -7,7 +7,7 @@
 //		defaultSortColumn={this.Columns[0]} />
 
 import React from 'react';
-import './data-grid.css';
+import './data-grid.min.css';
 import SvgIcon from "./../svg-icons/svg-icon.js";
 import PillFilterControl from './../pill-filter/pill-filter.js';
 import InfoIconControl from './../info-icon/info-icon.js';

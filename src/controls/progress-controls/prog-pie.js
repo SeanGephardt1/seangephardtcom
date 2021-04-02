@@ -1,5 +1,5 @@
 import React from 'react';
-import './prog-pie.css';
+import './prog-pie.min.css';
 
 export default class ProgressPieControl extends React.Component
 {

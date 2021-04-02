@@ -1,6 +1,6 @@
 import React, { useState }from 'react';
 //	import Comment from './comment.js';
-import './comments.css';
+import './comments.min.css';
 
 function CommentsBlock()
 {

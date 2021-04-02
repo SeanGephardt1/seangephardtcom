@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { PagesList } from '../../pages/pages.js';
-import './nav.css';
+import './nav.min.css';
 
 export default class SiteNav extends React.Component
 {

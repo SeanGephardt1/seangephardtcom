@@ -1,1 +1,14 @@
-﻿[]
+﻿[
+  {
+    "outputFile": "src/controls/cards/context-panel.es5.js",
+    "inputFile": "src/controls/cards/context-panel.js"
+  },
+  {
+    "outputFile": "src/controls/cards/dialog-card.es5.js",
+    "inputFile": "src/controls/cards/dialog-card.js"
+  },
+  {
+    "outputFile": "src/controls/preview/preview.es5.js",
+    "inputFile": "src/controls/preview/preview.js"
+  }
+]

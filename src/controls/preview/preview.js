@@ -1,19 +1,19 @@
 import React from 'react';
-import './preview.css';
+import './preview.min.css';
 
-export class PreviewControl extends React.Component {
-	//	static contextType = AzureThemeContext;
-	constructor(props) {
+export class PreviewControl extends React.Component
+{
+	constructor ( props )
+	{
 		super(props);
 		return;
 	};
 	render()
-	{
-		//	console.debug( "PortfolioHeader.render()" );	//, this.props.navigateEvent);
+	{	//	console.debug( "PreviewControl.render()" );
 		return (
-				<div className="demo-preview-badge">
+			<div className="demo-preview-badge">
 				<div className="demo-text">{this.props.children}</div>
-				</div>
+			</div>
 		);
 	};
 };

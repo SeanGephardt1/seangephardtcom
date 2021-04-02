@@ -1,7 +1,7 @@
 //	<SimpleGridControl columns={this.Columns} data={this.Data} />
 
 import React from 'react';
-import './simple-grid.css';
+import './simple-grid.min.css';
 
 export default class SimpleGridControl extends React.Component
 {

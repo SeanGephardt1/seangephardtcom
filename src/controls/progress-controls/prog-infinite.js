@@ -1,5 +1,5 @@
 import React from 'react';
-import './prog-infinite.css';
+import './prog-infinite.min.css';
 
 export default class ProgressInfiniteControl extends React.Component
 {
