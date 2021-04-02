@@ -1,1 +1,10 @@
-﻿[]
+﻿[
+  {
+    "outputFile": "src/App.es5.js",
+    "inputFile": "src/App.js"
+  },
+  {
+    "outputFile": "src/index.es5.js",
+    "inputFile": "src/index.js"
+  }
+]

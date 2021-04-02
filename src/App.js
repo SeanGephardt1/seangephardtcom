@@ -3,18 +3,17 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { PagesList } from './pages/pages.js';
 import SiteNav from './controls/nav/nav.js';
 import SiteFooter from './controls/footer/footer.js';
-import './css/all.css';
+import './css/all.min.css';
 
 export default class App extends React.Component
 {
     constructor( props )
-    {   //  console.debug( "App.ctor()" );
+    {  
         super( props );
-        this.state = { stateChanged: false };
         return;
     };
     render()
-    {   //  console.debug( "App.render()");
+    {   //  console.debug( "App.render()" );
         return (
             <BrowserRouter>
 
@@ -23,7 +22,7 @@ export default class App extends React.Component
                 </Switch>
 
                 <main>
-                    <Switch>
+                <Switch>
                     {
                         PagesList.map( ( item, index ) =>
                         (

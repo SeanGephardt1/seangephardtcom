@@ -31,11 +31,11 @@ export default class Resume extends React.Component
 
 					<div className="cv-section">
 						<div className="cv-header">QUIVR.AI</div>
-						<div className="cv-sub-header">Senior Software Engineer (Feb. 2021)</div>
+						<div className="cv-sub-header">Senior Software Developer (Feb. 2021+)</div>
 						<ul>
-							<li>Development of client facing software, including desktop, mobile and web-based applications.</li>
+							<li>Development of client facing software, including desktop, mobile, web and cloud applications.</li>
 							<li>Collaboration with business stakeholders on software requirements for customer facing client applications.</li>
-							<li></li>
+							<li>Lead a team using software engineering best practices and best in class tool sets.</li>
 						</ul>
 					</div>
 
@@ -47,7 +47,6 @@ export default class Resume extends React.Component
 							<li>Consultation guidance with a focus on social media engagement and brand development.</li>
 						</ul>
 					</div>
-
 
 					<div className="cv-section">
 						<div className="cv-header">Microsoft Corporation</div>

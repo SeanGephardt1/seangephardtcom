@@ -3,7 +3,8 @@
 	font-family: 'Calibri Light';
 	font-style: normal;
 	font-weight: normal;
-	src: url('./fonts/calibril.woff') format('woff'), local('Calibri Light');
+	src: url('./fonts/calibril.woff') format('woff'), local('Calibri Light'), -systemui;
+	font-display: swap;
 }
 @font-face
 {
@@ -11,6 +12,7 @@
 	font-style: normal;
 	font-weight: normal;
 	src: local('Hit The Road Regular'), url('./fonts/HITROAD.woff') format('woff');
+	font-display: swap;
 }
 @font-face
 {
@@ -18,4 +20,5 @@
 	font-style: normal;
 	font-weight: normal;
 	src: local('JosefinSans-Regular'), url('./fonts/JosefinSans-Regular.woff') format('woff');
+	font-display: swap;
 }

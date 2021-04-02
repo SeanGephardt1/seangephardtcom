@@ -1,29 +1,26 @@
-import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App.js';
 
-( function ()
+( function()
 {
-	console.log( "BEGIN", new Date().toISOString() );
+	console.log( "START", Date.now() );
 	try
 	{
 		window.document.addEventListener( "DOMContentLoaded", function ( e ) 
-		{	//	console.debug( "DOMContentLoaded" );
-			ReactDOM.render( <App />, document.getElementById("react-app-root"));
+		{	//	console.debug( "DOMContentLoaded", Date.now() );
+			ReactDOM.render( <App />, document.getElementById("r-app"));
 			return;
 		} );
 	}
 	catch ( ex )
 	{
-		console.log( "CATCH", new Date().toISOString() );
-		console.error( ex.number, ":", ex.name, ":", ex.message );
-		console.error( "exception stack::", ex.stack );
+		console.error( "CATCH", Date.now(), ex );
 		return;
 	}
 	finally
 	{
-		console.log( "FINALLY", new Date().toISOString() );
+		console.log( "FINI", Date.now() );
 	}
-	console.log( "END", new Date().toISOString() );
+	console.log( "END", Date.now() );
 	return;
-} )();
+})();
