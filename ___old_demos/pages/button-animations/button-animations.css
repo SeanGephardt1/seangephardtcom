@@ -1,0 +1,82 @@
+﻿.svg-ani-card-panel
+{
+/*	border: solid 1px var(--black-01);*/
+	display:flex;
+	flex-direction:row;
+	flex-wrap:wrap;
+	justify-content:space-around;
+	padding:20px;
+}
+
+.svg-ani-card-icon
+{
+	border: solid 1px var(--black-01);
+	box-shadow:0px 0px 10px 0px var(--black-01);
+	flex: 0 0 128px;
+	width: 128px;
+	height: 128px;
+	margin-bottom:20px;
+	overflow:hidden;
+	cursor:pointer;
+	padding:20px;
+}
+
+/* specific styles */
+svg.hamburger-icon
+{
+	background-color:transparent;
+	height:100%;
+	width:100%;
+	transition: all 200ms ease-in-out;
+	filter: drop-shadow( 0px 0px 4px var(--black-02));
+}
+svg.hamburger-icon:hover
+{
+	transform:rotate(90deg);
+	filter: drop-shadow( 0px 0px 4px var(--black-08));
+}
+
+
+rect.hb-bk
+{
+	transition: all 200ms ease-in-out;
+	height:100%;
+	width:100%;
+	fill:rgba(0,128,242,1);
+	rx:4px;
+}
+
+rect.hb-stripe
+{
+	transition: all 200ms ease-in-out;
+	rx:0px;
+	height:12px;
+	width:70px;
+	fill:rgba(239,239,239,1);
+}
+rect.hb-stripe:nth-child(2)
+{
+	x:8px;
+	y:18px;
+}
+rect.hb-stripe:nth-child(3)
+{
+	x:8px;
+	y:38px;
+}
+rect.hb-stripe:nth-child(4)
+{
+	x:8px;
+	y:58px;
+}
+
+.hamburger-icon:hover > rect.hb-bk
+{
+	fill:rgba(0,128,242,1);
+	rx:10px;
+}
+.hamburger-icon:hover > rect.hb-stripe
+{
+	fill:rgba(255,255,255,1);
+	rx:2px;
+}

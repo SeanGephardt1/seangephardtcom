@@ -1,0 +1,256 @@
+﻿.user-logon-container-ctrl
+{
+	border: solid 0px red;
+	display:inline-block;
+	width:220px;
+	max-width:220px;
+   	height:100%;
+	color:rgba(0,0,0,1);
+}
+		
+.user-info-panel
+{
+	/*border: solid 1px red;*/
+	display:inline-flex;
+	cursor: pointer;
+	height:100%;
+	width:100%;
+}
+.user-info-panel:hover
+{
+	/*background-color:rgba(0,0,0,0.2);*/
+	background-color: #106ebe;
+}
+
+.user-info-text
+{
+	/*border: solid 1px red;*/
+	flex: 1 1 auto;
+	max-width:180px;
+	padding:2px;
+	padding-right:4px;
+	padding-left:4px;
+}
+.user-info-text-name
+{
+	color:rgba(255,255,255,1);
+	text-align:right;
+	font-size:13px;
+	font-family: 'az_Regular';
+	width:auto;
+	text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.user-info-text-company
+{
+	color:rgba(255,255,255,1);
+	text-align:right;
+	font-size:10px;
+	font-family: 'az_Regular';
+	width:auto;
+	text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.user-image
+{
+	/*border: solid 1px red;*/
+	flex: 0 0 40px;
+	width:40px;
+	text-align:center;
+}
+.user-image svg, .user-image img
+{
+	margin-top:5px;
+	height:30px;
+	width:30px;
+	border: solid 0px rgba(255,255,255,0.6);
+	border-radius:16px;
+	box-shadow: 0px 0px 4px 4px rgba(255,255,255,0.2);
+}
+
+@media screen and (max-width: 1023px)
+{
+	.user-logon-container-ctrl
+	{
+		/*border: 1px solid red;*/
+		width:40px;
+	}
+	.user-info-text
+	{
+		flex: 0 0 auto;
+		display:none;
+	}
+}
+
+
+
+
+/* flyout */
+.user-account-panel
+{
+	/*border: solid 1px red;*/
+	background-color:rgba(255,255,255,1);
+	box-shadow: -4px 4px 10px 0px rgba(0,0,0,0.2);
+	position:absolute;
+	top:40px;
+	right:0px;
+	width:320px;
+	min-height:100px;
+	cursor:pointer;
+	z-index:2;
+	/*display:none;*/
+}
+
+.uap-company
+{
+	/*border: solid 1px red;*/
+	display:flex;
+}
+.uap-company-name
+{
+	/*border: solid 1px red;*/
+	flex: 1 0 auto;
+	padding:10px;
+	padding-left:15px;
+	text-align:left;
+}
+.uap-sign-in-out
+{
+	/*border: solid 1px red;*/
+	flex: 0 0 100px;
+	padding:10px;
+	padding-right:5px;
+	text-align:center;
+}
+.uap-sign-in-out:hover
+{
+	background-color: rgba(41,41,41,0.1);
+	color:rgba(41,41,41,0.9);
+}
+
+.uap-avatar
+{
+	/*border: solid 1px red;*/
+	display:flex;
+	padding:10px;
+	padding-left:15px;
+	margin-top:10px;
+	margin-bottom:10px;
+}
+.uap-avatar-image
+{
+	/*border: solid 1px red;*/
+	flex: 0 0 auto;
+}
+.uap-avatar-image > svg, .uap-avatar-image > img
+{
+	/*border: solid 1px red;*/
+	width:88px;
+	height:88px;
+	border-radius:50px;
+	box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.4);
+	transition: all 200ms ease-in-out;
+	opacity:0.8;
+}
+.uap-avatar-image > svg:hover, .uap-avatar-image > img:hover
+{
+	transform: rotate(360deg);
+	box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.8);
+	opacity:1;
+}
+
+.uap-avatar-text
+{
+	/*border: solid 1px red;*/
+	flex: 1 0 auto;
+	text-align:left;
+	margin-left:10px;
+}
+
+.uap-user-name
+{
+	font-family: 'az_SemiBold';
+	font-size: 18px;
+	text-align:left;
+	text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.uap-user-email
+{
+	width:190px;
+	margin-top:5px;
+	text-align:left;
+	text-overflow: ellipsis;
+    overflow: hidden;
+}
+.uap-user-links
+{
+	margin-top:5px;
+	text-align:left;
+	color: rgb(0, 120, 214);
+}
+
+.uap-swap-login-panel
+{
+	/*border: solid 1px red;*/
+	background-color: rgba(41,41,41,0.05);
+	color:rgba(16,16,16,1);
+}
+.uap-other-user
+{
+	/*border: solid 1px blue;*/
+	cursor:pointer;
+	display:flex;
+}
+.uap-other-user:hover
+{
+	background-color: rgba(41,41,41,0.09);
+	color:rgba(0,0,0,1);
+}
+.uap-other-user:hover > .uap-other-avatar > img,
+.uap-other-user:hover > .uap-other-avatar > svg
+{
+	opacity:1;
+}
+
+.uap-other-avatar
+{
+	/*border: solid 1px green;*/
+	flex: 0 0 32px;
+	padding:10px;
+}
+.uap-other-avatar > img, .uap-other-avatar > svg
+{
+	/*border: solid 1px red;*/
+	width:28px;
+	height:28px;
+	border-radius:14px;
+	box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+	opacity:0.5;
+}
+.uap-other-name
+{
+	/*border: solid 1px red;*/
+	flex: 1 0 auto;
+	text-align:left;
+	padding-top:8px;
+}
+.uap-other-name-co
+{
+	font-size:11px;
+	font-family: 'az_SemiBold';
+}
+.uap-other-name-email
+{
+	margin-top:-4px;
+	font-size:10px;
+}
+.uap-other-name-other
+{
+	padding-top:7px;
+	font-size:10px;
+	font-family: 'az_SemiBold';
+}

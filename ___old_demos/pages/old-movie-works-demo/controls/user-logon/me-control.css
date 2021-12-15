@@ -1,0 +1,317 @@
+﻿.me-logon-ctrl
+{
+	/*border: solid 0px red;*/
+	min-width:40px;
+   	height:100%;
+	color:rgba(0,0,0,1);
+	display:inline-block;
+}
+.me-logon-image
+{
+	/*border: solid 1px red;*/
+	flex: 0 0 40px;
+	width:40px;
+	text-align:center;
+}
+.me-logon-image > svg, .me-logon-image > img
+{
+	margin-top:5px;
+	height:30px;
+	width:30px;
+	border: solid 0px rgba(255,255,255,0.6);
+	border-radius:16px;
+	box-shadow: 0px 0px 4px 4px rgba(255,255,255,0.2);
+}
+	
+
+/* flyout */
+.user-account-panel-closed
+{
+	/*border: solid 1px red;*/
+	background-color:rgba(255,255,255,1);
+	color:rgba(0,0,0,1);
+	box-shadow: 0 25.6px 57.6px 0 rgba(0, 0, 0, 0.22), 0 4.8px 14.4px 0 rgba(0, 0, 0, 0.18);
+	position:absolute;
+	top:40px;
+	right:0px;
+	width:320px;
+	display:flex;
+	flex-direction:column;
+	overflow:hidden;
+
+	min-height:0px;
+	max-height:320px;
+	height:0px;
+
+	animation-delay:0ms;
+	animation-direction:normal;
+	animation-duration:150ms;
+	animation-fill-mode:forwards;
+	animation-iteration-count:1;
+	animation-name: MeControlClose;
+	animation-play-state:running;
+	animation-timing-function: linear;
+}
+@keyframes MeControlClose
+{
+	0%
+	{
+		height:300px;
+	}
+	100% {
+		height:0px;
+	}
+}
+
+.user-account-panel-open
+{
+	/*border: solid 1px red;*/
+	background-color:rgba(255,255,255,1);
+	color:rgba(0,0,0,1);
+	box-shadow: 0 25.6px 57.6px 0 rgba(0, 0, 0, 0.22), 0 4.8px 14.4px 0 rgba(0, 0, 0, 0.18);
+	position:absolute;
+	top:40px;
+	right:0px;
+	width:320px;
+	cursor:pointer;
+	display:flex;
+	flex-direction:column;
+	overflow:hidden;
+	/*z-index:2;*/
+
+	height:0px;
+
+	animation-delay:0ms;
+	animation-direction:normal;
+	animation-duration:350ms;
+	animation-fill-mode:forwards;
+	animation-iteration-count:1;
+	animation-name: MeControlOpen;
+	animation-play-state:running;
+	animation-timing-function: ease-in-out;
+}
+@keyframes MeControlOpen
+{
+	0% {
+		height:0px;
+	}
+	100% {
+		height:312px;
+	}
+}
+
+
+/* me control content styles */
+/* this sectionis if the name, email are included */
+.user-info-panel
+{
+	/*border: solid 1px red;*/
+	display:inline-flex;
+	cursor: pointer;
+	height:100%;
+	width:100%;
+}
+.user-info-panel:hover
+{
+	background-color: #106ebe;
+}
+
+.user-info-text
+{
+	/*border: solid 1px red;*/
+	flex: 1 1 auto;
+	max-width:180px;
+	padding:2px;
+	padding-right:4px;
+	padding-left:4px;
+}
+.user-info-text-name
+{
+	color:rgba(255,255,255,1);
+	text-align:right;
+	font-size:13px;
+	font-family: 'az_Regular';
+	width:auto;
+	text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.user-info-text-company
+{
+	color:rgba(255,255,255,1);
+	text-align:right;
+	font-size:10px;
+	font-family: 'az_Regular';
+	width:auto;
+	text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+
+/* panel styles */
+.uap-company
+{
+	/*border: solid 1px red;*/
+	order:0;
+	flex: 0 0 auto;
+	display:flex;
+	flex-direction:row;
+}
+.uap-company-name
+{
+	/*border: solid 1px red;*/
+	flex: 1 0 auto;
+	padding:10px;
+	padding-left:15px;
+	text-align:left;
+}
+.uap-sign-in-out
+{
+	/*border: solid 1px red;*/
+	flex: 0 0 100px;
+	padding:10px;
+	padding-right:5px;
+	text-align:center;
+}
+.uap-sign-in-out:hover
+{
+	background-color: rgba(41,41,41,0.1);
+	color:rgba(41,41,41,0.9);
+}
+
+.uap-avatar
+{
+	/*border: solid 1px red;*/
+	display:flex;
+	flex-direction:row;
+	padding:10px;
+	padding-left:15px;
+	margin-top:10px;
+	margin-bottom:10px;
+}
+.uap-avatar-image
+{
+	/*border: solid 1px red;*/
+	flex: 0 0 auto;
+}
+.uap-avatar-image > svg, .uap-avatar-image > img
+{
+	/*border: solid 1px red;*/
+	width:88px;
+	height:88px;
+	border-radius:50px;
+	box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.4);
+	opacity:0.8;
+	transition:all 200ms ease-in-out;
+}
+.uap-avatar-image > svg:hover, .uap-avatar-image > img:hover
+{
+	box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.8);
+	opacity:1;
+}
+
+.uap-avatar-text
+{
+	/*border: solid 1px red;*/
+	flex: 1 0 auto;
+	text-align:left;
+	margin-left:10px;
+}
+
+.uap-user-name
+{
+	font-family: 'az_SemiBold';
+	font-size: 18px;
+	text-align:left;
+	text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.uap-user-email
+{
+	width:190px;
+	margin-top:5px;
+	text-align:left;
+	text-overflow: ellipsis;
+    overflow: hidden;
+}
+.uap-user-links
+{
+	margin-top:5px;
+	text-align:left;
+	color: rgb(0, 120, 214);
+}
+
+
+.uap-swap-login-panel
+{
+	/*border: solid 1px red;*/
+}
+.uap-other-user
+{
+	/*border: solid 1px blue;*/
+	transition:all 150ms ease-in-out;
+	background-color: rgba(41,41,41,0.09);
+	color:rgba(0,0,0,1);
+	cursor:pointer;
+	display:flex;
+	opacity:0.6;
+}
+.uap-other-user:hover
+{
+	box-shadow: 0px 0px 8px 2px rgba(0,0,0,0.4);
+	opacity:1;
+}
+
+.uap-other-avatar
+{
+	/*border: solid 1px green;*/
+	flex: 0 0 32px;
+	padding:10px;
+}
+.uap-other-avatar > img, .uap-other-avatar > svg
+{
+	/*border: solid 1px red;*/
+	width:28px;
+	height:28px;
+	border-radius:14px;
+	box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+}
+
+.uap-other-name
+{
+	/*border: solid 1px red;*/
+	flex: 1 0 auto;
+	text-align:left;
+	padding-top:8px;
+}
+.uap-other-name-co
+{
+	font-size:11px;
+	font-family: 'az_SemiBold';
+}
+.uap-other-name-email
+{
+	margin-top:-4px;
+	font-size:10px;
+}
+.uap-other-name-other
+{
+	padding-top:7px;
+	font-size:10px;
+	font-family: 'az_SemiBold';
+}
+
+/*@media screen and (max-width: 1023px)
+{
+	.user-logon-container-ctrl
+	{
+		width:40px;
+	}
+	.user-info-text
+	{
+		flex: 0 0 auto;
+		display:none;
+	}
+}*/

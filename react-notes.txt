@@ -3,6 +3,8 @@ npm update
 
 npm install --save --save-exact react-scripts@4.0.0
 
+npm install --save --save-exact react-scripts@5.0.0
+
 NOTES:
 
 https://docs.npmjs.com/cli/install

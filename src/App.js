@@ -3,7 +3,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { PagesList } from './pages/pages.js';
 import SiteNav from './controls/nav/nav.js';
 import SiteFooter from './controls/footer/footer.js';
-import './css/all.min.css';
+import './css/all.css';
 
 export default class App extends React.Component
 {
@@ -38,7 +38,7 @@ export default class App extends React.Component
                     </Switch>
                 </main>
 
-                <SiteFooter>&copy; 1996-2021 Sean Gephardt. All rights reserved.</SiteFooter>
+                <SiteFooter>&copy; 1996-2022 Sean Gephardt. All rights reserved.</SiteFooter>
 
             </BrowserRouter>
         );

@@ -1,0 +1,1 @@
+.svg-ani-card-panel{display:flex;flex-direction:row;flex-wrap:wrap;justify-content:space-around;padding:20px}.svg-ani-card{border:solid 1px var(--black-01);box-shadow:0 0 10px 0 var(--black-01);flex:0 0 220px;width:220px;height:220px;margin-bottom:20px;overflow:hidden;cursor:pointer;padding:20px}.svg-ani-card>svg{height:100%;width:100%}

@@ -1,5 +1,5 @@
 import React from 'react';
-import './resume.min.css';
+import './resume.css';
 import SVG from '../../assets/svgs.js';
 import LinkedInIcon from './linkedin.png';
 
@@ -31,7 +31,7 @@ export default class Resume extends React.Component
 
 					<div className="cv-section">
 						<div className="cv-header">QUIVR.AI</div>
-						<div className="cv-sub-header">Senior Software Developer (Feb. 2021+)</div>
+						<div className="cv-sub-header">Senior Software Developer (Jan. 2021 - Dec. 2021)</div>
 						<ul>
 							<li>Development of client facing software, including desktop, mobile, web and cloud applications.</li>
 							<li>Collaboration with business stakeholders on software requirements for customer facing client applications.</li>

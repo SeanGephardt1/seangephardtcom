@@ -1,0 +1,119 @@
+						<svg className="hamburger-icon">
+							<g>
+								<animateTransform
+									attributeName="transform"
+									attributeType="XML"
+									type="rotate"
+									from="0 64 64"
+									to="90 64 64"
+									dur="500ms"
+									repeatCount="1"
+									begin="mouseover"
+									end="0ms"
+									fill="freeze"
+								/>
+								<animateTransform
+									attributeName="transform"
+									attributeType="XML"
+									type="rotate"
+									from="90 64 64"
+									to="0 64 64"
+									dur="500ms"
+									repeatCount="1"
+									begin="mouseout"
+									fill="freeze"
+								/>
+								<rect x="0" y="0" rx="8" height="128" width="128" fill="rgba(0,128,242,1)" />
+								<rect x="28" y="28" rx="2" height="16" width="72" fill="rgba(242,242,242,1)"/>
+								<rect x="28" y="56" rx="2" height="16" width="72" fill="rgba(242,242,242,1)" />
+								<rect x="28" y="84" rx="2" height="16" width="72" fill="rgba(242,242,242,1)" />
+
+							</g>
+						</svg>
+
+
+/* specific styles */
+/*.svg-menu-icon
+{
+	animation-delay:0ms;
+	animation-direction:normal;
+	animation-duration:500ms;
+	animation-fill-mode:both;
+	animation-iteration-count:infinite;
+	animation-name: SvgMenuIcon;
+	animation-play-state:paused;
+	animation-timing-function:ease-in-out;
+}
+.svg-menu-icon:hover
+{
+	animation-play-state:running;
+}
+@keyframes SvgMenuIcon
+{
+	0%, 100%
+	{
+		fill: rgba(0,128,242,1);
+		border: solid 10px red;
+	}
+	50%
+	{
+		fill: rgba(128,0,0,1);
+		border: solid 10px blue;
+	}
+}*/
+
+<set attributeName="rx" to="50" begin="mouseover" dur="200ms" delay="0" />
+<animate attributeName="rx" values="8;32;8" dur="500ms" repeatCount="0" begin="mouseover" />
+
+
+  <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Desktop-HD" transform="translate(-299.000000, -582.000000)" stroke="#000000">
+            <polygon id="poly" fill="#2D2D2D" points="550.65 660.48 551.13 661.88 550.93 660.56"></polygon>
+
+            <polygon id="poly" fill="#2D2D2D" points="403.29 705.56 379.49 741.63 405.79 774.14 433.63 774.14 433.63 767.04 410.8 761.88 403.94 743.97 433.63 716.21"></polygon>
+
+            <polygon id="poly" fill="#2D2D2D" points="566.62 753.83 574.52 755.04 581.46 718.01 573.07 703.08 551.37 702.44 528.94 719.14 562.83 719.46 564.6 723.66 557.99 732.61"></polygon>
+
+            <polygon id="poly" fill="#2D2D2D" points="551.13 661.88 550.93 660.56 540.77 591.5 504.98 582.55 466.9 617.73 466.57 619.09 558.54 684.86 558.87 684.36 551.39 662.63"></polygon>
+
+            <polygon id="poly" fill="#2D2D2D" points="529.42 774.14 562.63 774.14 562.63 767.68 537.13 760.26 531.38 741.41 496.83 733.18"></polygon>
+
+            <polygon id="poly" fill="#2D2D2D" points="453.36 718.6 455.03 650.1 376.54 655.09 406.3 703.27"></polygon>
+
+            <polygon id="poly" fill="#2D2D2D" points="485.01 718.78 492.75 728.51 529.99 737.39 524.34 718.89 548.06 700.5 556.31 688.19 522.22 663.81"></polygon>
+
+            <polygon id="poly" fill="#2D2D2D" points="565.17 664.19 574.2 648.38 566.62 636.28 566.94 625.47 559.68 614.34 562.42 608.04 545.26 594.5 555.14 661.63"></polygon>
+
+            <polygon id="poly" fill="#2D2D2D" points="481.13 717.36 518.96 661.48 465.56 623.29 459.16 649.83 459.04 649.84 457.34 719.64"></polygon>
+
+            <polygon id="poly" fill="#2D2D2D" points="316.04 749.29 328.46 774.14 357.67 774.14 356.86 766.72 339.44 763.33 334.27 752.84 342.95 740.58 325.32 724.5"></polygon>
+
+            <path id="path" fill="#2D2D2D" d="M343.79,690 L357.35,676.78 L344.44,712.92 L328.18,722.11 L347,739.31 L370.54,732.93 L401.66,703.44 L373,657 L359.93,667.26 C359.93,667.26 340.16,685.65 336.53,687.59 C332.9,689.53 319.83,692 319.83,692 L306.52,684.44 L306.93,669.9 L322.49,656.61 L314.26,654.43 L303.86,658.31 L300.47,685.41 L321.28,699.69 L343.79,690 Z"></path>
+        </g>
+    </g>
+
+
+									<animateTransform
+									attributeName="transform"
+									attributeType="XML"
+									type="rotate"
+									from="0 64 64"
+									to="90 64 64"
+									dur="500ms"
+									repeatCount="1"
+									begin="hamburger.mouseover"
+									fill="freeze"
+									additive="sum"
+								/>
+								<animateTransform
+									attributeName="transform"
+									attributeType="XML"
+									type="rotate"
+									from="90 64 64"
+									to="0 64 64"
+									dur="500ms"
+									repeatCount="1"
+									begin="hamburger.mouseout"
+									fill="freeze"
+								/>
+
