@@ -14,8 +14,8 @@ import CssArtPage from './css-art/css-art.js';
 import SvgAnimationsDemo from './svg-animations/svg-animations.js';
 import ButtonAnimations from './button-animations/button-animations.js';
 
-//  import MusicPage from './music/music.js';
-//  import TestPage from './test/test.js';
+//import MusicPage from './music/music.js';
+//import TestPage from './test/test.js';
 //  import MovieStoreExtension from './movie-works-demo/movieworks.js';
 //  import GuitarApp from './guitar-app/guitar-app.js';
 //  import GuitarStoreExtension from './guitar-store/guitar-store.js';
@@ -41,10 +41,10 @@ const _p = [
                 path: Html5CanvasDemo.defaultProps.Href,
                 component: Html5CanvasDemo
             },
-            {
-                path: WebGLDemo.defaultProps.Href,
-                component: WebGLDemo
-            },
+            //{
+            //    path: WebGLDemo.defaultProps.Href,
+            //    component: WebGLDemo
+            //},
             {
                 path: CssArtPage.defaultProps.Href,
                 component: CssArtPage
@@ -53,14 +53,14 @@ const _p = [
                 path: SvgZoomDemo.defaultProps.Href,
                 component: SvgZoomDemo
             },
-            {
-                path: SvgAnimationsDemo.defaultProps.Href,
-                component: SvgAnimationsDemo
-            },
-            {
-                path: ButtonAnimations.defaultProps.Href,
-                component: ButtonAnimations
-            }
+            //{
+            //    path: SvgAnimationsDemo.defaultProps.Href,
+            //    component: SvgAnimationsDemo
+            //},
+            //{
+            //    path: ButtonAnimations.defaultProps.Href,
+            //    component: ButtonAnimations
+            //}
         ]
     },
     //{

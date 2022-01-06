@@ -1,5 +1,5 @@
 import React from 'react';
-import './home.min.css';
+import './home.css';
 
 export default class Home extends React.Component
 {

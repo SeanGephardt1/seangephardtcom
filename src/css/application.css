@@ -19,7 +19,8 @@ main
 	justify-content:center;
 }
 
-.page-layout /* most pages */
+/* most pages */
+.page-layout
 {
 /*	border: solid 1px var(--black-02);*/
 	min-width: 280px;
