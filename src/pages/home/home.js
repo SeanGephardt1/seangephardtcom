@@ -9,16 +9,15 @@ export default class Home extends React.Component
 		Href: "/",
 		Icon: "" // SVG.AppNavButtons.About
 	};
-    constructor( props )
-    {
-        super( props );
-
+	constructor( props )
+  {
+		super( props );
 		this.Title = ( this.props.Title || Home.defaultProps.Title );
-		document.title = this.Title;
-
 		this.LinkTitle = ( this.props.LinkTitle || Home.defaultProps.LinkTitle );
 		this.Href = ( this.props.Href || Home.defaultProps.Href );
 		this.state = { debug: true };
+
+		document.title = this.Title;
 		return;
 	};
 	componentDidMount()
@@ -29,7 +28,7 @@ export default class Home extends React.Component
 	{	//	console.debug( "Home.componentWillUnmount()" );
 		return;
 	};
-    render()
+	render()
 	{
 		return (
 			<div className="page-layout">

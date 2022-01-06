@@ -18,11 +18,11 @@ body
 	background-color: var(--default-white);
 	color: var(--default-black);
 	font-family: 'Josefina', 'Segoe UI', sans-serif, -system-ui;
-	font-weight:normal;
+	font-weight: normal;
 	font-size: 16px;
-	letter-spacing:0px;
-	overflow:auto;
-	vertical-align:top;
+	letter-spacing: 0px;
+	overflow: auto;
+	vertical-align: top;
 }
 
 a
