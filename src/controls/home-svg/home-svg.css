@@ -7,15 +7,11 @@
 	--burnt-orange: #f39237;
 }
 
-/*svg
-{
-		background-image: linear-gradient(135deg, rgba(198, 66, 110, 1), rgba(100, 43, 115, 1));
-	background-image: radial-gradient(circle, rgba(39, 93, 173, 0.4) 0, transparent 70%);
-}
-*/
+/* svg {} */
+
 .home-svg-root
 {
-	border: solid 1px black;
+	border: solid 0.1px black;
 /*	fill:black;
 	stroke:red;
 	stroke-width:5px;*/
@@ -27,22 +23,11 @@
 /* debug */
 g.home-svg-debug
 {
-/*	display:none;*/
+	/*	display:none;*/
 }
 g.home-svg-debug > rect:nth-child(1)
 {
 	fill:rgba(255,0,0,0);
-}
-g.home-svg-debug > line
-{
-	stroke:rgba(0,0,0,1);
-	stroke-width: 0.2px;
-}
-g.home-svg-debug > circle
-{
-	stroke: rgba(255,0,0,1);
-	stroke-width: 0.1px;
-	fill: rgba(255,0,0,0.1);
 }
 rect[class*='palette-rect']
 {
@@ -52,6 +37,7 @@ rect[class*='palette-rect']
 	height: 100px;
 	y: 960px;
 }
+
 .palette-rect-1
 {
 	fill: var(--dark-black);
@@ -71,4 +57,126 @@ rect[class*='palette-rect']
 .palette-rect-5
 {
 	fill: var(--burnt-orange);
+}
+
+
+g.debug-rotate-ani
+{
+	transform-origin: 50% 50%;
+	transform: rotate(0deg);
+/*	animation-delay: 0ms;
+	animation-direction: normal;
+	animation-duration: 5000ms;
+	animation-fill-mode: both;
+	animation-iteration-count: infinite;
+	animation-name: AniGDebugCrosshairs;
+	animation-play-state: running;
+	animation-timing-function: linear;*/
+}
+g.debug-rotate-ani > line
+{
+	stroke: rgba(0,0,0,1);
+	stroke-width: 1px;
+}
+g.debug-rotate-ani > circle
+{
+	stroke: rgba(0,0,0,0.5);
+	stroke-width: 1px;
+	fill: rgba(255,255,255,1);
+}
+@keyframes AniGDebugCrosshairs
+{
+	0%
+	{
+		transform: rotate(0deg);
+	}
+	100%
+	{
+		transform: rotate(180deg);
+	}
+}
+
+
+
+
+/* main */
+g.home-svg-main {}
+
+.home-text-UX
+{
+	transform: translate(0,-560px);
+	transform-origin: 50% 50%;
+	animation-delay: 500ms;
+	animation-direction: normal;
+	animation-duration: 1000ms;
+	animation-fill-mode: forwards;
+	animation-iteration-count: 1;
+	animation-name: AniUxTextStart;
+	animation-play-state: running;
+	animation-timing-function: linear;
+}
+@keyframes AniUxTextStart
+{
+	0%
+	{
+		transform: translate(0,-560px);
+	}
+
+	100%
+	{
+		transform: translate(0,0px);
+	}
+}
+
+.home-text-DESIGN
+{
+	transform: translateX(-1280px);
+	transform-origin: 50% 50%;
+	animation-delay: 500ms;
+	animation-direction: normal;
+	animation-duration: 1000ms;
+	animation-fill-mode: forwards;
+	animation-iteration-count: 1;
+	animation-name: AniDesignTextStart;
+	animation-play-state: running;
+	animation-timing-function: linear;
+}
+@keyframes AniDesignTextStart
+{
+	0%
+	{
+		transform: translateX(-1280px);
+	}
+
+	100%
+	{
+		transform: translateX(0px);
+	}
+}
+
+.home-text-PROTOTPYING
+{
+	transform: translateX(1280px);
+	transform-origin: 50% 50%;
+	animation-delay: 500ms;
+	animation-direction: normal;
+	animation-duration: 1000ms;
+	animation-fill-mode: forwards;
+	animation-iteration-count: 1;
+	animation-name: AniProtoTextStart;
+	animation-play-state: running;
+	animation-timing-function: linear;
+}
+
+@keyframes AniProtoTextStart
+{
+	0%
+	{
+		transform: translateX(1280px);
+	}
+
+	100%
+	{
+		transform: translateX(0px);
+	}
 }
