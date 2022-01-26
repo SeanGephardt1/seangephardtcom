@@ -1,4 +1,5 @@
 import React from 'react';
+import HomeSvg from '../../controls/home-svg/home-svg.js';
 import './home.css';
 
 export default class Home extends React.Component
@@ -32,6 +33,8 @@ export default class Home extends React.Component
 	{
 		return (
 			<div className="page-layout">
+				{ /* SVG ANIMATION */}
+				<HomeSvg />
 
 				{ /* DESCRIPTION */ }
 				<div className="home-content">

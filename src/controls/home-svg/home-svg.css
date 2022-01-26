@@ -1,0 +1,74 @@
+:root
+{
+	--dark-black: #191923;
+	--off-white: #FEFDFC;
+	--royal-blue: #0e79b2;
+	--pink-red: #bf1363;
+	--burnt-orange: #f39237;
+}
+
+/*svg
+{
+		background-image: linear-gradient(135deg, rgba(198, 66, 110, 1), rgba(100, 43, 115, 1));
+	background-image: radial-gradient(circle, rgba(39, 93, 173, 0.4) 0, transparent 70%);
+}
+*/
+.home-svg-root
+{
+	border: solid 1px black;
+/*	fill:black;
+	stroke:red;
+	stroke-width:5px;*/
+/*	background-image: radial-gradient(circle, rgba(128, 0, 0, 1) 0, transparent 100%);*/
+	height: 100%;
+	width: 100%;
+}
+
+/* debug */
+g.home-svg-debug
+{
+/*	display:none;*/
+}
+g.home-svg-debug > rect:nth-child(1)
+{
+	fill:rgba(255,0,0,0);
+}
+g.home-svg-debug > line
+{
+	stroke:rgba(0,0,0,1);
+	stroke-width: 0.2px;
+}
+g.home-svg-debug > circle
+{
+	stroke: rgba(255,0,0,1);
+	stroke-width: 0.1px;
+	fill: rgba(255,0,0,0.1);
+}
+rect[class*='palette-rect']
+{
+	stroke-width: 0.1px;
+	stroke: black;
+	width: 100px;
+	height: 100px;
+	y: 960px;
+}
+.palette-rect-1
+{
+	fill: var(--dark-black);
+}
+.palette-rect-2
+{
+	fill: var(--off-white);
+}
+.palette-rect-3
+{
+	fill: var(--royal-blue);
+}
+.palette-rect-4
+{
+	fill: var(--pink-red);
+}
+.palette-rect-5
+{
+	fill: var(--burnt-orange);
+}

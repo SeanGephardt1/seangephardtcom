@@ -62,14 +62,6 @@ footer
 }
 
 
-svg
-{
-/*	background-image: linear-gradient(135deg, rgba(198, 66, 110, 1), rgba(100, 43, 115, 1));*/	
-	background-image: radial-gradient(circle, rgba(39, 93, 173, 0.4) 0, transparent 70%);
-	height:100%;
-	width:100%;
-}
-
 /* global multi-use styles - refactored 12/31/2020 */
 .header
 {
