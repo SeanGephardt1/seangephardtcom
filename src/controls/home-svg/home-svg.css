@@ -11,13 +11,14 @@
 
 .home-svg-root
 {
-	border: solid 0.1px black;
+	border: solid 0.1px rgba(0,0,0,0.1);
 /*	fill:black;
 	stroke:red;
 	stroke-width:5px;*/
 /*	background-image: radial-gradient(circle, rgba(128, 0, 0, 1) 0, transparent 100%);*/
 	height: 100%;
 	width: 100%;
+	cursor:pointer;
 }
 
 /* debug */
@@ -75,12 +76,12 @@ g.debug-rotate-ani
 }
 g.debug-rotate-ani > line
 {
-	stroke: rgba(0,0,0,1);
+	stroke: rgba(255,0,0,1);
 	stroke-width: 1px;
 }
 g.debug-rotate-ani > circle
 {
-	stroke: rgba(0,0,0,0.5);
+	stroke: rgba(255,0,0,0.5);
 	stroke-width: 1px;
 	fill: rgba(255,255,255,1);
 }
@@ -104,9 +105,9 @@ g.home-svg-main {}
 
 .home-text-UX
 {
-	transform: translate(0,-560px);
+	transform: translate(0,-660px);
 	transform-origin: 50% 50%;
-	animation-delay: 500ms;
+	animation-delay: 0ms;
 	animation-direction: normal;
 	animation-duration: 1000ms;
 	animation-fill-mode: forwards;
@@ -119,7 +120,7 @@ g.home-svg-main {}
 {
 	0%
 	{
-		transform: translate(0,-560px);
+		transform: translate(0,-660px);
 	}
 
 	100%
@@ -132,7 +133,7 @@ g.home-svg-main {}
 {
 	transform: translateX(-1280px);
 	transform-origin: 50% 50%;
-	animation-delay: 500ms;
+	animation-delay: 0ms;
 	animation-direction: normal;
 	animation-duration: 1000ms;
 	animation-fill-mode: forwards;
@@ -158,7 +159,7 @@ g.home-svg-main {}
 {
 	transform: translateX(1280px);
 	transform-origin: 50% 50%;
-	animation-delay: 500ms;
+	animation-delay: 0ms;
 	animation-direction: normal;
 	animation-duration: 1000ms;
 	animation-fill-mode: forwards;
@@ -167,7 +168,6 @@ g.home-svg-main {}
 	animation-play-state: running;
 	animation-timing-function: linear;
 }
-
 @keyframes AniProtoTextStart
 {
 	0%

@@ -6,7 +6,7 @@ export default class HomeSvg extends React.Component
 	constructor ( props ) 
 	{
 		super( props );
-		this.state = { debug: true };
+		this.state = { debug: false };
 		return;
 	};
 	render()
@@ -44,11 +44,11 @@ export default class HomeSvg extends React.Component
 					</g>
 				}
 
-				{ /* MAIN */ }
+				{ /* MAIN TEXT */ }
 				<g className="home-svg-main">
 					<text className="home-text-UX"
 						x="50%"
-						y="540"
+						y="640"
 						fontFamily="Segoe UI"
 						fontSize="600px"
 						textAnchor="middle"
@@ -57,7 +57,7 @@ export default class HomeSvg extends React.Component
 					</text>
 					<text className="home-text-DESIGN"
 						x="50%"
-						y="694"
+						y="794"
 						dx="0"
 						dy="0"
 						fontFamily="Segoe UI"
@@ -69,7 +69,7 @@ export default class HomeSvg extends React.Component
 					<text
 						className="home-text-PROTOTPYING"
 						x="50%"
-						y="780"
+						y="884"
 						dx="0"
 						dy="0"
 						fontFamily="Segoe UI"
@@ -80,6 +80,8 @@ export default class HomeSvg extends React.Component
 						<tspan>PROTOTYPING</tspan>
 					</text>
 				</g>
+
+
 			</svg>
 		);
 	};
