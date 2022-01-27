@@ -6,7 +6,7 @@ export default class HomeSvg extends React.Component
 	constructor ( props ) 
 	{
 		super( props );
-		this.state = { debug: false };
+		this.state = { debug: true };
 		return;
 	};
 	render()
@@ -19,16 +19,11 @@ export default class HomeSvg extends React.Component
 				xmlSpace="preserve"
 				className="home-svg-root"
 				textRendering="optimizeLegibility"
-				width="960px"
-				height="540px"
+				preserveAspectRatio="xMinYMin slice"
+				vectorEffect="non-scaling-stroke"
+				x="0px" y="0px"
 				viewBox="0 0 1920 1080"
 			>
-				<defs>
-					<filter id="design-asset-shadow">
-						<feDropShadow dx="0" dy="4" stdDeviation="8" floodColor="rgba(0,0,0,1)" floodOpacity="0.6"  />
-					</filter>
-				</defs>
-
 				{  /* DEBUG BACKGROUND */
 					this.state.debug === true &&
 					<g className="home-svg-debug">
@@ -42,47 +37,46 @@ export default class HomeSvg extends React.Component
 							<circle r="30" cx="50%" cy="50%" />
 						</g>
 
-						<rect className="palette-rect-1" x="710" />
-						<rect className="palette-rect-2" x="810" />
-						<rect className="palette-rect-3" x="910" />
-						<rect className="palette-rect-4" x="1010" />
-						<rect className="palette-rect-5" x="1110" />
+						{/*<rect className="palette-rect-1" x="710" />*/}
+						{/*<rect className="palette-rect-2" x="810" />*/}
+						{/*<rect className="palette-rect-3" x="910" />*/}
+						{/*<rect className="palette-rect-4" x="1010" />*/}
+						{/*<rect className="palette-rect-5" x="1110" />*/}
 					</g>
 				}
 
 				{ /* MAIN TEXT */ }
-				<g className="home-svg-main">
+				<g className="home-svg-main-ux">
 					<text className="home-text-UX"
 						x="50%"
-						y="640"
+						y="60%"
 						fontFamily="Segoe UI"
-						fontSize="600px"
-						textAnchor="middle"
-						letterSpacing="-66px">
-						<tspan dx="-48px" dy="0">UX</tspan>
+						fontSize="600"
+						textAnchor="middle">
+						<tspan>UX</tspan>
 					</text>
+				</g>
+
+				<g>
 					<text className="home-text-DESIGN"
 						x="50%"
-						y="794"
-						dx="0"
-						dy="0"
+						y="75%"
 						fontFamily="Segoe UI"
-						fontSize="202px"
+						fontSize="202"
 						textAnchor="middle"
-						letterSpacing="-6px">
+						>
 						<tspan>DESIGN</tspan>
 					</text>
+				</g>
+
+				<g>
 					<text
 						className="home-text-PROTOTPYING"
 						x="50%"
-						y="884"
-						dx="0"
-						dy="0"
+						y="83%"
 						fontFamily="Segoe UI"
-						fontSize="108px"
-						textLength="0"
-						textAnchor="middle"
-						letterSpacing="-4px">
+						fontSize="106"
+						textAnchor="middle">
 						<tspan>PROTOTYPING</tspan>
 					</text>
 				</g>
