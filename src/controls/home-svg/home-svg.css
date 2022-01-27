@@ -7,93 +7,15 @@
 	--burnt-orange: #f39237;
 }
 
-/* svg {} */
-
+/*svg {}
+*/
 .home-svg-root
 {
-	border: solid 0.1px rgba(0,0,0,0.1);
-/*	fill:black;
-	stroke:red;
-	stroke-width:5px;*/
-/*	background-image: radial-gradient(circle, rgba(128, 0, 0, 1) 0, transparent 100%);*/
-	height: 100%;
-	width: 100%;
-	cursor:pointer;
-}
-
-/* debug */
-g.home-svg-debug
-{
-	/*	display:none;*/
-}
-g.home-svg-debug > rect:nth-child(1)
-{
-	fill:rgba(255,0,0,0);
-}
-rect[class*='palette-rect']
-{
-	stroke-width: 0.1px;
-	stroke: black;
-	width: 100px;
-	height: 100px;
-	y: 960px;
-}
-
-.palette-rect-1
-{
-	fill: var(--dark-black);
-}
-.palette-rect-2
-{
-	fill: var(--off-white);
-}
-.palette-rect-3
-{
-	fill: var(--royal-blue);
-}
-.palette-rect-4
-{
-	fill: var(--pink-red);
-}
-.palette-rect-5
-{
-	fill: var(--burnt-orange);
-}
-
-g.debug-rotate-ani
-{
-	transform-origin: 50% 50%;
-	transform: rotate(0deg);
-/*	animation-delay: 0ms;
-	animation-direction: normal;
-	animation-duration: 5000ms;
-	animation-fill-mode: both;
-	animation-iteration-count: infinite;
-	animation-name: AniGDebugCrosshairs;
-	animation-play-state: running;
-	animation-timing-function: linear;*/
-}
-g.debug-rotate-ani > line
-{
-	stroke: rgba(255,0,0,1);
-	stroke-width: 1px;
-}
-g.debug-rotate-ani > circle
-{
-	stroke: rgba(255,0,0,0.5);
-	stroke-width: 1px;
-	fill: rgba(255,255,255,1);
-}
-@keyframes AniGDebugCrosshairs
-{
-	0%
-	{
-		transform: rotate(0deg);
-	}
-	100%
-	{
-		transform: rotate(180deg);
-	}
+	border: solid 1px rgba(0,0,0,1);
+/*	background-image: radial-gradient(circle, rgba(0, 0, 255, 0.2) 0, transparent 50%);*/
+	height: calc(100%);
+	width: calc(100%);
+	cursor: pointer;
 }
 
 
@@ -102,6 +24,7 @@ g.home-svg-main {}
 
 .home-text-UX, .home-text-DESIGN, .home-text-PROTOTPYING
 {
+	font-family: 'Josefina', 'Segoe UI', sans-serif, -system-ui;
 	stroke: white;
 	stroke-width: 1px;
 	text-shadow: 0px 0px 60px rgba(0,0,0,0);
@@ -111,7 +34,7 @@ g.home-svg-main {}
 	animation-iteration-count: 1;
 	animation-play-state: running;
 	animation-timing-function: linear;
-	animation-delay: 0ms, 0ms, 1500ms, 5000ms;
+	animation-delay: 0ms, 0ms, 1500ms, 3000ms;
 	animation-duration: 500ms, 750ms, 500ms, 500ms;
 }
 
@@ -483,5 +406,98 @@ g.home-svg-main {}
 	{
 		opacity:0.5;
 		transform: translate(-1920px,0px);
+	}
+}
+
+
+
+
+
+
+
+
+
+/* debug */
+g.home-svg-debug
+{
+	/*	display:none;*/
+}
+
+g.home-svg-debug > rect:nth-child(1)
+{
+	fill: rgba(255,0,0,0);
+}
+
+rect[class*='palette-rect']
+{
+	stroke-width: 0.1px;
+	stroke: black;
+	width: 100px;
+	height: 100px;
+	y: 960px;
+}
+
+.palette-rect-1
+{
+	fill: var(--dark-black);
+}
+
+.palette-rect-2
+{
+	fill: var(--off-white);
+}
+
+.palette-rect-3
+{
+	fill: var(--royal-blue);
+}
+
+.palette-rect-4
+{
+	fill: var(--pink-red);
+}
+
+.palette-rect-5
+{
+	fill: var(--burnt-orange);
+}
+
+g.debug-rotate-ani
+{
+	transform-origin: 50% 50%;
+	transform: rotate(0deg);
+	/*	animation-delay: 0ms;
+	animation-direction: normal;
+	animation-duration: 5000ms;
+	animation-fill-mode: both;
+	animation-iteration-count: infinite;
+	animation-name: AniGDebugCrosshairs;
+	animation-play-state: running;
+	animation-timing-function: linear;*/
+}
+
+g.debug-rotate-ani > line
+{
+	stroke: rgba(255,0,0,1);
+	stroke-width: 1px;
+}
+
+g.debug-rotate-ani > circle
+{
+	stroke: rgba(255,0,0,0.5);
+	stroke-width: 1px;
+	fill: rgba(255,255,255,1);
+}
+
+@keyframes AniGDebugCrosshairs
+{
+	0%
+	{
+		transform: rotate(0deg);
+	}
+
+	100%
+	{
+		transform: rotate(180deg);
 	}
 }
