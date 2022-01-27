@@ -82,9 +82,45 @@ export default class HomeSvg extends React.Component
 				</g>
 
 				{ /* RANDOM DESIGN ELEMENTS */ }
-				<g className="home-svg-assets">
-
+				<g id="design-flow">
+					<text
+						x="50%"
+						y="60%"
+						className="design-asset-text"
+						fontFamily="Segoe UI"
+						fontSize="400px"
+						textAnchor="middle"
+						letterSpacing="-32px">
+						<tspan dx="0" dy="0">#design</tspan>
+					</text>
+					<path className="design-asset-path-test" d="M100,100 L100,100" />
 				</g>
+
+				{/*<g id="develop-flow">*/}
+				{/*	<text*/}
+				{/*		x="50%"*/}
+				{/*		y="60%"*/}
+				{/*		className="design-asset-text"*/}
+				{/*		fontFamily="Segoe UI"*/}
+				{/*		fontSize="400px"*/}
+				{/*		textAnchor="middle"*/}
+				{/*		letterSpacing="-32px">*/}
+				{/*		<tspan dx="0" dy="0">#develop</tspan>*/}
+				{/*	</text>*/}
+				{/*</g>*/}
+
+				{/*<g id="deploy-flow">*/}
+				{/*	<text*/}
+				{/*		x="50%"*/}
+				{/*		y="60%"*/}
+				{/*		className="design-asset-text"*/}
+				{/*		fontFamily="Segoe UI"*/}
+				{/*		fontSize="400px"*/}
+				{/*		textAnchor="middle"*/}
+				{/*		letterSpacing="-32px">*/}
+				{/*		<tspan dx="0" dy="0">#deploy</tspan>*/}
+				{/*	</text>*/}
+				{/*</g>*/}
 
 			</svg>
 		);
