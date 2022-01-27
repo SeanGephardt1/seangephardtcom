@@ -81,6 +81,10 @@ export default class HomeSvg extends React.Component
 					</text>
 				</g>
 
+				{ /* RANDOM DESIGN ELEMENTS */ }
+				<g className="home-svg-assets">
+
+				</g>
 
 			</svg>
 		);

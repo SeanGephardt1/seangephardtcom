@@ -98,23 +98,28 @@ g.debug-rotate-ani > circle
 }
 
 
-
-
 /* main */
 g.home-svg-main {}
+
+.home-text-UX, .home-text-DESIGN, .home-text-PROTOTPYING
+{
+	stroke: white;
+	stroke-width: 1px;
+	text-shadow: 0px 0px 60px rgba(0,0,0,0);
+	transform-origin: 50% 50%;
+	animation-delay: 0ms, 0ms, 1500ms;
+	animation-direction: normal;
+	animation-duration: 500ms, 750ms, 500ms;
+	animation-fill-mode: forwards;
+	animation-iteration-count: 1;
+	animation-play-state: running;
+	animation-timing-function: linear;
+}
 
 .home-text-UX
 {
 	transform: translate(0,-660px);
-	transform-origin: 50% 50%;
-	animation-delay: 0ms;
-	animation-direction: normal;
-	animation-duration: 1000ms;
-	animation-fill-mode: forwards;
-	animation-iteration-count: 1;
-	animation-name: AniUxTextStart;
-	animation-play-state: running;
-	animation-timing-function: linear;
+	animation-name: AniUxTextStart, AniTextColor, AniTextFadeOut;
 }
 @keyframes AniUxTextStart
 {
@@ -132,15 +137,7 @@ g.home-svg-main {}
 .home-text-DESIGN
 {
 	transform: translateX(-1280px);
-	transform-origin: 50% 50%;
-	animation-delay: 0ms;
-	animation-direction: normal;
-	animation-duration: 1000ms;
-	animation-fill-mode: forwards;
-	animation-iteration-count: 1;
-	animation-name: AniDesignTextStart;
-	animation-play-state: running;
-	animation-timing-function: linear;
+	animation-name: AniDesignTextStart, AniTextColor, AniTextFadeOut;
 }
 @keyframes AniDesignTextStart
 {
@@ -158,15 +155,7 @@ g.home-svg-main {}
 .home-text-PROTOTPYING
 {
 	transform: translateX(1280px);
-	transform-origin: 50% 50%;
-	animation-delay: 0ms;
-	animation-direction: normal;
-	animation-duration: 1000ms;
-	animation-fill-mode: forwards;
-	animation-iteration-count: 1;
-	animation-name: AniProtoTextStart;
-	animation-play-state: running;
-	animation-timing-function: linear;
+	animation-name: AniProtoTextStart, AniTextColor, AniTextFadeOut;
 }
 @keyframes AniProtoTextStart
 {
@@ -180,3 +169,31 @@ g.home-svg-main {}
 		transform: translateX(0px);
 	}
 }
+
+@keyframes AniTextColor
+{
+	0%
+	{
+		text-shadow: 0px 0px 60px rgba(0,0,0,0);
+	}
+	100%
+	{
+		fill: var(--nav-color-4);
+		text-shadow: 0px 0px 60px rgba(0,0,0,0.6);
+	}
+}
+@keyframes AniTextFadeOut
+{
+	0%
+	{
+		opacity: 1;
+	}
+	100%
+	{
+		opacity: 0;
+	}
+}
+
+/* svg assets & animations */
+.home-svg-assets
+{}
