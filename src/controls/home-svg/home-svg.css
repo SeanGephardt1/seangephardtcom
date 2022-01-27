@@ -60,7 +60,6 @@ rect[class*='palette-rect']
 	fill: var(--burnt-orange);
 }
 
-
 g.debug-rotate-ani
 {
 	transform-origin: 50% 50%;
@@ -107,19 +106,19 @@ g.home-svg-main {}
 	stroke-width: 1px;
 	text-shadow: 0px 0px 60px rgba(0,0,0,0);
 	transform-origin: 50% 50%;
-	animation-delay: 0ms, 0ms, 1500ms;
 	animation-direction: normal;
-	animation-duration: 500ms, 750ms, 500ms;
 	animation-fill-mode: forwards;
 	animation-iteration-count: 1;
 	animation-play-state: running;
 	animation-timing-function: linear;
+	animation-delay: 0ms, 0ms, 1500ms, 5000ms;
+	animation-duration: 500ms, 750ms, 500ms, 500ms;
 }
 
 .home-text-UX
 {
 	transform: translate(0,-660px);
-	animation-name: AniUxTextStart, AniTextColor, AniTextFadeOut;
+	animation-name: AniUxTextStart, AniTextColor, AniTextFadeOut,AniTextDelayedFadeBack;
 }
 @keyframes AniUxTextStart
 {
@@ -137,7 +136,7 @@ g.home-svg-main {}
 .home-text-DESIGN
 {
 	transform: translateX(-1280px);
-	animation-name: AniDesignTextStart, AniTextColor, AniTextFadeOut;
+	animation-name: AniDesignTextStart, AniTextColor, AniTextFadeOut,AniTextDelayedFadeBack;
 }
 @keyframes AniDesignTextStart
 {
@@ -155,7 +154,7 @@ g.home-svg-main {}
 .home-text-PROTOTPYING
 {
 	transform: translateX(1280px);
-	animation-name: AniProtoTextStart, AniTextColor, AniTextFadeOut;
+	animation-name: AniProtoTextStart, AniTextColor, AniTextFadeOut,AniTextDelayedFadeBack;
 }
 @keyframes AniProtoTextStart
 {
@@ -187,12 +186,31 @@ g.home-svg-main {}
 	0%
 	{
 		opacity: 1;
+		transform:scale(1,1);
 	}
 	100%
 	{
 		opacity: 0;
+		transform: scale(5,5);
 	}
 }
+@keyframes AniTextDelayedFadeBack
+{
+	0%
+	{
+		opacity: 0;
+		transform: scale(5,5);
+	}
+
+	100%
+	{
+		opacity: 1;
+		transform: scale(1,1);
+	}
+}
+
+
+
 
 /* svg assets & animations */
 .design-asset-text
@@ -208,9 +226,9 @@ g.home-svg-main {}
 	animation-fill-mode: forwards, forwards;
 	animation-play-state: running, running;
 	animation-iteration-count: 1,1;
-	animation-delay: 1250ms, 2000ms;
-	animation-duration: 500ms, 500ms;
-	animation-name: AniDesignTextStepOne, AniDesignTextStepTwo;
+	animation-delay: 1500ms, 2000ms, 5000ms;
+	animation-duration: 500ms, 500ms, 500ms;
+	animation-name: AniDesignTextStepOne, AniDesignTextStepTwo, AniDesignTextStepThree;
 }
 @keyframes AniDesignTextStepOne
 {
@@ -234,35 +252,236 @@ g.home-svg-main {}
 		transform: translate(-150px,-150px) scale(0.5,0.5);
 	}
 }
-
-.design-asset-path-test
-{
-	fill:transparent;
-	stroke: red;
-	stroke-width: 10px;
-	stroke-linecap:round;
-	stroke-linejoin:round;
-	stroke-miterlimit:5;
-
-	transform-origin: 50% 50%;
-	animation-delay: 500ms;
-	animation-direction: normal;
-	animation-duration: 1000ms;
-	animation-fill-mode: forwards;
-	animation-iteration-count: 1;
-	animation-play-state: running;
-	animation-timing-function: linear;
-	animation-name: AniDesignPathTest;
-}
-@keyframes AniDesignPathTest
+@keyframes AniDesignTextStepThree
 {
 	0%
 	{
-		d: path("M100,100 L100,100");
+		opacity: 1;
+	}
+	100%
+	{
+		opacity: 0;
+	}
+}
+
+.design-rect
+{
+	fill: rgba(252,252,252,1);
+	stroke: rgba(255,255,255,1);
+	stroke-width: 1px;
+}
+.dr-layout
+{
+	transform: translate(0,800px);
+	animation-direction: normal;
+	animation-timing-function: linear;
+	animation-fill-mode: forwards;
+	animation-play-state: running;
+	animation-iteration-count: 1;
+	animation-delay: 2000ms;
+	animation-duration: 1000ms;
+	animation-name: AniDesignLayoutMove;
+}
+@keyframes AniDesignLayoutMove
+{
+	0%
+	{
+		transform: translate(0,800px);
+	}
+	80%
+	{
+		transform: translate(0px,-50px);
+	}
+	90%
+	{
+		width: 500px;
+		height: 200px;
+	}	
+	100%
+	{
+		width: 1520px;
+		height: 800px;
+		transform: translate(0px,-50px);
+	}
+}
+
+.dr-toolbar
+{
+	fill: var(--nav-color-4);
+	stroke: rgba(0,0,0,1);
+	stroke-width: 1px;
+	transform: translate(-1740px,0px);
+	animation-direction: normal;
+	animation-timing-function: linear;
+	animation-fill-mode: forwards;
+	animation-play-state: running;
+	animation-iteration-count: 1;
+	animation-delay: 3200ms;
+	animation-duration: 300ms;
+	animation-name: AniDesignToolbarMove;
+}
+@keyframes AniDesignToolbarMove
+{
+	0%
+	{
+		transform: translate(-1740px,0px);
+	}
+	100%
+	{
+		transform: translate(0px,0px);
+	}
+}
+
+
+.g-dr-menu
+{
+	transform-origin: 50% 50%;
+	transform: translate(0px,1080px);
+	animation-direction: normal;
+	animation-timing-function: linear;
+	animation-fill-mode: forwards;
+	animation-play-state: running;
+	animation-iteration-count: 1;
+	animation-delay: 3200ms;
+	animation-duration: 300ms;
+	animation-name: AniDesignMenuMove;
+}
+@keyframes AniDesignMenuMove
+{
+	0%
+	{
+		transform: translate(0px,1080px);
 	}
 
 	100%
 	{
-		d: path("M100 100 H1820 V980 H100 V100");
+		transform: translate(0px,0px);
+	}
+}
+.dr-menu
+{
+	fill: rgba(240,240,240,1);
+	stroke: rgba(0,0,0,1);
+	stroke-width: 0px;
+}
+.dr-menu-icon
+{
+	fill: var(--nav-color-4);
+	stroke: rgba(255,255,255,1);
+	stroke-width: 2px;
+}
+.dr-menu-icon-text
+{
+	font-size:28px;
+	fill:rgba(0,0,0,1);
+	font-weight:700;
+	text-anchor:start;
+}
+
+.design-text
+{
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	text-anchor: start;
+}
+.dr-brand
+{
+	opacity: 0;
+	font-size: 32px;
+	fill: white;
+	stroke: none;
+	font-weight: 700;
+	animation-direction: normal;
+	animation-timing-function: linear;
+	animation-fill-mode: forwards;
+	animation-play-state: running;
+	animation-iteration-count: 1;
+	animation-delay: 3500ms;
+	animation-duration: 300ms;
+	animation-name: AniDesignCoBrandFade;
+}
+.dr-login
+{
+	opacity: 0;
+	font-size: 32px;
+	fill: white;
+	stroke: none;
+	font-weight: 100;
+	animation-direction: normal;
+	animation-timing-function: linear;
+	animation-fill-mode: forwards;
+	animation-play-state: running;
+	animation-iteration-count: 1;
+	animation-delay: 3800ms;
+	animation-duration: 300ms;
+	animation-name: AniDesignCoBrandFade;
+}
+.dr-content-text
+{
+	opacity: 0;
+	font-size: 32px;
+	fill: black;
+	stroke: none;
+	font-weight: 700;
+	text-anchor: start;
+	animation-direction: normal;
+	animation-timing-function: linear;
+	animation-fill-mode: forwards;
+	animation-play-state: running;
+	animation-iteration-count: 1;
+	animation-delay: 3800ms;
+	animation-duration: 300ms;
+	animation-name: AniDesignCoBrandFade;
+}
+.dr-content-text-2
+{
+	opacity: 0;
+	font-size: 24px;
+	fill: black;
+	stroke: none;
+	font-weight: 100;
+	text-anchor: start;
+	animation-direction: normal;
+	animation-timing-function: linear;
+	animation-fill-mode: forwards;
+	animation-play-state: running;
+	animation-iteration-count: 1;
+	animation-delay: 3800ms;
+	animation-duration: 300ms;
+	animation-name: AniDesignCoBrandFade;
+}
+@keyframes AniDesignCoBrandFade
+{
+	0%
+	{
+		opacity:0;
+	}
+	100%
+	{
+		opacity: 1;
+	}
+}
+
+.g-design-flow
+{
+	animation-direction: normal;
+	animation-timing-function: linear;
+	animation-fill-mode: forwards;
+	animation-play-state: running;
+	animation-iteration-count: 1;
+	animation-delay: 5000ms;
+	animation-duration: 500ms;
+	animation-name: AniDesignScaleSmall;
+}
+@keyframes AniDesignScaleSmall
+{
+	0%
+	{
+		transform: scale(1,1) translate(0px,0px);
+	}
+
+	100%
+	{
+		opacity:0.5;
+		transform: translate(-1920px,0px);
 	}
 }
