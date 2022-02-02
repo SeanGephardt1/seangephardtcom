@@ -14,403 +14,92 @@
 }
 
 
-
-g.home-svg-main-ux
-{
-	transform-origin: 50% 50%;
-	transform: translate(0, 0);
-	animation-direction: normal;
-	animation-fill-mode: forwards;
-	animation-iteration-count: 1;
-	animation-play-state: running;
-	animation-timing-function: linear;
-		animation-delay: 500ms, 500ms, 1500ms, 3000ms;
-	animation-duration: 500ms, 750ms, 500ms, 500ms;
-	animation-name: AniUxTextStart, AniTextColor, AniTextFadeOut,AniTextDelayedFadeBack;
-/*	animation-delay: 500ms;
-	animation-duration: 500ms;
-	animation-name: AniUxTextStart;*/
-}
-
-.home-text-UX, .home-text-DESIGN, .home-text-PROTOTPYING
+.home-text-UX,
+.home-text-DESIGN,
+.home-text-PROTOTYPING
 {
 	font-family: 'Josefina', 'Segoe UI', sans-serif, -system-ui;
-	stroke: white;
-	stroke-width: 1px;
-	text-shadow: 0px 0px 60px rgba(0,0,0,1);
-	transform-origin: 50% 50%;
-}
-
-@keyframes AniUxTextStart
-{
-	0%
-	{
-		transform: translate(0, 0);
-	}
-	100%
-	{
-		transform: translate(0,50%);
-	}
-}
-
-.home-text-DESIGN
-{
-/*	transform: translateX(-1280px);
-	animation-name: AniDesignTextStart, AniTextColor, AniTextFadeOut,AniTextDelayedFadeBack;*/
-}
-@keyframes AniDesignTextStart
-{
-	0%
-	{
-		transform: translateX(-1280px);
-	}
-
-	100%
-	{
-		transform: translateX(0px);
-	}
-}
-
-.home-text-PROTOTPYING
-{
-/*	transform: translateX(1280px);
-	animation-name: AniProtoTextStart, AniTextColor, AniTextFadeOut,AniTextDelayedFadeBack;*/
-}
-@keyframes AniProtoTextStart
-{
-	0%
-	{
-		transform: translateX(1280px);
-	}
-
-	100%
-	{
-		transform: translateX(0px);
-	}
-}
-
-@keyframes AniTextColor
-{
-	0%
-	{
-		text-shadow: 0px 0px 60px rgba(0,0,0,0);
-	}
-	100%
-	{
-		fill: var(--nav-color-4);
-		text-shadow: 0px 0px 60px rgba(0,0,0,0.6);
-	}
-}
-@keyframes AniTextFadeOut
-{
-	0%
-	{
-		opacity: 1;
-		transform:scale(1,1);
-	}
-	100%
-	{
-		opacity: 0;
-		transform: scale(5,5);
-	}
-}
-@keyframes AniTextDelayedFadeBack
-{
-	0%
-	{
-		opacity: 0;
-		transform: scale(5,5);
-	}
-
-	100%
-	{
-		opacity: 1;
-		transform: scale(1,1);
-	}
-}
-
-
-
-
-/* svg assets & animations */
-.design-asset-text
-{
 	fill: var(--nav-color-4);
-	stroke: white;
+	stroke: var(--black);
 	stroke-width: 1px;
-	text-shadow: 0px 0px 10px rgba(0,0,0,0.4);
-	opacity: 0;
-	transform: translate(0,0);
-	animation-direction: normal, normal;
-	animation-timing-function: linear, linear;
-	animation-fill-mode: forwards, forwards;
-	animation-play-state: running, running;
-	animation-iteration-count: 1,1;
-	animation-delay: 1500ms, 2000ms, 5000ms;
-	animation-duration: 500ms, 500ms, 500ms;
-	animation-name: AniDesignTextStepOne, AniDesignTextStepTwo, AniDesignTextStepThree;
-}
-@keyframes AniDesignTextStepOne
-{
-	0%
-	{
-		opacity: 0;
-	}
-	100%
-	{
-		opacity: 1;
-	}
-}
-@keyframes AniDesignTextStepTwo
-{
-	0%
-	{
-		transform:translate(0,0) scale(1,1);
-	}
-	100%
-	{
-		transform: translate(-150px,-150px) scale(0.5,0.5);
-	}
-}
-@keyframes AniDesignTextStepThree
-{
-	0%
-	{
-		opacity: 1;
-	}
-	100%
-	{
-		opacity: 0;
-	}
-}
-
-.design-rect
-{
-	fill: rgba(252,252,252,1);
-	stroke: rgba(255,255,255,1);
-	stroke-width: 1px;
-}
-.dr-layout
-{
-	transform: translate(0,800px);
+	text-shadow: 0px 0px 50px rgba(0,0,0,1);
+	transform-origin:50% 50%;
 	animation-direction: normal;
-	animation-timing-function: linear;
 	animation-fill-mode: forwards;
 	animation-play-state: running;
-	animation-iteration-count: 1;
-	animation-delay: 2000ms;
-	animation-duration: 1000ms;
-	animation-name: AniDesignLayoutMove;
+	animation-timing-function: ease-in-out;
 }
-@keyframes AniDesignLayoutMove
+
+.home-text-UX
 {
-	0%
+	transform: translate(0, -638px);
+	animation-delay: 250ms;
+	animation-duration: 2750ms;
+	animation-iteration-count: infinite;
+	animation-name: AniHomeTextUxStart;
+}
+.home-text-DESIGN
+{
+	transform: translate(-1400px, 0);
+	animation-delay: 250ms;
+	animation-duration: 2750ms;
+	animation-iteration-count: infinite;
+	animation-name: AniHomeTextDesignStart;
+}
+.home-text-PROTOTYPING
+{
+	transform: translate(1400px, 0);
+		animation-delay: 250ms;
+	animation-duration: 2750ms;
+	animation-iteration-count: infinite;
+	animation-name: AniHomeTextPrototypingStart;
+}
+
+@keyframes AniHomeTextUxStart
+{
+	10%
 	{
-		transform: translate(0,800px);
-	}
-	80%
-	{
-		transform: translate(0px,-50px);
+		transform: translate(0,0);
 	}
 	90%
 	{
-		width: 500px;
-		height: 200px;
-	}	
-	100%
-	{
-		width: 1520px;
-		height: 800px;
-		transform: translate(0px,-50px);
-	}
-}
-
-.dr-toolbar
-{
-	fill: var(--nav-color-4);
-	stroke: rgba(0,0,0,1);
-	stroke-width: 1px;
-	transform: translate(-1740px,0px);
-	animation-direction: normal;
-	animation-timing-function: linear;
-	animation-fill-mode: forwards;
-	animation-play-state: running;
-	animation-iteration-count: 1;
-	animation-delay: 3200ms;
-	animation-duration: 300ms;
-	animation-name: AniDesignToolbarMove;
-}
-@keyframes AniDesignToolbarMove
-{
-	0%
-	{
-		transform: translate(-1740px,0px);
+		transform: translate(0,0);
 	}
 	100%
 	{
-		transform: translate(0px,0px);
+		transform: translate(0,1080px);
 	}
 }
-
-
-.g-dr-menu
+@keyframes AniHomeTextDesignStart
 {
-	transform-origin: 50% 50%;
-	transform: translate(0px,1080px);
-	animation-direction: normal;
-	animation-timing-function: linear;
-	animation-fill-mode: forwards;
-	animation-play-state: running;
-	animation-iteration-count: 1;
-	animation-delay: 3200ms;
-	animation-duration: 300ms;
-	animation-name: AniDesignMenuMove;
-}
-@keyframes AniDesignMenuMove
-{
-	0%
+	10%
 	{
-		transform: translate(0px,1080px);
+		transform: translate(0,0);
 	}
-
-	100%
+	90%
 	{
-		transform: translate(0px,0px);
-	}
-}
-.dr-menu
-{
-	fill: rgba(240,240,240,1);
-	stroke: rgba(0,0,0,1);
-	stroke-width: 0px;
-}
-.dr-menu-icon
-{
-	fill: var(--nav-color-4);
-	stroke: rgba(255,255,255,1);
-	stroke-width: 2px;
-}
-.dr-menu-icon-text
-{
-	font-size:28px;
-	fill:rgba(0,0,0,1);
-	font-weight:700;
-	text-anchor:start;
-}
-
-.design-text
-{
-	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-	text-anchor: start;
-}
-.dr-brand
-{
-	opacity: 0;
-	font-size: 32px;
-	fill: white;
-	stroke: none;
-	font-weight: 700;
-	animation-direction: normal;
-	animation-timing-function: linear;
-	animation-fill-mode: forwards;
-	animation-play-state: running;
-	animation-iteration-count: 1;
-	animation-delay: 3500ms;
-	animation-duration: 300ms;
-	animation-name: AniDesignCoBrandFade;
-}
-.dr-login
-{
-	opacity: 0;
-	font-size: 32px;
-	fill: white;
-	stroke: none;
-	font-weight: 100;
-	animation-direction: normal;
-	animation-timing-function: linear;
-	animation-fill-mode: forwards;
-	animation-play-state: running;
-	animation-iteration-count: 1;
-	animation-delay: 3800ms;
-	animation-duration: 300ms;
-	animation-name: AniDesignCoBrandFade;
-}
-.dr-content-text
-{
-	opacity: 0;
-	font-size: 32px;
-	fill: black;
-	stroke: none;
-	font-weight: 700;
-	text-anchor: start;
-	animation-direction: normal;
-	animation-timing-function: linear;
-	animation-fill-mode: forwards;
-	animation-play-state: running;
-	animation-iteration-count: 1;
-	animation-delay: 3800ms;
-	animation-duration: 300ms;
-	animation-name: AniDesignCoBrandFade;
-}
-.dr-content-text-2
-{
-	opacity: 0;
-	font-size: 24px;
-	fill: black;
-	stroke: none;
-	font-weight: 100;
-	text-anchor: start;
-	animation-direction: normal;
-	animation-timing-function: linear;
-	animation-fill-mode: forwards;
-	animation-play-state: running;
-	animation-iteration-count: 1;
-	animation-delay: 3800ms;
-	animation-duration: 300ms;
-	animation-name: AniDesignCoBrandFade;
-}
-@keyframes AniDesignCoBrandFade
-{
-	0%
-	{
-		opacity:0;
+		transform: translate(0,0);
 	}
 	100%
 	{
-		opacity: 1;
+		transform: translate(1400px,0);
 	}
 }
-
-.g-design-flow
+@keyframes AniHomeTextPrototypingStart
 {
-	animation-direction: normal;
-	animation-timing-function: linear;
-	animation-fill-mode: forwards;
-	animation-play-state: running;
-	animation-iteration-count: 1;
-	animation-delay: 5000ms;
-	animation-duration: 500ms;
-	animation-name: AniDesignScaleSmall;
-}
-@keyframes AniDesignScaleSmall
-{
-	0%
+	10%
 	{
-		transform: scale(1,1) translate(0px,0px);
+		transform: translate(0,0);
 	}
-
+	90%
+	{
+		transform: translateX(0);
+	}
 	100%
 	{
-		opacity:0.5;
-		transform: translate(-1920px,0px);
+		transform: translate(-1400px,0);
 	}
 }
-
-
-
-
-
-
 
 
 
@@ -418,6 +107,7 @@ g.home-svg-main-ux
 g.home-svg-debug
 {
 	/*	display:none;*/
+	z-index:-10;
 }
 
 g.home-svg-debug > rect:nth-child(1)
