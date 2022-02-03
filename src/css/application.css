@@ -12,27 +12,26 @@
 main
 {
 /*	border: solid 1px red;*/
-	display:flex;
+	display: flex;
 	flex: 1 1 100%;
-	flex-direction:row;
-	overflow:auto;
-	justify-content:center;
+	flex-direction: row;
+	overflow: auto;
+	justify-content: center;
 }
 
 /* most pages */
 .page-layout
 {
-/*	border: solid 1px var(--black-02);*/
+	/*	border: solid 1px var(--black);*/
+	/*	max-width:1024px;*/
+	/*	margin:20px;*/
 	min-width: 280px;
-	max-width:1024px;
-	display:flex;
-	flex: 1 1 auto;
-	flex-direction:column;
-	flex-wrap:nowrap;
-	overflow:auto;
-	margin:20px;
-	
-	opacity:0;
+	display: flex;
+	flex: 1 1 100%;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	overflow: auto;
+	opacity: 0;
 	animation-name: AniPageFadeIn1;
 	animation-delay: 100ms;
 	animation-direction: normal;
