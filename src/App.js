@@ -30,10 +30,10 @@ export default class App extends React.Component
                         ) )
                     }
                     {
-                        PagesList[2].routes.map( ( item, index ) =>
-                        (
-                            <Route key={index} exact={true} path={item.path} component={item.component} />
-                         ) )
+                        //PagesList[2].routes.map( ( item, index ) =>
+                        //(
+                        //    <Route key={index} exact={true} path={item.path} component={item.component} />
+                        // ) )
                     }
                     </Switch>
                 </main>

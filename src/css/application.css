@@ -73,9 +73,13 @@ footer
 	text-align:center;
 }
 
+.padding30
+{
+	padding:30px;
+}
 .margin-bottom-25
 {
-	margin-top:25%;
+	margin-top: 25%;
 }
 .margin-bottom-10
 {

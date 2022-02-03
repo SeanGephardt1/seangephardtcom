@@ -24,7 +24,7 @@ export default class MusicPage extends React.Component
 	render()
 	{	
 		return (
-			<div className="page-layout">
+			<div className="page-layout padding30">
 
 				{/* BEGIN The Drive Through */}
 
@@ -36,7 +36,7 @@ export default class MusicPage extends React.Component
 					<svg x="0px" y="0px" width="100%" height="100%" viewBox="0 0 1000 460" >
 
 					<g id="Sign_Background">
-						<rect width="1000" height="460" className="tdt-bk"/>
+						<rect width="1000" height="460" className="tdt-bk" rx="20"/>
 						<path className="tdt-sign" d="M976.9,451.6H22.6c-6.9,0-12.5-5.6-12.5-12.5V23.6c0-6.9,5.6-12.5,12.5-12.5h954.3c6.9,0,12.5,5.6,12.5,12.5
 							v415.5C989.3,446,983.8,451.6,976.9,451.6z"/>
 					</g>
@@ -90,7 +90,11 @@ export default class MusicPage extends React.Component
 					</div>
 
 
-					<div className="music-block-list">
+				<div className="music-block-list">
+
+					<iframe className="bc-frame" src="https://bandcamp.com/EmbeddedPlayer/track=3407648147/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=none/transparent=true/" seamless loading="lazy"><a href="https://thedrivethrough.bandcamp.com/track/perfect-mistake">Perfect Mistake by The Drive Through</a></iframe>
+
+					<iframe className="bc-frame" src="https://bandcamp.com/EmbeddedPlayer/track=1468740362/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=none/transparent=true/" seamless loading="lazy"><a href="https://thedrivethrough.bandcamp.com/track/note-to-self">Note To Self by The Drive Through</a></iframe>
 
 					<iframe className="bc-frame" title="Alone by The Drive Through" src="https://bandcamp.com/EmbeddedPlayer/track=509448573/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/" seamless loading="lazy">
 						<a href="http://thedrivethrough.bandcamp.com/track/alone">Alone by The Drive Through</a>
