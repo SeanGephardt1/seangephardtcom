@@ -33,9 +33,10 @@ export default class Resume extends React.Component
 						<div className="cv-header">QUIVR.AI</div>
 						<div className="cv-sub-header">Senior Software Developer (Jan. 2021 - Dec. 2021)</div>
 						<ul>
-							<li>Development of client facing software, including desktop, mobile, web and cloud applications.</li>
-							<li>Collaboration with business stakeholders on software requirements for customer facing client applications.</li>
-							<li>Lead a team using software engineering best practices and best in class tool sets.</li>
+							<li>Development of the custom facing front-end web application build process utilizing JavaScript, HTML, CSS with ReactJS & NodeJS, which leverages REST API services to render real-time telemetry data.</li>
+							<li>Cross company collaboration with development, design and business leads to facilitate product architecture & infrastructure, customer research & usability and product release schedules.</li>
+							<li>User Interface design prototyping using Figma & Adobe Illustrator.</li>
+							<li>Research focused prototyping of product features using WebGL & Unity 3D software.</li>
 						</ul>
 					</div>
 
