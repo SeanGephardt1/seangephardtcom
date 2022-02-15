@@ -6,7 +6,7 @@ export default class HomeSvg extends React.Component
 	constructor ( props ) 
 	{
 		super( props );
-		this.state = { debug: false };
+		this.state = { debug: true };
 		return;
 	};
 	render()
@@ -22,7 +22,22 @@ export default class HomeSvg extends React.Component
 				className="home-svg-root"
 			>
 				<defs>
-					<linearGradient id="textGradBlueSilver" x1="0%" x2="100%" y1="100%" y2="0%">
+					<radialGradient id="gradient2" gradientUnits="userSpaceOnUse"
+						cx="200" cy="200" r="100"
+						gradientTransform="translate(0, 0) scale(1)">
+						<stop offset="0%" stopColor="rgba(39, 93, 173, 1)" />
+						<stop offset="50%" stopColor="rgba(255,255,255,1)" >
+							<animate attributeName="stop-color" dur="1000ms"
+								values="rgba(255,255,255,1);rgba(39, 93, 173, 1);rgba(255,255,255,1)"
+								repeatCount="indefinite" />
+						</stop>
+						<stop offset="100%" stopColor="rgba(39, 93, 173, 1)" />
+						<animate attributeName="r" dur="1000ms"
+							values="100;250;100"
+							repeatCount="indefinite" />
+					</radialGradient>
+
+					<linearGradient id="textGradBlueSilver" x1="0%" x2="100%" y1="100%" y2="0%" gradientUnits="userSpaceOnUse">
 						<stop offset="0" stopColor="rgba(39, 93, 173, 1)" stopOpacity="1" />
 						<stop offset="0.01" stopColor="rgba(39, 93, 173, 1)" stopOpacity="1" />
 						<stop id="gradStop3" offset="0.02" stopColor="rgba(255,255,255,1)" stopOpacity="1"/>
@@ -40,7 +55,7 @@ export default class HomeSvg extends React.Component
 						<line x1="410" y1="50%" x2="960" y2="50%" />
 						<line x1="960" y1="50%" x2="1500" y2="50%" />
 						<circle r="30" cx="50%" cy="50%" />
-						<rect x="0%" y="0%" width="400" height="300" fill="url(#textGradBlueSilver)"></rect>
+						<rect x="0%" y="0%" width="400" height="400" fill="url(#gradient2)" />
 						<rect className="palette-rect pr-db" x="710" />
 						<rect className="palette-rect pr-rb" x="810" />
 						<rect className="palette-rect pr-ow" x="910" />
