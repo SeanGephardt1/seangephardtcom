@@ -6,7 +6,7 @@ export default class HomeSvg extends React.Component
 	constructor ( props ) 
 	{
 		super( props );
-		this.state = { debug: true };
+		this.state = { debug: false };
 		return;
 	};
 	render()
@@ -24,15 +24,15 @@ export default class HomeSvg extends React.Component
 				<defs>
 					<linearGradient id="textGradBlueSilver" x1="0%" x2="100%" y1="100%" y2="0%">
 						<stop offset="0" stopColor="rgba(39, 93, 173, 1)" stopOpacity="1" />
-						<stop offset="0.01" stopColor="rgba(255,255,255,1)" stopOpacity="1">
-							<animate attributeName="offset" begin="move-ux-text.begin+500ms;move-ux-text.repeat(1)+500ms" dur="300ms" values="0;1;0" repeatCount="3" fill="freeze" />
-						</stop>
+						<stop offset="0.01" stopColor="rgba(39, 93, 173, 1)" stopOpacity="1" />
+						<stop id="gradStop3" offset="0.02" stopColor="rgba(255,255,255,1)" stopOpacity="1"/>
+						<stop offset="0.03" stopColor="rgba(39, 93, 173, 1)" stopOpacity="1" />
 						<stop offset="1" stopColor="rgba(39, 93, 173, 1)" stopOpacity="1" />
-						</linearGradient>
+					</linearGradient>
 				</defs>
 
 				{  /* DEBUG BACKGROUND */
-					this.state.debug === false &&
+					this.state.debug === true &&
 					<g className="home-svg-debug">
 						<rect x="0" y="0" width="100%" height="100%"  />
 						<line x1="50%" y1="0" x2="50%" y2="540" />
@@ -51,14 +51,14 @@ export default class HomeSvg extends React.Component
 
 				{ /* MAIN TEXT */ }
 				<animate
-					id="move-ux-text"
-					href="#home-text-ux-block"
-					attributeName="y"
-					values="0;636;636;1400"
-					keyTimes="0; 0.1; 0.9; 1"
-					begin="250ms"
-					dur="3000ms"
-					repeatCount="indefinite" />
+					id="grad-stop-flip"
+					href="#gradStop3"
+					attributeName="offset"
+					begin="1000ms"
+					dur="500ms"
+					values="0.02;1;0.02"
+					repeatCount="1"/>
+
 
 				<text
 					id="home-text-ux-block"
@@ -71,9 +71,17 @@ export default class HomeSvg extends React.Component
 					fill="url(#textGradBlueSilver)">
 					<tspan dx="-370px" dy="0">U</tspan>
 					<tspan dx="-66" dy="0">X</tspan>
+					<animate
+						id="move-ux-text"
+						href="#home-text-ux-block"
+						attributeName="y"
+						values="0;636"
+						keyTimes="0;1"
+						begin="250ms"
+						dur="750ms"
+						repeatCount="1"
+						fill="freeze" />
 				</text>
-
-
 
 				<text
 					className="home-text-DESIGN"
@@ -82,15 +90,16 @@ export default class HomeSvg extends React.Component
 					fontFamily="Segoe UI"
 					fontSize="202px"
 					textAnchor="start"
-					letterSpacing="-10px">
+					letterSpacing="-10px"
+					fill="url(#textGradBlueSilver)">
 					<tspan dx="-340px" dy="0">DESIGN</tspan>
-					{/*<animate*/}
-					{/*	attributeName="x"*/}
-					{/*	values="-960;960;960;2880"*/}
-					{/*	keyTimes="0; 0.1; 0.9; 1"*/}
-					{/*	begin="250ms"*/}
-					{/*	dur="3000ms"*/}
-					{/*	repeatCount="indefinite" />*/}
+					<animate
+						attributeName="x"
+						values="-960;960"
+						keyTimes="0;1"
+						begin="250ms"
+						dur="750ms"
+						repeatCount="1" />
 					</text>
 
 				<text
@@ -102,15 +111,16 @@ export default class HomeSvg extends React.Component
 					fontFamily="Segoe UI"
 					fontSize="108px"
 					textAnchor="start"
-					letterSpacing="-6px">
+					letterSpacing="-6px"
+					fill="url(#textGradBlueSilver)">
 					<tspan dx="-330px" dy="0">PROTOTYPING</tspan>
-					{/*<animate*/}
-					{/*	attributeName="x"*/}
-					{/*	values="1920;960;960;-400"*/}
-					{/*	keyTimes="0; 0.1; 0.9; 1"*/}
-					{/*	begin="250ms"*/}
-					{/*	dur="3000ms"*/}
-					{/*	repeatCount="indefinite" />*/}
+					<animate
+						attributeName="x"
+						values="1920;960"
+						keyTimes="0;1"
+						begin="250ms"
+						dur="750ms"
+						repeatCount="1" />
 					</text>
 
 			</svg>
