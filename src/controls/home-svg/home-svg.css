@@ -18,18 +18,18 @@
 .home-text-PROTOTYPING
 {
 	font-family: 'Josefina', 'Segoe UI', sans-serif, -system-ui;
-	fill: var(--nav-color-4);
 	stroke: var(--black);
 	stroke-width: 0.5px;
 	text-shadow: 0px 0px 50px rgba(0,0,0,0.6);
 	transform-origin: 50% 50%;
-	animation-direction: normal;
+
+/*	animation-direction: normal;
 	animation-fill-mode: both;
 	animation-play-state: running;
 	animation-timing-function: linear;
 	animation-iteration-count: infinite;
 	animation-delay: 250ms;
-	animation-duration: 3000ms;
+	animation-duration: 3000ms*/
 }
 .home-text-UX
 {
