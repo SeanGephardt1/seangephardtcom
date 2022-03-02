@@ -6,7 +6,7 @@ export default class HomeSvg extends React.Component
 	constructor ( props ) 
 	{
 		super( props );
-		this.state = { debug: true };
+		this.state = { debug: false };
 		return;
 	};
 	render()

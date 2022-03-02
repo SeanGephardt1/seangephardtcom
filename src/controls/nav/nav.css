@@ -61,8 +61,8 @@ a.nav:nth-child(2).nav-selected, a.nav:nth-child(2):hover
 
 a.nav:nth-child(3).nav-selected, a.nav:nth-child(3):hover
 {
-	background-color: var(--nav-color-3);
-	color: var(--white);
+	background-color: var(--nav-color-2);
+	color: var(--black);
 }
 
 a.nav:nth-child(4).nav-selected, a.nav:nth-child(4):hover
