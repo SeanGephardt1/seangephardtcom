@@ -1,4 +1,4 @@
-import ReactDOM from 'react-dom';
+import * as ReactDOMClient from 'react-dom/client';
 import App from './App.js';
 
 ( function ()
@@ -8,7 +8,9 @@ import App from './App.js';
 	{
 		window.document.addEventListener( "DOMContentLoaded", function ( e ) 
 		{	//	console.debug( "DOMContentLoaded", Date.now() );
-			ReactDOM.render( <App />, document.getElementById( "r-app" ) );
+			//	ReactDOM.render( <App />, document.getElementById( "r-app" ) );
+			//	react v18
+			ReactDOMClient.createRoot( document.getElementById( "react-app" ) ).render( <App /> );
 			return;
 		} );
 	}

@@ -1,0 +1,15 @@
+{
+	"short_name": "Sean Gephardt, UX Design Prototyping",
+	"name": "Sean Gephardt, UX Design Prototyping",
+	"icons": [
+		{
+			"src": "favicon.svg",
+			"sizes": "512x512 256x256 64x64 32x32 24x24 16x16",
+			"type": "image/x-icon image/svg+xml"
+		}
+	],
+	"start_url": ".",
+	"display": "standalone",
+	"theme_color": "#0000FF",
+	"background_color": "#000099"
+}

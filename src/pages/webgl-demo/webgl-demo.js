@@ -15,7 +15,7 @@ export default class WebGLDemo extends React.Component
 	static defaultProps = {
 		Title: "WebGL example",
 		LinkTitle: "WebGL example",
-		Href: "/portfolio/webgl-demos/",
+		Href: "/portfolio/webgl-demos",
 		Icon: "" // SVG.AppNavButtons.About
 	};
 	constructor ( props )
@@ -34,7 +34,7 @@ export default class WebGLDemo extends React.Component
 	};
 	componentDidMount() 
 	{
-		console.debug( "WebGLDemo.componentDidMount()", this.Canvas.current );
+		//	console.debug( "WebGLDemo.componentDidMount()", this.Canvas.current );
 
 		this.WGL = this.Canvas.current.getContext( "experimental-webgl" );
 

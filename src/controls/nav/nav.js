@@ -1,120 +1,113 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useSearchParams, useParams, useLocation  } from 'react-router-dom';
+import { createBrowserHistory } from "history";
 import { PagesList } from '../../pages/pages.js';
 import './nav.css';
 
-export default class SiteNav extends React.Component
+
+export default function SiteNavigation()
 {
-	constructor(props)
-	{
-		super( props );
-		return;
-	};
-	render()
-	{
-		//console.debug( "Nav.render()",
-		//	window.location.pathname.includes( PagesList[ 2 ].path ),
-		//	window.location.pathname,
-		//	PagesList[ 2 ].path );
+  let [ searchParams, setSearchParams ] = useSearchParams();
+  console.debug( 'searchParams', searchParams );
 
-		return (
-			<nav>
-				<div className="nav-top-level">
-				{
-					PagesList.map( ( item, index ) => (
-					<NavLink
-						key={index}
-						exact={true}
-						to={item.path}
-						className='nav'
-						activeClassName='nav-selected'
-						title={item.component.defaultProps.Title}
-						isActive={( match, location ) =>
-						{	
-							//console.debug( "match", match );
-							//console.debug( "location", location.pathname );
-							let _bool = false;
-							if ( match !== null )
-							{
-								//console.debug( "match", match );
-								//console.debug( "location", location.pathname );
-								_bool = true;
-							}
-							else if ( match === null )
-							{
-								if ( item.routes !== undefined && item.routes.length > 0 )
-								{
-									for ( let i = 0; i < item.routes.length; i++ )
-									{
-										//	console.debug( i, item.routes[i].path, item.path );
-										if ( location.pathname.indexOf( item.path) !== -1 )
-										{
-											_bool = true;
-										}
-									}
-								}
-								else
-								{
-									_bool = false;
-								}
-							}
-							return _bool;
-						}}
-					>{item.component.defaultProps.LinkTitle}</NavLink>
-				))
-				}
-				</div>
+  let params = useParams();
+  console.debug( 'params', params );
 
-				{	/* for portfolio sub-links */
-					//window.location.pathname.includes( PagesList[ 2 ].path ) === true &&
-					//<div className="nav-sub-level">
-					//	{
-					//		PagesList[ 2 ].routes.map( ( item, index ) => (
-					//			<NavLink
-					//				key={ index }
-					//				exact={ true }
-					//				to={ item.path }
-					//				className='nav'
-					//				activeClassName='nav-selected'
-					//				title={ item.component.defaultProps.Title }
-					//				isActive={ ( match, location ) =>
-					//				{	//console.debug( "match", match );
-					//					//console.debug( "location", location.pathname );
+  let location = useLocation();
+  console.debug( 'location', location );
 
-					//					let _bool = false;
-					//					if ( match !== null )
-					//					{
-					//						//console.debug( "match", match );
-					//						//console.debug( "location", location.pathname );
-					//						_bool = true;
-					//					}
-					//					else if ( match === null )
-					//					{
-					//						if ( item.routes !== undefined && item.routes.length > 0 )
-					//						{
-					//							for ( let i = 0; i < item.routes.length; i++ )
-					//							{
-					//								//	console.debug( i, item.routes[i].path, item.path );
-					//								if ( location.pathname.indexOf( item.path ) !== -1 )
-					//								{
-					//									_bool = true;
-					//								}
-					//							}
-					//						}
-					//						else
-					//						{
-					//							_bool = false;
-					//						}
-					//					}
-					//					return _bool;
-					//				} }
-					//			>{ item.component.defaultProps.LinkTitle }</NavLink>
-					//		) )
-					//	}
-					//</div>
-				}
+  return (
+    <nav>
+      <div className="nav-top-level">
+        {
+          PagesList.map( ( item, index ) => (
+            <NavLink
+              key={ index }
+              to={ item.path }
+              className={ function ( { isActive } )
+              { //  console.debug( "inside", isActive, window.location.pathname, item.path, window.location.pathname.includes( item.path ) );
+                return isActive ? 'nav nav-selected' : 'nav';
+              } }
+              title={ item.component.defaultProps.Title }
+            >{ item.component.defaultProps.LinkTitle }</NavLink>
+          ) )
+        }
+      </div>
 
-			</nav>
-		);
-	};
+      { /* for sub-links */ }
+      {
+        location.pathname.includes("portfolio") &&
+        <div className="nav-sub-level">
+          {
+            PagesList[ 2 ].routes.map( ( item, index ) => (
+              <NavLink
+                key={ index }
+                to={ item.path }
+                className={ function ( { isActive } )
+                { //  console.debug( "sub", isActive, item.path, window.location.pathname  );
+                  return isActive ? 'nav nav-sub-selected' : 'nav';
+                } }
+                title={ item.component.defaultProps.Title }
+              >{ item.component.defaultProps.LinkTitle }</NavLink>
+            ) )
+          }
+        </div>
+      }
+
+    </nav>
+    
+    );
 };
+
+//export default class SiteNav extends React.Component
+//{
+//  constructor ( props )
+//  {
+//    super( props );
+//    return;
+//  };
+//  render()
+//  {
+//    //  console.debug( "SiteNav.render()", this.props);
+
+//    return (
+//      <nav>
+//        <div className="nav-top-level">
+//          {
+//            PagesList.map( ( item, index ) => (
+//              <NavLink
+//                key={ index }
+//                to={ item.path }
+//                className={ function ( { isActive } )
+//                { //  console.debug( "inside", isActive, window.location.pathname, item.path, window.location.pathname.includes( item.path ) );
+//                  return isActive ? 'nav nav-selected' : 'nav';
+//                } }
+//                title={ item.component.defaultProps.Title }
+//                >{ item.component.defaultProps.LinkTitle }</NavLink>
+//            ) )
+//          }
+//        </div>
+
+//        { /* for sub-links */ }
+//        {
+//          <div className="nav-sub-level">
+//            {
+//              PagesList[ 2 ].routes.map( ( item, index ) => (
+//                <NavLink
+//                  key={ index }
+//                  to={ item.path }
+//                  className={ function ( { isActive } )
+//                  { //  console.debug( "sub", isActive, item.path, window.location.pathname  );
+//                    return isActive ? 'nav nav-sub-selected' : 'nav';
+//                  } }
+//                  title={ item.component.defaultProps.Title }
+//                >{ item.component.defaultProps.LinkTitle }</NavLink>
+//              ) )
+//            }
+//          </div>
+//          }
+
+//			</nav>
+//    );
+//  };
+//};
