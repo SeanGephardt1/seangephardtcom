@@ -1,18 +1,11 @@
 import React from 'react';
-import { NavLink, useSearchParams, useParams, useLocation  } from 'react-router-dom';
-import { createBrowserHistory } from "history";
+import { NavLink, useLocation  } from 'react-router-dom';
 import { PagesList } from '../../pages/pages.js';
 import './nav.css';
 
 
 export default function SiteNavigation()
 {
-  let [ searchParams, setSearchParams ] = useSearchParams();
-  console.debug( 'searchParams', searchParams );
-
-  let params = useParams();
-  console.debug( 'params', params );
-
   let location = useLocation();
   console.debug( 'location', location );
 
