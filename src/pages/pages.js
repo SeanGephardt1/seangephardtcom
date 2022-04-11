@@ -13,7 +13,7 @@ import DashboardDemo from './dashboard-demo/db-demo.js';
 import SvgZoomDemo from './svg-zoom/svg-zoom.js';
 import WebGLDemo from './webgl-demo/webgl-demo.js';
 //import SvgAnimationsDemo from './svg-animations/svg-animations.js';
-//import AzureCaseStudyDemo from './azure-ux/azure-case-study.js';
+import AzureCaseStudyDemo from './azure-ux/azure-case-study.js';
 //import Html5CanvasDemo from './canvas-demo/canvas-demo.js';
 //import CssArtPage from './css-art/css-art.js';
 //import ButtonAnimations from './button-animations/button-animations.js';
@@ -34,6 +34,9 @@ const _nav_routes = [
   {
     component: PortfolioPage,
     children: [
+      {
+        component: AzureCaseStudyDemo
+      },
       {
         component: DashboardDemo
       },
@@ -82,6 +85,10 @@ const _app_routes = [
       {
         path: SvgZoomDemo.defaultProps.Href,
         element: <SvgZoomDemo />
+      },
+      {
+        path: AzureCaseStudyDemo.defaultProps.Href,
+        element: <AzureCaseStudyDemo />
       },
       {
         path: MusicPage.defaultProps.Href,

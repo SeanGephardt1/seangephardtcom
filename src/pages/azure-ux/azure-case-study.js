@@ -61,7 +61,7 @@ export default class AzureCaseStudyDemo extends React.Component
     render()
     {
         return (
-			<div className="page-layout">
+			<div className="page-layout padding30">
 				{ /* overlay panel */ }
 				<div
 						className="portfolio-modal-overlay"

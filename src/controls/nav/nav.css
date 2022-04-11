@@ -35,6 +35,7 @@ a.nav, a.nav:active, a.nav:link
 a.nav:hover
 {
 	text-decoration: underline;
+	text-shadow: 0px 0px 1px var(--black), 0px 0px 2px var(--white);
 }
 a.nav.nav-selected
 {
@@ -45,7 +46,7 @@ a.nav.nav-selected
 	color: var(--white);
 }
 
-.nav-top-level > a.nav:nth-child(1).nav-selected, a.nav:nth-child(1):hover
+/*.nav-top-level > a.nav:nth-child(1).nav-selected, a.nav:nth-child(1):hover
 {
 	background-color: var(--nav-color-4);
 	color: var(--white);
@@ -65,10 +66,11 @@ a.nav.nav-selected
 	background-color: var(--black);
 	color: var(--white);
 }
-
+*/
 
 .nav-sub-level
 {
+		border-bottom: solid 1px var(--black-01);
 	flex: 1 1 100%;
 	display: flex;
 	flex-direction: row;
@@ -78,23 +80,24 @@ a.nav.nav-selected
 }
 .nav-sub-level > a.nav
 {
-	border: solid 1px var(--black-01);
+	/*	border: solid 1px var(--black-01);*/
+	border-bottom: solid 1px transparent;
 	font-size: 14px;
-	flex: 1 1 auto;
+	flex: 0 1 auto;
 	display: flex;
 	justify-content: center;
 }
 
 .nav-sub-level > a.nav:hover
 {
-	background-color: var(--nav-color-3);
+	background-color: var(--nav-color-4);
 	color: var(--white);
 }
 .nav-sub-level > a.nav.nav-sub-selected,
 .nav-sub-level > a.nav.nav-sub-selected:hover
 {
 	flex: 2 1 auto;
-	background-color: var(--nav-color-3);
+	background-color: var(--nav-color-4);
 	color: var(--white);
 	justify-content: center;
 }

@@ -1,5 +1,4 @@
-//  updated from class component to functional component
-//  for react router v6
+//  updated from class component to functional component for react router v6
 import React from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { NavList } from '../../pages/pages.js';
@@ -29,7 +28,6 @@ export default function SiteNavigation()
         }
       </div>
 
-      { /* for sub-links */ }
       {
         location.pathname.includes( NavList[ 2 ].component.defaultProps.Href.toLowerCase() ) &&
         <div className="nav-sub-level">
