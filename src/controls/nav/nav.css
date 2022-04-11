@@ -37,6 +37,7 @@ a.nav:hover
 {
 	text-decoration: underline;
 }
+
 a.nav.nav-selected
 {
 	flex: 1 1 auto;
@@ -63,8 +64,8 @@ a.nav.nav-selected
 }
 .nav-top-level > a.nav:nth-child(4).nav-selected, a.nav:nth-child(4):hover
 {
-	background-color: var(--nav-color-2);
-	color: var(--black);
+	background-color: var(--black);
+	color: var(--white);
 }
 
 

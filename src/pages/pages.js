@@ -1,7 +1,5 @@
-//  React router pages list
-//  used in app.js & controls/nav/navigation.js
-//  in rendering order, with nested pages
-//  pages not used are commented out
+//  Update for React router 6 
+//  Used in ./app.js & ./controls/nav/navigation.js
 
 import * as React from "react";
 import { useRoutes } from "react-router-dom";
@@ -20,63 +18,36 @@ import WebGLDemo from './webgl-demo/webgl-demo.js';
 //import CssArtPage from './css-art/css-art.js';
 //import ButtonAnimations from './button-animations/button-animations.js';
 
-//  import MusicPage from './music/music.js';
+import MusicPage from './music/music.js';
 //  import TestPage from './test/test.js';
 //  import MovieStoreExtension from './movie-works-demo/movieworks.js';
 //  import GuitarApp from './guitar-app/guitar-app.js';
 //  import GuitarStoreExtension from './guitar-store/guitar-store.js';
 
-const _page_routes = [
+const _nav_routes = [
   {
-    path: Home.defaultProps.Href,
     component: Home
   },
   {
-    path: Resume.defaultProps.Href,
     component: Resume
   },
   {
-    path: PortfolioPage.defaultProps.Href,
     component: PortfolioPage,
-    routes: [
-      //{
-      //  path: AzureCaseStudyDemo.defaultProps.Href,
-      //  component: AzureCaseStudyDemo
-      //},
-      //{
-      //  path: Html5CanvasDemo.defaultProps.Href,
-      //  component: Html5CanvasDemo
-      //},
+    children: [
       {
-        path: DashboardDemo.defaultProps.Href,
         component: DashboardDemo
       },
       {
-        path: WebGLDemo.defaultProps.Href,
         component: WebGLDemo
       },
-      //{
-      //  path: CssArtPage.defaultProps.Href,
-      //  component: CssArtPage
-      //},
       {
-        path: SvgZoomDemo.defaultProps.Href,
         component: SvgZoomDemo
       },
-      //{
-      //  path: SvgAnimationsDemo.defaultProps.Href,
-      //  component: SvgAnimationsDemo
-      //},
-      //{
-      //  path: ButtonAnimations.defaultProps.Href,
-      //  component: ButtonAnimations
-      //}
     ]
   },
-  //{
-  //  path: MusicPage.defaultProps.Href,
-  //  component: MusicPage
-  //},
+  {
+    component: MusicPage
+  },
 ];
 
 const _app_routes = [
@@ -86,41 +57,38 @@ const _app_routes = [
     children: [
       {
         path: "*",
-        component: FourOhFourPage,
         element: <FourOhFourPage />,
       },
       {
         path: Home.defaultProps.Href,
-        component: Home,
         element: <Home />,
       },
       {
         path: Resume.defaultProps.Href,
-        component: Resume,
         element: <Resume />,
       },
       {
         path: PortfolioPage.defaultProps.Href,
-        component: PortfolioPage,
         element: <PortfolioPage />,
       },
       {
         path: DashboardDemo.defaultProps.Href,
-        component: DashboardDemo,
         element: <DashboardDemo />
       },
       {
         path: WebGLDemo.defaultProps.Href,
-        component: WebGLDemo,
         element: <WebGLDemo />
       },
       {
         path: SvgZoomDemo.defaultProps.Href,
-        component: SvgZoomDemo,
         element: <SvgZoomDemo />
+      },
+      {
+        path: MusicPage.defaultProps.Href,
+        element: <MusicPage />
       }
     ]
-  },
+  }
 ];
 
 
@@ -132,7 +100,8 @@ function AppRoutes()
 
 export
 {
-  _page_routes as PagesList,
+  _nav_routes as NavList,
+  _app_routes as RoutesList,
   AppRoutes, 
   FourOhFourPage as FourOh4
 }

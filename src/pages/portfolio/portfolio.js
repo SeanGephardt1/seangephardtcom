@@ -7,7 +7,7 @@ export default class PortfolioPage extends React.Component
 	static defaultProps = {
 		Title: "Portfolio, Prototypes and Examples",
 		LinkTitle: "Portfolio",
-		Href: "/portfolio",
+		Href: "portfolio",
 		Icon: "" //SVG.AppNavButtons.About
 	};
 	constructor ( props )
