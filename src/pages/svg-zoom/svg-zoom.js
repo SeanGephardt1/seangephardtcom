@@ -9,7 +9,7 @@ export default class SvgZoomDemo extends React.Component
 	static defaultProps = {
 		Title: "SVG Zoom and Pan demo",
 		LinkTitle: "SVG Zoom/Pan",
-		Href: "portfolio/svg-demos",
+		Href: "portfolio/svg-zoom-pan",
 		Icon: ""//SVG.AppNavButtons.About,
 	};
 	constructor( props )

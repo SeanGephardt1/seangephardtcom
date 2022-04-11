@@ -1,13 +1,13 @@
 import React from 'react';
 import { NavLink, useLocation  } from 'react-router-dom';
-import { PagesList } from '../../pages/pages.js';
+import { PagesList, SiteRoutes } from '../../pages/pages.js';
 import './nav.css';
 
 
 export default function SiteNavigation()
 {
   let location = useLocation();
-  //  console.debug( 'location', location );
+  console.debug( 'location', location );
 
   return (
     <nav>
@@ -19,7 +19,7 @@ export default function SiteNavigation()
               key={ index }
               to={ item.path }
               className={ function ( { isActive } )
-              { //  console.debug( "inside", isActive, window.location.pathname, item.path, window.location.pathname.includes( item.path ) );
+              { // console.debug( "inside", isActive, window.location.pathname, item.path, window.location.pathname.includes( item.path ) );
                 return isActive ? 'nav nav-selected' : 'nav';
               } }
               title={ item.component.defaultProps.Title }

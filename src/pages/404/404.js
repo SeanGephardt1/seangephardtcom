@@ -5,7 +5,7 @@ export default class FourOhFourPage extends React.Component
 	static defaultProps = {
 		Title: "Page not found - 404 - seangephardt.com",
 		LinkTitle: "404",
-		Href: "/404/",
+		Href: "*",
 		Icon: ""
 	};
 	constructor ( props )

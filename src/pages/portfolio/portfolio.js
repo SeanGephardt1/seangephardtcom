@@ -7,7 +7,7 @@ export default class PortfolioPage extends React.Component
 	static defaultProps = {
 		Title: "Portfolio, Prototypes and Examples",
 		LinkTitle: "Portfolio",
-		Href: "portfolio",
+		Href: "/portfolio",
 		Icon: "" //SVG.AppNavButtons.About
 	};
 	constructor ( props )
@@ -25,23 +25,6 @@ export default class PortfolioPage extends React.Component
 		return (
 			<div className="page-layout padding30">
 				<div className="header centered">Portfolio Home Landing Page</div>
-
-				{ /* example links from import { PagesList } from '../../pages/pages.js'; */ }
-				
-					{/*<div className="nav-sub-level">*/}
-					{/*	{*/}
-					{/*		PagesList[ 2 ].routes.map( ( item, index ) => (*/}
-					{/*			<NavLink*/}
-					{/*				key={ index }*/}
-					{/*				to={ item.path }*/}
-					{/*				className='nav'*/}
-					{/*				title={ item.component.defaultProps.Title }*/}
-					{/*				className={ ( { isActive } ) => isActive ? 'nav nav-selected' : 'nav' }*/}
-					{/*			>{ item.component.defaultProps.LinkTitle }</NavLink>*/}
-					{/*		) )*/}
-					{/*	}*/}
-					{/*</div>*/}
-				
 			</div>
 		);
 	}

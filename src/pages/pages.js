@@ -6,6 +6,7 @@
 import * as React from "react";
 import { useRoutes } from "react-router-dom";
 
+import LayoutPage from './layout.js';
 import FourOhFourPage from './404/404.js';
 import Home from './home/home.js';
 import Resume from './resume/resume.js';
@@ -19,7 +20,7 @@ import WebGLDemo from './webgl-demo/webgl-demo.js';
 //import CssArtPage from './css-art/css-art.js';
 //import ButtonAnimations from './button-animations/button-animations.js';
 
-import MusicPage from './music/music.js';
+//  import MusicPage from './music/music.js';
 //  import TestPage from './test/test.js';
 //  import MovieStoreExtension from './movie-works-demo/movieworks.js';
 //  import GuitarApp from './guitar-app/guitar-app.js';
@@ -72,55 +73,66 @@ const _page_routes = [
       //}
     ]
   },
+  //{
+  //  path: MusicPage.defaultProps.Href,
+  //  component: MusicPage
+  //},
+];
+
+const _app_routes = [
   {
-    path: MusicPage.defaultProps.Href,
-    component: MusicPage
+    path: "/",
+    element: <LayoutPage />,
+    children: [
+      {
+        path: "*",
+        component: FourOhFourPage,
+        element: <FourOhFourPage />,
+      },
+      {
+        path: Home.defaultProps.Href,
+        component: Home,
+        element: <Home />,
+      },
+      {
+        path: Resume.defaultProps.Href,
+        component: Resume,
+        element: <Resume />,
+      },
+      {
+        path: PortfolioPage.defaultProps.Href,
+        component: PortfolioPage,
+        element: <PortfolioPage />,
+      },
+      {
+        path: DashboardDemo.defaultProps.Href,
+        component: DashboardDemo,
+        element: <DashboardDemo />
+      },
+      {
+        path: WebGLDemo.defaultProps.Href,
+        component: WebGLDemo,
+        element: <WebGLDemo />
+      },
+      {
+        path: SvgZoomDemo.defaultProps.Href,
+        component: SvgZoomDemo,
+        element: <SvgZoomDemo />
+      }
+    ]
   },
 ];
 
-const _routes = [
-  { path: "*", element: <FourOhFourPage /> },
-  {
-    index: true,
-    path: Home.defaultProps.Href,
-    element: <Home />,
-  },
-  {
-    path: Resume.defaultProps.Href,
-    element: <Resume />,
-  },
-  {
-    path: MusicPage.defaultProps.Href,
-    element: <MusicPage />,
-  },
-  {
-    path: PortfolioPage.defaultProps.Href,
-    element: <PortfolioPage />,
-  },
-  {
-    path: DashboardDemo.defaultProps.Href,
-    element: <DashboardDemo />
-  },
-  {
-    path: WebGLDemo.defaultProps.Href,
-    element: <WebGLDemo />
-  },
-  {
-    path: SvgZoomDemo.defaultProps.Href,
-    element: <SvgZoomDemo />
-  }
-];
 
 function AppRoutes()
-{
-  //  console.debug( '_routes', _routes );
-  return useRoutes( _routes );
+{ //  console.debug( '_routes', _routes );
+  const _my_routes = useRoutes( _app_routes );
+  return _my_routes;
 };
 
 export
 {
   _page_routes as PagesList,
-  _routes as SiteRoutes,
   AppRoutes, 
   FourOhFourPage as FourOh4
 }
