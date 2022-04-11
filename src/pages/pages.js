@@ -6,6 +6,7 @@
 import Home from './home/home.js';
 import Resume from './resume/resume.js';
 import PortfolioPage from './portfolio/portfolio.js';
+import DashboardDemo from './dashboard-demo/db-demo.js';
 import SvgZoomDemo from './svg-zoom/svg-zoom.js';
 import WebGLDemo from './webgl-demo/webgl-demo.js';
 import SvgAnimationsDemo from './svg-animations/svg-animations.js';
@@ -41,6 +42,10 @@ const _p = [
             //    path: Html5CanvasDemo.defaultProps.Href,
             //    component: Html5CanvasDemo
             //},
+          {
+            path: DashboardDemo.defaultProps.Href,
+            component: DashboardDemo
+          },
             {
                 path: WebGLDemo.defaultProps.Href,
                 component: WebGLDemo

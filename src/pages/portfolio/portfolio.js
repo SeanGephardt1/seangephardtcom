@@ -1,6 +1,6 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
-import { PagesList } from '../../pages/pages.js';
+//import { NavLink } from 'react-router-dom';
+//import { PagesList } from '../../pages/pages.js';
 
 export default class PortfolioPage extends React.Component
 {
@@ -24,7 +24,7 @@ export default class PortfolioPage extends React.Component
 	{	//	console.debug( "Portfolio.render()", this.props);
 		return (
 			<div className="page-layout padding30">
-				<div className="header centered">Portfolio landing page</div>
+				<div className="header centered">Portfolio Home Landing Page</div>
 
 				{ /* example links from import { PagesList } from '../../pages/pages.js'; */ }
 				

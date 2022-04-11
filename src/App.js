@@ -8,7 +8,9 @@ import './css/all.css';
 import FourOhFourPage from './pages/404/404.js';
 import Home from './pages/home/home.js';
 import Resume from './pages/resume/resume.js';
+
 import PortfolioPage from './pages/portfolio/portfolio.js';
+import DashboardDemo from './pages/dashboard-demo/db-demo.js';
 import SvgZoomDemo from './pages/svg-zoom/svg-zoom.js';
 import WebGLDemo from './pages/webgl-demo/webgl-demo.js';
 import SvgAnimationsDemo from './pages/svg-animations/svg-animations.js';
@@ -29,11 +31,11 @@ export default class App extends React.Component
           <Routes>
             <Route path="/" index element={ <Home /> }/>
             <Route path="resume" element={ <Resume /> } />
-            <Route path="portfolio" element={ <PortfolioPage /> } >
-              <Route path="webgl-demos" element={ <WebGLDemo /> } />
-              <Route path="svg-demos" element={ <SvgZoomDemo /> } />
-              <Route path="svg-animations" element={ <SvgAnimationsDemo /> } />
-            </Route>
+            <Route path="portfolio" element={ <PortfolioPage /> } />
+            <Route path="portfolio/dashboard-demo" element={ <DashboardDemo /> } />
+            <Route path="portfolio/webgl-demos" element={ <WebGLDemo /> } />
+            <Route path="portfolio/svg-demos" element={ <SvgZoomDemo /> } />
+            <Route path="portfolio/svg-animations" element={ <SvgAnimationsDemo /> } />
             <Route path="*" element={ <FourOhFourPage /> } />
           </Routes>
           <Outlet />

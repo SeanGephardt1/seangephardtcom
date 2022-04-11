@@ -7,7 +7,7 @@ import './nav.css';
 export default function SiteNavigation()
 {
   let location = useLocation();
-  console.debug( 'location', location );
+  //  console.debug( 'location', location );
 
   return (
     <nav>
@@ -15,6 +15,7 @@ export default function SiteNavigation()
         {
           PagesList.map( ( item, index ) => (
             <NavLink
+              tabIndex="0"
               key={ index }
               to={ item.path }
               className={ function ( { isActive } )
@@ -34,6 +35,7 @@ export default function SiteNavigation()
           {
             PagesList[ 2 ].routes.map( ( item, index ) => (
               <NavLink
+                tabIndex="0"
                 key={ index }
                 to={ item.path }
                 className={ function ( { isActive } )
