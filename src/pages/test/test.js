@@ -7,7 +7,7 @@ export default class TestPage extends React.Component
 	static defaultProps = {
 		Title: "Testing",
 		LinkTitle: "Test",
-		Href: "/test"
+		Href: "/test/"
 	};
 constructor( props )
 	{

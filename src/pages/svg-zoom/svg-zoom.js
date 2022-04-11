@@ -7,23 +7,22 @@ import ArtSVGs from "./svg-zoom-data.js";
 export default class SvgZoomDemo extends React.Component
 {
 	static defaultProps = {
-		Title: "SVG demos",
-		LinkTitle: "SVG demos",
-		Href: "/portfolio/svg-demos",
+		Title: "SVG Zoom and Pan demo",
+		LinkTitle: "SVG Zoom/Pan",
+		Href: "portfolio/svg-demos",
 		Icon: ""//SVG.AppNavButtons.About,
 	};
 	constructor( props )
 	{
 		super( props );
-		this.Title = ( this.props.Title || this.defaultProps.Title );
+		this.Title = SvgZoomDemo.defaultProps.Title;
 		document.title = this.Title;
 
-		this.LinkTitle = ( this.props.LinkTitle || this.defaultProps.LinkTitle );
-		this.Href = ( this.props.Href || this.defaultProps.Href );
+		//this.LinkTitle = ( this.props.LinkTitle || this.defaultProps.LinkTitle );
+		//this.Href = ( this.props.Href || this.defaultProps.Href );
 
 		this._default_matrix = "matrix(1, 0, 0, 1, 0, 0)";
 		this._default_translate = "translate(0,0)";
-
 
 		this.state = {
 			viewBoxValues: [1250, 1000],

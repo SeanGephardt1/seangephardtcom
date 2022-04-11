@@ -6,7 +6,7 @@ export default class DashboardDemo extends React.Component
 	static defaultProps = {
 		Title: "Dashboard Demo",
 		LinkTitle: "Dashboard Demo",
-		Href: "/portfolio/dashboard-demo",
+		Href: "portfolio/dashboard-demo",
 		Icon: "" // SVG.AppNavButtons.About
 	};
 	constructor( props )
@@ -33,7 +33,7 @@ export default class DashboardDemo extends React.Component
 	render()
 	{
 		return (
-			<div className="page-layout">Dashboard Demo</div>
+			<div className="page-layout  padding30 ">Dashboard Demo</div>
         );
     }
 };

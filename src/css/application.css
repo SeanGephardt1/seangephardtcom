@@ -73,9 +73,14 @@ footer
 	text-align:center;
 }
 
+.centered1024
+{
+	max-width:1024px;
+}
+
 .padding30
 {
-	padding:30px;
+	padding: 30px;
 }
 .margin-bottom-25
 {

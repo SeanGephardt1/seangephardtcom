@@ -5,25 +5,33 @@
 	padding-bottom:10px;
 	font-weight:500;
 }
-.voy
-{
-	color: var(--voy);
-}
 
 .music-text-block
 {
-	margin-bottom:20px;
+	margin-bottom: 20px;
+}
+.music-logo-block
+{
+	display:flex;
+	justify-content:center;
+}
+.music-logo-block > svg
+{
+	max-width: 1024px;
+	text-align:center;
 }
 .music-block-list
 {
-	width:100%;
+	width: 100%;
+	max-width: 1024px;
 	border-bottom: solid 1px var(--black-01);
-	padding-bottom:30px;
-	display:flex;
-	flex-direction:row;
-	flex-wrap:wrap;
-	justify-content:center;
-	margin-bottom:40px;
+	padding-bottom: 30px;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	justify-items:center;
+	margin-bottom: 40px;
 }
 
 /* TDT */

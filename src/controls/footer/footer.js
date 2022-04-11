@@ -10,7 +10,7 @@ export default class SiteFooter extends React.Component
 	render()
 	{	
 		return (
-			<footer>{this.props.children}</footer>
+			<footer>&copy; { new Date().getFullYear().toString() } Sean Gephardt. All rights reserved.</footer>
 		);
 	};
 };

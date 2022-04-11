@@ -8,7 +8,7 @@ export default class Resume extends React.Component
 	static defaultProps = {
 		Title: "Resume for Sean Gephardt",
 		LinkTitle: "Resume",
-		Href: "/resume/",
+		Href: "resume",
 		Icon: "" // SVG.AppNavButtons.Resume
 	};
 	constructor( props )
