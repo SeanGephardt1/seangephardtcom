@@ -9,8 +9,7 @@ export default class DashboardDemo extends React.Component
     Href: "portfolio/dashboard-demo",
     Icon: "",
     Workers: {
-      Git: "./workers/db-demo-git-worker.js",
-      Counter: "./workers/db-demo-count-worker.js"
+      Git: "./workers/db-demo-worker.js",
     }
   };
   constructor ( props )
@@ -21,7 +20,7 @@ export default class DashboardDemo extends React.Component
     this.webWorkerTask = undefined;
 
     this.state = {
-      debug:true,
+      debug: true,
       countMessage: undefined,
       gitMessage: undefined
     };
@@ -33,23 +32,23 @@ export default class DashboardDemo extends React.Component
 
     const _self = this;
 
-    this.webWorkerTask = new Worker( "./workers/db-demo-worker.js" );
+    this.webWorkerTask = new Worker( this.props.Workers.Git );
     this.webWorkerTask.onerror = function ( event )
     {
       console.error( "this.webWorkerTask.onerror", event );
       return;
     };
     this.webWorkerTask.onmessage = function ( event )
-    {   //  
-      console.debug( "this.webWorkerTask.onmessage", event.data.action, event.data );
-
+    {   //  console.debug( "this.webWorkerTask.onmessage", event );
       switch ( event.data.action )
       {
-        case "git": {
-          _self.setState( { gitMessage: event.data } );
-          break;
-        }
-        case "count": {
+        case "git":
+          {
+            _self.setState( { gitMessage: event.data } );
+            break;
+          }
+        case "count":
+          {
           _self.setState( { countMessage: event.data } );
           break;
         }
@@ -59,7 +58,6 @@ export default class DashboardDemo extends React.Component
               gitMessage: undefined,
               countMessage: undefined
             } );
-
           }
       };
       return;
@@ -87,9 +85,9 @@ export default class DashboardDemo extends React.Component
     this.CreateWebWorker();
     this.webWorkerTask.postMessage( {
       action: "count",
-      id: 99,
-      data: 'Foo-bar-mitzvah',
-      timer_value: 500
+      id: 999,
+      data: 'Testing this web worker script',
+      timer_value: 1000
     } );
     return;
   };
@@ -120,7 +118,7 @@ export default class DashboardDemo extends React.Component
     return (
       <div className="page-layout padding30 ">
         <div>Dashboard Demo</div>
-        <div>Web Worker samples in React</div>
+
         { /* Worker - "git" action */ }
         <div>
           <button className="btn" onClick={ this.getGitHibCommits.bind( this ) }>Get My GitHub repo commits</button>

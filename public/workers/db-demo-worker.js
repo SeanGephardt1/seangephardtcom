@@ -15,6 +15,7 @@ class CountMessage
 function Count( data )
 {
   console.debug( "worker.js::Count(data)", i, data );
+
   i++;
 
   if ( i < 10 )
@@ -49,7 +50,7 @@ async function GetFetchData()
 {
   console.debug( 'worker.js::GetFetchData()' );
 
-  let url = 'https://api.github.com/repos/SeanGephardt1/seangephardtcom/commits';
+  const url = 'https://api.github.com/repos/SeanGephardt1/seangephardtcom/commits';
   let response = await fetch( url );
 
   // read response body and parse as JSON
@@ -58,7 +59,8 @@ async function GetFetchData()
 
   let message = {
     action: "git",
-    data: commits //.slice( commits.length - 3 )
+    length: commits.length,
+    data: commits
   }
 
   postMessage( message );
