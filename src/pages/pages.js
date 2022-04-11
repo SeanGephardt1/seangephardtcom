@@ -13,12 +13,11 @@ import PortfolioPage from './portfolio/portfolio.js';
 import DashboardDemo from './dashboard-demo/db-demo.js';
 import SvgZoomDemo from './svg-zoom/svg-zoom.js';
 import WebGLDemo from './webgl-demo/webgl-demo.js';
-import SvgAnimationsDemo from './svg-animations/svg-animations.js';
-
-import AzureCaseStudyDemo from './azure-ux/azure-case-study.js';
-import Html5CanvasDemo from './canvas-demo/canvas-demo.js';
-import CssArtPage from './css-art/css-art.js';
-import ButtonAnimations from './button-animations/button-animations.js';
+//import SvgAnimationsDemo from './svg-animations/svg-animations.js';
+//import AzureCaseStudyDemo from './azure-ux/azure-case-study.js';
+//import Html5CanvasDemo from './canvas-demo/canvas-demo.js';
+//import CssArtPage from './css-art/css-art.js';
+//import ButtonAnimations from './button-animations/button-animations.js';
 
 import MusicPage from './music/music.js';
 //  import TestPage from './test/test.js';
