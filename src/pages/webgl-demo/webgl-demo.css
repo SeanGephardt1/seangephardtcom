@@ -6,12 +6,25 @@
 	padding:10px;
 }
 
+.canvas-panel
+{
+	border: solid 1px var(--black-02);
+	background-color: var(--black-01);
+	padding: 20px;
+	margin-left: 30px;
+	margin-right: 30px;
+	display: flex;
+	justify-content: center;
+	justify-items: center;
+	align-content: center;
+	align-items: center;
+}
 .canvas-2d
 {
-	border: solid 1px var(--black);
+	/*	border: solid 1px var(--black-01);*/
 	width: 100%;
 	min-width: 260px;
-	max-width: 100%;
-    object-fit: contain;
+	max-width: 512px;
+	object-fit: contain;
 	height: auto;
 }
