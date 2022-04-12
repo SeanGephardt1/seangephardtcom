@@ -41,7 +41,7 @@ export default class WebGLDemo extends React.Component
     this._default_indices = [ 3, 2, 1, 3, 1, 0 ];
 
     this._vert_code = 'attribute vec3 coordinates; attribute vec3 color; varying vec3 vColor; void main(void) { gl_Position = vec4(coordinates, 1.0); vColor = color; }';
-    this._frag_code = 'precision mediump float; varying vec3 vColor;  void main(void) { gl_FragColor = vec4(vColor, 1.); }';
+    this._frag_code = 'precision mediump float; varying vec3 vColor;  void main(void) { gl_FragColor = vec4(vColor, 1.0); }';
 
     document.title = this.props.Title;
     return;
