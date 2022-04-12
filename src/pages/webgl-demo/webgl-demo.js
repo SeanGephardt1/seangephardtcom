@@ -16,43 +16,77 @@ export default class WebGLDemo extends React.Component
     Title: "WebGL Demo",
     LinkTitle: "WebGL Demo",
     Href: "portfolio/webgl-demo",
-    Icon: "" // SVG.AppNavButtons.About
+    Icon: ""
   };
   constructor ( props )
   {
     super( props );
-    this.Title = ( this.props.Title || this.defaultProps.Title );
-    this.LinkTitle = ( this.props.LinkTitle || this.defaultProps.LinkTitle );
-    this.Href = ( this.props.Href || this.defaultProps.Href );
 
     this.Canvas = React.createRef();
     this.WGL = undefined;
     this.CanvasSize = 1000;
 
-    document.title = this.Title;
-    return;
-  };
-  componentDidMount() 
-  {
-    //	console.debug( "WebGLDemo.componentDidMount()", this.Canvas.current );
-
-    this.WGL = this.Canvas.current.getContext( "experimental-webgl" );
-
-    let vertices = [
-      -0.97, 0.97, 0.0,   //  top left
-      -0.97, -0.97, 0.0,  //  bottom left
-      0.97, -0.97, 0.0,   //  bottom right
-      0.97, 0.97, 0.0     //  top right
-    ];
-
-    let colors = [
+    this._default_square_vertices = [
+      -0.75, 0.75, 0.0,   //  top left
+      -0.75, -0.75, 0.0,  //  bottom left
+      0.75, -0.75, 0.0,   //  bottom right
+      0.75, 0.75, 0.0     //  top right
+      ];
+    this._default_colors = [
       0, 0, 1,  //  blue
       1, 0, 0,  //  red
       0, 1, 0,  //  green
       0, 0, 0   //  
     ];
+    this._default_indices = [ 3, 2, 1, 3, 1, 0 ];
 
-    let indices = [ 3, 2, 1, 3, 1, 0 ];
+    this._vert_code = 'attribute vec3 coordinates; attribute vec3 color; varying vec3 vColor; void main(void) { gl_Position = vec4(coordinates, 1.0); vColor = color; }';
+    this._frag_code = 'precision mediump float; varying vec3 vColor;  void main(void) { gl_FragColor = vec4(vColor, 1.); }';
+
+    document.title = this.props.Title;
+    return;
+  };
+
+  GetRandomSquareVertices()
+  {
+    let _pos_num = Math.random().toPrecision( 2 );
+    let _neg_num = -_pos_num;
+    //  console.debug( _pos_num, _neg_num );
+
+    let _rv = [
+      _neg_num, _pos_num, 0,
+      _neg_num, _neg_num, 0,
+      _pos_num, _neg_num, 0,
+      _pos_num, _pos_num, 0
+    ];
+    //  console.debug( "_rv", _rv );
+    return this._default_square_vertices;
+  };
+  GetRandomColors()
+  {
+    // let _rv = this._default_colors;
+    let _rv = [
+      Math.random().toPrecision( 3 ), Math.random().toPrecision( 3 ), Math.round( Math.random().toPrecision( 3 ) ),
+      Math.round( Math.random().toPrecision( 3 ) ), Math.random().toPrecision( 3 ), Math.random().toPrecision( 3 ),
+      Math.random().toPrecision( 3 ), Math.round( Math.random().toPrecision( 3 ) ), Math.random().toPrecision( 3 ),
+      Math.random().toPrecision( 3 ), Math.random().toPrecision( 3 ), Math.random().toPrecision( 3 )
+    ];
+    //  console.debug( "_rv", _rv );
+    return _rv;
+  };
+  GetRandomIndices()
+  {
+    let _rv = [ 3, 2, 1, 3, 1, 0 ];
+    //  console.debug( "GetRandomIndices()::_rv", _rv );
+    return _rv;
+  };
+  RenderNewColors()
+  {
+    this.WGL = this.Canvas.current.getContext( "experimental-webgl" );
+
+    let vertices = this.GetRandomSquareVertices();
+    let colors = this.GetRandomColors();
+    let indices = this.GetRandomIndices();
 
     // Create an empty buffer object and store vertex data
     var vertex_buffer = this.WGL.createBuffer();
@@ -72,36 +106,21 @@ export default class WebGLDemo extends React.Component
     this.WGL.bufferData( this.WGL.ARRAY_BUFFER, new Float32Array( colors ), this.WGL.STATIC_DRAW );
 
     // Shaders 
-    // vertex shader source code
-    let vertCode = 'attribute vec3 coordinates;' +
-      'attribute vec3 color;' +
-      'varying vec3 vColor;' +
-      'void main(void) {' +
-      ' gl_Position = vec4(coordinates, 1.0);' +
-      'vColor = color;' +
-      '}';
     // Create a vertex shader object
     let vertShader = this.WGL.createShader( this.WGL.VERTEX_SHADER );
     // Attach vertex shader source code
-    this.WGL.shaderSource( vertShader, vertCode );
+    this.WGL.shaderSource( vertShader, this._vert_code );
     // Compile the vertex shader
     this.WGL.compileShader( vertShader );
 
-    // fragment shader source code
-    let fragCode = 'precision mediump float;' +
-      'varying vec3 vColor;' +
-      'void main(void) {' +
-      'gl_FragColor = vec4(vColor, 1.);' +
-      '}';
     // Create fragment shader object
     let fragShader = this.WGL.createShader( this.WGL.FRAGMENT_SHADER );
     // Attach fragment shader source code
-    this.WGL.shaderSource( fragShader, fragCode );
+    this.WGL.shaderSource( fragShader, this._frag_code );
     // Compile the fragmentt shader
     this.WGL.compileShader( fragShader );
 
-    // Create a shader program object to
-    // store the combined shader program
+    // Create a shader program object to store the combined shader program
     let shaderProgram = this.WGL.createProgram();
     // Attach a vertex shader
     this.WGL.attachShader( shaderProgram, vertShader );
@@ -136,7 +155,7 @@ export default class WebGLDemo extends React.Component
 
     /*============Drawing the Quad====================*/
     // Clear the canvas, RGBA
-    this.WGL.clearColor( 0, 0, 0, 1);
+    this.WGL.clearColor( 0, 0, 0, 1 );
     // Enable the depth test
     this.WGL.enable( this.WGL.DEPTH_TEST );
     // Clear the color buffer bit
@@ -145,6 +164,15 @@ export default class WebGLDemo extends React.Component
     this.WGL.viewport( 0, 0, this.CanvasSize, this.CanvasSize );
     // Draw the triangle
     this.WGL.drawElements( this.WGL.TRIANGLES, indices.length, this.WGL.UNSIGNED_SHORT, 0 );
+  };
+  OnClick_ChangeWGLColors( e )
+  { //  console.debug( 'OnClick_ChangeWGLColors');
+    this.RenderNewColors();
+    return;
+  };
+  componentDidMount() 
+  { //	console.debug( "WebGLDemo.componentDidMount()", this.Canvas.current );
+    this.RenderNewColors();
     return;
   };
   componentWillUnmount()
@@ -164,6 +192,12 @@ export default class WebGLDemo extends React.Component
             height={ this.CanvasSize }
             width={ this.CanvasSize }>
           </canvas>
+        </div>
+        <div>
+          <button
+            tabIndex="0"
+            className="db-app-btn"
+            onClick={ this.OnClick_ChangeWGLColors.bind( this ) }>Generate</button>
         </div>
       </div>
     );
