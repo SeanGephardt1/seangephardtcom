@@ -42,7 +42,6 @@ export default class DashboardDemo extends React.Component
       {
         case "git":
           {
-            //  console.debug( 'git message event.data', event.data );
             _self.setState( { gitMessage: event.data } );
             break;
           }
@@ -67,7 +66,8 @@ export default class DashboardDemo extends React.Component
     return;
   };
   getGitHibCommits()
-  { //  console.debug( "getGitHibCommits()", this.props.Workers.Git );
+  {
+    console.debug( "getGitHibCommits()", this.props.Workers.Git );
     this.CreateWebWorker();
     this.webWorkerTask.postMessage( {
       action: "git",
@@ -100,9 +100,6 @@ export default class DashboardDemo extends React.Component
       this.webWorkerTask.terminate();
       this.webWorkerTask = undefined;
     }
-    this.setState( {
-      countMessages: []
-    } );
     return;
   };
   componentDidMount()
@@ -126,25 +123,32 @@ export default class DashboardDemo extends React.Component
 
         { /* Worker - "git" action */ }
         <div>
-          <button className="db-app-btn" onClick={ this.getGitHibCommits.bind( this ) }>Get My GitHub repo commits</button>
-          <button className="db-app-btn" onClick={ this.clearGitHibCommits.bind( this ) }>Clear</button>
+          <button className="btn" onClick={ this.getGitHibCommits.bind( this ) }>Get My GitHub repo commits</button>
+          <button className="btn" onClick={ this.clearGitHibCommits.bind( this ) }>Clear</button>
         </div>
         {
           this.state.gitMessage !== undefined &&
           <>
             <div>ACTION: { this.state.gitMessage.action }</div>
-            <div>
+            <div className="github-card-panel">
               {
-                this.state.gitMessage.data.entries.length > 0 &&
-                this.state.gitMessage.data.entries.map( ( item, idx ) => (
-                  <div key={ idx } className="ww-count-panel">
-                    <div>API: { item.API }</div>
-                    <div>Auth: { item.Auth.toString() }</div>
-                    <div>Category: { item.Category }</div>
-                    <div>CORS: { item.Cors}</div>
-                    <div>Description: { item.Description }</div>
-                    <div>HTTPS: { item.HTTPS.toString() }</div>
-                    <div>Link: { item.Link }</div>
+                this.state.gitMessage.entries.length > 0 &&
+                this.state.gitMessage.entries.map( ( item, idx ) => (
+                  <div key={ idx } className="github-card">
+                    <div className="github-card-left">
+                      <a href={ item.author.html_url }>
+                        <img
+                          src={ item.author.avatar_url }
+                          alt={ item.author.login }
+                          title={ item.commit.message }
+                        />
+                      </a>
+                    </div>
+                    <div className="github-card-right">
+                      <div>{ item.author.login }</div>
+                      <div>{ item.commit.author.date }</div>
+                      <div><a href={ item.html_url } title={ item.commit.message }>Commit</a></div>
+                    </div>
                   </div>
                 ) )
               }
@@ -154,8 +158,8 @@ export default class DashboardDemo extends React.Component
 
         { /* Worker - "count" action */ }
         <div>
-          <button className="db-app-btn" onClick={ this.startTimer.bind( this ) } disabled={ this.state.countMessages.length > 0 }>Start Timer Data</button>
-          <button className="db-app-btn" onClick={ this.stopTimer.bind( this ) } disabled={ this.state.countMessages.length === 0 }>Stop</button>
+          <button className="btn" onClick={ this.startTimer.bind( this ) }>Start Timer Data</button>
+          <button className="btn" onClick={ this.stopTimer.bind( this ) }>Stop</button>
         </div>
 
         {

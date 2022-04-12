@@ -3,30 +3,27 @@ let _timer = undefined;
 
 class CountMessage
 {
-  constructor ( id, idx, d, data )
+  constructor ( id, idx, d, data, tot )
   {
     this.id = id || -1;
-    this.index = idx || 1;
+    this.index = idx || 0;
     this.date = d || null;
     this.data = data || "NO DATA";
+    this.total = tot;
   }
 };
 
 function Count( data )
-{
-  console.debug( "worker.js::Count(data)", i, data );
-
-  i++;
-
-  if ( i < 10 )
+{ //  console.debug( "worker.js::Count(data)", i, data );
+  if ( i < data.total )
   {
     let _m = new CountMessage(
       Math.round( Math.random() * 10000 ),
-      i,
+      i + 1,
       new Date().toISOString(),
-      "Message #" + i + " : " + data.id + " : " + data.data );
+      "Message # " + ( i + 1) + " : " + data.id + " : " + data.data,
+      data.total);
 
-    //  console.debug( "_m", _m );
     const message = {
       action: data.action,
       data: _m
@@ -38,6 +35,8 @@ function Count( data )
     clearInterval( _timer );
     _timer = undefined;
   }
+
+  i++;
   return;
 };
 
@@ -46,11 +45,13 @@ function Count( data )
 //  https://github.com/javascript-tutorial/en.javascript.info
 //  https://api.github.com/repos/javascript-tutorial/en.javascript.info/commits
 //  let url = 'https://api.github.com/repos/javascript-tutorial/en.javascript.info/commits';
+//  https://api.publicapis.org/entries
 async function GetFetchData()
-{
-  console.debug( 'worker.js::GetFetchData()' );
+{ //  console.debug( 'worker.js::GetFetchData()' );
+  //const url = 'https://api.github.com/repos/SeanGephardt1/seangephardtcom/commits';
 
-  const url = 'https://api.github.com/repos/SeanGephardt1/seangephardtcom/commits';
+  const url = "https://api.publicapis.org/entries";
+
   let response = await fetch( url );
 
   // read response body and parse as JSON
@@ -69,7 +70,7 @@ async function GetFetchData()
 
 this.onmessage = function ( e )
 {
-  console.debug( 'Worker: Handle messages received:', e.data );
+  console.debug( 'Worker message:', e.data );
   switch ( e.data.action )
   {
     case "git": {
