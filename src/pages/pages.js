@@ -19,6 +19,7 @@ import AzureCaseStudyDemo from './azure-ux/azure-case-study.js';
 //import ButtonAnimations from './button-animations/button-animations.js';
 
 import MusicPage from './music/music.js';
+import MusicalTuner from './tuner/tuner.js';
 //  import TestPage from './test/test.js';
 //  import MovieStoreExtension from './movie-works-demo/movieworks.js';
 //  import GuitarApp from './guitar-app/guitar-app.js';
@@ -45,6 +46,9 @@ const _nav_routes = [
       },
       {
         component: SvgZoomDemo
+      },
+      {
+        component: MusicalTuner
       },
     ]
   },
@@ -93,6 +97,10 @@ const _app_routes = [
       {
         path: MusicPage.defaultProps.Href,
         element: <MusicPage />
+      },
+      {
+        path: MusicalTuner.defaultProps.Href,
+        element: <MusicalTuner />
       }
     ]
   }

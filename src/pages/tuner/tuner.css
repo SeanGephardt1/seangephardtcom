@@ -1,0 +1,14 @@
+﻿.tuner-panel
+{
+  border: solid 1px red;
+}
+.tuner-button-panel
+{
+  border: solid 1px red;
+  padding:10px;
+}
+.tuner-button-panel > *
+{
+  padding: 10px;
+  margin:10px;
+}
