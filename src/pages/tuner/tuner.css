@@ -2,6 +2,7 @@
 {
   border: solid 1px var(--black-02);
   padding: 10px;
+
 }
 .tuner-panel-header
 {
@@ -11,12 +12,12 @@
 }
 .tuner-panel-layout-1
 {
-  display:flex;
+  display: flex;
 }
 .tuner-panel-layout-1 > *
 {
   padding:10px;
-  margin-right: 10px;
+  margin-right: 8px;
 }
 .tuner-panel-layout-1 > *:last-child
 {

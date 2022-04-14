@@ -144,7 +144,6 @@ export default class MusicalTuner extends React.Component
         { /* EASY STANDARD GUITAR TUNER */}
         <div className="tuner-panel">
           <div className="tuner-panel-header">Standard Guitar Tuner [ E A D G B E ]</div>
-          <div className="tuner-panel-header">{ this.state.currentPitch.name } &rarr; { this.state.currentPitch.value.toString() }</div>
           <div className="tuner-panel-layout-1">
             <select
               tabIndex="0"
