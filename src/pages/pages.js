@@ -12,8 +12,8 @@ import PortfolioPage from './portfolio/portfolio.js';
 import DashboardDemo from './dashboard-demo/db-demo.js';
 import SvgZoomDemo from './svg-zoom/svg-zoom.js';
 import WebGLDemo from './webgl-demo/webgl-demo.js';
-//import SvgAnimationsDemo from './svg-animations/svg-animations.js';
 import AzureCaseStudyDemo from './azure-ux/azure-case-study.js';
+//import SvgAnimationsDemo from './svg-animations/svg-animations.js';
 //import Html5CanvasDemo from './canvas-demo/canvas-demo.js';
 //import CssArtPage from './css-art/css-art.js';
 //import ButtonAnimations from './button-animations/button-animations.js';
@@ -106,9 +106,8 @@ const _app_routes = [
   }
 ];
 
-
 function AppRoutes()
-{ //  console.debug( '_routes', _routes );
+{
   const _my_routes = useRoutes( _app_routes );
   return _my_routes;
 };

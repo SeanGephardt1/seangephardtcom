@@ -1,14 +1,31 @@
 ﻿.tuner-panel
 {
-  border: solid 1px red;
-}
-.tuner-button-panel
-{
-  border: solid 1px red;
-  padding:10px;
-}
-.tuner-button-panel > *
-{
+  border: solid 1px var(--black-02);
   padding: 10px;
-  margin:10px;
+}
+.tuner-panel-header
+{
+/*  border: solid 1px var(--debug);*/
+  font-size: 18px;
+  margin-bottom:10px;
+}
+.tuner-panel-layout-1
+{
+  display:flex;
+}
+.tuner-panel-layout-1 > *
+{
+  padding:10px;
+  margin-right: 10px;
+}
+.tuner-panel-layout-1 > *:last-child
+{
+  margin-right: 0px;
+}
+
+.tuner-selected
+{
+  background-color: var(--black-01);
+  color: var(--nav-color-4);
+  font-weight: 900;
 }

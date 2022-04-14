@@ -44,3 +44,8 @@ a:hover
 	color: rgba(128,128,128,1);
 	font-family: 'Calibri Light';
 }
+
+button, select
+{
+	cursor:pointer;
+}
