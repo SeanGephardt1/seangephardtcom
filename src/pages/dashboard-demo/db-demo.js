@@ -4,12 +4,16 @@ import './db-demo.css';
 export default class DashboardDemo extends React.Component
 {
   static defaultProps = {
-    Title: "Dashboard Demo",
-    LinkTitle: "Dashboard Demo",
+    Title: "JavaScript Web Workers",
+    LinkTitle: "JavaScript Web Workers",
     Href: "portfolio/dashboard-demo",
     Icon: "",
     Workers: {
-      Git: "./workers/db-demo-worker.js",
+      Main: "./workers/db-demo-worker.js"
+    },
+    WorkerActions: {
+      APIs: "apis",
+      QuickList: "quickList"
     }
   };
   constructor ( props )
@@ -21,97 +25,134 @@ export default class DashboardDemo extends React.Component
 
     this.state = {
       debug: true,
-      gitMessage: undefined,
+      apiPagingIndex: 1,
+      apiMessage: undefined,
       countMessages: [],
+      cmRunning: false
     };
     return;
   };
-  CreateWebWorker()
+  CreateWebWorker( strUri )
   {   //  console.debug( "CreateWebWorker", this.props.Workers.Git );
     const _self = this;
 
-    this.webWorkerTask = new Worker( this.props.Workers.Git );
+    this.webWorkerTask = new Worker( strUri );
     this.webWorkerTask.onerror = function ( event )
     {
       console.error( "this.webWorkerTask.onerror", event );
-      return;
+      throw new Error( event.message );
     };
     this.webWorkerTask.onmessage = function ( event )
-    {   //  console.debug( "this.webWorkerTask.onmessage", event );
-      switch ( event.data.action )
+    { //  console.debug( "this.webWorkerTask.onmessage", event.data.action );
+      switch (event.data.action)
       {
-        case "git":
-          {
-            //  console.debug( 'git message event.data', event.data );
-            _self.setState( { gitMessage: event.data } );
+        case _self.props.WorkerActions.APIs:
+          { //  console.debug( _self.props.WorkerActions.APIs, 'message event.data', event.data );
+            _self.setState( { apiMessage: event.data });
             break;
           }
-        case "count":
-          {
-            //  console.debug( 'count message event.data', event.data );
-            let _temp_messages = _self.state.countMessages;
-            _temp_messages.push( event.data );
-            _self.setState( { countMessages: _temp_messages} );
-          break;
-        }
+        case _self.props.WorkerActions.QuickList:
+          { //  console.debug('count message event.data', event.data);
+            if (event.data.data === "STOPPED")
+            {
+              _self.setState({ cmRunning: false });
+            }
+            else
+            {
+              let _temp_messages = _self.state.countMessages;
+              _temp_messages.push(event.data);
+              _self.setState({ countMessages: _temp_messages });
+            }
+            break;
+          }
         default:
           {
-            _self.setState( {
-              gitMessage: undefined,
-              countMessage: undefined
-            } );
+            _self.setState({
+              apiMessage: undefined,
+              countMessage: undefined,
+              cmRunning: false
+            });
           }
       };
       return;
     };
     return;
   };
-  getGitHibCommits()
+
+  GetAPIData()
   { //  console.debug( "getGitHibCommits()", this.props.Workers.Git );
-    this.CreateWebWorker();
-    this.webWorkerTask.postMessage( {
-      action: "git",
-      sent: new Date().toUTCString()
+    this.CreateWebWorker( this.props.Workers.Main );
+    this.webWorkerTask.postMessage({
+      action: this.props.WorkerActions.APIs,
+      sent: new Date().toISOString(),
+      page: this.state.apiPagingIndex,
+      count: 20
+    });
+    return;
+  };
+  ClearGitHibCommits()
+  {
+    this.setState( {
+      apiMessage: undefined,
+      apiPagingIndex: 1
     } );
     return;
   };
-  clearGitHibCommits()
-  {
-    this.setState( { gitMessage: undefined } );
+  OnClick_PageResults( idx, ev )
+  { //  console.debug( 'OnClick_PageResults', this.state.apiPagingIndex, idx, this.state.apiMessage, this.webWorkerTask );
+
+    let _new_idx = this.state.apiPagingIndex + idx;
+    //  console.debug( '_new_idx', _new_idx );
+
+    this.webWorkerTask.postMessage( {
+      action: this.props.WorkerActions.APIs,
+      sent: new Date().toISOString(),
+      page: _new_idx,
+      count: 20
+    } );
+
+    this.setState( {
+      apiPagingIndex: _new_idx
+    } );
     return;
   };
 
   startTimer()
   {   //  console.debug( "startTimer()", this.webWorkerTask );
-    this.CreateWebWorker();
+    this.CreateWebWorker( this.props.Workers.Main );
     this.webWorkerTask.postMessage( {
-      action: "count",
-      id: 999,
-      total: 20,
-      data: 'Testing this web worker script',
-      timer_value: 1000
-    } );
+      action: this.props.WorkerActions.QuickList,
+      id: "TEMP ID 9999",
+      total: 3,
+      data: 'Testing this web worker global script scope.',
+      timer_value: 250
+    });
+    this.setState({
+      cmRunning: true,
+      countMessages: []
+    });
     return;
   };
   stopTimer()
   {   //  console.debug( "stopTimer()" );
-    if ( this.webWorkerTask !== undefined )
+    if (this.webWorkerTask !== undefined)
     {
       this.webWorkerTask.terminate();
       this.webWorkerTask = undefined;
     }
-    this.setState( {
-      countMessages: []
-    } );
+    this.setState({
+      cmRunning: false
+    });
     return;
   };
+
   componentDidMount()
   {	//	console.debug( "DashboardDemo.componentDidMount()");
     return;
   }
   componentWillUnmount()
   {	//	console.debug( "DashboardDemo.componentWillUnmount()" );
-    if ( this.webWorkerTask !== undefined )
+    if (this.webWorkerTask !== undefined)
     {
       this.webWorkerTask.terminate();
       this.webWorkerTask = undefined;
@@ -122,31 +163,53 @@ export default class DashboardDemo extends React.Component
   {
     return (
       <div className="page-layout padding30 ">
-        <div>Dashboard Demo</div>
+        <div>{ this.props.Title }</div>
 
         { /* Worker - "git" action */ }
         <div>
-          <button className="db-app-btn" onClick={ this.getGitHibCommits.bind( this ) }>Get My GitHub repo commits</button>
-          <button className="db-app-btn" onClick={ this.clearGitHibCommits.bind( this ) }>Clear</button>
+          <button
+            tabIndex="0"
+            className="db-app-btn"
+            onClick={ this.GetAPIData.bind(this) }>Fetch API Data</button>
+          <button
+            tabIndex="0"
+            className="db-app-btn"
+            onClick={ this.ClearGitHibCommits.bind( this ) }>Clear</button>
         </div>
         {
-          this.state.gitMessage !== undefined &&
+          this.state.apiMessage === undefined &&
+          <div>No results at this time</div>
+        }
+        {
+          this.state.apiMessage !== undefined &&
           <>
-            <div>ACTION: { this.state.gitMessage.action }</div>
+            <div>
+              <button
+                tabIndex="0"
+                className="db-app-btn"
+                onClick={ this.OnClick_PageResults.bind( this, -1 ) }
+                disabled={ this.state.apiPagingIndex === 1}>Previous Page</button>
+              <button
+                tabIndex="0"
+                className="db-app-btn"
+                onClick={ this.OnClick_PageResults.bind( this, 1 ) }
+                disabled={ this.state.apiPagingIndex === this.state.apiMessage.pageCount }>Next Page</button>
+              <span>Page { this.state.apiPagingIndex } of { this.state.apiMessage.pageCount }</span>
+            </div>
             <div>
               {
-                this.state.gitMessage.data.entries.length > 0 &&
-                this.state.gitMessage.data.entries.map( ( item, idx ) => (
+                this.state.apiMessage.entries.length > 0 &&
+                this.state.apiMessage.entries.map((item, idx) => (
                   <div key={ idx } className="ww-count-panel">
                     <div>API: { item.API }</div>
                     <div>Auth: { item.Auth.toString() }</div>
                     <div>Category: { item.Category }</div>
-                    <div>CORS: { item.Cors}</div>
+                    <div>CORS: { item.Cors }</div>
                     <div>Description: { item.Description }</div>
                     <div>HTTPS: { item.HTTPS.toString() }</div>
                     <div>Link: { item.Link }</div>
                   </div>
-                ) )
+                ))
               }
             </div>
           </>
@@ -154,25 +217,30 @@ export default class DashboardDemo extends React.Component
 
         { /* Worker - "count" action */ }
         <div>
-          <button className="db-app-btn" onClick={ this.startTimer.bind( this ) } disabled={ this.state.countMessages.length > 0 }>Start Timer Data</button>
-          <button className="db-app-btn" onClick={ this.stopTimer.bind( this ) } disabled={ this.state.countMessages.length === 0 }>Stop</button>
+          <button
+            tabIndex="0"
+            className="db-app-btn"
+            onClick={ this.startTimer.bind(this) }
+            disabled={ this.state.cmRunning === true }>Start Timer Data</button>
+          <button
+            tabIndex="0"
+            className="db-app-btn"
+            onClick={ this.stopTimer.bind(this) }
+            disabled={ this.state.cmRunning === false }>Stop</button>
         </div>
 
         {
           this.state.countMessages.length > 0 &&
-          this.state.countMessages.map( ( item, idx ) => (
+          this.state.countMessages.map((item, idx) => (
             <div key={ idx } className="ww-count-panel">
               <div>ACTION: { item.action }</div>
               <div>ID: { item.data.id }</div>
-              <div>Index: { item.data.index }</div>
-              <div>Total: { item.data.total }</div>
-              <div>Data: { item.data.data }</div>
-              <div>DATE: {
-                item.data.date !== null &&
-                new Date( item.data.date ).toUTCString()
-              }</div>
+              <div>INDEX: { item.data.index }</div>
+              <div>TOTAL: { item.data.total }</div>
+              <div>DATA: { item.data.data }</div>
+              <div>DATE: { item.data.date !== null && new Date(item.data.date).toISOString() }</div>
             </div>
-            ) )
+          ))
         }
       </div>
     );

@@ -49,17 +49,17 @@ export default class WebGLDemo extends React.Component
 
   GetRandomSquareVertices()
   {
-    let _pos_num = Math.random().toPrecision( 2 );
-    let _neg_num = -_pos_num;
+    //  let _pos_num = Math.random().toPrecision( 2 );
+    //  let _neg_num = -_pos_num;
     //  console.debug( _pos_num, _neg_num );
 
-    let _rv = [
-      _neg_num, _pos_num, 0,
-      _neg_num, _neg_num, 0,
-      _pos_num, _neg_num, 0,
-      _pos_num, _pos_num, 0
-    ];
-    //  console.debug( "_rv", _rv );
+    //let _rv = [
+    //  _neg_num, _pos_num, 0,
+    //  _neg_num, _neg_num, 0,
+    //  _pos_num, _neg_num, 0,
+    //  _pos_num, _pos_num, 0
+    //];
+    //console.debug( "_rv", _rv );
     return this._default_square_vertices;
   };
   GetRandomColors()

@@ -1,7 +1,8 @@
 ﻿.ww-count-panel
 {
-  border: solid 1px red;
+  border: solid 1px var(--black-02);
   font-size: 14px;
+  padding:10px;
 }
 .db-app-btn
 {
@@ -11,6 +12,13 @@
   cursor:pointer;
   padding:8px;
   transition:all 200ms ease-in-out;
+}
+.db-app-btn[disabled],
+.db-app-btn[disabled]:hover,
+.db-app-btn[disabled]:focus
+{
+  background-color: var(--black-01);
+  color: var(--black-02);
 }
 .db-app-btn:hover
 {
