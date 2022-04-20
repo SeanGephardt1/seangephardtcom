@@ -4,8 +4,8 @@ import './db-demo.css';
 export default class DashboardDemo extends React.Component
 {
   static defaultProps = {
-    Title: "JavaScript Web Workers",
-    LinkTitle: "JavaScript Web Workers",
+    Title: "JavaScript Web Worker Examples",
+    LinkTitle: "Web Workers",
     Href: "portfolio/dashboard-demo",
     Icon: "",
     Workers: {
@@ -44,34 +44,34 @@ export default class DashboardDemo extends React.Component
     };
     this.webWorkerTask.onmessage = function ( event )
     { //  console.debug( "this.webWorkerTask.onmessage", event.data.action );
-      switch (event.data.action)
+      switch ( event.data.action )
       {
         case _self.props.WorkerActions.APIs:
           { //  console.debug( _self.props.WorkerActions.APIs, 'message event.data', event.data );
-            _self.setState( { apiMessage: event.data });
+            _self.setState( { apiMessage: event.data } );
             break;
           }
         case _self.props.WorkerActions.QuickList:
           { //  console.debug('count message event.data', event.data);
-            if (event.data.data === "STOPPED")
+            if ( event.data.data === "STOPPED" )
             {
-              _self.setState({ cmRunning: false });
+              _self.setState( { cmRunning: false } );
             }
             else
             {
               let _temp_messages = _self.state.countMessages;
-              _temp_messages.push(event.data);
-              _self.setState({ countMessages: _temp_messages });
+              _temp_messages.push( event.data );
+              _self.setState( { countMessages: _temp_messages } );
             }
             break;
           }
         default:
           {
-            _self.setState({
+            _self.setState( {
               apiMessage: undefined,
               countMessage: undefined,
               cmRunning: false
-            });
+            } );
           }
       };
       return;
@@ -82,12 +82,12 @@ export default class DashboardDemo extends React.Component
   GetAPIData()
   { //  console.debug( "getGitHibCommits()", this.props.Workers.Git );
     this.CreateWebWorker( this.props.Workers.Main );
-    this.webWorkerTask.postMessage({
+    this.webWorkerTask.postMessage( {
       action: this.props.WorkerActions.APIs,
       sent: new Date().toISOString(),
       page: this.state.apiPagingIndex,
       count: 20
-    });
+    } );
     return;
   };
   ClearGitHibCommits()
@@ -126,23 +126,23 @@ export default class DashboardDemo extends React.Component
       total: 3,
       data: 'Testing this web worker global script scope.',
       timer_value: 250
-    });
-    this.setState({
+    } );
+    this.setState( {
       cmRunning: true,
       countMessages: []
-    });
+    } );
     return;
   };
   stopTimer()
   {   //  console.debug( "stopTimer()" );
-    if (this.webWorkerTask !== undefined)
+    if ( this.webWorkerTask !== undefined )
     {
       this.webWorkerTask.terminate();
       this.webWorkerTask = undefined;
     }
-    this.setState({
+    this.setState( {
       cmRunning: false
-    });
+    } );
     return;
   };
 
@@ -152,7 +152,7 @@ export default class DashboardDemo extends React.Component
   }
   componentWillUnmount()
   {	//	console.debug( "DashboardDemo.componentWillUnmount()" );
-    if (this.webWorkerTask !== undefined)
+    if ( this.webWorkerTask !== undefined )
     {
       this.webWorkerTask.terminate();
       this.webWorkerTask = undefined;
@@ -163,14 +163,15 @@ export default class DashboardDemo extends React.Component
   {
     return (
       <div className="page-layout padding30 ">
-        <div>{ this.props.Title }</div>
+        <div className="header centered">{ this.props.Title }</div>
 
         { /* Worker - "git" action */ }
-        <div>
+        <div className="ww-sample-panel">
           <button
             tabIndex="0"
             className="db-app-btn"
-            onClick={ this.GetAPIData.bind(this) }>Fetch API Data</button>
+            style={ { 'marginRight': '10px' } }
+            onClick={ this.GetAPIData.bind( this ) }>Fetch API Data</button>
           <button
             tabIndex="0"
             className="db-app-btn"
@@ -178,69 +179,109 @@ export default class DashboardDemo extends React.Component
         </div>
         {
           this.state.apiMessage === undefined &&
-          <div>No results at this time</div>
+          <div className="ww-sample-panel">No results at this time</div>
         }
         {
           this.state.apiMessage !== undefined &&
-          <>
-            <div>
-              <button
-                tabIndex="0"
-                className="db-app-btn"
-                onClick={ this.OnClick_PageResults.bind( this, -1 ) }
-                disabled={ this.state.apiPagingIndex === 1}>Previous Page</button>
-              <button
-                tabIndex="0"
-                className="db-app-btn"
-                onClick={ this.OnClick_PageResults.bind( this, 1 ) }
-                disabled={ this.state.apiPagingIndex === this.state.apiMessage.pageCount }>Next Page</button>
-              <span>Page { this.state.apiPagingIndex } of { this.state.apiMessage.pageCount }</span>
+          <div className="ww-layout-panel">
+            <div className="ww-api-toolbar-panel">
+              <div>
+                <button
+                  tabIndex="0"
+                  className="db-app-btn"
+                  onClick={ this.OnClick_PageResults.bind( this, -1 ) }
+                  disabled={ this.state.apiPagingIndex === 1 }>Previous Page</button>
+              </div>
+              <div className="ww-api-tool-centered">
+                <span >Page { this.state.apiPagingIndex } of { this.state.apiMessage.pageCount }</span>
+              </div>
+              <div>
+                <button
+                  tabIndex="0"
+                  className="db-app-btn"
+                  onClick={ this.OnClick_PageResults.bind( this, 1 ) }
+                  disabled={ this.state.apiPagingIndex === this.state.apiMessage.pageCount }>Next Page</button>
+              </div>
             </div>
-            <div>
+            <div className="ww-api-toolbar-table-panel">
+              <table width="100%" cellPadding="0" cellSpacing="0">
+                <thead>
+                  <tr>
+                    <td>API</td>
+                    <td>Auth</td>
+                    <td>Category</td>
+                    <td>CORS</td>
+                    <td>Description</td>
+                    <td>HTTPS</td>
+                    <td>Link</td>
+                  </tr>
+                </thead>
+                <tbody>
+                  {
+                    this.state.apiMessage.entries.map( ( item, idx ) => (
+                      <tr key={ idx }>
+                        <td>{ item.API.toString() }</td>
+                        <td>{ item.Auth.toString() }</td>
+                        <td>{ item.Category }</td>
+                        <td>{ item.Cors }</td>
+                        <td>{ item.Description }</td>
+                        <td>{ item.HTTPS.toString() }</td>
+                        <td>
+                          <a
+                            tabIndex="0"
+                            target="_new"
+                            href={ item.Link }
+                            title={ item.API + '\n' + item.Description }>{ item.API }</a>
+                        </td>
+                      </tr>
+                    ) )
+                  }
+                </tbody>
+              </table>
               {
-                this.state.apiMessage.entries.length > 0 &&
-                this.state.apiMessage.entries.map((item, idx) => (
-                  <div key={ idx } className="ww-count-panel">
-                    <div>API: { item.API }</div>
-                    <div>Auth: { item.Auth.toString() }</div>
-                    <div>Category: { item.Category }</div>
-                    <div>CORS: { item.Cors }</div>
-                    <div>Description: { item.Description }</div>
-                    <div>HTTPS: { item.HTTPS.toString() }</div>
-                    <div>Link: { item.Link }</div>
-                  </div>
-                ))
+                //this.state.apiMessage.entries.length > 0 &&
+                //this.state.apiMessage.entries.map( ( item, idx ) => (
+                //  <div key={ idx } className="ww-count-panel">
+                //    <div>API: { item.API }</div>
+                //    <div>Auth: { item.Auth.toString() }</div>
+                //    <div>Category: { item.Category }</div>
+                //    <div>CORS: { item.Cors }</div>
+                //    <div>Description: { item.Description }</div>
+                //    <div>HTTPS: { item.HTTPS.toString() }</div>
+                //    <div>Link: { item.Link }</div>
+                //  </div>
+                // ) )
               }
             </div>
-          </>
+          </div>
         }
 
         { /* Worker - "count" action */ }
-        <div>
+        <div className="ww-sample-panel">
           <button
             tabIndex="0"
             className="db-app-btn"
-            onClick={ this.startTimer.bind(this) }
+            style={ { 'marginRight': '10px' } }
+            onClick={ this.startTimer.bind( this ) }
             disabled={ this.state.cmRunning === true }>Start Timer Data</button>
           <button
             tabIndex="0"
             className="db-app-btn"
-            onClick={ this.stopTimer.bind(this) }
+            onClick={ this.stopTimer.bind( this ) }
             disabled={ this.state.cmRunning === false }>Stop</button>
         </div>
-
         {
           this.state.countMessages.length > 0 &&
-          this.state.countMessages.map((item, idx) => (
+          this.state.countMessages.map( ( item, idx ) => (
             <div key={ idx } className="ww-count-panel">
               <div>ACTION: { item.action }</div>
               <div>ID: { item.data.id }</div>
               <div>INDEX: { item.data.index }</div>
               <div>TOTAL: { item.data.total }</div>
               <div>DATA: { item.data.data }</div>
-              <div>DATE: { item.data.date !== null && new Date(item.data.date).toISOString() }</div>
+              <div>DATE: { item.data.date !== null && new Date( item.data.date ).toISOString() }</div>
             </div>
-          ))
+          ) )
         }
       </div>
     );

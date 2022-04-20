@@ -1043,9 +1043,9 @@ async function FetchAPIData( _msg )
   //  console.debug( 'db-demo-worker.js::FetchAPIData()', _temp_data );
   //  READ RESPONSE BODY AND PARSE AS JSON
   const _url = "https://api.publicapis.org/entries";
-  //  let response = await fetch( url );
-  //  let commits = await response.json();
-  let _commits = { ..._temp_data };
+  let response = await fetch( _url );
+  let _commits = await response.json();
+  //  let _commits = { ..._temp_data };
   //  console.debug( _commits.entries );
 
   let _page_start = undefined;  //  msg.page + msg.count

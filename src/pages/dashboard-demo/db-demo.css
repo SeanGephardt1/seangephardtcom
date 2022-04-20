@@ -1,14 +1,9 @@
-﻿.ww-count-panel
-{
-  border: solid 1px var(--black-02);
-  font-size: 14px;
-  padding:10px;
-}
+﻿
 .db-app-btn
 {
   border:solid 1px var(--black-01);
-  border-radius:5px;
-  margin:4px;
+  border-radius:4px;
+/*  margin:4px;*/
   cursor:pointer;
   padding:8px;
   transition:all 200ms ease-in-out;
@@ -24,4 +19,77 @@
 {
   background-color: var(--nav-color-4);
   color: white;
+}
+
+.ww-sample-panel
+{
+  border: solid 1px var(--black-01);
+  max-width: 1024px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+  padding:10px;
+}
+
+.ww-layout-panel
+{
+/*  border: solid 1px var(--black-01);*/
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* API CALL STYLES */
+.ww-api-toolbar-panel
+{
+/*  border: solid 1px var(--black-01);*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom:10px;
+}
+.ww-api-toolbar-panel > *
+{
+/*  border: solid 1px var(--debug);*/
+  flex: 0 1 auto;
+  padding:0px;
+}
+.ww-api-tool-centered
+{
+  flex: 1 1 auto;
+  display:flex;
+  justify-content:center;
+}
+
+.ww-api-toolbar-table-panel
+{
+  /*  border: solid 1px var(--debug);*/
+}
+.ww-api-toolbar-table-panel > table
+{
+/*  border: solid 1px red;*/
+}
+.ww-api-toolbar-table-panel > table > thead > tr > td
+{
+  border: solid 1px transparent;
+  word-wrap: break-word;
+  width: 10%;
+  padding: 4px;
+  background-color: var(--nav-color-4);
+  color: var(--white);
+  font-size:14px;
+}
+.ww-api-toolbar-table-panel > table > tbody > tr > td
+{
+  border: solid 1px var(--black-01);
+  word-wrap: anywhere;
+  padding: 4px;
+  font-size: 14px;
+}
+
+.ww-count-panel
+{
+  border: solid 1px var(--black);
+  font-size: 14px;
+  padding: 10px;
 }
