@@ -997,30 +997,29 @@ const _temp_data = {
 
 class QuickCountMessage
 {
-  constructor ( id, idx, d, data, tot )
+  constructor ( data )
   {
-    this.id = id || -1;
-    this.index = idx || 0;
-    this.date = d || null;
-    this.data = data || "NO DATA";
-    this.total = tot;
+    this.index = 0;
+    this.id = 0;
+    this.timestamp = new Date().getTime();
+    this.message = "TEST DATA";
+    this.clientmessage = data;
   }
 };
 
 function QuickCount( data )
 { //  console.debug( "worker.js::Count(data)", i, data );
-  if ( i < data.total )
+
+  if ( i < data.numberOfResponses )
   {
-    let _m = new QuickCountMessage(
-      Math.round( Math.random() * 10000 ),
-      i + 1,
-      new Date().toISOString(),
-      "Demo Worker Message # " + ( i + 1 ) + " : " + data.id + " : " + data.data,
-      data.total );
+    let _new_message = new QuickCountMessage(data);
+    _new_message.index = i + 1;
+    _new_message.id = 'QWW-' + Math.round( Math.random() * 10000 );
+    _new_message.message = "Message Number " + _new_message.index.toString();
 
     const message = {
       action: data.action,
-      data: _m
+      data: _new_message
     };
     postMessage( message );
   }
@@ -1040,7 +1039,7 @@ function QuickCount( data )
 };
 
 async function FetchAPIData( _msg )
-{ 
+{
   //  console.debug( 'db-demo-worker.js::FetchAPIData()', _cached_data );
 
   //  READ RESPONSE BODY AND PARSE AS JSON
@@ -1050,7 +1049,24 @@ async function FetchAPIData( _msg )
 
   if ( _cached_data === undefined )
   {
-    _resp = await fetch( _url );
+    _resp = await fetch( _url, {
+      method: "GET",
+      headers: {
+        "Content-Type": "text/plain;charset=UTF-8"
+      },
+      body: undefined,
+      referrer: "",
+      referrerPolicy: "no-referrer-when-downgrade",
+      mode: "cors", // no-cors
+      credentials: "same-origin", // omit, include
+      cache: "default", // no-store, reload, no-cache, force-cache, or only-if-cached
+      redirect: "follow", // manual, error
+      integrity: "",
+      keepalive: false, // true
+      signal: undefined, // AbortController to abort request
+      window: null
+    } );
+
     _commits = await _resp.json();
     //  let _commits = { ..._temp_data };
     _commits.entries.sort( ( a, b ) =>
@@ -1085,14 +1101,14 @@ async function FetchAPIData( _msg )
 
   let _page_start = undefined;  //  msg.page + msg.count
   let _page_end = _page_start + _msg.count;
-  let _max_page = Math.ceil( _commits.count / _msg.count ) ;
+  let _max_page = Math.ceil( _commits.count / _msg.count );
 
   //console.debug( "entries total", _commits.entries.length );
   //console.debug( "page count", _msg.count );
   //console.debug( "page index", _msg.page );
   //console.debug( "total pages",_max_page  );
 
-  if ( _msg.page > _max_page || _msg.page < 1)
+  if ( _msg.page > _max_page || _msg.page < 1 )
   { // 
     console.debug( "OVER PAGED" )
     _page_start = 0;

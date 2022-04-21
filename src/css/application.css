@@ -96,6 +96,17 @@ footer
 	margin-top:5%;
 }
 
+.margin-right-10
+{
+	margin-right:10px;
+}
+
+.bold-700
+{
+	font-weight:700;
+}
+
+
 .bd-page-title
 {
 	font-size:20px;

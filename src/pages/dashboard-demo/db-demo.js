@@ -27,7 +27,9 @@ export default class DashboardDemo extends React.Component
 
     this.state = {
       debug: true,
+      apiRunning: false,
       apiPagingIndex: 1,
+      apiPageSize: 5,
       apiMessage: undefined,
       countMessages: [],
       cmRunning: false
@@ -42,7 +44,15 @@ export default class DashboardDemo extends React.Component
     this.webWorkerTask.onerror = function ( event )
     {
       console.error( "this.webWorkerTask.onerror", event );
-      throw new Error( event.message );
+      _self.setState( {
+        apiRunning: false,
+        apiPagingIndex: 1,
+        apiPageSize: 5,
+        apiMessage: undefined,
+        countMessages: [],
+        cmRunning: false
+      } );
+      // throw new Error( event.message );
     };
     this.webWorkerTask.onmessage = function ( event )
     { //  console.debug( "this.webWorkerTask.onmessage", event.data.action );
@@ -50,11 +60,14 @@ export default class DashboardDemo extends React.Component
       {
         case _self.props.WorkerActions.APIs:
           { // console.debug( _self.props.WorkerActions.APIs, 'message event.data', event.data );
-            _self.setState( { apiMessage: event.data } );
+            _self.setState( {
+              apiRunning: false,
+              apiMessage: event.data
+            } );
             break;
           }
         case _self.props.WorkerActions.QuickListStart:
-          { //  console.debug('count message event.data', event.data);
+          { //  console.debug( 'count message event.data', event.data );            
             if ( event.data.data === "STOPPED" )
             {
               _self.setState( { cmRunning: false } );
@@ -81,20 +94,24 @@ export default class DashboardDemo extends React.Component
     return;
   };
 
-  GetAPIData()
+  OnClick_Fetch_API_Data()
   { //  console.debug( "getGitHibCommits()", this.props.Workers.Git );
     //  this.CreateWebWorker( this.props.Workers.Main );
     this.webWorkerTask.postMessage( {
       action: this.props.WorkerActions.APIs,
       sent: new Date().toISOString(),
       page: this.state.apiPagingIndex,
-      count: 20
+      count: this.state.apiPageSize
+    } );
+    this.setState( {
+      apiRunning: true
     } );
     return;
   };
-  ClearGitHibCommits()
+  OnClick_Clear_API_Messages( e )
   {
     this.setState( {
+      apiRunning: false,
       apiMessage: undefined,
       apiPagingIndex: 1
     } );
@@ -109,7 +126,7 @@ export default class DashboardDemo extends React.Component
       action: this.props.WorkerActions.APIs,
       sent: new Date().toISOString(),
       page: _new_idx,
-      count: 20
+      count: this.state.apiPageSize
     } );
 
     this.setState( {
@@ -118,15 +135,15 @@ export default class DashboardDemo extends React.Component
     return;
   };
 
-  startTimer()
+  OnClick_StartTimer()
   { //  console.debug( "startTimer()", this.webWorkerTask );
     //  this.CreateWebWorker( this.props.Workers.Main );
     this.webWorkerTask.postMessage( {
       action: this.props.WorkerActions.QuickListStart,
-      id: "TEMP ID 9999",
-      total: 3,
-      data: 'Testing this web worker global script scope.',
-      timer_value: 250
+      client_id: "MESSAGE-ID-ABC-111",
+      client_message: 'Testing this web worker in global script scope.',
+      numberOfResponses: 5,
+      timer_value: 500
     } );
 
     this.setState( {
@@ -135,17 +152,17 @@ export default class DashboardDemo extends React.Component
     } );
     return;
   };
-  stopTimer()
+  OnClick_StopTimer()
   { //  console.debug( "stopTimer()", this.webWorkerTask);
     this.webWorkerTask.postMessage( {
-        action: this.props.WorkerActions.QuickListStop
-      } );
+      action: this.props.WorkerActions.QuickListStop
+    } );
     //  this.webWorkerTask.terminate();
 
     this.setState( { cmRunning: false } );
     return;
   };
-  clearCountMessage()
+  OnClick_ClearCountMessage()
   {
     this.setState( {
       cmRunning: false,
@@ -171,133 +188,139 @@ export default class DashboardDemo extends React.Component
   render()
   {
     return (
-      <div className="page-layout padding30 ">
+      <div className="page-layout padding30">
         <div className="header centered">{ this.props.Title }</div>
 
         { /* Worker - "git" action */ }
         <div className="ww-sample-panel">
-          <button
-            tabIndex="0"
-            className="db-app-btn"
-            style={ { 'marginRight': '10px' } }
-            onClick={ this.GetAPIData.bind( this ) }>Fetch API Data</button>
-          <button
-            tabIndex="0"
-            className="db-app-btn"
-            onClick={ this.ClearGitHibCommits.bind( this ) }>Clear</button>
-        </div>
-        {
-          this.state.apiMessage === undefined &&
-          <div className="ww-sample-panel">No results at this time</div>
-        }
-        {
-          this.state.apiMessage !== undefined &&
-          <div className="ww-layout-panel">
-            <div className="ww-api-toolbar-panel">
-              <div>
-                <button
-                  tabIndex="0"
-                  className="db-app-btn"
-                  onClick={ this.OnClick_PageResults.bind( this, -1 ) }
-                  disabled={ this.state.apiPagingIndex === 1 }>Previous Page</button>
-              </div>
-              <div className="ww-api-tool-centered">
-                <span >Page { this.state.apiPagingIndex } of { this.state.apiMessage.pageCount }</span>
-              </div>
-              <div>
-                <button
-                  tabIndex="0"
-                  className="db-app-btn"
-                  onClick={ this.OnClick_PageResults.bind( this, 1 ) }
-                  disabled={ this.state.apiPagingIndex === this.state.apiMessage.pageCount }>Next Page</button>
-              </div>
-            </div>
-            <div className="ww-api-toolbar-table-panel">
-              <table width="100%" cellPadding="0" cellSpacing="0">
-                <thead>
-                  <tr>
-                    <td>API</td>
-                    <td>Auth</td>
-                    <td>Category</td>
-                    <td>CORS</td>
-                    <td>Description</td>
-                    <td>HTTPS</td>
-                    <td>Link</td>
-                  </tr>
-                </thead>
-                <tbody>
-                  {
-                    this.state.apiMessage.entries.map( ( item, idx ) => (
-                      <tr key={ idx }>
-                        <td>{ item.API.toString() }</td>
-                        <td>{ item.Auth.toString() }</td>
-                        <td>{ item.Category }</td>
-                        <td>{ item.Cors }</td>
-                        <td>{ item.Description }</td>
-                        <td>{ item.HTTPS.toString() }</td>
-                        <td>
-                          <a
-                            tabIndex="0"
-                            target="_new"
-                            href={ item.Link }
-                            title={ item.API + '\n' + item.Description }>{ item.API }</a>
-                        </td>
-                      </tr>
-                    ) )
-                  }
-                </tbody>
-              </table>
-              {
-                //this.state.apiMessage.entries.length > 0 &&
-                //this.state.apiMessage.entries.map( ( item, idx ) => (
-                //  <div key={ idx } className="ww-count-panel">
-                //    <div>API: { item.API }</div>
-                //    <div>Auth: { item.Auth.toString() }</div>
-                //    <div>Category: { item.Category }</div>
-                //    <div>CORS: { item.Cors }</div>
-                //    <div>Description: { item.Description }</div>
-                //    <div>HTTPS: { item.HTTPS.toString() }</div>
-                //    <div>Link: { item.Link }</div>
-                //  </div>
-                // ) )
-              }
-            </div>
+          <div className="ww-sample-header-panel">
+            This example retreives a list of public APIs from
+            <a
+              tabIndex="0"
+              target="_new"
+              href="https://api.publicapis.org"
+              title="Public API for Public APIs"> Public API for Public APIs </a>
+            using the JavaScript Fetch object and then caches the result set as an object for performant paging of those results.
           </div>
-        }
+          <div className="ww-sample-tool-panel">
+            <button
+              tabIndex="0"
+              className="db-app-btn"
+              onClick={ this.OnClick_Fetch_API_Data.bind( this ) }
+              onKeyPress={ this.OnClick_Fetch_API_Data.bind( this ) }
+              disabled={ this.state.apiRunning === true }>Fetch API data</button>
+            <button
+              tabIndex="0"
+              className="db-app-btn"
+              onClick={ this.OnClick_Clear_API_Messages.bind( this ) }
+              onKeyPress={ this.OnClick_Clear_API_Messages.bind( this ) }
+              disabled={ this.state.apiMessage === undefined }>Clear</button>
+          </div>
+          {
+            this.state.apiMessage === undefined &&
+            <div className="ww-sample-layout-panel">No results at this time.</div>
+          }
+          {
+            this.state.apiMessage !== undefined &&
+            <div className="ww-sample-layout-panel">
+              <div className="ww-api-toolbar-panel">
+                <div>
+                  <button
+                    tabIndex="0"
+                    className="db-app-btn"
+                    onClick={ this.OnClick_PageResults.bind( this, -1 ) }
+                    disabled={ this.state.apiPagingIndex === 1 }>Previous Page</button>
+                </div>
+                <div className="ww-api-tool-centered">
+                  <span >Page { this.state.apiPagingIndex } of { this.state.apiMessage.pageCount }</span>
+                </div>
+                <div>
+                  <button
+                    tabIndex="0"
+                    className="db-app-btn"
+                    onClick={ this.OnClick_PageResults.bind( this, 1 ) }
+                    disabled={ this.state.apiPagingIndex === this.state.apiMessage.pageCount }>Next Page</button>
+                </div>
+              </div>
+              <div className="ww-api-toolbar-table-panel">
+                <table width="100%" cellPadding="0" cellSpacing="0">
+                  <thead>
+                    <tr>
+                      <td>API</td>
+                      <td>Description</td>
+                      <td>Category</td>
+                      <td>Authentication Type</td>
+                      <td>HTTPS supported</td>
+                      <td>CORS policy</td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {
+                      this.state.apiMessage.entries.map( ( item, idx ) => (
+                        <tr key={ idx } title={ "TESTING" }>
+                          <td>
+                            <a
+                              tabIndex="0"
+                              target="_new"
+                              href={ item.Link }
+                              title={ 'API: ' + item.API + '\n' + item.Description }>{ item.API }</a>
+                          </td>
+                          <td>{ item.Description }</td>
+                          <td>{ item.Category }</td>
+                          <td>{ item.Auth === "" ? "Not provided" : item.Auth.toString() }</td>
+                          <td>{ item.HTTPS === true ? 'Yes' : 'No' }</td>
+                          <td>{ item.Cors }</td>
+                        </tr>
+                      ) )
+                    }
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          }
+        </div>
 
         { /* Worker - "count" action */ }
         <div className="ww-sample-panel">
-          <button
-            tabIndex="0"
-            className="db-app-btn"
-            style={ { 'marginRight': '10px' } }
-            onClick={ this.startTimer.bind( this ) }
-            disabled={ this.state.cmRunning === true }>Start Timer Data</button>
-          <button
-            tabIndex="0"
-            className="db-app-btn"
-            style={ { 'marginRight': '10px' } }
-            onClick={ this.stopTimer.bind( this ) }
-            disabled={ this.state.cmRunning === false }>Stop</button>
-          <button
-            tabIndex="0"
-            className="db-app-btn"
-            onClick={ this.clearCountMessage.bind( this ) }
-            disabled={ this.state.countMessages.length === 0 }>Clear</button>
+          <div className="ww-sample-header-panel">
+            This example posts a Web Worker message that contains a JSON object which defines the number of results to produce, a sample text message and a timing interval which tells the Web Worker how often to send return messages to the page.
+          </div>
+          <div className="ww-sample-tool-panel">
+            <button
+              tabIndex="0"
+              className="db-app-btn"
+              onClick={ this.OnClick_StartTimer.bind( this ) }
+              disabled={ this.state.cmRunning === true }>Send timer data</button>
+            <button
+              tabIndex="0"
+              className="db-app-btn"
+              onClick={ this.OnClick_StopTimer.bind( this ) }
+              disabled={ this.state.cmRunning === false }>Stop</button>
+            <button
+              tabIndex="0"
+              className="db-app-btn"
+              onClick={ this.OnClick_ClearCountMessage.bind( this ) }
+              disabled={ this.state.countMessages.length === 0 }>Clear</button>
+          </div>
+          {
+            this.state.countMessages.length === 0 &&
+            <div className="ww-sample-layout-panel">No results at this time.</div>
+          }
+          {
+            this.state.countMessages.length > 0 &&
+            this.state.countMessages.map( ( item, idx ) => (
+              <div key={ idx } className="ww-count-panel">
+                <div><span className="bold-700 margin-right-10">ACTION:</span> { item.action }</div>
+                <div><span className="bold-700 margin-right-10">DATA.index:</span> { item.data.index }</div>
+                <div><span className="bold-700 margin-right-10">DATA.id:</span> { item.data.id }</div>
+                <div><span className="bold-700 margin-right-10">DATA.message:</span> { item.data.message }</div>
+                <div><span className="bold-700 margin-right-10">DATA.timestamp:</span> { new Date( item.data.timestamp ).toLocaleString() }</div>
+                <div><span className="bold-700 margin-right-10">DATA.clientmessage:</span> { JSON.stringify( item.data.clientmessage) }</div>
+              </div>
+            ) )
+          }
         </div>
-        {
-          this.state.countMessages.length > 0 &&
-          this.state.countMessages.map( ( item, idx ) => (
-            <div key={ idx } className="ww-count-panel">
-              <div>ACTION: { item.action }</div>
-              <div>ID: { item.data.id }</div>
-              <div>INDEX: { item.data.index }</div>
-              <div>TOTAL: { item.data.total }</div>
-              <div>DATA: { item.data.data }</div>
-              <div>DATE: { item.data.date !== null && new Date( item.data.date ).toISOString() }</div>
-            </div>
-          ) )
-        }
+
       </div>
     );
   }
