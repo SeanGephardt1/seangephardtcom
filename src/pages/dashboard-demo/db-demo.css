@@ -89,7 +89,7 @@
 
 .ww-count-panel
 {
-  border: solid 1px var(--black);
+  border: solid 1px var(--black-01);
   font-size: 14px;
-  padding: 10px;
+  padding: 8px;
 }

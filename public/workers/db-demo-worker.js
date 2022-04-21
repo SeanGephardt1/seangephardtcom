@@ -7,6 +7,7 @@
 
 let i = 0;
 let _timer = undefined;
+let _cached_data = undefined;
 
 const _temp_data = {
   count: 107,
@@ -1040,13 +1041,47 @@ function QuickCount( data )
 
 async function FetchAPIData( _msg )
 { 
-  //  console.debug( 'db-demo-worker.js::FetchAPIData()', _temp_data );
+  //  console.debug( 'db-demo-worker.js::FetchAPIData()', _cached_data );
+
   //  READ RESPONSE BODY AND PARSE AS JSON
   const _url = "https://api.publicapis.org/entries";
-  let response = await fetch( _url );
-  let _commits = await response.json();
-  //  let _commits = { ..._temp_data };
-  //  console.debug( _commits.entries );
+  let _resp = undefined;
+  let _commits = undefined;
+
+  if ( _cached_data === undefined )
+  {
+    _resp = await fetch( _url );
+    _commits = await _resp.json();
+    //  let _commits = { ..._temp_data };
+    _commits.entries.sort( ( a, b ) =>
+    {
+      let _rv = 0;
+
+      if ( a.API.toLowerCase() < b.API.toLowerCase() )
+      {
+        _rv = -1;
+      }
+      else if ( a.API.toLowerCase() > b.API.toLowerCase() )
+      {
+        _rv = 1;
+      }
+      else if ( a.API.toLowerCase() === b.API.toLowerCase() )
+      {
+        _rv = 0;
+      }
+
+      //  console.debug( _rv );
+      return _rv;
+    } );
+
+    _cached_data = { ..._commits };
+    console.debug( "FETCHED", _commits.count, _cached_data.count );
+  }
+  else
+  {
+    _commits = _cached_data;
+    console.debug( "CACHED", _commits.count );
+  }
 
   let _page_start = undefined;  //  msg.page + msg.count
   let _page_end = _page_start + _msg.count;
@@ -1106,18 +1141,24 @@ this._default_message = function ( e )
 };
 
 this.onmessage = function ( e )
-{ //  console.debug( 'WORKER MESSAGE::', e.data );
+{ //  console.debug( 'WORKER MESSAGE::', e.data.action );
   switch ( e.data.action )
   {
     case "apis": {
       this.FetchAPIData( e.data );
       break;
     }
-    case "quickList": {
+    case "quickListStart": {
       i = 0;
       clearInterval( _timer );
       _timer = undefined;
       _timer = this.setInterval( () => { QuickCount( e.data ) }, e.data.timer_value );
+      break;
+    }
+    case "quickListStop": {
+      i = 0;
+      clearInterval( _timer );
+      _timer = undefined;
       break;
     }
     default:

@@ -13,7 +13,9 @@ export default class DashboardDemo extends React.Component
     },
     WorkerActions: {
       APIs: "apis",
-      QuickList: "quickList"
+      QuickListStart: "quickListStart",
+      QuickListStop: "quickListStop",
+
     }
   };
   constructor ( props )
@@ -47,11 +49,11 @@ export default class DashboardDemo extends React.Component
       switch ( event.data.action )
       {
         case _self.props.WorkerActions.APIs:
-          { //  console.debug( _self.props.WorkerActions.APIs, 'message event.data', event.data );
+          { // console.debug( _self.props.WorkerActions.APIs, 'message event.data', event.data );
             _self.setState( { apiMessage: event.data } );
             break;
           }
-        case _self.props.WorkerActions.QuickList:
+        case _self.props.WorkerActions.QuickListStart:
           { //  console.debug('count message event.data', event.data);
             if ( event.data.data === "STOPPED" )
             {
@@ -81,7 +83,7 @@ export default class DashboardDemo extends React.Component
 
   GetAPIData()
   { //  console.debug( "getGitHibCommits()", this.props.Workers.Git );
-    this.CreateWebWorker( this.props.Workers.Main );
+    //  this.CreateWebWorker( this.props.Workers.Main );
     this.webWorkerTask.postMessage( {
       action: this.props.WorkerActions.APIs,
       sent: new Date().toISOString(),
@@ -102,7 +104,6 @@ export default class DashboardDemo extends React.Component
   { //  console.debug( 'OnClick_PageResults', this.state.apiPagingIndex, idx, this.state.apiMessage, this.webWorkerTask );
 
     let _new_idx = this.state.apiPagingIndex + idx;
-    //  console.debug( '_new_idx', _new_idx );
 
     this.webWorkerTask.postMessage( {
       action: this.props.WorkerActions.APIs,
@@ -118,15 +119,16 @@ export default class DashboardDemo extends React.Component
   };
 
   startTimer()
-  {   //  console.debug( "startTimer()", this.webWorkerTask );
-    this.CreateWebWorker( this.props.Workers.Main );
+  { //  console.debug( "startTimer()", this.webWorkerTask );
+    //  this.CreateWebWorker( this.props.Workers.Main );
     this.webWorkerTask.postMessage( {
-      action: this.props.WorkerActions.QuickList,
+      action: this.props.WorkerActions.QuickListStart,
       id: "TEMP ID 9999",
       total: 3,
       data: 'Testing this web worker global script scope.',
       timer_value: 250
     } );
+
     this.setState( {
       cmRunning: true,
       countMessages: []
@@ -134,20 +136,27 @@ export default class DashboardDemo extends React.Component
     return;
   };
   stopTimer()
-  {   //  console.debug( "stopTimer()" );
-    if ( this.webWorkerTask !== undefined )
-    {
-      this.webWorkerTask.terminate();
-      this.webWorkerTask = undefined;
-    }
+  { //  console.debug( "stopTimer()", this.webWorkerTask);
+    this.webWorkerTask.postMessage( {
+        action: this.props.WorkerActions.QuickListStop
+      } );
+    //  this.webWorkerTask.terminate();
+
+    this.setState( { cmRunning: false } );
+    return;
+  };
+  clearCountMessage()
+  {
     this.setState( {
-      cmRunning: false
+      cmRunning: false,
+      countMessages: []
     } );
     return;
   };
 
   componentDidMount()
   {	//	console.debug( "DashboardDemo.componentDidMount()");
+    this.CreateWebWorker( this.props.Workers.Main );
     return;
   }
   componentWillUnmount()
@@ -267,8 +276,14 @@ export default class DashboardDemo extends React.Component
           <button
             tabIndex="0"
             className="db-app-btn"
+            style={ { 'marginRight': '10px' } }
             onClick={ this.stopTimer.bind( this ) }
             disabled={ this.state.cmRunning === false }>Stop</button>
+          <button
+            tabIndex="0"
+            className="db-app-btn"
+            onClick={ this.clearCountMessage.bind( this ) }
+            disabled={ this.state.countMessages.length === 0 }>Clear</button>
         </div>
         {
           this.state.countMessages.length > 0 &&
