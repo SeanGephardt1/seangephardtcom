@@ -1012,7 +1012,7 @@ function QuickCount( data )
 
   if ( i < data.numberOfResponses )
   {
-    let _new_message = new QuickCountMessage(data);
+    let _new_message = new QuickCountMessage( data );
     _new_message.index = i + 1;
     _new_message.id = 'QWW-' + Math.round( Math.random() * 10000 );
     _new_message.message = "Message Number " + _new_message.index.toString();
@@ -1039,36 +1039,39 @@ function QuickCount( data )
 };
 
 async function FetchAPIData( _msg )
-{
-  //  console.debug( 'db-demo-worker.js::FetchAPIData()', _cached_data );
+{ //  console.debug( 'db-demo-worker.js::FetchAPIData()', _cached_data );
 
   //  READ RESPONSE BODY AND PARSE AS JSON
   const _url = "https://api.publicapis.org/entries";
-  let _resp = undefined;
+  //  let _resp = undefined;
   let _commits = undefined;
 
   if ( _cached_data === undefined )
   {
-    _resp = await fetch( _url, {
+    await fetch( _url, {
       method: "GET",
       headers: {
         "Content-Type": "text/plain;charset=UTF-8"
       },
-      body: undefined,
       referrer: "",
       referrerPolicy: "no-referrer-when-downgrade",
       mode: "cors", // no-cors
-      credentials: "same-origin", // omit, include
-      cache: "default", // no-store, reload, no-cache, force-cache, or only-if-cached
-      redirect: "follow", // manual, error
-      integrity: "",
       keepalive: false, // true
-      signal: undefined, // AbortController to abort request
-      window: null
-    } );
-
-    _commits = await _resp.json();
+      } )
+      .then( response => response.json() )
+      .then( data =>
+      {
+        console.log( 'SUCCESS:', data );
+        _commits = data;
+        //  let _commits = { ..._temp_data };
+      } )
+      .catch( ( error ) =>
+      {
+        console.error( 'ERROR:', error );
+      } );
+    //  _commits = await _resp.json();
     //  let _commits = { ..._temp_data };
+
     _commits.entries.sort( ( a, b ) =>
     {
       let _rv = 0;
@@ -1091,7 +1094,7 @@ async function FetchAPIData( _msg )
     } );
 
     _cached_data = { ..._commits };
-    console.debug( "FETCHED", _commits.count, _cached_data.count );
+    console.debug( "FETCHED", _commits.count );
   }
   else
   {
@@ -1099,17 +1102,13 @@ async function FetchAPIData( _msg )
     console.debug( "CACHED", _commits.count );
   }
 
-  let _page_start = undefined;  //  msg.page + msg.count
+  // ADD MORE ERROR HANDLING FOR BAD APIS CALLS AND NO DATA
+  let _page_start = undefined;
   let _page_end = _page_start + _msg.count;
   let _max_page = Math.ceil( _commits.count / _msg.count );
 
-  //console.debug( "entries total", _commits.entries.length );
-  //console.debug( "page count", _msg.count );
-  //console.debug( "page index", _msg.page );
-  //console.debug( "total pages",_max_page  );
-
   if ( _msg.page > _max_page || _msg.page < 1 )
-  { // 
+  {
     console.debug( "OVER PAGED" )
     _page_start = 0;
     _page_end = 0;
@@ -1124,7 +1123,6 @@ async function FetchAPIData( _msg )
     _page_start = ( _msg.page - 1 ) * _msg.count;
     _page_end = _page_start + _msg.count;
   }
-
   //console.debug( '_page_start', _page_start );
   //console.debug( '_page_end', _page_end );
 
