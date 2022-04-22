@@ -23,7 +23,7 @@ main
 .page-layout
 {
 	/*	border: solid 1px var(--black);*/
-	/*	max-width:1024px;*/
+		max-width:1024px;
 	/*	margin:20px;*/
 	min-width: 280px;
 	display: flex;

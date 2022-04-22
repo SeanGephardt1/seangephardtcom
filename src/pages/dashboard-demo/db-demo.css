@@ -1,5 +1,4 @@
-﻿
-.db-app-btn
+﻿.db-app-btn
 {
   border:solid 1px var(--black-01);
   border-radius:4px;
@@ -97,8 +96,8 @@
 .ww-api-toolbar-table-panel > table > thead > tr > td
 {
   border: solid 1px transparent;
-  word-wrap: break-word;
-  width: 10%;
+  word-wrap:anywhere;
+  width: 1%;
   padding: 4px;
   background-color: var(--nav-color-4);
   color: var(--white);
@@ -115,6 +114,7 @@
   padding: 4px;
   font-size: 14px;
   text-align: left;
+  word-wrap: anywhere;
 }
 .ww-api-toolbar-table-panel > table > tbody > tr > td:first-child
 {

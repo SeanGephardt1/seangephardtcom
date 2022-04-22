@@ -243,7 +243,7 @@ export default class DashboardDemo extends React.Component
                 </div>
               </div>
               <div className="ww-api-toolbar-table-panel">
-                <table width="100%" cellPadding="0" cellSpacing="0">
+                <table cellPadding="0" cellSpacing="0">
                   <thead>
                     <tr>
                       <td>API</td>
