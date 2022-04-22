@@ -20,10 +20,10 @@ import AzureCaseStudyDemo from './azure-ux/azure-case-study.js';
 
 import MusicPage from './music/music.js';
 import MusicalTuner from './tuner/tuner.js';
-//  import TestPage from './test/test.js';
 //  import MovieStoreExtension from './movie-works-demo/movieworks.js';
 //  import GuitarApp from './guitar-app/guitar-app.js';
 //  import GuitarStoreExtension from './guitar-store/guitar-store.js';
+import TestPage from './test/test.js';
 
 const _nav_routes = [
   {
@@ -54,6 +54,9 @@ const _nav_routes = [
   },
   {
     component: MusicPage
+  },
+  {
+    component: TestPage
   },
 ];
 
@@ -101,6 +104,10 @@ const _app_routes = [
       {
         path: MusicalTuner.defaultProps.Href,
         element: <MusicalTuner />
+      },
+      {
+        path: TestPage.defaultProps.Href,
+        element: <TestPage />
       }
     ]
   }
