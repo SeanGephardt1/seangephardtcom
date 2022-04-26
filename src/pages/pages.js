@@ -9,7 +9,7 @@ import FourOhFourPage from './404/404.js';
 import Home from './home/home.js';
 import Resume from './resume/resume.js';
 import PortfolioPage from './portfolio/portfolio.js';
-import DashboardDemo from './dashboard-demo/db-demo.js';
+import WebWorkerDemo from './web-worker-demo/web-worker-demo.js';
 import SvgZoomDemo from './svg-zoom/svg-zoom.js';
 import WebGLDemo from './webgl-demo/webgl-demo.js';
 import AzureCaseStudyDemo from './azure-ux/azure-case-study.js';
@@ -39,7 +39,7 @@ const _nav_routes = [
         component: AzureCaseStudyDemo
       },
       {
-        component: DashboardDemo
+        component: WebWorkerDemo
       },
       {
         component: WebGLDemo
@@ -55,9 +55,9 @@ const _nav_routes = [
   {
     component: MusicPage
   },
-  //{
-  //  component: TestPage
-  //},
+  {
+    component: TestPage
+  },
 ];
 
 const _app_routes = [
@@ -82,8 +82,8 @@ const _app_routes = [
         element: <PortfolioPage />,
       },
       {
-        path: DashboardDemo.defaultProps.Href,
-        element: <DashboardDemo />
+        path: WebWorkerDemo.defaultProps.Href,
+        element: <WebWorkerDemo />
       },
       {
         path: WebGLDemo.defaultProps.Href,

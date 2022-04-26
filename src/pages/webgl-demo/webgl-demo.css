@@ -1,29 +1,31 @@
-﻿.canvas-demo-header
-{
-/*	border: solid 1px var(--black);*/
-	font-size:26px;
-	text-align:center;
-	padding:10px;
-}
-
+﻿
 .canvas-panel
 {
-	border: solid 1px var(--black-02);
-	background-color: var(--black-01);
+	border: solid 1px var(--black-01);
 	padding: 20px;
-	margin-left: 30px;
-	margin-right: 30px;
+	margin-bottom:10px;
 	display: flex;
 	justify-content: center;
 	justify-items: center;
 	align-content: center;
 	align-items: center;
 }
+
+.canvas-panel > button
+{
+	margin-right:6px;
+}
+.canvas-panel > button:last-child
+{
+	margin-right: 0px;
+}
+
+
 .canvas-2d
 {
 	/*	border: solid 1px var(--black-01);*/
 	width: 100%;
-	min-width: 260px;
+	min-width: 256px;
 	max-width: 512px;
 	object-fit: contain;
 	height: auto;

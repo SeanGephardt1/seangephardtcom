@@ -1,26 +1,4 @@
-﻿.db-app-btn
-{
-  border:solid 1px var(--black-01);
-  border-radius:4px;
-/*  margin:4px;*/
-  cursor:pointer;
-  padding:8px;
-  transition:all 200ms ease-in-out;
-}
-.db-app-btn[disabled],
-.db-app-btn[disabled]:hover,
-.db-app-btn[disabled]:focus
-{
-  background-color: var(--black-01);
-  color: var(--black-02);
-}
-.db-app-btn:hover
-{
-  background-color: var(--nav-color-4);
-  color: white;
-}
-
-.ww-sample-panel
+﻿.ww-sample-panel
 {
   border: solid 1px var(--black-01);
   max-width: 1024px;

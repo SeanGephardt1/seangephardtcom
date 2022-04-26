@@ -1,7 +1,7 @@
 import React from 'react';
-import './db-demo.css';
+import './web-worker-demo.css';
 
-export default class DashboardDemo extends React.Component
+export default class WebWorkerDemo extends React.Component
 {
   static defaultProps = {
     Title: "JavaScript Web Worker Examples",
@@ -205,13 +205,13 @@ export default class DashboardDemo extends React.Component
           <div className="ww-sample-tool-panel">
             <button
               tabIndex="0"
-              className="db-app-btn"
+              className="app-btn"
               onClick={ this.OnClick_Fetch_API_Data.bind( this ) }
               onKeyPress={ this.OnClick_Fetch_API_Data.bind( this ) }
               disabled={ this.state.apiRunning === true }>Fetch API data</button>
             <button
               tabIndex="0"
-              className="db-app-btn"
+              className="app-btn"
               onClick={ this.OnClick_Clear_API_Messages.bind( this ) }
               onKeyPress={ this.OnClick_Clear_API_Messages.bind( this ) }
               disabled={ this.state.apiMessage === undefined }>Clear</button>
@@ -288,17 +288,17 @@ export default class DashboardDemo extends React.Component
           <div className="ww-sample-tool-panel">
             <button
               tabIndex="0"
-              className="db-app-btn"
+              className="app-btn"
               onClick={ this.OnClick_StartTimer.bind( this ) }
               disabled={ this.state.cmRunning === true }>Send timer data</button>
             <button
               tabIndex="0"
-              className="db-app-btn"
+              className="app-btn"
               onClick={ this.OnClick_StopTimer.bind( this ) }
               disabled={ this.state.cmRunning === false }>Stop</button>
             <button
               tabIndex="0"
-              className="db-app-btn"
+              className="app-btn"
               onClick={ this.OnClick_ClearCountMessage.bind( this ) }
               disabled={ this.state.countMessages.length === 0 }>Clear</button>
           </div>

@@ -77,7 +77,8 @@ export default class WebGLDemo extends React.Component
   GetRandomIndices()
   {
     let _rv = [ 3, 2, 1, 3, 1, 0 ];
-    //  console.debug( "GetRandomIndices()::_rv", _rv );
+
+   //  console.debug( "GetRandomIndices()::_rv", _rv );
     return _rv;
   };
   RenderNewColors()
@@ -170,6 +171,13 @@ export default class WebGLDemo extends React.Component
     this.RenderNewColors();
     return;
   };
+  OnClick_ActivateRotation( e )
+  {
+    console.debug( 'OnClick_ActivateRotation', e );
+    return;
+  };
+
+
   componentDidMount() 
   { //	console.debug( "WebGLDemo.componentDidMount()", this.Canvas.current );
     this.RenderNewColors();
@@ -183,22 +191,28 @@ export default class WebGLDemo extends React.Component
   render()
   {
     return (
-      <div className="page-layout">
-        <div className="canvas-demo-header">{ this.Title }</div>
+      <div className="page-layout padding30">
+        <div className="header centered">{ this.props.Title }</div>
+
         <div className="canvas-panel">
-          <canvas id="html5-canvas"
-            className="canvas-2d"
-            ref={ this.Canvas }
-            height={ this.CanvasSize }
-            width={ this.CanvasSize }>
-          </canvas>
+            <canvas id="html5-canvas"
+              className="canvas-2d"
+              ref={ this.Canvas }
+              height={ this.CanvasSize }
+              width={ this.CanvasSize }>
+            </canvas>
         </div>
-        <div>
+
+        <div className="canvas-panel">
+            <button
+              tabIndex="0"
+              className="app-btn"
+            onClick={ this.OnClick_ChangeWGLColors.bind( this ) }>Generate new colors</button>
           <button
             tabIndex="0"
-            className="db-app-btn"
-            onClick={ this.OnClick_ChangeWGLColors.bind( this ) }>Generate</button>
-        </div>
+            className="app-btn"
+            onClick={ this.OnClick_ActivateRotation.bind( this ) }>Activate</button>
+          </div>
       </div>
     );
   }
