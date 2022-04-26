@@ -8,6 +8,7 @@
 
 
 import React from 'react';
+import WebGL_Utilities from './wgl-util.js';
 import './webgl-demo.css';
 
 export default class WebGLDemo extends React.Component
@@ -21,11 +22,14 @@ export default class WebGLDemo extends React.Component
   constructor ( props )
   {
     super( props );
+    document.title = this.props.Title;
 
     this.Canvas = React.createRef();
     this.WGL = undefined;
+    //  this.WGL_UTIL = WebGL_Utilities;
     this.CanvasSize = 1000;
 
+    this._default_indices = [ 3, 2, 1, 3, 1, 0 ];
     this._default_square_vertices = [
       -0.75, 0.75, 0.0,   //  top left
       -0.75, -0.75, 0.0,  //  bottom left
@@ -33,20 +37,27 @@ export default class WebGLDemo extends React.Component
       0.75, 0.75, 0.0     //  top right
       ];
     this._default_colors = [
-      0, 0, 1,  //  blue
-      1, 0, 0,  //  red
-      0, 1, 0,  //  green
-      0, 0, 0   //  
+      1, 0, 0,  //  RED
+      0, 0, 1,  //  BLUE
+      0, 1, 0,  //  GREEN
+      1, 1, 0   //  BLACK TOP RIGHT CORNER, 1,0,0 = NOP FADE IN TRC, 1,1,0 ADDED YELLOW/WHITE FADE, 1,1,1 ADD WHITE
     ];
-    this._default_indices = [ 3, 2, 1, 3, 1, 0 ];
 
     this._vert_code = 'attribute vec3 coordinates; attribute vec3 color; varying vec3 vColor; void main(void) { gl_Position = vec4(coordinates, 1.0); vColor = color; }';
     this._frag_code = 'precision mediump float; varying vec3 vColor;  void main(void) { gl_FragColor = vec4(vColor, 1.0); }';
 
-    document.title = this.props.Title;
+    // HOC props & state
+    this._activate_btn_text_default = "Activate";
+    this._activate_btn_text_stop = "Pause";
+
+    this.state = {
+      activateBtnRunning: false,
+      activateBtnText: this._activate_btn_text_default
+    };
     return;
   };
 
+  /* WEBGL SPECIFIC FUNCTIONS & METHODS */
   GetRandomSquareVertices()
   {
     //  let _pos_num = Math.random().toPrecision( 2 );
@@ -166,6 +177,105 @@ export default class WebGLDemo extends React.Component
     // Draw the triangle
     this.WGL.drawElements( this.WGL.TRIANGLES, indices.length, this.WGL.UNSIGNED_SHORT, 0 );
   };
+
+  SetDefaultWebGLInstance()
+  {
+    this.WGL = this.Canvas.current.getContext( "experimental-webgl" );
+
+    let vertices = this._default_square_vertices;
+    let colors = this._default_colors;
+    let indices = this._default_indices;
+
+    // Create an empty buffer object and store vertex data
+    var vertex_buffer = this.WGL.createBuffer();
+    this.WGL.bindBuffer( this.WGL.ARRAY_BUFFER, vertex_buffer );
+    this.WGL.bufferData( this.WGL.ARRAY_BUFFER, new Float32Array( vertices ), this.WGL.STATIC_DRAW );
+    this.WGL.bindBuffer( this.WGL.ARRAY_BUFFER, null );
+
+    // Create an empty buffer object and store Index data
+    let Index_Buffer = this.WGL.createBuffer();
+    this.WGL.bindBuffer( this.WGL.ELEMENT_ARRAY_BUFFER, Index_Buffer );
+    this.WGL.bufferData( this.WGL.ELEMENT_ARRAY_BUFFER, new Uint16Array( indices ), this.WGL.STATIC_DRAW );
+    this.WGL.bindBuffer( this.WGL.ELEMENT_ARRAY_BUFFER, null );
+
+    // Create an empty buffer object and store color data
+    let color_buffer = this.WGL.createBuffer();
+    this.WGL.bindBuffer( this.WGL.ARRAY_BUFFER, color_buffer );
+    this.WGL.bufferData( this.WGL.ARRAY_BUFFER, new Float32Array( colors ), this.WGL.STATIC_DRAW );
+
+    // Shaders 
+    // Create a vertex shader object
+    let vertShader = this.WGL.createShader( this.WGL.VERTEX_SHADER );
+    // Attach vertex shader source code
+    this.WGL.shaderSource( vertShader, this._vert_code );
+    // Compile the vertex shader
+    this.WGL.compileShader( vertShader );
+
+    // Create fragment shader object
+    let fragShader = this.WGL.createShader( this.WGL.FRAGMENT_SHADER );
+    // Attach fragment shader source code
+    this.WGL.shaderSource( fragShader, this._frag_code );
+    // Compile the fragmentt shader
+    this.WGL.compileShader( fragShader );
+
+    // Create a shader program object to store the combined shader program
+    let shaderProgram = this.WGL.createProgram();
+    // Attach a vertex shader
+    this.WGL.attachShader( shaderProgram, vertShader );
+    // Attach a fragment shader
+    this.WGL.attachShader( shaderProgram, fragShader );
+
+    // Link both the programs
+    this.WGL.linkProgram( shaderProgram );
+    // Use the combined shader program object
+    this.WGL.useProgram( shaderProgram );
+
+    /* ======== Associating shaders to buffer objects =======*/
+    // Bind vertex buffer object
+    this.WGL.bindBuffer( this.WGL.ARRAY_BUFFER, vertex_buffer );
+    // Bind index buffer object
+    this.WGL.bindBuffer( this.WGL.ELEMENT_ARRAY_BUFFER, Index_Buffer );
+    // Get the attribute location
+    let coord = this.WGL.getAttribLocation( shaderProgram, "coordinates" );
+    // point an attribute to the currently bound VBO
+    this.WGL.vertexAttribPointer( coord, 3, this.WGL.FLOAT, false, 0, 0 );
+    // Enable the attribute
+    this.WGL.enableVertexAttribArray( coord );
+
+    // bind the color buffer
+    this.WGL.bindBuffer( this.WGL.ARRAY_BUFFER, color_buffer );
+    // get the attribute location
+    let color = this.WGL.getAttribLocation( shaderProgram, "color" );
+    // point attribute to the volor buffer object
+    this.WGL.vertexAttribPointer( color, 3, this.WGL.FLOAT, false, 0, 0 );
+    // enable the color attribute
+    this.WGL.enableVertexAttribArray( color );
+
+    /*============Drawing the Quad====================*/
+    // Clear the canvas, RGBA
+    this.WGL.clearColor( 0, 0, 0, 1 );
+    // Enable the depth test
+    this.WGL.enable( this.WGL.DEPTH_TEST );
+    // Clear the color buffer bit
+    this.WGL.clear( this.WGL.COLOR_BUFFER_BIT );
+    // Set the view port
+    this.WGL.viewport( 0, 0, this.CanvasSize, this.CanvasSize );
+    // Draw the triangle
+    this.WGL.drawElements( this.WGL.TRIANGLES, indices.length, this.WGL.UNSIGNED_SHORT, 0 );
+  };
+
+
+
+  /* BUTTON HANDLERS */
+  OnClick_ResetDefaults( e )
+  { //  console.debug( 'OnClick_ResetDefaults', e );
+    this.SetDefaultWebGLInstance();
+    this.setState( {
+      activateBtnRunning: false,
+      activateBtnText: this._activate_btn_text_default
+    } );
+    return;
+  }
   OnClick_ChangeWGLColors( e )
   { //  console.debug( 'OnClick_ChangeWGLColors');
     this.RenderNewColors();
@@ -173,21 +283,36 @@ export default class WebGLDemo extends React.Component
   };
   OnClick_ActivateRotation( e )
   {
-    console.debug( 'OnClick_ActivateRotation', e );
+    console.debug( 'OnClick_ActivateRotation', this.state.activateBtnRunning );
+
+    let _temp_text;
+
+    if ( this.state.activateBtnRunning === false )
+    {
+      _temp_text = this._activate_btn_text_stop;
+    }
+    else if ( this.state.activateBtnRunning === true )
+    {
+      _temp_text = this._activate_btn_text_default;
+    }
+
+    this.setState( {
+      activateBtnRunning: !this.state.activateBtnRunning,
+      activateBtnText: _temp_text
+    } );
     return;
   };
 
-
+  /* REACT LIFECYCLE */
   componentDidMount() 
   { //	console.debug( "WebGLDemo.componentDidMount()", this.Canvas.current );
-    this.RenderNewColors();
+    this.SetDefaultWebGLInstance();
     return;
   };
   componentWillUnmount()
   {	//console.debug( "AppLoader.componentWillUnmount()", this.AnimationID );
     return;
   };
-
   render()
   {
     return (
@@ -211,8 +336,13 @@ export default class WebGLDemo extends React.Component
           <button
             tabIndex="0"
             className="app-btn"
-            onClick={ this.OnClick_ActivateRotation.bind( this ) }>Activate</button>
-          </div>
+            onClick={ this.OnClick_ActivateRotation.bind( this ) }>{ this.state.activateBtnText }</button>
+          <button
+            tabIndex="0"
+            className="app-btn"
+            onClick={ this.OnClick_ResetDefaults.bind( this ) }>Reset to default</button>
+        </div>
+
       </div>
     );
   }
