@@ -16,10 +16,11 @@ const _frequencies = [
   { name: "E2", value: 82.41, hertz: "mhz" },
 ];
 
-const _oscillators = {
+const _oscillator_types = {
+  Sine: "sine",
   Square: "square",
+  Sawtooth: "sawtooth",
   Triangle: "triangle",
-  Sine: "sine"
 };
 
 const _guitar_6_tones = [
@@ -34,6 +35,6 @@ const _guitar_6_tones = [
 export
 {
   _frequencies as FrequencyData,
-  _oscillators as Oscillators,
+  _oscillator_types as Oscillators,
   _guitar_6_tones as GuitarTunerTones
 };

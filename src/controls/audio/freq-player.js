@@ -1,5 +1,5 @@
 import React from 'react';
-import { GuitarTunerTones } from './freq-data.js';
+import { GuitarTunerTones, Oscillators } from './freq-data.js';
 import './audio.css';
 
 export default class FrequencyPlayer extends React.Component
@@ -25,11 +25,21 @@ export default class FrequencyPlayer extends React.Component
     this._gainNode = undefined; // audioCtx.createGain();
 
     this.state = {
-      isPlaying: false,
-      currentPitch: this._freq_tone_list[ 0 ],
+      currentOscillatorType: Oscillators.Sine,
+      isSelectPlaying: false,
+      selectCurrentPitch: this._freq_tone_list[ 0 ],
       isRangePlaying: false,
       rangeCurrentPitch: this._freq_tone_list[ 0 ]
     };
+    return;
+  };
+
+  // SELECT FUNCTION FOR CHANGING OSCILLATOR TYPES
+  OnChange_Select_ChangeOscillatorType( ev )
+  { //  console.debug( 'OnChange_Select_ChangeOscillatorType', ev.target.value, this._oscillator);
+    this.setState( {
+      currentOscillatorType: ev.target.value
+    } );
     return;
   };
 
@@ -40,9 +50,9 @@ export default class FrequencyPlayer extends React.Component
     this._audio_context = new AudioContext( this._default_context_options );
 
     this._oscillator = this._audio_context.createOscillator();
-    this._oscillator.type = 'square';
+    this._oscillator.type = this.state.currentOscillatorType;
     this._oscillator.frequency.value = 100;
-    this._oscillator.frequency.setValueAtTime( parseFloat( this.state.currentPitch.value ), this._audio_context.currentTime );
+    this._oscillator.frequency.setValueAtTime( parseFloat( this.state.selectCurrentPitch.value ), this._audio_context.currentTime );
 
     this._gainNode = this._audio_context.createGain();
 
@@ -51,7 +61,7 @@ export default class FrequencyPlayer extends React.Component
 
     this._oscillator.start();
 
-    this.setState( { isPlaying: true } );
+    this.setState( { isSelectPlaying: true } );
     return;
   };
   OnClick_Select_StopTone( ev )
@@ -59,7 +69,7 @@ export default class FrequencyPlayer extends React.Component
     if ( this._audio_context !== undefined )
     {
       this._oscillator.stop();
-      this.setState( { isPlaying: false } );
+      this.setState( { isSelectPlaying: false } );
     }
     return;
   };
@@ -69,29 +79,20 @@ export default class FrequencyPlayer extends React.Component
     if ( this._audio_context !== undefined )
     {
       this._oscillator.frequency.setValueAtTime( parseFloat( ev.target.value ), this._audio_context.currentTime );
-      //   console.debug( 'OnChange_SelectFrequencyTone', this._audio_context );
-      this.setState( {
-        currentPitch: this._freq_tone_list[ ev.target.selectedIndex ]
-      } );
     }
-    else
-    {
-      this.setState( {
-        currentPitch: this._freq_tone_list[ ev.target.selectedIndex ]
-      } );
-    }
+    this.setState( {
+      selectCurrentPitch: this._freq_tone_list[ ev.target.selectedIndex ]
+    } );
     return;
   }
 
   // INPUT RANGE SECTION METHODS
   OnClick_Range_PlayTone( ev )
-  { //  
-    console.debug( 'OnClick_PlayTone', this._audio_context, this.state.rangeCurrentPitch.value );
-
+  { //  console.debug( 'OnClick_PlayTone', this._audio_context, this.state.rangeCurrentPitch.value );
     this._audio_context = new AudioContext( this._default_context_options );
 
     this._oscillator = this._audio_context.createOscillator();
-    this._oscillator.type = 'square';
+    this._oscillator.type = this.state.currentOscillatorType;
     this._oscillator.frequency.value = 100;
     this._oscillator.frequency.setValueAtTime( parseFloat( this.state.rangeCurrentPitch.value ), this._audio_context.currentTime );
 
@@ -115,11 +116,9 @@ export default class FrequencyPlayer extends React.Component
     return;
   };
   OnChange_Range_ChangeTone( ev )
-  {
-    console.debug( 'OnChange_Slider_ChangeTone', ev.target.value, this._audio_context );
-
+  { //  console.debug( 'OnChange_Slider_ChangeTone', ev.target.value, this._audio_context );
     let _current_slider_pitch = this._freq_tone_list[ parseInt( ev.target.value ) ];
-    console.debug( '_current_slider_pitch', _current_slider_pitch );
+    //  console.debug( '_current_slider_pitch', _current_slider_pitch );
 
     if ( this._audio_context !== undefined )
     {
@@ -155,9 +154,28 @@ export default class FrequencyPlayer extends React.Component
         <div className="tuner-panel-layout">
           <select
             tabIndex="0"
+            title="Select from the list of oscillator types."
+            className="select-pitch-range"
+            defaultValue={ this.state.currentOscillatorType }
+            onChange={ this.OnChange_Select_ChangeOscillatorType.bind( this ) }
+            disabled={ this.state.isRangePlaying === true || this.state.isSelectPlaying === true }>
+            {
+              Object.entries( Oscillators ).map( ( [ key, val ] ) =>
+                <option
+                  key={ key }
+                  title={ key }
+                  value={ val }>{ key }</option>
+              ) 
+            }
+          </select>
+        </div>
+
+        <div className="tuner-panel-layout">
+          <select
+            tabIndex="0"
             title="Select from the full range of tones."
             className="select-pitch-range"
-            defaultValue={ this.state.currentPitch.value }
+            defaultValue={ this.state.selectCurrentPitch.value }
             onChange={ this.OnChange_Select_ChangeTone.bind( this ) }>
             {
               this._freq_tone_list.map( ( item, idx ) => (
@@ -174,14 +192,14 @@ export default class FrequencyPlayer extends React.Component
             title="Click to begin playing the selected sound."
             className="app-btn"
             onClick={ this.OnClick_Select_PlayTone.bind( this ) }
-            disabled={ this.state.isPlaying }>Play</button>
+            disabled={ this.state.isSelectPlaying }>Play</button>
           <button
             tabIndex="0"
             type="button"
             title="Click to stop playing the selected sound."
             className="app-btn"
             onClick={ this.OnClick_Select_StopTone.bind( this ) }
-            disabled={ !this.state.isPlaying }>Stop</button>
+            disabled={ !this.state.isSelectPlaying }>Stop</button>
         </div>
 
         <div className="tuner-panel-layout">
