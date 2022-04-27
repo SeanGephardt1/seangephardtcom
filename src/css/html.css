@@ -34,7 +34,8 @@ a:hover
 	text-decoration:underline;
 }
 
-:focus {
+:focus 
+{
 	outline: dotted 1px var(--focus-lapis);
 }
 ::placeholder
@@ -45,7 +46,8 @@ a:hover
 	font-family: 'Calibri Light';
 }
 
-button, select
+button, select, input[type=range]
 {
-	cursor:pointer;
+	cursor: pointer;
+	border-radius: 2px;
 }

@@ -19,9 +19,9 @@ import './tuner.css';
 export default class MusicalTuner extends React.Component
 {
   static defaultProps = {
-    Title: "Musical Tuner",
-    LinkTitle: "Musical Tuner",
-    Href: "portfolio/tuner",
+    Title: "Musical Toys",
+    LinkTitle: "Musical Toys",
+    Href: "portfolio/music-toys",
     Icon: "",
   };
   constructor ( props )

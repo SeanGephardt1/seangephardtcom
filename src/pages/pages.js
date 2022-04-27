@@ -1,29 +1,32 @@
 //  Update for React router 6 
 //  Used in ./app.js & ./controls/nav/navigation.js
-
 import * as React from "react";
 import { useRoutes } from "react-router-dom";
 
+// top-level pages
 import LayoutPage from './layout.js';
 import FourOhFourPage from './404/404.js';
+import TestPage from './test/test.js';
 import Home from './home/home.js';
 import Resume from './resume/resume.js';
 import PortfolioPage from './portfolio/portfolio.js';
+import MusicPage from './music/music.js';
+
+// portfolio level  pages
 import WebWorkerDemo from './web-worker-demo/web-worker-demo.js';
 import SvgZoomDemo from './svg-zoom/svg-zoom.js';
 import WebGLDemo from './webgl-demo/webgl-demo.js';
 import AzureCaseStudyDemo from './azure-ux/azure-case-study.js';
-//import SvgAnimationsDemo from './svg-animations/svg-animations.js';
-//import Html5CanvasDemo from './canvas-demo/canvas-demo.js';
-//import CssArtPage from './css-art/css-art.js';
-//import ButtonAnimations from './button-animations/button-animations.js';
+import AudioToysDemoPage from './audio-toys/audio-toys.js';
 
-import MusicPage from './music/music.js';
-import MusicalTuner from './tuner/tuner.js';
+// WIP pages
 //  import MovieStoreExtension from './movie-works-demo/movieworks.js';
 //  import GuitarApp from './guitar-app/guitar-app.js';
 //  import GuitarStoreExtension from './guitar-store/guitar-store.js';
-import TestPage from './test/test.js';
+//  import SvgAnimationsDemo from './svg-animations/svg-animations.js';
+//  import Html5CanvasDemo from './canvas-demo/canvas-demo.js';
+//  import CssArtPage from './css-art/css-art.js';
+//  import ButtonAnimations from './button-animations/button-animations.js';
 
 const _nav_routes = [
   {
@@ -48,7 +51,7 @@ const _nav_routes = [
         component: SvgZoomDemo
       },
       {
-        component: MusicalTuner
+        component: AudioToysDemoPage
       },
     ]
   },
@@ -102,8 +105,8 @@ const _app_routes = [
         element: <MusicPage />
       },
       {
-        path: MusicalTuner.defaultProps.Href,
-        element: <MusicalTuner />
+        path: AudioToysDemoPage.defaultProps.Href,
+        element: <AudioToysDemoPage />
       },
       {
         path: TestPage.defaultProps.Href,
@@ -123,6 +126,6 @@ export
 {
   _nav_routes as NavList,
   _app_routes as RoutesList,
-  AppRoutes, 
+  AppRoutes,
   FourOhFourPage as FourOh4
-}
+};
