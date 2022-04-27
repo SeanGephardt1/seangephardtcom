@@ -61,7 +61,9 @@ export default class FrequencyPlayer extends React.Component
 
     this._oscillator.start();
 
-    this.setState( { isSelectPlaying: true } );
+    this.setState( {
+      isSelectPlaying: true
+    } );
     return;
   };
   OnClick_Select_StopTone( ev )
@@ -168,6 +170,7 @@ export default class FrequencyPlayer extends React.Component
               ) 
             }
           </select>
+          <span>Select from the list of oscillator types available in your browser.</span>
         </div>
 
         <div className="tuner-panel-layout">
@@ -175,6 +178,7 @@ export default class FrequencyPlayer extends React.Component
             tabIndex="0"
             title="Select from the full range of tones."
             className="select-pitch-range"
+            disabled={ this.state.isRangePlaying }
             defaultValue={ this.state.selectCurrentPitch.value }
             onChange={ this.OnChange_Select_ChangeTone.bind( this ) }>
             {
@@ -192,14 +196,16 @@ export default class FrequencyPlayer extends React.Component
             title="Click to begin playing the selected sound."
             className="app-btn"
             onClick={ this.OnClick_Select_PlayTone.bind( this ) }
-            disabled={ this.state.isSelectPlaying }>Play</button>
+            onKeyPress={ this.OnClick_Select_PlayTone.bind( this ) }
+            disabled={ this.state.isSelectPlaying || this.state.isRangePlaying}>Play</button>
           <button
             tabIndex="0"
             type="button"
             title="Click to stop playing the selected sound."
             className="app-btn"
             onClick={ this.OnClick_Select_StopTone.bind( this ) }
-            disabled={ !this.state.isSelectPlaying }>Stop</button>
+            onKeyPress={ this.OnClick_Select_StopTone.bind( this ) }
+            disabled={ !this.state.isSelectPlaying || this.state.isRangePlaying}>Stop</button>
         </div>
 
         <div className="tuner-panel-layout">
@@ -226,21 +232,24 @@ export default class FrequencyPlayer extends React.Component
             min="0"
             defaultValue="0"
             max={ this._freq_tone_list.length - 1 }
-            onChange={ this.OnChange_Range_ChangeTone.bind( this ) }></input>
+            onChange={ this.OnChange_Range_ChangeTone.bind( this ) }
+            disabled={ this.state.isSelectPlaying }></input>
           <button
             tabIndex="0"
             type="button"
             title="Click to begin playing the selected sound."
             className="app-btn"
             onClick={ this.OnClick_Range_PlayTone.bind( this ) }
-            disabled={ this.state.isRangePlaying }>Play</button>
+            onKeyPress={ this.OnClick_Range_PlayTone.bind( this ) }
+            disabled={ this.state.isRangePlaying || this.state.isSelectPlaying }>Play</button>
           <button
             tabIndex="0"
             type="button"
             title="Click to stop playing the selected sound."
             className="app-btn"
             onClick={ this.OnClick_Range_StopTone.bind( this ) }
-            disabled={ !this.state.isRangePlaying }>Stop</button>
+            onKeyPress={ this.OnClick_Range_StopTone.bind( this ) }
+            disabled={ !this.state.isRangePlaying || this.state.isSelectPlaying }>Stop</button>
         </div>
 
       </div>
