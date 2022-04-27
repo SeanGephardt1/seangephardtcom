@@ -32,13 +32,13 @@
 
 
 /* specific audio control styles */
-.tuner-selected
+.select-pitch-range
 {
   background-color: var(--black-01);
   color: var(--nav-color-4);
   font-weight: 900;
   min-width: 170px;
-  width:200px;
+  width: 200px;
   padding-left: 10px;
   padding-right: 10px;
 }

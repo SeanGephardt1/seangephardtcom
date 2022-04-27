@@ -156,7 +156,7 @@ export default class FrequencyPlayer extends React.Component
           <select
             tabIndex="0"
             title="Select from the full range of tones."
-            className="tuner-selected"
+            className="select-pitch-range"
             defaultValue={ this.state.currentPitch.value }
             onChange={ this.OnChange_Select_ChangeTone.bind( this ) }>
             {
@@ -193,7 +193,7 @@ export default class FrequencyPlayer extends React.Component
               this._freq_tone_list.map( ( item, idx ) => (
                 <option
                   key={ idx }
-                  value={ idx }/ >
+                  value={ idx } />
               ) )
             }
           </datalist>
@@ -207,7 +207,7 @@ export default class FrequencyPlayer extends React.Component
             step="1"
             min="0"
             defaultValue="0"
-            max={ this._freq_tone_list.length - 1}
+            max={ this._freq_tone_list.length - 1 }
             onChange={ this.OnChange_Range_ChangeTone.bind( this ) }></input>
           <button
             tabIndex="0"
@@ -224,6 +224,7 @@ export default class FrequencyPlayer extends React.Component
             onClick={ this.OnClick_Range_StopTone.bind( this ) }
             disabled={ !this.state.isRangePlaying }>Stop</button>
         </div>
+
       </div>
     );
   }
