@@ -6,6 +6,7 @@ https://mdn.github.io/webaudio-examples/audiocontext-states/
 https://github.com/mdn/webaudio-examples/blob/master/audiocontext-states/index.html
 
 AUDIO THEORY LINKS
+https://pages.mtu.edu/~suits/Physicsofmusic.html
 https://pages.mtu.edu/~suits/scales.html
 https://en.wikipedia.org/wiki/Scientific_pitch_notation
 https://musicianself.com/guitar-101-standard-tuning-chromatic-scales-sequence-of-notes-fretboard/#:~:text=Middle%20C%20is%20C4%3D261.6Hz%20Standard%20tuning%20fork%20A,strings%20are%20E2%3D82.41Hz%2C%20A2%3D110Hz%2C%20D3%3D146.8Hz%2C%20G3%3D196Hz%2C%20B3%3D246.9Hz%2C%20E4%3D329.6Hz

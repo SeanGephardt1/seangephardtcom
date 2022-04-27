@@ -1,5 +1,5 @@
 import React from 'react';
-import { GuitarTunerTones, Oscillators } from './freq-data.js';
+import { Frequencies440Filtered, GuitarTunerTones, Oscillators, AudioHertz } from './freq-data.js';
 import './audio.css';
 
 export default class FrequencyPlayer extends React.Component
@@ -8,14 +8,16 @@ export default class FrequencyPlayer extends React.Component
     Title: "Frequency Player",
     LinkTitle: "Frequency Player",
     Href: "portfolio/freq-player",
-    Description: "Select a value from the drop down list to hear the specific audio frequency. Tones are described by both thier musical pitch and audio frequency.",
+    Description: "Select a value from the drop down list to hear the specific audio frequency. Octaves 1-5 are available, other octaves have been filtered out due to browser support issue. Tones are described by both their musical pitch and audio frequency.",
     Icon: "",
   };
   constructor ( props )
   {
     super( props );
 
-    this._freq_tone_list = GuitarTunerTones;
+    this._freq_tone_list = Frequencies440Filtered; //GuitarTunerTones;
+    this._guitar_tone_list = GuitarTunerTones;
+
     this._default_context_options = {
       latencyHint: 0, // 0.147 , 0.294 -- "interactive", // "balanced", "playback"
       sampleRate: 3000, // max == 768000
@@ -29,7 +31,7 @@ export default class FrequencyPlayer extends React.Component
       isSelectPlaying: false,
       selectCurrentPitch: this._freq_tone_list[ 0 ],
       isRangePlaying: false,
-      rangeCurrentPitch: this._freq_tone_list[ 0 ]
+      rangeCurrentPitch: this._guitar_tone_list[ 0 ]
     };
     return;
   };
@@ -119,7 +121,7 @@ export default class FrequencyPlayer extends React.Component
   };
   OnChange_Range_ChangeTone( ev )
   { //  console.debug( 'OnChange_Slider_ChangeTone', ev.target.value, this._audio_context );
-    let _current_slider_pitch = this._freq_tone_list[ parseInt( ev.target.value ) ];
+    let _current_slider_pitch = this._guitar_tone_list[ parseInt( ev.target.value ) ];
     //  console.debug( '_current_slider_pitch', _current_slider_pitch );
 
     if ( this._audio_context !== undefined )
@@ -185,8 +187,8 @@ export default class FrequencyPlayer extends React.Component
               this._freq_tone_list.map( ( item, idx ) => (
                 <option
                   key={ idx }
-                  title={ item.name + ' -> ' + item.value.toString() }
-                  value={ item.value }>{ item.name } &rarr; { item.value.toString() } { item.hertz.toString() }</option>
+                  title={ item.name + item.octave + ' -> ' + item.value.toString() }
+                  value={ item.value }>{ item.name }{ item.octave } &rarr; { item.value.toString() } { AudioHertz }</option>
               ) )
             }
           </select>
@@ -208,13 +210,14 @@ export default class FrequencyPlayer extends React.Component
             disabled={ !this.state.isSelectPlaying || this.state.isRangePlaying}>Stop</button>
         </div>
 
+        <div className="tuner-panel-sub-header">Select standard guitar tuning Pitches</div>
         <div className="tuner-panel-layout">
           <span
             className="range-text">
-            { this.state.rangeCurrentPitch.name } &rarr; { this.state.rangeCurrentPitch.value.toString() } { this.state.rangeCurrentPitch.hertz.toString() }</span>
+            { this.state.rangeCurrentPitch.name }{ this.state.rangeCurrentPitch.octave } &rarr; { this.state.rangeCurrentPitch.value.toString() } { AudioHertz }</span>
           <datalist id="range-slider-pitches">
             {
-              this._freq_tone_list.map( ( item, idx ) => (
+              this._guitar_tone_list.map( ( item, idx ) => (
                 <option
                   key={ idx }
                   value={ idx } />
@@ -231,7 +234,7 @@ export default class FrequencyPlayer extends React.Component
             step="1"
             min="0"
             defaultValue="0"
-            max={ this._freq_tone_list.length - 1 }
+            max={ this._guitar_tone_list.length - 1 }
             onChange={ this.OnChange_Range_ChangeTone.bind( this ) }
             disabled={ this.state.isSelectPlaying }></input>
           <button
