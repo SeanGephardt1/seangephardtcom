@@ -9,6 +9,7 @@
 
 import React from 'react';
 import WebGL_Utilities from './wgl-util.js';
+import WorkInProgressControl from '../../controls/wip/wip.js';
 import './webgl-demo.css';
 
 export default class WebGLDemo extends React.Component
@@ -264,8 +265,6 @@ export default class WebGLDemo extends React.Component
     this.WGL.drawElements( this.WGL.TRIANGLES, indices.length, this.WGL.UNSIGNED_SHORT, 0 );
   };
 
-
-
   /* BUTTON HANDLERS */
   OnClick_ResetDefaults( e )
   { //  console.debug( 'OnClick_ResetDefaults', e );
@@ -282,9 +281,7 @@ export default class WebGLDemo extends React.Component
     return;
   };
   OnClick_ActivateRotation( e )
-  {
-    console.debug( 'OnClick_ActivateRotation', this.state.activateBtnRunning );
-
+  { //  console.debug( 'OnClick_ActivateRotation', this.state.activateBtnRunning );
     let _temp_text;
 
     if ( this.state.activateBtnRunning === false )
@@ -317,6 +314,7 @@ export default class WebGLDemo extends React.Component
   {
     return (
       <div className="page-layout padding30">
+
         <div className="header centered">{ this.props.Title }</div>
 
         <div className="canvas-panel">
@@ -336,14 +334,15 @@ export default class WebGLDemo extends React.Component
           <button
             tabIndex="0"
             className="app-btn"
-            onClick={ this.OnClick_ActivateRotation.bind( this ) }>{ this.state.activateBtnText }</button>
+            onClick={ this.OnClick_ActivateRotation.bind( this ) }
+            >{ this.state.activateBtnText }</button>
           <button
             tabIndex="0"
             className="app-btn"
             onClick={ this.OnClick_ResetDefaults.bind( this ) }>Reset to default</button>
         </div>
 
-      </div>
+        </div>
     );
   }
 };

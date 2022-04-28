@@ -1,57 +1,17 @@
-﻿.select-svg-list
+﻿svg.bg-svg-container
 {
-/*	border: solid 1px red;*/
-	display:flex;
-	flex: 0 1 auto;
-	text-align:center;
-	align-items:center;
-	padding-right:20px;
-}
-.select-svg-list > span
-{
-	margin-right:20px;
-}
-
-.zoom-range
-{
-/*	border: solid 1px red;*/
-	display:flex;
-	flex: 1 1 auto;
-	text-align:center;
-	justify-content:center;
-	align-items:center;
-}
-.zoom-range > label 
-{
-	display:flex;
-}
-.zoom-range > span
-{
-/*	border: solid 1px red;*/
-	padding-left: 10px;
-	padding-right:10px;
-	min-width:50px;
-}
-.zoom-range > span:last-child
-{
-	font-weight:700;
-}
-
-/* SVG STYLES */
-svg.bg-svg-container
-{
-	border: solid 1px var(--black-02);
+	border: solid 1px var(--black-01);
 	cursor:grab;
 	margin-bottom:20px;
 }
 svg.bg-svg-container-grabbing
 {
-	border: solid 1px var(--black-02);
+	border: solid 1px var(--black-07);
 	cursor:grabbing;
 }
 rect#debugRect
 {
-	fill:rgba(242,242,242,1);
+	fill:var(--black-01);
 	z-index:0;
 }
 svg.bg-svg-container > g#SvgChildDraggable1

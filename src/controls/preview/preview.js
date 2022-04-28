@@ -1,5 +1,5 @@
 import React from 'react';
-import './preview.min.css';
+import './preview.css';
 
 export class PreviewControl extends React.Component
 {

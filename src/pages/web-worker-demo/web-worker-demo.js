@@ -227,17 +227,17 @@ export default class WebWorkerDemo extends React.Component
                 <div>
                   <button
                     tabIndex="0"
-                    className="db-app-btn"
+                    className="app-btn"
                     onClick={ this.OnClick_PageResults.bind( this, -1 ) }
                     disabled={ this.state.apiPagingIndex === 1 }>Previous Page</button>
                 </div>
                 <div className="ww-api-tool-centered">
-                  <span >Page { this.state.apiPagingIndex } of { this.state.apiMessage.pageCount }</span>
+                  <span >Page <b>{ this.state.apiPagingIndex }</b> of <b>{ this.state.apiMessage.pageCount }</b> results.</span>
                 </div>
                 <div>
                   <button
                     tabIndex="0"
-                    className="db-app-btn"
+                    className="app-btn"
                     onClick={ this.OnClick_PageResults.bind( this, 1 ) }
                     disabled={ this.state.apiPagingIndex === this.state.apiMessage.pageCount }>Next Page</button>
                 </div>
