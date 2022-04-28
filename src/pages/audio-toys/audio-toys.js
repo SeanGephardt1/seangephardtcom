@@ -25,11 +25,8 @@ export default class AudioToysDemoPage extends React.Component
   };
 
   ToggleAudioPlayback()
-  {
-    console.debug( 'ToggleAudioPlayback', this.state, this.context );
-
-    this.context.isAudioPlaying = !this.context.isAudioPlaying;
-
+  { //  console.debug( 'ToggleAudioPlayback', this.state, this.context );
+    this.context.SetPlayingStatus( !this.context.isAudioPlaying );
     this.setState( {
       isPlaying: this.context.isAudioPlaying
     } );
@@ -39,6 +36,7 @@ export default class AudioToysDemoPage extends React.Component
   /* REACT LIFECYCLE */
   componentDidMount()
   {	//  console.debug( "componentDidMount()" );
+    this.context.TogglePlaying = this.ToggleAudioPlayback.bind( this );
     return;
   }
   componentDidUpdate()
@@ -51,10 +49,6 @@ export default class AudioToysDemoPage extends React.Component
   };
   render()
   {
-    this.context.TogglePlaying = this.ToggleAudioPlayback.bind( this );
-
-    //  console.debug( 'AudioToysDemoPage.render()', this.state, this.context );
-
     return (
       <div className="page-layout padding30">
         <AppAudioPageContext.Provider value={ this.context }>

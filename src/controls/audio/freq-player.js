@@ -200,7 +200,10 @@ export default class FrequencyPlayer extends React.Component
             tabIndex="0"
             title="Select from the full range of tones."
             className="select-pitch-range"
-            disabled={ this.context.isAudioPlaying && !this.state.isSelectPlaying && !this.state.isRangePlaying }
+            disabled={
+              this.context.isAudioPlaying && !this.state.isSelectPlaying ||
+              this.context.isAudioPlaying && this.state.isRangePlaying
+            }
             defaultValue={ this.state.selectCurrentPitch.value }
             onChange={ this.OnChange_Select_ChangeTone.bind( this ) }>
             {
@@ -255,7 +258,10 @@ export default class FrequencyPlayer extends React.Component
             defaultValue="0"
             max={ this._guitar_tone_list.length - 1 }
             onChange={ this.OnChange_Range_ChangeTone.bind( this ) }
-            disabled={ this.state.isSelectPlaying }></input>
+            disabled={
+              this.context.isAudioPlaying && this.state.isSelectPlaying ||
+              this.context.isAudioPlaying && !this.state.isRangePlaying
+            }></input>
           <button
             tabIndex="0"
             type="button"

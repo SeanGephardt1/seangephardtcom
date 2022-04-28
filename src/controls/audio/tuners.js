@@ -35,7 +35,7 @@ export default class TunersControl extends React.Component
     this._gainNode = undefined; // audioCtx.createGain();
 
     this.state = {
-      currentOscillatorType: Oscillators.Sawtooth,
+      currentOscillatorType: Oscillators.Triangle,
       currentPlaytime: this._play_times[0],
       isPlaying: false,
       currentPitch: undefined,
@@ -58,16 +58,13 @@ export default class TunersControl extends React.Component
   };
 
   // GUITAR TUNER BUTTONS
-  OnClick_PlaySingleTone( ev )
-  {
-    console.debug( 'OnClick_Guitar_PlaySingleTone', ev.target.value, this.state.currentPlaytime );
-
+  OnClick_PlaySingleTone( toneArray, ev )
+  { //  console.debug( 'OnClick_PlaySingleTone', ev.target.value, toneArray );
     const _self = this;
-    let _pitch = this._guitar_tone_list[ ev.target.value ];
-    console.debug( '_pitch', _pitch );
+    let _pitch = toneArray[ ev.target.value ];
+    //  console.debug( '_pitch', _pitch );
 
     this._audio_context = new AudioContext( this._default_context_options );
-
     this._oscillator = this._audio_context.createOscillator();
     this._oscillator.type = this.state.currentOscillatorType;
     this._oscillator.frequency.value = 100;
@@ -80,10 +77,14 @@ export default class TunersControl extends React.Component
 
     this._oscillator.start();
 
-    // SET TIMEOUT AND OTHER CONTROL ELEMENTS TO DISABLED
+    this.context.TogglePlaying();
+    this.setState( {
+      currentPitch: _pitch,
+      isPlaying: this.context.isAudioPlaying
+    } );
+
     window.setTimeout( () =>
-    {
-      //  console.debug( "PLAYBACK TIMEOUT", _self.context );
+    { //  console.debug( "PLAYBACK TIMEOUT", _self.context );
       _self.context.TogglePlaying();
       _self._oscillator.stop();
       _self.setState( {
@@ -92,12 +93,6 @@ export default class TunersControl extends React.Component
       } );
       return;
     }, this.state.currentPlaytime * 1000 , _self );
-
-    this.context.TogglePlaying();
-    this.setState( {
-      currentPitch: _pitch,
-      isPlaying: this.context.isAudioPlaying
-    } );
     return;
   };
 
@@ -114,10 +109,8 @@ export default class TunersControl extends React.Component
     return;
   };
   render()
-  {
-    console.debug( 'TunersControl.render()', this.context );
+  { //  console.debug( 'TunersControl.render()', this.context.isAudioPlaying );
     return (
-
       <div className="tuner-panel">
         <div className="tuner-panel-header">{ this.props.Title }</div>
         <div className="tuner-panel-sub-header">{ this.props.Description }</div>
@@ -130,7 +123,7 @@ export default class TunersControl extends React.Component
             className="select-pitch-range"
             defaultValue={ this.state.currentOscillatorType }
             onChange={ this.OnChange_Select_ChangeOscillatorType.bind( this ) }
-            disabled={ this.state.isPlaying || this.context.isAudioPlaying }>
+            disabled={ this.context.isAudioPlaying }>
             {
               Object.entries( Oscillators ).map( ( [ key, val ] ) =>
                 <option key={ key } title={ key } value={ val }>{ key }</option>
@@ -143,7 +136,7 @@ export default class TunersControl extends React.Component
             className="select-pitch-range"
             defaultValue={ this._play_times[ 0 ] }
             onChange={ this.OnChange_Select_ChangePlaybackTime.bind( this ) }
-            disabled={ this.state.isPlaying || this.context.isAudioPlaying }>
+            disabled={ this.context.isAudioPlaying }>
             {
               this._play_times.map( ( item, idx ) => (
                 <option key={ idx } title={ item } value={ item }>{ item } { item === 1 ? 'second' : 'seconds' }</option>
@@ -158,14 +151,14 @@ export default class TunersControl extends React.Component
             this._guitar_tone_list.map( ( item, idx ) => (
               <button
                 key={ idx }
+                value={ idx }
                 tabIndex="0"
                 type="button"
                 className="app-btn"
                 title={ 'Play ' + item.name + item.octave }
-                onClick={ this.OnClick_PlaySingleTone.bind( this ) }
-                onKeyPress={ this.OnClick_PlaySingleTone.bind( this ) }
-                value={ idx }
-                disabled={ this.state.isPlaying || this.context.isAudioPlaying }>{ item.name }{ item.octave }</button>
+                onClick={ this.OnClick_PlaySingleTone.bind( this, this._guitar_tone_list ) }
+                onKeyPress={ this.OnClick_PlaySingleTone.bind( this, this._guitar_tone_list ) }
+                disabled={ this.context.isAudioPlaying }>{ item.name }{ item.octave }</button>
             ) )
           }
         </div>
@@ -176,13 +169,14 @@ export default class TunersControl extends React.Component
             this._bass_guitar_tone_list.map( ( item, idx ) => (
               <button
                 key={ idx }
+                value={ idx }
                 tabIndex="0"
                 type="button"
-                title="Click to begin playing the selected sound."
+                title={ 'Play ' + item.name + item.octave }
                 className="app-btn"
-                onClick={ this.OnClick_PlaySingleTone.bind( this ) }
-                onKeyPress={ this.OnClick_PlaySingleTone.bind( this ) }
-                disabled={ this.state.isPlaying || this.context.isAudioPlaying }>{ item.name }{ item.octave }</button>
+                onClick={ this.OnClick_PlaySingleTone.bind( this, this._bass_guitar_tone_list ) }
+                onKeyPress={ this.OnClick_PlaySingleTone.bind( this, this._bass_guitar_tone_list ) }
+                disabled={ this.context.isAudioPlaying }>{ item.name }{ item.octave }</button>
             ) )
           }
         </div>
