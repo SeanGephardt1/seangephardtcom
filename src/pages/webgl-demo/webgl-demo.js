@@ -8,8 +8,7 @@
 
 
 import React from 'react';
-import WebGL_Utilities from './wgl-util.js';
-import WorkInProgressControl from '../../controls/wip/wip.js';
+//  import WebGL_Utilities from './wgl-util.js';
 import './webgl-demo.css';
 
 export default class WebGLDemo extends React.Component

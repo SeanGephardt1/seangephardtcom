@@ -8,6 +8,7 @@ svg.bg-svg-container-grabbing
 {
 	border: solid 1px var(--black-07);
 	cursor:grabbing;
+	margin-bottom:20px;
 }
 rect#debugRect
 {

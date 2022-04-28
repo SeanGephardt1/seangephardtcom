@@ -1,94 +1,68 @@
-﻿/* tele svg */
-.cls-1, .cls-2, .cls-3, .cls-4, .cls-5, .cls-6
+﻿.debug-svg-red
 {
-fill: none;
+  fill: rgba(128,0,0,1);
+}
+.debug-svg-blue
+{
+  fill: rgba(0,0,192,1);
 }
 
-.cls-1
+.stroke-box
 {
-stroke: var(--black-01);
-stroke-width: 1px;
+  stroke:rgba(255,0,0,1);
+  stroke-width:10px;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation-direction:normal;
+  animation-iteration-count:infinite;
+  animation-name: GradBoxRotate;
+  animation-play-state:running;
+  animation-timing-function:linear;
+  animation-duration:2000ms;
+  animation-fill-mode:both;
+}
+.sb-ani-center
+{
+  animation-delay:300ms;
+}
+.sb-ani-top-left
+{
+  animation-delay:500ms;
+}
+.sb-ani-top-right
+{
+  animation-delay:900ms;
+}
+.sb-ani-bottom-left
+{
+  animation-delay:1200ms;
+}
+.sb-ani-bottom-right
+{
+  animation-delay:1500ms;
 }
 
-.cls-1, .cls-3, .cls-4, .cls-5, .cls-6
-{
-stroke-miterlimit: 3.86;
+@keyframes GradBoxRotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
-.cls-2, .cls-3
+.stroke-circle
 {
-stroke: #ff0000;
+  stroke:none;
+  stroke-width:0px;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation-delay:0ms;
+  animation-direction:normal;
+  animation-iteration-count:infinite;
+  animation-name: GradBoxRotate;
+  animation-play-state:running;
+  animation-timing-function:linear;
+  animation-duration:2000ms;
+  animation-fill-mode:both;
 }
 
-.cls-2
-{
-stroke-linecap: round;
-stroke-linejoin: round;
-}
-
-.cls-2, .cls-3, .cls-4, .cls-5, .cls-6
-{
-stroke-width: 0.25px;
-}
-
-.cls-4, .cls-5
-{
-stroke: #231f20;
-}
-
-.cls-5
-{
-stroke-dasharray: 8 4;
-}
-
-.cls-6
-{
-stroke: red;
-}
-
-/* abstract 1 */
-.st0{fill:url(#SVGID_1_);}
-.st1{fill:#FFEED9;}
-.st2{fill:#F3796F;}
-.st3{fill:#22183F;}
-.st4{fill:#00A8B3;}
-.st5{fill:url(#SVGID_2_);}
-.st6{fill:url(#SVGID_3_);}
-.st7{fill:url(#SVGID_4_);}
-.st8{fill:url(#SVGID_5_);}
-.st9{fill:url(#SVGID_6_);}
-.st10{fill:url(#SVGID_7_);}
-.st11{fill:url(#SVGID_8_);}
-.st12{fill:url(#SVGID_9_);}
-
-/* abstract 2 */
-.st_0{fill:#FFFBD3;}
-.st_1{fill:#2ABBAF;}
-.st_2{fill:#EC008C;}
-.st_3{fill:#2D1A3D;}
-.st_4{fill:url(#SVGID_1_art);}
-.st_5{fill:url(#SVGID_2_art);}
-.st_6{fill:url(#SVGID_3_art);}
-.st_7{fill:url(#SVGID_4_art);}
-.st_8{fill:url(#SVGID_5_art);}
-.st_9{fill:url(#SVGID_6_art);}
-.st_10{fill:#FFC40C;}
-.st_11{fill:url(#SVGID_7_art);}
-.st_12{fill:url(#SVGID_8_art);}
-.st_13{fill:url(#SVGID_9_art);}
-.st_14{fill:url(#SVGID_10_art);}
-.st_15{fill:url(#SVGID_11_art);}
-.st_16{fill:url(#SVGID_12_art);}
-.st_17{fill:url(#SVGID_13_art);}
-.st_18{fill:url(#SVGID_14_art);}
-.st_19{fill:url(#SVGID_15_art);}
-.st_20{fill:url(#SVGID_16_art);}
-.st_21{fill:url(#SVGID_17_art);}
-.st_22{fill:url(#SVGID_18_art);}
-.st_23{fill:url(#SVGID_19_art);}
-.st_24{fill:url(#SVGID_20_art);}
-.st_25{fill:url(#SVGID_21_art);}
-.st_26{fill:url(#SVGID_22_art);}
-.st_27{fill:url(#SVGID_23_art);}
-.st_28{fill:url(#SVGID_24_art);}
-.st_29{fill:url(#SVGID_25_art);}
+/*
+<animate attributeName="cx" dur="1000ms" values="35%;55%;35%" repeatCount="indefinite" />
+*/
