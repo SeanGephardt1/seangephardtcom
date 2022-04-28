@@ -21,7 +21,7 @@ export default class SvgZoomDemo extends React.Component
     this._default_translate = "translate(0,0)";
 
     this.state = {
-      viewBoxValues: [ 1250, 1000 ],
+      viewBoxValues: [ 1000, 1000 ],
       matrixValues: [ 1, 0, 0, 1, 0, 0 ],
       translateValues: [ 0, 0 ],
       transform: this._default_matrix + " " + this._default_translate,
@@ -50,7 +50,7 @@ export default class SvgZoomDemo extends React.Component
   OnClick_ResetZoom( ev )
   {
     this.setState( {
-      viewBoxValues: [ 1250, 1000 ],
+      viewBoxValues: [ 1000, 1000 ],
       matrixValues: [ 1, 0, 0, 1, 0, 0 ],
       translateValues: [ 0, 0 ],
       transform: this._default_matrix + " " + this._default_translate,
