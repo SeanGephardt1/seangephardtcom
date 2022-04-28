@@ -1,9 +1,18 @@
 import React from 'react';
-import { Frequencies440Filtered, GuitarTunerTones, Oscillators, AudioHertz } from './freq-data.js';
+import { AppAudioPageContext } from './audio-context.js';
+import
+  {
+    Frequencies440Filtered,
+    GuitarTunerTones,
+    BassGuitarTunerTones,
+    Oscillators,
+    AudioHertz
+  } from './freq-data.js';
 import './audio.css';
 
 export default class FrequencyPlayer extends React.Component
 {
+  static contextType = AppAudioPageContext;
   static defaultProps = {
     Title: "Frequency Player",
     LinkTitle: "Frequency Player",
@@ -14,9 +23,9 @@ export default class FrequencyPlayer extends React.Component
   constructor ( props )
   {
     super( props );
-
     this._freq_tone_list = Frequencies440Filtered; //GuitarTunerTones;
     this._guitar_tone_list = GuitarTunerTones;
+    this._bass_guitar_tone_list = BassGuitarTunerTones;
 
     this._default_context_options = {
       latencyHint: 0, // 0.147 , 0.294 -- "interactive", // "balanced", "playback"
@@ -27,11 +36,13 @@ export default class FrequencyPlayer extends React.Component
     this._gainNode = undefined; // audioCtx.createGain();
 
     this.state = {
-      currentOscillatorType: Oscillators.Sine,
-      isSelectPlaying: false,
+      currentOscillatorType: Oscillators.Sawtooth,
       selectCurrentPitch: this._freq_tone_list[ 0 ],
+      rangeCurrentPitch: this._guitar_tone_list[ 0 ],
+      currentGuitarTunerPitch: undefined,
+      currentBassGuitarTunerPitch: undefined,
+      isSelectPlaying: false,
       isRangePlaying: false,
-      rangeCurrentPitch: this._guitar_tone_list[ 0 ]
     };
     return;
   };
@@ -48,7 +59,6 @@ export default class FrequencyPlayer extends React.Component
   // SELECT DROP DOWN SECTION METHODS 
   OnClick_Select_PlayTone( ev )
   { //  console.debug( 'OnClick_PlayTone', this._audio_context, this.state );
-
     this._audio_context = new AudioContext( this._default_context_options );
 
     this._oscillator = this._audio_context.createOscillator();
@@ -63,9 +73,9 @@ export default class FrequencyPlayer extends React.Component
 
     this._oscillator.start();
 
-    this.setState( {
-      isSelectPlaying: true
-    } );
+    this.context.TogglePlaying();
+
+    this.setState( { isSelectPlaying: this.context.isAudioPlaying } );
     return;
   };
   OnClick_Select_StopTone( ev )
@@ -73,6 +83,7 @@ export default class FrequencyPlayer extends React.Component
     if ( this._audio_context !== undefined )
     {
       this._oscillator.stop();
+      this.context.TogglePlaying();
       this.setState( { isSelectPlaying: false } );
     }
     return;
@@ -107,7 +118,9 @@ export default class FrequencyPlayer extends React.Component
 
     this._oscillator.start();
 
-    this.setState( { isRangePlaying: true } );
+    this.context.TogglePlaying();
+
+    this.setState( { isRangePlaying: this.context.isAudioPlaying } );
     return;
   };
   OnClick_Range_StopTone( ev )
@@ -115,6 +128,7 @@ export default class FrequencyPlayer extends React.Component
     if ( this._audio_context !== undefined )
     {
       this._oscillator.stop();
+      this.context.TogglePlaying();
       this.setState( { isRangePlaying: false } );
     }
     return;
@@ -138,8 +152,13 @@ export default class FrequencyPlayer extends React.Component
 
   componentDidMount()
   {	//	console.debug( "componentDidMount()");
+    //  console.debug( 'componentDidMountFrequencyPlayer', this.context );
     return;
   }
+  componentDidUpdate()
+  { //  console.debug( "componentDidUpdate()" );
+    return;
+  };
   componentWillUnmount()
   {	//	console.debug( "componentWillUnmount()", this._audio_context );
     if ( this._audio_context !== undefined )
@@ -149,12 +168,13 @@ export default class FrequencyPlayer extends React.Component
     return;
   };
   render()
-  {
+  { //  console.debug( 'FrequencyPlayer.render()', this.context );
     return (
       <div className="tuner-panel">
         <div className="tuner-panel-header">{ this.props.Title }</div>
         <div className="tuner-panel-sub-header">{ this.props.Description }</div>
 
+        <div className="tuner-panel-sub-header">Select from the list of oscillator types available in your browser.</div>
         <div className="tuner-panel-layout">
           <select
             tabIndex="0"
@@ -162,7 +182,7 @@ export default class FrequencyPlayer extends React.Component
             className="select-pitch-range"
             defaultValue={ this.state.currentOscillatorType }
             onChange={ this.OnChange_Select_ChangeOscillatorType.bind( this ) }
-            disabled={ this.state.isRangePlaying === true || this.state.isSelectPlaying === true }>
+            disabled={ this.context.isAudioPlaying }>
             {
               Object.entries( Oscillators ).map( ( [ key, val ] ) =>
                 <option
@@ -172,15 +192,15 @@ export default class FrequencyPlayer extends React.Component
               ) 
             }
           </select>
-          <span>Select from the list of oscillator types available in your browser.</span>
         </div>
 
+        <div className="tuner-panel-sub-header">Select a pitch from the full range of tones in Octaves 1-5</div>
         <div className="tuner-panel-layout">
           <select
             tabIndex="0"
             title="Select from the full range of tones."
             className="select-pitch-range"
-            disabled={ this.state.isRangePlaying }
+            disabled={ this.context.isAudioPlaying && !this.state.isSelectPlaying && !this.state.isRangePlaying }
             defaultValue={ this.state.selectCurrentPitch.value }
             onChange={ this.OnChange_Select_ChangeTone.bind( this ) }>
             {
@@ -199,7 +219,7 @@ export default class FrequencyPlayer extends React.Component
             className="app-btn"
             onClick={ this.OnClick_Select_PlayTone.bind( this ) }
             onKeyPress={ this.OnClick_Select_PlayTone.bind( this ) }
-            disabled={ this.state.isSelectPlaying || this.state.isRangePlaying}>Play</button>
+            disabled={ this.context.isAudioPlaying }>Play</button>
           <button
             tabIndex="0"
             type="button"
@@ -207,10 +227,11 @@ export default class FrequencyPlayer extends React.Component
             className="app-btn"
             onClick={ this.OnClick_Select_StopTone.bind( this ) }
             onKeyPress={ this.OnClick_Select_StopTone.bind( this ) }
-            disabled={ !this.state.isSelectPlaying || this.state.isRangePlaying}>Stop</button>
+            disabled={ !this.state.isSelectPlaying || !this.context.isAudioPlaying }
+           >Stop</button>
         </div>
 
-        <div className="tuner-panel-sub-header">Select standard guitar tuning Pitches</div>
+        <div className="tuner-panel-sub-header">Select standard guitar tuning pitches</div>
         <div className="tuner-panel-layout">
           <span
             className="range-text">
@@ -218,9 +239,7 @@ export default class FrequencyPlayer extends React.Component
           <datalist id="range-slider-pitches">
             {
               this._guitar_tone_list.map( ( item, idx ) => (
-                <option
-                  key={ idx }
-                  value={ idx } />
+                <option key={ idx } value={ idx } />
               ) )
             }
           </datalist>
@@ -244,7 +263,7 @@ export default class FrequencyPlayer extends React.Component
             className="app-btn"
             onClick={ this.OnClick_Range_PlayTone.bind( this ) }
             onKeyPress={ this.OnClick_Range_PlayTone.bind( this ) }
-            disabled={ this.state.isRangePlaying || this.state.isSelectPlaying }>Play</button>
+            disabled={ this.state.isRangePlaying || this.context.isAudioPlaying }>Play</button>
           <button
             tabIndex="0"
             type="button"
@@ -252,7 +271,7 @@ export default class FrequencyPlayer extends React.Component
             className="app-btn"
             onClick={ this.OnClick_Range_StopTone.bind( this ) }
             onKeyPress={ this.OnClick_Range_StopTone.bind( this ) }
-            disabled={ !this.state.isRangePlaying || this.state.isSelectPlaying }>Stop</button>
+            disabled={ !this.state.isRangePlaying || !this.context.isAudioPlaying }>Stop</button>
         </div>
 
       </div>

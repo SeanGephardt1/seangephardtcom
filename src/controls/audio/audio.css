@@ -4,6 +4,7 @@
   border: solid 1px var(--black-01);
   box-shadow: 0px 0px 8px 0px var(--black-01);
   padding: 10px;
+  margin-bottom:20px;
 }
 .tuner-panel-header
 {

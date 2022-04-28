@@ -142,14 +142,20 @@ const _filtered_440 = _frequencies_440.filter( function ( note )
 });
 //  console.debug( '_filtered_440', _filtered_440 );
 
-
 const _guitar_6_tones = [
-  _frequencies_440[ 52 ], //  E4
-  _frequencies_440[ 47 ], //  B3
-  _frequencies_440[ 43 ], //  G3
-  _frequencies_440[ 38 ], //  D3
+  _frequencies_440[ 28 ], //  E2
   _frequencies_440[ 33 ], //  A2
-  _frequencies_440[ 28 ]  //  E2
+  _frequencies_440[ 38 ], //  D3
+  _frequencies_440[ 43 ], //  G3
+  _frequencies_440[ 47 ], //  B3
+  _frequencies_440[ 52 ], //  E4
+];
+
+const _bass_guitar_4_tones = [
+  _frequencies_440[ 16 ], //  E1
+  _frequencies_440[ 21 ], //  A1
+  _frequencies_440[ 26 ], //  D2
+  _frequencies_440[ 31 ], //  G2
 ];
 
 export
@@ -158,5 +164,6 @@ export
   _filtered_440 as Frequencies440Filtered,
   _oscillator_types as Oscillators,
   _guitar_6_tones as GuitarTunerTones,
+  _bass_guitar_4_tones as BassGuitarTunerTones,
   _audio_hertz as AudioHertz
 };
