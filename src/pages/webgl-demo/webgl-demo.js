@@ -6,7 +6,6 @@
 //  https://github.com/SonarSystems/three.js-Crash-Course
 //  https://webglfundamentals.org/
 
-
 import React from 'react';
 //  import WebGL_Utilities from './wgl-util.js';
 import './webgl-demo.css';
@@ -21,6 +20,7 @@ export default class WebGLDemo extends React.Component
   };
   constructor ( props )
   {
+    console.clear();
     super( props );
     document.title = this.props.Title;
 
@@ -42,13 +42,25 @@ export default class WebGLDemo extends React.Component
       0, 1, 0,  //  GREEN
       1, 1, 0   //  BLACK TOP RIGHT CORNER, 1,0,0 = NOP FADE IN TRC, 1,1,0 ADDED YELLOW/WHITE FADE, 1,1,1 ADD WHITE
     ];
+    this._stepped_color_matrix = [ ...this._default_colors ];
+    //  0 == increment up, -1 == increment down
+    this._step_color_dir = [
+      0, 0, 0,
+      0, 0, 0,
+      0, 0, 0,
+      0, 0, 0
+    ];
 
     this._vert_code = 'attribute vec3 coordinates; attribute vec3 color; varying vec3 vColor; void main(void) { gl_Position = vec4(coordinates, 1.0); vColor = color; }';
     this._frag_code = 'precision mediump float; varying vec3 vColor;  void main(void) { gl_FragColor = vec4(vColor, 1.0); }';
 
     // HOC props & state
-    this._activate_btn_text_default = "Activate";
+    this._activate_btn_text_default = "Animate random colors";
     this._activate_btn_text_stop = "Pause";
+
+    this._req_ani_id = undefined;
+    this._test_count = 0;
+    this._test_count_max = 100;
 
     this.state = {
       activateBtnRunning: false,
@@ -57,238 +69,253 @@ export default class WebGLDemo extends React.Component
     return;
   };
 
-  /* WEBGL SPECIFIC FUNCTIONS & METHODS */
-  GetRandomSquareVertices()
-  {
-    //  let _pos_num = Math.random().toPrecision( 2 );
-    //  let _neg_num = -_pos_num;
-    //  console.debug( _pos_num, _neg_num );
-
-    //let _rv = [
-    //  _neg_num, _pos_num, 0,
-    //  _neg_num, _neg_num, 0,
-    //  _pos_num, _neg_num, 0,
-    //  _pos_num, _pos_num, 0
-    //];
-    //console.debug( "_rv", _rv );
-    return this._default_square_vertices;
-  };
+  /* ANIMATION SPECIFIC FUNCTIONS */
   GetRandomColors()
   {
-    // let _rv = this._default_colors;
     let _rv = [
-      Math.random().toPrecision( 3 ), Math.random().toPrecision( 3 ), Math.round( Math.random().toPrecision( 3 ) ),
-      Math.round( Math.random().toPrecision( 3 ) ), Math.random().toPrecision( 3 ), Math.random().toPrecision( 3 ),
-      Math.random().toPrecision( 3 ), Math.round( Math.random().toPrecision( 3 ) ), Math.random().toPrecision( 3 ),
-      Math.random().toPrecision( 3 ), Math.random().toPrecision( 3 ), Math.random().toPrecision( 3 )
+      parseFloat( Math.random().toPrecision( 2 ) ),
+      parseFloat( Math.random().toPrecision( 2 ) ),
+      parseFloat( Math.random().toPrecision( 2 ) ),
+
+      parseFloat( Math.random().toPrecision( 2 ) ),
+      parseFloat( Math.random().toPrecision( 2 ) ),
+      parseFloat( Math.random().toPrecision( 2 ) ),
+
+      parseFloat( Math.random().toPrecision( 2 ) ),
+      parseFloat( Math.random().toPrecision( 2 ) ),
+      parseFloat( Math.random().toPrecision( 2 ) ),
+
+      parseFloat( Math.random().toPrecision( 2 ) ),
+      parseFloat( Math.random().toPrecision( 2 ) ),
+      parseFloat( Math.random().toPrecision( 2 ) )
     ];
-    //  console.debug( "_rv", _rv );
+    this._stepped_color_matrix = [ ..._rv ];
+    this.ValidateColorDirectionArray();
+    console.debug( "GetRandomColors()", this._stepped_color_matrix, this._step_color_dir );
     return _rv;
   };
-  GetRandomIndices()
-  {
-    let _rv = [ 3, 2, 1, 3, 1, 0 ];
 
-   //  console.debug( "GetRandomIndices()::_rv", _rv );
-    return _rv;
+  ValidateColorDirectionArray()
+  { //  console.debug( 'ValidateColorDirectionArray()', this._stepped_color_matrix, this._step_color_dir );
+    for ( let i = 0; i < this._stepped_color_matrix.length; i++ )
+    { //  console.debug( i, this._stepped_color_matrix[ i ], this._step_color_dir[ i ] );
+      if ( parseFloat( this._stepped_color_matrix[ i ] ) <= 0.0 )
+      {
+        this._step_color_dir[ i ] = 0;
+      }
+      else if ( parseFloat( this._stepped_color_matrix[ i ] ) >= 1.0 )
+      {
+        this._step_color_dir[ i ] = -1;
+      }
+    } //  console.debug( 'ValidateColorDirectionArray()', this._stepped_color_matrix, this._step_color_dir );
+    return;
   };
-  RenderNewColors()
+  IncrementColors()
+  { //  console.debug( 'IncrementColors()');
+    //  console.debug( "IncrementColors()1", this._stepped_color_matrix, this._step_color_dir );
+    this.ValidateColorDirectionArray();
+
+    for ( let i = 0; i < this._stepped_color_matrix.length; i++ )
+    {
+      console.debug( 'start->i=', i,"c=", this._stepped_color_matrix[ i ] );
+
+      let _v = 0.0;
+      if ( this._step_color_dir[ i ] === 0 )
+      {
+        _v = parseFloat( ( this._stepped_color_matrix[ i ] + Math.random() ).toPrecision( 2 ) );
+      }
+      else if ( this._step_color_dir[ i ] === -1 )
+      {
+        _v = parseFloat( ( this._stepped_color_matrix[ i ] - Math.random() ).toPrecision( 2 ) );
+      }
+
+      console.debug("a", i, this._stepped_color_matrix[ i ], _v );
+      if ( _v <= 0.0)
+      {
+        this._step_color_dir[ i ] = 0;
+      }
+      else if ( _v >= 1.0 )
+      {
+        this._step_color_dir[ i ] = -1;
+      }
+
+      this._stepped_color_matrix[ i ] = _v;
+      //  console.debug( "c", i, this._stepped_color_matrix[ i ], _v );
+    }
+    //  console.debug( "IncrementColors()2", this._stepped_color_matrix, this._step_color_dir );
+    return this._stepped_color_matrix;
+  };
+
+  //  WEBGL CONTEXTUAL FUNCTIONS
+  CancelAnimationFrames()
+  { //  console.debug( 'CancelAnimationFrames()' );
+    window.cancelAnimationFrame( this._req_ani_id );
+    return;
+  };
+  ResetColorMatrixAndColorDirections()
+  { //  console.debug( 'ResetColorMatrixAndColorDirections()' );
+    this._default_indices = [ 3, 2, 1, 3, 1, 0 ];
+    this._stepped_color_matrix = [ ...this._default_colors ];
+    this._step_color_dir = [
+      0, 0, 0,
+      0, 0, 0,
+      0, 0, 0,
+      0, 0, 0
+    ];
+    this.ValidateColorDirectionArray();
+    //  console.debug( 'ResetColorMatrixAndColorDirections()',  this._default_square_vertices, this._default_colors, this._default_indices );
+    return;
+  };
+  CreateWebGLContext()
   {
+    console.debug( 'CreateWebGLContext()' );
     this.WGL = this.Canvas.current.getContext( "experimental-webgl" );
+    return;
+  };
 
-    let vertices = this.GetRandomSquareVertices();
-    let colors = this.GetRandomColors();
-    let indices = this.GetRandomIndices();
+  //  WebGL drawing functions
+  InitWebGLRender()
+  {
+    console.debug( 'InitWebGLRender()' );
+    this.CancelAnimationFrames();
+    this.ResetColorMatrixAndColorDirections();
+    this.CreateWebGLContext();
+    this.DrawDefault( this._default_square_vertices, this._default_colors, this._default_indices );
+    return;
+  };
+  DrawDefault( vertices, colors, indices )
+  { //  console.debug( 'DrawDefault(v,c,i);', vertices, colors, indices );
+    //  console.debug( "DrawDefault(v,c,i)::v", vertices );
+    //  console.debug( "_default_colors", this._default_colors );
+    //  console.debug( "_stepped_color_matrix", this._stepped_color_matrix );
+    console.debug( "colors", colors );
+
+    //  console.debug( "DrawDefault(v,c,i)::i", indices );
 
     // Create an empty buffer object and store vertex data
-    var vertex_buffer = this.WGL.createBuffer();
-    this.WGL.bindBuffer( this.WGL.ARRAY_BUFFER, vertex_buffer );
+    const _vertex_buffer = this.WGL.createBuffer();
+    this.WGL.bindBuffer( this.WGL.ARRAY_BUFFER, _vertex_buffer );
     this.WGL.bufferData( this.WGL.ARRAY_BUFFER, new Float32Array( vertices ), this.WGL.STATIC_DRAW );
     this.WGL.bindBuffer( this.WGL.ARRAY_BUFFER, null );
 
     // Create an empty buffer object and store Index data
-    let Index_Buffer = this.WGL.createBuffer();
-    this.WGL.bindBuffer( this.WGL.ELEMENT_ARRAY_BUFFER, Index_Buffer );
+    const _index_buffer = this.WGL.createBuffer();
+    this.WGL.bindBuffer( this.WGL.ELEMENT_ARRAY_BUFFER, _index_buffer );
     this.WGL.bufferData( this.WGL.ELEMENT_ARRAY_BUFFER, new Uint16Array( indices ), this.WGL.STATIC_DRAW );
     this.WGL.bindBuffer( this.WGL.ELEMENT_ARRAY_BUFFER, null );
 
     // Create an empty buffer object and store color data
-    let color_buffer = this.WGL.createBuffer();
-    this.WGL.bindBuffer( this.WGL.ARRAY_BUFFER, color_buffer );
+    const _color_buffer = this.WGL.createBuffer();
+    this.WGL.bindBuffer( this.WGL.ARRAY_BUFFER, _color_buffer );
     this.WGL.bufferData( this.WGL.ARRAY_BUFFER, new Float32Array( colors ), this.WGL.STATIC_DRAW );
 
     // Shaders 
     // Create a vertex shader object
-    let vertShader = this.WGL.createShader( this.WGL.VERTEX_SHADER );
     // Attach vertex shader source code
-    this.WGL.shaderSource( vertShader, this._vert_code );
     // Compile the vertex shader
-    this.WGL.compileShader( vertShader );
+    const _vert_shader = this.WGL.createShader( this.WGL.VERTEX_SHADER );
+    this.WGL.shaderSource( _vert_shader, this._vert_code );
+    this.WGL.compileShader( _vert_shader );
 
     // Create fragment shader object
-    let fragShader = this.WGL.createShader( this.WGL.FRAGMENT_SHADER );
     // Attach fragment shader source code
-    this.WGL.shaderSource( fragShader, this._frag_code );
     // Compile the fragmentt shader
-    this.WGL.compileShader( fragShader );
+    const _frag_shader = this.WGL.createShader( this.WGL.FRAGMENT_SHADER );
+    this.WGL.shaderSource( _frag_shader, this._frag_code );
+    this.WGL.compileShader( _frag_shader );
 
     // Create a shader program object to store the combined shader program
-    let shaderProgram = this.WGL.createProgram();
     // Attach a vertex shader
-    this.WGL.attachShader( shaderProgram, vertShader );
     // Attach a fragment shader
-    this.WGL.attachShader( shaderProgram, fragShader );
+    const _shader_program = this.WGL.createProgram();
+    this.WGL.attachShader( _shader_program, _vert_shader );
+    this.WGL.attachShader( _shader_program, _frag_shader );
 
     // Link both the programs
-    this.WGL.linkProgram( shaderProgram );
     // Use the combined shader program object
-    this.WGL.useProgram( shaderProgram );
+    this.WGL.linkProgram( _shader_program );
+    this.WGL.useProgram( _shader_program );
 
     /* ======== Associating shaders to buffer objects =======*/
     // Bind vertex buffer object
-    this.WGL.bindBuffer( this.WGL.ARRAY_BUFFER, vertex_buffer );
     // Bind index buffer object
-    this.WGL.bindBuffer( this.WGL.ELEMENT_ARRAY_BUFFER, Index_Buffer );
+    this.WGL.bindBuffer( this.WGL.ARRAY_BUFFER, _vertex_buffer );
+    this.WGL.bindBuffer( this.WGL.ELEMENT_ARRAY_BUFFER, _index_buffer );
+
     // Get the attribute location
-    let coord = this.WGL.getAttribLocation( shaderProgram, "coordinates" );
     // point an attribute to the currently bound VBO
-    this.WGL.vertexAttribPointer( coord, 3, this.WGL.FLOAT, false, 0, 0 );
     // Enable the attribute
-    this.WGL.enableVertexAttribArray( coord );
+    const _coords = this.WGL.getAttribLocation( _shader_program, "coordinates" );
+    this.WGL.vertexAttribPointer( _coords, 3, this.WGL.FLOAT, false, 0, 0 );
+    this.WGL.enableVertexAttribArray( _coords );
 
     // bind the color buffer
-    this.WGL.bindBuffer( this.WGL.ARRAY_BUFFER, color_buffer );
-    // get the attribute location
-    let color = this.WGL.getAttribLocation( shaderProgram, "color" );
-    // point attribute to the volor buffer object
-    this.WGL.vertexAttribPointer( color, 3, this.WGL.FLOAT, false, 0, 0 );
-    // enable the color attribute
-    this.WGL.enableVertexAttribArray( color );
+    this.WGL.bindBuffer( this.WGL.ARRAY_BUFFER, _color_buffer );
 
-    /*============Drawing the Quad====================*/
+    // get the attribute location
+    // point attribute to the volor buffer object
+    // enable the color attribute
+    const _color = this.WGL.getAttribLocation( _shader_program, "color" );
+    this.WGL.vertexAttribPointer( _color, 3, this.WGL.FLOAT, false, 0, 0 );
+    this.WGL.enableVertexAttribArray( _color );
+
     // Clear the canvas, RGBA
-    this.WGL.clearColor( 0, 0, 0, 1 );
     // Enable the depth test
-    this.WGL.enable( this.WGL.DEPTH_TEST );
     // Clear the color buffer bit
-    this.WGL.clear( this.WGL.COLOR_BUFFER_BIT );
     // Set the view port
-    this.WGL.viewport( 0, 0, this.CanvasSize, this.CanvasSize );
     // Draw the triangle
+    this.WGL.clearColor( 0, 0, 0, 1 );
+    this.WGL.enable( this.WGL.DEPTH_TEST );
+    this.WGL.clear( this.WGL.COLOR_BUFFER_BIT );
+    this.WGL.viewport( 0, 0, this.CanvasSize, this.CanvasSize );
     this.WGL.drawElements( this.WGL.TRIANGLES, indices.length, this.WGL.UNSIGNED_SHORT, 0 );
+    return;
   };
 
-  SetDefaultWebGLInstance()
-  {
-    this.WGL = this.Canvas.current.getContext( "experimental-webgl" );
+  //  RequestAnimationFrame Loop
+  RenderAnimationLoop()
+  { //  console.debug( 'RenderColorAnimation', this._req_ani_id, this._test_count_max, this._test_count );
+    if ( this._test_count < this._test_count_max )
+    {
+      const _inc_colors = this.IncrementColors();
 
-    let vertices = this._default_square_vertices;
-    let colors = this._default_colors;
-    let indices = this._default_indices;
+      this.DrawDefault( this._default_square_vertices, _inc_colors, this._default_indices );
 
-    // Create an empty buffer object and store vertex data
-    var vertex_buffer = this.WGL.createBuffer();
-    this.WGL.bindBuffer( this.WGL.ARRAY_BUFFER, vertex_buffer );
-    this.WGL.bufferData( this.WGL.ARRAY_BUFFER, new Float32Array( vertices ), this.WGL.STATIC_DRAW );
-    this.WGL.bindBuffer( this.WGL.ARRAY_BUFFER, null );
-
-    // Create an empty buffer object and store Index data
-    let Index_Buffer = this.WGL.createBuffer();
-    this.WGL.bindBuffer( this.WGL.ELEMENT_ARRAY_BUFFER, Index_Buffer );
-    this.WGL.bufferData( this.WGL.ELEMENT_ARRAY_BUFFER, new Uint16Array( indices ), this.WGL.STATIC_DRAW );
-    this.WGL.bindBuffer( this.WGL.ELEMENT_ARRAY_BUFFER, null );
-
-    // Create an empty buffer object and store color data
-    let color_buffer = this.WGL.createBuffer();
-    this.WGL.bindBuffer( this.WGL.ARRAY_BUFFER, color_buffer );
-    this.WGL.bufferData( this.WGL.ARRAY_BUFFER, new Float32Array( colors ), this.WGL.STATIC_DRAW );
-
-    // Shaders 
-    // Create a vertex shader object
-    let vertShader = this.WGL.createShader( this.WGL.VERTEX_SHADER );
-    // Attach vertex shader source code
-    this.WGL.shaderSource( vertShader, this._vert_code );
-    // Compile the vertex shader
-    this.WGL.compileShader( vertShader );
-
-    // Create fragment shader object
-    let fragShader = this.WGL.createShader( this.WGL.FRAGMENT_SHADER );
-    // Attach fragment shader source code
-    this.WGL.shaderSource( fragShader, this._frag_code );
-    // Compile the fragmentt shader
-    this.WGL.compileShader( fragShader );
-
-    // Create a shader program object to store the combined shader program
-    let shaderProgram = this.WGL.createProgram();
-    // Attach a vertex shader
-    this.WGL.attachShader( shaderProgram, vertShader );
-    // Attach a fragment shader
-    this.WGL.attachShader( shaderProgram, fragShader );
-
-    // Link both the programs
-    this.WGL.linkProgram( shaderProgram );
-    // Use the combined shader program object
-    this.WGL.useProgram( shaderProgram );
-
-    /* ======== Associating shaders to buffer objects =======*/
-    // Bind vertex buffer object
-    this.WGL.bindBuffer( this.WGL.ARRAY_BUFFER, vertex_buffer );
-    // Bind index buffer object
-    this.WGL.bindBuffer( this.WGL.ELEMENT_ARRAY_BUFFER, Index_Buffer );
-    // Get the attribute location
-    let coord = this.WGL.getAttribLocation( shaderProgram, "coordinates" );
-    // point an attribute to the currently bound VBO
-    this.WGL.vertexAttribPointer( coord, 3, this.WGL.FLOAT, false, 0, 0 );
-    // Enable the attribute
-    this.WGL.enableVertexAttribArray( coord );
-
-    // bind the color buffer
-    this.WGL.bindBuffer( this.WGL.ARRAY_BUFFER, color_buffer );
-    // get the attribute location
-    let color = this.WGL.getAttribLocation( shaderProgram, "color" );
-    // point attribute to the volor buffer object
-    this.WGL.vertexAttribPointer( color, 3, this.WGL.FLOAT, false, 0, 0 );
-    // enable the color attribute
-    this.WGL.enableVertexAttribArray( color );
-
-    /*============Drawing the Quad====================*/
-    // Clear the canvas, RGBA
-    this.WGL.clearColor( 0, 0, 0, 1 );
-    // Enable the depth test
-    this.WGL.enable( this.WGL.DEPTH_TEST );
-    // Clear the color buffer bit
-    this.WGL.clear( this.WGL.COLOR_BUFFER_BIT );
-    // Set the view port
-    this.WGL.viewport( 0, 0, this.CanvasSize, this.CanvasSize );
-    // Draw the triangle
-    this.WGL.drawElements( this.WGL.TRIANGLES, indices.length, this.WGL.UNSIGNED_SHORT, 0 );
+      this._test_count++;
+      this._req_ani_id = window.requestAnimationFrame( () => this.RenderAnimationLoop() );
+    }
+    else
+    { //  console.debug( 'RenderColorAnimation::STOPPED', this._req_ani_id, this._test_count_max, this._test_count );
+      console.debug( 'RenderColorAnimation::STOPPED', this._default_colors, this._stepped_color_matrix );
+      window.cancelAnimationFrame( this._req_ani_id );
+      this._test_count = 0;
+      this.setState( {
+        activateBtnRunning: !this.state.activateBtnRunning,
+        activateBtnText: this._activate_btn_text_default
+      } );
+    }
+    return;
   };
 
   /* BUTTON HANDLERS */
-  OnClick_ResetDefaults( e )
-  { //  console.debug( 'OnClick_ResetDefaults', e );
-    this.SetDefaultWebGLInstance();
-    this.setState( {
-      activateBtnRunning: false,
-      activateBtnText: this._activate_btn_text_default
-    } );
-    return;
-  }
-  OnClick_ChangeWGLColors( e )
-  { //  console.debug( 'OnClick_ChangeWGLColors');
-    this.RenderNewColors();
+  OnClick_CreateRandomColorMatrix( e )
+  { //  console.debug( 'OnClick_ChangeWGLColors()' );
+    const _rnd_colors = this.GetRandomColors();
+    this.DrawDefault( this._default_square_vertices, _rnd_colors, this._default_indices );
     return;
   };
   OnClick_ActivateRotation( e )
-  { //  console.debug( 'OnClick_ActivateRotation', this.state.activateBtnRunning );
+  { //  console.debug( 'OnClick_ActivateRotation' );
     let _temp_text;
 
     if ( this.state.activateBtnRunning === false )
     {
+      this._req_ani_id = window.requestAnimationFrame( () => this.RenderAnimationLoop() );
       _temp_text = this._activate_btn_text_stop;
     }
     else if ( this.state.activateBtnRunning === true )
     {
+      window.cancelAnimationFrame( this._req_ani_id );
       _temp_text = this._activate_btn_text_default;
     }
 
@@ -298,15 +325,28 @@ export default class WebGLDemo extends React.Component
     } );
     return;
   };
+  OnClick_ResetDefaults( e )
+  { // console.debug( 'OnClick_ResetDefaults()', );
+    this.ResetColorMatrixAndColorDirections();
+    this.DrawDefault( this._default_square_vertices, this._default_colors, this._default_indices );
+
+    // RESET BUTTON STATES
+    this.setState( {
+      activateBtnRunning: false,
+      activateBtnText: this._activate_btn_text_default
+    } );
+    return;
+  }
 
   /* REACT LIFECYCLE */
   componentDidMount() 
   { //	console.debug( "WebGLDemo.componentDidMount()", this.Canvas.current );
-    this.SetDefaultWebGLInstance();
+    this.InitWebGLRender();
     return;
   };
   componentWillUnmount()
-  {	//console.debug( "AppLoader.componentWillUnmount()", this.AnimationID );
+  {	//  console.debug( "componentWillUnmount()", this._req_ani_id );
+    this.CancelAnimationFrames();
     return;
   };
   render()
@@ -327,18 +367,23 @@ export default class WebGLDemo extends React.Component
 
         <div className="canvas-panel">
             <button
-              tabIndex="0"
-              className="app-btn"
-            onClick={ this.OnClick_ChangeWGLColors.bind( this ) }>Generate new colors</button>
+            tabIndex="0"
+            className="app-btn"
+            onClick={ this.OnClick_CreateRandomColorMatrix.bind( this ) }
+            onKeyPress={ this.OnClick_CreateRandomColorMatrix.bind( this ) }
+            disabled={ this.state.activateBtnRunning}>Generate random colors</button>
           <button
             tabIndex="0"
             className="app-btn"
             onClick={ this.OnClick_ActivateRotation.bind( this ) }
+            onKeyPress={ this.OnClick_ActivateRotation.bind( this ) }
             >{ this.state.activateBtnText }</button>
           <button
             tabIndex="0"
             className="app-btn"
-            onClick={ this.OnClick_ResetDefaults.bind( this ) }>Reset to default</button>
+            onClick={ this.OnClick_ResetDefaults.bind( this ) }
+            onKeyPress={ this.OnClick_ResetDefaults.bind( this ) }
+            disabled={ this.state.activateBtnRunning }>Reset to default</button>
         </div>
 
         </div>

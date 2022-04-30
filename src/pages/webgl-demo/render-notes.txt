@@ -1,0 +1,167 @@
+  RenderNewColors()
+  {
+    this.WGL = this.Canvas.current.getContext( "experimental-webgl" );
+
+    let vertices = this.GetRandomSquareVertices();
+    let colors = this.GetRandomColors();
+    let indices = this.GetRandomIndices();
+
+    // Create an empty buffer object and store vertex data
+    var vertex_buffer = this.WGL.createBuffer();
+    this.WGL.bindBuffer( this.WGL.ARRAY_BUFFER, vertex_buffer );
+    this.WGL.bufferData( this.WGL.ARRAY_BUFFER, new Float32Array( vertices ), this.WGL.STATIC_DRAW );
+    this.WGL.bindBuffer( this.WGL.ARRAY_BUFFER, null );
+
+    // Create an empty buffer object and store Index data
+    let Index_Buffer = this.WGL.createBuffer();
+    this.WGL.bindBuffer( this.WGL.ELEMENT_ARRAY_BUFFER, Index_Buffer );
+    this.WGL.bufferData( this.WGL.ELEMENT_ARRAY_BUFFER, new Uint16Array( indices ), this.WGL.STATIC_DRAW );
+    this.WGL.bindBuffer( this.WGL.ELEMENT_ARRAY_BUFFER, null );
+
+    // Create an empty buffer object and store color data
+    let color_buffer = this.WGL.createBuffer();
+    this.WGL.bindBuffer( this.WGL.ARRAY_BUFFER, color_buffer );
+    this.WGL.bufferData( this.WGL.ARRAY_BUFFER, new Float32Array( colors ), this.WGL.STATIC_DRAW );
+
+    // Shaders 
+    // Create a vertex shader object
+    let vertShader = this.WGL.createShader( this.WGL.VERTEX_SHADER );
+    // Attach vertex shader source code
+    this.WGL.shaderSource( vertShader, this._vert_code );
+    // Compile the vertex shader
+    this.WGL.compileShader( vertShader );
+
+    // Create fragment shader object
+    let fragShader = this.WGL.createShader( this.WGL.FRAGMENT_SHADER );
+    // Attach fragment shader source code
+    this.WGL.shaderSource( fragShader, this._frag_code );
+    // Compile the fragmentt shader
+    this.WGL.compileShader( fragShader );
+
+    // Create a shader program object to store the combined shader program
+    let shaderProgram = this.WGL.createProgram();
+    // Attach a vertex shader
+    this.WGL.attachShader( shaderProgram, vertShader );
+    // Attach a fragment shader
+    this.WGL.attachShader( shaderProgram, fragShader );
+
+    // Link both the programs
+    this.WGL.linkProgram( shaderProgram );
+    // Use the combined shader program object
+    this.WGL.useProgram( shaderProgram );
+
+    /* ======== Associating shaders to buffer objects =======*/
+    // Bind vertex buffer object
+    this.WGL.bindBuffer( this.WGL.ARRAY_BUFFER, vertex_buffer );
+    // Bind index buffer object
+    this.WGL.bindBuffer( this.WGL.ELEMENT_ARRAY_BUFFER, Index_Buffer );
+    // Get the attribute location
+    let coord = this.WGL.getAttribLocation( shaderProgram, "coordinates" );
+    // point an attribute to the currently bound VBO
+    this.WGL.vertexAttribPointer( coord, 3, this.WGL.FLOAT, false, 0, 0 );
+    // Enable the attribute
+    this.WGL.enableVertexAttribArray( coord );
+
+    // bind the color buffer
+    this.WGL.bindBuffer( this.WGL.ARRAY_BUFFER, color_buffer );
+    // get the attribute location
+    let color = this.WGL.getAttribLocation( shaderProgram, "color" );
+    // point attribute to the volor buffer object
+    this.WGL.vertexAttribPointer( color, 3, this.WGL.FLOAT, false, 0, 0 );
+    // enable the color attribute
+    this.WGL.enableVertexAttribArray( color );
+
+    /*============Drawing the Quad====================*/
+    // Clear the canvas, RGBA
+    this.WGL.clearColor( 0, 0, 0, 1 );
+    // Enable the depth test
+    this.WGL.enable( this.WGL.DEPTH_TEST );
+    // Clear the color buffer bit
+    this.WGL.clear( this.WGL.COLOR_BUFFER_BIT );
+    // Set the view port
+    this.WGL.viewport( 0, 0, this.CanvasSize, this.CanvasSize );
+    // Draw the triangle
+    this.WGL.drawElements( this.WGL.TRIANGLES, indices.length, this.WGL.UNSIGNED_SHORT, 0 );
+  };
+
+
+    DrawDefault( vertices, colors, indices)
+  {
+    // Create an empty buffer object and store vertex data
+    const _vertex_buffer = this.WGL.createBuffer();
+    this.WGL.bindBuffer( this.WGL.ARRAY_BUFFER, _vertex_buffer );
+    this.WGL.bufferData( this.WGL.ARRAY_BUFFER, new Float32Array( vertices ), this.WGL.STATIC_DRAW );
+    this.WGL.bindBuffer( this.WGL.ARRAY_BUFFER, null );
+
+    // Create an empty buffer object and store Index data
+    const _index_buffer = this.WGL.createBuffer();
+    this.WGL.bindBuffer( this.WGL.ELEMENT_ARRAY_BUFFER, _index_buffer );
+    this.WGL.bufferData( this.WGL.ELEMENT_ARRAY_BUFFER, new Uint16Array( indices ), this.WGL.STATIC_DRAW );
+    this.WGL.bindBuffer( this.WGL.ELEMENT_ARRAY_BUFFER, null );
+
+    // Create an empty buffer object and store color data
+    const _color_buffer = this.WGL.createBuffer();
+    this.WGL.bindBuffer( this.WGL.ARRAY_BUFFER, _color_buffer );
+    this.WGL.bufferData( this.WGL.ARRAY_BUFFER, new Float32Array( colors ), this.WGL.STATIC_DRAW );
+
+    // Shaders 
+    // Create a vertex shader object
+    let vertShader = this.WGL.createShader( this.WGL.VERTEX_SHADER );
+    // Attach vertex shader source code
+    this.WGL.shaderSource( vertShader, this._vert_code );
+    // Compile the vertex shader
+    this.WGL.compileShader( vertShader );
+
+    // Create fragment shader object
+    let fragShader = this.WGL.createShader( this.WGL.FRAGMENT_SHADER );
+    // Attach fragment shader source code
+    this.WGL.shaderSource( fragShader, this._frag_code );
+    // Compile the fragmentt shader
+    this.WGL.compileShader( fragShader );
+
+    // Create a shader program object to store the combined shader program
+    let shaderProgram = this.WGL.createProgram();
+    // Attach a vertex shader
+    this.WGL.attachShader( shaderProgram, vertShader );
+    // Attach a fragment shader
+    this.WGL.attachShader( shaderProgram, fragShader );
+
+    // Link both the programs
+    this.WGL.linkProgram( shaderProgram );
+    // Use the combined shader program object
+    this.WGL.useProgram( shaderProgram );
+
+    /* ======== Associating shaders to buffer objects =======*/
+    // Bind vertex buffer object
+    this.WGL.bindBuffer( this.WGL.ARRAY_BUFFER, _vertex_buffer );
+    // Bind index buffer object
+    this.WGL.bindBuffer( this.WGL.ELEMENT_ARRAY_BUFFER, _index_buffer );
+    // Get the attribute location
+    let coord = this.WGL.getAttribLocation( shaderProgram, "coordinates" );
+    // point an attribute to the currently bound VBO
+    this.WGL.vertexAttribPointer( coord, 3, this.WGL.FLOAT, false, 0, 0 );
+    // Enable the attribute
+    this.WGL.enableVertexAttribArray( coord );
+
+    // bind the color buffer
+    this.WGL.bindBuffer( this.WGL.ARRAY_BUFFER, _color_buffer );
+    // get the attribute location
+    let color = this.WGL.getAttribLocation( shaderProgram, "color" );
+    // point attribute to the volor buffer object
+    this.WGL.vertexAttribPointer( color, 3, this.WGL.FLOAT, false, 0, 0 );
+    // enable the color attribute
+    this.WGL.enableVertexAttribArray( color );
+
+    /*============Drawing the Quad====================*/
+    // Clear the canvas, RGBA
+    this.WGL.clearColor( 0, 0, 0, 1 );
+    // Enable the depth test
+    this.WGL.enable( this.WGL.DEPTH_TEST );
+    // Clear the color buffer bit
+    this.WGL.clear( this.WGL.COLOR_BUFFER_BIT );
+    // Set the view port
+    this.WGL.viewport( 0, 0, this.CanvasSize, this.CanvasSize );
+    // Draw the triangle
+    this.WGL.drawElements( this.WGL.TRIANGLES, indices.length, this.WGL.UNSIGNED_SHORT, 0 );
+    return;
+  };
