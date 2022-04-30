@@ -34,44 +34,49 @@ export default class WebGLDemo extends React.Component
     this._frag_code = 'precision mediump float; varying vec3 vColor;  void main(void) { gl_FragColor = vec4(vColor, 1.0); }';
     this._req_ani_id = undefined;
     this._test_count = 0;
-    // a good number for returning to the orginally generated color matrix
-    this._test_count_max = 200; 
+
+    // A GOOD NUMBER FOR RETURNING TO THE ORGINALLY GENERATED COLOR MATRIX
+    this._test_count_max = 200;
+
+    //  
     this._default_indices = [ 3, 2, 1, 3, 1, 0 ];
+    //  this._default_indices = [ 0, 0, 0, 0, 0, 0 ];
+
+    //  0.0-1.0 FROM CENTER TO EDGES
     this._default_square_vertices = [
       -0.9, 0.9, 0.0,   //  top left
       -0.9, -0.9, 0.0,  //  bottom left
       0.9, -0.9, 0.0,   //  bottom right
       0.9, 0.9, 0.0     //  top right
     ];
-    /* testing color array combinations */
-    /*
-      0, 0, 0,  //  LEFT TOP
-      0, 0, 0,  //  LEFT BOTTOM
-      0, 0, 0,  //  RIGHT BOTTOM
-      0, 0, 0   //  RIGHT TOP
-    */
-    /*
-    0, 0, 0,  //  BLACK
-    1, 1, 1,  //  WHITE
-    
-    1, 0, 0,  //  RED
-    1, 1, 0,  //  YELLOW
-    1, 1, 1,  //  WHITE
-    
-    0, 1, 0,  //  LIME GREEN
-    0, 1, 1,  //  AQUA BLUE
-    
-    0, 0, 1,  //  BLUE
-    1, 0, 1,  //  PURPLE
-    */
+
+    //0, 0, 0,  //  LEFT TOP
+    //0, 0, 0,  //  LEFT BOTTOM
+    //0, 0, 0,  //  RIGHT BOTTOM
+    //0, 0, 0   //  RIGHT TOP
+
+    //0, 0, 0,  //  BLACK
+    //1, 1, 1,  //  WHITE
+
+    //1, 0, 0,  //  RED
+    //1, 1, 0,  //  YELLOW
+    //1, 1, 1,  //  WHITE
+
+    //0, 1, 0,  //  LIME GREEN
+    //0, 1, 1,  //  AQUA BLUE
+
+    //0, 0, 1,  //  BLUE
+    //1, 0, 1,  //  PURPLE
+
     this._default_colors = [
       1, 0, 0,  //  LEFT TOP
-      0, 0, 0,  //  LEFT BOTTOM
-      0, 0, 0,  //  RIGHT BOTTOM
-      0, 0, 0   //  RIGHT TOP
+      0, 0, 1,  //  LEFT BOTTOM
+      0, 1, 0,  //  RIGHT BOTTOM
+      1, 1, 0   //  RIGHT TOP
     ];
     this._stepped_color_matrix = [ ...this._default_colors ];
 
+    //  FOR HANDLING THE DIRECTION OF THE COLOR INCREMENTS
     //  0 == increment up, -1 == increment down
     this._step_color_dir = [
       0, 0, 0,
@@ -116,7 +121,6 @@ export default class WebGLDemo extends React.Component
     //  console.debug( "GetRandomColors()", this._stepped_color_matrix, this._step_color_dir );
     return _rv;
   };
-
   ValidateColorDirectionArray()
   { //  console.debug( 'ValidateColorDirectionArray()', this._stepped_color_matrix, this._step_color_dir );
     for ( let i = 0; i < this._stepped_color_matrix.length; i++ )
@@ -143,11 +147,11 @@ export default class WebGLDemo extends React.Component
       let _v = 0;
 
       if ( this._step_color_dir[ i ] === 0 )
-      { 
-         _v = parseFloat( ( this._stepped_color_matrix[ i ] + 0.01 ).toFixed( 2 ) );
+      {
+        _v = parseFloat( ( this._stepped_color_matrix[ i ] + 0.01 ).toFixed( 2 ) );
       }
       else if ( this._step_color_dir[ i ] === -1 )
-      { 
+      {
         _v = parseFloat( ( this._stepped_color_matrix[ i ] - 0.01 ).toFixed( 2 ) );
       }
 
@@ -173,7 +177,7 @@ export default class WebGLDemo extends React.Component
   };
   ResetColorMatrixAndColorDirections()
   { //  console.debug( 'ResetColorMatrixAndColorDirections()' );
-    this._default_indices = [ 3, 2, 1, 3, 1, 0 ];
+    //  this._default_indices = [ 3, 2, 1, 3, 1, 0 ];
     this._stepped_color_matrix = [ ...this._default_colors ];
     this._step_color_dir = [
       0, 0, 0,
@@ -186,16 +190,14 @@ export default class WebGLDemo extends React.Component
     return;
   };
   CreateWebGLContext()
-  {
-    console.debug( 'CreateWebGLContext()' );
+  { //  console.debug( 'CreateWebGLContext()' );
     this.WGL = this.Canvas.current.getContext( "experimental-webgl" );
     return;
   };
 
   //  WebGL drawing functions
   InitWebGLRender()
-  {
-    console.debug( 'InitWebGLRender()' );
+  { //  console.debug( 'InitWebGLRender()' );
     this.CancelAnimationFrames();
     this.ResetColorMatrixAndColorDirections();
     this.CreateWebGLContext();
@@ -207,8 +209,7 @@ export default class WebGLDemo extends React.Component
     //  console.debug( "DrawDefault(v,c,i)::v", vertices );
     //  console.debug( "_default_colors", this._default_colors );
     //  console.debug( "_stepped_color_matrix", this._stepped_color_matrix );
-    console.debug( "colors", colors );
-
+    //  console.debug( "colors", colors );
     //  console.debug( "DrawDefault(v,c,i)::i", indices );
 
     // Create an empty buffer object and store vertex data
@@ -376,27 +377,27 @@ export default class WebGLDemo extends React.Component
         <div className="header centered">{ this.props.Title }</div>
 
         <div className="canvas-panel">
-            <canvas id="html5-canvas"
-              className="canvas-2d"
-              ref={ this.Canvas }
-              height={ this.CanvasSize }
-              width={ this.CanvasSize }>
-            </canvas>
+          <canvas id="html5-canvas"
+            className="canvas-2d"
+            ref={ this.Canvas }
+            height={ this.CanvasSize }
+            width={ this.CanvasSize }>
+          </canvas>
         </div>
 
         <div className="canvas-panel">
-            <button
+          <button
             tabIndex="0"
             className="app-btn"
             onClick={ this.OnClick_CreateRandomColorMatrix.bind( this ) }
             onKeyPress={ this.OnClick_CreateRandomColorMatrix.bind( this ) }
-            disabled={ this.state.activateBtnRunning}>Generate random colors</button>
+            disabled={ this.state.activateBtnRunning }>Generate random colors</button>
           <button
             tabIndex="0"
             className="app-btn"
             onClick={ this.OnClick_ActivateRotation.bind( this ) }
             onKeyPress={ this.OnClick_ActivateRotation.bind( this ) }
-            >{ this.state.activateBtnText }</button>
+          >{ this.state.activateBtnText }</button>
           <button
             tabIndex="0"
             className="app-btn"
@@ -405,7 +406,7 @@ export default class WebGLDemo extends React.Component
             disabled={ this.state.activateBtnRunning }>Reset to default</button>
         </div>
 
-        </div>
+      </div>
     );
   }
 };
