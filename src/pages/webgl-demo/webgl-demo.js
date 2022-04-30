@@ -16,33 +16,62 @@ export default class WebGLDemo extends React.Component
     Title: "WebGL Demo",
     LinkTitle: "WebGL Demo",
     Href: "portfolio/webgl-demo",
+    Description: "Playing with WebGL shaders",
     Icon: ""
   };
   constructor ( props )
   {
-    console.clear();
     super( props );
     document.title = this.props.Title;
 
+    this.CanvasSize = 1000;
     this.Canvas = React.createRef();
+
     this.WGL = undefined;
     //  this.WGL_UTIL = WebGL_Utilities;
-    this.CanvasSize = 1000;
 
+    this._vert_code = 'attribute vec3 coordinates; attribute vec3 color; varying vec3 vColor; void main(void) { gl_Position = vec4(coordinates, 1.0); vColor = color; }';
+    this._frag_code = 'precision mediump float; varying vec3 vColor;  void main(void) { gl_FragColor = vec4(vColor, 1.0); }';
+    this._req_ani_id = undefined;
+    this._test_count = 0;
+    // a good number for returning to the orginally generated color matrix
+    this._test_count_max = 200; 
     this._default_indices = [ 3, 2, 1, 3, 1, 0 ];
     this._default_square_vertices = [
-      -0.75, 0.75, 0.0,   //  top left
-      -0.75, -0.75, 0.0,  //  bottom left
-      0.75, -0.75, 0.0,   //  bottom right
-      0.75, 0.75, 0.0     //  top right
-      ];
+      -0.9, 0.9, 0.0,   //  top left
+      -0.9, -0.9, 0.0,  //  bottom left
+      0.9, -0.9, 0.0,   //  bottom right
+      0.9, 0.9, 0.0     //  top right
+    ];
+    /* testing color array combinations */
+    /*
+      0, 0, 0,  //  LEFT TOP
+      0, 0, 0,  //  LEFT BOTTOM
+      0, 0, 0,  //  RIGHT BOTTOM
+      0, 0, 0   //  RIGHT TOP
+    */
+    /*
+    0, 0, 0,  //  BLACK
+    1, 1, 1,  //  WHITE
+    
+    1, 0, 0,  //  RED
+    1, 1, 0,  //  YELLOW
+    1, 1, 1,  //  WHITE
+    
+    0, 1, 0,  //  LIME GREEN
+    0, 1, 1,  //  AQUA BLUE
+    
+    0, 0, 1,  //  BLUE
+    1, 0, 1,  //  PURPLE
+    */
     this._default_colors = [
-      1, 0, 0,  //  RED
-      0, 0, 1,  //  BLUE
-      0, 1, 0,  //  GREEN
-      1, 1, 0   //  BLACK TOP RIGHT CORNER, 1,0,0 = NOP FADE IN TRC, 1,1,0 ADDED YELLOW/WHITE FADE, 1,1,1 ADD WHITE
+      1, 0, 0,  //  LEFT TOP
+      0, 0, 0,  //  LEFT BOTTOM
+      0, 0, 0,  //  RIGHT BOTTOM
+      0, 0, 0   //  RIGHT TOP
     ];
     this._stepped_color_matrix = [ ...this._default_colors ];
+
     //  0 == increment up, -1 == increment down
     this._step_color_dir = [
       0, 0, 0,
@@ -51,16 +80,9 @@ export default class WebGLDemo extends React.Component
       0, 0, 0
     ];
 
-    this._vert_code = 'attribute vec3 coordinates; attribute vec3 color; varying vec3 vColor; void main(void) { gl_Position = vec4(coordinates, 1.0); vColor = color; }';
-    this._frag_code = 'precision mediump float; varying vec3 vColor;  void main(void) { gl_FragColor = vec4(vColor, 1.0); }';
-
     // HOC props & state
     this._activate_btn_text_default = "Animate random colors";
     this._activate_btn_text_stop = "Pause";
-
-    this._req_ani_id = undefined;
-    this._test_count = 0;
-    this._test_count_max = 100;
 
     this.state = {
       activateBtnRunning: false,
@@ -91,7 +113,7 @@ export default class WebGLDemo extends React.Component
     ];
     this._stepped_color_matrix = [ ..._rv ];
     this.ValidateColorDirectionArray();
-    console.debug( "GetRandomColors()", this._stepped_color_matrix, this._step_color_dir );
+    //  console.debug( "GetRandomColors()", this._stepped_color_matrix, this._step_color_dir );
     return _rv;
   };
 
@@ -117,20 +139,19 @@ export default class WebGLDemo extends React.Component
 
     for ( let i = 0; i < this._stepped_color_matrix.length; i++ )
     {
-      console.debug( 'start->i=', i,"c=", this._stepped_color_matrix[ i ] );
+      //  console.debug( 'start->i=', i, "c=", this._stepped_color_matrix[ i ], Number( this._stepped_color_matrix[ i ] ).toFixed( 2 ) );
+      let _v = 0;
 
-      let _v = 0.0;
       if ( this._step_color_dir[ i ] === 0 )
-      {
-        _v = parseFloat( ( this._stepped_color_matrix[ i ] + Math.random() ).toPrecision( 2 ) );
+      { 
+         _v = parseFloat( ( this._stepped_color_matrix[ i ] + 0.01 ).toFixed( 2 ) );
       }
       else if ( this._step_color_dir[ i ] === -1 )
-      {
-        _v = parseFloat( ( this._stepped_color_matrix[ i ] - Math.random() ).toPrecision( 2 ) );
+      { 
+        _v = parseFloat( ( this._stepped_color_matrix[ i ] - 0.01 ).toFixed( 2 ) );
       }
 
-      console.debug("a", i, this._stepped_color_matrix[ i ], _v );
-      if ( _v <= 0.0)
+      if ( _v <= 0.0 )
       {
         this._step_color_dir[ i ] = 0;
       }
@@ -140,9 +161,7 @@ export default class WebGLDemo extends React.Component
       }
 
       this._stepped_color_matrix[ i ] = _v;
-      //  console.debug( "c", i, this._stepped_color_matrix[ i ], _v );
     }
-    //  console.debug( "IncrementColors()2", this._stepped_color_matrix, this._step_color_dir );
     return this._stepped_color_matrix;
   };
 
@@ -286,7 +305,7 @@ export default class WebGLDemo extends React.Component
     }
     else
     { //  console.debug( 'RenderColorAnimation::STOPPED', this._req_ani_id, this._test_count_max, this._test_count );
-      console.debug( 'RenderColorAnimation::STOPPED', this._default_colors, this._stepped_color_matrix );
+      //  console.debug( 'RenderColorAnimation::STOPPED', this._default_colors, this._stepped_color_matrix );
       window.cancelAnimationFrame( this._req_ani_id );
       this._test_count = 0;
       this.setState( {
