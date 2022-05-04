@@ -15,8 +15,8 @@ import AzureCreate9 from './azure-create-9.png';
 export default class AzureCaseStudyDemo extends React.Component
 {
   static defaultProps = {
-    Title: "Microsoft Azure Portal Prototyping",
-    LinkTitle: "Microsoft Azure Prototyping",
+    Title: "Microsoft Azure Portal Prototypes",
+    LinkTitle: "Microsoft Azure Prototypes",
     Href: "portfolio/azure-ux",
     Icon: ""//SVG.AppNavButtons.About
   };

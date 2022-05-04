@@ -39,10 +39,7 @@ const _nav_routes = [
     component: PortfolioPage,
     children: [
       {
-        component: AzureCaseStudyDemo
-      },
-      {
-        component: WebWorkerDemo
+        component: AudioToysDemoPage
       },
       {
         component: WebGLDemo
@@ -51,7 +48,10 @@ const _nav_routes = [
         component: SvgZoomDemo
       },
       {
-        component: AudioToysDemoPage
+        component: WebWorkerDemo
+      },
+      {
+        component: AzureCaseStudyDemo
       },
     ]
   },
