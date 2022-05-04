@@ -1,123 +1,116 @@
 // CUSTOM WEBGL UTILITY CLASS
+//	https://www.tutorialspoint.com/webgl/webgl_interactive_cube.htm
+//  https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/Tutorial/Creating_3D_objects_using_WebGL
+//  http://learnwebgl.brown37.net/07_cameras/camera_linear_motion.html
+//  https://github.com/dlebech/ball-webgl
+//  https://www.udemy.com/course/threejs-programming/?matchtype=e&msclkid=8fa1ec9d56711cde15a28cba5a4624c7
+//  https://github.com/SonarSystems/three.js-Crash-Course
+//  https://webglfundamentals.org/
+
 export default class WGLU
 {
   constructor ( props )
   {
     console.debug( 'WebGL_Utilities', props );
   }
-  static CreateVertexBuffer = function (webglContext, vertices)
-  { // Create an empty buffer object and store vertex data
-    console.debug( 'CreateVertexBuffer', webglContext, vertices );
 
-    const _vertex_buffer = webglContext.createBuffer();
-    webglContext.bindBuffer( webglContext.ARRAY_BUFFER, _vertex_buffer );
-    webglContext.bufferData( webglContext.ARRAY_BUFFER, new Float32Array( vertices ), webglContext.STATIC_DRAW );
-    webglContext.bindBuffer( webglContext.ARRAY_BUFFER, null );
-    return _vertex_buffer;
+  static CreateVertexBuffer = function ( ctxt, vertexData )
+  { //  Create an empty buffer object and store vertex data
+    //  console.debug( 'CreateVertexBuffer', ctxt, vertexData);
+    const _v_buffer = ctxt.createBuffer();
+    ctxt.bindBuffer( ctxt.ARRAY_BUFFER, _v_buffer );
+    ctxt.bufferData( ctxt.ARRAY_BUFFER, new Float32Array( vertexData ), ctxt.STATIC_DRAW );
+    ctxt.bindBuffer( ctxt.ARRAY_BUFFER, null );
+    return _v_buffer;
   };
-  static CreateIndexBuffer = function ( webglContext, indices )
-  { // Create an empty buffer object and store indices data
-    console.debug( 'CreateIndexBuffer', webglContext, indices );
+  static CreateIndexBuffer = function ( ctxt, indexData )
+  { //  Create an empty buffer object and store indices data
+    //  console.debug( 'CreateIndexBuffer', ctxt, indices );
+    const _idx_buffer = ctxt.createBuffer();
+    ctxt.bindBuffer( ctxt.ELEMENT_ARRAY_BUFFER, _idx_buffer );
+    ctxt.bufferData( ctxt.ELEMENT_ARRAY_BUFFER, new Uint16Array( indexData ), ctxt.STATIC_DRAW );
+    ctxt.bindBuffer( ctxt.ELEMENT_ARRAY_BUFFER, null );
+    return _idx_buffer;
+  };
+  static CreateColorBuffer = function ( ctxt, colorData )
+  { //  Create an empty buffer object and store indices data
+    //  console.debug( 'CreateColorBuffer', ctxt, colorData );
+    const _c_buffer = ctxt.createBuffer();
+    ctxt.bindBuffer( ctxt.ARRAY_BUFFER, _c_buffer );
+    ctxt.bufferData( ctxt.ARRAY_BUFFER, new Float32Array( colorData ), ctxt.STATIC_DRAW );
+    return _c_buffer;
+  };
 
-    const _index_buffer = webglContext.createBuffer();
-    webglContext.bindBuffer( webglContext.ELEMENT_ARRAY_BUFFER, _index_buffer );
-    webglContext.bufferData( webglContext.ELEMENT_ARRAY_BUFFER, new Uint16Array( indices ), webglContext.STATIC_DRAW );
-    webglContext.bindBuffer( webglContext.ELEMENT_ARRAY_BUFFER, null );
-    return _index_buffer;
+  static CreateShader = function ( ctxt, shaderType, shaderCode )
+  { //  console.debug( 'CreateShader', ctxt, shaderType, shaderCode );
+    const _shader = ctxt.createShader( shaderType );
+    ctxt.shaderSource( _shader, shaderCode );
+    ctxt.compileShader( _shader );
+    return _shader;
   };
-  static CreateColorBuffer = function ( webglContext, colorData )
-  { // Create an empty buffer object and store indices data
-    console.debug( 'CreateColorBuffer', webglContext, colorData );
-
-    const _color_buffer = webglContext.createBuffer();
-    webglContext.bindBuffer( webglContext.ARRAY_BUFFER, _color_buffer );
-    webglContext.bufferData( webglContext.ARRAY_BUFFER, new Float32Array( colorData ), webglContext.STATIC_DRAW );
-    return _color_buffer;
-  };
-  static CreateVertexShader = function ( wglCxt, vertexShaderCode )
+  static CreateShaderProgram = function ( ctxt, vShader, fShader )
   {
-    console.debug( 'CreateVertexShader', wglCxt, vertexShaderCode );
-
-    const _vert_shader = wglCxt.createShader( wglCxt.VERTEX_SHADER );
-    wglCxt.shaderSource( _vert_shader, vertexShaderCode  );
-    wglCxt.compileShader( _vert_shader );
-    return _vert_shader;
-  };
-  static CreateFragmentShader = function ( wglCxt, fragmentShaderCode )
-  {
-    console.debug( 'CreateFragmentShader', wglCxt, fragmentShaderCode );
-
-    const _frag_shader = wglCxt.createShader( wglCxt.FRAGMENT_SHADER );
-    wglCxt.shaderSource( _frag_shader, fragmentShaderCode );
-    wglCxt.compileShader( _frag_shader );
-    return _frag_shader;
-  };
-  static CreateShaderProgram = function ( wglCxt, vShader, fShader )
-  {
-    console.debug( 'CreateShaderProgram', wglCxt, vShader, fShader );
-
-    // Create a shader program object to store the combined shader program
-    // Attach a vertex shader
-    // Attach a fragment shader
-    // Link both the programs
-    // Use the combined shader program object
-    const _shader_program = wglCxt.createProgram();
-    wglCxt.attachShader( _shader_program, vShader );
-    wglCxt.attachShader( _shader_program, fShader );
-    wglCxt.linkProgram( _shader_program );
-    wglCxt.useProgram( _shader_program );
+    //  Create a shader program object to store the combined shader program
+    //   Attach a vertex shader
+    //  Attach a fragment shader
+    //  Link both the programs
+    //  Use the combined shader program object
+    //  console.debug( 'CreateShaderProgram', ctxt, vShader, fShader );
+    const _shader_program = ctxt.createProgram();
+    ctxt.attachShader( _shader_program, vShader );
+    ctxt.attachShader( _shader_program, fShader );
+    ctxt.linkProgram( _shader_program );
+    ctxt.useProgram( _shader_program );
     return _shader_program;
   };
-  static BindBuffers = function ( wCtxt, vBuffer, iBuffer )
-  {
-    //  Associating shaders to buffer objects
-    //  Bind vertex buffer object
-    //  Bind index buffer object
-    console.debug( 'BindBuffers', wCtxt, vBuffer, iBuffer );
 
-    wCtxt.bindBuffer( wCtxt.ARRAY_BUFFER, vBuffer );
-    wCtxt.bindBuffer( wCtxt.ELEMENT_ARRAY_BUFFER, iBuffer );
-    return;
-  };
-  static BindColorBuffers = function ( wCtxt, cBuffer )
+  static BindVertexAndIndexBuffers = function ( ctxt, vBuffer, iBuffer, shaderProg )
   {
     //  Associating shaders to buffer objects
     //  Bind vertex buffer object
     //  Bind index buffer object
-    console.debug( 'BindColorBuffers', wCtxt, cBuffer );
-    //      this.WGL.bindBuffer( this.WGL.ARRAY_BUFFER, _color_buffer );
-    wCtxt.bindBuffer( wCtxt.ARRAY_BUFFER, cBuffer );
+    //  console.debug( 'BindVertIdxBuffers', ctxt, vBuffer, iBuffer );
+
+    ctxt.bindBuffer( ctxt.ARRAY_BUFFER, vBuffer );
+    ctxt.bindBuffer( ctxt.ELEMENT_ARRAY_BUFFER, iBuffer );
+
+    const _att = ctxt.getAttribLocation( shaderProg, "coordinates" );
+    ctxt.vertexAttribPointer( _att, 3, ctxt.FLOAT, false, 0, 0 );
+    ctxt.enableVertexAttribArray( _att );
     return;
   };
-  static SetAttributeLocation = function ( wCtxt, shaderProgram, attribName )
+  static BindColorBuffers = function ( ctxt, cBuffer, shaderProg )
   {
-    console.debug( 'SetCoordinatesAttributeLocation', wCtxt, shaderProgram, attribName );
-    // Get the attribute location
-    // point an attribute to the currently bound VBO
-    // Enable the attribute
-    const _att = wCtxt.getAttribLocation( shaderProgram, attribName  );
-    wCtxt.vertexAttribPointer( _att, 3, wCtxt.FLOAT, false, 0, 0 );
-    wCtxt.enableVertexAttribArray( _att );
+    //  Associating shaders to buffer objects
+    //  Bind color buffer object
+    //  console.debug( 'BindColorBuffers', ctxt, cBuffer );
+    ctxt.bindBuffer( ctxt.ARRAY_BUFFER, cBuffer );
+
+    const _att = ctxt.getAttribLocation( shaderProg, "color" );
+    ctxt.vertexAttribPointer( _att, 3, ctxt.FLOAT, false, 0, 0 );
+    ctxt.enableVertexAttribArray( _att );
     return;
   };
-  static DrawViewport = function ( wCtxt, top, left, h, w, idxLength, elementType)
+
+  static DrawViewPort = function ( ctxt, top, left, height, width, idxLength, elementType )
   {
-    console.debug( 'DrawViewport', wCtxt, top, left, h, w, idxLength, elementType );
-    // Clear the canvas, RGBA
-    // Enable the depth test
-    // Clear the color buffer bit
-    // Set the view port
-    // Draw the triangle
-    //this.WGL.clearColor( 0, 0, 0, 1 );
-    //this.WGL.enable( this.WGL.DEPTH_TEST );
-    //this.WGL.clear( this.WGL.COLOR_BUFFER_BIT );
-    //this.WGL.viewport( 0, 0, this.CanvasSize, this.CanvasSize );
-    //this.WGL.drawElements( this.WGL.TRIANGLES, indices.length, this.WGL.UNSIGNED_SHORT, 0 );
-    wCtxt.clearColor( 0, 0, 0, 1 );
-    wCtxt.enable( wCtxt.DEPTH_TEST );
-    wCtxt.clear( wCtxt.COLOR_BUFFER_BIT );
-    wCtxt.viewport( top, left, h, w );
-    wCtxt.drawElements( elementType, idxLength, wCtxt.UNSIGNED_SHORT, 0 );
+    //  Clear the canvas, RGBA
+    //  Enable the depth test
+    //  Clear the color buffer bit
+    //  Set the view port
+    //  Draw the triangle
+    //  this.WGL.clearColor( 0, 0, 0, 1 );
+    //  this.WGL.enable( this.WGL.DEPTH_TEST );
+    //  this.WGL.clear( this.WGL.COLOR_BUFFER_BIT );
+    //  this.WGL.viewport( 0, 0, this.CanvasSize, this.CanvasSize );
+    //  this.WGL.drawElements( this.WGL.TRIANGLES, indices.length, this.WGL.UNSIGNED_SHORT, 0 );
+    //  console.debug( 'DrawViewport', ctxt, top, left, height, width, idxLength, elementType );
+    //  console.debug( 'DrawViewport' );
+    ctxt.clearColor( 0, 0, 0, 1 );
+    ctxt.enable( ctxt.DEPTH_TEST );
+    ctxt.clear( ctxt.COLOR_BUFFER_BIT | ctxt.DEPTH_BUFFER_BIT );
+    ctxt.viewport( top, left, height, width );
+    ctxt.drawElements( elementType, idxLength, ctxt.UNSIGNED_SHORT, 0 );
     return;
   };
 };

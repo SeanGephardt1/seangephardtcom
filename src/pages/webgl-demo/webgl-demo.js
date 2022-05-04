@@ -1,11 +1,3 @@
-//	https://www.tutorialspoint.com/webgl/webgl_interactive_cube.htm
-//  https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/Tutorial/Creating_3D_objects_using_WebGL
-//  http://learnwebgl.brown37.net/07_cameras/camera_linear_motion.html
-//  https://github.com/dlebech/ball-webgl
-//  https://www.udemy.com/course/threejs-programming/?matchtype=e&msclkid=8fa1ec9d56711cde15a28cba5a4624c7
-//  https://github.com/SonarSystems/three.js-Crash-Course
-//  https://webglfundamentals.org/
-
 import React from 'react';
 import WGLU from './wgl-util.js';
 import './webgl-demo.css';
@@ -167,6 +159,29 @@ export default class WebGLDemo extends React.Component
     }
     return this._stepped_color_matrix;
   };
+  RenderAnimationLoop()
+  { //  console.debug( 'RenderColorAnimation', this._req_ani_id, this._test_count_max, this._test_count );
+    if ( this._test_count < this._test_count_max )
+    {
+      const _inc_colors = this.IncrementColors();
+
+      this.DrawDefault( this._default_square_vertices, this._default_indices, _inc_colors );
+
+      this._test_count++;
+      this._req_ani_id = window.requestAnimationFrame( () => this.RenderAnimationLoop() );
+    }
+    else
+    { //  console.debug( 'RenderColorAnimation::STOPPED', this._req_ani_id, this._test_count_max, this._test_count );
+      //  console.debug( 'RenderColorAnimation::STOPPED', this._default_colors, this._stepped_color_matrix );
+      window.cancelAnimationFrame( this._req_ani_id );
+      this._test_count = 0;
+      this.setState( {
+        activateBtnRunning: !this.state.activateBtnRunning,
+        activateBtnText: this._activate_btn_text_default
+      } );
+    }
+    return;
+  };
 
   //  WEBGL CONTEXTUAL FUNCTIONS
   CancelAnimationFrames()
@@ -194,147 +209,33 @@ export default class WebGLDemo extends React.Component
     return;
   };
 
-  //  WebGL drawing functions
+  //  WEBGL DRAWING FUNCTIONS
   InitWebGLRender()
-  { //  
-    console.debug( 'InitWebGLRender()' );
+  { //  console.debug( 'InitWebGLRender()' );
     this.CancelAnimationFrames();
     this.ResetColorMatrixAndColorDirections();
     this.CreateWebGLContext();
-    this.DrawDefault( this._default_square_vertices, this._default_colors, this._default_indices );
+    this.DrawDefault( this._default_square_vertices, this._default_indices, this._default_colors );
     return;
   };
-  DrawDefault( vertices, colors, indices )
+  // SEE FILE FOR ORIGINAL "webgl-demo-old.js"
+  // ORDER OF EXECUTION IS IMPORTANT HERE
+  DrawDefault( v, i, c)
   {
-    console.debug( 'DrawDefault');
-    //  console.debug( 'DrawDefault(v,c,i);', vertices, colors, indices );
-    //  console.debug( "DrawDefault(v,c,i)::v", vertices );
-    //  console.debug( "_default_colors", this._default_colors );
-    //  console.debug( "_stepped_color_matrix", this._stepped_color_matrix );
-    //  console.debug( "colors", colors );
-    //  console.debug( "DrawDefault(v,c,i)::i", indices );
+    //  console.debug( 'DrawDefault' );
+    const _vertex_buffer = WGLU.CreateVertexBuffer( this.WGL, v );
+    const _index_buffer = WGLU.CreateIndexBuffer( this.WGL, i );
+    const _color_buffer = WGLU.CreateColorBuffer( this.WGL, c );
 
-    // MOVED TO STATIC UTIL CLASS
-    // CREATE AN EMPTY BUFFER OBJECT AND STORE VERTEX DATA
-    //const _vertex_buffer = this.WGL.createBuffer();
-    //this.WGL.bindBuffer( this.WGL.ARRAY_BUFFER, _vertex_buffer );
-    //this.WGL.bufferData( this.WGL.ARRAY_BUFFER, new Float32Array( vertices ), this.WGL.STATIC_DRAW );
-    //this.WGL.bindBuffer( this.WGL.ARRAY_BUFFER, null );
-    const _vertex_buffer = WGLU.CreateVertexBuffer( this.WGL, vertices );
+    const _v_shader = WGLU.CreateShader( this.WGL, this.WGL.VERTEX_SHADER,  this._vert_code );
+    const _f_shader = WGLU.CreateShader( this.WGL, this.WGL.FRAGMENT_SHADER, this._frag_code );
 
-    // Create an empty buffer object and store Index data
-    //const _index_buffer = this.WGL.createBuffer();
-    //this.WGL.bindBuffer( this.WGL.ELEMENT_ARRAY_BUFFER, _index_buffer );
-    //this.WGL.bufferData( this.WGL.ELEMENT_ARRAY_BUFFER, new Uint16Array( indices ), this.WGL.STATIC_DRAW );
-    //this.WGL.bindBuffer( this.WGL.ELEMENT_ARRAY_BUFFER, null );
-    const _index_buffer = WGLU.CreateIndexBuffer( this.WGL, indices );
+    const _shader_program = WGLU.CreateShaderProgram( this.WGL, _v_shader, _f_shader );
 
+    WGLU.BindVertexAndIndexBuffers( this.WGL, _vertex_buffer, _index_buffer, _shader_program );
+    WGLU.BindColorBuffers( this.WGL, _color_buffer, _shader_program);
 
-    // Create an empty buffer object and store color data
-    //const _color_buffer = this.WGL.createBuffer();
-    //this.WGL.bindBuffer( this.WGL.ARRAY_BUFFER, _color_buffer );
-    //this.WGL.bufferData( this.WGL.ARRAY_BUFFER, new Float32Array( colors ), this.WGL.STATIC_DRAW );
-    const _color_buffer = WGLU.CreateColorBuffer( this.WGL, colors );
-
-
-    // Shaders 
-    // Create a vertex shader object
-    // Attach vertex shader source code
-    // Compile the vertex shader
-    //const _vert_shader = this.WGL.createShader( this.WGL.VERTEX_SHADER );
-    //this.WGL.shaderSource( _vert_shader, this._vert_code );
-    //this.WGL.compileShader( _vert_shader );
-    const _vert_shader = WGLU.CreateVertexShader( this.WGL, this._vert_code );
-
-
-    // Create fragment shader object
-    // Attach fragment shader source code
-    // Compile the fragmentt shader
-    //const _frag_shader = this.WGL.createShader( this.WGL.FRAGMENT_SHADER );
-    //this.WGL.shaderSource( _frag_shader, this._frag_code );
-    //this.WGL.compileShader( _frag_shader );
-    const _frag_shader = WGLU.CreateFragmentShader( this.WGL, this._frag_code );
-
-
-    // Create a shader program object to store the combined shader program
-    // Attach a vertex shader
-    // Attach a fragment shader
-    // Link both the programs
-    // Use the combined shader program object
-    //const _shader_program = this.WGL.createProgram();
-    //this.WGL.attachShader( _shader_program, _vert_shader );
-    //this.WGL.attachShader( _shader_program, _frag_shader );
-    //this.WGL.linkProgram( _shader_program );
-    //this.WGL.useProgram( _shader_program );
-    const _shader_program = WGLU.CreateShaderProgram( this.WGL, _vert_shader, _frag_shader);
-
-
-    //  Associating shaders to buffer objects
-    //  Bind vertex buffer object
-    //  Bind index buffer object
-    //  this.WGL.bindBuffer( this.WGL.ARRAY_BUFFER, _vertex_buffer );
-    //  this.WGL.bindBuffer( this.WGL.ELEMENT_ARRAY_BUFFER, _index_buffer );
-    WGLU.BindBuffers( this.WGL, _vertex_buffer, _index_buffer );
-
-
-    // Get the attribute location
-    // point an attribute to the currently bound VBO
-    //// Enable the attribute
-    //const _coords = this.WGL.getAttribLocation( _shader_program, "coordinates" );
-    //this.WGL.vertexAttribPointer( _coords, 3, this.WGL.FLOAT, false, 0, 0 );
-    //this.WGL.enableVertexAttribArray( _coords );
-    WGLU.SetAttributeLocation( this.WGL, _shader_program, "coordinates");
-
-    // bind the color buffer
-    //  this.WGL.bindBuffer( this.WGL.ARRAY_BUFFER, _color_buffer );
-    WGLU.BindColorBuffers( this.WGL, _color_buffer );
-
-
-    // get the attribute location
-    // point attribute to the volor buffer object
-    // enable the color attribute
-    //const _color = this.WGL.getAttribLocation( _shader_program, "color" );
-    //this.WGL.vertexAttribPointer( _color, 3, this.WGL.FLOAT, false, 0, 0 );
-    //this.WGL.enableVertexAttribArray( _color );
-    WGLU.SetAttributeLocation( this.WGL, _shader_program, "color" );
-
-
-    // Clear the canvas, RGBA
-    // Enable the depth test
-    // Clear the color buffer bit
-    // Set the view port
-    // Draw the triangle
-    //this.WGL.clearColor( 0, 0, 0, 1 );
-    //this.WGL.enable( this.WGL.DEPTH_TEST );
-    //this.WGL.clear( this.WGL.COLOR_BUFFER_BIT );
-    //this.WGL.viewport( 0, 0, this.CanvasSize, this.CanvasSize );
-    //this.WGL.drawElements( this.WGL.TRIANGLES, indices.length, this.WGL.UNSIGNED_SHORT, 0 );
-    WGLU.DrawViewport( this.WGL, 0, 0, this.CanvasSize, this.CanvasSize, indices.length, this.WGL.TRIANGLES );
-    return;
-  };
-
-  //  RequestAnimationFrame Loop
-  RenderAnimationLoop()
-  { //  console.debug( 'RenderColorAnimation', this._req_ani_id, this._test_count_max, this._test_count );
-    if ( this._test_count < this._test_count_max )
-    {
-      const _inc_colors = this.IncrementColors();
-
-      this.DrawDefault( this._default_square_vertices, _inc_colors, this._default_indices );
-
-      this._test_count++;
-      this._req_ani_id = window.requestAnimationFrame( () => this.RenderAnimationLoop() );
-    }
-    else
-    { //  console.debug( 'RenderColorAnimation::STOPPED', this._req_ani_id, this._test_count_max, this._test_count );
-      //  console.debug( 'RenderColorAnimation::STOPPED', this._default_colors, this._stepped_color_matrix );
-      window.cancelAnimationFrame( this._req_ani_id );
-      this._test_count = 0;
-      this.setState( {
-        activateBtnRunning: !this.state.activateBtnRunning,
-        activateBtnText: this._activate_btn_text_default
-      } );
-    }
+    WGLU.DrawViewPort( this.WGL, 0, 0, this.CanvasSize, this.CanvasSize, i.length, this.WGL.TRIANGLES );
     return;
   };
 
@@ -342,7 +243,7 @@ export default class WebGLDemo extends React.Component
   OnClick_CreateRandomColorMatrix( e )
   { //  console.debug( 'OnClick_ChangeWGLColors()' );
     const _rnd_colors = this.GetRandomColors();
-    this.DrawDefault( this._default_square_vertices, _rnd_colors, this._default_indices );
+    this.DrawDefault( this._default_square_vertices, this._default_indices, _rnd_colors );
     return;
   };
   OnClick_ActivateRotation( e )
@@ -369,7 +270,7 @@ export default class WebGLDemo extends React.Component
   OnClick_ResetDefaults( e )
   { // console.debug( 'OnClick_ResetDefaults()', );
     this.ResetColorMatrixAndColorDirections();
-    this.DrawDefault( this._default_square_vertices, this._default_colors, this._default_indices );
+    this.DrawDefault( this._default_square_vertices, this._default_indices, this._default_colors );
 
     // RESET BUTTON STATES
     this.setState( {
