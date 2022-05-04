@@ -298,6 +298,8 @@ export default class WebGLDemo extends React.Component
 
         <div className="header centered">{ this.props.Title }</div>
 
+        <div className="canvas-panel">Currently, this example is able to generate a random color pallette and animate through the colors, returning to the orginal pallette that is created.</div>
+
         <div className="canvas-panel">
           <canvas id="html5-canvas"
             className="canvas-2d"
