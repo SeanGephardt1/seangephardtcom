@@ -234,6 +234,7 @@ export default class FrequencyPlayer extends React.Component
            >Stop</button>
         </div>
 
+        { /* MOVE TO TUNER CONTROL */}
         <div className="tuner-panel-sub-header">Select standard guitar tuning pitches</div>
         <div className="tuner-panel-layout">
           <span

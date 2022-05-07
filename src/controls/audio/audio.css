@@ -50,3 +50,10 @@
 {
   min-width: 170px;
 }
+
+/* hihglight playing button */
+.note-playing, .note-playing[disabled], .note-playing[disabled]:hover
+{
+  background-color:var(--nav-color-4);
+  color:var(--white-08);
+}
