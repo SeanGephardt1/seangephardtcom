@@ -29,7 +29,7 @@ export default class ScalesControl extends React.Component
     this._scale_set_interval = undefined;
     this._scale_set_step = 0;
 
-    this._play_times = [ 1, 2, 3, 4, 5 ];
+    this._play_times = [0.5, 1, 2, 3, 4, 5 ];
     this._default_context_options = {
       latencyHint: 0, // 0.147 , 0.294 -- "interactive", // "balanced", "playback"
       sampleRate: 3000, // max == 768000
@@ -49,6 +49,7 @@ export default class ScalesControl extends React.Component
     };
     return;
   };
+
   // UTIL FUNCTIONS
   FilterScaleKeyNotes( idx )
   { //  console.debug( 'FilterScaleKeyNotes', idx, this._major_key.length, MiddleCRange.length );
@@ -103,8 +104,7 @@ export default class ScalesControl extends React.Component
     return;
   };
 
-
-  // GUITAR TUNER BUTTONS
+    // GUITAR TUNER BUTTONS
   OnClick_PlaySingleScaleTone( note, ev )
   { //  console.debug( 'OnClick_PlaySingleScaleTone', note );
     this._audio_context = new AudioContext( this._default_context_options );
@@ -182,6 +182,7 @@ export default class ScalesControl extends React.Component
           this.context.TogglePlaying();
           this.setState( {
             currentPitch: undefined,
+            isScalePlaying: false,
             isPlaybackBtnPlaying: false
           } );
         }
@@ -203,8 +204,7 @@ export default class ScalesControl extends React.Component
     return;
   };
 
-
-  //  REACT LIFECYCLE
+    //  REACT LIFECYCLE
   componentDidMount()
   {	//	console.debug( "componentDidMount()");
     return;
@@ -270,8 +270,7 @@ export default class ScalesControl extends React.Component
           </select>
         </div>
 
-        <div className="tuner-panel-sub-header">Play the selected key scale</div>
-
+        <div className="tuner-panel-sub-header">Play the specific notes of the key scale</div>
         <div className="tuner-panel-layout">
           {
             this.state.currentKeyNotes.map( ( item, idx ) => (
@@ -289,6 +288,7 @@ export default class ScalesControl extends React.Component
             ) )
           }
         </div>
+        <div className="tuner-panel-sub-header">Play the selected key scale</div>
         <div className="tuner-panel-layout">
           <button
             type="button"

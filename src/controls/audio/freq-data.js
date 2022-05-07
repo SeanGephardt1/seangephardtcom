@@ -15,6 +15,20 @@ const _oscillator_types = {
   Triangle: "triangle",
 };
 
+//  ADD DEFAULT PLAY TIME ARRAY
+//  this._play_times = [ 0.5, 1, 2, 3, 4, 5 ];
+// THEORY STUFF
+//  C > D# > E# > F > G > A > B
+//  W > W > H > W > W > H > W
+//  this._major_key = [ 0, 2, 4, 5, 7, 9, 11 ];
+
+//const _chord_formulas = [
+//  { name: 'Major', value: [ 1, 3, 5 ] },
+//];
+//const _scale_formulas = [
+//  { name: 'Major', value: [ 1, 3, 5, 7 ] },
+//];
+
 const _frequencies_440 = [
   { name: "C", octave: 0, value: 16.35 },
   { name: "C#", octave: 0, value: 17.32 },
@@ -161,14 +175,6 @@ const _bass_guitar_4_tones = [
   _frequencies_440[ 21 ], //  A1
   _frequencies_440[ 26 ], //  D2
   _frequencies_440[ 31 ], //  G2
-];
-
-// THEORY STUFF
-const _chord_formulas = [
-  { name: 'Major', value: [ 1, 3, 5 ] },
-];
-const _scale_formulas = [
-  { name: 'Major', value: [ 1, 3, 5, 7 ] },
 ];
 
 const _musical_keys = [

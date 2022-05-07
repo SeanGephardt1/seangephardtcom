@@ -37,7 +37,7 @@ export default class FrequencyPlayer extends React.Component
 
     this.state = {
       currentOscillatorType: Oscillators.Sawtooth,
-      selectCurrentPitch: this._freq_tone_list[ 0 ],
+      selectCurrentPitch: this._freq_tone_list[ 21 ],
       rangeCurrentPitch: this._guitar_tone_list[ 0 ],
       currentGuitarTunerPitch: undefined,
       currentBassGuitarTunerPitch: undefined,
@@ -174,27 +174,8 @@ export default class FrequencyPlayer extends React.Component
         <div className="tuner-panel-header">{ this.props.Title }</div>
         <div className="tuner-panel-sub-header">{ this.props.Description }</div>
 
-        <div className="tuner-panel-sub-header">Select from the list of oscillator types available in your browser.</div>
-        <div className="tuner-panel-layout">
-          <select
-            tabIndex="0"
-            title="Select from the list of oscillator types."
-            className="select-pitch-range"
-            defaultValue={ this.state.currentOscillatorType }
-            onChange={ this.OnChange_Select_ChangeOscillatorType.bind( this ) }
-            disabled={ this.context.isAudioPlaying }>
-            {
-              Object.entries( Oscillators ).map( ( [ key, val ] ) =>
-                <option
-                  key={ key }
-                  title={ key }
-                  value={ val }>{ key }</option>
-              ) 
-            }
-          </select>
-        </div>
+        <div className="tuner-panel-sub-header">Select a pitch from the full range of tones in Octaves 1-5. Also select from the list of oscillator types available in your browser.</div>
 
-        <div className="tuner-panel-sub-header">Select a pitch from the full range of tones in Octaves 1-5</div>
         <div className="tuner-panel-layout">
           <select
             tabIndex="0"
@@ -215,6 +196,24 @@ export default class FrequencyPlayer extends React.Component
               ) )
             }
           </select>
+          <select
+            tabIndex="0"
+            title="Select from the list of oscillator types."
+            className="select-pitch-range"
+            defaultValue={ this.state.currentOscillatorType }
+            onChange={ this.OnChange_Select_ChangeOscillatorType.bind( this ) }
+            disabled={ this.context.isAudioPlaying }>
+            {
+              Object.entries( Oscillators ).map( ( [ key, val ] ) =>
+                <option
+                  key={ key }
+                  title={ key }
+                  value={ val }>{ key }</option>
+              )
+            }
+          </select>
+        </div>
+        <div className="tuner-panel-layout">
           <button
             tabIndex="0"
             type="button"
@@ -231,55 +230,55 @@ export default class FrequencyPlayer extends React.Component
             onClick={ this.OnClick_Select_StopTone.bind( this ) }
             onKeyPress={ this.OnClick_Select_StopTone.bind( this ) }
             disabled={ !this.state.isSelectPlaying || !this.context.isAudioPlaying }
-           >Stop</button>
+          >Stop</button>
         </div>
 
         { /* MOVE TO TUNER CONTROL */}
-        <div className="tuner-panel-sub-header">Select standard guitar tuning pitches</div>
-        <div className="tuner-panel-layout">
-          <span
-            className="range-text">
-            { this.state.rangeCurrentPitch.name }{ this.state.rangeCurrentPitch.octave } &rarr; { this.state.rangeCurrentPitch.value.toString() } { AudioHertz }</span>
-          <datalist id="range-slider-pitches">
-            {
-              this._guitar_tone_list.map( ( item, idx ) => (
-                <option key={ idx } value={ idx } />
-              ) )
-            }
-          </datalist>
-          <input
-            type="range"
-            id="tonesrange"
-            name="tonesrange"
-            title="Select from the range of pitches"
-            className="range-slider"
-            list="range-slider-pitches"
-            step="1"
-            min="0"
-            defaultValue="0"
-            max={ this._guitar_tone_list.length - 1 }
-            onChange={ this.OnChange_Range_ChangeTone.bind( this ) }
-            disabled={
-              (this.context.isAudioPlaying && this.state.isSelectPlaying ) ||
-              (this.context.isAudioPlaying && !this.state.isRangePlaying)
-            }></input>
-          <button
-            tabIndex="0"
-            type="button"
-            title="Click to begin playing the selected sound."
-            className="app-btn"
-            onClick={ this.OnClick_Range_PlayTone.bind( this ) }
-            onKeyPress={ this.OnClick_Range_PlayTone.bind( this ) }
-            disabled={ this.state.isRangePlaying || this.context.isAudioPlaying }>Play</button>
-          <button
-            tabIndex="0"
-            type="button"
-            title="Click to stop playing the selected sound."
-            className="app-btn"
-            onClick={ this.OnClick_Range_StopTone.bind( this ) }
-            onKeyPress={ this.OnClick_Range_StopTone.bind( this ) }
-            disabled={ !this.state.isRangePlaying || !this.context.isAudioPlaying }>Stop</button>
-        </div>
+        {/*<div className="tuner-panel-sub-header">Select standard guitar tuning pitches</div>*/}
+        {/*<div className="tuner-panel-layout">*/}
+        {/*  <span*/}
+        {/*    className="range-text">*/}
+        {/*    { this.state.rangeCurrentPitch.name }{ this.state.rangeCurrentPitch.octave } &rarr; { this.state.rangeCurrentPitch.value.toString() } { AudioHertz }</span>*/}
+        {/*  <datalist id="range-slider-pitches">*/}
+        {/*    {*/}
+        {/*      this._guitar_tone_list.map( ( item, idx ) => (*/}
+        {/*        <option key={ idx } value={ idx } />*/}
+        {/*      ) )*/}
+        {/*    }*/}
+        {/*  </datalist>*/}
+        {/*  <input*/}
+        {/*    type="range"*/}
+        {/*    id="tonesrange"*/}
+        {/*    name="tonesrange"*/}
+        {/*    title="Select from the range of pitches"*/}
+        {/*    className="range-slider"*/}
+        {/*    list="range-slider-pitches"*/}
+        {/*    step="1"*/}
+        {/*    min="0"*/}
+        {/*    defaultValue="0"*/}
+        {/*    max={ this._guitar_tone_list.length - 1 }*/}
+        {/*    onChange={ this.OnChange_Range_ChangeTone.bind( this ) }*/}
+        {/*    disabled={*/}
+        {/*      (this.context.isAudioPlaying && this.state.isSelectPlaying ) ||*/}
+        {/*      (this.context.isAudioPlaying && !this.state.isRangePlaying)*/}
+        {/*    }></input>*/}
+        {/*  <button*/}
+        {/*    tabIndex="0"*/}
+        {/*    type="button"*/}
+        {/*    title="Click to begin playing the selected sound."*/}
+        {/*    className="app-btn"*/}
+        {/*    onClick={ this.OnClick_Range_PlayTone.bind( this ) }*/}
+        {/*    onKeyPress={ this.OnClick_Range_PlayTone.bind( this ) }*/}
+        {/*    disabled={ this.state.isRangePlaying || this.context.isAudioPlaying }>Play</button>*/}
+        {/*  <button*/}
+        {/*    tabIndex="0"*/}
+        {/*    type="button"*/}
+        {/*    title="Click to stop playing the selected sound."*/}
+        {/*    className="app-btn"*/}
+        {/*    onClick={ this.OnClick_Range_StopTone.bind( this ) }*/}
+        {/*    onKeyPress={ this.OnClick_Range_StopTone.bind( this ) }*/}
+        {/*    disabled={ !this.state.isRangePlaying || !this.context.isAudioPlaying }>Stop</button>*/}
+        {/*</div>*/}
 
       </div>
     );
