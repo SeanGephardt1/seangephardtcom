@@ -51,3 +51,8 @@ button, select, input[type=range]
 	cursor: pointer;
 	border-radius: 2px;
 }
+
+button[disabled], select[disabled], input[type=range][disabled]
+{
+	cursor:wait;   
+}

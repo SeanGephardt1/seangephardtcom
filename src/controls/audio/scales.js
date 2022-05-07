@@ -2,9 +2,10 @@ import React from 'react';
 import { AppAudioPageContext } from './audio-context.js';
 import
   {
-    GuitarTunerTones,
-    BassGuitarTunerTones,
-    Oscillators
+    Oscillators,
+    MusicalKeys,
+    MiddleCRange,
+    AudioHertz
   } from './freq-data.js';
 import './audio.css';
 
@@ -12,20 +13,21 @@ export default class ScalesControl extends React.Component
 {
   static contextType = AppAudioPageContext;
   static defaultProps = {
-    Title: "Guitar & Bass Tuners",
-    LinkTitle: "Guitar & Bass Tuners",
-    Href: "portfolio/tuners",
-    Description: "Easy to use standard tuners for guitar & bass.",
+    Title: "Musical Scales",
+    LinkTitle: "Musical Scales",
+    Href: "portfolio/audio-toys/scales",
+    Description: "Easy to use musical scales.",
     Icon: "",
   };
   constructor ( props )
   {
     super( props );
 
-    this._guitar_tone_list = GuitarTunerTones;
-    this._bass_guitar_tone_list = BassGuitarTunerTones;
-    this._play_times = [ 1, 2, 3, 4, 5 ];
+    //  C > D# > E# > F > G > A > B
+    //  W > W > H > W > W > H > W
+    this._major_key = [ 0, 2, 4, 5, 7, 9, 11 ];
 
+    this._play_times = [ 1, 2, 3, 4, 5 ];
     this._default_context_options = {
       latencyHint: 0, // 0.147 , 0.294 -- "interactive", // "balanced", "playback"
       sampleRate: 3000, // max == 768000
@@ -37,13 +39,55 @@ export default class ScalesControl extends React.Component
     this.state = {
       currentOscillatorType: Oscillators.Triangle,
       currentPlaytime: this._play_times[0],
-      isPlaying: false,
-      currentPitch: undefined,
+      // currentPitch: undefined,
+      isScalePlaying: false,
+      isPlaybackBtnPlaying: false,
+      currentKey: MusicalKeys[ 0 ],
+      currentKeyNotes: this.FilterScaleKeyNotes( 0 ),
+      currentNote: MusicalKeys[ 0 ]
     };
     return;
   };
+  // UTIL FUNCTIONS
+  FilterScaleKeyNotes( idx )
+  { //  console.debug( 'FilterScaleKeyNotes', idx, this._major_key.length, MiddleCRange.length );
+    let _m_step = 0;
+    let _major_scale = [];
+    const _note_range = MiddleCRange.slice( idx );
+    //  console.debug( '_note_range', _note_range.length );
+
+    for ( let step = 0; step < this._major_key.length; step++ )
+    { //  console.debug( 'step', step, _m_step , this._major_key[ step ] );
+      if ( step === 0 )
+      {
+        _m_step = 0;
+      }
+      else
+      {
+        _m_step = this._major_key[ step ];
+      }
+      //  console.debug( step, _m_step, _note_range[ _m_step ].name );
+      _major_scale.push( _note_range[ _m_step ] );
+    }
+
+    for ( let i = 0; i < _major_scale.length; i++ )
+    {
+      console.debug( i, _major_scale[i] );
+    }
+
+    //  console.debug( _note_range[0].name, '_major_scale', _major_scale.length, _major_scale );
+    return _major_scale;
+  };
 
   // SELECT FUNCTION FOR CHANGING OSCILLATOR TYPES
+  OnChange_Select_ChangeMusicalKey( ev )
+  {//  console.debug( 'OnChange_Select_ChangeOscillatorType', ev.target.value, MusicalKeys[ ev.target.value ] );
+    this.setState( {
+      currentKey: MusicalKeys[ ev.target.value ],
+      currentKeyNotes: this.FilterScaleKeyNotes( ev.target.value )
+    } );
+    return;
+  };
   OnChange_Select_ChangeOscillatorType( ev )
   { //  console.debug( 'OnChange_Select_ChangeOscillatorType', ev.target.value, this._oscillator);
     this.setState( {
@@ -57,18 +101,17 @@ export default class ScalesControl extends React.Component
     return;
   };
 
+
   // GUITAR TUNER BUTTONS
-  OnClick_PlaySingleTone( toneArray, ev )
-  { //  console.debug( 'OnClick_PlaySingleTone', ev.target.value, toneArray );
-    const _self = this;
-    let _pitch = toneArray[ ev.target.value ];
-    //  console.debug( '_pitch', _pitch );
+  OnClick_PlaySingleScaleTone( note, ev )
+  { //  
+    console.debug( 'OnClick_PlaySingleScaleTone', note );
 
     this._audio_context = new AudioContext( this._default_context_options );
     this._oscillator = this._audio_context.createOscillator();
     this._oscillator.type = this.state.currentOscillatorType;
     this._oscillator.frequency.value = 100;
-    this._oscillator.frequency.setValueAtTime( parseFloat( _pitch.value ), this._audio_context.currentTime );
+    this._oscillator.frequency.setValueAtTime( parseFloat( note.value ), this._audio_context.currentTime );
 
     this._gainNode = this._audio_context.createGain();
 
@@ -77,25 +120,85 @@ export default class ScalesControl extends React.Component
 
     this._oscillator.start();
 
-    this.context.TogglePlaying();
-    this.setState( {
-      currentPitch: _pitch,
-      isPlaying: this.context.isAudioPlaying
-    } );
-
+    const _self = this;
     window.setTimeout( () =>
     { //  console.debug( "PLAYBACK TIMEOUT", _self.context );
       _self.context.TogglePlaying();
       _self._oscillator.stop();
       _self.setState( {
         currentPitch: undefined,
-        isPlaying: false
+        isScalePlaying: false,
       } );
       return;
-    }, this.state.currentPlaytime * 1000 , _self );
+    }, this.state.currentPlaytime * 1000, _self );
+
+    this.context.TogglePlaying();
+    this.setState( {
+      currentPitch: note,
+      isScalePlaying: true,
+    } );
+
+    return;
+  };
+OnClick_PlayScaleTones( ev )
+  { //  console.debug( 'OnClick_PlayScaleTones', this.state.isPlaybackBtnPlaying, this.state.currentKey, this.state.currentKeyNotes );
+
+    //const _key_idx = MiddleCRange.findIndex( item =>
+    //{ //  console.debug( 'item', item.name, this.state.currentKey.major );
+    //  return this.state.currentKey.major === item.name;
+    //}, this.state.currentKey.major );
+    ////  console.debug( '_key_idx', _key_idx );
+    //this.FilterScaleKeyNotes( _key_idx );
+
+
+    //let _pitch = toneArray[ ev.target.value ];
+    ////  console.debug( '_pitch', _pitch );
+
+    //this._audio_context = new AudioContext( this._default_context_options );
+    //this._oscillator = this._audio_context.createOscillator();
+    //this._oscillator.type = this.state.currentOscillatorType;
+    //this._oscillator.frequency.value = 100;
+    //this._oscillator.frequency.setValueAtTime( parseFloat( _pitch.value ), this._audio_context.currentTime );
+
+    //this._gainNode = this._audio_context.createGain();
+
+    //this._oscillator.connect( this._gainNode );
+    //this._gainNode.connect( this._audio_context.destination );
+
+    //this._oscillator.start();
+
+    //this.context.TogglePlaying();
+
+    //this.setState( {
+    //  currentPitch: _pitch,
+    //  isPlaying: this.context.isAudioPlaying,
+    //  isPlaybackBtnPlaying: !this.state.isPlaybackBtnPlaying,
+    //} );
+
+    //const _self = this;
+    //window.setTimeout( () =>
+    //{ //  console.debug( "PLAYBACK TIMEOUT", _self.context );
+    //  _self.context.TogglePlaying();
+    //  _self._oscillator.stop();
+    //  _self.setState( {
+    //    currentPitch: undefined,
+    //    isPlaying: false
+    //  } );
+    //  return;
+    //}, this.state.currentPlaytime * 1000, _self );
+
+    //this.context.TogglePlaying();
+
+    //this.setState( {
+    //  currentKey: MusicalKeys[ 0 ],
+    //  isPlaybackBtnPlaying: !this.state.isPlaybackBtnPlaying,
+    //} );
+
     return;
   };
 
+
+  //  REACT LIFECYCLE
   componentDidMount()
   {	//	console.debug( "componentDidMount()");
     return;
@@ -115,8 +218,21 @@ export default class ScalesControl extends React.Component
         <div className="tuner-panel-header">{ this.props.Title }</div>
         <div className="tuner-panel-sub-header">{ this.props.Description }</div>
 
-        <div className="tuner-panel-sub-header">Select from the list of oscillator types available in your browser, and select the length of time in seconds to play a pitch.</div>
+        <div className="tuner-panel-sub-header">Select a key to hear play back of the select scale for that key.</div>
         <div className="tuner-panel-layout">
+          <select
+            tabIndex="0"
+            title="Select a musical key from the list of keys."
+            className="select-pitch-range"
+            defaultValue={ this.state.currentKey }
+            onChange={ this.OnChange_Select_ChangeMusicalKey.bind( this ) }
+            disabled={ this.context.isAudioPlaying }>
+            {
+              MusicalKeys.map( ( item, idx ) =>
+                <option key={ idx } title={ item.major } value={ idx }>{ item.major } Major = { item.minor } Minor</option>
+              )
+            }
+          </select>
           <select
             tabIndex="0"
             title="Select from the list of oscillator types."
@@ -132,7 +248,7 @@ export default class ScalesControl extends React.Component
           </select>
           <select
             tabIndex="0"
-            title="Select from the list of oscillator types."
+            title="Select a time length for each note."
             className="select-pitch-range"
             defaultValue={ this._play_times[ 0 ] }
             onChange={ this.OnChange_Select_ChangePlaybackTime.bind( this ) }
@@ -145,41 +261,55 @@ export default class ScalesControl extends React.Component
           </select>
         </div>
 
-        <div className="tuner-panel-sub-header">Select standard guitar tuning pitches</div>
+        <div className="tuner-panel-sub-header">Play the selected key scale</div>
+
         <div className="tuner-panel-layout">
           {
-            this._guitar_tone_list.map( ( item, idx ) => (
-              <button
+            this.state.currentKeyNotes.map( ( item, idx ) => (
+              < button
                 key={ idx }
                 value={ idx }
                 tabIndex="0"
                 type="button"
                 className="app-btn"
                 title={ 'Play ' + item.name + item.octave }
-                onClick={ this.OnClick_PlaySingleTone.bind( this, this._guitar_tone_list ) }
-                onKeyPress={ this.OnClick_PlaySingleTone.bind( this, this._guitar_tone_list ) }
-                disabled={ this.context.isAudioPlaying }>{ item.name }{ item.octave }</button>
+                disabled={ this.context.isAudioPlaying && this.state.isScalePlaying }
+                onClick={ this.OnClick_PlaySingleScaleTone.bind( this, item) }
+                onKeyPress={ this.OnClick_PlaySingleScaleTone.bind( this, item ) }
+>{ item.name }{ item.octave } { item.value }{ AudioHertz }</button >
             ) )
           }
+        </div>
+        <div className="tuner-panel-layout">
+          <button
+            type="button"
+            tabIndex="0"
+            className="app-btn"
+            value={ this.state.isPlaybackBtnPlaying }
+            disabled={ ( this.context.isAudioPlaying === true ||
+              this.state.isScalePlaying === true  ) }
+            onClick={ this.OnClick_PlayScaleTones.bind( this ) }
+            onKeyPress={ this.OnClick_PlayScaleTones.bind( this ) }>
+            { ( this.state.isPlaybackBtnPlaying === true ) ? 'Stop' : 'Play All' }</button>
         </div>
 
-        <div className="tuner-panel-sub-header">Select standard bass guitar tuning pitches</div>
-        <div className="tuner-panel-layout">
-          {
-            this._bass_guitar_tone_list.map( ( item, idx ) => (
-              <button
-                key={ idx }
-                value={ idx }
-                tabIndex="0"
-                type="button"
-                title={ 'Play ' + item.name + item.octave }
-                className="app-btn"
-                onClick={ this.OnClick_PlaySingleTone.bind( this, this._bass_guitar_tone_list ) }
-                onKeyPress={ this.OnClick_PlaySingleTone.bind( this, this._bass_guitar_tone_list ) }
-                disabled={ this.context.isAudioPlaying }>{ item.name }{ item.octave }</button>
-            ) )
-          }
-        </div>
+{/*        <div className="tuner-panel-sub-header">Select standard guitar tuning pitches</div>*/}
+        {/*<div className="tuner-panel-layout">*/}
+        {/*  {*/}
+        {/*    this._guitar_tone_list.map( ( item, idx ) => (*/}
+        {/*      <button*/}
+        {/*        key={ idx }*/}
+        {/*        value={ idx }*/}
+        {/*        tabIndex="0"*/}
+        {/*        type="button"*/}
+        {/*        className="app-btn"*/}
+        {/*        title={ 'Play ' + item.name + item.octave }*/}
+        {/*        onClick={ this.OnClick_PlaySingleTone.bind( this, this._guitar_tone_list ) }*/}
+        {/*        onKeyPress={ this.OnClick_PlaySingleTone.bind( this, this._guitar_tone_list ) }*/}
+        {/*        disabled={ this.context.isAudioPlaying }>{ item.name }{ item.octave }</button>*/}
+        {/*    ) )*/}
+        {/*  }*/}
+        {/*</div>*/}
 
         </div>
 

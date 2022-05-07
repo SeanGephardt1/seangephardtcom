@@ -140,7 +140,13 @@ const _filtered_440 = _frequencies_440.filter( function ( note )
 {
   return note.octave > 0 && note.octave < 6;
 });
-//  console.debug( '_filtered_440', _filtered_440 );
+//  DEBUG -- console.debug( '_filtered_440', _filtered_440 );
+
+const _mid_c_scale_range = _frequencies_440.filter( function ( note )
+{
+  return note.octave === 3 || note.octave === 4;
+} );
+// DEBUG -- console.debug( '_mid_c_scale_range', _mid_c_scale_range );
 
 const _guitar_6_tones = [
   _frequencies_440[ 28 ], //  E2
@@ -150,13 +156,36 @@ const _guitar_6_tones = [
   _frequencies_440[ 47 ], //  B3
   _frequencies_440[ 52 ], //  E4
 ];
-
 const _bass_guitar_4_tones = [
   _frequencies_440[ 16 ], //  E1
   _frequencies_440[ 21 ], //  A1
   _frequencies_440[ 26 ], //  D2
   _frequencies_440[ 31 ], //  G2
 ];
+
+// THEORY STUFF
+const _chord_formulas = [
+  { name: 'Major', value: [ 1, 3, 5 ] },
+];
+const _scale_formulas = [
+  { name: 'Major', value: [ 1, 3, 5, 7 ] },
+];
+
+const _musical_keys = [
+  { major: "C", majorAlt: "", minor: "A", minorAlt: "" },
+  { major: "C#", majorAlt: "Db", minor: "A#", minorAlt: "" },
+  { major: "D", majorAlt: "", minor: "B", minorAlt: "" },
+  { major: "D#", majorAlt: "Eb", minor: "C", minorAlt: "" },
+  { major: "E", majorAlt: "", minor: "C#", minorAlt: "" },
+  { major: "F", majorAlt: "", minor: "D", minorAlt: "" },
+  { major: "F#", majorAlt: "Gb", minor: "D#", minorAlt: "" },
+  { major: "G", majorAlt: "", minor: "E", minorAlt: "" },
+  { major: "G#", majorAlt: "Ab", minor: "E#", minorAlt: "" },
+  { major: "A", majorAlt: "", minor: "F", minorAlt: "" },
+  { major: "A#", majorAlt: "Bb", minor: "F#", minorAlt: "" },
+  { major: "B", majorAlt: "", minor: "G", minorAlt: "" }
+];
+
 
 export
 {
@@ -165,5 +194,7 @@ export
   _oscillator_types as Oscillators,
   _guitar_6_tones as GuitarTunerTones,
   _bass_guitar_4_tones as BassGuitarTunerTones,
+  _musical_keys as MusicalKeys,
+  _mid_c_scale_range as MiddleCRange,
   _audio_hertz as AudioHertz
 };

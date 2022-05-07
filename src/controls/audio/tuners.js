@@ -14,7 +14,7 @@ export default class TunersControl extends React.Component
   static defaultProps = {
     Title: "Guitar & Bass Tuners",
     LinkTitle: "Guitar & Bass Tuners",
-    Href: "portfolio/tuners",
+    Href: "portfolio/audio-toys/tuners",
     Description: "Easy to use standard tuners for guitar & bass.",
     Icon: "",
   };
@@ -132,7 +132,7 @@ export default class TunersControl extends React.Component
           </select>
           <select
             tabIndex="0"
-            title="Select from the list of oscillator types."
+            title="Select a length of time to play each note."
             className="select-pitch-range"
             defaultValue={ this._play_times[ 0 ] }
             onChange={ this.OnChange_Select_ChangePlaybackTime.bind( this ) }

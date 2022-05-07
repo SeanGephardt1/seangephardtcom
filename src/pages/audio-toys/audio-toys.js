@@ -2,6 +2,8 @@ import React from 'react';
 import { AppAudioPageContext } from '../../controls/audio/audio-context.js';
 import FrequencyPlayer from '../../controls/audio/freq-player.js';
 import Tuners from '../../controls/audio/tuners.js';
+import Scales from '../../controls/audio/scales.js';
+
 import './audio-toys.css';
 
 export default class AudioToysDemoPage extends React.Component
@@ -55,6 +57,7 @@ export default class AudioToysDemoPage extends React.Component
           <div className="centered header">{ this.props.Title }</div>
           <FrequencyPlayer  />
           <Tuners />
+          <Scales />
         </AppAudioPageContext.Provider>
       </div>
     );
