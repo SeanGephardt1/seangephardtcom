@@ -92,23 +92,74 @@ export default class MusicPage extends React.Component
 
         <div className="music-block-list">
 
-          <iframe className="bc-frame" title="Perfect Mistake by The Drive Through" src="https://bandcamp.com/EmbeddedPlayer/track=3407648147/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=none/transparent=true/" seamless loading="lazy">
+          <iframe
+            title="Lika a stone by The Drive Through"
+            className="bc-frame"
+            src="https://bandcamp.com/EmbeddedPlayer/track=3004472299/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=none/transparent=true/"
+            seamless
+            loading="lazy">
+            <a href="https://thedrivethrough.bandcamp.com/track/like-a-stone">Like a stone by The Drive Through</a></iframe>
+
+          <iframe
+            title="Still Got Tonight by The Drive Through"
+            className="bc-frame"
+            src="https://bandcamp.com/EmbeddedPlayer/track=3029096662/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=none/transparent=true/"
+            seamless
+            loading="lazy">
+            <a href="https://thedrivethrough.bandcamp.com/track/still-got-tonight">Still Go Tonight by The Drive Through</a>
+          </iframe>
+
+          <iframe
+            title="No Rain by The Drive Through"
+            className="bc-frame"
+            src="https://bandcamp.com/EmbeddedPlayer/track=496273781/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=none/transparent=true/"
+            seamless
+            loading="lazy">
+            <a href="https://thedrivethrough.bandcamp.com/track/no-rain">No Rain by The Drive Through</a>
+          </iframe>
+
+          <iframe
+            title="Perfect Mistake by The Drive Through" 
+            className="bc-frame"
+            src="https://bandcamp.com/EmbeddedPlayer/track=3407648147/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=none/transparent=true/"
+            seamless
+            loading="lazy">
             <a href="https://thedrivethrough.bandcamp.com/track/perfect-mistake">Perfect Mistake by The Drive Through</a>
           </iframe>
 
-          <iframe className="bc-frame" title="Note To Self by The Drive Through" src="https://bandcamp.com/EmbeddedPlayer/track=1468740362/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=none/transparent=true/" seamless loading="lazy">
+          <iframe
+            title="Note To Self by The Drive Through"
+            className="bc-frame"
+            src="https://bandcamp.com/EmbeddedPlayer/track=1468740362/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=none/transparent=true/"
+            seamless
+            loading="lazy">
             <a href="https://thedrivethrough.bandcamp.com/track/note-to-self">Note To Self by The Drive Through</a>
           </iframe>
 
-          <iframe className="bc-frame" title="Alone by The Drive Through" src="https://bandcamp.com/EmbeddedPlayer/track=509448573/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/" seamless loading="lazy">
+          <iframe
+            title="Alone by The Drive Through"
+            className="bc-frame"
+            src="https://bandcamp.com/EmbeddedPlayer/track=509448573/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/"
+            seamless
+            loading="lazy">
             <a href="http://thedrivethrough.bandcamp.com/track/alone">Alone by The Drive Through</a>
           </iframe>
 
-          <iframe className="bc-frame" title="Alone by The Drive Through" src="https://bandcamp.com/EmbeddedPlayer/track=4278936184/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/" seamless loading="lazy">
+          <iframe
+            title="Alone by The Drive Through"
+            className="bc-frame"
+            src="https://bandcamp.com/EmbeddedPlayer/track=4278936184/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/"
+            seamless
+            loading="lazy">
             <a href="http://thedrivethrough.bandcamp.com/track/its-hard" title="It&#39;s Hard by The Drive Through" >It&#39;s Hard by The Drive Through</a>
           </iframe>
 
-          <iframe className="bc-frame" title="Alone by The Drive Through" src="https://bandcamp.com/EmbeddedPlayer/track=3084652086/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/" seamless loading="lazy">
+          <iframe
+            title="Alone by The Drive Through"
+            className="bc-frame"
+            src="https://bandcamp.com/EmbeddedPlayer/track=3084652086/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/"
+            seamless
+            loading="lazy">
             <a href="http://thedrivethrough.bandcamp.com/track/temporary" title="Temporary by The Drive Through" >Temporary by The Drive Through</a>
           </iframe>
 
