@@ -58,9 +58,9 @@ const _nav_routes = [
   {
     component: MusicPage
   },
-  //{
-  //  component: TestPage
-  //},
+  {
+    component: TestPage
+  },
 ];
 
 const _app_routes = [

@@ -1,0 +1,27 @@
+*
+{
+    vertical-align: top;
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px; 
+}
+
+html, body
+{
+	width:100%;
+	height:100%;
+	min-width:320px;
+	box-sizing: border-box;
+}
+
+body
+{
+	background-color: var(--default-white);
+	color: var(--default-black);
+	font-family:  'Segoe UI', 'Roboto','Segoe UI', 'Helvetica Neue', sans-serif, -system-ui, BlinkMacSystemFont, -apple-system;
+	font-weight: normal;
+	font-size: 16px;
+	letter-spacing: 0px;
+	overflow: auto;
+	vertical-align: top;
+}
