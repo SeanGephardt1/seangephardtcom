@@ -7,7 +7,7 @@ export default class Home extends React.Component
   static defaultProps = {
     Title: "Sean Gephardt - Design, Develop, Deploy",
     LinkTitle: "Sean Gephardt",
-    Href: "/",
+    Href: "home",
     Icon: ""
   };
   constructor ( props )
@@ -16,7 +16,7 @@ export default class Home extends React.Component
     this.Title = this.props.Title;
     this.LinkTitle = this.props.LinkTitle;
     this.Href = this.props.Href;
-    this.state = { debug: true };
+    this.state = { debug: false };
     document.title = this.Title;
     return;
   };

@@ -19,8 +19,9 @@ export default function SiteNavigation()
               key={ index }
               to={ item.component.defaultProps.Href }
               className={ function ( { isActive } )
-              { // console.debug( "inside", isActive, window.location.pathname, item.path, window.location.pathname.includes( item.path ) );
-                return isActive ? 'nav nav-selected' : 'nav';
+              { //  
+                console.debug( index, isActive, location.pathname, item.component.defaultProps.Href, location.pathname.includes( item.component.defaultProps.Href ) );
+                return isActive === true ? 'nav nav-selected' : 'nav';
               } }
               title={ item.component.defaultProps.Title }
             >{ item.component.defaultProps.LinkTitle }</NavLink>
@@ -29,16 +30,16 @@ export default function SiteNavigation()
       </div>
 
       {
-        location.pathname.includes( NavList[ 2 ].component.defaultProps.Href.toLowerCase() ) &&
+        location.pathname.includes( NavList[ 3 ].component.defaultProps.Href.toLowerCase() ) &&
         <div className="nav-sub-level">
           {
-            NavList[ 2 ].children.map( ( item, index ) => (
+            NavList[ 3 ].children.map( ( item, index ) => (
               <NavLink
                 tabIndex="0"
                 key={ index }
                 to={ item.component.defaultProps.Href }
                 className={ function ( { isActive } )
-                { //  console.debug( "sub", isActive, item.path, window.location.pathname  );
+                { //  console.debug( "SUBNAV::", isActive, item.component.defaultProps.Href, location.pathname );
                   return isActive ? 'nav nav-sub-selected' : 'nav';
                 } }
                 title={ item.component.defaultProps.Title }

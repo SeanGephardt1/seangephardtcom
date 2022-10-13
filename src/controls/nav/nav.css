@@ -48,28 +48,11 @@ a.nav.nav-selected
   text-shadow: 0px 0px 1px var(--black), 0px 0px 2px var(--white);
   color: var(--white);
 }
+a.nav.nav-left
+{
+  background:linear-gradient(90deg, black 0, red 100%);
+}
 
-/*.nav-top-level > a.nav:nth-child(1).nav-selected, a.nav:nth-child(1):hover
-{
-	background-color: var(--nav-color-4);
-	color: var(--white);
-}
-.nav-top-level > a.nav:nth-child(2).nav-selected, a.nav:nth-child(2):hover
-{
-	background-color: var(--nav-color-1);
-	color: var(--white);
-}
-.nav-top-level > a.nav:nth-child(3).nav-selected, a.nav:nth-child(3):hover
-{
-	background-color: var(--nav-color-3);
-	color: var(--white);
-}
-.nav-top-level > a.nav:nth-child(4).nav-selected, a.nav:nth-child(4):hover
-{
-	background-color: var(--black);
-	color: var(--white);
-}
-*/
 
 .nav-sub-level
 {
@@ -114,3 +97,27 @@ a.nav.nav-selected
   color: var(--white);
   justify-content: center;
 }
+
+
+
+/*.nav-top-level > a.nav:nth-child(1).nav-selected, a.nav:nth-child(1):hover
+{
+	background-color: var(--nav-color-4);
+	color: var(--white);
+}
+.nav-top-level > a.nav:nth-child(2).nav-selected, a.nav:nth-child(2):hover
+{
+	background-color: var(--nav-color-1);
+	color: var(--white);
+}
+.nav-top-level > a.nav:nth-child(3).nav-selected, a.nav:nth-child(3):hover
+{
+	background-color: var(--nav-color-3);
+	color: var(--white);
+}
+.nav-top-level > a.nav:nth-child(4).nav-selected, a.nav:nth-child(4):hover
+{
+	background-color: var(--black);
+	color: var(--white);
+}
+*/

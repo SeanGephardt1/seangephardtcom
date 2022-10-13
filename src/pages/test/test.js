@@ -6,7 +6,7 @@ export default class TestPage extends React.Component
 	static defaultProps = {
 		Title: "Interview & Testing Questions",
 		LinkTitle: "Interview & Testing Questions",
-		Href: "/test-questions/"
+		Href: "test-questions"
 	};
 constructor( props )
 	{
@@ -27,22 +27,22 @@ constructor( props )
 	};
 	render()
 	{
-		console.debug( "Compute the polygon area using random grids:\n 2 = 3x3 9, 5; 3 = 5x5 25, 13; 4 = 7x7 49, 25" );
-		this.Solution_ComputePolygonArea( 1 );
-		this.Solution_ComputePolygonArea( 2 );
-		this.Solution_ComputePolygonArea( 3 );
-		this.Solution_ComputePolygonArea( 4 );
-		this.Solution_ComputePolygonArea( 5 );
-		this.Solution_ComputePolygonArea( 6 );
-		this.Solution_ComputePolygonArea( 7 );
-		this.Solution_ComputePolygonArea( 8 );
-		this.Solution_ComputePolygonArea( 9 );
-		this.Solution_ComputePolygonArea( 10 );
-		this.Solution_ComputePolygonArea( 99 );
-		this.Solution_ComputePolygonArea( 101 );
-		this.Solution_ComputePolygonArea( 500 );
-		this.Solution_ComputePolygonArea( 999 );
-		this.Solution_ComputePolygonArea( 1000 );
+		//console.debug( "Compute the polygon area using random grids:\n 2 = 3x3 9, 5; 3 = 5x5 25, 13; 4 = 7x7 49, 25" );
+		//this.Solution_ComputePolygonArea( 1 );
+		//this.Solution_ComputePolygonArea( 2 );
+		//this.Solution_ComputePolygonArea( 3 );
+		//this.Solution_ComputePolygonArea( 4 );
+		//this.Solution_ComputePolygonArea( 5 );
+		//this.Solution_ComputePolygonArea( 6 );
+		//this.Solution_ComputePolygonArea( 7 );
+		//this.Solution_ComputePolygonArea( 8 );
+		//this.Solution_ComputePolygonArea( 9 );
+		//this.Solution_ComputePolygonArea( 10 );
+		//this.Solution_ComputePolygonArea( 99 );
+		//this.Solution_ComputePolygonArea( 101 );
+		//this.Solution_ComputePolygonArea( 500 );
+		//this.Solution_ComputePolygonArea( 999 );
+		//this.Solution_ComputePolygonArea( 1000 );
 
 		return (
 			<div className="page-layout padding30">

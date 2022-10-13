@@ -30,6 +30,9 @@ import AudioToysDemoPage from './audio-toys/audio-toys.js';
 
 const _nav_routes = [
   {
+    component: TestPage
+  },
+  {
     component: Home
   },
   {
@@ -55,11 +58,8 @@ const _nav_routes = [
       },
     ]
   },
-  {
-    component: MusicPage
-  },
   //{
-  //  component: TestPage
+  //  component: MusicPage
   //},
 ];
 
@@ -69,11 +69,8 @@ const _app_routes = [
     element: <LayoutPage />,
     children: [
       {
-        path: "*",
-        element: <FourOhFourPage />,
-      },
-      {
-        path: Home.defaultProps.Href,
+        //path: Home.defaultProps.Href,
+        index: true,
         element: <Home />,
       },
       {
@@ -83,6 +80,10 @@ const _app_routes = [
       {
         path: PortfolioPage.defaultProps.Href,
         element: <PortfolioPage />,
+      },
+      {
+        path: AudioToysDemoPage.defaultProps.Href,
+        element: <AudioToysDemoPage />
       },
       {
         path: WebWorkerDemo.defaultProps.Href,
@@ -105,21 +106,20 @@ const _app_routes = [
         element: <MusicPage />
       },
       {
-        path: AudioToysDemoPage.defaultProps.Href,
-        element: <AudioToysDemoPage />
-      },
-      {
         path: TestPage.defaultProps.Href,
         element: <TestPage />
-      }
+      },
+      {
+        path: "*",
+        element: <FourOhFourPage />,
+      },
     ]
   }
 ];
 
 function AppRoutes()
 {
-  const _my_routes = useRoutes( _app_routes );
-  return _my_routes;
+  return useRoutes( _app_routes );
 };
 
 export

@@ -7,7 +7,7 @@ export default class MusicPage extends React.Component
   static defaultProps = {
     Title: "Music from Sean Gephardt",
     LinkTitle: "Music",
-    Href: "/music",
+    Href: "music",
     Icon: ""//SVG.AppNavButtons.Music
   };
   constructor ( props )
