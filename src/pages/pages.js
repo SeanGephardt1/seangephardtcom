@@ -29,9 +29,7 @@ import AudioToysDemoPage from './audio-toys/audio-toys.js';
 //  import ButtonAnimations from './button-animations/button-animations.js';
 
 const _nav_routes = [
-  {
-    component: TestPage
-  },
+
   {
     component: Home
   },
@@ -61,6 +59,9 @@ const _nav_routes = [
   //{
   //  component: MusicPage
   //},
+  {
+    component: TestPage
+  },
 ];
 
 const _app_routes = [
