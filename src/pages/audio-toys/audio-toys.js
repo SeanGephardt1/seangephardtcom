@@ -12,7 +12,7 @@ export default class AudioToysDemoPage extends React.Component
   static defaultProps = {
     Title: "Audio Toys",
     LinkTitle: "Audio Toys",
-    Href: "portfolio/audio-toys",
+    Href: "/portfolio/audio-toys",
     Description: "Web Audio API demos",
     Icon: "",
   };

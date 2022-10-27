@@ -6,7 +6,7 @@ export default class WebWorkerDemo extends React.Component
   static defaultProps = {
     Title: "JavaScript Web Worker Examples",
     LinkTitle: "Web Workers",
-    Href: "portfolio/dashboard-demo",
+    Href: "/portfolio/dashboard-demo",
     Icon: "",
     Workers: {
       Main: "./workers/db-demo-worker.js"

@@ -1,18 +1,18 @@
 //  updated from class component to functional component for react router v6
 import React from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
-import { NavList } from '../../pages/pages.js';
 import './nav.css';
 
-export default function SiteNavigation()
+export default function SiteNavigation(props)
 {
   const location = useLocation();
+  //  console.debug( "props.navData:", props.navData );
+  //  console.debug( "props.navStyle:", props.navStyle );
 
   return (
-    <nav>
-      <div className="nav-top-level">
+    <nav className={ props.navStyle }>
         {
-          NavList.map( ( item, index ) => (
+          props.navData.map( ( item, index ) => (
             <NavLink
               tabIndex="0"
               key={ index }
@@ -41,28 +41,6 @@ export default function SiteNavigation()
             >{ item.component.defaultProps.LinkTitle }</NavLink>
           ) )
         }
-      </div>
-
-      {
-        location.pathname.includes( NavList[ 2 ].component.defaultProps.Href.toLowerCase() ) &&
-        <div className="nav-sub-level">
-          {
-            NavList[ 2 ].children.map( ( item, index ) => (
-              <NavLink
-                tabIndex="0"
-                key={ index }
-                to={ item.component.defaultProps.Href.toLowerCase() }
-                className={ function ( { isActive } )
-                { //  console.debug( "SUBNAV::", isActive, item.component.defaultProps.Href, location.pathname );
-                  return isActive ? 'nav nav-sub-selected' : 'nav';
-                } }
-                title={ item.component.defaultProps.Title }
-              >{ item.component.defaultProps.LinkTitle }</NavLink>
-            ) )
-          }
-        </div>
-      }
-
     </nav>
   );
 };

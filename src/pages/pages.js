@@ -5,6 +5,8 @@ import { useRoutes } from "react-router-dom";
 
 // top-level pages
 import LayoutPage from './layout.js';
+import PortfolioLayoutPage from './layout-portfolio.js';
+
 import FourOhFourPage from './404/404.js';
 import TestPage from './test/test.js';
 import Home from './home/home.js';
@@ -40,28 +42,28 @@ const _nav_routes = [
     component: PortfolioPage,
     children: [
       {
+        component: AzureCaseStudyDemo
+      },
+      {
         component: AudioToysDemoPage
-      },
-      {
-        component: WebGLDemo
-      },
-      {
-        component: SvgZoomDemo
       },
       {
         component: WebWorkerDemo
       },
       {
-        component: AzureCaseStudyDemo
+        component: SvgZoomDemo
+      },
+      {
+        component: WebGLDemo
       },
     ]
   },
-  //{
-  //  component: MusicPage
-  //},
   {
-    component: TestPage
+    component: MusicPage
   },
+  //{
+  //  component: TestPage
+  //},
 ];
 
 const _app_routes = [
@@ -80,27 +82,35 @@ const _app_routes = [
       },
       {
         path: PortfolioPage.defaultProps.Href,
-        element: <PortfolioPage />,
-      },
-      {
-        path: AudioToysDemoPage.defaultProps.Href,
-        element: <AudioToysDemoPage />
-      },
-      {
-        path: WebWorkerDemo.defaultProps.Href,
-        element: <WebWorkerDemo />
-      },
-      {
-        path: WebGLDemo.defaultProps.Href,
-        element: <WebGLDemo />
-      },
-      {
-        path: SvgZoomDemo.defaultProps.Href,
-        element: <SvgZoomDemo />
-      },
-      {
-        path: AzureCaseStudyDemo.defaultProps.Href,
-        element: <AzureCaseStudyDemo />
+        element: <PortfolioLayoutPage />,
+        //  element: <PortfolioPage />,
+        children: [
+          {
+            index: true,
+            // element: <AzureCaseStudyDemo />,
+            element: <PortfolioPage />,
+          },
+          {
+            path: AudioToysDemoPage.defaultProps.Href,
+            element: <AudioToysDemoPage />
+          },
+          {
+            path: WebWorkerDemo.defaultProps.Href,
+            element: <WebWorkerDemo />
+          },
+          {
+            path: WebGLDemo.defaultProps.Href,
+            element: <WebGLDemo />
+          },
+          {
+            path: SvgZoomDemo.defaultProps.Href,
+            element: <SvgZoomDemo />
+          },
+          {
+            path: AzureCaseStudyDemo.defaultProps.Href,
+            element: <AzureCaseStudyDemo />
+          }, 
+        ]
       },
       {
         path: MusicPage.defaultProps.Href,

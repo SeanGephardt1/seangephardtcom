@@ -7,7 +7,7 @@ export default class WebGLDemo extends React.Component
   static defaultProps = {
     Title: "WebGL Example (work in progress)",
     LinkTitle: "WebGL Example",
-    Href: "portfolio/webgl-demo",
+    Href: "/portfolio/webgl-demo",
     Description: "Playing with WebGL shaders",
     Icon: ""
   };

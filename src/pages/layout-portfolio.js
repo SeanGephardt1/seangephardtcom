@@ -2,8 +2,6 @@ import React from 'react';
 import { Outlet } from "react-router-dom";
 import { NavList } from './../pages/pages.js';
 import SiteNav from './../controls/nav/nav.js';
-import SiteFooter from './../controls/footer/footer.js';
-import './../css/all.css';
 
 export default class LayoutPage extends React.Component
 {
@@ -15,15 +13,12 @@ export default class LayoutPage extends React.Component
   render()
   { //  console.debug( "LayoutPage.render()", React.version );
     return (
-      <>
+      <div className="page-layout row">
         <SiteNav
-          navData={ NavList }
-          navStyle="level-one"/>
-        <main>
-          <Outlet />
-        </main>
-        <SiteFooter />
-      </>
+          navData={ NavList[ 2 ].children }
+          navStyle="level-two"/>
+        <Outlet />
+      </div>
     );
   }
 };
