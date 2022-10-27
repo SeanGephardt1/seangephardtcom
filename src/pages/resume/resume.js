@@ -20,7 +20,7 @@ export default class Resume extends React.Component
   render()
   {	//	console.debug("ResumeExtension.render()", this.Title);	
     return (
-      <div className="page-layout row padding30">
+      <div className="page-layout resume-row">
 
         {/* LEFT COLUMN */ }
         <div className="resume-left">

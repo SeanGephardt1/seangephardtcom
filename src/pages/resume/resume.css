@@ -1,16 +1,24 @@
-﻿.resume-left
+﻿.resume-row
 {
-  /*	border: solid 1px red;*/
+/*  border: solid 1px black;*/
+  padding: 30px;
+  display:flex;
+  flex: 1 1 auto;
+  flex-direction: row;
+}
+.resume-left
+{
+/*  border: solid 4px red;*/
   order: 0;
-  flex: 1 1 70%;
-  padding-right: 20px;
+  flex: 1 1 auto;
+  padding-right: 30px;
 }
 
 .resume-right
 {
-  /*	border: solid 1px red;*/
+/*  border: solid 2px blue;*/
   order: 1;
-  flex: 1 1 30%;
+  flex: 1 1 auto;
   min-width: 250px;
 }
 

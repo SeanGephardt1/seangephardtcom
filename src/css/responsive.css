@@ -25,14 +25,14 @@
 
 @media (max-width: 900px)
 {
-	.resume
+	.resume-row
 	{
-/*		border: solid 1px red;*/
 		flex-direction:column;
-		flex-wrap:nowrap;
+		flex-wrap:wrap;
 	}
 	.resume-left
 	{
+		width:100%;
 		padding-right:0px;
 	}
 	.skills-related-links

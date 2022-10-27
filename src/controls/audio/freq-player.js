@@ -213,6 +213,7 @@ export default class FrequencyPlayer extends React.Component
             }
           </select>
         </div>
+
         <div className="tuner-panel-layout">
           <button
             tabIndex="0"

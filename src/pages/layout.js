@@ -18,7 +18,7 @@ export default class LayoutPage extends React.Component
       <>
         <SiteNav
           navData={ NavList }
-          navStyle="level-one"/>
+          navStyle="level-one" />
         <main>
           <Outlet />
         </main>

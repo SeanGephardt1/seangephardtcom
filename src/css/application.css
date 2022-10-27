@@ -11,27 +11,24 @@
 
 main
 {
-  /*	border: solid 1px red;*/
+/*  border: solid 2px red;*/
   display: flex;
   flex: 1 1 100%;
-  flex-direction: row;
+  flex-direction: column;
   overflow: auto;
-  justify-content: center;
+  align-items:stretch;
 }
 
 /* most pages */
 .page-layout
 {
-  /*	border: solid 1px var(--black);*/
-  /* margin:20px;*/
+/* 	border: solid 4px orange;
+*/
+  align-self:center;
   max-width: 1024px;
   min-width: 280px;
-  display: flex;
-  flex: 1 1 100%;
-  flex-direction: column;
-  flex-wrap: nowrap;
   overflow: auto;
-  opacity: 0;
+  /* opacity: 1;
   animation-name: AniPageFadeIn1;
   animation-delay: 100ms;
   animation-direction: normal;
@@ -39,7 +36,7 @@ main
   animation-fill-mode: forwards;
   animation-iteration-count: 1;
   animation-play-state: running;
-  animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out;*/
 }
 
 .column

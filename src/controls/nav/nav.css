@@ -1,7 +1,7 @@
 ﻿nav
 {
-  /*	border: solid 1px red;*/
-  flex: 1 0 100%;
+/*  border: solid 3px red;*/
+  flex: 1 0 auto;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -10,24 +10,16 @@
  }
 .level-one
 {
-  font-size: 18px;
+  font-size: 120%;
 }
 .level-two
 {
-  animation-delay:300ms;
-  animation-direction:normal;
-  animation-duration:300ms;
-  animation-fill-mode:both;
-  animation-iteration-count: 1;
-  animation-name: AniPageFadeIn1;
-  animation-play-state:running;
-  animation-timing-function:linear;
-  font-size: 14px;
+  font-size: 80%;
 }
 
 a.nav, a.nav:active, a.nav:link
 {
-  flex: 0 0 auto;
+  flex: 0 1 auto;
   border-bottom: solid 1px var(--black-01);
   background-color: transparent;
   color: var(--black);
@@ -37,11 +29,10 @@ a.nav, a.nav:active, a.nav:link
   padding-left: 14px;
   padding-right: 14px;
   vertical-align: top;
-  transition: all 300ms ease-in-out;
+  transition: all 250ms ease-in-out;
 }
 
 a.nav:hover,
-a.nav:focus,
 a.nav.nav-selected:hover
 {
   background-color: var(--nav-color-4-hover);
@@ -51,8 +42,13 @@ a.nav.nav-selected:hover
 
 a.nav.nav-selected
 {
-  flex: 1 1 auto;
+  flex: 2 1 auto;
   border-bottom: solid 1px transparent;
   background-color: var(--nav-color-4);
   color: var(--white);
+}
+
+.level-two > a.nav
+{
+/*  border: solid 2px red;*/
 }

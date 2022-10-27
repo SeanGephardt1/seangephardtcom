@@ -23,7 +23,7 @@ export default class PortfolioPage extends React.Component
     return (
       <div className="page-layout padding30">
         <div className="header centered">{ this.Title }</div>
-        <div>On this page, I'd like to showcase a variety of my previous work, including coded prototypes and code samples. </div>
+        <div>On this page, I'd like to showcase a variety of my previous work, including coded prototypes and code samples. On this page, I'd like to showcase a variety of my previous work, including coded prototypes and code samples. On this page, I'd like to showcase a variety of my previous work, including coded prototypes and code samples. On this page, I'd like to showcase a variety of my previous work, including coded prototypes and code samples. On this page, I'd like to showcase a variety of my previous work, including coded prototypes and code samples. On this page, I'd like to showcase a variety of my previous work, including coded prototypes and code samples. </div>
       </div>
     );
   }
