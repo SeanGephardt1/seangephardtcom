@@ -1,7 +1,7 @@
 ﻿nav
 {
 /*  border: solid 3px red;*/
-  flex: 1 0 auto;
+  flex: 1 1 auto;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -14,7 +14,7 @@
 }
 .level-two
 {
-  font-size: 80%;
+  font-size: 85%;
 }
 
 a.nav, a.nav:active, a.nav:link
@@ -50,5 +50,11 @@ a.nav.nav-selected
 
 .level-two > a.nav
 {
-/*  border: solid 2px red;*/
+  flex: 0 1 auto;
+  border-bottom: solid 1px transparent;
+}
+
+.level-two > a.nav.nav-selected
+{
+   flex: 2 1 auto;
 }

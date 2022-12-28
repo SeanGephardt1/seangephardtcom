@@ -11,10 +11,13 @@ import FourOhFourPage from './404/404.js';
 import TestPage from './test/test.js';
 import Home from './home/home.js';
 import Resume from './resume/resume.js';
+
 import PortfolioPage from './portfolio/portfolio.js';
+
 import MusicPage from './music/music.js';
 
 // portfolio level  pages
+import ExecDemoPage from './exec-demo/exec-demo.js';
 import WebWorkerDemo from './web-worker-demo/web-worker-demo.js';
 import SvgZoomDemo from './svg-zoom/svg-zoom.js';
 import WebGLDemo from './webgl-demo/webgl-demo.js';
@@ -41,6 +44,9 @@ const _nav_routes = [
   {
     component: PortfolioPage,
     children: [
+      {
+        component: ExecDemoPage
+      },
       {
         component: AzureCaseStudyDemo
       },
@@ -88,7 +94,11 @@ const _app_routes = [
           {
             index: true,
             // element: <AzureCaseStudyDemo />,
-            element: <PortfolioPage />,
+            element: <ExecDemoPage />,
+          },
+          {
+            path: AzureCaseStudyDemo.defaultProps.Href,
+            element: <AzureCaseStudyDemo />,
           },
           {
             path: AudioToysDemoPage.defaultProps.Href,
