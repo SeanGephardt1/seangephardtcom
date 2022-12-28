@@ -1,12 +1,12 @@
-import React from './react';
+import React from 'react';
 import './exec-demo.css';
 
 export default class ExecDemoPage extends React.Component
 {
   static defaultProps = {
-    Title: "Page Template",
-    LinkTitle: "Page Template",
-    Href: "/url/",
+    Title: "AzureCaseStudyDemo",
+    LinkTitle: "AzureCaseStudyDemo",
+    Href: "/portfolio/exec-demo/",
     Description: "Page description",
     Icon: "" // SVG.AppNavButtons.About
   };
@@ -39,7 +39,7 @@ export default class ExecDemoPage extends React.Component
   {
     console.debug( "PageTemplate.render()" );
     return (
-      <div className="page-layout">Page Template</div>
+      <div className="exec-root">Executive Demo Page</div>
     );
   }
 };

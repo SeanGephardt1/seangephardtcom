@@ -1,4 +1,4 @@
-import React from './react';
+import React from 'react';
 import './_template.css';
 
 export default class PageTemplate extends React.Component

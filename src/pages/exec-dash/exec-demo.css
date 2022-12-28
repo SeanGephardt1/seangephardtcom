@@ -1,0 +1,14 @@
+﻿.exec-root
+{
+  border: solid 4px red;
+  padding:10px;
+  display:flex;
+  flex-direction:column;
+  flex-wrap:nowrap;
+  justify-content:center;
+  justify-items:flex-start;
+  justify-self:center;
+  align-content:flex-start;
+  align-items:flex-start;
+  vertical-align:top;
+}

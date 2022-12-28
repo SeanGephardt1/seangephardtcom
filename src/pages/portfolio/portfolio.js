@@ -1,5 +1,8 @@
 import React from 'react';
 
+import PortfolioSiteNavigation from '../../controls/nav/nav-portfolio.js';
+
+
 export default class PortfolioPage extends React.Component
 {
   static defaultProps = {
@@ -23,7 +26,8 @@ export default class PortfolioPage extends React.Component
     return (
       <div className="page-layout padding30">
         <div className="header centered">{ this.Title }</div>
-        <div>On this page, I'd like to showcase a variety of my previous work, including coded prototypes and code samples. On this page, I'd like to showcase a variety of my previous work, including coded prototypes and code samples. On this page, I'd like to showcase a variety of my previous work, including coded prototypes and code samples. On this page, I'd like to showcase a variety of my previous work, including coded prototypes and code samples. On this page, I'd like to showcase a variety of my previous work, including coded prototypes and code samples. On this page, I'd like to showcase a variety of my previous work, including coded prototypes and code samples. </div>
+        <PortfolioSiteNavigation />    
+        <div style={ {'margin-top':'40px'} }>On this page, I'd like to showcase a variety of my previous work, including coded prototypes and code samples. On this page, I'd like to showcase a variety of my previous work, including coded prototypes and code samples. On this page, I'd like to showcase a variety of my previous work, including coded prototypes and code samples. On this page, I'd like to showcase a variety of my previous work, including coded prototypes and code samples. On this page, I'd like to showcase a variety of my previous work, including coded prototypes and code samples. On this page, I'd like to showcase a variety of my previous work, including coded prototypes and code samples. </div>
       </div>
     );
   }

@@ -17,7 +17,7 @@ import PortfolioPage from './portfolio/portfolio.js';
 import MusicPage from './music/music.js';
 
 // portfolio level  pages
-import ExecDemoPage from './exec-demo/exec-demo.js';
+import ExecDemoPage from './exec-dash/exec-demo.js';
 import WebWorkerDemo from './web-worker-demo/web-worker-demo.js';
 import SvgZoomDemo from './svg-zoom/svg-zoom.js';
 import WebGLDemo from './webgl-demo/webgl-demo.js';
@@ -93,7 +93,10 @@ const _app_routes = [
         children: [
           {
             index: true,
-            // element: <AzureCaseStudyDemo />,
+            element: <PortfolioPage />,
+          },
+          {
+            path: ExecDemoPage.defaultProps.Href,
             element: <ExecDemoPage />,
           },
           {

@@ -58,3 +58,31 @@ a.nav.nav-selected
 {
    flex: 2 1 auto;
 }
+
+/* portfolio page nav only */
+.portfolio-nav
+{
+  border: solid 1px blue;
+  padding:10px;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-around;
+}
+.portfolio-nav-item-panel
+{
+  border: solid 1px green;
+  margin:10px;
+}
+.portfolio-nav-item-icon
+{
+  border: solid 1px red;
+  flex: 1 0 250px;
+  height:250px;
+  display:flex;
+}
+.portfolio-nav-item-text
+{
+  border: solid 1px red;
+  flex: 1 0 250px;
+  height:250px;
+}

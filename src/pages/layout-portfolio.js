@@ -1,7 +1,5 @@
 import React from 'react';
 import { Outlet } from "react-router-dom";
-import { NavList } from './../pages/pages.js';
-import SiteNav from './../controls/nav/nav.js';
 
 export default class PortfolioLayoutPage extends React.Component
 {
@@ -11,14 +9,10 @@ export default class PortfolioLayoutPage extends React.Component
     return;
   };
   render()
-  { //  console.debug( "LayoutPage.render()", React.version );
+  {
+    //  console.debug( "PortfolioLayoutPage.render()", React.version );
     return (
-      <>
-        <SiteNav
-          navData={ NavList[ 2 ].children }
-          navStyle="level-two" />
-        <Outlet />
-      </>
+      <Outlet />
     );
   }
 };
