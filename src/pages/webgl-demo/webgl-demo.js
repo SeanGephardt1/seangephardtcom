@@ -8,7 +8,7 @@ export default class WebGLDemo extends React.Component
     Title: "WebGL Example (work in progress)",
     LinkTitle: "WebGL Example",
     Href: "/portfolio/webgl-demo",
-    Description: "Playing with WebGL shaders",
+    Description: "Generic Page Description for This Demo Page!.For my web site portfolio and beyond and the internets. Lorum Ipsum.",
     Icon: ""
   };
   constructor ( props )

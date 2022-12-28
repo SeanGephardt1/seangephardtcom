@@ -1,14 +1,15 @@
 import React from 'react';
 import './exec-demo.css';
+import SVG from '../../assets/svgs.js';
 
 export default class ExecDemoPage extends React.Component
 {
   static defaultProps = {
-    Title: "AzureCaseStudyDemo",
-    LinkTitle: "AzureCaseStudyDemo",
+    Title: "Executive Dashboard Demo",
+    LinkTitle: "Executive Dashboard Demo",
     Href: "/portfolio/exec-demo/",
-    Description: "Page description",
-    Icon: "" // SVG.AppNavButtons.About
+    Description: "Generic Page Description for This Demo Page!.For my web site portfolio and beyond and the internets. Lorum Ipsum.",
+    Icon: SVG.PortfolioPages.ExecDemo
   };
   constructor ( props )
   { // GENERIC

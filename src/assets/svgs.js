@@ -10,6 +10,26 @@ export default class SVG extends React.Component
 		this.Icon = this.props.icon || SVG.Icons.Default;
 		this.Name = this.props.name;
 	};
+	static PortfolioPages = {
+		Placeholder: (
+			<svg
+				width="250"
+				height="250"
+				viewBox="0 0 500 500">
+				<rect x="0" y="0" width="100%" height="100%" fill="rgba(0,0,0,0.2)" />
+				<circle r="150" cx="50%" cy="50%" fill="rgba(39, 93, 173, 1)" />
+			</svg>
+		),
+		ExecDemo: (
+			<svg
+				width="250"
+				height="250"
+				viewBox="0 0 500 500">
+				<rect x="0" y="0" width="100%" height="100%" fill="rgba(48,128,0,1)" />
+				<circle r="150" cx="50%" cy="50%" fill="rgba(255,255,0,1)" />
+			</svg>			
+		),
+	};
 	static Misc = {
 		CheckBoxUncheckedDefault: (
 			<svg height="16px" width="16px" viewBox="0 0 16 16">

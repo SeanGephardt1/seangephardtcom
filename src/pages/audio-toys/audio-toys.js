@@ -13,7 +13,7 @@ export default class AudioToysDemoPage extends React.Component
     Title: "Audio Toys",
     LinkTitle: "Audio Toys",
     Href: "/portfolio/audio-toys",
-    Description: "Web Audio API demos",
+    Description: "Generic Page Description for This Demo Page!.For my web site portfolio and beyond and the internets. Lorum Ipsum.",
     Icon: "",
   };
   constructor ( props )
