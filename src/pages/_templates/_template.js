@@ -1,4 +1,5 @@
 import React from 'react';
+import SVG from '../../assets/svgs.js';
 import './_template.css';
 
 export default class PageTemplate extends React.Component
@@ -8,7 +9,7 @@ export default class PageTemplate extends React.Component
     LinkTitle: "Page Template",
     Href: "/url/",
     Description: "Page description",
-    Icon: "" // SVG.AppNavButtons.About
+    Icon: SVG.PortfolioPages.Placeholder
   };
   constructor ( props )
   { // GENERIC

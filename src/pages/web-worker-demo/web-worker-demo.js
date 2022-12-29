@@ -7,7 +7,7 @@ export default class WebWorkerDemo extends React.Component
     Title: "JavaScript Web Worker Examples",
     LinkTitle: "Web Workers",
     Href: "/portfolio/dashboard-demo",
-    Icon: "",
+    Icon: undefined,
     Description: "Generic Page Description for This Demo Page!.For my web site portfolio and beyond and the internets. Lorum Ipsum.",
     Workers: {
       Main: "./workers/db-demo-worker.js"

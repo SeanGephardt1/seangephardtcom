@@ -10,7 +10,7 @@ export default class SvgZoomDemo extends React.Component
     LinkTitle: "SVG Zoom/Pan",
     Href: "/portfolio/svg-zoom-pan",
     Description: "Generic Page Description for This Demo Page!.For my web site portfolio and beyond and the internets. Lorum Ipsum.",
-    Icon: ""//SVG.AppNavButtons.About,
+    Icon: undefined
   };
   constructor ( props )
   {

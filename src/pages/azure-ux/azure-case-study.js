@@ -19,7 +19,7 @@ export default class AzureCaseStudyDemo extends React.Component
     LinkTitle: "Microsoft Azure Prototypes",
     Href: "/portfolio/azure-ux",
     Description: "Generic Page Description for This Demo Page!.For my web site portfolio and beyond and the internets. Lorum Ipsum.",
-    Icon: ""//SVG.AppNavButtons.About
+    Icon: undefined
   };
   constructor ( props )
   {

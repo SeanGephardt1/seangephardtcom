@@ -8,7 +8,8 @@ export default class Home extends React.Component
     Title: "Sean Gephardt - Design, Develop, Deploy",
     LinkTitle: "Sean Gephardt",
     Href: "/",
-    Icon: ""
+    Description: "Generic Page Description for This Demo Page!.For my web site portfolio and beyond and the internets. Lorum Ipsum.",
+    Icon: undefined
   };
   constructor ( props )
   {

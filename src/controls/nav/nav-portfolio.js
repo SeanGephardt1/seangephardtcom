@@ -13,27 +13,36 @@ export default function PortfolioSiteNavigation( props )
     <nav className="portfolio-nav">
       {
         NavList[ 2 ].children.map( ( item, index ) => (
-          <div className="portfolio-nav-item-panel">
+          <div
+            key={ index }
+            className="portfolio-nav-item-panel">
             <div className="portfolio-nav-item-box">
-              {
-                item.component.defaultProps.Icon !== "" && item.component.defaultProps.Icon
-              }
-              {
-                item.component.defaultProps.Icon === "" &&
-                SVG.PortfolioPages.Placeholder
-              }
+                <NavLink
+                  tabIndex="0"
+                  to={ item.component.defaultProps.Href.toLowerCase() }
+                  end
+                  title={ item.component.defaultProps.Title }
+              >
+                {
+                  item.component.defaultProps.Icon !== undefined && 
+                  item.component.defaultProps.Icon
+                }
+                {
+                  item.component.defaultProps.Icon === undefined &&
+                  SVG.PortfolioPages.Placeholder
+                }
+              </NavLink>                
             </div>
             <div className="portfolio-nav-item-box">
               <div className="pnib-title">
               <NavLink
                 tabIndex="0"
-                key={ index }
                 to={ item.component.defaultProps.Href.toLowerCase() }
                 end
                 title={ item.component.defaultProps.Title }
                 >{ item.component.defaultProps.LinkTitle }</NavLink>
                 </div>
-              <div className="pnib-desc">{ item.component.defaultProps.Description }</div>
+              <div className="pnib-desc" title={ item.component.defaultProps.Description }>{ item.component.defaultProps.Description }</div>
             </div>
           </div>
         ) )

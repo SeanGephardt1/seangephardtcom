@@ -1,56 +1,73 @@
 /*	RESPONSIVE MEDIA QUERY CLASSES AND SELECTORS */
+@media (max-width: 506px)
+{
+  .portfolio-nav-item-panel > .portfolio-nav-item-box:last-child
+  {
+    padding-left:0px;
+    padding-right:0px;
+  }
+}
+
 @media (max-width: 600px)
 {
-	.bd-menu-item
-	{
-		margin-bottom:14px;
-	}
-	.canvas-menu
-	{
-		border: solid 0px var(--black-01);
-		flex-direction:column;
-		justify-content:flex-start;
-	}
-	.level-one
-	{
-		flex-direction:column;
-		align-items:unset;
-	}
-	.level-two
-	{
-		flex-direction:column;
-		align-items:unset;
-	}
+  .bd-menu-item
+  {
+    margin-bottom: 14px;
+  }
+
+  .canvas-menu
+  {
+    border: solid 0px var(--black-01);
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .level-one
+  {
+    flex-direction: column;
+    align-items: unset;
+  }
+
+  .level-two
+  {
+    flex-direction: column;
+    align-items: unset;
+  }
 }
 
 @media (max-width: 900px)
 {
-	.resume-row
-	{
-		flex-direction:column;
-		flex-wrap:wrap;
-	}
-	.resume-left
-	{
-		width:100%;
-		padding-right:0px;
-	}
-	.skills-related-links
-	{
-		flex-direction:row;
-		flex-wrap:wrap;
-	}
-	a.skills-related-link
-	{
-		padding-right:20px;
-	}
-	a.skills-related-link > span
-	{
-		padding-top:6px;
-	}
-	a.skills-related-link:first-child
-	{
-		 margin-bottom:0px;
-		 margin-right:6px;
-	}
+  .resume-row
+  {
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+
+  .resume-left
+  {
+    width: 100%;
+    padding-right: 0px;
+  }
+
+  .skills-related-links
+  {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  a.skills-related-link
+  {
+    padding-right: 20px;
+  }
+
+  a.skills-related-link > span
+  {
+    padding-top: 6px;
+  }
+
+  a.skills-related-link:first-child
+  {
+    margin-bottom: 0px;
+    margin-right: 6px;
+  }
 }

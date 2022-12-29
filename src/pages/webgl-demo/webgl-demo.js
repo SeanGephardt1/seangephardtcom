@@ -9,7 +9,7 @@ export default class WebGLDemo extends React.Component
     LinkTitle: "WebGL Example",
     Href: "/portfolio/webgl-demo",
     Description: "Generic Page Description for This Demo Page!.For my web site portfolio and beyond and the internets. Lorum Ipsum.",
-    Icon: ""
+    Icon: undefined
   };
   constructor ( props )
   {

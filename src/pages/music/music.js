@@ -8,7 +8,7 @@ export default class MusicPage extends React.Component
     Title: "Music from Sean Gephardt",
     LinkTitle: "Music",
     Href: "music",
-    Icon: ""//SVG.AppNavButtons.Music
+    Icon: undefined
   };
   constructor ( props )
   {
@@ -24,10 +24,10 @@ export default class MusicPage extends React.Component
   render()
   {
     return (
-      <div className="page-layout padding30 centered1024">
+      <div className="page-layout">
         {/* BEGIN The Drive Through */ }
 
-        <div className="header centered">The Drive Through</div>
+        <div className="page-header">The Drive Through</div>
         <div className="music-text-block">Music has been my passion since I was young, and my current project, "The Drive Through" has recorded a few songs available via bandcamp.com. Take a few minutes and give them a listen, we really hope that you'll enjoy our brand of 'Americana Pop Rock'! You can find us via <a href="https://www.facebook.com/TheDriveThroughBand/" title="The Drive Through on FaceBook">FaceBook</a> and <a href="https://www.instagram.com/thedrivethroughband/" title="The Drive Through on Instagram">Instgram</a>, as well as <a href="https://thedrivethrough.bandcamp.com/" title="The Drive Through on BandCamp">BandCamp</a> and <a href="http://thedrivethrough.com/" title="http://thedrivethrough.com/">our own web site</a>.</div>
 
         <div className="music-logo-block">
