@@ -1,6 +1,16 @@
 //	NOTES FOR SVG SYNTAX - SVG attribute syntax may cause errors, needs to be camelCased
+// https://designmodo.com/animate-svg-gradients/
+
 import React from 'react';
 import './svgs.css';
+// 	<circle r="175" cx="50%" cy="50%" fill="url(#grad-ball-1)" className="portfolio-page-placeholder" />
+//	<animate attributeName="cx" dur="1000ms" values = "50%;70%;50%" repeatCount = "indefinite" />
+// 	<animate attributeName="r" dur="1000ms" values="100;250;100" repeatCount="indefinite" />
+// 	<animate attributeName="stop-color" dur="1000ms"
+// values = "rgba(255,255,255,1);rgba(39, 93, 173, 1);rgba(255,255,255,1)"
+// repeatCount = "indefinite" />
+// 						fx="auto" fy="auto"
+
 
 export default class SVG extends React.Component
 {
@@ -16,8 +26,54 @@ export default class SVG extends React.Component
 				width="250"
 				height="250"
 				viewBox="0 0 500 500">
-				<rect x="0" y="0" width="100%" height="100%" fill="rgba(0,0,0,0.2)" />
-				<circle r="150" cx="50%" cy="50%" fill="rgba(39, 93, 173, 1)" />
+				<defs>
+					<radialGradient
+						id="ppp1"
+						gradientUnits="userSpaceOnUse"
+						gradientTransform="translate(0, 0) scale(1)"
+						r="100">
+						<stop offset="0" stopColor="rgba(255, 255, 255, 1)">
+							<animate
+								attributeName="offset"
+								dur="600ms"
+								values="0;0.5;0"
+								repeatCount="indefinite" />
+						</stop>
+						<stop offset="1" stopColor="rgba(39, 93, 173, 1)">
+							<animate
+								attributeName="offset"
+								dur="1000ms"
+								values="1;0.5;1"
+								repeatCount="indefinite" />
+							</stop>
+					</radialGradient>
+					<filter id="blurred1">
+						<feGaussianBlur in="SourceGraphic" stdDeviation="0">
+							<animate
+								attributeName="stdDeviation"
+								dur="1000ms"
+								values="0;0;0"
+								repeatCount="indefinite" />
+						</feGaussianBlur>
+					</filter>
+					<filter id="shadow2">
+						<feDropShadow dx="0" dy="0" stdDeviation="10" floodColor="rgba(0,0,0,1)">
+							<animate
+								attributeName="stdDeviation"
+								dur="600ms"
+								values="10;20;10"
+								repeatCount="indefinite" />
+							<animate
+								attributeName="flood-color"
+								dur="1000ms"
+								values="rgba(0,0,0,1);rgba(255,255,255,1);rgba(0,0,0,1)"
+								repeatCount="indefinite" />
+						</feDropShadow>
+					</filter>
+				</defs>
+
+				<rect x="0" y="0" width="100%" height="100%" fill="rgba(0,0,0,0)" />
+				<circle r="120" cx="50%" cy="50%" fill="url(#ppp1)" filter="url(#shadow2)"/>
 			</svg>
 		),
 		ExecDemo: (
