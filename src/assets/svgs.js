@@ -10,7 +10,8 @@ import './svgs.css';
 // values = "rgba(255,255,255,1);rgba(39, 93, 173, 1);rgba(255,255,255,1)"
 // repeatCount = "indefinite" />
 // 						fx="auto" fy="auto"
-
+// filter="url(#shadow2)"
+//  fill="url(#ppp1)"
 
 export default class SVG extends React.Component
 {
@@ -35,45 +36,43 @@ export default class SVG extends React.Component
 						<stop offset="0" stopColor="rgba(255, 255, 255, 1)">
 							<animate
 								attributeName="offset"
-								dur="600ms"
-								values="0;0.5;0"
+								dur="2000ms"
+								values="0;0.4;0"
 								repeatCount="indefinite" />
 						</stop>
 						<stop offset="1" stopColor="rgba(39, 93, 173, 1)">
 							<animate
 								attributeName="offset"
 								dur="1000ms"
-								values="1;0.5;1"
+								values="1;0.6;1"
 								repeatCount="indefinite" />
-							</stop>
+						</stop>
 					</radialGradient>
-					<filter id="blurred1">
+					<filter id="bg-blue-1">
 						<feGaussianBlur in="SourceGraphic" stdDeviation="0">
 							<animate
 								attributeName="stdDeviation"
-								dur="1000ms"
-								values="0;0;0"
+								begin="100ms"
+								dur="2000ms"
+								values="0;18;0"
 								repeatCount="indefinite" />
 						</feGaussianBlur>
 					</filter>
-					<filter id="shadow2">
-						<feDropShadow dx="0" dy="0" stdDeviation="10" floodColor="rgba(0,0,0,1)">
-							<animate
-								attributeName="stdDeviation"
-								dur="600ms"
-								values="10;20;10"
-								repeatCount="indefinite" />
-							<animate
-								attributeName="flood-color"
-								dur="1000ms"
-								values="rgba(0,0,0,1);rgba(255,255,255,1);rgba(0,0,0,1)"
-								repeatCount="indefinite" />
-						</feDropShadow>
+					<filter id="bg-shad-1">
+						<feDropShadow dx="0" dy="10" stdDeviation="14" floodColor="rgba(0,0,0,1)" />
 					</filter>
 				</defs>
 
 				<rect x="0" y="0" width="100%" height="100%" fill="rgba(0,0,0,0)" />
-				<circle r="120" cx="50%" cy="50%" fill="url(#ppp1)" filter="url(#shadow2)"/>
+				<circle r="140" cx="50%" cy="50%" fill="rgba(39, 93, 173, 1)" filter="url(#bg-shad-1)" />
+				<circle r="100" cx="50%" cy="50%" fill="url(#ppp1)">
+					<animate
+						attributeName="r"
+						dur="1100ms"
+						values="40;80;40"
+						repeatCount="indefinite" />
+				</circle>
+
 			</svg>
 		),
 		ExecDemo: (
