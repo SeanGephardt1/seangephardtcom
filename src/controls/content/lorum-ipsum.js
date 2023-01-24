@@ -1,5 +1,5 @@
 import React from 'react';
-import './lorum-ipsum.min.css';
+import './lorum-ipsum.css';
 
 export default class LorumContent extends React.Component
 {

@@ -80,8 +80,9 @@ export default class SVG extends React.Component
 				width="250"
 				height="250"
 				viewBox="0 0 500 500">
-				<rect x="0" y="0" width="100%" height="100%" fill="rgba(48,128,0,1)" />
-				<circle r="150" cx="50%" cy="50%" fill="rgba(255,255,0,1)" />
+{/*				<rect x="0" y="0" width="100%" height="100%" fill="rgba(255,0,0,1)" />*/}
+				<circle r="100" cx="50%" cy="50%" fill="rgba(255,0,0,1)" />
+				<circle r="50" cx="50%" cy="50%" fill="rgba(0,0,255,1)" />
 			</svg>			
 		),
 	};

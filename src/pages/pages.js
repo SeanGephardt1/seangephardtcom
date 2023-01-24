@@ -6,14 +6,13 @@ import { useRoutes } from "react-router-dom";
 // top-level pages
 import LayoutPage from './layout.js';
 import PortfolioLayoutPage from './layout-portfolio.js';
+import DashboardDemoLayoutPage from './layout-dashboard-demo.js';
 
 import FourOhFourPage from './404/404.js';
 import TestPage from './test/test.js';
 import Home from './home/home.js';
 import Resume from './resume/resume.js';
-
 import PortfolioPage from './portfolio/portfolio.js';
-
 import MusicPage from './music/music.js';
 
 // portfolio level  pages
@@ -82,6 +81,7 @@ const _app_routes = [
         index: true,
         element: <Home />,
       },
+
       {
         path: Resume.defaultProps.Href,
         element: <Resume />,
@@ -95,10 +95,10 @@ const _app_routes = [
             index: true,
             element: <PortfolioPage />,
           },
-          {
-            path: ExecDemoPage.defaultProps.Href,
-            element: <ExecDemoPage />,
-          },
+          //{
+          //  path: ExecDemoPage.defaultProps.Href,
+          //  element: <ExecDemoPage />,
+          //},
           {
             path: AzureCaseStudyDemo.defaultProps.Href,
             element: <AzureCaseStudyDemo />,
@@ -138,7 +138,17 @@ const _app_routes = [
         element: <FourOhFourPage />,
       },
     ]
-  }
+  },
+  {
+    path: ExecDemoPage.defaultProps.Href,
+    element: <DashboardDemoLayoutPage />,
+    children: [
+      {
+        index: true,
+        element: <ExecDemoPage />
+      }
+    ]
+  },
 ];
 
 function AppRoutes()

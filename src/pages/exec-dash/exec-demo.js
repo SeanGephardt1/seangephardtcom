@@ -8,7 +8,7 @@ export default class ExecDemoPage extends React.Component
     Title: "Executive Dashboard Demo",
     LinkTitle: "Executive Dashboard Demo",
     Href: "/portfolio/exec-demo/",
-    Description: "Generic Page Description for This Demo Page!.For my web site portfolio and beyond and the internets. Lorum Ipsum.",
+    Description: "This page is an example of a executive management dashboard. All controls are using dynamic data.",
     Icon: SVG.PortfolioPages.ExecDemo
   };
   constructor ( props )
@@ -40,7 +40,7 @@ export default class ExecDemoPage extends React.Component
   {
     console.debug( "PageTemplate.render()" );
     return (
-      <div className="exec-root">Executive Demo Page</div>
+      <div className="exec-root">Executive Demo</div>
     );
   }
 };
