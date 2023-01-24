@@ -1,8 +1,8 @@
 ﻿.exec-footer
 {
+  border-top: unset;
   flex: 0 0 auto;
   background-color: var( --ed-semidark);
-  border-top: solid 2px var(--ed-accent-mandarin);
   color: var(--white);
   font-weight:100;
   font-size: 14px;

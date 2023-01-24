@@ -12,7 +12,7 @@ export default class ExecFooter extends React.Component
 	{
 		return (
 			<footer
-			className="exec-footer">&copy;&reg;&trade; { new Date().getFullYear().toString() } Executive Dashboard By Sean Gephardt. All rights reserved.</footer>
+			className="exec-footer">&copy;&reg;&trade; { new Date().getFullYear().toString() } Executive Dashboard Demo By Sean Gephardt. All rights reserved.</footer>
 		);
 	};
 };

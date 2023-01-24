@@ -16,7 +16,11 @@ import PortfolioPage from './portfolio/portfolio.js';
 import MusicPage from './music/music.js';
 
 // portfolio level  pages
-import ExecDemoPage from './exec-dash/exec-demo.js';
+import ExecReportsPage from './exec-dash/reports.js';
+import ExecAppsPage from './exec-dash/apps.js';
+import ExecConfigPage from './exec-dash/config.js';
+import ExecHelpPage from './exec-dash/help.js';
+
 import WebWorkerDemo from './web-worker-demo/web-worker-demo.js';
 import SvgZoomDemo from './svg-zoom/svg-zoom.js';
 import WebGLDemo from './webgl-demo/webgl-demo.js';
@@ -44,7 +48,7 @@ const _nav_routes = [
     component: PortfolioPage,
     children: [
       {
-        component: ExecDemoPage
+        component: ExecReportsPage
       },
       {
         component: AzureCaseStudyDemo
@@ -81,7 +85,6 @@ const _app_routes = [
         index: true,
         element: <Home />,
       },
-
       {
         path: Resume.defaultProps.Href,
         element: <Resume />,
@@ -140,12 +143,24 @@ const _app_routes = [
     ]
   },
   {
-    path: ExecDemoPage.defaultProps.Href,
+    path: ExecReportsPage.defaultProps.Href,
     element: <DashboardDemoLayoutPage />,
     children: [
       {
         index: true,
-        element: <ExecDemoPage />
+        element: <ExecReportsPage />
+      },
+      {
+        path: ExecAppsPage.defaultProps.Href,
+        element: <ExecAppsPage />,
+      },
+      {
+        path: ExecConfigPage.defaultProps.Href,
+        element: <ExecConfigPage />,
+      },
+      {
+        path: ExecHelpPage.defaultProps.Href,
+        element: <ExecHelpPage />,
       }
     ]
   },

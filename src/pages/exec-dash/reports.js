@@ -1,11 +1,11 @@
 import React from 'react';
 import SVG from '../../assets/svgs.js';
 
-export default class ExecDemoPage extends React.Component
+export default class ExecReportsPage extends React.Component
 {
   static defaultProps = {
-    Title: "Executive Dashboard Demo",
-    LinkTitle: "Executive Dashboard Demo",
+    Title: "Executive Dashboard Demo - Reports",
+    LinkTitle: "Reports",
     Href: "/portfolio/exec-demo/",
     Description: "This page is an example of a executive management dashboard. All controls are using dynamic data.",
     Icon: SVG.PortfolioPages.ExecDemo
@@ -19,6 +19,7 @@ export default class ExecDemoPage extends React.Component
     };
     return;
   };
+
   /* REACT LIFECYCLE */
   componentDidMount()
   {
@@ -40,6 +41,52 @@ export default class ExecDemoPage extends React.Component
     //  console.debug( "PageTemplate.render()" );
     return (
       <div className="exec-demo-content">
+        <div>REPORTS</div>
+        <div>Executive Demo</div>
+        <div>Executive Demo</div>
+        <div>Executive Demo</div>
+        <div>Executive Demo</div>
+        <div>Executive Demo</div>
+        <div>Executive Demo</div>
+        <div>Executive Demo</div>
+        <div>Executive Demo</div>
+        <div>Executive Demo</div>
+        <div>Executive Demo</div>
+        <div>Executive Demo</div>
+        <div>Executive Demo</div>
+        <div>Executive Demo</div>
+        <div>Executive Demo</div>
+        <div>Executive Demo</div>
+        <div>Executive Demo</div>
+        <div>Executive Demo</div>
+        <div>Executive Demo</div>
+        <div>Executive Demo</div>
+        <div>Executive Demo</div>
+        <div>Executive Demo</div>
+        <div>Executive Demo</div>
+        <div>Executive Demo</div>
+        <div>Executive Demo</div>
+        <div>Executive Demo</div>
+        <div>Executive Demo</div>
+        <div>Executive Demo</div>
+        <div>Executive Demo</div>
+        <div>Executive Demo</div>
+        <div>Executive Demo</div>
+        <div>Executive Demo</div>
+        <div>Executive Demo</div>
+        <div>Executive Demo</div>
+        <div>Executive Demo</div>
+        <div>Executive Demo</div>
+        <div>Executive Demo</div>
+        <div>Executive Demo</div>
+        <div>Executive Demo</div>
+        <div>Executive Demo</div>
+        <div>Executive Demo</div>
+        <div>Executive Demo</div>
+        <div>Executive Demo</div>
+        <div>Executive Demo</div>
+        <div>Executive Demo</div>
+        <div>Executive Demo</div>
         <div>Executive Demo</div>
         <div>Executive Demo</div>
         <div>Executive Demo</div>

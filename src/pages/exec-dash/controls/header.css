@@ -10,7 +10,7 @@
 
 .ehp-item
 {
-	border: solid 1px red;
+/*	border: solid 1px red;*/
 	display: flex;
 	flex: 1 1 auto;
 	font-size: 18px;
