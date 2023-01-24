@@ -6,7 +6,7 @@ export default class ExecReportsPage extends React.Component
   static defaultProps = {
     Title: "Executive Dashboard Demo - Reports",
     LinkTitle: "Reports",
-    Href: "/portfolio/exec-demo/",
+    Href: "/portfolio/exec-demo/reports",
     Description: "This page is an example of a executive management dashboard. All controls are using dynamic data.",
     Icon: SVG.PortfolioPages.ExecDemo
   };
@@ -42,127 +42,6 @@ export default class ExecReportsPage extends React.Component
     return (
       <div className="exec-demo-content">
         <div>REPORTS</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
-        <div>Executive Demo</div>
       </div>
     );
   }

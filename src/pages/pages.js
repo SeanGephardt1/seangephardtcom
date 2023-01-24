@@ -3,11 +3,12 @@
 import * as React from "react";
 import { useRoutes } from "react-router-dom";
 
-// top-level pages
+// react layout pages 
 import LayoutPage from './layout.js';
 import PortfolioLayoutPage from './layout-portfolio.js';
 import DashboardDemoLayoutPage from './layout-dashboard-demo.js';
 
+// general pages
 import FourOhFourPage from './404/404.js';
 import TestPage from './test/test.js';
 import Home from './home/home.js';
@@ -15,29 +16,22 @@ import Resume from './resume/resume.js';
 import PortfolioPage from './portfolio/portfolio.js';
 import MusicPage from './music/music.js';
 
-// portfolio level  pages
+// executive dashboard demo pages
+import ExecDashboardPage from './exec-dash/dash.js';
 import ExecReportsPage from './exec-dash/reports.js';
 import ExecAppsPage from './exec-dash/apps.js';
 import ExecConfigPage from './exec-dash/config.js';
 import ExecHelpPage from './exec-dash/help.js';
 
+// portfolio level pages
 import WebWorkerDemo from './web-worker-demo/web-worker-demo.js';
 import SvgZoomDemo from './svg-zoom/svg-zoom.js';
 import WebGLDemo from './webgl-demo/webgl-demo.js';
 import AzureCaseStudyDemo from './azure-ux/azure-case-study.js';
 import AudioToysDemoPage from './audio-toys/audio-toys.js';
 
-// WIP pages
-//  import MovieStoreExtension from './movie-works-demo/movieworks.js';
-//  import GuitarApp from './guitar-app/guitar-app.js';
-//  import GuitarStoreExtension from './guitar-store/guitar-store.js';
-//  import SvgAnimationsDemo from './svg-animations/svg-animations.js';
-//  import Html5CanvasDemo from './canvas-demo/canvas-demo.js';
-//  import CssArtPage from './css-art/css-art.js';
-//  import ButtonAnimations from './button-animations/button-animations.js';
 
 const _nav_routes = [
-
   {
     component: Home
   },
@@ -48,7 +42,7 @@ const _nav_routes = [
     component: PortfolioPage,
     children: [
       {
-        component: ExecReportsPage
+        component: ExecDashboardPage
       },
       {
         component: AzureCaseStudyDemo
@@ -76,6 +70,7 @@ const _nav_routes = [
 ];
 
 const _app_routes = [
+  /* main site routes */
   {
     path: "/",
     element: <LayoutPage />,
@@ -142,12 +137,18 @@ const _app_routes = [
       },
     ]
   },
+
+  /* executiave dashboard mdeo routes */
   {
-    path: ExecReportsPage.defaultProps.Href,
+    path: ExecDashboardPage.defaultProps.Href,
     element: <DashboardDemoLayoutPage />,
     children: [
       {
         index: true,
+        element: <ExecDashboardPage />
+      },
+      {
+        path: ExecReportsPage.defaultProps.Href,
         element: <ExecReportsPage />
       },
       {

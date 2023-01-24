@@ -1,4 +1,5 @@
 import React from 'react';
+import ExecDashboardPage from '../dash.js';
 import ExecReportsPage from '../reports.js';
 import ExecAppsPage from '../apps.js';
 import ExecConfigPage from '../config.js';
@@ -12,10 +13,13 @@ export default class ExecNav extends React.Component
 
 		this.LeftNav = [
 			{
-				component: ExecReportsPage
+				component: ExecDashboardPage
 			},
 			{
 				component: ExecAppsPage
+			},
+			{
+				component: ExecReportsPage
 			},
 			{
 				component: ExecConfigPage

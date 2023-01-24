@@ -1,12 +1,12 @@
 import React from 'react';
 import SVG from '../../assets/svgs.js';
 
-export default class ExecAppsPage extends React.Component
+export default class ExecDashboardPage extends React.Component
 {
   static defaultProps = {
-    Title: "Executive Dashboard Demo - Apps",
-    LinkTitle: "Applications",
-    Href: "/portfolio/exec-demo/apps",
+    Title: "Executive Dashboard Demo",
+    LinkTitle: "Dashboard",
+    Href: "/portfolio/exec-demo/",
     Description: "This page is an example of a executive management dashboard. All controls are using dynamic data.",
     Icon: SVG.PortfolioPages.ExecDemo
   };
@@ -41,7 +41,7 @@ export default class ExecAppsPage extends React.Component
     //  console.debug( "PageTemplate.render()" );
     return (
       <div className="exec-demo-content">
-        <div>APPS PAGE</div>
+        <div>DASHBOARD</div>
         <div>Executive Demo</div>
         <div>Executive Demo</div>
         <div>Executive Demo</div>

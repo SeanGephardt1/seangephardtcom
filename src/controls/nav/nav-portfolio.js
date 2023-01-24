@@ -40,7 +40,7 @@ export default function PortfolioSiteNavigation( props )
                 to={ item.component.defaultProps.Href.toLowerCase() }
                 end
                 title={ item.component.defaultProps.Title }
-                >{ item.component.defaultProps.LinkTitle }</NavLink>
+                >{ item.component.defaultProps.Title }</NavLink>
                 </div>
               <div className="pnib-desc" title={ item.component.defaultProps.Description }>{ item.component.defaultProps.Description }</div>
             </div>
