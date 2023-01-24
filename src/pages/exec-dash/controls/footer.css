@@ -1,5 +1,6 @@
 ﻿.exec-footer
 {
+  height:32px;
   border-top: unset;
   flex: 0 0 auto;
   background-color: var( --ed-semidark);

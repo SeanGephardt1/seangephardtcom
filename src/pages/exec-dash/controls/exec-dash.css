@@ -7,6 +7,7 @@
 {
   	--ed-dark: #2D3142;
     --ed-semidark: #4F5D75;
+    --ed-semidark-hover: #384152;
     --ed-accent-silver: #bfc0c0;
     --ed-accent-mandarin: #EF8354;
     --ed-white: #FFFFFF;
@@ -36,8 +37,7 @@
   flex: 1 1 100%;
   flex-direction:column;
   width:100%;
-  max-height: calc(100vh - 77px);
+  max-height: calc(100vh - 96px);
   overflow: auto;
   padding:20px;
-
 }
