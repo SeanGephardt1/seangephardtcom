@@ -1,0 +1,34 @@
+﻿.exec-header-panel
+{
+	background-color: var(--ed-dark);
+	color: var(--ed-white);
+	display:flex;
+	flex: 0 1 auto;
+	flex-direction:row;
+	padding:10px;
+}
+
+.ehp-item
+{
+	border: solid 1px red;
+	display: flex;
+	flex: 1 1 auto;
+	font-size: 18px;
+}
+
+.ehp-brand
+{
+	flex: 0 0 150px;
+}
+.ehp-search
+{
+	flex: 1 1 auto;
+}
+.ehp-tools
+{
+	flex : 0 0 150px;
+}
+.ehp-account
+{
+	flex : 0 0 150px;
+}

@@ -1,0 +1,16 @@
+﻿.exec-nav
+{
+	border-right: solid 1px red;
+	background-color: var(--ed-semidark);
+	color: white;
+	flex: 0 0 160px;
+	flex-direction:column;
+	font-size: 18px;
+  min-height:100%;
+}
+
+.exec-nav > div
+{
+	border: solid 1px var(--white-08);
+	padding:5px;
+}

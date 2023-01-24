@@ -1,0 +1,38 @@
+@charset "UTF-8";
+@import './header.css';
+@import './footer.css';
+@import './nav.css';
+
+:root
+{
+  	--ed-dark: #2D3142;
+    --ed-semidark: #4F5D75;
+    --ed-accent-silver: #bfc0c0;
+    --ed-accent-mandarin: #EF8354;
+    --ed-white: #FFFFFF;
+    --ed-back: #000000;
+}
+.exec-demo-layout
+{
+/*  border: solid 12px red;*/
+  display:flex;
+  flex-direction:column;
+  flex: 0 0 100%;
+  min-height:100vh;
+}
+.exec-demo-main
+{
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction:row;
+}
+
+.exec-demo-content
+{
+/*  border:solid 1px red;*/
+  display:block;
+  background-color:#AFAFAF;
+  width:100%;
+  overflow:auto;
+  padding:20px;
+}
