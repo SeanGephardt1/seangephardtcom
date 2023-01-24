@@ -35,6 +35,7 @@ export default class ExecNav extends React.Component
 	{
 		return (
 			<div className="exec-nav">
+				<div className="exec-nav-top">
 				{
 					this.LeftNav.map( (item, index ) => (
 						<a
@@ -43,7 +44,14 @@ export default class ExecNav extends React.Component
 							className="ed-nav-item"
 							href={ item.component.defaultProps.Href }>{ item.component.defaultProps.LinkTitle.toString() }</a>
 					) )
-				}
+					}
+				</div>
+				<div className="exec-nav-bottom">
+					<a
+						tabIndex="0"
+						className="ed-nav-item"
+						href="../portfolio/">Back to Portfolio</a>				
+				</div>
 			</div>
 		);
 	};

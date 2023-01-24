@@ -8,10 +8,26 @@
 	font-size: 18px;
   min-height:100%;
 	padding:10px;
+	padding-bottom:0px;
+}
+
+.exec-nav-top
+{
+	display:flex;
+	flex: 1 1 100%;
+	flex-direction:column;
+}
+
+.exec-nav-bottom
+{
+	border: solid 1px yellow;
+	display:flex;
+	flex-direction:column;
 }
 
 .ed-nav-item
 {
+	border: solid 1px white;
 	padding:6px;
 	color:var(--white);
 	margin-bottom:10px;
