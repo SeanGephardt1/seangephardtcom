@@ -20,14 +20,12 @@
 
 .exec-nav-bottom
 {
-	border: solid 1px yellow;
 	display:flex;
 	flex-direction:column;
 }
 
 .ed-nav-item
 {
-	border: solid 1px white;
 	padding:6px;
 	color:var(--white);
 	margin-bottom:10px;

@@ -1,0 +1,8 @@
+﻿@font-face
+{
+	font-family: 'Josefina';
+	font-style: normal;
+	font-weight: normal;
+	src: local('JosefinSans-Regular'), url('./JosefinSans-Regular.woff') format('woff'),  -systemui;
+	font-display: swap;
+}

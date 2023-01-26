@@ -1,6 +1,6 @@
 import React from 'react';
 import { Outlet } from "react-router-dom";
-import './exec-dash/controls/exec-dash.css';
+import './exec-dash/css/exec-dash.css';
 import ExecHeader from './exec-dash/controls/header.js';
 import ExecNav from './exec-dash/controls/nav.js';
 import ExecFooter from './exec-dash/controls/footer.js';
@@ -20,7 +20,9 @@ export default class DashboardDemoLayoutPage extends React.Component
         <ExecHeader />
         <div className="exec-demo-main">
           <ExecNav />
-          <Outlet />
+          <div className="exec-demo-content">
+            <Outlet />
+          </div>
         </div>
         <ExecFooter />
       </div>

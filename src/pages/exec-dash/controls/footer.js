@@ -1,5 +1,4 @@
 import React from 'react';
-import './exec-dash.css';
 
 export default class ExecFooter extends React.Component
 {

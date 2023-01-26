@@ -1,4 +1,5 @@
 @charset "UTF-8";
+@import './fonts.css';
 @import './header.css';
 @import './footer.css';
 @import './nav.css';
@@ -13,6 +14,7 @@
     --ed-white: #FFFFFF;
     --ed-back: #000000;
 }
+/* main layout style */
 .exec-demo-layout
 {
 /*  border: solid 12px red;*/
@@ -22,22 +24,33 @@
   min-height:100vh;
   width:100%;
   height:100%;
-  font-family:Arial;
+  font-family: 'Josefina';
 }
+/* main nav & content layout */
 .exec-demo-main
 {
   display: flex;
   flex: 1 1 auto;
   flex-direction:row;
 }
-
+/* main content layout */
 .exec-demo-content
 {
   display:flex;
   flex: 1 1 100%;
   flex-direction:column;
   width:100%;
+  min-height:100%;
   max-height: calc(100vh - 96px);
   overflow: auto;
-  padding:20px;
+  padding:10px;
+  padding-left:14px;
+}
+
+/* page level styles */
+.ed-header
+{
+  border-bottom: solid 1px var(--black-02);
+  font-size: 32px;
+  padding-bottom:10px;
 }

@@ -6,7 +6,8 @@
   background-color: var( --ed-semidark);
   color: var(--white);
   font-weight:100;
-  font-size: 14px;
+  font-size: 12px;
   padding:10px;
   margin-top: unset;
+  text-align:right;
 }

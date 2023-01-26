@@ -40,7 +40,7 @@ export default class ExecConfigPage extends React.Component
   {
     //  console.debug( "PageTemplate.render()" );
     return (
-      <div className="exec-demo-content">
+      <div>
         <div>CONFIG PAGE</div>
         <div>Executive Demo</div>
         <div>Executive Demo</div>
