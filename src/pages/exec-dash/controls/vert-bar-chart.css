@@ -1,0 +1,12 @@
+﻿.ed-vert-chart-panel
+{
+  border: solid 1px red;
+}
+.ed-vc-svg
+{
+  border: solid 1px black;
+  background-color: var(--black-02);
+  width: 100%;
+
+  max-width:600px;
+}

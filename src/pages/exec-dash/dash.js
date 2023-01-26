@@ -1,5 +1,6 @@
 import React from 'react';
 import SVG from '../../assets/svgs.js';
+import VerticalBarChart from './controls/vert-bar-chart.js';
 
 export default class ExecDashboardPage extends React.Component
 {
@@ -42,6 +43,9 @@ export default class ExecDashboardPage extends React.Component
     return (
       <>
         <div className="ed-header">Dashboard</div>
+        <div>
+          <VerticalBarChart />
+        </div>
       </>
     );
   }
