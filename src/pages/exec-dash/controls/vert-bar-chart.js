@@ -31,7 +31,7 @@ export default class VerticalBarChart extends React.Component
     //  console.debug( 'this.Data', this.Data.length );
 
     this.state = {
-      debug: false,
+      debug: true,
       isRunning: true,
       updated: false,
       intervalTime: 100,
