@@ -1,11 +1,34 @@
 ﻿.ed-vert-chart-panel
 {
-  border: solid 1px red;
+  border: solid 0px red;
+  margin-top:10px;
+  margin-bottom:10px;
+}
+
+.ed-vc-header
+{
+  font-size:18px;
+  margin-bottom:8px;
 }
 .ed-vc-svg
 {
   border: solid 1px black;
   background-color: var(--black-02);
   width: 100%;
-  max-width:600px;
+  max-width:1024px;
+  margin-bottom:10px;
+  transition: all 250ms ease-in-out;
+}
+
+.ed-vc-svg-bar
+{
+  fill: rgba(0, 0, 225,1);
+  stroke-width:0;
+}
+
+.ed-vc-controls
+{
+/*  border: solid 2px red;*/
+  padding-top:10px;
+  padding-bottom:10px;
 }

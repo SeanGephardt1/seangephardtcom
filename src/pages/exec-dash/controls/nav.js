@@ -46,12 +46,6 @@ export default class ExecNav extends React.Component
 					) )
 					}
 				</div>
-				<div className="exec-nav-bottom">
-					<a
-						tabIndex="0"
-						className="ed-nav-item"
-						href="../portfolio/">Back to Portfolio</a>				
-				</div>
 			</div>
 		);
 	};

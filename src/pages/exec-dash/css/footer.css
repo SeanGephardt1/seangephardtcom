@@ -2,12 +2,28 @@
 {
   height:32px;
   border-top: unset;
+  display:flex;
   flex: 0 0 auto;
+  flex-direction:row;
   background-color: var( --ed-semidark);
   color: var(--white);
   font-weight:100;
-  font-size: 12px;
+  font-size: 14px;
   padding:10px;
   margin-top: unset;
-  text-align:right;
+}
+.exec-footer > div:first-child
+{
+  display:flex;
+  flex: 0 1 auto;
+}
+.exec-footer > div:first-child > a
+{
+  color: white;
+}
+.exec-footer > div:last-child
+{
+  display:flex;
+  justify-content:flex-end;
+  flex: 2 1 auto;
 }

@@ -12,7 +12,7 @@
     --ed-accent-silver: #bfc0c0;
     --ed-accent-mandarin: #EF8354;
     --ed-white: #FFFFFF;
-    --ed-back: #000000;
+    --ed-black: #000000;
 }
 /* main layout style */
 .exec-demo-layout
@@ -53,4 +53,21 @@
   border-bottom: solid 1px var(--black-02);
   font-size: 32px;
   padding-bottom:10px;
+}
+
+.ed-cta
+{
+  padding:10px;
+  border:0;
+  border-radius:6px;
+  min-width:100px;
+  background-color: var(--ed-semidark);
+  color: var(--ed-white);
+  transition: all 200ms ease-in-out;
+  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
+}
+.ed-cta:hover, .ed-cta:focus
+{
+  background-color: var(--ed-dark);
+  box-shadow: 0px 0px 10px 0px var(--ed-dark);
 }

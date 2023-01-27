@@ -18,12 +18,6 @@
 	flex-direction:column;
 }
 
-.exec-nav-bottom
-{
-	display:flex;
-	flex-direction:column;
-}
-
 .ed-nav-item
 {
 	padding:6px;
