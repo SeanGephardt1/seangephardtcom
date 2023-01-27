@@ -7,9 +7,9 @@ export default class VerticalBarChart extends React.Component
 	{
     super( props );
 
-    this._dbg_btn_strings = [ "Resume", "Pause" ];
+    this._dbg_btn_strings = [ "Resume", "Pause", "Ended" ];
     this._svg_viewbox_dimensions = [ 0, 0, 1920, 1080 ];
-    this._column_count = 1920 / 20;
+    this._column_count = 1920 / 30;
 
     this.Interval = undefined;
     this.Data = [];
@@ -18,10 +18,10 @@ export default class VerticalBarChart extends React.Component
     {
       const _h = Math.round( Math.random() * 1080 );
       const _y = 1080 - _h;
-      const _x = i * 20;
+      const _x = i * 30;
 
       const _data = {
-        w: 20,
+        w: 30,
         h: _h,
         x: _x,
         y: _y
@@ -31,7 +31,7 @@ export default class VerticalBarChart extends React.Component
     //  console.debug( 'this.Data', this.Data.length );
 
     this.state = {
-      debug: true,
+      debug: false,
       isRunning: true,
       updated: false,
       intervalTime: 100,
@@ -43,32 +43,28 @@ export default class VerticalBarChart extends React.Component
   /* custom methods */
   AppendChart( params )
   {
-    console.debug( "AppendChart()", params );
+    //  console.debug( "AppendChart()", params[0].Data.length );
 
-    let _first = params[0].shift();
-
-    //const _h = Math.round( Math.random() * 1080 );
-    //const _y = 1080 - _h;
-    //const _x = this._column_count + 20;
-
-    //let _last = {
-    //  w: 20,
-    //  h: _h,
-    //  x: _x,
-    //  y: _y
-    //};
-
-    //params.Data.push( _data );
-    if ( params[ 0 ].length > 0 )
+    for ( let i = 0; i < params[ 0 ].Data.length; i++ )
     {
-      params[ 1 ].setState( {
-        updated: false
+      //console.debug(i, 'params[ 0 ].Data[ i ]', params[ 0 ].Data[ i ] );
+      //console.debug( i, 'params[ 0 ].Data[ i + 1]', params[ 0 ].Data[ i + 1 ] );
+
+      if ( params[ 0 ].Data[ i + 1 ] !== undefined )
+      {
+        params[ 0 ].Data[ i ].h = params[ 0 ].Data[ i + 1 ].h;
+        params[ 0 ].Data[ i ].y = params[ 0 ].Data[ i + 1 ].y;
+      }
+      else if ( params[ 0 ].Data[ i + 1 ] === undefined )
+      {
+        params[ 0 ].Data[ i ].h = Math.round( Math.random() * 1080 );
+        params[ 0 ].Data[ i ].y = 1080 - params[ 0 ].Data[ i ].h;
+      }
+    }
+
+    params[ 0 ].setState( {
+        updated: !params[0].state.updated
       } );
-    }
-    else
-    {
-      console.debug( "NO DATA" );
-    }
     return;
   };
   OnClick_Toggle_Bar_Rendering( ev )
@@ -90,7 +86,7 @@ export default class VerticalBarChart extends React.Component
     else if ( this.state.isRunning === false )
     {
       console.debug( "running" );
-      this.Interval = window.setInterval( this.AppendChart, this.state.intervalTime, [ this.Data, this ] );
+      this.Interval = window.setInterval( this.AppendChart, this.state.intervalTime, [ this ] );
       this.setState( {
         isRunning: true,
         debugBtnText: this._dbg_btn_strings[ 1 ]
@@ -102,7 +98,7 @@ export default class VerticalBarChart extends React.Component
   /* react lifecycle */
   componentDidMount()
   { //  console.debug( "VerticalBarChart.componentDidMount()", this );
-    this.Interval = window.setInterval( this.AppendChart, this.state.intervalTime, [this.Data, this] );
+    this.Interval = window.setInterval( this.AppendChart, this.state.intervalTime, [ this ] );
     return;
   }
   componentWillUnmount()
@@ -133,7 +129,8 @@ export default class VerticalBarChart extends React.Component
             {/*  width="320" height="240"*/}
             {/*  fill="red"*/}
             {/*  stroke="black" strokeWidth="1"*/}
-            {/*/>*/}
+            {/*/>*/ }
+            <g>
             {
               this.Data.map( ( item, idx ) => (
                 <rect
@@ -144,7 +141,8 @@ export default class VerticalBarChart extends React.Component
                   width={ item.w}
                   height={ item.h } />
                 ) )
-            }
+              }
+            </g>
           </svg>
         </div>
         {

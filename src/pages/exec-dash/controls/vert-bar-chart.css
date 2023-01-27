@@ -13,17 +13,18 @@
 .ed-vc-svg
 {
   border: solid 1px black;
-  background-color: var(--black-02);
+  background-color: var(--black-01);
   width: 100%;
   max-width:1024px;
   margin-bottom:10px;
-  transition: all 250ms ease-in-out;
 }
 
 .ed-vc-svg-bar
 {
-  fill: rgba(0, 0, 225,1);
-  stroke-width:0;
+  fill: rgba(0, 0, 160,1);
+  stroke-width:0px;
+  cursor:pointer;
+/*  transition: all 500ms ease-in-out;*/
 }
 
 .ed-vc-controls
