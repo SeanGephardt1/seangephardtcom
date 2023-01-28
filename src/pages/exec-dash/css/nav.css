@@ -23,7 +23,7 @@
 	padding:6px;
 	color:var(--white);
 	margin-bottom:10px;
-	text-align:center;
+	text-align:left;
 	text-decoration:none;
 }
 .ed-nav-item:hover, .ed-nav-item:focus

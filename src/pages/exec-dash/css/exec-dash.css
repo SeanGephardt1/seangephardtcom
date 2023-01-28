@@ -60,7 +60,6 @@
   padding:10px;
   border:0;
   border-radius:6px;
-  min-width:100px;
   background-color: var(--ed-semidark);
   color: var(--ed-white);
   transition: all 200ms ease-in-out;
