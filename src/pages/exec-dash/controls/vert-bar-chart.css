@@ -3,6 +3,7 @@
   border: solid 0px red;
   margin-top:10px;
   margin-bottom:10px;
+  max-width:1024px;
 }
 
 .ed-vc-header
@@ -15,7 +16,7 @@
   border: solid 1px var(--black-03);
   background-color: var(--black-01);
   width: 100%;
-  max-width:1024px;
+
   margin-bottom:10px;
 }
 
@@ -23,6 +24,16 @@
 {
   stroke-width:0.3px;
   stroke:rgba(0,0,0,1);
+}
+
+.ed-vc-legend-bg
+{
+  fill: var(--white);
+  stroke: var(--black-05);
+}
+.ed-vc-legend-text
+{
+  font-size: 40px;
 }
 
 .ed-vc-svg-bar
@@ -37,22 +48,23 @@
 {
   fill: rgba(160, 0, 192,1);
 }
-.ed-vc-svg-bar:nth-child(1)
+.legend-col-0
 {
   fill: rgba(255, 0, 0,1);
 }
-.ed-vc-svg-bar:nth-child(2)
+.legend-col-1
 {
   fill: rgba(255, 160, 0,1);
 }
-.ed-vc-svg-bar:nth-child(3)
+.legend-col-2
 {
   fill: rgba(0, 160, 0,1);
 }
-.ed-vc-svg-bar:nth-child(4)
+.legend-col-3
 {
   fill: rgba(0, 0, 160, 1);
 }
+
 
 
 

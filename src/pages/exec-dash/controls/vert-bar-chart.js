@@ -12,7 +12,7 @@ export default class VerticalBarChart extends React.Component
     this._app_os = [ "iOS", "macOS", "Android", "Windows" ];
     this._dbg_btn_strings = [ "Resume", "Pause", "Ended" ];
     this._svg_viewbox_dimensions = [ 0, 0, 1920, 1080 ];
-    this._section_count = 24;
+    this._section_count = 72;
     this._price_per_unit = 100;
     this.Data = [];
     this.Data = this.Init_Data();
@@ -141,7 +141,7 @@ export default class VerticalBarChart extends React.Component
     //onClick={ this.OnClick_Select_Bar_Data.bind( this, idx ) }
 		return (
       <div className="ed-vert-chart-panel">
-        <div className="ed-vc-header">App downloads for the last 72 hours</div>
+        <div className="ed-vc-header">Application downloads (72 hours)</div>
         <div>
           <svg
             viewBox={ this._svg_viewbox_dimensions.join(' ')  }
@@ -158,16 +158,17 @@ export default class VerticalBarChart extends React.Component
               <line className="ed-vc-line" x1="0" x2="1920" y1="180" y2="180" />
               <line className="ed-vc-line" x1="0" x2="1920" y1="80" y2="80" />
             </g>
+
             <g id="bar-group">
             {
                 this.Data.map( ( item, idx ) => (
-                  <g key={ idx } id="bars">
+                  <g key={ idx } id="bars" datacount={ idx }>
                     {
                       item.platforms.map( ( p, idx2 ) => (
                         <rect
                           key={ idx2 }
                           tabIndex="0"
-                          className={ "ed-vc-svg-bar" }
+                          className={ "ed-vc-svg-bar legend-col-" + idx2 }
                           x={ p.x }
                           y={ p.y }
                           width={ p.w }
@@ -187,6 +188,18 @@ export default class VerticalBarChart extends React.Component
                  </g>
                ) )
               }
+            </g>
+
+            <g id="legend">
+              <rect x="10" y="10" width="850" height="50" className="ed-vc-legend-bg"></rect>
+              <rect x="30" y="20" width="30" height="30" className="legend-col-0"></rect>
+              <text className="ed-vc-legend-text" x="80" y="48">{ this._app_os[ 0 ] }</text>
+              <rect x="200" y="20" width="30" height="30" className="legend-col-1"></rect>
+              <text className="ed-vc-legend-text" x="250" y="48">{ this._app_os[ 1 ] }</text>
+              <rect x="420" y="20" width="30" height="30" className="legend-col-2"></rect>
+              <text className="ed-vc-legend-text" x="470" y="48">{ this._app_os[ 2 ] }</text>
+              <rect x="640" y="20" width="30" height="30" className="legend-col-3"></rect>
+              <text className="ed-vc-legend-text" x="690" y="48">{ this._app_os[ 3 ] }</text>
             </g>
           </svg>
         </div>
