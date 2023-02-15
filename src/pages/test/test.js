@@ -48,6 +48,9 @@ constructor( props )
 			<div className="page-layout padding30">
 				<div className="header centered">{ this.props.Title }</div>
 				<div className="centered">Open Browser Dev Tools to see questions and answers.</div>
+				<div className="three-d-css-panel">
+					<div className="t3d">Sean Gephardt</div>
+				</div>
 			</div>
 		);
 	};
