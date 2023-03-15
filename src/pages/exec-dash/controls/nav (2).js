@@ -36,10 +36,14 @@ export default class ExecDemoNavigation extends React.Component
 
     this._nav_open = "exec-nav nav-open";
     this._nav_closed = "exec-nav nav-closed";
+    this._toggle_open = "exec-nav-toggle toggle-open";
+    this._toggle_closed = "exec-nav-toggle toggle-closed";
 
     this._nav_selected = " ed-nav-selected";
     this._nav_open_unselected = 'ed-nav-item';
     this._nav_open_selected = this._nav_open_unselected + this._nav_selected;
+    this._nav_closed_unselected = 'ed-nav-item-closed';
+    this._nav_closed_selected = this._nav_closed_unselected + this._nav_selected;
 
     return;
   };
@@ -52,7 +56,6 @@ export default class ExecDemoNavigation extends React.Component
   };
   render()
   { //  HACK to allow for classname property scoping within this.LeftNav loop
-    //  HACK BOOL TEST style={ this.state.opened ? { 'max-width': 'contain' } : { 'max-width': 'max-content' } }
     const _self = this;
 
     return (
@@ -60,8 +63,9 @@ export default class ExecDemoNavigation extends React.Component
 
         <div className="exec-nav-top">
           {
+            this.state.opened === false &&
             this.LeftNav.map( ( item, index ) => (
-                <NavLink
+              <NavLink
                 tabIndex="0"
                 key={ index }
                 className={ function ( { isActive } )
@@ -70,21 +74,48 @@ export default class ExecDemoNavigation extends React.Component
                 } }
                 to={ item.component.defaultProps.Href }
                 end
-                title={ `${item.component.defaultProps.LinkTitle.toString()}\r\r${item.component.defaultProps.Description.toString()}` }
+                title={ item.component.defaultProps.LinkTitle.toString() }
               >{ item.component.defaultProps.LinkTitle.toString() }</NavLink>
+            ) )
+          }
+          {
+            this.state.opened === true &&
+            this.LeftNav.map( ( item, index ) => (
+              <NavLink
+                tabIndex="0"
+                key={ index }
+                className={ function ( { isActive } )
+                { 
+                  return ( isActive === true ) ? _self._nav_closed_selected : _self._nav_closed_unselected;
+                } }
+                to={ item.component.defaultProps.Href }
+                end
+                title={ item.component.defaultProps.LinkTitle.toString() }>{ item.component.defaultProps.LinkTitle.toString().charAt( 0 ) }</NavLink>
             ) )
           }
         </div>
 
         <div
           tabIndex="0"
-          className="exec-nav-bottom"
-          title="Click here to resize this navigation panel."
+          className={ this.state.opened === false ? this._toggle_open : this._toggle_closed }
           onClick={ this.OnClick_Toggle_Nav.bind( this ) }>
           <svg className="svg-toggle" viewBox="0 0 64 64">
-            <line x1="0" x2="64" y1="32" y2="32" stroke="white" strokeWidth="3" />
-            <line x1={ this.state.opened ? 64 : 0 } x2="32" y1="32" y2="0" stroke="white" strokeWidth="3" />
-            <line x1={ this.state.opened ? 64 : 0 } x2="32" y1="32" y2="64" stroke="white" strokeWidth="3" />
+            {
+              this.state.opened === false &&
+              <>
+                <line x1="0" x2="64" y1="32" y2="32" stroke="white" strokeWidth="2" />
+                <line x1="0" x2="32" y1="32" y2="0" stroke="white" strokeWidth="2" />
+                <line x1="0" x2="32" y1="32" y2="64" stroke="white" strokeWidth="2" />
+              </>
+            }
+            {
+              this.state.opened === true &&
+              <>
+                <line x1="0" x2="64" y1="32" y2="32" stroke="white" strokeWidth="2" />
+                <line x1="64" x2="32" y1="32" y2="0" stroke="white" strokeWidth="2" />
+                <line x1="64" x2="32" y1="32" y2="64" stroke="white" strokeWidth="2" />
+              </>
+            }
           </svg>
         </div>
 
