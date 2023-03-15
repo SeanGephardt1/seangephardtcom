@@ -18,7 +18,7 @@
 /* main layout style */
 .exec-demo-layout
 {
-/*  border: solid 12px red;*/
+  border: solid 0px red;
   display:flex;
   flex-direction:column;
   flex: 0 0 100%;

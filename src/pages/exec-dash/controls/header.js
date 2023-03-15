@@ -1,4 +1,7 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
+import ExecDashboardPage from '../dash.js';
+//  import SVG from './../../../assets/svgs.js';
 
 export default class ExecHeader extends React.Component
 {
@@ -26,18 +29,24 @@ export default class ExecHeader extends React.Component
   render()
   {
     return (
-      <div className="exec-header-panel">
-        <div className="ehp-item ehp-brand">
-          <div>branding</div>
+      <div className="ehp">
+        <div className="ehp-area ehp-brand">
+            <NavLink
+            tabIndex="0"
+              className=""
+              to={ ExecDashboardPage.defaultProps.Href }
+              end
+              title={ `${ ExecDashboardPage.defaultProps.LinkTitle.toString() }\r\r${ ExecDashboardPage.defaultProps.Description.toString() }` }
+            >{ ExecDashboardPage.defaultProps.Icon }</NavLink>
         </div>
-        <div className="ehp-item ehp-search">
+        <div className="ehp-area ehp-search">
           <div>search</div>
         </div>
-        <div className="ehp-item ehp-tools">
+        <div className="ehp-area ehp-tools">
           <div>tools</div>
         </div>
-        <div className="ehp-item ehp-account">
-          <div>account</div>
+        <div className="ehp-area ehp-account">
+          <div>My Account</div>
         </div>
       </div>
     );

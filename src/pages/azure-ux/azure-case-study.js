@@ -1,4 +1,5 @@
 import React from 'react';
+import SVG from '../../assets/svgs.js';
 import './azure-case-study.css';
 
 import AzureHome1 from './azure-resp-home-1.png';
@@ -19,7 +20,7 @@ export default class AzureCaseStudyDemo extends React.Component
     LinkTitle: "Microsoft Azure Prototypes",
     Href: "/portfolio/azure-ux",
     Description: "Generic Page Description for This Demo Page!.For my web site portfolio and beyond and the internets. Lorum Ipsum.",
-    Icon: undefined
+    Icon: SVG.PortfolioPages.MicrosoftAzurePortalBrandIcon
   };
   constructor ( props )
   {

@@ -1,17 +1,16 @@
-﻿.exec-header-panel
+﻿.ehp
 {
 	background-color: var(--ed-dark);
 	color: var(--ed-white);
 	display:flex;
 	flex: 0 1 auto;
 	flex-direction:row;
-	padding:10px;
-	height: 64px;
+	padding: 10px;
 }
 
-.ehp-item
+.ehp-area
 {
-/*	border: solid 1px red;*/
+	border: solid 1px white;
 	display: flex;
 	flex: 1 1 auto;
 	font-size: 18px;
@@ -19,7 +18,13 @@
 
 .ehp-brand
 {
-	flex: 0 0 150px;
+	flex: 0 0 190px;
+	max-height:64px;
+}
+.ehp-brand > svg
+{
+	height: 100%;
+	width:100%;
 }
 .ehp-search
 {
@@ -27,7 +32,7 @@
 }
 .ehp-tools
 {
-	flex : 0 0 150px;
+	flex : 0 1 auto;
 }
 .ehp-account
 {
