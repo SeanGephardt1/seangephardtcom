@@ -12,7 +12,7 @@ export default class PortfolioLayoutPage extends React.Component
   {
     //  console.debug( "PortfolioLayoutPage.render()", React.version );
     return (
-      <Outlet />
+        <Outlet />
     );
   }
 };

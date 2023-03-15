@@ -1,12 +1,19 @@
-﻿npm audit fix -force
+﻿NOTES:
+https://docs.npmjs.com/cli/install
+https://reactjs.org/
+
+npm audit fix -force
 npm update
 
 npm install --save --save-exact react-scripts@4.0.0
-
 npm install --save --save-exact react-scripts@5.0.0
 
-NOTES:
+APP NOTES:
 
-https://docs.npmjs.com/cli/install
+For ReactRouter 6+ to avoid reloading /refreshing pages, you must use
 
-https://reactjs.org/
+import { NavLink, useLocation } from 'react-router-dom';
+
+see:
+C:\_git\seangephardtcom\src\controls\nav\nav.js
+C:\_git\seangephardtcom\src\pages\exec-dash\controls\nav.js

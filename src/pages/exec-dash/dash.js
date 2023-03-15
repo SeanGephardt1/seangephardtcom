@@ -7,7 +7,7 @@ export default class ExecDashboardPage extends React.Component
   static defaultProps = {
     Title: "Executive Dashboard Demo",
     LinkTitle: "Dashboard",
-    Href: "/portfolio/exec-demo/",
+    Href: "/portfolio/exec-demo",
     Description: "This page is an example of a executive management dashboard. All controls are using dynamic data.",
     Icon: SVG.PortfolioPages.ExecDemo
   };

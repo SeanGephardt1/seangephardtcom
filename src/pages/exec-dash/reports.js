@@ -40,9 +40,10 @@ export default class ExecReportsPage extends React.Component
   {
     //  console.debug( "PageTemplate.render()" );
     return (
-      <div className="exec-demo-content">
-        <div>REPORTS</div>
-      </div>
+      <>
+        <div className="ed-header">Reports</div>
+        <div>Reports</div>
+      </>
     );
   }
 };

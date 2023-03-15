@@ -138,7 +138,7 @@ const _app_routes = [
     ]
   },
 
-  /* executiave dashboard mdeo routes */
+  /* executive dashboard demo routes */
   {
     path: ExecDashboardPage.defaultProps.Href,
     element: <DashboardDemoLayoutPage />,
@@ -162,13 +162,18 @@ const _app_routes = [
       {
         path: ExecHelpPage.defaultProps.Href,
         element: <ExecHelpPage />,
-      }
+      },
+      {
+        path: "*",
+        element: <FourOhFourPage />,
+      },
     ]
   },
 ];
 
 function AppRoutes()
 {
+
   return useRoutes( _app_routes );
 };
 

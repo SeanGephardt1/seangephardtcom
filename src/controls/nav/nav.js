@@ -1,4 +1,5 @@
 //  updated from class component to functional component for react router v6
+//  to avoid
 import React from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import './nav.css';

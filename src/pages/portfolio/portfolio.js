@@ -26,8 +26,8 @@ export default class PortfolioPage extends React.Component
     return (
       <div className="page-layout">
         <div className="page-header">{ this.Title }</div>
-        <PortfolioSiteNavigation />
         <div className="page-section">{ this.Desc }</div>
+        <PortfolioSiteNavigation />
       </div>
     );
   }

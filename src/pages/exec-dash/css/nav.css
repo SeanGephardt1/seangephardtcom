@@ -75,7 +75,8 @@
 	text-decoration:none;
 	transition: all 200ms ease-in-out;
 }
-.ed-nav-item:hover, .ed-nav-item:focus
+.ed-nav-item:hover, .ed-nav-item:focus,
+.ed-nav-selected
 {
 	background-color: var(--ed-accent-mandarin);
 	box-shadow: 0px 0px 10px 0px var(--black);

@@ -6,7 +6,7 @@ import ExecAppsPage from '../apps.js';
 import ExecConfigPage from '../config.js';
 import ExecHelpPage from '../help.js';
 
-export default class ExecDemoNavigation extends React.Component
+export default class ExecNav extends React.Component
 {
   constructor ( props ) 
   {
@@ -55,12 +55,7 @@ export default class ExecDemoNavigation extends React.Component
               <NavLink
                 tabIndex="0"
                 key={ index }
-                className={ function ( { isActive } )
-                { 
-                  const _selected = 'ed-nav-item ed-nav-selected';
-                  const _unselected = 'ed-nav-item';
-                  return ( isActive === true ) ? _selected : _unselected;
-                } }
+                className="ed-nav-item"
                 to={ item.component.defaultProps.Href }
                 end
                 title={ item.component.defaultProps.LinkTitle.toString() }
@@ -73,12 +68,7 @@ export default class ExecDemoNavigation extends React.Component
               <NavLink
                 tabIndex="0"
                 key={ index }
-                className={ function ( { isActive } )
-                { 
-                  const _selected = 'ed-nav-item-closed ed-nav-selected';
-                  const _unselected = 'ed-nav-item-closed';
-                  return ( isActive === true ) ? _selected : _unselected;
-                } }
+                className="ed-nav-item-closed"
                 to={ item.component.defaultProps.Href }
                 end
                 title={ item.component.defaultProps.LinkTitle.toString() }>{ item.component.defaultProps.LinkTitle.toString().charAt( 0 ) }</NavLink>
