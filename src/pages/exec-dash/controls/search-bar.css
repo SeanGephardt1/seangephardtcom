@@ -57,26 +57,41 @@
 .esp-input-btn
 {
   border: solid 1px transparent;
+  border-radius:4px;
   box-shadow: 0px 0px 0px 0px var(--debug);
-  background-color: var(--white-05);
+  background-color: var(--white-08);
   width:32px;
   height:32px;
   text-align:center;
   font-weight:100;
   margin-right: 6px;
+  padding:5px;
   transition: all 200ms ease-in-out;
 }
 .esp-input-btn:last-child
 {
   margin-right: 0px;
 }
+
 .esp-input-btn:hover,
 .esp-input-btn:focus
 {
-  border: solid 1px black;
+  border: solid 1px white;
   font-weight:900;
   box-shadow: 0px 0px 10px 0px var(--black-06);
   background-color: var(--white);
+}
+
+.esp-input-btn > svg
+{
+  fill: var(--black-04);
+  height:100%;
+  width:100%;
+}
+.esp-input-btn:hover > svg,
+.esp-input-btn:focus > svg
+{
+  fill: rgba(0,0,128,1);
 }
 
 
