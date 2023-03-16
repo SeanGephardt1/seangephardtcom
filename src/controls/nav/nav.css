@@ -83,7 +83,7 @@ a.nav.nav-selected
 
 .portfolio-nav-item-box
 {
-/*  border: solid 1px black;*/
+  border: solid 1px var(--black-01);
   flex: 0 0 50%;
   min-width:250px;
   display:flex;
@@ -94,7 +94,24 @@ a.nav.nav-selected
 .portfolio-nav-item-panel > .portfolio-nav-item-box:first-child
 {
   justify-content:center;
-  flex: 0 0 250px;
+  flex: 0 0 200px;
+  padding:20px;
+}
+.portfolio-nav-item-panel > .portfolio-nav-item-box:first-child > a
+{
+  opacity: 0.5;
+  transition: opacity 250ms ease-in-out;
+}
+.portfolio-nav-item-panel > .portfolio-nav-item-box:first-child > a:hover, 
+.portfolio-nav-item-panel > .portfolio-nav-item-box:first-child > a:focus 
+{
+  opacity: 1;
+}
+.portfolio-nav-item-panel > .portfolio-nav-item-box:first-child > a > svg
+{
+/*  border: solid 1px red;*/
+  height: 100%;
+  width:100%;
 }
 .portfolio-nav-item-panel > .portfolio-nav-item-box:last-child
 {

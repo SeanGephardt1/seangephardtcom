@@ -10,7 +10,7 @@
 
 .ehp-area
 {
-	border: solid 1px white;
+/*	border: solid 1px white;*/
 	display: flex;
 	flex: 1 1 auto;
 	font-size: 18px;

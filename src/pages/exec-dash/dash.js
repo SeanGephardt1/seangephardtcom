@@ -9,7 +9,7 @@ export default class ExecDashboardPage extends React.Component
     LinkTitle: "Dashboard",
     Href: "/portfolio/exec-demo",
     Description: "This page is an example of a executive management dashboard. All controls are using dynamic data.",
-    Icon: SVG.PortfolioPages.ExecDemo
+    Icon: SVG.Brands.ExecDemoBrand
   };
   constructor ( props )
   { // GENERIC
@@ -40,10 +40,11 @@ export default class ExecDashboardPage extends React.Component
   render()
   {
     //  console.debug( "ExecDashboardPage.render()" );
+    //  <div className="ehp-test">{ SVG.Brands.ExecDemoBrand }</div>
     return (
       <>
         <div className="ed-header">Dashboard</div>
-        <div className="ehp-test">{ SVG.Brands.ExecDemoBrand }</div>
+
         <div>
           <VerticalBarChart />
         </div>

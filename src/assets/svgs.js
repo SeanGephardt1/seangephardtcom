@@ -312,15 +312,24 @@ export default class SVG extends React.Component
 				<rect x="0" y="0" width="1920" height="1080" fill="rgba(224,224,224,0)" />
 
 				<path
-					fill="rgba(160,0,0,1)"
-					d="M0 100C0 44.7715 44.7715 0 100 0H480V980C480 1035.23 435.228 1080 380 1080H0V100Z" />
+					id="blue"
+					fill="rgba(0,0,128,1)"
+					d="M1440 400C1440 179.086 1619.09 0 1840 0H1920V680C1920 900.914 1740.91 1080 1520 1080H1440V400Z" />
 
 				<path
-					fill="rgba(160,160,0,1)"
-					d="M0 120C0 53.7258 53.7258 0 120 0H480V960C480 1026.27 426.274 1080 360 1080H0V120Z" />
+					id="green"
+					fill="rgba(0,128,0,1)" 
+					d="M960 300C960 134.315 1094.31 0 1260 0H1440V780C1440 945.685 1305.69 1080 1140 1080H960V300Z" />
 
+				<path
+					id="yellow"
+					fill="rgba(128,128,0,1)" 
+					d="M480 200C480 89.5431 569.543 0 680 0H960V880C960 990.457 870.457 1080 760 1080H480V200Z" />
 
-
+				<path
+					id="red"
+					fill="rgba(128,0,0,1)"
+					d="M0 100C0 44.7715 44.7715 0 100 0H480V980C480 1035.23 435.228 1080 380 1080H0V100Z" />
 
 				<text
 					x="50%"
@@ -328,10 +337,10 @@ export default class SVG extends React.Component
 					textAnchor="middle"
 					dominantBaseline="middle"
 					lengthAdjust="spacingAndGlyphs"
-					fontSize="260"
+					fontSize="500"
 					fill="white"
 					fontWeight="900"
-				>execdemodash</text>
+				>exec.dash</text>
 			</svg>
 		),
 		GitHub: (
