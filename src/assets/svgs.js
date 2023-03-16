@@ -312,24 +312,52 @@ export default class SVG extends React.Component
 				<rect x="0" y="0" width="1920" height="1080" fill="rgba(224,224,224,0)" />
 
 				<path
-					id="blue"
-					fill="rgba(0,0,128,1)"
-					d="M1440 400C1440 179.086 1619.09 0 1840 0H1920V680C1920 900.914 1740.91 1080 1520 1080H1440V400Z" />
-
-				<path
-					id="green"
-					fill="rgba(0,128,0,1)" 
-					d="M960 300C960 134.315 1094.31 0 1260 0H1440V780C1440 945.685 1305.69 1080 1140 1080H960V300Z" />
+					id="red"
+					fill="rgba(128,0,0,1)"
+					d="M0 100C0 44.7715 44.7715 0 100 0H480V980C480 1035.23 435.228 1080 380 1080H0V100Z">
+					<animate
+						attributeName="fill"
+						values="rgba(128,0,0,1);rgba(160,0,0,1);rgba(96,0,0,1);rgba(128,0,0,1)"
+						begin="3000ms"
+						dur="5000ms"
+						repeatCount="indefinite" />
+				</path>
 
 				<path
 					id="yellow"
-					fill="rgba(128,128,0,1)" 
-					d="M480 200C480 89.5431 569.543 0 680 0H960V880C960 990.457 870.457 1080 760 1080H480V200Z" />
+					fill="rgba(128,128,0,1)"
+					d="M480 200C480 89.5431 569.543 0 680 0H960V880C960 990.457 870.457 1080 760 1080H480V200Z">
+					<animate
+						attributeName="fill"
+						values="rgba(128,128,0,1);rgba(160,160,0,1);rgba(96,96,0,1);rgba(128,128,0,1)"
+						begin="6000ms"
+						dur="5000ms"
+						repeatCount="indefinite" />
+				</path>
 
 				<path
-					id="red"
-					fill="rgba(128,0,0,1)"
-					d="M0 100C0 44.7715 44.7715 0 100 0H480V980C480 1035.23 435.228 1080 380 1080H0V100Z" />
+					id="green"
+					fill="rgba(0,128,0,1)"
+					d="M960 300C960 134.315 1094.31 0 1260 0H1440V780C1440 945.685 1305.69 1080 1140 1080H960V300Z">
+					<animate
+						attributeName="fill"
+						values="rgba(0,128,0,1);rgba(0,160,0,1);rgba(0,96,0,1);rgba(0,128,0,1)"
+						begin="9000ms"
+						dur="5000ms"
+						repeatCount="indefinite" />
+				</path>
+
+				<path
+					id="blue"
+					fill="rgba(0,0,128,1)"
+					d="M1440 400C1440 179.086 1619.09 0 1840 0H1920V680C1920 900.914 1740.91 1080 1520 1080H1440V400Z">
+					<animate
+						attributeName="fill"
+						values="rgba(0,0,128,1);rgba(0,0,160,1);rgba(0,0,96,1);rgba(0,0,128,1)"
+						begin="12000ms"
+						dur="5000ms"
+						repeatCount="indefinite" />
+				</path>
 
 				<text
 					x="50%"
@@ -338,9 +366,16 @@ export default class SVG extends React.Component
 					dominantBaseline="middle"
 					lengthAdjust="spacingAndGlyphs"
 					fontSize="500"
-					fill="white"
+					fill="rgba(224,224,224,1)"
 					fontWeight="900"
-				>exec.dash</text>
+				>exec.dash
+					<animate
+						attributeName="fill"
+						values="rgba(224,224,224,1);rgba(255,255,255,1);rgba(224,224,224,1);"
+						begin="0"
+						dur="3000ms"
+						repeatCount="indefinite" />
+				</text>
 			</svg>
 		),
 		GitHub: (

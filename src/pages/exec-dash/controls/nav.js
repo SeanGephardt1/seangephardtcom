@@ -31,7 +31,7 @@ export default class ExecDemoNavigation extends React.Component
     ];
 
     this.state = {
-      opened: false
+      opened: true
     };
 
     this._nav_open = "exec-nav nav-open";

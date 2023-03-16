@@ -5,10 +5,10 @@ import VerticalBarChart from './controls/vert-bar-chart.js';
 export default class ExecDashboardPage extends React.Component
 {
   static defaultProps = {
-    Title: "Executive Dashboard Demo",
-    LinkTitle: "Dashboard",
+    Title: "exec.dash",
+    LinkTitle: "Home",
     Href: "/portfolio/exec-demo",
-    Description: "This page is an example of a executive management dashboard. All controls are using dynamic data.",
+    Description: "exec.dash is a management style dashboard web application, built using React.js, HTML5, CSS and SVG. All controls are using dynamic data.",
     Icon: SVG.Brands.ExecDemoBrand
   };
   constructor ( props )
@@ -44,7 +44,6 @@ export default class ExecDashboardPage extends React.Component
     return (
       <>
         <div className="ed-header">Dashboard</div>
-
         <div>
           <VerticalBarChart />
         </div>
