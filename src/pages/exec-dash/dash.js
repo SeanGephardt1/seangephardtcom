@@ -43,6 +43,7 @@ export default class ExecDashboardPage extends React.Component
     return (
       <>
         <div className="ed-header">Dashboard</div>
+        <div className="ehp-test">{ SVG.Brands.ExecDemoBrand }</div>
         <div>
           <VerticalBarChart />
         </div>
