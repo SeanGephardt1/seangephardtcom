@@ -10,7 +10,25 @@ export default class ExecSearchBar extends React.Component
     super( props );
     return;
   };
-  /* REACT LIFECYCLE */
+
+  /* custom functions & event handlers */
+  OnChange_Text_Enter(ev)
+  {
+    console.debug( 'OnChange_Text_Enter', ev.target.value );
+    return;
+  };
+  OnClick_Enable_Voice(ev)
+  {
+    console.debug( 'OnClick_Enable_Voice', ev.target.value );
+    return;
+  };
+  OnClick_Submit_Search(ev)
+  {
+    console.debug( 'OnClick_Submit_Search', ev.target.value );
+    return;
+  };
+
+  /* react lifecycle */
   componentDidMount()
   {
     //  console.debug( "componentDidMount()" );
@@ -36,13 +54,16 @@ export default class ExecSearchBar extends React.Component
             type="text"
             placeholder="Enter text or use the voice command button."
             className="esp-input-field"
+            onChange={ this.OnChange_Text_Enter.bind(this)}
           />
           <button
             tabIndex="0"
-            className="esp-input-btn">V</button>
+            className="esp-input-btn"
+            onClick={ this.OnClick_Enable_Voice.bind( this ) }>V</button>
           <button
             tabIndex="0"
-            className="esp-input-btn">S</button>
+            className="esp-input-btn"
+            onClick={ this.OnClick_Submit_Search.bind(this)}>S</button>
         </div>
         <div className="esp-results-panel">
           <div>result</div>
