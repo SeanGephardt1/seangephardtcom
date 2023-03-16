@@ -1,7 +1,7 @@
 import React from 'react';
 import './search-bar.css';
-import { NavLink } from 'react-router-dom';
-import SVG from './../../../assets/svgs.js';
+//import { NavLink } from 'react-router-dom';
+//import SVG from './../../../assets/svgs.js';
 
 export default class ExecSearchBar extends React.Component
 {
@@ -31,9 +31,18 @@ export default class ExecSearchBar extends React.Component
     return (
       <div className="esp">
         <div className="esp-input-panel">
-          <input type="text" placeholder="Enter text or use the voice commnad button." />
-          <button>voice</button>
-          <button>search</button>
+          <input
+            tabIndex="0"
+            type="text"
+            placeholder="Enter text or use the voice command button."
+            className="esp-input-field"
+          />
+          <button
+            tabIndex="0"
+            className="esp-input-btn">V</button>
+          <button
+            tabIndex="0"
+            className="esp-input-btn">S</button>
         </div>
         <div className="esp-results-panel">
           <div>result</div>
