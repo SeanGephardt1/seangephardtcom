@@ -50,3 +50,63 @@
         transform: skew(0deg, -33deg) scaleY(2) rotate(30deg);
     }
 }
+
+.cutout-panel
+{
+  outline: 10px solid red;
+  border: solid 10px white;
+  border-radius:10px;
+  background-color:red;
+  padding:40px;
+  margin:20px;
+  display:flex;
+  flex:1 1 100%;
+  flex-direction:column;
+  min-height:100px;
+  vertical-align:top;
+}
+
+.cutout-text-panel
+{
+  padding:0px;
+  background-color:transparent;
+  margin:0px;
+  display:flex;
+  flex:1 1 100%;
+  flex-direction:column;
+  vertical-align:top;
+}
+
+.cutout-text
+{
+  border: solid 1px rgba(0,0,0,0);
+  background-color: rgba(255,0,255,0);
+  vertical-align:top;
+  text-align:center;
+  color: white;
+  margin:0px;
+  padding:0px;
+  letter-spacing:-2px;
+  font-weight:900;
+  font-family: 'Hit the Road';
+  text-shadow:0px 0px 0px black;
+}
+.cutout-text-1
+{
+  margin-top:20px;
+  line-height:0%;
+  padding-left:14px;
+  font-size:40px;
+  text-align:left;
+}
+.cutout-text-2
+{
+  line-height:8%;
+  font-size:86px;
+  margin-bottom:13px;
+}
+.cutout-text-3
+{
+  line-height:70%;
+  font-size:96px;
+}

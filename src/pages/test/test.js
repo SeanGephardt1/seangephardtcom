@@ -44,12 +44,22 @@ constructor( props )
 		//this.Solution_ComputePolygonArea( 999 );
 		//this.Solution_ComputePolygonArea( 1000 );
 
+		/*
+						<div className="three-d-css-panel">
+					<div className="t3d">Sean Gephardt</div>
+				</div>
+*/
+
 		return (
 			<div className="page-layout padding30">
 				<div className="header centered">{ this.props.Title }</div>
 				<div className="centered">Open Browser Dev Tools to see questions and answers.</div>
-				<div className="three-d-css-panel">
-					<div className="t3d">Sean Gephardt</div>
+				<div className="cutout-panel">
+					<div className="cutout-text-panel">
+						<div className="cutout-text cutout-text-1">The</div>
+						<div className="cutout-text cutout-text-2">Drive</div>
+						<div className="cutout-text cutout-text-3">Through</div>
+					</div>
 				</div>
 			</div>
 		);
