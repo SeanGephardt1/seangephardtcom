@@ -26,7 +26,7 @@ export default class Resume extends React.Component
         <div className="resume-left">
 
           <div className="cv-section">
-            <div className="cv-header">Premera Blue Cross via iMatch Technical Services</div>
+            <div className="cv-header">Premera Blue Cross of Washington & Alaska</div>
             <div className="cv-sub-header">Senior UX Designer (May 2022 - current)</div>
             <ul>
               <li>Development of the custom facing front-end web application build process utilizing JavaScript, HTML, CSS with ReactJS & NodeJS, which leverages REST API services to render real-time telemetry data.</li>
