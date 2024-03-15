@@ -98,7 +98,7 @@ const _app_routes = [
           },
           {
             path: SvgDDD.defaultProps.Href,
-            elemetn: <SvgDDD />,
+            element: <SvgDDD />,
           },
           //{
           //  path: ExecDemoPage.defaultProps.Href,
