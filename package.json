@@ -1,6 +1,6 @@
 {
-    "name": "seangephardt.com.2023",
-    "version": "1.0.3",
+    "name": "seangephardt.com.2024",
+    "version": "1.0.4",
     "private": true,
     "description": "Sean Gephardt's Interactive User Experience Portfolio showcasing HTML, JavaScript, CSS. Built using ReactJS.",
     "author": "seangephardt@live.com",
@@ -31,7 +31,7 @@
         "react-scripts": "^5.0.1"
     },
     "scripts": {
-        "start": "set PORT=2022 && react-scripts start",
+        "start": "set PORT=2024 && react-scripts start",
         "build": "react-scripts build",
         "eject": "react-scripts eject"
     },

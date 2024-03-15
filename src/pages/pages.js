@@ -1,71 +1,74 @@
-//  Update for React router 6 
+//  Update for React router 6
 //  Used in ./app.js & ./controls/nav/navigation.js
 import * as React from "react";
 import { useRoutes } from "react-router-dom";
 
-// react layout pages 
-import LayoutPage from './layout.js';
-import PortfolioLayoutPage from './layout-portfolio.js';
-import DashboardDemoLayoutPage from './layout-dashboard-demo.js';
+// react layout pages
+import LayoutPage from "./layout.js";
+import PortfolioLayoutPage from "./layout-portfolio.js";
+import DashboardDemoLayoutPage from "./layout-dashboard-demo.js";
 
 // general pages
-import FourOhFourPage from './404/404.js';
-import TestPage from './test/test.js';
-import Home from './home/home.js';
-import Resume from './resume/resume.js';
-import PortfolioPage from './portfolio/portfolio.js';
-import MusicPage from './music/music.js';
+import FourOhFourPage from "./404/404.js";
+import TestPage from "./test/test.js";
+import Home from "./home/home.js";
+import Resume from "./resume/resume.js";
+import PortfolioPage from "./portfolio/portfolio.js";
+import MusicPage from "./music/music.js";
+import SvgDDD from "./svg-ddd/svg-ddd.js";
 
 // executive dashboard demo pages
-import ExecDashboardPage from './exec-dash/dash.js';
-import ExecReportsPage from './exec-dash/reports.js';
-import ExecAppsPage from './exec-dash/apps.js';
-import ExecConfigPage from './exec-dash/config.js';
-import ExecHelpPage from './exec-dash/help.js';
+import ExecDashboardPage from "./exec-dash/dash.js";
+import ExecReportsPage from "./exec-dash/reports.js";
+import ExecAppsPage from "./exec-dash/apps.js";
+import ExecConfigPage from "./exec-dash/config.js";
+import ExecHelpPage from "./exec-dash/help.js";
 
 // portfolio level pages
-import WebWorkerDemo from './web-worker-demo/web-worker-demo.js';
-import SvgZoomDemo from './svg-zoom/svg-zoom.js';
-import WebGLDemo from './webgl-demo/webgl-demo.js';
-import AzureCaseStudyDemo from './azure-ux/azure-case-study.js';
-import AudioToysDemoPage from './audio-toys/audio-toys.js';
-
+import WebWorkerDemo from "./web-worker-demo/web-worker-demo.js";
+import SvgZoomDemo from "./svg-zoom/svg-zoom.js";
+import WebGLDemo from "./webgl-demo/webgl-demo.js";
+import AzureCaseStudyDemo from "./azure-ux/azure-case-study.js";
+import AudioToysDemoPage from "./audio-toys/audio-toys.js";
 
 const _nav_routes = [
   {
-    component: Home
+    component: Home,
   },
   {
-    component: Resume
+    component: Resume,
   },
   {
     component: PortfolioPage,
     children: [
       {
-        component: ExecDashboardPage
+        component: ExecDashboardPage,
       },
       {
-        component: AzureCaseStudyDemo
+        component: SvgDDD,
       },
       {
-        component: AudioToysDemoPage
+        component: AzureCaseStudyDemo,
       },
       {
-        component: WebWorkerDemo
+        component: AudioToysDemoPage,
       },
       {
-        component: SvgZoomDemo
+        component: WebWorkerDemo,
       },
       {
-        component: WebGLDemo
+        component: SvgZoomDemo,
       },
-    ]
+      {
+        component: WebGLDemo,
+      },
+    ],
   },
   {
-    component: MusicPage
+    component: MusicPage,
   },
   {
-    component: TestPage
+    component: TestPage,
   },
 ];
 
@@ -93,6 +96,10 @@ const _app_routes = [
             index: true,
             element: <PortfolioPage />,
           },
+          {
+            path: SvgDDD.defaultProps.Href,
+            elemetn: <SvgDDD />,
+          },
           //{
           //  path: ExecDemoPage.defaultProps.Href,
           //  element: <ExecDemoPage />,
@@ -103,39 +110,39 @@ const _app_routes = [
           },
           {
             path: AudioToysDemoPage.defaultProps.Href,
-            element: <AudioToysDemoPage />
+            element: <AudioToysDemoPage />,
           },
           {
             path: WebWorkerDemo.defaultProps.Href,
-            element: <WebWorkerDemo />
+            element: <WebWorkerDemo />,
           },
           {
             path: WebGLDemo.defaultProps.Href,
-            element: <WebGLDemo />
+            element: <WebGLDemo />,
           },
           {
             path: SvgZoomDemo.defaultProps.Href,
-            element: <SvgZoomDemo />
+            element: <SvgZoomDemo />,
           },
           {
             path: AzureCaseStudyDemo.defaultProps.Href,
-            element: <AzureCaseStudyDemo />
-          }, 
-        ]
+            element: <AzureCaseStudyDemo />,
+          },
+        ],
       },
       {
         path: MusicPage.defaultProps.Href,
-        element: <MusicPage />
+        element: <MusicPage />,
       },
       {
         path: TestPage.defaultProps.Href,
-        element: <TestPage />
+        element: <TestPage />,
       },
       {
         path: "*",
         element: <FourOhFourPage />,
       },
-    ]
+    ],
   },
 
   /* executive dashboard demo routes */
@@ -145,11 +152,11 @@ const _app_routes = [
     children: [
       {
         index: true,
-        element: <ExecDashboardPage />
+        element: <ExecDashboardPage />,
       },
       {
         path: ExecReportsPage.defaultProps.Href,
-        element: <ExecReportsPage />
+        element: <ExecReportsPage />,
       },
       {
         path: ExecAppsPage.defaultProps.Href,
@@ -167,20 +174,12 @@ const _app_routes = [
         path: "*",
         element: <FourOhFourPage />,
       },
-    ]
+    ],
   },
 ];
 
-function AppRoutes()
-{
+function AppRoutes() {
+  return useRoutes(_app_routes);
+}
 
-  return useRoutes( _app_routes );
-};
-
-export
-{
-  _nav_routes as NavList,
-  _app_routes as RoutesList,
-  AppRoutes,
-  FourOhFourPage as FourOh4
-};
+export { _nav_routes as NavList, _app_routes as RoutesList, AppRoutes, FourOhFourPage as FourOh4 };
