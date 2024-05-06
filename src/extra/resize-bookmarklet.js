@@ -38,11 +38,7 @@ javascript: (function () {
       false
     );
 
-    var contrastletclosetext = document.createTextNode("X");
-    contrastletclose.appendChild(contrastletclosetext);
-    contrastletdragzone.appendChild(contrastletclose);
-
-    var contrastlet = document.createElement("iframe");
+    let contrastlet = document.createElement("iframe");
     contrastlet.src = "https://webaim.org/resources/contrastchecker/mini?ver=2&a=" + Math.random();
     contrastlet.style.width = "421px";
     contrastlet.style.height = "368px";
@@ -91,7 +87,7 @@ javascript: (function () {
     document.addEventListener("securitypolicyviolation", (e) => {
       contrastlet.remove();
       var contrastleterrortext = document.createTextNode(
-        "The Content Security Policy on this page does not allow embedded iframes. The Contrast Checker Bookmarklet cannot run on this page. Press Esc to dismiss this message."
+        "The Content Security Policy on this page does not allow embedded iframes. The Bookmarklet cannot run on this page. Press Esc to dismiss this message."
       );
       contrastletdragable.style.backgroundColor = "#fff";
       contrastletdragable.appendChild(contrastleterrortext);
