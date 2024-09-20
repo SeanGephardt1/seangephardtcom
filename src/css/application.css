@@ -1,33 +1,35 @@
-.react-root
-{
-  /*	border: solid 1px red;*/
-  flex: 1 1 100%;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
-  overflow: auto;
+.react-root {
+	/*	border: solid 1px red;*/
+	flex: 1 1 100%;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	overflow: auto;
 }
 
-main
-{
-/*  border: solid 2px red;*/
-  display: flex;
-  flex: 1 1 100%;
-  flex-direction: column;
-  overflow: auto;
-  align-items:stretch;
+main {
+	border: solid 1px red;
+	display: flex;
+	flex: 1 1 100%;
+	flex-direction: column;
+	overflow: auto;
+	align-items: stretch;
+	align-self: center;
 }
 
-/* most pages */
-.page-layout
-{
-/* 	border: solid 4px orange; */
-  align-self:center;
-  max-width: 1024px;
-  min-width: 280px;
-  overflow: auto;
-  /* opacity: 1;
+/* 
+REFACTOR FOR CENTER ALIGNED LAYOUT FROM ROOT
+most pages 
+*/
+.page-layout {
+	padding: 30px;
+	max-width: 1024px;
+	min-width: 280px;
+	overflow: auto;
+	/* border: solid 4px orange; */
+	/* align-self: center; */
+	/* opacity: 1;
   animation-name: AniPageFadeIn1;
   animation-delay: 100ms;
   animation-direction: normal;
@@ -38,173 +40,145 @@ main
   animation-timing-function: ease-in-out;*/
 }
 
-.column
-{
-  border: solid 1px purple;
-  flex-direction: column;
-  flex-wrap: nowrap;
+.column {
+	border: solid 1px purple;
+	flex-direction: column;
+	flex-wrap: nowrap;
 }
 
-.row /*resume page */
-{
-  flex-direction: row;
-  flex-wrap: wrap;
+.row /*resume page */ {
+	flex-direction: row;
+	flex-wrap: wrap;
 }
 
-footer
-{
-  flex: 1 1 100%;
-  border-top: solid 1px var(--black-01);
-  color: var(--nav-color-4);
-  font-weight:700;
-  padding: 10px;
-  margin-top: 20px;
-  text-align: center;
+footer {
+	flex: 1 1 100%;
+	border-top: solid 1px var(--black-01);
+	color: var(--nav-color-4);
+	font-weight: 700;
+	padding: 10px;
+	margin-top: 20px;
+	text-align: center;
 }
-
 
 /* global multi-use styles - refactored 12/31/2020 */
-.page-header
-{
-/*  border: solid 1px red;*/
-  text-align: center;
-  font-size: 200%;
-  padding:20px;
+.page-header {
+	/*  border: solid 1px red;*/
+	text-align: center;
+	font-size: 200%;
+	padding: 20px;
 }
-.page-section
-{
-    min-width: 280px;
-    flex: 1 1 100%;
-    padding:30px;
+.page-section {
+	min-width: 280px;
+	flex: 1 1 100%;
+	padding: 30px;
 }
 
-
-
-.header
-{
-  font-weight: 100;
-  font-size: 26px;
-  margin-bottom: 10px;
+.header {
+	font-weight: 100;
+	font-size: 26px;
+	margin-bottom: 10px;
 }
 
-.centered
-{
-  text-align: center;
+.centered {
+	text-align: center;
 }
 
-.centered1024
-{
-  max-width: 1024px;
+.centered1024 {
+	max-width: 1024px;
 }
 
-.padding30
-{
-  padding: 30px;
+.padding30 {
+	padding: 30px;
 }
 
-.margin-bottom-25
-{
-  margin-top: 25%;
+.margin-bottom-25 {
+	margin-top: 25%;
 }
 
-.margin-bottom-10
-{
-  margin-top: 10%;
+.margin-bottom-10 {
+	margin-top: 10%;
 }
 
-.margin-bottom-5
-{
-  margin-top: 5%;
+.margin-bottom-5 {
+	margin-top: 5%;
 }
 
-.margin-right-10
-{
-  margin-right: 10px;
+.margin-right-10 {
+	margin-right: 10px;
 }
 
-.bold-700
-{
-  font-weight: 700;
+.bold-700 {
+	font-weight: 700;
 }
 
 /* OLD??? */
-.bd-page-title
-{
-  font-size: 20px;
-  text-align: center;
-  padding: 10px;
+.bd-page-title {
+	font-size: 20px;
+	text-align: center;
+	padding: 10px;
 }
 
-.bd-page-description
-{
-  text-align: center;
-  margin-bottom: 10px;
+.bd-page-description {
+	text-align: center;
+	margin-bottom: 10px;
 }
 
-.bd-page-trademark
-{
-  font-size: 12px;
-  text-align: center;
+.bd-page-trademark {
+	font-size: 12px;
+	text-align: center;
 }
 
 /* global button style */
-.app-btn
-{
-  border: solid 1px var(--black-01);
-  border-radius: 4px;
-  cursor: pointer;
-  padding: 8px;
-  transition: all 200ms ease-in-out;
+.app-btn {
+	border: solid 1px var(--black-01);
+	border-radius: 4px;
+	cursor: pointer;
+	padding: 8px;
+	transition: all 200ms ease-in-out;
 }
 
 .app-btn[disabled],
 .app-btn[disabled]:hover,
-.app-btn[disabled]:focus
-{
-  background-color: var(--black-01);
-  color: var(--black-02);
+.app-btn[disabled]:focus {
+	background-color: var(--black-01);
+	color: var(--black-02);
 }
 
-.app-btn:hover
-{
-  background-color: var(--nav-color-4);
-  color: white;
+.app-btn:hover {
+	background-color: var(--nav-color-4);
+	color: white;
 }
 
-select.select-pitch-range
-{
-  background-color: var(--black-01);
-  color: var(--nav-color-4);
-  font-weight: 900;
-  min-width: 170px;
-  width: auto;
-  padding-left: 10px;
-  padding-right: 10px;
+select.select-pitch-range {
+	background-color: var(--black-01);
+	color: var(--nav-color-4);
+	font-weight: 900;
+	min-width: 170px;
+	width: auto;
+	padding-left: 10px;
+	padding-right: 10px;
 }
 
 /* simple global styles*/
-.app-text-panel
-{
-  margin-bottom: 20px;
+.app-text-panel {
+	margin-bottom: 20px;
 }
 
-.app-tools-panel
-{
-  /*	border: solid 1px var(--black-01);*/
-  display: flex;
-  justify-content: center;
-  justify-items: center;
-  align-content: center;
-  align-items: center;
-  padding: 4px;
-  margin-bottom: 10px;
-  font-size: 16px;
+.app-tools-panel {
+	/*	border: solid 1px var(--black-01);*/
+	display: flex;
+	justify-content: center;
+	justify-items: center;
+	align-content: center;
+	align-items: center;
+	padding: 4px;
+	margin-bottom: 10px;
+	font-size: 16px;
 }
-.app-tools-panel > *
-{
-  margin-right: 6px;
+.app-tools-panel > * {
+	margin-right: 6px;
 }
-.app-tools-panel > *:last-child
-{
-  margin-right: 0px;
+.app-tools-panel > *:last-child {
+	margin-right: 0px;
 }
